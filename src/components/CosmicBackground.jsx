@@ -23,14 +23,23 @@ export default function CosmicBackground() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]" />
 
             {/* 2. Dynamic Starfield */}
-            <div className="absolute inset-0 opacity-60 mix-blend-screen">
-                <Starfield density={800} speed={0.05} />
+            <div className="absolute inset-0 opacity-80 mix-blend-screen">
+                <Starfield density={1200} speed={0.05} />
             </div>
 
             {/* 3. Nebula Clouds (Parallax Layer 1 - Slow) */}
             <motion.div 
                 style={{ y: y3 }}
                 className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full mix-blend-screen opacity-20 blur-[120px] bg-indigo-900/30 animate-pulse"
+            />
+            {/* Added Milky Way Galaxy Blobs from LoadingScreen */}
+            <motion.div 
+                style={{ y: y3 }}
+                 className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"
+            />
+            <motion.div 
+                style={{ y: y3 }}
+                className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px] mix-blend-screen animate-pulse"
             />
             <motion.div 
                 style={{ y: y3 }}
