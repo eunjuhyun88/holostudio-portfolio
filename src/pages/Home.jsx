@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
@@ -241,16 +241,17 @@ export default function Home() {
     ];
 
     const milestoneConfig = [
-        { icon: Trophy, color: "text-yellow-500" },
-        { icon: Target, color: "text-blue-500" },
-        { icon: Trophy, color: "text-white" },
-        { icon: Cpu, color: "text-green-500" }
+        { icon: Trophy, color: "text-yellow-400", bg: "bg-yellow-400/10" },
+        { icon: Rocket, color: "text-blue-400", bg: "bg-blue-400/10" },
+        { icon: Medal, color: "text-slate-300", bg: "bg-slate-300/10" },
+        { icon: Award, color: "text-purple-400", bg: "bg-purple-400/10" }
     ];
 
     const milestones = t.milestones.items.map((item, idx) => ({
         ...item,
         icon: milestoneConfig[idx]?.icon || Trophy,
-        color: milestoneConfig[idx]?.color || "text-white"
+        color: milestoneConfig[idx]?.color || "text-white",
+        bg: milestoneConfig[idx]?.bg || "bg-white/5"
     }));
 
     return (
@@ -561,14 +562,15 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES */}
-            <section className="py-32 bg-[#050505]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div {...fadeIn} className="mb-12">
-                        <h2 className="text-3xl font-bold mb-2">{t.milestones.title}</h2>
-                        <p className="text-neutral-500">{t.milestones.sub}</p>
+            <section className="py-32 bg-[#050505] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/5 to-transparent pointer-events-none" />
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.milestones.title}</h2>
+                        <p className="text-neutral-500 max-w-2xl">{t.milestones.sub}</p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-4 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
                         {milestones.map((m, idx) => (
                             <motion.div
                                 key={idx}
@@ -576,18 +578,61 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-[#0A0A0A] p-6 rounded-xl border border-neutral-800 flex flex-col justify-between h-32 hover:border-white/20 transition-colors"
+                                className="bg-[#0A0A0A] p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
                             >
-                                <div className="flex justify-between items-start">
+                                <div className={`absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
+                                    <m.icon className={`w-12 h-12 ${m.color}`} />
+                                </div>
+                                <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
                                     <m.icon className={`w-6 h-6 ${m.color}`} />
-                                    <ArrowRight className="w-4 h-4 text-neutral-700" />
                                 </div>
                                 <div>
-                                    <div className="text-sm font-bold text-white mb-1">{m.title}</div>
-                                    <div className="text-xs text-neutral-500">{m.desc}</div>
+                                    <div className="text-lg font-bold text-white mb-2 leading-tight">{m.title}</div>
+                                    <div className="text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors">{m.desc}</div>
                                 </div>
                             </motion.div>
                         ))}
+                    </div>
+
+                    {/* Partners & Backers */}
+                    <div className="border-t border-neutral-800 pt-16">
+                        <p className="text-center text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-12">Selected & Backed By</p>
+                        
+                        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-12 md:gap-x-20 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                             {/* NVIDIA */}
+                            <div className="flex items-center gap-3 group cursor-default">
+                                <div className="text-2xl font-bold text-white group-hover:text-[#76B900] transition-colors">NVIDIA</div>
+                                <div className="h-8 w-px bg-neutral-700" />
+                                <div className="text-xs font-bold text-neutral-400 leading-tight">Inception<br/>Program</div>
+                            </div>
+                            
+                            {/* Google Cloud */}
+                            <div className="flex items-center gap-3 group cursor-default">
+                                <div className="text-xl font-bold text-white">Google Cloud</div>
+                                <div className="text-xs text-neutral-500 border border-neutral-700 px-2 py-0.5 rounded-full">Partner</div>
+                            </div>
+
+                            {/* Alchemy */}
+                            <div className="flex items-center gap-2 cursor-default">
+                                <span className="text-2xl font-bold text-blue-500">Alchemy</span>
+                            </div>
+
+                            {/* Story */}
+                            <div className="flex items-center gap-2 cursor-default">
+                                <span className="text-2xl font-black italic text-white">STORY</span>
+                            </div>
+
+                            {/* AppWorks */}
+                            <div className="flex items-center gap-2 cursor-default">
+                                <span className="text-xl font-bold text-[#FF6B00]">AppWorks</span>
+                            </div>
+
+                             {/* OnePiece */}
+                             <div className="flex items-center gap-2 cursor-default">
+                                <span className="text-xl font-bold text-white">OnePiece</span>
+                                <span className="text-xs text-neutral-500">Labs</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
