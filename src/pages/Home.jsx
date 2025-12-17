@@ -2,37 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch, Network, Database } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
-import { Network, Database } from 'lucide-react';
-
-const WhoWeAreRow = ({ text, index, containerRef }) => {
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-    
-    // Move from Right (positive x) to Left (negative x)
-    // Stagger speeds based on index
-    const x = useTransform(
-        scrollYProgress, 
-        [0, 1], 
-        [100 + (index * 50), -100 - (index * 50)]
-    );
-
-    return (
-        <motion.div 
-            style={{ x }}
-            className="flex items-center gap-4 md:gap-8 whitespace-nowrap"
-        >
-            <div className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-neutral-200 hover:text-white transition-colors">
-                {text}
-            </div>
-             {/* Repeat for continuous feel if needed, or just decoration */}
-             <div className="w-4 h-4 md:w-8 md:h-8 rounded-full border-2 border-neutral-700" />
-        </motion.div>
-    );
-};
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import SEO from '@/components/SEO';
@@ -315,10 +286,7 @@ export default function Home() {
 
     const tech = techContent[language];
 
-    const whoWeAreRoles = {
-        en: ["ENGINEERS", "RESEARCHERS", "BUILDERS", "CONTRIBUTORS", "VISIONARIES"],
-        ko: ["엔지니어들", "연구원", "건축업자", "기여자", "개척자들"]
-    };
+
 
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
@@ -328,7 +296,6 @@ export default function Home() {
     };
 
     const [activeStage, setActiveStage] = useState(0);
-    const whoWeAreRef = useRef(null);
 
 
 
@@ -593,6 +560,92 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* NEW: TECHNOLOGY SPEC (The Solution) */}
+            <section className="py-32 px-6 md:px-12 bg-[#050505] border-b border-neutral-900">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="mb-20">
+                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
+                        <h3 className="text-4xl md:text-6xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
+                        <p className="text-xl text-neutral-400 max-w-3xl leading-relaxed">
+                            We are building the fundamental safety and value layers for the autonomous AI economy.
+                            <br/><br/>
+                            Beyond simple content creation, we engineer the verifying protocols, decentralized infrastructure, and economic models that make AI sustainable.
+                        </p>
+                    </div>
+
+                    <div className="mb-24">
+                        <h3 className="text-2xl font-bold mb-8 text-white">Core Infrastructure</h3>
+                        <p className="text-neutral-500 mb-8 max-w-2xl">Our proprietary technology stack for Full-Media AI Guardrails.</p>
+                        
+                        <div className="relative">
+                            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
+                            <div className="grid grid-cols-2 md:grid-cols-6 gap-4 relative z-10">
+                                {tech.pipeline.steps.map((step, i) => (
+                                    <div key={i} className="bg-[#0A0A0A] p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group">
+                                        <div className="text-xs font-mono text-indigo-500 mb-3">0{i+1}</div>
+                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
+                                        <div className="text-xs text-neutral-500 leading-relaxed">{step.desc}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-[#0A0A0A] rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+                        
+                        <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                            <div>
+                                <h3 className="text-3xl font-bold mb-6">{tech.depin.title}</h3>
+                                <p className="text-lg text-neutral-400 leading-relaxed mb-10">
+                                    {tech.depin.desc}
+                                </p>
+                                <div className="space-y-6">
+                                    {tech.depin.features.map((feat, i) => (
+                                        <div key={i} className="flex gap-5">
+                                            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20">
+                                                <feat.icon className="w-6 h-6" />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-white text-base mb-1">{feat.title}</div>
+                                                <div className="text-sm text-neutral-500">{feat.desc}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="bg-[#050505] rounded-2xl p-8 border border-white/5 aspect-square flex items-center justify-center relative">
+                                {/* Visual for DePIN Mesh */}
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 to-transparent opacity-50" />
+                                <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+                                    <div className="aspect-square rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col items-center justify-center p-4">
+                                        <Cpu className="w-8 h-8 text-indigo-500 mb-2" />
+                                        <span className="text-[10px] uppercase tracking-widest text-neutral-500">H100 Cluster</span>
+                                    </div>
+                                    <div className="aspect-square rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col items-center justify-center p-4">
+                                        <Gamepad2 className="w-8 h-8 text-white mb-2" />
+                                        <span className="text-[10px] uppercase tracking-widest text-neutral-500">Consumer Node</span>
+                                    </div>
+                                    <div className="aspect-square rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col items-center justify-center p-4">
+                                        <Layers className="w-8 h-8 text-blue-500 mb-2" />
+                                        <span className="text-[10px] uppercase tracking-widest text-neutral-500">Verifier Node</span>
+                                    </div>
+                                    <div className="aspect-square rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col items-center justify-center p-4">
+                                        <Database className="w-8 h-8 text-purple-500 mb-2" />
+                                        <span className="text-[10px] uppercase tracking-widest text-neutral-500">Storage Layer</span>
+                                    </div>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-24 h-24 rounded-full bg-indigo-600 border-4 border-[#050505] flex items-center justify-center shadow-2xl shadow-indigo-500/50 z-20">
+                                        <span className="font-black text-white text-xs tracking-widest">MESH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Section 04: COMPANY THESIS */}
             <section className="py-24 bg-[#0A0A0A] border-y border-neutral-900 text-center">
                 <div className="max-w-4xl mx-auto px-6">
@@ -611,98 +664,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* NEW: TECHNOLOGY SPEC (Moved from Company) */}
-            <section className="py-24 px-6 md:px-12 bg-[#080808] border-b border-neutral-900">
-                <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                        <div>
-                            <h2 className="text-3xl font-bold mb-4">{tech.title}</h2>
-                            <p className="text-neutral-500">{tech.sub}</p>
-                        </div>
-                        <div className="flex gap-2">
-                             <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-                             <span className="text-xs font-mono text-neutral-400">LIVE SYSTEM</span>
-                        </div>
-                    </div>
 
-                    {/* Pipeline Visualization */}
-                    <div className="mb-24">
-                        <h3 className="text-lg font-mono text-indigo-400 mb-8 uppercase tracking-widest">{tech.pipeline.title}</h3>
-                        <div className="relative">
-                            <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-indigo-900/20 via-indigo-500/20 to-indigo-900/20 -translate-y-1/2 hidden md:block" />
-                            <div className="flex overflow-x-auto pb-4 gap-4 md:grid md:grid-cols-6 md:pb-0 snap-x no-scrollbar">
-                                {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="min-w-[150px] md:min-w-0 relative bg-[#111] p-4 rounded-xl border border-neutral-800 hover:border-indigo-500/50 transition-all group z-10 snap-center">
-                                        <div className="absolute -top-3 left-4 bg-[#080808] px-2 text-xs font-mono text-neutral-500 group-hover:text-indigo-400 transition-colors">
-                                            0{i+1}
-                                        </div>
-                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
-                                        <div className="text-xs text-neutral-500 leading-tight">{step.desc}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* DePIN Section */}
-                    <div className="bg-[#111] rounded-3xl p-8 md:p-12 border border-neutral-800">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h3 className="text-2xl font-bold mb-4">{tech.depin.title}</h3>
-                                <p className="text-neutral-400 leading-relaxed mb-8">
-                                    {tech.depin.desc}
-                                </p>
-                                <div className="space-y-6">
-                                    {tech.depin.features.map((feat, i) => (
-                                        <div key={i} className="flex gap-4 group">
-                                            <div className="w-10 h-10 rounded-lg bg-indigo-900/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
-                                                <feat.icon className="w-5 h-5" />
-                                            </div>
-                                            <div>
-                                                <div className="font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition-colors">{feat.title}</div>
-                                                <div className="text-xs text-neutral-500">{feat.desc}</div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            {/* Abstract Visual for DePIN */}
-                            <div className="bg-[#080808] rounded-2xl p-8 border border-neutral-800 flex items-center justify-center min-h-[300px]">
-                                <div className="grid grid-cols-2 gap-6 opacity-80">
-                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111]">
-                                        <Cpu className="w-8 h-8 text-indigo-500" />
-                                        <span className="text-[10px] font-mono text-neutral-500">GPU NODE</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111] translate-y-8">
-                                        <Layers className="w-8 h-8 text-indigo-500" />
-                                        <span className="text-[10px] font-mono text-neutral-500">VERIFIER</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111]">
-                                        <Database className="w-8 h-8 text-indigo-500" />
-                                        <span className="text-[10px] font-mono text-neutral-500">STORAGE</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111] translate-y-8">
-                                        <Network className="w-8 h-8 text-indigo-500" />
-                                        <span className="text-[10px] font-mono text-neutral-500">MESH</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* NEW: WHO WE ARE (Right to Left Animation) */}
-            <section ref={whoWeAreRef} className="py-32 bg-[#050505] border-b border-white/10 overflow-hidden">
-                <div className="px-6 md:px-12 mb-12 max-w-[1400px] mx-auto">
-                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">WHO WE ARE</div>
-                </div>
-                <div className="space-y-4 md:space-y-8">
-                    {whoWeAreRoles[language].map((role, i) => (
-                        <WhoWeAreRow key={i} text={role} index={i} containerRef={whoWeAreRef} />
-                    ))}
-                </div>
-            </section>
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
             <section id="products" className="relative bg-[#050505]">
