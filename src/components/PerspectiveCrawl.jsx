@@ -14,7 +14,7 @@ export default function PerspectiveCrawl({ children }) {
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
     return (
-        <div ref={containerRef} className="relative h-[150vh] w-full bg-[#050505]">
+        <div ref={containerRef} className="relative h-[400vh] w-full bg-[#050505]">
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ perspective: '800px' }}>
                 
                 {/* Gradient Fades */}

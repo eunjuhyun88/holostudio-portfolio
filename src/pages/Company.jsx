@@ -447,29 +447,34 @@ export default function Company() {
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
                 <PerspectiveCrawl>
-                    <div className="py-20">
-                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-16 text-indigo-400 leading-tight">
+                    <div className="py-20 pb-40">
+                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-24 text-indigo-400 leading-tight">
                             {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
                         </h1>
-                        <div className="text-2xl md:text-4xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify">
+                        <div className="text-2xl md:text-4xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify mb-40">
                             {language === 'en' 
                                 ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
                                 : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
                         </div>
+
+                        {/* Chapters integrated into the crawl */}
+                        <div className="space-y-40">
+                            {c.chapters.map((chapter, i) => (
+                                <div key={i} className="flex flex-col items-center justify-center text-center">
+                                    <div className="text-indigo-500 font-mono text-xl tracking-widest mb-6 border border-indigo-500/30 px-4 py-2 rounded-full bg-indigo-500/10 inline-block">
+                                        {chapter.year}
+                                    </div>
+                                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+                                        {chapter.headline}
+                                    </h2>
+                                    <p className="text-xl md:text-3xl text-neutral-300 max-w-3xl leading-relaxed mx-auto">
+                                        {chapter.content}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </PerspectiveCrawl>
-
-                <div className="max-w-[1400px] mx-auto pb-24 px-6 md:px-12">
-                    {c.chapters.map((chapter, i) => (
-                        <StoryNode
-                            key={i}
-                            year={chapter.year}
-                            headline={chapter.headline}
-                            content={chapter.content}
-                            index={i}
-                        />
-                    ))}
-                </div>
 
                 {/* Thesis / Vision Section (Full Width Sticky Scroll) */}
                 <div className="w-full">
