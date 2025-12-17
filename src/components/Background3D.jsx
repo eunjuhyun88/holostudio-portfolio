@@ -9,7 +9,6 @@ export default function Background3D() {
 
         // Scene Setup
         const scene = new THREE.Scene();
-        // Darker fog to blend into the black background
         scene.fog = new THREE.FogExp2(0x050505, 0.002);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -20,91 +19,128 @@ export default function Background3D() {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         mountRef.current.appendChild(renderer.domElement);
 
-        const worldGroup = new THREE.Group();
-        scene.add(worldGroup);
-
-        // 1. Fine Particle Cloud (Grid of Points)
-        // Use BoxGeometry to create a cube-shaped cloud of points
-        const particleGeo = new THREE.BoxGeometry(40, 40, 40, 40, 40, 40);
-        const particleMat = new THREE.PointsMaterial({
+        // --- 1. THE MAIN 3D EFFECT (ICOSAHEDRON CRYSTAL) ---
+        // Restoring the original central object but with finer particles
+        const geometry = new THREE.IcosahedronGeometry(15, 2);
+        
+        // Finer particles for the main shape
+        const material = new THREE.PointsMaterial({
             color: 0x818cf8, // Indigo-400
-            size: 0.02, // Extremely fine particles as requested
+            size: 0.08, // Reduced from 0.22 for finer look
             transparent: true,
-            opacity: 0.4,
+            opacity: 0.8,
             sizeAttenuation: true,
         });
-        const particleSystem = new THREE.Points(particleGeo, particleMat);
-        worldGroup.add(particleSystem);
 
-        // 2. Floating Wireframe Blocks
-        // Create many cubes floating around to match the "blocks" reference
-        const boxCount = 150;
+        // Add noise to vertices
+        const positionAttribute = geometry.attributes.position;
+        const vertex = new THREE.Vector3();
+        for (let i = 0; i < positionAttribute.count; i++) {
+            vertex.fromBufferAttribute(positionAttribute, i);
+            vertex.x += (Math.random() - 0.5) * 1.0;
+            vertex.y += (Math.random() - 0.5) * 1.0;
+            vertex.z += (Math.random() - 0.5) * 1.0;
+            positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
+        }
+
+        const crystalMesh = new THREE.Points(geometry, material);
+        scene.add(crystalMesh);
+
+        // Inner core
+        const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
+        const coreMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.05,
+            transparent: true,
+            opacity: 0.6,
+        });
+        const corePoints = new THREE.Points(coreGeometry, coreMaterial);
+        scene.add(corePoints);
+
+        // Wireframe
+        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.15 });
+        const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
+        scene.add(wireframe);
+
+
+        // --- 2. BACKGROUND BLOCKS & FIELD ---
+        // Adding the requested floating blocks as background environment
+        const blocksGroup = new THREE.Group();
+        scene.add(blocksGroup);
+
+        // Instanced Blocks
+        const boxCount = 200;
         const boxGeo = new THREE.BoxGeometry(1, 1, 1);
         const boxMat = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             wireframe: true,
             transparent: true,
-            opacity: 0.08, // Subtle
+            opacity: 0.05, // Very subtle background
         });
         const boxes = new THREE.InstancedMesh(boxGeo, boxMat, boxCount);
         
         const dummy = new THREE.Object3D();
-        const randoms = [];
         
         for (let i = 0; i < boxCount; i++) {
-            // Distribute in a cloud
-            const range = 50;
+            // Spread them wider to form a tunnel/field
+            const range = 80;
             dummy.position.x = (Math.random() - 0.5) * range;
             dummy.position.y = (Math.random() - 0.5) * range;
-            dummy.position.z = (Math.random() - 0.5) * range;
+            dummy.position.z = (Math.random() - 0.5) * range - 10; // Push some back
             
-            // Random rotation
             dummy.rotation.x = Math.random() * Math.PI;
             dummy.rotation.y = Math.random() * Math.PI;
             
-            // Varied scales for "blocks" look
-            const s = Math.random() * 3 + 0.5;
+            const s = Math.random() * 2 + 0.5;
             dummy.scale.set(s, s, s);
             
             dummy.updateMatrix();
             boxes.setMatrixAt(i, dummy.matrix);
-            
-            // Store random values for animation
-            randoms.push({
-                speed: (Math.random() - 0.5) * 0.01,
-                axis: new THREE.Vector3(Math.random(), Math.random(), Math.random()).normalize()
-            });
         }
-        worldGroup.add(boxes);
+        blocksGroup.add(boxes);
 
-        // 3. Central Large Cube Structure (Wireframe)
-        const centralGeo = new THREE.BoxGeometry(25, 25, 25, 4, 4, 4);
-        const centralMat = new THREE.LineBasicMaterial({
-            color: 0x4f46e5, // Indigo-600
+        // Fine Dust Particles in background
+        const dustGeo = new THREE.BufferGeometry();
+        const dustCount = 1000;
+        const dustPos = new Float32Array(dustCount * 3);
+        for(let i=0; i<dustCount*3; i++) {
+            dustPos[i] = (Math.random() - 0.5) * 100;
+        }
+        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+        const dustMat = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.02, // Extremely fine
             transparent: true,
-            opacity: 0.05,
+            opacity: 0.3
         });
-        const centralWireframe = new THREE.LineSegments(new THREE.WireframeGeometry(centralGeo), centralMat);
-        worldGroup.add(centralWireframe);
+        const dustSystem = new THREE.Points(dustGeo, dustMat);
+        blocksGroup.add(dustSystem);
+
 
         // Animation Loop
         let animationFrameId;
         const animate = () => {
             animationFrameId = requestAnimationFrame(animate);
+            const time = Date.now() * 0.001;
 
-            const time = Date.now() * 0.0005;
+            // Animate Crystal (The Main 3D Effect)
+            crystalMesh.rotation.y += 0.002;
+            crystalMesh.rotation.x += 0.001;
+            corePoints.rotation.y -= 0.004;
+            corePoints.rotation.x -= 0.002;
+            wireframe.rotation.y += 0.002;
+            wireframe.rotation.x += 0.001;
 
-            // Rotate entire system
-            worldGroup.rotation.y = time * 0.1;
-            worldGroup.rotation.x = Math.sin(time * 0.2) * 0.1;
-
-            // "Magnify" / Breathe effect
-            // Move camera in and out slowly to simulate expanding/contracting blocks
-            const zoom = Math.sin(time * 0.5) * 5; // +/- 5 units
+            // Animate Background Blocks (Expansion/Movement)
+            // Slowly rotate the field
+            blocksGroup.rotation.z = time * 0.05;
+            
+            // Gentle zoom breathe
+            const zoom = Math.sin(time * 0.5) * 2;
             camera.position.z = 30 + zoom;
 
-            // Animate individual boxes? 
-            // Updating InstancedMesh every frame is heavy, sticking to camera/group movement for performance.
+            // Float entire scene slightly
+            scene.position.y = Math.sin(time * 0.5) * 0.5;
 
             renderer.render(scene, camera);
         };
@@ -127,12 +163,8 @@ export default function Background3D() {
             if (mountRef.current) {
                 mountRef.current.removeChild(renderer.domElement);
             }
-            particleGeo.dispose();
-            particleMat.dispose();
-            boxGeo.dispose();
-            boxMat.dispose();
-            centralGeo.dispose();
-            centralMat.dispose();
+            geometry.dispose();
+            material.dispose();
             renderer.dispose();
         };
     }, []);
