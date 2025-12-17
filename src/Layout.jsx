@@ -20,8 +20,11 @@ function LayoutContent({ children }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
+    // Scroll to top and close mobile menu on route change
     useEffect(() => {
+        if (!location.hash) {
+            window.scrollTo(0, 0);
+        }
         setMobileMenuOpen(false);
         setBusinessDropdownOpen(false);
     }, [location]);
@@ -49,6 +52,8 @@ function LayoutContent({ children }) {
         { name: 'EleMEMEtal', path: '/Elememetal' },
         { name: 'Stockhoo', path: '/Stockhoo' },
     ];
+
+    const isProductActive = products.some(p => location.pathname.includes(p.path));
 
     const scrollToSection = (id) => {
         if (location.pathname !== '/') {
@@ -92,7 +97,7 @@ function LayoutContent({ children }) {
                         onMouseEnter={() => setBusinessDropdownOpen(true)}
                         onMouseLeave={() => setBusinessDropdownOpen(false)}
                     >
-                        <button className="flex items-center gap-1.5 font-medium text-sm text-neutral-400 hover:text-white transition-colors">
+                        <button className={`flex items-center gap-1.5 font-medium text-sm transition-colors ${isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'}`}>
                             {language === 'en' ? 'Products' : '프로덕트'}
                             <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
@@ -102,16 +107,27 @@ function LayoutContent({ children }) {
                             businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
                         }`}>
                             <div className="bg-[#0A0A0A]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden p-2 grid gap-1">
-                                {products.map((prod) => (
-                                    <Link 
-                                        key={prod.name}
-                                        to={createPageUrl(prod.path.substring(1))}
-                                        className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-all group/item"
-                                    >
-                                        {prod.name}
-                                        <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-indigo-400" />
-                                    </Link>
-                                ))}
+                                {products.map((prod) => {
+                                    const isActive = location.pathname.includes(prod.path);
+                                    return (
+                                        <Link 
+                                            key={prod.name}
+                                            to={createPageUrl(prod.path.substring(1))}
+                                            className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all group/item ${
+                                                isActive 
+                                                ? 'bg-white/10 text-white' 
+                                                : 'hover:bg-white/5 text-neutral-400 hover:text-white'
+                                            }`}
+                                        >
+                                            {prod.name}
+                                            <ArrowRight className={`w-3 h-3 transition-all text-indigo-400 ${
+                                                isActive 
+                                                ? 'opacity-100 translate-x-0' 
+                                                : 'opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0'
+                                            }`} />
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
