@@ -29,14 +29,12 @@ function LayoutContent({ children }) {
     const navLinks = {
         en: [
             { name: 'Company', path: '/', isAnchor: false },
-            { name: 'Products', path: '/#products', isAnchor: true },
             { name: 'Proof', path: '/#proof', isAnchor: true },
             { name: 'Research', path: '/#research', isAnchor: true },
             { name: 'Contact', path: '/Contact' },
         ],
         ko: [
             { name: '회사소개', path: '/', isAnchor: false },
-            { name: '사업분야', path: '/#products', isAnchor: true },
             { name: '성과', path: '/#proof', isAnchor: true },
             { name: '리서치', path: '/#research', isAnchor: true },
             { name: '문의', path: '/Contact' },
