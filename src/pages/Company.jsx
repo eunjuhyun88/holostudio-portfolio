@@ -15,11 +15,11 @@ const WhoWeAreRow = ({ text, index, containerRef, color }) => {
     });
     
     // Move from Right (positive x) to Left (negative x)
-    // Stagger speeds based on index
+    // Increased range for more visible motion
     const x = useTransform(
         scrollYProgress, 
         [0, 1], 
-        [100 + (index * 50), -100 - (index * 50)]
+        [1000 + (index * 300), -1000 - (index * 300)]
     );
 
     return (
@@ -87,31 +87,39 @@ const StickyTextReveal = ({ title, headline, paragraphs }) => {
                     
                     <div className="relative h-40 w-full flex justify-center items-center">
                         {paragraphs.map((text, i) => {
-                            // Calculate timeline for each paragraph
-                            // 0.2 to 1.0 is the range for paragraphs
-                            const start = 0.2 + (i * (0.8 / paragraphs.length));
-                            const end = start + (0.8 / paragraphs.length);
+                            // Revised timeline for better sync
+                            const step = 0.8 / paragraphs.length; 
+                            const start = 0.15 + (i * step); 
+                            const end = start + step; 
                             
-                            // Make transitions slightly overlapping and smooth
+                            // Add a "plateau" where text is static and readable
+                            const fadeInEnd = start + (step * 0.25);
+                            const fadeOutStart = end - (step * 0.25);
+
                             const opacity = useTransform(scrollYProgress, 
-                                [start, start + 0.1, end - 0.1, end], 
+                                [start, fadeInEnd, fadeOutStart, end], 
                                 [0, 1, 1, 0]
                             );
                             
                             const y = useTransform(scrollYProgress, 
-                                [start, end], 
-                                [50, -50]
+                                [start, fadeInEnd, fadeOutStart, end], 
+                                [40, 0, 0, -40]
                             );
                             
                             const blur = useTransform(scrollYProgress,
-                                [start, start + 0.1, end - 0.1, end],
+                                [start, fadeInEnd, fadeOutStart, end],
                                 ["10px", "0px", "0px", "10px"]
+                            );
+
+                            const scale = useTransform(scrollYProgress,
+                                [start, fadeInEnd, fadeOutStart, end],
+                                [0.95, 1, 1, 1.05]
                             );
 
                             return (
                                 <motion.p 
                                     key={i}
-                                    style={{ opacity, y, filter: blur }} // Use filter blur directly in style
+                                    style={{ opacity, y, filter: blur, scale }} 
                                     className="absolute w-full max-w-4xl text-xl md:text-4xl text-neutral-300 leading-relaxed font-light px-4"
                                 >
                                     {text}
