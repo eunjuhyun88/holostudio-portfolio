@@ -212,7 +212,7 @@ export default function AnalyticsDashboard({ type, theme = "indigo" }) {
                                     </ResponsiveContainer>
                                 ) : (
                                     <ResponsiveContainer width="100%" height="100%">
-                                        <BarChart data={type === 'elememetal' ? data.retentionData : data.volumeData.slice(0, 5)}>
+                                        <BarChart data={type === 'elememetal' ? data.retentionData : (type === 'playarts' ? data.anchoringData.slice(0, 5) : data.zoneData.slice(0, 5))}>
                                             <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
                                             <XAxis dataKey="name" stroke="#666" fontSize={10} tickLine={false} axisLine={false} />
                                             <Tooltip content={<CustomTooltip />} />
