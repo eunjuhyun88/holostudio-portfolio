@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Plus, Upload, Box, Trash2, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
-import ModelViewer from '@/components/showcase/ModelViewer.js';
+import ModelViewer from '@/components/showcase/ModelViewer.jsx';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 
