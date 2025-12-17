@@ -11,7 +11,26 @@ const RoadmapItem = ({ item, index, isLast }) => {
         switch(item.id) {
             case 'poc': return <PoCVisual />;
             case 'memeping': return <MemePingVisual />;
-            case 'inft': return <INFTVisual />;
+            case 'stockhoo': return (
+                <div className="relative rounded-xl overflow-hidden aspect-video bg-neutral-900 border border-white/10 group">
+                    <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/45cb06182_2025-12-17105903.png" className="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-700" alt="Stockhoo" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full border border-emerald-500/50 backdrop-blur-md font-bold">
+                            Stockhoo Beta
+                        </div>
+                    </div>
+                </div>
+            );
+            case 'elememetal': return (
+                 <div className="relative rounded-xl overflow-hidden aspect-video bg-neutral-900 border border-white/10 group">
+                    <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9692fcde2_2025-12-1463649.png" className="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-700" alt="Elememetal" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-orange-500/20 text-orange-400 px-4 py-2 rounded-full border border-orange-500/50 backdrop-blur-md font-bold">
+                            Early Access
+                        </div>
+                    </div>
+                </div>
+            );
             default: return null;
         }
     };

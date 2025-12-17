@@ -105,12 +105,20 @@ export default function Home() {
                         tags: ["Analytics", "AI", "Social"]
                     },
                     { 
-                        id: "inft",
-                        title: "INFT & OG Labs Integration", 
+                        id: "stockhoo",
+                        title: "Stockhoo Launch", 
                         date: "Q1 2026", 
-                        desc: "Cross-chain interoperability for AI-generated assets.",
-                        details: "Seamless bridging of AI-generated assets between L1 and L2s. Zero-knowledge proofs for asset authenticity preservation during transfer.",
-                        tags: ["Interoperability", "ZK", "Infrastructure"]
+                        desc: "Zone-based market intelligence and social trading platform.",
+                        details: "Public launch of Stockhoo web and mobile apps. Integration with on-chain verification for trader reputation and 'Proof of Profit'.",
+                        tags: ["Fintech", "Social", "Market"]
+                    },
+                    { 
+                        id: "elememetal",
+                        title: "EleMEMEtal Game Launch", 
+                        date: "Q2 2026", 
+                        desc: "The first AI-native PvP strategy game with provenance.",
+                        details: "Global launch of EleMEMEtal. Full UGC editor release allowing players to create and trade verified game assets.",
+                        tags: ["Game", "UGC", "AI"]
                     }
                 ]
             },
@@ -213,12 +221,20 @@ export default function Home() {
                         tags: ["분석", "AI", "소셜"]
                     },
                     { 
-                        id: "inft",
-                        title: "INFT & OG Labs 통합", 
+                        id: "stockhoo",
+                        title: "Stockhoo 런칭", 
                         date: "2026년 1분기", 
-                        desc: "AI 생성 자산을 위한 크로스체인 상호운용성.",
-                        details: "L1과 L2 간 AI 생성 자산의 원활한 브릿징. 전송 중 자산 진본성 보존을 위한 영지식 증명(ZK) 도입.",
-                        tags: ["상호운용성", "ZK", "인프라"]
+                        desc: "구간(Zone) 기반 시장 인텔리전스 및 소셜 트레이딩 플랫폼.",
+                        details: "Stockhoo 웹 및 모바일 앱 퍼블릭 런칭. 트레이더 평판 및 '수익 증명(Proof of Profit)'을 위한 온체인 검증 통합.",
+                        tags: ["핀테크", "소셜", "마켓"]
+                    },
+                    { 
+                        id: "elememetal",
+                        title: "EleMEMEtal 게임 런칭", 
+                        date: "2026년 2분기", 
+                        desc: "출처 증명이 적용된 최초의 AI 네이티브 PvP 전략 게임.",
+                        details: "EleMEMEtal 글로벌 런칭. 플레이어가 검증된 게임 자산을 생성하고 거래할 수 있는 완전한 UGC 에디터 공개.",
+                        tags: ["게임", "UGC", "AI"]
                     }
                 ]
             },

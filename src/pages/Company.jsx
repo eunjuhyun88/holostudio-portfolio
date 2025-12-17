@@ -97,23 +97,77 @@ const StoryNode = ({ year, headline, content, index }) => (
     </div>
 );
 
-// Thesis Section Component
-const ThesisItem = ({ headline, content }) => (
-    <div className="min-h-[50vh] flex flex-col justify-center py-16 border-l border-white/10 pl-8 md:pl-16 ml-4 md:ml-0">
-        <div className="max-w-5xl">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 text-white tracking-tight leading-tight">
-                <ScrollRevealText>
-                    {headline}
-                </ScrollRevealText>
-            </h2>
-            <div className="text-lg md:text-xl lg:text-2xl text-neutral-400 font-light leading-relaxed max-w-4xl">
-                <ScrollRevealText>
-                    {content}
-                </ScrollRevealText>
+// Enhanced Thesis Section with Sticky Scroll and Color Transitions
+const ThesisSection = ({ items }) => {
+    return (
+        <div className="relative">
+            {items.map((item, index) => (
+                <StickyThesisItem key={index} item={item} index={index} total={items.length} />
+            ))}
+        </div>
+    );
+};
+
+const StickyThesisItem = ({ item, index, total }) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const isEven = index % 2 === 0;
+    
+    // Distinct color palettes for each section based on user screenshots
+    const palettes = [
+        { bg: "bg-[#2E0249]", text: "text-[#A91D3A]", accent: "text-[#F1E4C3]" }, // Dark Purple (Reference 1)
+        { bg: "bg-[#000033]", text: "text-[#576CBC]", accent: "text-[#A5D7E8]" }, // Deep Blue (Reference 2)
+        { bg: "bg-[#1A4D2E]", text: "text-[#4F6F52]", accent: "text-[#E8DFCA]" }, // Dark Green (Reference 3)
+        { bg: "bg-[#F5F5F5]", text: "text-[#1A1A1A]", accent: "text-[#FF4C4C]" }, // Light/White (Reference 4)
+    ];
+
+    const currentPalette = palettes[index % palettes.length];
+    const isLight = index === 3; // The last one is light based on our cycle
+
+    return (
+        <div ref={ref} className="relative min-h-screen flex items-center sticky top-0">
+            {/* Background Layer with Reveal Effect */}
+            <motion.div 
+                className={`absolute inset-0 ${currentPalette.bg} z-0`}
+                style={{
+                    clipPath: "inset(0 0 0 0)", // Always fully visible as a sticky layer stack
+                }}
+            />
+            
+            <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 py-24">
+                 <div className="max-w-6xl">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        {/* Huge Number Index */}
+                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-20 -left-10 select-none ${isLight ? 'text-black' : 'text-white'}`}>
+                            {index + 1}
+                        </div>
+
+                        <h2 className={`text-5xl md:text-7xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] ${isLight ? 'text-black' : 'text-white'} relative`}>
+                            {item.headline}
+                        </h2>
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className={`text-xl md:text-3xl lg:text-4xl font-light leading-snug max-w-4xl ml-auto ${isLight ? 'text-neutral-800' : 'text-neutral-200'}`}
+                    >
+                        {item.content}
+                    </motion.div>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 // Team Identity Component - Inspired by Consensys style
 const TeamIdentity = () => (
@@ -414,23 +468,9 @@ export default function Company() {
                     ))}
                 </div>
 
-                {/* Thesis / Vision Section */}
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-32">
-                    <div className="mb-20">
-                         <div className="w-8 h-8 bg-indigo-500 mb-8" />
-                         <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-400 mb-2">Our Vision</h2>
-                         <h3 className="text-4xl md:text-6xl font-bold text-white max-w-3xl leading-tight">
-                            {language === 'en' ? "Why we are building the Trust Layer." : "우리가 신뢰 레이어를 구축하는 이유."}
-                         </h3>
-                    </div>
-
-                    {c.thesis.map((item, i) => (
-                        <ThesisItem 
-                            key={i}
-                            headline={item.headline}
-                            content={item.content}
-                        />
-                    ))}
+                {/* Thesis / Vision Section (Full Width Sticky Scroll) */}
+                <div className="w-full">
+                     <ThesisSection items={c.thesis} />
                 </div>
 
                 {/* Team Identity Section */}
