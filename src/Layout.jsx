@@ -43,7 +43,7 @@ function LayoutContent({ children }) {
         ]
     };
 
-    const businesses = [
+    const products = [
         { name: 'AiD Guardian', path: '/AidGuardian' },
         { name: 'PlayArts', path: '/PlayArts' },
         { name: 'EleMEMEtal', path: '/Elememetal' },
@@ -86,35 +86,35 @@ function LayoutContent({ children }) {
 
                     {/* Desktop Nav Island */}
                     <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full px-1 h-12 shadow-lg shadow-black/20">
-                        {/* Businesses Dropdown */}
-                        <div 
-                            className="relative group px-5 h-full flex items-center"
-                            onMouseEnter={() => setBusinessDropdownOpen(true)}
-                            onMouseLeave={() => setBusinessDropdownOpen(false)}
-                        >
-                            <button className="flex items-center gap-1.5 font-medium text-sm text-neutral-400 hover:text-white transition-colors">
-                                {language === 'en' ? 'Businesses' : '사업분야'}
-                                <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
-                            </button>
-                            
-                            {/* Dropdown Menu */}
-                            <div className={`absolute top-full left-0 w-64 pt-4 transition-all duration-200 ${
-                                businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
-                            }`}>
-                                <div className="bg-[#0A0A0A]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden p-2 grid gap-1">
-                                    {businesses.map((biz) => (
-                                        <Link 
-                                            key={biz.name}
-                                            to={createPageUrl(biz.path.substring(1))}
-                                            className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-all group/item"
-                                        >
-                                            {biz.name}
-                                            <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-indigo-400" />
-                                        </Link>
-                                    ))}
-                                </div>
+                    {/* Products Dropdown */}
+                    <div 
+                        className="relative group px-5 h-full flex items-center"
+                        onMouseEnter={() => setBusinessDropdownOpen(true)}
+                        onMouseLeave={() => setBusinessDropdownOpen(false)}
+                    >
+                        <button className="flex items-center gap-1.5 font-medium text-sm text-neutral-400 hover:text-white transition-colors">
+                            {language === 'en' ? 'Products' : '프로덕트'}
+                            <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        <div className={`absolute top-full left-0 w-64 pt-4 transition-all duration-200 ${
+                            businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
+                        }`}>
+                            <div className="bg-[#0A0A0A]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden p-2 grid gap-1">
+                                {products.map((prod) => (
+                                    <Link 
+                                        key={prod.name}
+                                        to={createPageUrl(prod.path.substring(1))}
+                                        className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-all group/item"
+                                    >
+                                        {prod.name}
+                                        <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-indigo-400" />
+                                    </Link>
+                                ))}
                             </div>
                         </div>
+                    </div>
 
                         {/* Divider */}
                         <div className="w-px h-4 bg-white/10" />
@@ -196,15 +196,15 @@ function LayoutContent({ children }) {
 
                             <div className="space-y-4 border-b border-neutral-800 pb-6">
                                 <p className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-2">
-                                    {language === 'en' ? 'Our Businesses' : '사업분야'}
+                                    {language === 'en' ? 'Products' : '프로덕트'}
                                 </p>
-                                {businesses.map((biz) => (
+                                {products.map((prod) => (
                                     <Link 
-                                        key={biz.name}
-                                        to={createPageUrl(biz.path.substring(1))}
+                                        key={prod.name}
+                                        to={createPageUrl(prod.path.substring(1))}
                                         className="block font-medium text-white"
                                     >
-                                        {biz.name}
+                                        {prod.name}
                                     </Link>
                                 ))}
                             </div>
@@ -258,12 +258,12 @@ function LayoutContent({ children }) {
                         </div>
                         
                         <div>
-                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Businesses' : '사업분야'}</h4>
+                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Products' : '프로덕트'}</h4>
                             <ul className="space-y-2">
-                                {businesses.map(biz => (
-                                    <li key={biz.name}>
-                                        <Link to={createPageUrl(biz.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm">
-                                            {biz.name}
+                                {products.map(prod => (
+                                    <li key={prod.name}>
+                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm">
+                                            {prod.name}
                                         </Link>
                                     </li>
                                 ))}

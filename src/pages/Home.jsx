@@ -57,7 +57,7 @@ export default function Home() {
                 ]
             },
             diagram: {
-                title: "One Company, Four Businesses",
+                title: "One Company, Four Products",
                 desc: "HOLO STUDIO executes Safety, Provenance, and Distribution as a unified portfolio."
             },
             research: {
@@ -151,7 +151,7 @@ export default function Home() {
                 keywords: ["가드레일", "출처증명", "가치분배"]
             },
             business_intro: {
-                title: "핵심 제품",
+                title: "프로덕트",
                 sub: "하나의 회사, 네 개의 전문화된 엔진."
             },
             milestones: {
@@ -165,8 +165,8 @@ export default function Home() {
                 ]
             },
             diagram: {
-                title: "하나의 회사, 네 개의 사업",
-                desc: "HOLO STUDIO는 안전, 출처, 확산의 전 과정을 사업 포트폴리오로 분리해 실행합니다."
+                title: "하나의 회사, 네 개의 프로덕트",
+                desc: "HOLO STUDIO는 안전, 출처, 확산의 전 과정을 프로덕트 포트폴리오로 분리해 실행합니다."
             },
             research: {
                 title: "핵심 리서치 분야",
