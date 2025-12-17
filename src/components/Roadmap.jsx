@@ -36,18 +36,13 @@ const RoadmapItem = ({ item, index, isLast }) => {
     };
 
     return (
-        <div className={`relative pl-8 md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'} md:w-1/2 ${index % 2 === 0 ? 'md:ml-0' : 'md:ml-auto'}`}>
+        <div className={`flex-shrink-0 w-[85vw] md:w-1/2 snap-center md:snap-align-none relative md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'} ${index % 2 === 0 ? 'md:ml-0' : 'md:ml-auto'}`}>
             {/* Timeline Line (Desktop) */}
             <div className="hidden md:block absolute top-0 bottom-0 w-px bg-neutral-800 left-full -translate-x-1/2 md:left-auto md:right-0 md:translate-x-1/2 origin-center">
                 {/* Connector Dot */}
                 <div className={`absolute top-6 -right-[5px] w-[9px] h-[9px] rounded-full ${isOpen ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]' : 'bg-neutral-800'} transition-all duration-300 z-10`} 
                      style={{ right: index % 2 === 0 ? '-5px' : 'auto', left: index % 2 === 0 ? 'auto' : '-5px' }}
                 />
-            </div>
-
-            {/* Timeline Line (Mobile) */}
-            <div className="md:hidden absolute top-0 bottom-0 left-3 w-px bg-neutral-800">
-                <div className={`absolute top-6 -left-[4px] w-[9px] h-[9px] rounded-full ${isOpen ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]' : 'bg-neutral-800'} transition-all duration-300 z-10`} />
             </div>
 
             <motion.div
