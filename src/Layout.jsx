@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { LanguageProvider, useLanguage } from '@/components/LanguageContext';
 
-export default function Layout({ children }) {
+function LayoutContent({ children }) {
+    const { language, toggleLanguage } = useLanguage();
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
