@@ -66,42 +66,42 @@ export default function BusinessLayout({
             ctaButtonSecondary: "bg-transparent border-white text-white hover:bg-white/10"
         },
         elememetal: {
-            pageBg: "bg-neutral-950",
-            heroBg: "bg-neutral-950",
-            heroOverlay: "bg-gradient-to-r from-neutral-950 via-neutral-900 to-orange-900/20",
+            pageBg: "bg-[#050505]", // Deeper black
+            heroBg: "bg-[#050505]",
+            heroOverlay: "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-900/20 via-[#050505] to-[#050505]",
             heroText: "text-white",
             tagBg: "bg-orange-500/10",
             tagBorder: "border-orange-500/20",
             tagText: "text-orange-500",
             tagDot: "bg-orange-500",
-            titleText: "text-white",
+            titleText: "text-white tracking-tight",
             subText: "text-neutral-400",
-            buttonPrimary: "bg-orange-600 hover:bg-orange-700 text-white",
-            buttonSecondary: "bg-transparent border-orange-500/30 text-orange-500 hover:bg-orange-500/10",
-            sectionAltBg: "bg-neutral-900",
-            sectionStandardBg: "bg-neutral-950",
+            buttonPrimary: "bg-orange-600 hover:bg-orange-500 text-white border border-transparent",
+            buttonSecondary: "bg-transparent border-neutral-700 text-white hover:border-neutral-500",
+            sectionAltBg: "bg-[#0A0A0A]", // Slightly lighter black
+            sectionStandardBg: "bg-[#050505]",
             sectionText: "text-neutral-400",
             sectionHeading: "text-white",
-            label: "text-orange-500",
-            iconWrapper: "bg-orange-900/20 text-orange-500 border border-orange-500/20",
-            cardBg: "bg-neutral-900 border-neutral-800",
-            stepNumber: "bg-orange-900/50 text-orange-500 border border-orange-500/20",
-            screenshotSectionBg: "bg-neutral-900",
+            label: "text-orange-500 font-mono tracking-wider",
+            iconWrapper: "bg-neutral-900/50 text-orange-500 border border-neutral-800",
+            cardBg: "bg-[#0A0A0A] border-neutral-800 hover:border-orange-500/50 transition-colors duration-300",
+            stepNumber: "bg-neutral-900 text-orange-500 border border-neutral-800",
+            screenshotSectionBg: "bg-[#050505]",
             screenshotText: "text-orange-500",
-            statsBg: "bg-orange-700",
-            statsText: "text-white",
-            statsLabel: "text-orange-200",
-            useCaseBg: "bg-neutral-900 border-neutral-800",
+            statsBg: "bg-[#0A0A0A] border-y border-neutral-900",
+            statsText: "text-white font-mono",
+            statsLabel: "text-neutral-500 uppercase tracking-widest text-xs",
+            useCaseBg: "bg-[#0A0A0A] border-neutral-800 hover:border-orange-500/30 transition-colors",
             useCaseIcon: "text-orange-500",
-            modelBg: "bg-neutral-900 border border-neutral-800 text-white",
-            roadmapBg: "bg-neutral-900 border-neutral-800",
-            roadmapTag: "bg-orange-900/30 text-orange-500 border border-orange-500/20",
+            modelBg: "bg-neutral-900/50 border border-neutral-800 text-white backdrop-blur-sm",
+            roadmapBg: "bg-[#0A0A0A] border-neutral-800",
+            roadmapTag: "bg-orange-500/10 text-orange-500 border border-orange-500/20 font-mono",
             roadmapText: "text-neutral-400",
-            ctaBg: "bg-gradient-to-br from-orange-700 to-red-900",
+            ctaBg: "bg-[#0A0A0A] border border-neutral-800",
             ctaTitle: "text-white",
-            ctaText: "text-orange-100",
-            ctaButtonPrimary: "bg-white text-orange-700 hover:bg-orange-50",
-            ctaButtonSecondary: "bg-transparent border-white text-white hover:bg-white/10"
+            ctaText: "text-neutral-400",
+            ctaButtonPrimary: "bg-orange-600 text-white hover:bg-orange-500 border-0",
+            ctaButtonSecondary: "bg-transparent border-neutral-700 text-white hover:border-white"
         }
     };
 
@@ -150,23 +150,35 @@ export default function BusinessLayout({
             {/* 2. Problem Section */}
             <section className={`py-24 ${s.sectionAltBg}`}>
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className={`${s.label} font-semibold tracking-wide uppercase text-sm`}>The Problem</span>
-                        <h2 className={`text-3xl font-bold mt-2 ${s.sectionHeading}`}>Why this matters now</h2>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                        <div>
+                            <span className={`${s.label} font-semibold tracking-wide uppercase text-sm block mb-2`}>The Problem</span>
+                            <h2 className={`text-3xl md:text-4xl font-bold ${s.sectionHeading}`}>Why this matters now</h2>
+                        </div>
+                        {theme === 'elememetal' && (
+                             <p className="text-neutral-500 max-w-sm text-sm">
+                                 Addressing the critical gaps in the current gaming and AI landscape with safety-native infrastructure.
+                             </p>
+                        )}
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-3 gap-6">
                         {problemPoints.map((point, idx) => (
                             <motion.div 
                                 key={idx}
                                 {...fadeIn}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`p-8 rounded-2xl shadow-sm border ${s.cardBg}`}
+                                className={`p-8 ${theme === 'elememetal' ? 'rounded-xl' : 'rounded-2xl'} border ${s.cardBg} flex flex-col h-full`}
                             >
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${s.iconWrapper}`}>
+                                <div className={`w-12 h-12 ${theme === 'elememetal' ? 'rounded-lg' : 'rounded-xl'} flex items-center justify-center mb-6 ${s.iconWrapper}`}>
                                     <Target className="w-6 h-6" />
                                 </div>
                                 <h3 className={`text-xl font-bold mb-3 ${s.sectionHeading}`}>{point.title}</h3>
-                                <p className={`${s.sectionText} leading-relaxed`}>{point.description}</p>
+                                <p className={`${s.sectionText} leading-relaxed flex-grow`}>{point.description}</p>
+                                {theme === 'elememetal' && (
+                                    <div className="mt-6 pt-6 border-t border-neutral-800">
+                                        <ChevronRight className="w-5 h-5 text-orange-500/50" />
+                                    </div>
+                                )}
                             </motion.div>
                         ))}
                     </div>
@@ -259,10 +271,10 @@ export default function BusinessLayout({
             {stats.length > 0 && (
                 <section className={`py-20 ${s.statsBg}`}>
                     <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center divide-x-0 md:divide-x divide-neutral-800/0 md:divide-neutral-800">
                             {stats.map((stat, idx) => (
-                                <div key={idx}>
-                                    <div className={`text-4xl md:text-5xl font-bold mb-2 ${s.statsText}`}>{stat.value}</div>
+                                <div key={idx} className="flex flex-col items-center justify-center">
+                                    <div className={`text-4xl md:text-5xl font-bold mb-3 ${s.statsText}`}>{stat.value}</div>
                                     <div className={`font-medium ${s.statsLabel}`}>{stat.label}</div>
                                 </div>
                             ))}
@@ -276,15 +288,17 @@ export default function BusinessLayout({
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
-                            <h3 className={`text-2xl font-bold mb-8 flex items-center gap-2 ${s.sectionHeading}`}>
+                            <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${s.sectionHeading}`}>
                                 <Users className={`w-6 h-6 ${s.label}`} /> Target Customers
                             </h3>
                             <div className="grid gap-4">
                                 {useCases.map((useCase, idx) => (
-                                    <div key={idx} className={`p-4 rounded-xl flex items-start gap-3 ${s.useCaseBg}`}>
-                                        <CheckCircle2 className={`w-5 h-5 mt-0.5 flex-shrink-0 ${s.useCaseIcon}`} />
+                                    <div key={idx} className={`p-6 ${theme === 'elememetal' ? 'rounded-lg border' : 'rounded-xl'} flex items-start gap-4 ${s.useCaseBg}`}>
+                                        <div className={`${theme === 'elememetal' ? 'bg-orange-500/10 p-2 rounded' : ''}`}>
+                                            <CheckCircle2 className={`w-5 h-5 ${s.useCaseIcon}`} />
+                                        </div>
                                         <div>
-                                            <span className={`font-bold block ${s.sectionHeading}`}>{useCase.title}</span>
+                                            <span className={`font-bold block text-lg mb-1 ${s.sectionHeading}`}>{useCase.title}</span>
                                             <span className={`text-sm ${s.sectionText}`}>{useCase.description}</span>
                                         </div>
                                     </div>
@@ -292,13 +306,25 @@ export default function BusinessLayout({
                             </div>
                         </div>
                         <div>
-                            <h3 className={`text-2xl font-bold mb-8 flex items-center gap-2 ${s.sectionHeading}`}>
+                            <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${s.sectionHeading}`}>
                                 <BarChart3 className={`w-6 h-6 ${s.label}`} /> Business Model
                             </h3>
-                            <div className={`p-8 rounded-2xl ${s.modelBg}`}>
-                                <p className="text-lg leading-relaxed font-medium">
-                                    {businessModel}
-                                </p>
+                            <div className={`p-8 ${theme === 'elememetal' ? 'rounded-lg border' : 'rounded-2xl'} ${s.modelBg} h-full`}>
+                                <div className="text-lg leading-relaxed font-medium h-full flex flex-col justify-between">
+                                    <div>{businessModel}</div>
+                                    {theme === 'elememetal' && (
+                                        <div className="mt-8 pt-8 border-t border-neutral-800 grid grid-cols-2 gap-4">
+                                            <div className="text-sm text-neutral-500">
+                                                <div className="mb-1 text-orange-500 font-bold">REVENUE STREAMS</div>
+                                                Multiple value capture points across ecosystem
+                                            </div>
+                                            <div className="text-sm text-neutral-500">
+                                                <div className="mb-1 text-orange-500 font-bold">SCALABILITY</div>
+                                                Designed for exponential network growth
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
