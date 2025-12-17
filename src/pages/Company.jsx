@@ -110,7 +110,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tighter leading-[1.1] text-white relative`}>
+                        <h2 className={`text-5xl md:text-7xl lg:text-8xl font-black mb-10 tracking-tighter leading-[0.9] text-white relative uppercase`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -119,7 +119,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-lg md:text-xl font-light leading-relaxed max-w-4xl ml-auto ${currentPalette.text}`}
+                        className={`text-2xl md:text-4xl font-bold leading-tight max-w-5xl ml-auto ${currentPalette.text}`}
                     >
                         {item.content}
                     </motion.div>
