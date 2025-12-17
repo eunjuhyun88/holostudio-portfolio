@@ -232,12 +232,24 @@ export default function Company() {
                                 </p>
                                 <div className="space-y-6">
                                     {c.tech.depin.features.map((feat, i) => (
-                                        <div key={i} className="flex gap-4">
-                                            <div className="w-10 h-10 rounded-lg bg-indigo-900/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
+                                        <div key={i} className="flex gap-4 group">
+                                            <motion.div 
+                                                className="w-10 h-10 rounded-lg bg-indigo-900/20 flex items-center justify-center text-indigo-400 flex-shrink-0"
+                                                animate={{ 
+                                                    y: [0, -3, 0],
+                                                    scale: [1, 1.05, 1],
+                                                }}
+                                                transition={{ 
+                                                    duration: 3, 
+                                                    repeat: Infinity, 
+                                                    ease: "easeInOut",
+                                                    delay: i * 0.5
+                                                }}
+                                            >
                                                 <feat.icon className="w-5 h-5" />
-                                            </div>
+                                            </motion.div>
                                             <div>
-                                                <div className="font-bold text-white text-sm mb-1">{feat.title}</div>
+                                                <div className="font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition-colors">{feat.title}</div>
                                                 <div className="text-xs text-neutral-500">{feat.desc}</div>
                                             </div>
                                         </div>
@@ -249,22 +261,38 @@ export default function Company() {
                                 <div className="relative w-full max-w-sm aspect-square">
                                     <div className="absolute inset-0 bg-indigo-500/5 rounded-full animate-pulse" />
                                     <div className="grid grid-cols-2 gap-4 h-full">
-                                        <div className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center">
-                                            <Cpu className="w-8 h-8 text-neutral-700 mb-2" />
-                                            <div className="text-[10px] text-neutral-500 font-mono">H100 CLUSTER</div>
-                                        </div>
-                                        <div className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center translate-y-8">
-                                            <Gamepad2 className="w-8 h-8 text-neutral-700 mb-2" />
-                                            <div className="text-[10px] text-neutral-500 font-mono">CONSUMER NODE</div>
-                                        </div>
-                                        <div className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center -translate-y-8">
-                                            <Layers className="w-8 h-8 text-neutral-700 mb-2" />
-                                            <div className="text-[10px] text-neutral-500 font-mono">VERIFIER NODE</div>
-                                        </div>
-                                        <div className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center">
-                                            <Database className="w-8 h-8 text-neutral-700 mb-2" />
-                                            <div className="text-[10px] text-neutral-500 font-mono">STORAGE LAYER</div>
-                                        </div>
+                                        <motion.div 
+                                            animate={{ y: [0, -5, 0] }}
+                                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                            className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center hover:border-indigo-500/50 transition-colors"
+                                        >
+                                            <Cpu className="w-8 h-8 text-indigo-500 mb-2" />
+                                            <div className="text-[10px] text-neutral-400 font-mono">H100 CLUSTER</div>
+                                        </motion.div>
+                                        <motion.div 
+                                            animate={{ y: [32, 27, 32] }}
+                                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                            className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center hover:border-indigo-500/50 transition-colors"
+                                        >
+                                            <Gamepad2 className="w-8 h-8 text-indigo-500 mb-2" />
+                                            <div className="text-[10px] text-neutral-400 font-mono">CONSUMER NODE</div>
+                                        </motion.div>
+                                        <motion.div 
+                                            animate={{ y: [-32, -37, -32] }}
+                                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                                            className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center hover:border-indigo-500/50 transition-colors"
+                                        >
+                                            <Layers className="w-8 h-8 text-indigo-500 mb-2" />
+                                            <div className="text-[10px] text-neutral-400 font-mono">VERIFIER NODE</div>
+                                        </motion.div>
+                                        <motion.div 
+                                            animate={{ y: [0, 5, 0] }}
+                                            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                                            className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center hover:border-indigo-500/50 transition-colors"
+                                        >
+                                            <Database className="w-8 h-8 text-indigo-500 mb-2" />
+                                            <div className="text-[10px] text-neutral-400 font-mono">STORAGE LAYER</div>
+                                        </motion.div>
                                     </div>
                                     {/* Connecting Lines (CSS) */}
                                     <div className="absolute inset-0 pointer-events-none">
