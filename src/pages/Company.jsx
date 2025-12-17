@@ -77,19 +77,18 @@ const StoryNode = ({ year, headline, content, index }) => (
 
             {/* Content Side */}
             <div className={`flex-1 pl-16 md:pl-0 relative ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ margin: "-20%", once: true }}
-                    transition={{ duration: 0.8 }}
-                >
+                <div>
                     <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight leading-tight">
-                        {headline}
+                        <ScrollRevealText>
+                            {headline}
+                        </ScrollRevealText>
                     </h2>
                     <div className={`text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-2xl ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
-                        {content}
+                        <ScrollRevealText>
+                            {content}
+                        </ScrollRevealText>
                     </div>
-                </motion.div>
+                </div>
             </div>
 
             {/* Empty Side for balance */}
@@ -101,20 +100,18 @@ const StoryNode = ({ year, headline, content, index }) => (
 // Thesis Section Component
 const ThesisItem = ({ headline, content }) => (
     <div className="min-h-[50vh] flex flex-col justify-center py-16 border-l border-white/10 pl-8 md:pl-16 ml-4 md:ml-0">
-        <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ margin: "-20%", once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-5xl"
-        >
+        <div className="max-w-5xl">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 text-white tracking-tight leading-tight">
-                {headline}
+                <ScrollRevealText>
+                    {headline}
+                </ScrollRevealText>
             </h2>
             <div className="text-lg md:text-xl lg:text-2xl text-neutral-400 font-light leading-relaxed max-w-4xl">
-                {content}
+                <ScrollRevealText>
+                    {content}
+                </ScrollRevealText>
             </div>
-        </motion.div>
+        </div>
     </div>
 );
 
@@ -391,15 +388,19 @@ export default function Company() {
             <main className="relative z-10">
                 <div className="max-w-[1400px] mx-auto pt-24 pb-24 px-6 md:px-12">
                      {/* Intro Text */}
-                     <div className="text-center max-w-4xl mx-auto mb-32">
-                        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">
-                            {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
+                     <div className="text-center max-w-5xl mx-auto mb-32">
+                        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 text-white leading-tight">
+                            <ScrollRevealText>
+                                {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
+                            </ScrollRevealText>
                         </h1>
-                        <p className="text-xl text-neutral-400 leading-relaxed">
-                            {language === 'en' 
-                                ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
-                                : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
-                        </p>
+                        <div className="text-xl text-neutral-400 leading-relaxed max-w-3xl mx-auto">
+                            <ScrollRevealText>
+                                {language === 'en' 
+                                    ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
+                                    : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
+                            </ScrollRevealText>
+                        </div>
                      </div>
 
                     {c.chapters.map((chapter, i) => (
