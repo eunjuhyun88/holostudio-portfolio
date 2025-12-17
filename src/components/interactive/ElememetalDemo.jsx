@@ -4,6 +4,7 @@ import { Sparkles, Zap, RotateCcw, Swords, Crown, Skull } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export default function ElememetalDemo() {
+    const [screen, setScreen] = useState('start'); // start, game
     const [cards, setCards] = useState([
         { id: 1, type: 'fire', power: 3, level: 1 },
         { id: 2, type: 'fire', power: 3, level: 1 },
@@ -83,6 +84,81 @@ export default function ElememetalDemo() {
     // Calculate total power
     const totalPower = cards.reduce((acc, c) => acc + c.power, 0);
 
+    if (screen === 'start') {
+        return (
+            <div className="w-full h-full bg-[#1a0505] relative overflow-hidden flex flex-col items-center justify-center p-6 border border-white/5 rounded-3xl">
+                {/* Abstract Background Shapes */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[60%] bg-[#3d0b0b] rotate-12 transform skew-x-12" />
+                    <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[60%] bg-[#5c1212] -rotate-12 transform skew-y-6" />
+                    <div className="absolute top-[20%] right-[10%] w-4 h-4 bg-orange-500 rounded-full animate-pulse" />
+                    <div className="absolute bottom-[30%] left-[20%] w-3 h-3 bg-yellow-500 rounded-full animate-ping" />
+                </div>
+
+                <div className="relative z-10 flex flex-col items-center w-full max-w-md">
+                    {/* Title */}
+                    <motion.div 
+                        initial={{ y: -50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        className="mb-12 text-center"
+                    >
+                        <h1 className="text-5xl md:text-7xl font-black text-[#4ade80] tracking-tighter drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] uppercase" style={{ fontFamily: 'monospace' }}>
+                            ELEMEMETAL
+                        </h1>
+                    </motion.div>
+
+                    {/* Login Buttons */}
+                    <div className="w-full space-y-3">
+                        <motion.div
+                             initial={{ x: -50, opacity: 0 }}
+                             animate={{ x: 0, opacity: 1 }}
+                             transition={{ delay: 0.1 }}
+                        >
+                            <Button 
+                                onClick={() => setScreen('game')}
+                                className="w-full h-14 bg-yellow-400 hover:bg-yellow-300 text-black border-b-4 border-yellow-600 font-bold text-lg rounded-xl uppercase tracking-wider"
+                            >
+                                Connect Wallet
+                            </Button>
+                        </motion.div>
+
+                        <motion.div
+                             initial={{ x: 50, opacity: 0 }}
+                             animate={{ x: 0, opacity: 1 }}
+                             transition={{ delay: 0.2 }}
+                        >
+                            <Button 
+                                onClick={() => setScreen('game')}
+                                className="w-full h-14 bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-bold text-lg rounded-xl uppercase tracking-wider"
+                            >
+                                Login With Google
+                            </Button>
+                        </motion.div>
+
+                        <motion.div
+                             initial={{ y: 50, opacity: 0 }}
+                             animate={{ y: 0, opacity: 1 }}
+                             transition={{ delay: 0.3 }}
+                             className="space-y-3 pt-2"
+                        >
+                            <input 
+                                type="text" 
+                                placeholder="Enter developer name" 
+                                className="w-full h-12 px-4 rounded-lg bg-white text-black text-center font-bold placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                            />
+                            <Button 
+                                onClick={() => setScreen('game')}
+                                className="w-full h-12 bg-gray-300 hover:bg-gray-200 text-gray-700 border-b-4 border-gray-400 font-bold text-base rounded-lg uppercase tracking-wider"
+                            >
+                                Developer Login
+                            </Button>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="w-full h-full bg-[#050505] p-6 relative overflow-hidden flex flex-col rounded-3xl border border-white/5">
             {/* Background Effects */}
@@ -92,7 +168,15 @@ export default function ElememetalDemo() {
                 {/* Header / Stats */}
                 <div className="flex justify-between items-start">
                     <div className="flex gap-6">
-                        <div className="flex flex-col">
+                        <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            onClick={() => setScreen('start')}
+                            className="absolute top-4 left-4 z-20 text-neutral-500 hover:text-white"
+                        >
+                            &larr; Exit
+                        </Button>
+                        <div className="flex flex-col ml-16">
                             <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Total Power</span>
                             <div className={`text-2xl font-black flex items-center gap-2 ${totalPower >= enemyPower ? 'text-green-500' : 'text-white'}`}>
                                 <Swords className="w-5 h-5" /> {totalPower}

@@ -10,24 +10,22 @@ export default function Stockhoo() {
             HeroComponent={StockhooDemo}
             showAnalytics={true}
             tag="AI Trading Intelligence"
-            primaryButton={{ text: "Launch App", url: "http://stockhoo.playarts.ai" }}
+            primaryButton={{ text: "Launch Terminal", url: "http://stockhoo.playarts.ai" }}
             deckUrl="https://docsend.com/view/ari494ikfzsuix7z"
-            oneLiner="Imagine if trading intelligence was actually intelligent."
+            oneLiner="The Operating System for Context-Aware Trading"
             story={
                 <>
                     <p className="mb-6">
-                        Retail traders are drowning in noise. Charts, news, sentiment, on-chain data—it's too much 
-                        for any human to process in real-time. Traditional bots are rigid, and generic AI hallucinations 
-                        make them dangerous for finance.
+                        <strong>The Zone Context Primitive.</strong> ATR-based bands define dynamic Zones for each coin and timeframe. 
+                        Each Zone aggregates CEX, on-chain, perps, liquidations, and social chat.
                     </p>
                     <p>
-                        Stockhoo cuts through the noise. We use DPO-optimized agents to identify high-probability zones, 
-                        giving you institutional-grade intelligence without the complexity. 
-                        It's not just data; it's actionable signal.
+                        The Zone becomes the atomic unit for all trading context and decisions. Instead of watching 10 different screens, 
+                        StockHoo unifies CEX Data, Order Flow, Whale Movements, and Liquidation Clusters into one actionable view.
                     </p>
                 </>
             }
-            heroImage="Stockhoo Trading Interface: AI-powered zone analysis overlay on price charts"
+            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/42c331243_2025-12-1822844.png"
             
             problemPoints={[
                 {
@@ -35,80 +33,84 @@ export default function Stockhoo() {
                     description: "Traders are overwhelmed by fragmented data across charts, on-chain metrics, and social sentiment."
                 },
                 {
-                    title: "Generic AI Failures",
-                    description: "Standard LLMs hallucinate on financial data and lack understanding of specific coin microstructures."
+                    title: "Noisy Social Signals",
+                    description: "Telegram and Discord are noisy. You need to know who is underwater, in profit, or trapped—anchored to price zones."
                 },
                 {
-                    title: "Risk Management Gaps",
-                    description: "Retail traders often lack the institutional-grade risk frameworks needed to survive volatility."
+                    title: "Generic AI Models",
+                    description: "Standard LLMs hallucinate on financial data. You need models fine-tuned for specific asset microstructures (BTC vs SOL)."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Zone-Based Intelligence",
-                    description: "We identify critical supply/demand zones and overlay real-time social sentiment and order flow."
+                    title: "Zone Heat Score™",
+                    description: "Calculates the 'temperature' of every price zone in real-time. Combining volatility, comment velocity, and order book density into a single score (0-100)."
                 },
                 {
-                    title: "DPO-Optimized Agents",
-                    description: "Our AI agents are fine-tuned using Direct Preference Optimization to align with profitable trading behaviors."
+                    title: "Natural Language Trading",
+                    description: "Ask your coin-specific AI to find opportunities. It scans the Zone, calculates risk, and delivers a complete trade plan."
                 },
                 {
-                    title: "3-Layer Normalization",
-                    description: "Proprietary data pipeline normalizes raw, rank, and bucket data while preserving critical extreme values."
+                    title: "Context-Anchored Chat",
+                    description: "Talk from your zone. A Zone with verified social positions reveals trapped vs. winning traders."
                 }
             ]}
 
             screenshots={[
                 {
-                    url: "Visualization of the distributed GPU network used for model training",
-                    caption: "Distributed GPU Training Network"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/b1e5d09d4_2025-12-1822847.png",
+                    caption: "Social Alpha: Talk From Your Zone"
                 },
                 {
-                    url: "Diagram of the decentralized data collection and processing infrastructure",
-                    caption: "Decentralized Data Infrastructure"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/f20b5241d_2025-12-1822848.png",
+                    caption: "AI Architecture: Coin-Specialized Models"
+                },
+                {
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/1fd50bfcc_2025-12-1822850.png",
+                    caption: "AI Agent: Natural Language Trading"
                 }
             ]}
 
             stats={[
-                { value: "70+", label: "Indicators Analyzed" },
-                { value: "35%", label: "Directional Accuracy" },
-                { value: "408B", label: "Market Size (2024)" },
-                { value: "12-16", label: "Weeks to MVP" }
+                { value: "0-100", label: "Zone Heat Score" },
+                { value: "3", label: "Specialized Models" },
+                { value: "Real-time", label: "Order Flow Aggregation" },
+                { value: "Context-Aware", label: "Social Sentiment" }
             ]}
 
             useCases={[
                 {
                     title: "Retail Traders",
-                    description: "Access institutional-grade signals and automated risk management suggestions."
+                    description: "Find high-probability setups with Zone Heat Scores and execute with AI-generated trade plans."
                 },
                 {
-                    title: "DAO Treasuries",
-                    description: "Monitor portfolio health and execute zone-based rebalancing."
+                    title: "Social Traders",
+                    description: "See exactly where the community is positioned—trapped or winning—anchored to price levels."
                 },
                 {
-                    title: "Market Makers",
-                    description: "Enhance strategies with sentiment-aware order flow analysis."
+                    title: "Analysts",
+                    description: "Use Programmable AI Charting to automate technical analysis and share zone templates."
                 }
             ]}
 
-            businessModel="Freemium SaaS (Basic Zones) + Pro Subscription (AI Models) + B2B API."
+            businessModel="Freemium SaaS (Basic Zones) + Pro Subscription (AI Models & Heat Score) + B2B API."
 
             roadmap={[
                 {
-                    quarter: "Phase 1 (W1-4)",
-                    title: "Data Pipeline",
-                    items: ["Raw Data Collection", "10 Core Indicators", "3-Layer Normalization"]
+                    quarter: "Phase 1 (Live)",
+                    title: "Text-to-Indicator",
+                    items: ["Highlight 4H Order Blocks", "Custom Logic Creation", "Natural Language Query"]
                 },
                 {
-                    quarter: "Phase 2 (W5-8)",
-                    title: "DPO Training",
-                    items: ["Labeling System", "Preference Pair Generation", "Model Fine-tuning"]
+                    quarter: "Phase 2",
+                    title: "Text-to-Drawing",
+                    items: ["Auto-generate trendlines", "Structural Sweeps", "Fib levels across Zones"]
                 },
                 {
-                    quarter: "Phase 3 (W9+)",
-                    title: "MVP Launch",
-                    items: ["BTC/ETH/SOL Support", "Zone UI Overlay", "Mobile App Beta"]
+                    quarter: "Phase 3",
+                    title: "Zone Sharing",
+                    items: ["One-click template sharing", "Community Zone Libraries", "Social Alpha Integration"]
                 }
             ]}
         />
