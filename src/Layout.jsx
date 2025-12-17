@@ -76,16 +76,6 @@ function LayoutContent({ children }) {
 
     return (
         <div className="min-h-screen bg-[#050505] font-sans text-white">
-            <link href="https://fonts.cdnfonts.com/css/zt-gatha" rel="stylesheet" />
-            <link href="https://fonts.cdnfonts.com/css/next-sphere" rel="stylesheet" />
-            <style>{`
-                body, .font-sans {
-                    font-family: 'ZT Gatha', sans-serif !important;
-                }
-                h1, h2, h3, h4, h5, h6, .font-heading, strong, b, .font-bold {
-                    font-family: 'Next Sphere', sans-serif !important;
-                }
-            `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">
                 Skip to content
             </a>
