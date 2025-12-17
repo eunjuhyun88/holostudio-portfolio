@@ -11,39 +11,42 @@ import PerspectiveCrawl from '@/components/PerspectiveCrawl';
 
 // --- Components ---
 
-// Smooth Text Reveal Component
-const ScrollRevealText = ({ children, className = "" }) => {
-    // Simply render children for now to avoid complexity within PerspectiveCrawl 3D context
-    // The "one by one" effect is best achieved by the user reading the crawling text naturally, 
-    // or we can animate opacity based on the *crawl's* progress if we pass it down.
-    // However, given the request "visually written one by one as it goes down", 
-    // standard Framer Motion staggered animation on Viewport entry is safer inside a transform: preserve-3d context.
+// Typing Scroll Component
+const TypingBlock = ({ children, className = "" }) => {
+    const element = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: element,
+        offset: ['start 0.9', 'end 0.5']
+    });
+    
+    const scale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+    
+    const words = String(children).split(" ");
     
     return (
-        <motion.span 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ margin: "-10% 0px -10% 0px" }}
-            variants={{
-                visible: { transition: { staggerChildren: 0.05 } },
-                hidden: {}
-            }}
+        <motion.p 
+            ref={element}
+            style={{ scale, y }}
             className={`${className} inline-block w-full`} 
-            style={{ wordBreak: 'keep-all' }}
         >
-            {String(children).split(" ").map((word, i) => (
-                <motion.span 
-                    key={i} 
-                    variants={{
-                        hidden: { opacity: 0.2 },
-                        visible: { opacity: 1 }
-                    }}
-                    className="inline-block mr-[0.2em] transition-opacity duration-500"
-                >
-                    {word}
-                </motion.span>
-            ))}
-        </motion.span>
+            {words.map((word, i) => {
+                const start = i / words.length;
+                const end = start + (1 / words.length);
+                // Reveal from dark grey (opacity 0.2) to white (opacity 1)
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
+                return (
+                    <motion.span 
+                        key={i}
+                        style={{ opacity }}
+                        className="inline-block mr-[0.2em]"
+                    >
+                        {word}
+                    </motion.span>
+                );
+            })}
+        </motion.p>
     );
 };
 
