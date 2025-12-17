@@ -486,7 +486,7 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className="py-12 border-y border-white/10 bg-black/20 backdrop-blur-md relative z-10">
+            <section className="py-12 border-y border-white/10 bg-black/40 backdrop-blur-md relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
@@ -568,7 +568,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md"
+                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/40 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md"
                             >
                                 <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
                                     {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
@@ -585,7 +585,7 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/20 backdrop-blur-md">
+            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/40 backdrop-blur-md">
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
@@ -606,7 +606,7 @@ export default function Home() {
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group backdrop-blur-sm">
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/10 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group backdrop-blur-sm">
                                         <div className="text-xs font-mono text-indigo-500 mb-3">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
                                         <div className="text-xs text-neutral-500 leading-relaxed">{step.desc}</div>
@@ -616,7 +616,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="bg-white/5 rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden backdrop-blur-md">
+                    <div className="bg-white/10 rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden backdrop-blur-md">
                         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
                         
                         <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
@@ -669,7 +669,7 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.4 }}
-                                    className="relative z-10 border border-white/10 bg-black/40 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
+                                    className="relative z-10 border border-white/10 bg-black/60 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
@@ -704,7 +704,7 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 }}
-                                    className="relative z-10 border border-indigo-500/20 bg-black/40 backdrop-blur-md rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
+                                    className="relative z-10 border border-indigo-500/20 bg-black/60 backdrop-blur-md rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
@@ -744,7 +744,7 @@ export default function Home() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="relative z-10 border border-blue-500/20 bg-black/40 backdrop-blur-md rounded-xl p-6 hover:border-blue-500/40 transition-colors"
+                                    className="relative z-10 border border-blue-500/20 bg-black/60 backdrop-blur-md rounded-xl p-6 hover:border-blue-500/40 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="flex items-center justify-between mb-4">
@@ -875,7 +875,7 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <div className={`bg-black/40 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
+                                <div className={`bg-black/60 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
@@ -941,7 +941,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
+                                className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
                             >
                                 <div className={`absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
                                     <m.icon className={`w-12 h-12 ${m.color}`} />
