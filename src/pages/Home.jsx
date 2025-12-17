@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import SEO from '@/components/SEO';
+import { PoCVisual, MemePingVisual, INFTVisual } from '@/components/ResearchVisuals';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -63,9 +64,30 @@ export default function Home() {
                 title: "Research & Updates",
                 viewAll: "View Roadmap",
                 items: [
-                    { title: "PoC Protocol v1 Launch", date: "Q4 2025", desc: "The standard for verifiable AI provenance and IP lineage." },
-                    { title: "MemePing v2 Dashboard", date: "Q1 2026", desc: "Real-time impact tracking across Twitter, Reddit, & Farcaster." },
-                    { title: "INFT & OG Labs Integration", date: "Q1 2026", desc: "Cross-chain interoperability for AI-generated assets." }
+                    { 
+                        id: "poc",
+                        title: "PoC Protocol v1 Launch", 
+                        date: "Q4 2025", 
+                        desc: "The standard for verifiable AI provenance and IP lineage.",
+                        details: "Implementing EIP-7007 compatible verification for generative assets. Full mainnet deployment with gas-optimized verification proofs.",
+                        tags: ["Protocol", "Security", "Mainnet"]
+                    },
+                    { 
+                        id: "memeping",
+                        title: "MemePing v2 Dashboard", 
+                        date: "Q1 2026", 
+                        desc: "Real-time impact tracking across Twitter, Reddit, & Farcaster.",
+                        details: "Enhanced sentiment analysis engine with 50ms latency. New 'Virality Score' metric for instant trend detection across decentralized social graphs.",
+                        tags: ["Analytics", "AI", "Social"]
+                    },
+                    { 
+                        id: "inft",
+                        title: "INFT & OG Labs Integration", 
+                        date: "Q1 2026", 
+                        desc: "Cross-chain interoperability for AI-generated assets.",
+                        details: "Seamless bridging of AI-generated assets between L1 and L2s. Zero-knowledge proofs for asset authenticity preservation during transfer.",
+                        tags: ["Interoperability", "ZK", "Infrastructure"]
+                    }
                 ]
             },
             contact: {
@@ -126,9 +148,30 @@ export default function Home() {
                 title: "리서치 및 업데이트",
                 viewAll: "로드맵 보기",
                 items: [
-                    { title: "PoC 프로토콜 v1 런칭", date: "2025년 4분기", desc: "검증 가능한 AI 출처 및 IP 계보 표준." },
-                    { title: "MemePing v2 대시보드", date: "2026년 1분기", desc: "Twitter, Reddit, Farcaster 실시간 영향력 추적." },
-                    { title: "INFT & OG Labs 통합", date: "2026년 1분기", desc: "AI 생성 자산을 위한 크로스체인 상호운용성." }
+                    { 
+                        id: "poc",
+                        title: "PoC 프로토콜 v1 런칭", 
+                        date: "2025년 4분기", 
+                        desc: "검증 가능한 AI 출처 및 IP 계보 표준.",
+                        details: "생성형 자산을 위한 EIP-7007 호환 검증 구현. 가스 최적화된 검증 증명과 함께 메인넷 배포.",
+                        tags: ["프로토콜", "보안", "메인넷"]
+                    },
+                    { 
+                        id: "memeping",
+                        title: "MemePing v2 대시보드", 
+                        date: "2026년 1분기", 
+                        desc: "Twitter, Reddit, Farcaster 실시간 영향력 추적.",
+                        details: "50ms 지연 시간의 향상된 감성 분석 엔진. 탈중앙화 소셜 그래프 전반의 즉각적인 트렌드 감지를 위한 새로운 '바이럴 점수' 지표.",
+                        tags: ["분석", "AI", "소셜"]
+                    },
+                    { 
+                        id: "inft",
+                        title: "INFT & OG Labs 통합", 
+                        date: "2026년 1분기", 
+                        desc: "AI 생성 자산을 위한 크로스체인 상호운용성.",
+                        details: "L1과 L2 간 AI 생성 자산의 원활한 브릿징. 전송 중 자산 진본성 보존을 위한 영지식 증명(ZK) 도입.",
+                        tags: ["상호운용성", "ZK", "인프라"]
+                    }
                 ]
             },
             contact: {
@@ -150,6 +193,66 @@ export default function Home() {
     };
 
     const [activeStage, setActiveStage] = useState(0);
+
+    const ResearchItem = ({ item }) => {
+        const [isOpen, setIsOpen] = useState(false);
+        
+        return (
+            <motion.div 
+                layout
+                onClick={() => setIsOpen(!isOpen)}
+                className={`border-t border-neutral-800 pt-6 transition-all cursor-pointer group relative overflow-hidden ${isOpen ? 'md:col-span-2 md:row-span-2 bg-neutral-900/30 rounded-2xl p-6 border-transparent' : 'hover:border-indigo-500'}`}
+            >
+                <motion.div layout className="flex justify-between items-start mb-2">
+                    <div className="text-xs text-neutral-500 font-mono">{item.date}</div>
+                    <motion.div 
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        className="text-neutral-500 group-hover:text-indigo-400"
+                    >
+                        <Plus className="w-4 h-4" />
+                    </motion.div>
+                </motion.div>
+                
+                <motion.h3 layout className={`text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors ${isOpen ? 'text-2xl text-indigo-400' : ''}`}>
+                    {item.title}
+                </motion.h3>
+                
+                <motion.p layout className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                    {item.desc}
+                </motion.p>
+
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="pt-4 border-t border-white/5 space-y-4">
+                                {/* Visuals based on ID */}
+                                {item.id === 'poc' && <PoCVisual />}
+                                {item.id === 'memeping' && <MemePingVisual />}
+                                {item.id === 'inft' && <INFTVisual />}
+
+                                <div className="text-sm text-neutral-300 leading-relaxed bg-black/20 p-4 rounded-lg border border-white/5">
+                                    {item.details}
+                                </div>
+                                
+                                <div className="flex gap-2 flex-wrap pt-2">
+                                    {item.tags.map((tag, i) => (
+                                        <span key={i} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.div>
+        );
+    };
 
 
 
@@ -677,13 +780,11 @@ export default function Home() {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
-                        {t.research.items.map((item, idx) => (
-                            <div key={idx} className="border-t border-neutral-800 pt-6 hover:border-indigo-500 transition-colors cursor-pointer group">
-                                <div className="text-xs text-neutral-500 mb-2 font-mono">{item.date}</div>
-                                <h3 className="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors">{item.title}</h3>
-                                <p className="text-sm text-neutral-400">{item.desc}</p>
-                            </div>
-                        ))}
+                        <AnimatePresence mode="wait">
+                            {t.research.items.map((item, idx) => (
+                                <ResearchItem key={idx} item={item} />
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </div>
             </section>
