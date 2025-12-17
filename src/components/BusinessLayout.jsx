@@ -461,37 +461,48 @@ export default function BusinessLayout({
                             </div>
                         )}
 
-                        {/* 4. Use Cases & Roadmap */}
+                        {/* 4. Use Cases & Roadmap - Mobile Horizontal Scroll Optimization */}
                         <div id="roadmap">
                         <ColorSection onInView={() => setActiveSection(showAnalytics ? (screenshots.length > 0 ? 4 : 3) : (screenshots.length > 0 ? 3 : 2))}>
                             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                                
+                                {/* Target Customers */}
                                 <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
                                     <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
                                         <Users className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Target Customers
                                     </h3>
-                                    <ul className="space-y-6">
+                                    {/* Desktop: List, Mobile: Horizontal Scroll */}
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {useCases.map((u, i) => (
-                                            <li key={i} className="flex gap-3 md:gap-4">
-                                                <CheckCircle2 className={`w-5 h-5 ${accentText} flex-shrink-0 mt-0.5 md:mt-1`} />
-                                                <div>
-                                                    <div className={`font-bold ${textPrimary} text-sm md:text-base`}>{u.title}</div>
-                                                    <div className={`text-xs md:text-sm ${textMuted} mt-1`}>{u.description}</div>
+                                            <div key={i} className="flex-shrink-0 w-[80vw] md:w-auto snap-center flex md:block gap-3 md:gap-4 p-4 md:p-0 rounded-xl bg-white/5 md:bg-transparent border md:border-0 border-white/10 md:mb-6 last:mb-0">
+                                                <div className="flex gap-3 md:gap-4">
+                                                    <CheckCircle2 className={`w-5 h-5 ${accentText} flex-shrink-0 mt-0.5 md:mt-1`} />
+                                                    <div>
+                                                        <div className={`font-bold ${textPrimary} text-sm md:text-base`}>{u.title}</div>
+                                                        <div className={`text-xs md:text-sm ${textMuted} mt-1`}>{u.description}</div>
+                                                    </div>
                                                 </div>
-                                            </li>
+                                            </div>
                                         ))}
-                                    </ul>
+                                    </div>
                                 </div>
 
+                                {/* Roadmap */}
                                 <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
                                     <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
                                         <Milestone className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Roadmap
                                     </h3>
-                                    <div className="space-y-8">
+                                    {/* Desktop: List, Mobile: Horizontal Scroll */}
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {roadmap.map((item, i) => (
-                                            <div key={i} className={`relative pl-6 border-l ${isLight ? 'border-black/20' : 'border-white/10'}`}>
-                                                <div className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full ${s.accentBg}`} />
+                                            <div key={i} className={`flex-shrink-0 w-[75vw] md:w-auto snap-center relative pl-6 border-l ${isLight ? 'border-black/20' : 'border-white/10'} md:mb-8 last:mb-0 p-4 md:p-0 rounded-r-xl md:rounded-none bg-white/5 md:bg-transparent md:pl-6`}>
+                                                <div className={`absolute left-0 md:-left-1.5 top-0 md:top-1.5 w-1 md:w-3 h-full md:h-3 rounded-none md:rounded-full ${s.accentBg} md:bg-transparent md:block hidden`} />
+                                                <div className={`absolute left-0 top-0 bottom-0 w-1 ${s.accentBg} md:hidden rounded-l-xl`} />
+                                                
+                                                <div className={`absolute md:-left-1.5 md:top-1.5 w-3 h-3 rounded-full ${s.accentBg} hidden md:block`} />
+
                                                 <div className={`text-xs font-bold uppercase tracking-wider ${textMuted} mb-1`}>{item.quarter}</div>
                                                 <div className={`font-bold text-base md:text-lg mb-1 md:mb-2 ${textPrimary}`}>{item.title}</div>
                                                 <div className={`text-xs md:text-sm ${textSecondary}`}>
