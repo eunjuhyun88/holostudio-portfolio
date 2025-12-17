@@ -297,7 +297,7 @@ function LayoutContent({ children }) {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
                         <div className="col-span-1 md:col-span-2">
-                            <Link to="/" className="flex items-center gap-3 text-2xl font-bold tracking-tighter mb-6 group">
+                            <Link to="/" className="flex items-center gap-3 text-2xl font-heavy tracking-tighter mb-6 group">
                                 <div className="w-10 h-10 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
                                     <img 
                                         src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
