@@ -10,6 +10,19 @@ import Background3D from '@/components/Background3D';
 
 // --- Components ---
 
+// Helper component to avoid "Hooks inside loop" error
+const RevealWord = ({ children, progress, range }) => {
+    const opacity = useTransform(progress, range, [0.3, 1]);
+    return (
+        <motion.span 
+            style={{ opacity }}
+            className="mr-[0.25em] transition-colors duration-100"
+        >
+            {children}
+        </motion.span>
+    );
+};
+
 // Smooth Text Reveal Component
 const ScrollRevealText = ({ children, className = "" }) => {
     const element = useRef(null);
@@ -18,25 +31,23 @@ const ScrollRevealText = ({ children, className = "" }) => {
         offset: ["start 0.9", "start 0.25"]
     });
 
-    const words = children.split(" ");
+    // Ensure children is a string before splitting
+    const text = typeof children === 'string' ? children : String(children);
+    const words = text.split(" ");
 
     return (
         <p ref={element} className={`flex flex-wrap leading-tight ${className}`}>
             {words.map((word, i) => {
                 const start = i / words.length;
                 const end = start + (1 / words.length);
-                // Map scroll progress to opacity: 0 -> 0.3 (grey), 1 -> 1 (white)
-                // We want the word to turn white as we scroll past it
-                const opacity = useTransform(scrollYProgress, [start, end], [0.3, 1]);
-                
                 return (
-                    <motion.span 
+                    <RevealWord 
                         key={i} 
-                        style={{ opacity }}
-                        className="mr-[0.25em] transition-colors duration-100"
+                        progress={scrollYProgress} 
+                        range={[start, end]}
                     >
                         {word}
-                    </motion.span>
+                    </RevealWord>
                 );
             })}
         </p>
