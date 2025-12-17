@@ -1,11 +1,13 @@
 import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
+import StockhooDemo from '../components/interactive/StockhooDemo';
 
 export default function Stockhoo() {
     return (
         <BusinessLayout 
             name="Stockhoo"
             theme="stockhoo"
+            HeroComponent={StockhooDemo}
             tag="AI Trading Intelligence"
             primaryButton={{ text: "Launch App", url: "http://stockhoo.playarts.ai" }}
             deckUrl="https://docsend.com/view/ari494ikfzsuix7z"

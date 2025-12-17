@@ -1,11 +1,13 @@
 import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
+import PlayArtsVisual from '../components/interactive/PlayArtsVisual';
 
 export default function PlayArts() {
     return (
         <BusinessLayout 
             name="PlayArts"
             theme="playarts"
+            HeroComponent={PlayArtsVisual}
             tag="Media Protocol"
             primaryButton={{ text: "Launch App", url: "https://playarts.ai/" }}
             deckUrl="https://docsend.com/view/wdasib73q44ppc3a"

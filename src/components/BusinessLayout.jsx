@@ -38,7 +38,8 @@ export default function BusinessLayout({
     stats = [],
     theme = "default",
     primaryButton = { text: "Request Access", url: null },
-    deckUrl = null
+    deckUrl = null,
+    HeroComponent = null
 }) {
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Roadmap/Footer]
@@ -278,7 +279,9 @@ export default function BusinessLayout({
                                 transition={{ delay: 0.2 }}
                                 className={`relative aspect-[16/9] rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
                             >
-                                {heroImage.startsWith('http') ? (
+                                {HeroComponent ? (
+                                    <HeroComponent />
+                                ) : heroImage.startsWith('http') ? (
                                     <img 
                                         src={heroImage} 
                                         alt={name} 

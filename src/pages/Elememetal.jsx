@@ -1,11 +1,13 @@
 import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
+import ElememetalDemo from '../components/interactive/ElememetalDemo';
 
 export default function Elememetal() {
     return (
         <BusinessLayout 
             name="EleMEMEtal"
             theme="elememetal"
+            HeroComponent={ElememetalDemo}
             tag="Competitive Strategy"
             primaryButton={{ text: "Play Now", url: "http://game-dev.playarts.ai" }}
             deckUrl="https://docsend.com/view/97ziwvrkmetmqs82"

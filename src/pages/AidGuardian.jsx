@@ -1,11 +1,13 @@
 import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
+import AidGuardianDemo from '../components/interactive/AidGuardianDemo';
 
 export default function AidGuardian() {
     return (
         <BusinessLayout 
             name="AiD Guardian"
             theme="aidguardian"
+            HeroComponent={AidGuardianDemo}
             tag="Enterprise Safety"
             primaryButton={{ text: "Launch Dashboard", url: "http://221.148.221.12:7870" }}
             oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
