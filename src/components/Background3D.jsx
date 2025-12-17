@@ -26,10 +26,10 @@ export default function Background3D() {
         
         // Create custom points material
         const material = new THREE.PointsMaterial({
-            color: 0x6366f1, // Indigo-500 equivalent
-            size: 0.15,
+            color: 0x818cf8, // Indigo-400 equivalent (Brighter)
+            size: 0.22, // Larger points
             transparent: true,
-            opacity: 0.8,
+            opacity: 1.0, // Full opacity
             sizeAttenuation: true,
         });
 
@@ -52,15 +52,15 @@ export default function Background3D() {
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
             color: 0xffffff,
-            size: 0.1,
+            size: 0.15, // Larger core points
             transparent: true,
-            opacity: 0.5,
+            opacity: 0.8, // More visible core
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
         // Connecting lines for the outer shape to give it structure
-        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x4f46e5, transparent: true, opacity: 0.1 });
+        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.3 }); // Brighter and more visible wireframe
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
 
@@ -110,5 +110,5 @@ export default function Background3D() {
         };
     }, []);
 
-    return <div ref={mountRef} className="fixed inset-0 z-0 pointer-events-none opacity-60" />;
+    return <div ref={mountRef} className="fixed inset-0 z-0 pointer-events-none" />;
 }
