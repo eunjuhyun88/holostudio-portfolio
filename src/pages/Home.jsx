@@ -950,69 +950,7 @@ export default function Home() {
                         ))}
                     </div>
 
-                    {/* Partners & Backers */}
-                    <div className="border-t border-neutral-800 pt-16">
-                        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
-                            {/* Selected By */}
-                            <div>
-                                <p className="text-center md:text-left text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-8">Selected By</p>
-                                <div className="flex flex-wrap justify-center md:justify-start items-center gap-8">
-                                    {/* NVIDIA */}
-                                    <div className="flex items-center gap-3 group cursor-default bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-bold text-white group-hover:text-[#76B900] transition-colors">NVIDIA</div>
-                                        <div className="h-6 w-px bg-white/20" />
-                                        <div className="text-[10px] font-bold text-neutral-400 leading-tight">Inception<br/>Program</div>
-                                    </div>
-                                    
-                                    {/* Google Cloud */}
-                                    <div className="flex items-center gap-3 group cursor-default bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-bold text-white">Google Cloud</div>
-                                        <div className="text-[10px] text-neutral-400 border border-neutral-600 px-1.5 py-0.5 rounded-full">Partner</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Backed By */}
-                            <div>
-                                <p className="text-center md:text-left text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-8">Backed By</p>
-                                <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-8 gap-y-8 opacity-80 hover:opacity-100 transition-opacity">
-                                    {/* Arbitrum */}
-                                    <div className="flex items-center gap-2" title="Arbitrum">
-                                        <div className="w-8 h-8 rounded-full bg-[#2D374B] flex items-center justify-center border border-white/10">
-                                            <div className="w-4 h-4 bg-[#12AAFF] transform rotate-45" />
-                                        </div>
-                                        <span className="font-bold text-lg text-neutral-300">Arbitrum</span>
-                                    </div>
-
-                                    {/* Alchemy */}
-                                    <div className="font-bold text-xl text-blue-500">alchemy</div>
-
-                                    {/* OnePiece Labs */}
-                                    <div className="flex items-center gap-1">
-                                        <span className="font-bold text-xl text-white">onepiece</span>
-                                        <span className="text-xs text-neutral-500 font-mono">labs</span>
-                                    </div>
-
-                                    {/* Seedify */}
-                                    <div className="bg-white/5 px-3 py-1 rounded text-sm font-bold text-white border border-white/10">
-                                        SEEDIFY
-                                    </div>
-
-                                    {/* AppWorks */}
-                                    <div className="font-bold text-xl text-[#FF6B00]">AppWorks</div>
-
-                                    {/* Story */}
-                                    <div className="font-black italic text-xl text-white">STORY</div>
-
-                                    {/* OKX Hackathon */}
-                                    <div className="flex flex-col leading-none">
-                                        <span className="text-[10px] text-neutral-500 uppercase">Winner</span>
-                                        <span className="font-bold text-white">OKX Hackathon</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {/* Partners & Backers - Removed as requested */}
                 </div>
             </section>
 
