@@ -13,31 +13,37 @@ import PerspectiveCrawl from '@/components/PerspectiveCrawl';
 
 // Smooth Text Reveal Component
 const ScrollRevealText = ({ children, className = "" }) => {
-    const element = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: element,
-        offset: ["start 0.9", "start 0.25"]
-    });
-
-    const text = typeof children === 'string' ? children : String(children);
-    const words = text.split(" ");
-
+    // Simply render children for now to avoid complexity within PerspectiveCrawl 3D context
+    // The "one by one" effect is best achieved by the user reading the crawling text naturally, 
+    // or we can animate opacity based on the *crawl's* progress if we pass it down.
+    // However, given the request "visually written one by one as it goes down", 
+    // standard Framer Motion staggered animation on Viewport entry is safer inside a transform: preserve-3d context.
+    
     return (
-        <span ref={element} className={`${className} inline-block w-full`} style={{ wordBreak: 'keep-all' }}>
-            {words.map((word, i) => {
-                const start = i / words.length;
-                const end = start + (1 / words.length);
-                return (
-                    <Word 
-                        key={i} 
-                        progress={scrollYProgress} 
-                        range={[start, end]}
-                    >
-                        {word}
-                    </Word>
-                );
-            })}
-        </span>
+        <motion.span 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ margin: "-10% 0px -10% 0px" }}
+            variants={{
+                visible: { transition: { staggerChildren: 0.05 } },
+                hidden: {}
+            }}
+            className={`${className} inline-block w-full`} 
+            style={{ wordBreak: 'keep-all' }}
+        >
+            {String(children).split(" ").map((word, i) => (
+                <motion.span 
+                    key={i} 
+                    variants={{
+                        hidden: { opacity: 0.2 },
+                        visible: { opacity: 1 }
+                    }}
+                    className="inline-block mr-[0.2em] transition-opacity duration-500"
+                >
+                    {word}
+                </motion.span>
+            ))}
+        </motion.span>
     );
 };
 
@@ -124,23 +130,28 @@ const StickyThesisItem = ({ item, index, total }) => {
 
     const isEven = index % 2 === 0;
     
-    // Unified Brand Palettes (Deep Dark Versions of Product Colors)
+    // Unified Dark Palette for Star Wars / Space Vibe
+    // We keep the background consistently dark/black, but subtle glows/accents change
     const palettes = [
-        { bg: "bg-[#0f172a]", text: "text-indigo-400", accent: "text-indigo-200" }, // Indigo (AiD Guardian)
-        { bg: "bg-[#022c22]", text: "text-emerald-400", accent: "text-emerald-200" }, // Emerald (Stockhoo)
-        { bg: "bg-[#1a140b]", text: "text-orange-400", accent: "text-orange-200" }, // Orange (EleMEMEtal)
-        { bg: "bg-[#141d08]", text: "text-lime-400", accent: "text-lime-200" }, // Lime (PlayArts)
+        { bg: "bg-[#050505]", text: "text-indigo-400", accent: "text-indigo-500/20" }, 
+        { bg: "bg-[#050505]", text: "text-emerald-400", accent: "text-emerald-500/20" }, 
+        { bg: "bg-[#050505]", text: "text-orange-400", accent: "text-orange-500/20" }, 
+        { bg: "bg-[#050505]", text: "text-lime-400", accent: "text-lime-500/20" }, 
     ];
 
     const currentPalette = palettes[index % palettes.length];
     
     return (
         <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
-            {/* Background Layer */}
-            <div className={`absolute inset-0 ${currentPalette.bg} z-0`} />
-            {/* Gradient Overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 z-0" />
+            {/* Background Layer - Cosmic Deep Space Vibe */}
+            <div className="absolute inset-0 bg-[#050505] z-0" />
             
+            {/* Subtle Glow/Nebula effect based on palette */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] rounded-full blur-[150px] opacity-20 ${currentPalette.bg.replace('bg-', 'bg-') === 'bg-[#050505]' ? currentPalette.accent.replace('text-', 'bg-').replace('/20', '') : 'bg-indigo-900'} z-0 pointer-events-none`} />
+            
+            {/* Star field overlay (static or subtle movement could be added) */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
+
             <motion.div 
                 style={{ y, opacity, scale }}
                 className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12"
@@ -151,12 +162,14 @@ const StickyThesisItem = ({ item, index, total }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        {/* Huge Number Index */}
-                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-5 absolute -top-20 -left-10 select-none text-white`}>
+                        {/* Huge Number Index - Outline Style for Sci-Fi feel */}
+                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-20 -left-10 select-none text-transparent stroke-white`} style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>
                             {index + 1}
                         </div>
 
                         <h2 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-12 tracking-tighter leading-[0.9] text-white relative`}>
+                             {/* Apply ScrollRevealText for "written one by one" effect here too if desired, but user asked specifically for the crawl part. 
+                                 However, to match the tone, let's keep it bold and clean. */}
                             {item.headline}
                         </h2>
                     </motion.div>
