@@ -6,6 +6,7 @@ import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3,
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
+import SEO from '@/components/SEO';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -254,6 +255,18 @@ export default function Home() {
 
     return (
         <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans">
+            <SEO 
+                title="Home" 
+                description={t.hero.sub} 
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "HOLO STUDIO",
+                    "url": window.location.origin,
+                    "logo": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG",
+                    "description": t.hero.sub
+                }}
+            />
             {/* Section 01: HERO (Pinned) */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
                 {/* 3D Background */}

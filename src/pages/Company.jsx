@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
 import { Download, Shield, Zap, Users, Database, Cpu, Layers, Gamepad2, Network, ArrowRight, CheckCircle2 } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export default function Company() {
     const { language } = useLanguage();
@@ -166,6 +167,16 @@ export default function Company() {
 
     return (
         <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
+            <SEO 
+                title="Company" 
+                description={c.hero.sub}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "AboutPage",
+                    "name": "Technology & Vision | HOLO STUDIO",
+                    "description": c.hero.sub
+                }}
+            />
             {/* 1. COMPACT HERO */}
             <section className="pt-40 pb-20 px-6 border-b border-neutral-900">
                 <div className="max-w-4xl mx-auto">

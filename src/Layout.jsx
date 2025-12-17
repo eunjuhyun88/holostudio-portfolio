@@ -63,8 +63,12 @@ function LayoutContent({ children }) {
 
     return (
         <div className="min-h-screen bg-[#050505] font-sans text-white">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">
+                Skip to content
+            </a>
             {/* Global Navigation - Trendy Floating "Island" Style */}
             <nav 
+                aria-label="Main Navigation"
                 className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-4 py-6 md:px-8 md:py-8 pointer-events-none transition-all duration-300 ${isScrolled ? 'md:py-4' : ''}`}
             >
                 {/* Left Group: Logo + Nav */}
@@ -232,7 +236,7 @@ function LayoutContent({ children }) {
             </nav>
 
             {/* Page Content */}
-            <main className="pt-24 min-h-screen">
+            <main id="main-content" className="pt-24 min-h-screen">
                 {children}
             </main>
 

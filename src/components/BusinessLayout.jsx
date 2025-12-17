@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, Target, Zap, BarChart3, Users, Milestone, Che
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import SEO from '@/components/SEO';
 
 export default function BusinessLayout({ 
     name, 
@@ -109,6 +110,21 @@ export default function BusinessLayout({
 
     return (
         <div className={`${s.pageBg} min-h-screen`}>
+            <SEO 
+                title={name} 
+                description={oneLiner}
+                image={heroImage.startsWith('http') ? heroImage : undefined}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": name,
+                    "description": oneLiner,
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "HOLO STUDIO"
+                    }
+                }}
+            />
             {/* 1. Hero Section */}
             <section className={`relative pt-32 pb-20 ${s.heroBg} overflow-hidden`}>
                 <div className="absolute inset-0 z-0">
@@ -117,7 +133,7 @@ export default function BusinessLayout({
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="max-w-3xl">
                         <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${s.tagBg} border ${s.tagBorder} ${s.tagText} text-sm font-medium mb-6`}>
-                            <span className={`w-2 h-2 rounded-full ${s.tagDot} animate-pulse`} />
+                            <span aria-hidden="true" className={`w-2 h-2 rounded-full ${s.tagDot} animate-pulse`} />
                             {tag}
                         </div>
                         <motion.h1 
@@ -174,7 +190,7 @@ export default function BusinessLayout({
                                 <p className={`${s.sectionText} text-lg leading-relaxed flex-grow`}>{point.description}</p>
 
                                 {/* Decorative gradient blob */}
-                                <div className={`absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${theme === 'elememetal' ? 'bg-orange-500' : 'bg-indigo-500'}`} />
+                                <div aria-hidden="true" className={`absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${theme === 'elememetal' ? 'bg-orange-500' : 'bg-indigo-500'}`} />
                             </motion.div>
                         ))}
                     </div>
@@ -203,7 +219,7 @@ export default function BusinessLayout({
                             </div>
                         </div>
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl transform rotate-3 opacity-50" />
+                            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl transform rotate-3 opacity-50" />
                             {heroImage.startsWith('http') ? (
                                 <img 
                                     src={heroImage} 
@@ -366,7 +382,7 @@ export default function BusinessLayout({
             <section className={`py-24 ${s.sectionStandardBg}`}>
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <div className={`rounded-3xl p-12 shadow-2xl relative overflow-hidden ${s.ctaBg}`}>
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+                        <div aria-hidden="true" className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
                         <div className="relative z-10">
                             <h2 className={`text-3xl font-bold mb-6 ${s.ctaTitle}`}>Ready to explore {name}?</h2>
                             <p className={`text-lg mb-8 max-w-lg mx-auto ${s.ctaText}`}>
