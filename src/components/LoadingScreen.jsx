@@ -57,9 +57,16 @@ export default function LoadingScreen({ onComplete }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center overflow-hidden font-mono"
         >
-            {/* Background Stars */}
-            <div className="absolute inset-0 z-0 opacity-50">
-                <Starfield density={800} speed={0.5} />
+            {/* Background Stars & Galaxy */}
+            <div className="absolute inset-0 z-0">
+                {/* Subtle Galaxy Gradient Blobs */}
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px] mix-blend-screen animate-pulse" style={{ animationDuration: '7s' }} />
+                
+                {/* Stars */}
+                <div className="absolute inset-0 opacity-60">
+                    <Starfield density={800} speed={0.2} />
+                </div>
             </div>
 
             {/* Central Counter */}
