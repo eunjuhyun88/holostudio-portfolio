@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
+import Background3D from '@/components/Background3D';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -259,9 +260,11 @@ export default function Home() {
 
             {/* Section 01: HERO (Pinned) */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+                {/* 3D Background */}
+                <Background3D />
+                
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-[#050505] to-[#050505]" />
-                    <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] invert" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505] to-[#050505] opacity-90" />
                 </div>
 
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
