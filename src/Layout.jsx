@@ -76,6 +76,26 @@ function LayoutContent({ children }) {
 
     return (
         <div className="min-h-screen bg-[#050505] font-sans text-white">
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+                
+                :root {
+                    --font-body: 'Rajdhani', sans-serif;
+                    --font-heading: 'Unbounded', sans-serif;
+                }
+
+                body {
+                    font-family: var(--font-body) !important;
+                }
+
+                h1, h2, h3, h4, h5, h6, .font-heading {
+                    font-family: var(--font-heading) !important;
+                }
+                
+                .font-sans {
+                    font-family: var(--font-body) !important;
+                }
+            `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">
                 Skip to content
             </a>
