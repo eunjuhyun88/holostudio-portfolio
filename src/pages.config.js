@@ -4,6 +4,7 @@ import PlayArts from './pages/PlayArts';
 import Elememetal from './pages/Elememetal';
 import Contact from './pages/Contact';
 import Stockhoo from './pages/Stockhoo';
+import Company from './pages/Company';
 import __Layout from './Layout.jsx';
 
 
@@ -14,6 +15,7 @@ export const PAGES = {
     "Elememetal": Elememetal,
     "Contact": Contact,
     "Stockhoo": Stockhoo,
+    "Company": Company,
 }
 
 export const pagesConfig = {
