@@ -37,16 +37,93 @@ const WhoWeAreRow = ({ text, index, containerRef, color }) => {
 };
 
 // Fade In Component
-const FadeIn = ({ children, delay = 0 }) => (
+const FadeIn = ({ children, delay = 0, className = "" }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay }}
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+        className={className}
     >
         {children}
     </motion.div>
 );
+
+// Sticky Text Reveal Component for "Our Story"
+const StickyTextReveal = ({ title, headline, paragraphs }) => {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ["start start", "end end"]
+    });
+
+    return (
+        <section ref={container} className="relative h-[300vh] bg-[#050505]">
+            <div className="sticky top-0 h-screen flex flex-col justify-center items-center px-6 md:px-12 text-center overflow-hidden">
+                <motion.div 
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-[#050505] to-[#050505]" 
+                    style={{ opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]) }}
+                />
+                
+                <div className="max-w-5xl z-10">
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-8"
+                    >
+                        {title}
+                    </motion.div>
+                    
+                    <motion.h2 
+                        className="text-4xl md:text-6xl lg:text-7xl font-bold mb-24 leading-tight tracking-tight text-white"
+                        style={{ 
+                            opacity: useTransform(scrollYProgress, [0, 0.15], [0, 1]),
+                            scale: useTransform(scrollYProgress, [0, 0.15], [0.9, 1])
+                        }}
+                    >
+                        {headline}
+                    </motion.h2>
+                    
+                    <div className="relative h-40 w-full flex justify-center items-center">
+                        {paragraphs.map((text, i) => {
+                            // Calculate timeline for each paragraph
+                            // 0.2 to 1.0 is the range for paragraphs
+                            const start = 0.2 + (i * (0.8 / paragraphs.length));
+                            const end = start + (0.8 / paragraphs.length);
+                            
+                            // Make transitions slightly overlapping and smooth
+                            const opacity = useTransform(scrollYProgress, 
+                                [start, start + 0.1, end - 0.1, end], 
+                                [0, 1, 1, 0]
+                            );
+                            
+                            const y = useTransform(scrollYProgress, 
+                                [start, end], 
+                                [50, -50]
+                            );
+                            
+                            const blur = useTransform(scrollYProgress,
+                                [start, start + 0.1, end - 0.1, end],
+                                ["10px", "0px", "0px", "10px"]
+                            );
+
+                            return (
+                                <motion.p 
+                                    key={i}
+                                    style={{ opacity, y, filter: blur }} // Use filter blur directly in style
+                                    className="absolute w-full max-w-4xl text-xl md:text-4xl text-neutral-300 leading-relaxed font-light px-4"
+                                >
+                                    {text}
+                                </motion.p>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
 
 export default function Company() {
     const { language } = useLanguage();
@@ -220,13 +297,18 @@ export default function Company() {
 
             {/* 1. HERO SECTION */}
             <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 border-b border-white/10 overflow-hidden">
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#050505] to-[#050505]" />
+                 <motion.div 
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#050505] to-[#050505]" 
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.5 }}
+                 />
                 
                 <div className="max-w-[1400px] mx-auto w-full z-10">
                     <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.1] tracking-tight mb-8 max-w-5xl">
                             {c.hero.title}
@@ -246,22 +328,12 @@ export default function Company() {
                 </div>
             </section>
 
-            {/* 2. OUR STORY */}
-            <section className="py-32 px-6 md:px-12 bg-[#050505] border-b border-white/10">
-                <div className="max-w-[1000px] mx-auto text-center md:text-left">
-                    <FadeIn>
-                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-8">{c.story.title}</div>
-                        <h2 className="text-3xl md:text-5xl font-bold mb-12 leading-tight">
-                            {c.story.headline}
-                        </h2>
-                        <div className="space-y-8 text-lg md:text-xl text-neutral-400 leading-relaxed">
-                            <p>{c.story.p1}</p>
-                            <p className="text-white font-medium">{c.story.p2}</p>
-                            <p>{c.story.p3}</p>
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
+            {/* 2. OUR STORY (Scrollytelling) */}
+            <StickyTextReveal 
+                title={c.story.title}
+                headline={c.story.headline}
+                paragraphs={[c.story.p1, c.story.p2, c.story.p3]}
+            />
 
             {/* 3. OUR HISTORY */}
             <section className="py-32 px-6 md:px-12 bg-[#080808] border-b border-white/10">
@@ -308,38 +380,44 @@ export default function Company() {
                  </div>
              </section>
 
-            {/* 5. WHAT WE BUILD (Layers) */}
-            <section className="py-32 px-6 md:px-12 bg-[#080808] border-b border-white/10">
+            {/* 5. WHAT WE BUILD (Layers with Parallax) */}
+            <section className="py-32 px-6 md:px-12 bg-[#080808] border-b border-white/10 overflow-hidden">
                 <div className="max-w-[1400px] mx-auto">
                     <FadeIn>
-                        <div className="mb-20 max-w-4xl">
+                        <div className="mb-20 max-w-4xl relative z-10">
                             <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-4">{c.whatWeBuild.title}</div>
-                            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-8">
+                            <h2 className="text-3xl md:text-6xl font-bold leading-tight mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-500">
                                 {c.whatWeBuild.headline}
                             </h2>
                         </div>
                     </FadeIn>
 
-                    <div className="grid gap-4">
+                    <div className="grid gap-6">
                         {c.whatWeBuild.layers.map((layer, i) => (
-                            <FadeIn key={i} delay={i * 0.1}>
-                                <div className="group relative bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:p-12 hover:border-white/20 transition-all overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform -translate-x-full group-hover:translate-x-full" />
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-10%" }}
+                                transition={{ duration: 0.8, delay: i * 0.1 }}
+                            >
+                                <div className="group relative bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:p-12 hover:border-indigo-500/30 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-indigo-900/20">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     
                                     <div className="grid md:grid-cols-12 gap-8 items-center relative z-10">
-                                        <div className="md:col-span-1 text-xs font-mono text-neutral-600">0{i+1}</div>
+                                        <div className="md:col-span-1 text-xs font-mono text-neutral-600 border border-neutral-800 rounded-full w-8 h-8 flex items-center justify-center">0{i+1}</div>
                                         <div className="md:col-span-4">
-                                            <h3 className="text-2xl md:text-3xl font-bold mb-2">{layer.title}</h3>
-                                            <div className="text-sm font-mono text-[#ccff00]">{layer.sub}</div>
+                                            <h3 className="text-2xl md:text-4xl font-bold mb-2 group-hover:text-white transition-colors">{layer.title}</h3>
+                                            <div className="text-sm font-mono text-[#ccff00] opacity-80 group-hover:opacity-100">{layer.sub}</div>
                                         </div>
                                         <div className="md:col-span-7">
-                                            <p className="text-lg text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors">
+                                            <p className="text-lg md:text-xl text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors">
                                                 {layer.desc}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                            </FadeIn>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
