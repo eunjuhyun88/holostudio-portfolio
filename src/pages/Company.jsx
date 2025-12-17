@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, CheckCircle2, Heart, Zap, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -12,11 +12,12 @@ import Background3D from '@/components/Background3D';
 
 // Helper component to avoid "Hooks inside loop" error
 const RevealWord = ({ children, progress, range }) => {
-    const opacity = useTransform(progress, range, [0.3, 1]);
+    const opacity = useTransform(progress, range, [0.1, 1]);
+    const y = useTransform(progress, range, [20, 0]);
     return (
         <motion.span 
-            style={{ opacity }}
-            className="mr-[0.25em] transition-colors duration-100"
+            style={{ opacity, y }}
+            className="mr-[0.25em] inline-block"
         >
             {children}
         </motion.span>
@@ -28,7 +29,7 @@ const ScrollRevealText = ({ children, className = "" }) => {
     const element = useRef(null);
     const { scrollYProgress } = useScroll({
         target: element,
-        offset: ["start 0.9", "start 0.25"]
+        offset: ["start 0.9", "start 0.5"]
     });
 
     // Ensure children is a string before splitting
@@ -36,7 +37,7 @@ const ScrollRevealText = ({ children, className = "" }) => {
     const words = text.split(" ");
 
     return (
-        <p ref={element} className={`flex flex-wrap leading-tight ${className}`}>
+        <span ref={element} className={`flex flex-wrap leading-tight ${className}`}>
             {words.map((word, i) => {
                 const start = i / words.length;
                 const end = start + (1 / words.length);
@@ -50,32 +51,88 @@ const ScrollRevealText = ({ children, className = "" }) => {
                     </RevealWord>
                 );
             })}
-        </p>
+        </span>
     );
 };
 
+// Role List Item for Who We Are section
+const RoleItem = ({ label, color, delay }) => (
+    <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay }}
+        className="flex items-center gap-6 md:gap-8 mb-4 md:mb-6"
+    >
+        <div className={`w-12 h-12 md:w-16 md:h-16 ${color} flex-shrink-0`} />
+        <span className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white">
+            {label}
+        </span>
+    </motion.div>
+);
+
 // Chapter Component
-const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
+const Chapter = ({ title, headline, content, index, isLast, onActive, type = 'default' }) => {
+    const isWhoWeAre = type === 'who_we_are';
+    
     return (
         <div className={`min-h-screen flex flex-col justify-center px-6 md:px-12 py-24 ${isLast ? 'pb-40' : ''}`}>
             <motion.div 
-                className="max-w-4xl"
+                className="w-full max-w-7xl mx-auto"
                 onViewportEnter={() => onActive(index)}
                 viewport={{ margin: "-40% 0px -40% 0px" }}
             >
-                {/* Title removed for seamless storytelling */}
-                
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight whitespace-pre-line">
-                    <ScrollRevealText>
-                        {headline}
-                    </ScrollRevealText>
-                </h2>
+                {isWhoWeAre ? (
+                    <div>
+                        <div className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500 mb-12 border-l-2 border-indigo-500 pl-4">
+                            Who We Are
+                        </div>
+                        <div className="pl-4 md:pl-0">
+                            <RoleItem label="Engineers" color="bg-[#ccff00]" delay={0.1} />
+                            <RoleItem label="Researchers" color="bg-[#ff00ff]" delay={0.2} />
+                            <RoleItem label="Builders" color="bg-[#0066ff]" delay={0.3} />
+                            <RoleItem label="Contributors" color="bg-[#ff4d00]" delay={0.4} />
+                        </div>
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.6, duration: 1 }}
+                            className="mt-16 md:mt-24 max-w-2xl border-t border-white/20 pt-8"
+                        >
+                            <p className="text-xl text-neutral-300 leading-relaxed">
+                                {content}
+                            </p>
+                        </motion.div>
+                    </div>
+                ) : (
+                    <div className="grid lg:grid-cols-12 gap-12 items-center">
+                        <div className="lg:col-span-8">
+                             {/* Small decorative indicator */}
+                             <motion.div 
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                className="w-24 h-1 bg-white mb-12 origin-left"
+                            />
+                            
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-[1.05] tracking-tight whitespace-pre-line">
+                                <ScrollRevealText>
+                                    {headline}
+                                </ScrollRevealText>
+                            </h2>
 
-                {content && (
-                     <div className="text-xl md:text-2xl text-neutral-400 leading-relaxed font-light max-w-2xl">
-                        <ScrollRevealText>
-                            {content}
-                        </ScrollRevealText>
+                            {content && (
+                                <div className="text-lg md:text-2xl text-neutral-400 leading-relaxed font-light max-w-3xl ml-2 md:ml-0 border-l border-white/10 pl-6 md:border-0 md:pl-0">
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2, duration: 0.8 }}
+                                    >
+                                        {content}
+                                    </motion.p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )}
             </motion.div>
@@ -85,19 +142,21 @@ const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
 
 // Venture Card
 const VentureCard = ({ name, description, link }) => (
-    <Link to={createPageUrl(link)} className="group block">
-        <div className="relative bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:p-12 hover:border-indigo-500/50 transition-all duration-500 hover:bg-white/5">
+    <Link to={createPageUrl(link)} className="group block h-full">
+        <div className="relative h-full bg-[#0A0A0A] border border-white/10 p-8 md:p-10 transition-all duration-500 hover:bg-white hover:border-transparent group-hover:scale-[1.02]">
             <div className="flex justify-between items-start mb-8">
-                <h3 className="text-3xl font-bold text-white group-hover:text-indigo-400 transition-colors">{name}</h3>
-                <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-indigo-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <h3 className="text-3xl font-bold text-white group-hover:text-black transition-colors">{name}</h3>
+                <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-black transition-colors" />
             </div>
-            <p className="text-lg text-neutral-400 group-hover:text-neutral-200 transition-colors">
+            <p className="text-lg text-neutral-400 group-hover:text-neutral-600 transition-colors leading-relaxed">
                 {description}
             </p>
+            <div className="absolute bottom-8 left-8 md:bottom-10 md:left-10 text-xs font-bold uppercase tracking-widest text-neutral-600 group-hover:text-black opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                Explore Product
+            </div>
         </div>
     </Link>
 );
-
 
 export default function Company() {
     const { language } = useLanguage();
@@ -106,14 +165,13 @@ export default function Company() {
     // Visual State Management
     const visualState = useMemo(() => {
         // Defines the visual overlays active for each chapter index
-        // 0: Hero, 1: Shift, 2: Break, 3: Position, 4: Guardian, 5: Web3, 6: Build, 7: Products, 8: Who, 9: CTA
         return {
             showNoise: [1, 2].includes(activeIndex),
             showGuardRail: [3, 4].includes(activeIndex),
-            showLines: [2].includes(activeIndex), // Broken lines
+            showLines: [2].includes(activeIndex),
             showRouting: [6].includes(activeIndex),
             showVerification: [5].includes(activeIndex),
-            darker: [0, 9].includes(activeIndex),
+            darker: [0, 8, 9].includes(activeIndex), // Adjusted for new indexing
         };
     }, [activeIndex]);
 
@@ -121,43 +179,44 @@ export default function Company() {
         ko: {
             chapters: [
                 {
-                    headline: "We build trust for the AI-native world.",
-                    content: "AI가 콘텐츠·거래·의사결정을 대량 생산하는 시대에, 가장 희소한 자원은 ‘정보’가 아니라 신뢰입니다. HoloStudio는 AI가 만든 결과가 안전하고, 검증 가능하며, 책임 있게 유통되도록 하는 안전장치를 설계합니다."
+                    headline: "HoloStudio는 AI 시대의\n'신뢰 가능한 안전장치'를 만듭니다.",
+                    content: "AI가 콘텐츠·거래·의사결정을 대량 생산하는 시대에, 가장 희소한 자원은 ‘정보’가 아니라 신뢰입니다. 우리는 검증 가능한 구조로 그 공백을 메웁니다."
                 },
                 {
-                    headline: "AI가 “생성”을 넘어 “행동”하는 시대로 들어왔습니다.",
+                    headline: "AI가 “생성”을 넘어\n“행동”하는 시대로 들어왔습니다.",
                     content: "모델은 이제 문장을 만들 뿐 아니라, 자동으로 배포하고, 거래하고, 상호작용합니다. 문제는 속도가 아니라, 그 과정이 증명되지 않는다는 것입니다."
                 },
                 {
-                    headline: "When verification disappears, the internet breaks.",
+                    headline: "검증이 사라지면,\n인터넷은 무너집니다.",
                     content: "무엇이 진짜였는지(출처), 누가 책임지는지(책임), 누가 기여했는지(크레딧)가 끊기면 AI는 혁신이 아니라 위험의 증폭기가 됩니다."
                 },
                 {
-                    headline: "신뢰는 ‘규칙’이 아니라 ‘인프라’여야 합니다.",
+                    headline: "신뢰는 ‘규칙’이 아니라\n‘인프라’여야 합니다.",
                     content: "정책·약관·사후 신고는 늦습니다. 우리는 생성/유통/행동의 경계(boundary)에서 검증이 시작되는 구조를 만듭니다."
                 },
                 {
-                    headline: "AiD Guardian is our safety layer.",
+                    headline: "AiD Guardian is\nour safety layer.",
                     content: "AiD Guardian은 AI 결과물/행동의 흐름에 검증 가능한 가드레일을 삽입합니다. 검증은 “나중에 확인”이 아니라, 처음부터 증명 가능한 상태로 만드는 것입니다."
                 },
                 {
-                    headline: "Web3 makes verification composable.",
+                    headline: "Web3 makes verification\ncomposable.",
                     content: "검증 가능한 기록, 공개 가능한 증명, 그리고 자동 정산은 AI 시대의 신뢰를 프로토콜처럼 재사용할 수 있게 만듭니다."
                 },
                 {
-                    headline: "Trust becomes proof. Proof becomes value.",
+                    headline: "Trust becomes proof.\nProof becomes value.",
                     content: "HoloStudio는 “무엇을 믿을 수 있는가”를 증명 단위로 바꾸고, 그 증명이 실제 제품/시장 안에서 가치 흐름으로 이어지게 설계합니다."
                 },
                 {
-                    headline: "We ship products that prove the thesis.",
+                    headline: "We ship products\nthat prove the thesis.",
                     content: "HoloStudio는 하나의 세계관을 말로 설명하지 않습니다. 제품으로 증명합니다."
                 },
                 {
-                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
+                    type: "who_we_are",
+                    headline: "WHO WE ARE",
                     content: "우리는 제품을 만드는 팀이자, 신뢰 인프라를 설계하는 팀입니다. AI와 Web3가 만나는 지점에서, 검증과 안전장치의 표준을 만듭니다."
                 },
                 {
-                    headline: "If you’re building in AI × Web3, let’s build trust together.",
+                    headline: "AI × Web3 빌더라면,\n함께 신뢰를 설계합시다.",
                     content: "파트너십, 투자, 채용, 공동 연구. HoloStudio의 검증 레이어 위에서 함께 확장할 수 있습니다."
                 }
             ],
@@ -182,43 +241,44 @@ export default function Company() {
         en: {
              chapters: [
                 {
-                    headline: "We build trust for the AI-native world.",
+                    headline: "We build trust for\nthe AI-native world.",
                     content: "In an era where AI mass-produces content, transactions, and decisions, the scarcest resource is not 'information' but trust. HoloStudio designs safety mechanisms to ensure AI outputs are safe, verifiable, and responsibly distributed."
                 },
                 {
-                    headline: "AI has moved beyond “Creation” to “Action”.",
+                    headline: "AI has moved beyond\n“Creation” to “Action”.",
                     content: "Models now not only generate text but automatically distribute, trade, and interact. The problem is not the speed, but that the process remains unverified."
                 },
                 {
-                    headline: "When verification disappears, the internet breaks.",
+                    headline: "When verification disappears,\nthe internet breaks.",
                     content: "If origin (provenance), responsibility (accountability), and contribution (credit) are severed, AI becomes an amplifier of risk rather than innovation."
                 },
                 {
-                    headline: "Trust must be ‘Infrastructure’, not ‘Rules’.",
+                    headline: "Trust must be ‘Infrastructure’,\nnot ‘Rules’.",
                     content: "Policies and post-incident reporting are too late. We build structures where verification begins at the boundary of generation, distribution, and action."
                 },
                 {
-                    headline: "AiD Guardian is our safety layer.",
+                    headline: "AiD Guardian is\nour safety layer.",
                     content: "AiD Guardian inserts verifiable guardrails into the flow of AI outputs and actions. Verification is not about \"checking later,\" but making it provable from the start."
                 },
                 {
-                    headline: "Web3 makes verification composable.",
+                    headline: "Web3 makes verification\ncomposable.",
                     content: "Verifiable records, public proofs, and automated settlement make trust in the AI era reusable like a protocol."
                 },
                 {
-                    headline: "Trust becomes proof. Proof becomes value.",
+                    headline: "Trust becomes proof.\nProof becomes value.",
                     content: "HoloStudio turns \"what can be trusted\" into units of proof, and designs those proofs to flow as value within real products and markets."
                 },
                 {
-                    headline: "We ship products that prove the thesis.",
+                    headline: "We ship products\nthat prove the thesis.",
                     content: "HoloStudio does not explain its worldview with words. We prove it with products."
                 },
                  {
-                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
+                    type: "who_we_are",
+                    headline: "WHO WE ARE",
                     content: "We are a team building products and designing trust infrastructure. At the intersection of AI and Web3, we set the standard for verification and safety."
                 },
                 {
-                    headline: "If you’re building in AI × Web3, let’s build trust together.",
+                    headline: "If you’re building in AI × Web3,\nlet’s build trust together.",
                     content: "Partnerships, Investment, Hiring, Joint Research. Scale with us on top of HoloStudio's verification layer."
                 }
             ],
@@ -301,7 +361,7 @@ export default function Company() {
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div className="max-w-[1400px] mx-auto">
+                <div className="max-w-[1600px] mx-auto">
                     {c.chapters.map((chapter, i) => (
                         <Chapter 
                             key={i}
@@ -309,6 +369,7 @@ export default function Company() {
                             headline={chapter.headline}
                             content={chapter.content}
                             index={i}
+                            type={chapter.type}
                             onActive={setActiveIndex}
                             isLast={i === c.chapters.length - 1}
                         />
@@ -316,8 +377,8 @@ export default function Company() {
                 </div>
 
                 {/* Ventures Section (Attached to CH7 visually via logic, but rendered here for layout) */}
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-40">
-                    <div className="grid md:grid-cols-3 gap-6">
+                <div className="max-w-[1600px] mx-auto px-6 md:px-12 pb-40">
+                    <div className="grid md:grid-cols-3 gap-0">
                         {c.ventures.map((venture, i) => (
                             <motion.div
                                 key={i}
@@ -333,10 +394,11 @@ export default function Company() {
                 </div>
                 
                 {/* Final CTA Button for CH9 */}
-                <div className="flex justify-center pb-40">
+                <div className="flex flex-col items-center justify-center pb-60 text-center px-6">
+                    <h3 className="text-3xl md:text-5xl font-bold mb-12 tracking-tight">Ready to verify the future?</h3>
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 h-14 text-lg font-bold transition-transform hover:scale-105">
-                            Connect With Us <ArrowRight className="ml-2 w-5 h-5" />
+                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105">
+                            Connect With Us <ArrowRight className="ml-2 w-6 h-6" />
                         </Button>
                     </Link>
                 </div>
