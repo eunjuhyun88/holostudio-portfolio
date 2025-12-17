@@ -328,8 +328,8 @@ export default function BusinessLayout({
                                     {partners}
                                 </div>
                             )}
-                        </ColorSection
-                        </div>
+                        </ColorSection>
+                          </div>
 
                         {/* 2. Problem & Solution */}
                         <div id="challenge">
