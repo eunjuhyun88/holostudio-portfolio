@@ -137,6 +137,27 @@ export default function BusinessLayout({
         }
     };
 
+    // Mobile Table of Contents (Horizontal Scroll)
+    const MobileTOC = () => (
+        <div className="lg:hidden sticky top-[80px] z-30 -mx-4 px-4 mb-8 overflow-x-auto no-scrollbar bg-gradient-to-b from-inherit to-transparent pb-4">
+             <div className={`inline-flex gap-2 p-1 rounded-full ${isLight ? 'bg-black/5 border-black/10' : 'bg-white/10 border-white/10'} border backdrop-blur-md`}>
+                {sections.map((section, idx) => (
+                    <button
+                        key={section.id}
+                        onClick={() => scrollToId(section.id)}
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+                            activeSection === idx 
+                            ? `${s.buttonPrimary} shadow-lg` 
+                            : `${textSecondary} hover:${textPrimary}`
+                        }`}
+                    >
+                        {section.label}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+
     return (
         <div className={`min-h-screen font-sans selection:bg-indigo-500/30 ${currentStyle.bg} ${textPrimary} transition-colors duration-700 ease-in-out`}>
             <SEO 
@@ -235,6 +256,8 @@ export default function BusinessLayout({
                                 {oneLiner}
                             </motion.h2>
 
+                            <MobileTOC />
+
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -257,14 +280,19 @@ export default function BusinessLayout({
                                 )}
                             </motion.div>
 
-                            {/* Mobile Stats Grid */}
-                            <div className="lg:hidden grid grid-cols-2 gap-3 mb-12">
-                                {stats.map((stat, i) => (
-                                    <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
-                                        <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
-                                        <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
-                                    </div>
-                                ))}
+                            {/* Mobile Stats Grid & Actions */}
+                            <div className="lg:hidden space-y-4 mb-12">
+                                <div className="grid grid-cols-2 gap-3">
+                                    {stats.map((stat, i) => (
+                                        <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
+                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
+                                            <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <Button variant="outline" className={`w-full rounded-xl h-12 bg-transparent ${border} ${textPrimary} hover:bg-white/5`}>
+                                    Download Deck
+                                </Button>
                             </div>
                         </ColorSection>
                         </div>
