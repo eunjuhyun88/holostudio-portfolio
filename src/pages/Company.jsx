@@ -2,56 +2,125 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, CheckCircle2, ChevronRight, Play, ArrowUpRight, Network, Cpu, Database, Layers, Gamepad2 } from 'lucide-react';
+import { ArrowRight, Download, CheckCircle2, ChevronRight, Play, ArrowUpRight, Network, Cpu, Database, Layers, Gamepad2, Zap, Shield, Globe, Lock } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 
-const RoleRow = ({ role, index, containerRef }) => {
+// Component for "Who We Are" text moving Right to Left
+const WhoWeAreRow = ({ text, index, containerRef }) => {
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     });
     
-    // Create different movement directions/speeds for each row
+    // Move from Right (positive x) to Left (negative x)
+    // Stagger speeds based on index
     const x = useTransform(
         scrollYProgress, 
         [0, 1], 
-        index % 2 === 0 ? [50, -50] : [-50, 50]
+        [100 + (index * 50), -100 - (index * 50)]
     );
 
     return (
         <motion.div 
             style={{ x }}
-            className="group flex items-center gap-4 md:gap-8 cursor-default whitespace-nowrap"
+            className="flex items-center gap-4 md:gap-8 whitespace-nowrap"
         >
-             <div className={`hidden md:flex w-12 h-12 items-center justify-center border-2 ${role.color.replace('text', 'border')} opacity-0 group-hover:opacity-100 transition-opacity`}>
-                <div className={`w-4 h-4 ${role.color.replace('text', 'bg')}`} />
+            <div className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-neutral-200 hover:text-white transition-colors">
+                {text}
             </div>
-            <div className={`text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter transition-colors duration-300 ${role.color}`}>
-                {role.title}
-            </div>
+             {/* Repeat for continuous feel if needed, or just decoration */}
+             <div className="w-4 h-4 md:w-8 md:h-8 rounded-full border-2 border-neutral-700" />
         </motion.div>
     );
 };
 
+// Component for Vision Section (Text moving Left to Right)
+const VisionText = ({ text, sub, containerRef, index }) => {
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Move from Left (negative x) to Right (positive x)
+    const x = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [-200 * (index + 1), 200 * (index + 1)] 
+    );
+    
+    const opacity = useTransform(
+        scrollYProgress,
+        [0.2, 0.5, 0.8],
+        [0, 1, 0]
+    );
+
+    return (
+        <motion.div 
+            style={{ x, opacity }}
+            className="my-12 md:my-24"
+        >
+            <h3 className="text-3xl md:text-5xl font-bold leading-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-500">
+                {text}
+            </h3>
+            <p className="text-lg md:text-xl text-neutral-400 max-w-2xl">
+                {sub}
+            </p>
+        </motion.div>
+    );
+};
+
+
 export default function Company() {
     const { language } = useLanguage();
     const containerRef = useRef(null);
+    const visionRef = useRef(null);
     const whoWeAreRef = useRef(null);
 
     const t = {
         en: {
             hero: {
-                title: "Building the Infrastructure of Trust",
-                subtitle: "We are building the fundamental safety and value layers for the autonomous AI economy."
+                title: "The Narrative Infrastructure for the AI Era",
+                subtitle: "Companies are no longer just media. They are media systems. We build the trust layer they run on."
             },
-            story: {
-                label: "OUR STORY",
-                text: "Founded to solve the critical challenges of the AI era, Holo Studio enables a sustainable digital economy. We move beyond simple content creation to engineer verifying protocols, decentralized infrastructure, and economic models that make AI safe and valuable."
+            market: {
+                label: "THE SHIFT",
+                headline: "Why Narrative Infrastructure is Essential",
+                points: [
+                    {
+                        title: "From Content to System",
+                        desc: "Competition has shifted from 'Content Production' to 'Infrastructure' that systemizes origin, rights, policy, and settlement."
+                    },
+                    {
+                        title: "The Trust Bottleneck",
+                        desc: "AI creates infinite cheap content. The new scarcity is trust. We solve the problem of 'What is real? Whose right is it?'"
+                    },
+                    {
+                        title: "Automated Governance",
+                        desc: "Like Disney's Jarvis or OpenAI's licensing, modern IP needs an automated OS to manage rights and risks in real-time."
+                    }
+                ]
+            },
+            vision: {
+                label: "OUR VISION",
+                items: [
+                    { 
+                        title: "Web3 Philosophy + Generative AI", 
+                        desc: "Combining the ownership of Web3 with the abundance of GenAI to create a true Autonomous Economy." 
+                    },
+                    { 
+                        title: "Guidance for the Future", 
+                        desc: "We provide the guardrails and economic models for a future where AI agents transact and create value autonomously." 
+                    },
+                    { 
+                        title: "The Standard for Trust", 
+                        desc: "Positioning as the global standard for AI safety, rights management, and automated settlement." 
+                    }
+                ]
             },
             tech: {
-                title: "Core Infrastructure",
+                title: "Technical Specification",
                 sub: "Proprietary technology stack for Full-Media AI Guardrails.",
                 pipeline: {
                     title: "6-Step Verification Pipeline",
@@ -66,56 +135,69 @@ export default function Company() {
                 },
                 depin: {
                     title: "DePIN GPU Mesh",
-                    desc: "A decentralized physical infrastructure network that democratizes access to safety compute.",
+                    desc: "Decentralized Physical Infrastructure Network democratizing safety compute.",
                     features: [
-                        { icon: Network, title: "Heterogeneous Compute", desc: "Unifying GB200 to Consumer GPUs into a single safety mesh." },
-                        { icon: Cpu, title: "MIG Slicing", desc: "Optimized resource allocation via Multi-Instance GPU partitioning." },
-                        { icon: Database, title: "Distributed Training", desc: "Decentralized checkpointing for robust model evolution." }
+                        { icon: Network, title: "Heterogeneous Compute", desc: "Unifying GB200 to Consumer GPUs." },
+                        { icon: Cpu, title: "MIG Slicing", desc: "Optimized resource allocation via Multi-Instance GPU." },
+                        { icon: Database, title: "Distributed Training", desc: "Decentralized checkpointing for model evolution." }
                     ]
                 }
             },
-            roles: [
-                { title: "Engineers", color: "text-lime-400", icon: "square" },
-                { title: "Researchers", color: "text-pink-500", icon: "circle" },
-                { title: "Builders", color: "text-blue-600", icon: "triangle" },
-                { title: "Contributors", color: "text-orange-500", icon: "hexagon" }
-            ],
+            whoWeAre: {
+                label: "WHO WE ARE",
+                roles: ["ENGINEERS", "RESEARCHERS", "BUILDERS", "CONTRIBUTORS", "VISIONARIES"]
+            },
             history: {
                 title: "Our Journey",
                 items: [
-                    { year: "2024", title: "Inception", desc: "Holo Studio founded with a vision to secure the AI economy." },
-                    { year: "2025", title: "Foundation", desc: "Launching the core safety engine and proprietary model V1." },
-                    { year: "2026", title: "Expansion", desc: "Opening infrastructure to third-party developers and launching DePIN testnet." }
-                ]
-            },
-            values: {
-                title: "We advocate for a decentralized future — loudly and clearly",
-                button: "Read our vision"
-            },
-            careers: {
-                title: "Join a team that's building the next layer of the internet",
-                desc: "We're hiring across engineering, design, research, product, and more. Remote-first. Mission-aligned.",
-                button: "See open roles"
-            },
-            media: {
-                title: "Explore our press, media and brand assets",
-                items: [
-                    { title: "Press Releases", link: "#" },
-                    { title: "Brand Assets", link: "#" }
+                    { year: "2024", title: "Inception", desc: "Founded to secure the AI economy." },
+                    { year: "2025", title: "Foundation", desc: "Launching core safety engine V1." },
+                    { year: "2026", title: "Expansion", desc: "Opening infrastructure to 3rd parties." }
                 ]
             }
         },
         ko: {
             hero: {
-                title: "신뢰의 인프라스트럭처를 구축합니다",
-                subtitle: "자율 AI 경제를 위한 근본적인 안전 및 가치 레이어를 만듭니다."
+                title: "AI 시대를 위한 내러티브 인프라",
+                subtitle: "기업은 이제 단순한 미디어가 아닌 '미디어 시스템'입니다. 우리는 그 시스템이 작동하는 신뢰 레이어를 구축합니다."
             },
-            story: {
-                label: "OUR STORY",
-                text: "AI 시대의 핵심 과제를 해결하기 위해 설립된 Holo Studio는 지속 가능한 디지털 경제를 실현합니다. 단순한 콘텐츠 생성을 넘어, AI를 안전하고 가치 있게 만드는 검증 프로토콜, 탈중앙화 인프라, 그리고 경제 모델을 설계합니다."
+            market: {
+                label: "시장 서사 (THE SHIFT)",
+                headline: "내러티브 인프라가 필수재가 된 이유",
+                points: [
+                    {
+                        title: "콘텐츠에서 시스템으로",
+                        desc: "경쟁의 본질이 '콘텐츠 생산'에서 출처·권리·정책·정산을 시스템화하는 '인프라' 경쟁으로 이동하고 있습니다."
+                    },
+                    {
+                        title: "신뢰의 병목 현상",
+                        desc: "AI는 무한한 저비용 콘텐츠를 만들어냅니다. 희소한 것은 '신뢰'입니다. 우리는 '무엇이 진짜인가?'의 문제를 해결합니다."
+                    },
+                    {
+                        title: "자동화된 거버넌스",
+                        desc: "디즈니의 Jarvis나 OpenAI 라이선싱처럼, 현대의 IP는 실시간으로 권리와 리스크를 관리하는 자동화된 OS가 필요합니다."
+                    }
+                ]
+            },
+            vision: {
+                label: "우리의 비전 (OUR VISION)",
+                items: [
+                    { 
+                        title: "Web3 철학 + 생성형 AI", 
+                        desc: "Web3의 소유권 철학과 생성형 AI의 풍요로움을 결합하여 진정한 자율 경제(Autonomous Economy)를 실현합니다." 
+                    },
+                    { 
+                        title: "미래를 위한 가이던스", 
+                        desc: "AI 에이전트들이 자율적으로 거래하고 가치를 창출하는 미래를 위한 가드레일과 경제 모델을 제시합니다." 
+                    },
+                    { 
+                        title: "자율 경제의 표준", 
+                        desc: "AI 안전, 권리 관리, 그리고 자동 정산을 위한 글로벌 표준 인프라로 자리매김합니다." 
+                    }
+                ]
             },
             tech: {
-                title: "핵심 기술 인프라",
+                title: "기술 명세 (Technical Spec)",
                 sub: "Full-Media AI Guardrails를 위한 독자적인 기술 스택.",
                 pipeline: {
                     title: "6단계 검증 파이프라인",
@@ -138,34 +220,16 @@ export default function Company() {
                     ]
                 }
             },
-            roles: [
-                { title: "Engineers", color: "text-lime-400", icon: "square" },
-                { title: "Researchers", color: "text-pink-500", icon: "circle" },
-                { title: "Builders", color: "text-blue-600", icon: "triangle" },
-                { title: "Contributors", color: "text-orange-500", icon: "hexagon" }
-            ],
+            whoWeAre: {
+                label: "우리는 누구인가 (WHO WE ARE)",
+                roles: ["엔지니어들", "연구원", "건축업자", "기여자", "개척자들"]
+            },
             history: {
                 title: "Our Journey",
                 items: [
-                    { year: "2024", title: "시작 (Inception)", desc: "AI 경제의 보안을 위한 비전으로 Holo Studio 설립." },
-                    { year: "2025", title: "기반 (Foundation)", desc: "핵심 안전 엔진 및 자체 모델 V1 출시." },
-                    { year: "2026", title: "확장 (Expansion)", desc: "서드파티 개발자에게 인프라 개방 및 DePIN 테스트넷 런칭." }
-                ]
-            },
-            values: {
-                title: "우리는 탈중앙화된 미래를 강력하게 지지합니다",
-                button: "비전 읽기"
-            },
-            careers: {
-                title: "인터넷의 다음 레이어를 함께 만들어갈 팀에 합류하세요",
-                desc: "엔지니어링, 디자인, 리서치, 프로덕트 등 다양한 분야에서 채용 중입니다. 리모트 퍼스트. 미션 중심.",
-                button: "채용 공고 보기"
-            },
-            media: {
-                title: "보도자료 및 브랜드 에셋",
-                items: [
-                    { title: "보도자료", link: "#" },
-                    { title: "브랜드 가이드", link: "#" }
+                    { year: "2024", title: "시작 (Inception)", desc: "AI 경제 보안을 위한 비전 수립." },
+                    { year: "2025", title: "기반 (Foundation)", desc: "핵심 안전 엔진 V1 출시." },
+                    { year: "2026", title: "확장 (Expansion)", desc: "인프라 개방 및 생태계 확장." }
                 ]
             }
         }
@@ -181,58 +245,99 @@ export default function Company() {
             />
 
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32">
+            <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32 border-b border-white/10">
                 <div className="max-w-[1400px] mx-auto w-full z-10">
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <h1 className="text-5xl md:text-8xl lg:text-[7rem] font-bold leading-[1] tracking-tight mb-12 max-w-5xl">
+                        <h1 className="text-5xl md:text-8xl lg:text-[6rem] font-bold leading-[1.1] tracking-tight mb-8 max-w-6xl">
                             {c.hero.title}
                         </h1>
+                        <p className="text-xl md:text-2xl text-neutral-400 max-w-3xl leading-relaxed mb-12">
+                            {c.hero.subtitle}
+                        </p>
+                        
                         <div className="flex flex-col md:flex-row gap-6 items-start">
                             <Link to={createPageUrl('Products')}>
                                 <Button className="rounded-full bg-[#ccff00] text-black hover:bg-[#b3e600] px-8 py-6 text-lg font-bold">
-                                    {language === 'en' ? 'Explore Products' : '프로덕트 탐색'}
+                                    {language === 'en' ? 'Explore Our Tech' : '기술 살펴보기'}
                                 </Button>
                             </Link>
-                            <Button variant="outline" className="rounded-full border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg">
-                                {language === 'en' ? 'Our Vision' : '우리의 비전'}
-                            </Button>
                         </div>
                     </motion.div>
                 </div>
-                
-                {/* Abstract 3D Element Placeholder */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 md:opacity-100 pointer-events-none mix-blend-screen">
-                     <div className="w-full h-full bg-gradient-to-l from-indigo-900/20 to-transparent" />
+            </section>
+
+            {/* 2. MARKET NARRATIVE (VC PITCH) */}
+            <section className="py-32 px-6 md:px-12 bg-[#080808]">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-12 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-indigo-500" />
+                        {c.market.label}
+                    </div>
+                    
+                    <h2 className="text-3xl md:text-5xl font-bold mb-20 max-w-4xl leading-tight">
+                        {c.market.headline}
+                    </h2>
+
+                    <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+                        {c.market.points.map((point, i) => (
+                            <div key={i} className="group">
+                                <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit border border-white/10 group-hover:border-indigo-500/50 transition-colors">
+                                    {i === 0 && <Layers className="w-6 h-6 text-indigo-400" />}
+                                    {i === 1 && <Lock className="w-6 h-6 text-indigo-400" />}
+                                    {i === 2 && <Shield className="w-6 h-6 text-indigo-400" />}
+                                </div>
+                                <h3 className="text-xl font-bold mb-4">{point.title}</h3>
+                                <p className="text-neutral-400 leading-relaxed">
+                                    {point.desc}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* 2. OUR STORY */}
-            <section className="py-32 px-6 md:px-12 border-t border-white/10">
-                <div className="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-12">
-                    <div className="md:col-span-3">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="w-2 h-2 bg-white" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">{c.story.label}</span>
+            {/* 3. VISION (HORIZONTAL SCROLL EFFECT) */}
+            <section ref={visionRef} className="py-32 px-6 md:px-12 border-t border-white/10 bg-[#050505]">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-12">
+                        {c.vision.label}
+                    </div>
+                    
+                    <div className="relative">
+                        {/* Connecting Line */}
+                        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent hidden md:block" />
+                        
+                        <div className="space-y-32 md:pl-12">
+                            {c.vision.items.map((item, i) => (
+                                <VisionText 
+                                    key={i} 
+                                    index={i}
+                                    text={item.title} 
+                                    sub={item.desc} 
+                                    containerRef={visionRef} 
+                                />
+                            ))}
                         </div>
                     </div>
-                    <div className="md:col-span-9">
-                        <p className="text-2xl md:text-4xl lg:text-5xl font-medium leading-tight text-neutral-200">
-                            {c.story.text}
-                        </p>
-                    </div>
                 </div>
             </section>
 
-             {/* 3. TECHNOLOGY (ADDED BACK) */}
-             <section className="py-24 px-6 md:px-12 bg-[#080808]">
+             {/* 4. TECHNOLOGY SPEC */}
+             <section className="py-24 px-6 md:px-12 bg-[#080808] border-t border-white/10">
                 <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-16">
-                        <h2 className="text-3xl font-bold mb-4">{c.tech.title}</h2>
-                        <p className="text-neutral-500">{c.tech.sub}</p>
+                    <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <h2 className="text-3xl font-bold mb-4">{c.tech.title}</h2>
+                            <p className="text-neutral-500">{c.tech.sub}</p>
+                        </div>
+                        <div className="flex gap-2">
+                             <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                             <span className="text-xs font-mono text-neutral-400">LIVE SYSTEM</span>
+                        </div>
                     </div>
 
                     {/* Pipeline Visualization */}
@@ -302,20 +407,20 @@ export default function Company() {
                 </div>
             </section>
 
-            {/* 4. WHO WE ARE (ANIMATED) */}
-            <section ref={whoWeAreRef} className="py-32 px-6 md:px-12 bg-[#050505] border-t border-white/10 overflow-hidden">
-                <div className="max-w-[1400px] mx-auto">
-                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-12">WHO WE ARE</div>
-                    <div className="space-y-4 md:space-y-8">
-                        {c.roles.map((role, i) => (
-                            <RoleRow key={i} role={role} index={i} containerRef={whoWeAreRef} />
-                        ))}
-                    </div>
+            {/* 5. WHO WE ARE (RIGHT TO LEFT ANIMATION) */}
+            <section ref={whoWeAreRef} className="py-32 bg-[#050505] border-t border-white/10 overflow-hidden">
+                <div className="px-6 md:px-12 mb-12 max-w-[1400px] mx-auto">
+                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">{c.whoWeAre.label}</div>
+                </div>
+                <div className="space-y-4 md:space-y-8">
+                    {c.whoWeAre.roles.map((role, i) => (
+                        <WhoWeAreRow key={i} text={role} index={i} containerRef={whoWeAreRef} />
+                    ))}
                 </div>
             </section>
 
-            {/* 5. HISTORY / TIMELINE */}
-            <section className="py-32 px-6 md:px-12 border-t border-white/10">
+            {/* 6. HISTORY / TIMELINE */}
+            <section className="py-32 px-6 md:px-12 border-t border-white/10 bg-[#080808]">
                 <div className="max-w-[1400px] mx-auto">
                     <h2 className="text-5xl md:text-7xl font-bold mb-24">{c.history.title}</h2>
                     
@@ -341,64 +446,6 @@ export default function Company() {
                     </div>
                 </div>
             </section>
-
-            {/* 6. VALUES / MISSION */}
-            <section className="py-32 px-6 md:px-12 bg-neutral-900 text-center">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-4xl md:text-6xl font-medium leading-tight mb-12">
-                        {c.values.title}
-                    </h2>
-                    <Button className="bg-[#ccff00] text-black hover:bg-[#b3e600] rounded-full px-8 h-12 font-bold">
-                        {c.values.button}
-                    </Button>
-                </div>
-            </section>
-
-            {/* 7. CAREERS */}
-            <section className="py-32 px-6 md:px-12 bg-[#050505] border-t border-neutral-800">
-                <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-6">WORK WITH US</div>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-                            {c.careers.title}
-                        </h2>
-                        <p className="text-xl text-neutral-400 mb-8 max-w-lg">
-                            {c.careers.desc}
-                        </p>
-                        <Button className="bg-[#ccff00] text-black hover:bg-[#b3e600] rounded-full px-8 h-12 font-bold">
-                            {c.careers.button}
-                        </Button>
-                    </div>
-                    <div className="relative aspect-square md:aspect-video bg-[#111] rounded-2xl overflow-hidden border border-white/10 group">
-                        {/* Placeholder for team image or office */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 group-hover:opacity-80 transition-opacity" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-neutral-500 font-mono text-sm">TEAM CULTURE VISUAL</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-             {/* 8. MEDIA */}
-             <section className="py-24 px-6 md:px-12 border-t border-white/10">
-                <div className="max-w-[1400px] mx-auto">
-                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-12">MEDIA</div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-12">{c.media.title}</h2>
-                    
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {c.media.items.map((item, i) => (
-                            <a key={i} href={item.link} className="group block bg-[#111] p-8 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
-                                <div className="flex justify-between items-center mb-12">
-                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                                        <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-white" />
-                                    </div>
-                                </div>
-                                <h3 className="text-2xl font-bold group-hover:text-indigo-400 transition-colors">{item.title}</h3>
-                            </a>
-                        ))}
-                    </div>
-                </div>
-             </section>
         </div>
     );
 }
