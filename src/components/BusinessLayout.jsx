@@ -122,6 +122,21 @@ export default function BusinessLayout({
     const accentText = isLight && s.accentDark ? s.accentDark : s.accent;
     const accentBorder = isLight && s.accentDark ? `border-${s.accentDark.split('-')[1]}-900` : `border-${s.accent.split('-')[1]}-500`;
 
+    const sections = [
+        { id: 'overview', label: 'Overview' },
+        { id: 'challenge', label: 'Challenge & Solution' },
+        { id: 'experience', label: 'Experience' },
+        { id: 'roadmap', label: 'Roadmap' }
+    ];
+
+    const scrollToId = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+            const y = el.getBoundingClientRect().top + window.pageYOffset - 120;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className={`min-h-screen font-sans selection:bg-indigo-500/30 ${currentStyle.bg} ${textPrimary} transition-colors duration-700 ease-in-out`}>
             <SEO 
@@ -156,6 +171,24 @@ export default function BusinessLayout({
                                     <div className={`text-xs font-bold ${s.accent} uppercase tracking-wider`}>{tag}</div>
                                 </div>
 
+                                {/* Table of Contents */}
+                                <nav className="space-y-2 mb-8 hidden lg:block">
+                                    {sections.map((section, idx) => (
+                                        <button
+                                            key={section.id}
+                                            onClick={() => scrollToId(section.id)}
+                                            className={`block text-sm font-medium transition-colors text-left w-full py-1 ${
+                                                activeSection === idx 
+                                                ? 'text-white translate-x-1' 
+                                                : 'text-neutral-500 hover:text-neutral-300'
+                                            }`}
+                                        >
+                                            <span className={`mr-2 transition-opacity ${activeSection === idx ? 'opacity-100' : 'opacity-0'}`}>→</span>
+                                            {section.label}
+                                        </button>
+                                    ))}
+                                </nav>
+
                                 <div className="space-y-6 pt-6 border-t border-white/5">
                                     {stats.slice(0, 3).map((stat, i) => (
                                         <div key={i} className="group/stat">
@@ -181,6 +214,7 @@ export default function BusinessLayout({
                     <main className="lg:col-span-9 xl:col-span-8 space-y-20 md:space-y-40 z-10 relative order-1 lg:order-2">
                         
                         {/* 1. Hero */}
+                        <div id="overview">
                         <ColorSection onInView={() => setActiveSection(0)}>
                             {/* Mobile Title Block (Visible only on mobile to improve hierarchy) */}
                             <div className="lg:hidden mb-8">
@@ -223,8 +257,10 @@ export default function BusinessLayout({
                                 )}
                             </motion.div>
                         </ColorSection>
+                        </div>
 
                         {/* 2. Problem & Solution */}
+                        <div id="challenge">
                         <ColorSection onInView={() => setActiveSection(1)}>
                             <div className="grid md:grid-cols-2 gap-12 md:gap-24">
                                 <div>
@@ -262,9 +298,11 @@ export default function BusinessLayout({
                                 </div>
                             </div>
                         </ColorSection>
+                        </div>
 
                         {/* 3. Screenshots */}
                         {screenshots.length > 0 && (
+                            <div id="experience">
                             <ColorSection onInView={() => setActiveSection(2)}>
                                 <div className="flex items-end justify-between mb-12">
                                     <h3 className="text-3xl font-bold">Experience</h3>
@@ -290,9 +328,11 @@ export default function BusinessLayout({
                                     ))}
                                 </div>
                             </ColorSection>
+                            </div>
                         )}
 
                         {/* 4. Use Cases & Roadmap */}
+                        <div id="roadmap">
                         <ColorSection onInView={() => setActiveSection(3)}>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className={`p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
@@ -344,6 +384,7 @@ export default function BusinessLayout({
                                  <div className={`absolute top-0 right-0 w-96 h-96 ${s.accentBg} opacity-5 blur-[100px] rounded-full transform translate-x-1/2 -translate-y-1/2`} />
                             </div>
                         </ColorSection>
+                        </div>
 
                         {/* Mobile Action Bar (Sticky Bottom) */}
                         <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
