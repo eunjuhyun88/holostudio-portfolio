@@ -9,8 +9,14 @@ export default function Background3D() {
 
         // Scene Setup
         const scene = new THREE.Scene();
-        // Add subtle fog to blend with the dark background
+        // Add subtle fog to blend with the dark background - adjusted for holographic feel
         scene.fog = new THREE.FogExp2(0x050505, 0.002);
+        
+        // Add lights to enhance the holographic effect if we used standard material, 
+        // but for Points material lights don't affect it much. 
+        // However, we can add a subtle ambient light in case we add meshes later.
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 30;
