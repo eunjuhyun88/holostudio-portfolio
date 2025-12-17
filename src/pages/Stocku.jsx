@@ -4,91 +4,113 @@ import BusinessLayout from '../components/BusinessLayout';
 export default function Stocku() {
     return (
         <BusinessLayout 
-            name="Stocku (StockHoo)"
-            tag="AI Trading Intelligence"
-            oneLiner="Zone-based AI trading agent optimized via Direct Preference Optimization (DPO)."
-            heroImage="Stocku Trading Interface: AI-powered zone analysis overlay on price charts"
+            name="Stocku"
+            theme="default" // Stocku uses Green usually, default (with green accents in images) works, or add 'stocku' theme if needed. Sticking to default for consistency.
+            tag="Trading Intelligence"
+            oneLiner="Zone-based trading intelligence powered by coin-specific small models trained on on-chain + market microstructure data."
+            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c6d3a54f5_2025-12-17101246.png"
             
+            heroStats={[
+                { value: "Zone", label: "Intelligence" },
+                { value: "On-Chain", label: "Data Native" },
+                { value: "DPO", label: "Optimized" },
+                { value: "Small", label: "Specialized Models" }
+            ]}
+
             problemPoints={[
                 {
-                    title: "Information Overload",
-                    description: "Traders are overwhelmed by fragmented data across charts, on-chain metrics, and social sentiment."
+                    title: "One Size Fits None",
+                    description: "BTC, ETH, and Altcoins have vastly different market structures and on-chain behaviors. Generic models fail to capture these nuances."
                 },
                 {
-                    title: "Generic AI Failures",
-                    description: "Standard LLMs hallucinate on financial data and lack understanding of specific coin microstructures."
+                    title: "The 'Why' is Missing",
+                    description: "Black-box signals give probability without reasoning. Traders need context—market zones, liquidity walls, and on-chain flows."
                 },
                 {
-                    title: "Risk Management Gaps",
-                    description: "Retail traders often lack the institutional-grade risk frameworks needed to survive volatility."
+                    title: "Decision Fatigue",
+                    description: "Information overload from endless charts and discord groups. Traders need actionable, zone-based intelligence, not just more data."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Zone-Based Intelligence",
-                    description: "We identify critical supply/demand zones and overlay real-time social sentiment and order flow."
+                    title: "Multi-Source Pipeline",
+                    description: "Ingest and normalize data from On-chain, CEX/DEX Orderbooks, Derivatives, and Sentiment streams."
                 },
                 {
-                    title: "DPO-Optimized Agents",
-                    description: "Our AI agents are fine-tuned using Direct Preference Optimization to align with profitable trading behaviors."
+                    title: "Coin-Specific Training",
+                    description: "Train specialized small models (SLMs) tuned to the specific microstructure and behavior of each asset."
                 },
                 {
-                    title: "3-Layer Normalization",
-                    description: "Proprietary data pipeline normalizes raw, rank, and bucket data while preserving critical extreme values."
+                    title: "Zone Intelligence",
+                    description: "Output actionable 'Zone' signals with risk controls, rather than just raw buy/sell indicators."
                 }
             ]}
 
             screenshots={[
                 {
-                    url: "Visualization of the distributed GPU network used for model training",
-                    caption: "Distributed GPU Training Network"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c6d3a54f5_2025-12-17101246.png",
+                    caption: "Zone-based Trading Intelligence UI"
                 },
                 {
-                    url: "Diagram of the decentralized data collection and processing infrastructure",
-                    caption: "Decentralized Data Infrastructure"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9a9b7b4d1_2025-12-17101244.png",
+                    caption: "Coin-Specific Model Performance"
+                },
+                {
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/d08a68c6f_2025-12-17101242.png",
+                    caption: "On-Chain & Microstructure Data Feed"
+                },
+                {
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/ed08266f4_2025-12-17101239.png",
+                    caption: "Signal Reasoning & Risk Analysis"
                 }
-            ]}
-
-            stats={[
-                { value: "70+", label: "Indicators Analyzed" },
-                { value: "35%", label: "Directional Accuracy" },
-                { value: "408B", label: "Market Size (2024)" },
-                { value: "12-16", label: "Weeks to MVP" }
             ]}
 
             useCases={[
                 {
-                    title: "Retail Traders",
-                    description: "Access institutional-grade signals and automated risk management suggestions."
+                    title: "Pro Traders",
+                    description: "Enhance decision making with AI that understands specific coin behaviors and zones."
                 },
                 {
                     title: "DAO Treasuries",
-                    description: "Monitor portfolio health and execute zone-based rebalancing."
+                    description: "Optimize execution and risk management for large treasury assets."
                 },
                 {
                     title: "Market Makers",
-                    description: "Enhance strategies with sentiment-aware order flow analysis."
+                    description: "Integrate specialized microstructure signals into algorithmic strategies."
                 }
             ]}
 
-            businessModel="Freemium SaaS (Basic Zones) + Pro Subscription (AI Models) + B2B API."
+            businessModel="SaaS Subscription (Pro/Team), Premium Research/Signal Feed, and B2B API access for exchanges/funds."
 
             roadmap={[
                 {
-                    quarter: "Phase 1 (W1-4)",
+                    quarter: "Next",
                     title: "Data Pipeline",
-                    items: ["Raw Data Collection", "10 Core Indicators", "3-Layer Normalization"]
+                    items: ["Pipeline Stabilization", "Feature Engineering"]
                 },
                 {
-                    quarter: "Phase 2 (W5-8)",
-                    title: "DPO Training",
-                    items: ["Labeling System", "Preference Pair Generation", "Model Fine-tuning"]
+                    quarter: "Later",
+                    title: "Model Training",
+                    items: ["DPO Optimization", "Backtesting Framework"]
                 },
                 {
-                    quarter: "Phase 3 (W9+)",
-                    title: "MVP Launch",
-                    items: ["BTC/ETH/SOL Support", "Zone UI Overlay", "Mobile App Beta"]
+                    quarter: "Future",
+                    title: "Live MVP",
+                    items: ["Beta Launch", "API Access"]
+                }
+            ]}
+
+            relatedBusinesses={[
+                {
+                    name: "PlayArts",
+                    description: "Value routing infrastructure",
+                    path: "/PlayArts"
+                },
+                {
+                    name: "AiD Guardian",
+                    description: "Safety compliance",
+                    path: "/AidGuardian"
                 }
             ]}
         />

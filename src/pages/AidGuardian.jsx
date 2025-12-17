@@ -5,98 +5,112 @@ export default function AidGuardian() {
     return (
         <BusinessLayout 
             name="AiD Guardian"
+            theme="default"
             tag="Enterprise Safety"
-            oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
-            heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
+            oneLiner="Enterprise-grade multi-modal safety & compliance engine for AI-generated content."
+            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/5adf17538_202522_22_34GMT9.png" // Using a dashboard-like placeholder or keeping existing
             
+            heroStats={[
+                { value: "100%", label: "Accuracy" },
+                { value: "86.9%", label: "Precision" },
+                { value: "<10ms", label: "Latency" },
+                { value: "8 Categories", label: "GARM Coverage" }
+            ]}
+
             problemPoints={[
                 {
-                    title: "The Compliance Gap",
-                    description: "New regulations like the EU AI Act & DSA require strict transparency and auditability for AI content that current tools can't provide."
+                    title: "Reactive is Impossible",
+                    description: "Manual moderation cannot keep pace with the exponential explosion of AI-generated content. Post-hoc safety is no longer a viable strategy."
                 },
                 {
                     title: "Multi-Modal Blindspots",
-                    description: "Standard text filters fail to detect toxic or non-compliant content embedded in Images, Video frames, and Audio tracks."
+                    description: "Text-only filters fail against complex risks in Images, Video, and Audio. Frame-level analysis is required for true safety."
                 },
                 {
-                    title: "Black Box Liability",
-                    description: "Without explainable AI decisions, enterprises face legal risks when content is flagged or blocked without clear reasoning."
+                    title: "Compliance & Audit",
+                    description: "With EU AI Act and platform policies tightening, enterprises need verifiable logs and explainable safety decisions, not black boxes."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Ingest & Decompose",
-                    description: "We ingest multi-modal content and decompose it into text, visual frames, and audio segments for granular analysis."
+                    title: "Ingest",
+                    description: "Seamlessly ingest Text, Image, Video, and Audio streams via high-throughput APIs."
                 },
                 {
-                    title: "Analyze & Score",
-                    description: "Our engine applies specialized models to score content against GARM safety categories and custom enterprise policies in real-time."
+                    title: "Analyze",
+                    description: "Real-time multi-modal classification using frame-level signals and historical context analysis."
                 },
                 {
                     title: "Enforce & Report",
-                    description: "Automatically block or flag content, generating an immutable audit trail for compliance reporting."
+                    description: "Apply granular policies (Block/Label/Route) and generate audit-ready compliance reports automatically."
                 }
             ]}
 
             screenshots={[
                 {
-                    url: "Live monitoring dashboard showing risk levels across multiple content streams",
-                    caption: "Enterprise Dashboard: Real-time Risk Monitoring"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/5adf17538_202522_22_34GMT9.png", // Reusing dashboard img
+                    caption: "Multi-Modal Brand Safety Dashboard"
                 },
                 {
-                    url: "Content classification interface aligned with GARM safety standards",
-                    caption: "GARM-Aligned Categorization System"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/79d5d9a01_2025-12-17101353.png", // Analysis cards placeholder
+                    caption: "Frame-level detection for video content risks"
                 },
                 {
-                    url: "Documentation hub for API integration and SDK usage",
-                    caption: "Developer-First API & SDK Documentation"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/d91b1dc0d_2025-12-17101351.png", // Table/Framework placeholder
+                    caption: "GARM-aligned reporting for enterprise compliance workflows"
                 },
                 {
-                    url: "Detailed analysis view decomposing video/audio into safety scores",
-                    caption: "Deep Multi-Modal Content Analysis"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/3a148f0ad_2025-12-17101349.png", // Timeline/Analysis placeholder
+                    caption: "Audit-ready history analysis for accountability"
                 }
-            ]}
-
-            stats={[
-                { value: "100%", label: "Accuracy Target" },
-                { value: "86.9%", label: "Precision Rate" },
-                { value: "<10ms", label: "Processing Latency" },
-                { value: "8", label: "GARM Categories" }
             ]}
 
             useCases={[
                 {
-                    title: "Ad Tech Platforms",
-                    description: "Protect advertiser brand equity by ensuring ads never appear next to toxic AI-generated content."
+                    title: "Generative Marketing",
+                    description: "Ensure all AI-generated marketing assets meet brand safety guidelines before publishing."
                 },
                 {
                     title: "UGC Platforms",
-                    description: "Scale moderation for millions of images and videos with automated, policy-aware AI agents."
+                    description: "Automated compliance filtering for high-volume user-generated content streams."
                 },
                 {
-                    title: "Enterprise GenAI",
-                    description: "Wrap internal AI tools with a safety layer to prevent generation of non-compliant or harmful outputs."
+                    title: "Gaming & Metaverse",
+                    description: "Real-time safety layer for 3D assets and interactive experiences."
                 }
             ]}
 
-            businessModel="SaaS Subscription (Tiered by Volume) + Enterprise Licensing for On-Premise Deployment."
+            businessModel="SaaS subscription (tiered by volume & modalities) with Enterprise licensing and optional Managed Policy Operations."
 
             roadmap={[
                 {
-                    quarter: "Q1 2025",
-                    title: "Video Analysis v2",
-                    items: ["Real-time streaming support", "Audio-visual correlation"]
+                    quarter: "Next",
+                    title: "Developer Platform",
+                    items: ["Public API/SDK Release", "Self-serve Policy Builder"]
                 },
                 {
-                    quarter: "Q2 2025",
-                    title: "Enterprise Suite",
-                    items: ["SSO/SAML integration", "Custom policy engine"]
+                    quarter: "Later",
+                    title: "Ecosystem Integration",
+                    items: ["Major Platform Connectors", "Marketplace for Safety Models"]
                 },
                 {
-                    quarter: "Q3 2025",
-                    title: "Global Certification",
-                    items: ["EU AI Act Compliance Audit", "ISO 27001"]
+                    quarter: "Future",
+                    title: "Advanced Compliance",
+                    items: ["Automated Regulatory Reporting", "Cross-jurisdiction Rule Sets"]
+                }
+            ]}
+
+            relatedBusinesses={[
+                {
+                    name: "EleMEMEtal",
+                    description: "UGC safety applied to gaming economy",
+                    path: "/Elememetal"
+                },
+                {
+                    name: "PlayArts",
+                    description: "Provenance + safety as trust rails",
+                    path: "/PlayArts"
                 }
             ]}
         />
