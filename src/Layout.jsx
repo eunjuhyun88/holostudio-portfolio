@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { ChevronDown, Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from 'framer-motion';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { LanguageProvider, useLanguage } from '@/components/LanguageContext';
 
@@ -22,17 +23,8 @@ function LayoutContent({ children }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Scroll to top and close mobile menu on route change
+    // Close mobile menu on route change (Scroll handled by AnimatePresence)
     useEffect(() => {
-        if (location.hash) {
-            const id = location.hash.substring(1);
-            setTimeout(() => {
-                const element = document.getElementById(id);
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        } else {
-            window.scrollTo(0, 0);
-        }
         setMobileMenuOpen(false);
         setBusinessDropdownOpen(false);
     }, [location]);
@@ -263,7 +255,27 @@ function LayoutContent({ children }) {
 
             {/* Page Content */}
             <main id="main-content" className="pt-24 min-h-screen">
-                {children}
+                <AnimatePresence mode="wait" onExitComplete={() => {
+                    if (!location.hash) window.scrollTo(0, 0);
+                }}>
+                    <motion.div
+                        key={location.pathname}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="w-full min-h-screen"
+                        onAnimationComplete={() => {
+                            if (location.hash) {
+                                const id = location.hash.substring(1);
+                                const element = document.getElementById(id);
+                                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                    >
+                        {children}
+                    </motion.div>
+                </AnimatePresence>
             </main>
 
             {/* Global Footer - Glassmorphic & Connected */}
