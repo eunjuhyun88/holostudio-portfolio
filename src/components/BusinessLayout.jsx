@@ -413,16 +413,17 @@ export default function BusinessLayout({
                         </ColorSection>
                         </div>
 
-                        {/* 3. Screenshots */}
+                        {/* 3. Screenshots - Mobile Horizontal Scroll */}
                         {screenshots.length > 0 && (
                             <div id="experience">
                             <ColorSection onInView={() => setActiveSection(2)}>
                                 <div className="flex items-end justify-between mb-12">
                                     <h3 className="text-3xl font-bold">Experience</h3>
                                 </div>
-                                <div className="grid gap-8">
+                                {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                                <div className="flex md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-8 pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                     {screenshots.map((screen, i) => (
-                                        <div key={i} className={`relative rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-xl`}>
+                                        <div key={i} className={`flex-shrink-0 w-[90vw] md:w-full snap-center relative rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-xl`}>
                                             {screen.url.startsWith('http') ? (
                                                 <img 
                                                     src={screen.url} 
