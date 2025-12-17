@@ -917,36 +917,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 08: HOW IT CONNECTS (Diagram) */}
-            <section className="py-24 bg-[#0A0A0A] border-t border-neutral-900 overflow-hidden relative">
-                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
-                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                    <h2 className="text-sm font-mono text-neutral-500 mb-8 uppercase tracking-widest">{t.diagram.title}</h2>
-                    
-                    <div className="flex flex-col items-center gap-4 mb-12">
-                        <div className="bg-indigo-900/20 border border-indigo-500/30 px-8 py-4 rounded-xl text-indigo-400 font-bold w-64">
-                            AiD Guardian (Safety)
-                        </div>
-                        <div className="h-8 w-px bg-neutral-800" />
-                        <div className="bg-purple-900/20 border border-purple-500/30 px-8 py-4 rounded-xl text-purple-400 font-bold w-64">
-                            PlayArts (Provenance)
-                        </div>
-                        <div className="h-8 w-px bg-neutral-800" />
-                        <div className="flex gap-4">
-                            <div className="bg-orange-900/20 border border-orange-500/30 px-6 py-4 rounded-xl text-orange-400 font-bold text-sm w-40">
-                                EleMEMEtal
-                            </div>
-                            <div className="bg-emerald-900/20 border border-emerald-500/30 px-6 py-4 rounded-xl text-emerald-400 font-bold text-sm w-40">
-                                Stockhoo
-                            </div>
-                        </div>
-                    </div>
 
-                    <p className="text-xl text-white font-medium max-w-2xl mx-auto">
-                        {t.diagram.desc}
-                    </p>
-                 </div>
-            </section>
 
 
 
