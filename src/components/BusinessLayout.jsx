@@ -58,36 +58,71 @@ export default function BusinessLayout({
             accent: "text-indigo-500",
             accentBg: "bg-indigo-500",
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
-            gradient: "from-indigo-950/20",
+            gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
+            sectionGradients: [
+                "from-indigo-950/40",
+                "from-violet-950/40", 
+                "from-blue-950/40", 
+                "from-indigo-900/40", 
+                "from-slate-900/40"
+            ]
         },
         elememetal: {
             accent: "text-orange-500",
             accentBg: "bg-orange-500",
             glow: "shadow-[0_0_100px_rgba(249,115,22,0.1)]",
-            gradient: "from-orange-950/20",
+            gradient: "from-orange-950/30",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
+            sectionGradients: [
+                "from-orange-950/40", 
+                "from-red-950/40", 
+                "from-amber-950/40", 
+                "from-rose-950/40", 
+                "from-orange-900/40"
+            ]
         },
         aidguardian: {
             accent: "text-indigo-400",
             accentBg: "bg-indigo-500",
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
-            gradient: "from-indigo-950/20",
+            gradient: "from-indigo-950/30",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
+            sectionGradients: [
+                "from-indigo-950/40", 
+                "from-violet-950/40", 
+                "from-blue-950/40", 
+                "from-cyan-950/40", 
+                "from-slate-900/40"
+            ]
         },
         playarts: {
             accent: "text-lime-400",
             accentBg: "bg-lime-500",
             glow: "shadow-[0_0_100px_rgba(132,204,22,0.1)]",
-            gradient: "from-lime-950/20",
+            gradient: "from-lime-950/30",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
+            sectionGradients: [
+                "from-lime-950/40", 
+                "from-emerald-950/40", 
+                "from-teal-950/40", 
+                "from-green-950/40", 
+                "from-lime-900/40"
+            ]
         },
         stockhoo: {
             accent: "text-emerald-400",
             accentBg: "bg-emerald-500",
             glow: "shadow-[0_0_100px_rgba(16,185,129,0.1)]",
-            gradient: "from-emerald-950/20",
+            gradient: "from-emerald-950/30",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
+            sectionGradients: [
+                "from-emerald-950/40", 
+                "from-cyan-950/40", 
+                "from-teal-950/40", 
+                "from-green-950/40", 
+                "from-slate-900/40"
+            ]
         }
     };
 
@@ -107,16 +142,12 @@ export default function BusinessLayout({
     
     // Background gradient logic based on active section
     const getBackgroundGradient = () => {
-        // Dynamic space colors based on section to give a "journey through space" feel
-        const sectionColors = [
-            s.gradient, // Hero: Theme color
-            "from-purple-900/20", // Challenge: Deep Purple
-            "from-blue-900/20", // Solution: Deep Blue
-            "from-indigo-900/20", // Analytics: Deep Indigo
-            "from-slate-900/20"  // Roadmap: Deep Slate
-        ];
+        // Use theme-specific gradient sequence
+        // This ensures each product has its own unique "atmosphere" that changes as you scroll
+        const gradients = s.sectionGradients || [s.gradient];
+        const currentGradient = gradients[activeSection % gradients.length];
         
-        const currentGradient = sectionColors[activeSection % sectionColors.length] || s.gradient;
+        // Using radial gradient at top for a "cosmic light source" effect
         return `bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] ${currentGradient} via-[#050505] to-[#050505]`;
     };
 
