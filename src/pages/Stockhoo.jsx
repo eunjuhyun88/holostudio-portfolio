@@ -5,6 +5,7 @@ export default function Stockhoo() {
     return (
         <BusinessLayout 
             name="Stockhoo"
+            theme="stockhoo"
             tag="AI Trading Intelligence"
             oneLiner="Zone-based AI trading agent optimized via Direct Preference Optimization (DPO)."
             heroImage="Stockhoo Trading Interface: AI-powered zone analysis overlay on price charts"

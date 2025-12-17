@@ -5,6 +5,7 @@ export default function PlayArts() {
     return (
         <BusinessLayout 
             name="PlayArts"
+            theme="playarts"
             tag="Media Protocol"
             oneLiner="The Proof-of-Creation protocol for verifiable AI media provenance and value routing."
             heroImage="PlayArts Protocol Overview: Visualizing the flow of provenace from creation to value settlement"

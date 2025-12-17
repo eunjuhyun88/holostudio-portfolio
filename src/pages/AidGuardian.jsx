@@ -5,6 +5,7 @@ export default function AidGuardian() {
     return (
         <BusinessLayout 
             name="AiD Guardian"
+            theme="aidguardian"
             tag="Enterprise Safety"
             oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
             heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
