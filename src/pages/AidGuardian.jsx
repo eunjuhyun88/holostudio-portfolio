@@ -2,6 +2,7 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import AidGuardianDemo from '../components/interactive/AidGuardianDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { Shield, Eye, FileText, Zap, Server, Lock, Scan, Activity, AlertTriangle } from 'lucide-react';
 
 export default function AidGuardian() {
     const { language } = useLanguage();

@@ -2,6 +2,7 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import StockhooDemo from '../components/interactive/StockhooDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { BarChart3, Bot, Zap, Globe, Database, Smartphone, Activity, MessageSquare, TrendingUp } from 'lucide-react';
 
 export default function Stockhoo() {
     const { language } = useLanguage();
@@ -225,6 +226,60 @@ export default function Stockhoo() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            features={[
+                {
+                    icon: Activity,
+                    title: language === 'en' ? "Zone Heatmap" : "구역 히트맵",
+                    description: language === 'en' ? "Visual intensity of market activity in price zones." : "가격 구역 내 시장 활동의 시각적 강도."
+                },
+                {
+                    icon: Bot,
+                    title: language === 'en' ? "AI Trading Agent" : "AI 트레이딩 에이전트",
+                    description: language === 'en' ? "Autonomous agent executing strategies based on zone signals." : "구역 시그널에 기반하여 전략을 실행하는 자율 에이전트."
+                },
+                {
+                    icon: MessageSquare,
+                    title: language === 'en' ? "Social Sentiment" : "소셜 센티먼트",
+                    description: language === 'en' ? "Aggregated sentiment analysis from Crypto Twitter & Telegram." : "크립토 트위터 및 텔레그램의 집계된 센티먼트 분석."
+                },
+                {
+                    icon: TrendingUp,
+                    title: language === 'en' ? "Profit Proof" : "수익 증명",
+                    description: language === 'en' ? "On-chain verification of trader PnL and reputation." : "트레이더 손익 및 평판에 대한 온체인 검증."
+                },
+                {
+                    icon: Zap,
+                    title: language === 'en' ? "Instant Alerts" : "즉시 알림",
+                    description: language === 'en' ? "Real-time notifications for zone breakouts and volume spikes." : "구역 돌파 및 거래량 급증에 대한 실시간 알림."
+                },
+                {
+                    icon: Database,
+                    title: language === 'en' ? "Data Aggregation" : "데이터 집계",
+                    description: language === 'en' ? "Unified view of CEX, DEX, and On-chain data." : "CEX, DEX, 온체인 데이터의 통합 뷰."
+                }
+            ]}
+            specs={[
+                {
+                    label: language === 'en' ? "Data Sources" : "데이터 소스",
+                    value: "Binance, Bybit, Coinbase, Uniswap, Twitter API"
+                },
+                {
+                    label: language === 'en' ? "AI Model" : "AI 모델",
+                    value: "Transformer-based Time-Series Forecasting"
+                },
+                {
+                    label: language === 'en' ? "Latency" : "지연 시간",
+                    value: "Real-time Streaming (< 500ms)"
+                },
+                {
+                    label: language === 'en' ? "Platforms" : "플랫폼",
+                    value: "Web, iOS, Android"
+                },
+                {
+                    label: language === 'en' ? "Security" : "보안",
+                    value: "Non-Custodial API Keys (IP Whitelisted)"
+                }
+            ]}
         />
     );
 }

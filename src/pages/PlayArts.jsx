@@ -2,6 +2,7 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import PlayArtsVisual from '../components/interactive/PlayArtsVisual';
 import { useLanguage } from '@/components/LanguageContext';
+import { Fingerprint, Network, Scale, Database, Code, Globe, Copyright, Share2, Coins } from 'lucide-react';
 
 export default function PlayArts() {
     const { language } = useLanguage();

@@ -2,6 +2,7 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import ElememetalDemo from '../components/interactive/ElememetalDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { Sword, Coins, Users, Cpu, Layers, Zap, Hexagon, Trophy, Box } from 'lucide-react';
 
 export default function Elememetal() {
     const { language } = useLanguage();
@@ -237,6 +238,60 @@ export default function Elememetal() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            features={[
+                {
+                    icon: Sword,
+                    title: language === 'en' ? "Skill-Based Combat" : "실력 기반 전투",
+                    description: language === 'en' ? "Deterministic mechanics. No RNG damage rolls." : "결정론적 메커니즘. 무작위 데미지 없음."
+                },
+                {
+                    icon: Coins,
+                    title: language === 'en' ? "Player Economy" : "플레이어 경제",
+                    description: language === 'en' ? "Craft, trade, and sell assets. 100% player ownership." : "자산 제작, 거래, 판매. 100% 플레이어 소유권."
+                },
+                {
+                    icon: Cpu,
+                    title: language === 'en' ? "AI Opponents" : "AI 상대",
+                    description: language === 'en' ? "Train against adaptive AI agents that learn your style." : "당신의 스타일을 학습하는 적응형 AI 에이전트와 훈련."
+                },
+                {
+                    icon: Hexagon,
+                    title: language === 'en' ? "Elemental Synergy" : "원소 시너지",
+                    description: language === 'en' ? "Deep strategic depth with elemental interactions." : "원소 상호작용을 통한 깊은 전략적 깊이."
+                },
+                {
+                    icon: Trophy,
+                    title: language === 'en' ? "Tournaments" : "토너먼트",
+                    description: language === 'en' ? "Regular esports events with high-stakes prize pools." : "높은 상금이 걸린 정기 e스포츠 이벤트."
+                },
+                {
+                    icon: Box,
+                    title: language === 'en' ? "Asset Interop" : "자산 상호운용성",
+                    description: language === 'en' ? "Use your assets across other supported games." : "다른 지원 게임에서 자산 사용 가능."
+                }
+            ]}
+            specs={[
+                {
+                    label: language === 'en' ? "Game Engine" : "게임 엔진",
+                    value: "Unity (WebGL / Mobile)"
+                },
+                {
+                    label: language === 'en' ? "Asset Standard" : "자산 표준",
+                    value: "ERC-1155 (Dynamic Metadata)"
+                },
+                {
+                    label: language === 'en' ? "Network" : "네트워크",
+                    value: "Deterministic Lockstep (Predictive Rollback)"
+                },
+                {
+                    label: language === 'en' ? "Matchmaking" : "매치메이킹",
+                    value: "Glicko-2 Rating System"
+                },
+                {
+                    label: language === 'en' ? "AI Integration" : "AI 통합",
+                    value: "Reinforcement Learning Agents (PPO)"
+                }
+            ]}
             partners={
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     {/* Selected By */}
