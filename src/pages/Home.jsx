@@ -4,6 +4,35 @@ import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { Network, Database } from 'lucide-react';
+
+const WhoWeAreRow = ({ text, index, containerRef }) => {
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+    
+    // Move from Right (positive x) to Left (negative x)
+    // Stagger speeds based on index
+    const x = useTransform(
+        scrollYProgress, 
+        [0, 1], 
+        [100 + (index * 50), -100 - (index * 50)]
+    );
+
+    return (
+        <motion.div 
+            style={{ x }}
+            className="flex items-center gap-4 md:gap-8 whitespace-nowrap"
+        >
+            <div className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-neutral-200 hover:text-white transition-colors">
+                {text}
+            </div>
+             {/* Repeat for continuous feel if needed, or just decoration */}
+             <div className="w-4 h-4 md:w-8 md:h-8 rounded-full border-2 border-neutral-700" />
+        </motion.div>
+    );
+};
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import SEO from '@/components/SEO';
@@ -233,6 +262,64 @@ export default function Home() {
 
     const t = content[language];
 
+    const techContent = {
+        en: {
+            title: "Core Infrastructure",
+            sub: "Proprietary technology stack for Full-Media AI Guardrails.",
+            pipeline: {
+                title: "6-Step Verification Pipeline",
+                steps: [
+                    { name: "Input Analysis", desc: "Multi-modal prompt injection detection" },
+                    { name: "AI Generation", desc: "Real-time content synthesis" },
+                    { name: "Media Guard", desc: "Sub-second visual/audio safety checks" },
+                    { name: "DAO Consensus", desc: "Community-driven edge case resolution" },
+                    { name: "On-Chain Proof", desc: "Immutable provenance anchor" },
+                    { name: "Game Asset", desc: "Engine-ready safe output" }
+                ]
+            },
+            depin: {
+                title: "DePIN GPU Mesh",
+                desc: "Decentralized Physical Infrastructure Network democratizing safety compute.",
+                features: [
+                    { icon: Network, title: "Heterogeneous Compute", desc: "Unifying GB200 to Consumer GPUs." },
+                    { icon: Cpu, title: "MIG Slicing", desc: "Optimized resource allocation via Multi-Instance GPU." },
+                    { icon: Database, title: "Distributed Training", desc: "Decentralized checkpointing for model evolution." }
+                ]
+            }
+        },
+        ko: {
+            title: "핵심 기술 인프라",
+            sub: "Full-Media AI Guardrails를 위한 독자적인 기술 스택.",
+            pipeline: {
+                title: "6단계 검증 파이프라인",
+                steps: [
+                    { name: "입력 분석", desc: "멀티모달 프롬프트 인젝션 탐지" },
+                    { name: "AI 생성", desc: "실시간 콘텐츠 합성" },
+                    { name: "Media Guard", desc: "초고속 시각/청각 안전성 검사" },
+                    { name: "DAO 합의", desc: "커뮤니티 기반 엣지 케이스 해결" },
+                    { name: "온체인 증명", desc: "불변의 출처 기록 (Provenance)" },
+                    { name: "게임 자산화", desc: "엔진 호환 안전 출력" }
+                ]
+            },
+            depin: {
+                title: "DePIN GPU 메쉬",
+                desc: "안전성 컴퓨팅 접근을 민주화하는 탈중앙화 물리 인프라 네트워크.",
+                features: [
+                    { icon: Network, title: "이기종 컴퓨팅", desc: "GB200부터 소비자용 GPU까지 단일 메쉬로 통합." },
+                    { icon: Cpu, title: "MIG 슬라이싱", desc: "Multi-Instance GPU 분할을 통한 최적화된 자원 배분." },
+                    { icon: Database, title: "분산 학습", desc: "견고한 모델 진화를 위한 탈중앙 체크포인트 저장." }
+                ]
+            }
+        }
+    };
+
+    const tech = techContent[language];
+
+    const whoWeAreRoles = {
+        en: ["ENGINEERS", "RESEARCHERS", "BUILDERS", "CONTRIBUTORS", "VISIONARIES"],
+        ko: ["엔지니어들", "연구원", "건축업자", "기여자", "개척자들"]
+    };
+
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
@@ -241,6 +328,7 @@ export default function Home() {
     };
 
     const [activeStage, setActiveStage] = useState(0);
+    const whoWeAreRef = useRef(null);
 
 
 
@@ -520,6 +608,99 @@ export default function Home() {
                             </span>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* NEW: TECHNOLOGY SPEC (Moved from Company) */}
+            <section className="py-24 px-6 md:px-12 bg-[#080808] border-b border-neutral-900">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <h2 className="text-3xl font-bold mb-4">{tech.title}</h2>
+                            <p className="text-neutral-500">{tech.sub}</p>
+                        </div>
+                        <div className="flex gap-2">
+                             <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                             <span className="text-xs font-mono text-neutral-400">LIVE SYSTEM</span>
+                        </div>
+                    </div>
+
+                    {/* Pipeline Visualization */}
+                    <div className="mb-24">
+                        <h3 className="text-lg font-mono text-indigo-400 mb-8 uppercase tracking-widest">{tech.pipeline.title}</h3>
+                        <div className="relative">
+                            <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-indigo-900/20 via-indigo-500/20 to-indigo-900/20 -translate-y-1/2 hidden md:block" />
+                            <div className="flex overflow-x-auto pb-4 gap-4 md:grid md:grid-cols-6 md:pb-0 snap-x no-scrollbar">
+                                {tech.pipeline.steps.map((step, i) => (
+                                    <div key={i} className="min-w-[150px] md:min-w-0 relative bg-[#111] p-4 rounded-xl border border-neutral-800 hover:border-indigo-500/50 transition-all group z-10 snap-center">
+                                        <div className="absolute -top-3 left-4 bg-[#080808] px-2 text-xs font-mono text-neutral-500 group-hover:text-indigo-400 transition-colors">
+                                            0{i+1}
+                                        </div>
+                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
+                                        <div className="text-xs text-neutral-500 leading-tight">{step.desc}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* DePIN Section */}
+                    <div className="bg-[#111] rounded-3xl p-8 md:p-12 border border-neutral-800">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h3 className="text-2xl font-bold mb-4">{tech.depin.title}</h3>
+                                <p className="text-neutral-400 leading-relaxed mb-8">
+                                    {tech.depin.desc}
+                                </p>
+                                <div className="space-y-6">
+                                    {tech.depin.features.map((feat, i) => (
+                                        <div key={i} className="flex gap-4 group">
+                                            <div className="w-10 h-10 rounded-lg bg-indigo-900/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
+                                                <feat.icon className="w-5 h-5" />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition-colors">{feat.title}</div>
+                                                <div className="text-xs text-neutral-500">{feat.desc}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            {/* Abstract Visual for DePIN */}
+                            <div className="bg-[#080808] rounded-2xl p-8 border border-neutral-800 flex items-center justify-center min-h-[300px]">
+                                <div className="grid grid-cols-2 gap-6 opacity-80">
+                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111]">
+                                        <Cpu className="w-8 h-8 text-indigo-500" />
+                                        <span className="text-[10px] font-mono text-neutral-500">GPU NODE</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111] translate-y-8">
+                                        <Layers className="w-8 h-8 text-indigo-500" />
+                                        <span className="text-[10px] font-mono text-neutral-500">VERIFIER</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111]">
+                                        <Database className="w-8 h-8 text-indigo-500" />
+                                        <span className="text-[10px] font-mono text-neutral-500">STORAGE</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-2 p-4 border border-white/10 rounded-xl bg-[#111] translate-y-8">
+                                        <Network className="w-8 h-8 text-indigo-500" />
+                                        <span className="text-[10px] font-mono text-neutral-500">MESH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* NEW: WHO WE ARE (Right to Left Animation) */}
+            <section ref={whoWeAreRef} className="py-32 bg-[#050505] border-b border-white/10 overflow-hidden">
+                <div className="px-6 md:px-12 mb-12 max-w-[1400px] mx-auto">
+                    <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">WHO WE ARE</div>
+                </div>
+                <div className="space-y-4 md:space-y-8">
+                    {whoWeAreRoles[language].map((role, i) => (
+                        <WhoWeAreRow key={i} text={role} index={i} containerRef={whoWeAreRef} />
+                    ))}
                 </div>
             </section>
 
