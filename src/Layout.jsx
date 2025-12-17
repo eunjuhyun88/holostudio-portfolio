@@ -25,8 +25,10 @@ export default function Layout({ children }) {
     }, [location]);
 
     const navLinks = [
-        { name: 'Milestones', path: '/#milestones', isAnchor: true },
-        { name: 'Team', path: '/#team', isAnchor: true },
+        { name: 'Company', path: '/', isAnchor: false },
+        { name: 'Products', path: '/#products', isAnchor: true },
+        { name: 'Proof', path: '/#proof', isAnchor: true },
+        { name: 'Research', path: '/#research', isAnchor: true },
         { name: 'Contact', path: '/Contact' },
     ];
 
@@ -118,10 +120,13 @@ export default function Layout({ children }) {
                         ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden md:block">
+                    {/* CTA Buttons */}
+                    <div className="hidden md:flex gap-3">
+                        <Button variant="ghost" className="text-neutral-300 hover:text-white hover:bg-white/10">
+                            Download Deck
+                        </Button>
                         <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 border border-indigo-500/20">
-                            Investment Inquiry
+                            Invest / Partner
                         </Button>
                     </div>
 
