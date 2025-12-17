@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Target, Zap, BarChart3, Users, Milestone, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Target, Zap, BarChart3, Users, Milestone, ChevronRight, ArrowLeft } from 'lucide-react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -131,6 +131,12 @@ export default function BusinessLayout({
                     {/* LEFT COLUMN - Sticky Sidebar (Reference: First Round / Fal style) */}
                     <aside className="lg:col-span-3 xl:col-span-3 relative">
                         <div className="lg:sticky lg:top-32 space-y-8">
+                            {/* Back Link */}
+                            <Link to="/" className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-2 text-sm font-medium group">
+                                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                                Back to Home
+                            </Link>
+
                             {/* Card */}
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
@@ -151,9 +157,9 @@ export default function BusinessLayout({
 
                                 <div className="space-y-6 pt-6 border-t border-white/5">
                                     {stats.slice(0, 3).map((stat, i) => (
-                                        <div key={i}>
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
-                                            <div className="text-lg font-mono font-medium">{stat.value}</div>
+                                        <div key={i} className="group/stat">
+                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1 group-hover/stat:text-white transition-colors">{stat.label}</div>
+                                            <div className={`text-lg font-mono font-medium ${s.accent}`}>{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>

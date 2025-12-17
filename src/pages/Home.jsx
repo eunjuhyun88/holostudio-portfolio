@@ -465,14 +465,14 @@ export default function Home() {
                         }, [isInView, idx]);
 
                         return (
-                            <div key={idx} ref={ref} className="h-screen w-full flex items-center justify-center md:justify-end px-6 md:px-24 pointer-events-none">
+                            <div key={idx} ref={ref} className="min-h-screen md:h-screen w-full flex items-center justify-center md:justify-end px-4 md:px-24 py-20 md:py-0 pointer-events-none">
                                 <motion.div 
-                                    initial={{ opacity: 0, x: 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5 }}
+                                    initial={{ opacity: 0, x: 50, y: 20 }}
+                                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
                                     className="max-w-md w-full pointer-events-auto"
                                 >
-                                    <div className={`bg-[#0A0A0A]/80 backdrop-blur-2xl border ${prod.borderColor} p-8 rounded-3xl shadow-2xl relative overflow-hidden group`}>
+                                    <div className={`bg-[#0A0A0A]/90 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
@@ -488,14 +488,14 @@ export default function Home() {
                                                 {prod.name}
                                             </h3>
                                             
-                                            <p className="text-neutral-300 leading-relaxed mb-8 text-base">
+                                            <p className="text-neutral-300 leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none">
                                                 {prod.desc[language]}
                                             </p>
 
                                             {/* Features Blocks */}
-                                            <div className="grid grid-cols-1 gap-2 mb-8">
+                                            <div className="grid grid-cols-1 gap-2 mb-6 md:mb-8">
                                                 {prod.features[language].map((feat, i) => (
-                                                    <div key={i} className={`bg-black/40 px-4 py-3 rounded-xl text-sm font-medium text-neutral-200 border border-white/5 flex items-center gap-3 hover:border-${prod.color.split('-')[1]}-500/30 transition-colors`}>
+                                                    <div key={i} className={`bg-black/40 px-3 py-2 md:px-4 md:py-3 rounded-xl text-xs md:text-sm font-medium text-neutral-200 border border-white/5 flex items-center gap-3 hover:border-white/20 transition-colors`}>
                                                         <div className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_8px_currentColor]`} />
                                                         {feat}
                                                     </div>
