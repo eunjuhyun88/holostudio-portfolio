@@ -359,37 +359,50 @@ export default function BusinessLayout({
                         </ColorSection>
                           </div>
 
-                        {/* 2. Problem & Solution */}
+                        {/* 2. Problem & Solution - Optimized for Mobile Horizontal Scroll */}
                         <div id="challenge">
                         <ColorSection onInView={() => setActiveSection(1)}>
                             <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+                                {/* Problem Section */}
                                 <div>
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         THE CHALLENGE
                                     </span>
                                     <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Why this matters now</h3>
-                                    <div className="space-y-8 md:space-y-12">
+                                    
+                                    {/* Desktop: Vertical Stack, Mobile: Horizontal Scroll */}
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {problemPoints.map((p, i) => (
-                                            <div key={i} className="group">
-                                                <h4 className={`text-lg md:text-xl font-bold mb-2 ${textPrimary}`}>{p.title}</h4>
-                                                <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{p.description}</p>
+                                            <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center group md:mb-12 last:mr-4 md:last:mr-0">
+                                                <div className="md:hidden p-6 rounded-2xl bg-white/5 border border-white/10 h-full">
+                                                    <h4 className={`text-lg md:text-xl font-bold mb-3 ${textPrimary}`}>{p.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-sm md:text-lg`}>{p.description}</p>
+                                                </div>
+                                                <div className="hidden md:block">
+                                                    <h4 className={`text-lg md:text-xl font-bold mb-2 ${textPrimary}`}>{p.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{p.description}</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
+
+                                {/* Solution Section */}
                                 <div className="pt-0 md:pt-32">
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         OUR SOLUTION
                                     </span>
                                     <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">How we solve it</h3>
-                                    <div className="space-y-4 md:space-y-6">
+                                    
+                                    {/* Desktop: Vertical Stack, Mobile: Horizontal Scroll */}
+                                    <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {solutionSteps.map((step, i) => (
-                                            <div key={i} className={`flex gap-4 md:gap-6 p-5 md:p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm`}>
-                                                <div className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm bg-black border border-white/20 text-white`}>
+                                            <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-4 md:gap-6 p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm h-full md:h-auto`}>
+                                                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-black border border-white/20 text-white mb-2 md:mb-0`}>
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold mb-1 md:mb-2 text-base md:text-lg">{step.title}</h4>
+                                                    <h4 className="font-bold mb-2 text-lg">{step.title}</h4>
                                                     <p className={`${textSecondary} leading-relaxed text-sm md:text-base`}>{step.description}</p>
                                                 </div>
                                             </div>
