@@ -228,55 +228,53 @@ export default function Company() {
     const content = {
         en: {
             intro: {
-                episode: "Episode I",
-                title: "The Trust Layer",
-                subtitle: "FROM GAMING ARCHITECTS TO AI TRUST BUILDERS",
+                episode: "The Origin",
+                title: "From gaming infrastructure to AI trust systems.",
+                subtitle: "We didn’t arrive here by chance.",
                 text: [
-                    "Long before AI flooded the galaxy with infinite creation, there were builders shaping virtual worlds at scale. We did not arrive here by accident.",
-                    "For over a decade, we were architects inside the largest digital universes—EA, Netmarble, Smilegate—designing economies, simulations, and infrastructure that served millions in real time.",
-                    "In those worlds, we learned a fundamental truth: digital assets must feel as real as physical ones, or the system collapses."
+                    "We’ve been building the foundations for this era for over a decade."
                 ]
             },
             chapters: [
                 {
                     year: "2014 – 2020",
-                    headline: "THE GAMING ERA",
-                    content: "Before “Metaverse” and “Web3” entered the public lexicon, we were already operating massive multiplayer systems—balancing virtual economies, securing high-concurrency environments, and enforcing rules where value had to be earned, not imagined. Games taught us something critical: simulation without rules becomes chaos. Value without enforcement dissolves."
+                    headline: "The Gaming Years",
+                    content: "Before AI and Web3 became mainstream, we were designing large-scale virtual worlds at EA, Netmarble, and Smilegate. Millions of users. High-concurrency systems. Economies where digital assets had to behave like real ones. That’s where we learned: without rules, value doesn’t hold."
                 },
                 {
                     year: "2021 – 2023",
-                    headline: "THE CONVERGENCE",
-                    content: "Then, two forces collided. AI taught the world how to simulate intelligence. Crypto taught the world how to settle truth. We recognized the missing bridge. Gaming gave us simulation. Blockchain gave us settlement. What was missing was trust for generative assets. So we began building the infrastructure to connect these worlds—solving what became the oracle problem for AI-generated content: How does something created infinitely become verifiable finitely?"
+                    headline: "Simulation meets settlement",
+                    content: "Gaming taught us simulation. Crypto taught us settlement. We saw what was missing: a way to make generative assets verifiable, attributable, and accountable. So we started building the connective infrastructure."
                 },
                 {
                     year: "2024",
-                    headline: "THE COLLAPSE OF TRUST",
-                    content: "Generative AI exploded. Creation became effortless. And trust collapsed. Attribution broke. Accountability faded. Value leaked across platforms without origin or credit. The galaxy was flooded with content—but no system to distinguish signal from noise, human from machine, truth from fabrication. So we pivoted. We focused everything we had learned—from adversarial systems, economic design, and large-scale infrastructure—into one mission: to build the trust layer for the age of infinite creation. That system became HoloStudio."
+                    headline: "Creation scaled. Trust didn’t.",
+                    content: "Generative AI reduced the cost of creation to near zero. But attribution broke. Verification lagged. Value leaked across platforms. The problem wasn’t creativity. It was credibility."
                 },
                 {
-                    year: "INFRASTRUCTURE",
-                    headline: "BUILDING THE TRUST LAYER",
-                    content: "HoloStudio treats content not as static files, but as living events: Creation. Verification. Propagation. Settlement. Stories move. Value flows. And every contribution must be attributable. We build the infrastructure where provenance is native, credit is programmable, and trust is enforced by systems—not promises."
+                    year: "OUR FOCUS",
+                    headline: "The Trust Layer",
+                    content: "We build the trust layer for AI-native media. HoloStudio turns content into traceable events: creation, verification, propagation, settlement. Not files. Not posts. Systems."
                 },
                 {
                     year: "2025 & Beyond",
-                    headline: "THE AUTONOMOUS AGE",
-                    content: "The next era will not be run by applications. It will be run by autonomous agents. Agents that create. Agents that trade. Agents that interact without supervision. We are building the operating system where this is possible—a world where “Made by Human” and “Verified AI” coexist on a trustless settlement layer. Because the scarce resource is no longer creativity. It is credibility."
+                    headline: "Forward",
+                    content: "As autonomous agents begin to create, trade, and interact, trust can’t be optional or manual. We’re building the infrastructure that allows AI and humans to coexist, create, and exchange value—safely."
                 }
             ],
             thesis: [
                 {
-                    headline: "A CHOICE FOR THE FUTURE",
-                    content: "The future is not neutral. It is a choice between chaos and credibility. Between infinite generation and finite trust."
+                    headline: "The Structure",
+                    content: "One coherent system, not disconnected tools. Trust enables distribution. Distribution creates value. From adversarial defense to economic settlement, every layer is designed to work together."
                 },
                 {
-                    headline: "A UNIFIED SYSTEM",
-                    content: "We do not build disconnected products. We build a single coherent system—where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
+                    headline: "The scarce resource is no longer creativity.",
+                    content: "It’s credibility."
                 }
             ],
             identity: {
                  headline: "WHO WE ARE",
-                 content: "We are not new to this galaxy. For over a decade, we have built infrastructure that served millions. Now, we are converging that experience into one purpose: to build the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+                 content: "We build trust and attribution for AI-native media. Infrastructure for a world of infinite creation."
             },
             founders: [
                 {
