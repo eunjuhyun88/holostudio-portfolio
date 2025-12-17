@@ -228,24 +228,26 @@ export default function BusinessLayout({
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className={`rounded-xl p-6 bg-[#0A0A0A] border border-white/10 shadow-2xl relative overflow-hidden text-white`}
+                                className={`rounded-3xl p-8 bg-white/[0.02] backdrop-blur-2xl border border-white/10 shadow-2xl relative overflow-hidden text-white`}
                             >
-                                <div className="mb-8">
-                                    <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-black mb-6 shadow-lg">
-                                        <div className="font-bold text-2xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
+                                {/* Glow Effect */}
+                                <div className={`absolute top-0 right-0 w-64 h-64 ${s.accentBg} opacity-10 blur-[80px] -translate-y-1/2 translate-x-1/2`} />
+
+                                <div className="relative z-10 mb-10">
+                                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-white to-neutral-400 flex items-center justify-center text-black mb-6 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+                                        <div className="font-bold text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <h1 className="text-2xl font-bold tracking-tighter mb-1">{name}</h1>
+                                    <h1 className="text-3xl font-bold tracking-tighter mb-2">{name}</h1>
+                                    <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide bg-white/5 border border-white/10 ${s.accent}`}>
+                                        {tag}
+                                    </div>
                                 </div>
 
-                                <div className="space-y-6 pt-6 border-t border-white/10">
-                                    <div>
-                                        <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">Category</div>
-                                        <div className="text-sm font-medium text-white">{tag}</div>
-                                    </div>
+                                <div className="relative z-10 space-y-8 pt-8 border-t border-white/10">
                                     {stats.map((stat, i) => (
-                                        <div key={i}>
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
-                                            <div className="text-sm font-medium text-white">{stat.value}</div>
+                                        <div key={i} className="group">
+                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
+                                            <div className="text-lg font-mono font-medium text-white group-hover:text-white transition-colors">{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -294,7 +296,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8 md:mb-12 max-w-4xl"
+                                className={`text-5xl md:text-7xl lg:text-8xl font-bold leading-[1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
                             >
                                 {oneLiner}
                             </motion.h2>
@@ -304,7 +306,7 @@ export default function BusinessLayout({
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className={`text-lg md:text-xl leading-relaxed max-w-3xl mb-16 ${textSecondary}`}
+                                    className={`text-lg md:text-2xl leading-relaxed max-w-3xl mb-16 ${textSecondary} font-light`}
                                 >
                                     {story}
                                 </motion.div>
@@ -375,12 +377,17 @@ export default function BusinessLayout({
                                         <h3 className="text-3xl font-bold mb-8">Capabilities</h3>
                                         <div className="grid md:grid-cols-3 gap-6">
                                             {features.map((feature, i) => (
-                                                <div key={i} className={`p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm group`}>
-                                                    <div className={`w-12 h-12 rounded-xl ${s.accentBg} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                                                        {feature.icon && <feature.icon className={`w-6 h-6 ${s.accent}`} />}
+                                                <div key={i} className={`relative p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden`}>
+                                                    <div className={`absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500`}>
+                                                        <div className={`w-32 h-32 rounded-full ${s.accentBg} blur-[60px]`} />
                                                     </div>
-                                                    <h4 className={`text-lg font-bold mb-2 ${textPrimary}`}>{feature.title}</h4>
-                                                    <p className={`text-sm ${textSecondary} leading-relaxed`}>{feature.description}</p>
+
+                                                    <div className={`relative z-10 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-white/20 transition-all duration-500`}>
+                                                        {feature.icon && <feature.icon className={`w-7 h-7 ${s.accent}`} />}
+                                                    </div>
+
+                                                    <h4 className={`relative z-10 text-xl font-bold mb-3 ${textPrimary} tracking-tight`}>{feature.title}</h4>
+                                                    <p className={`relative z-10 text-base ${textSecondary} leading-relaxed`}>{feature.description}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -395,22 +402,19 @@ export default function BusinessLayout({
                             <div className="grid md:grid-cols-2 gap-12 md:gap-24">
                                 {/* Problem Section */}
                                 <div>
-                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
-                                        THE CHALLENGE
-                                    </span>
-                                    <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Why this matters now</h3>
+                                    <div className="mb-10">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
+                                            THE CHALLENGE
+                                        </span>
+                                        <h3 className="text-3xl md:text-4xl font-bold mb-2">Why this matters now</h3>
+                                    </div>
                                     
-                                    {/* Desktop: Vertical Stack, Mobile: Horizontal Scroll */}
-                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar space-y-0 md:space-y-12">
                                         {problemPoints.map((p, i) => (
-                                            <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center group md:mb-12 last:mr-4 md:last:mr-0">
-                                                <div className="md:hidden p-6 rounded-2xl bg-white/5 border border-white/10 h-full">
-                                                    <h4 className={`text-lg md:text-xl font-bold mb-3 ${textPrimary}`}>{p.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-sm md:text-lg`}>{p.description}</p>
-                                                </div>
-                                                <div className="hidden md:block">
-                                                    <h4 className={`text-lg md:text-xl font-bold mb-2 ${textPrimary}`}>{p.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{p.description}</p>
+                                            <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                                                <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
+                                                    <h4 className={`text-xl font-bold mb-4 ${textPrimary}`}>{p.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-lg`}>{p.description}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -419,21 +423,22 @@ export default function BusinessLayout({
 
                                 {/* Solution Section */}
                                 <div className="pt-0 md:pt-32">
-                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
-                                        OUR SOLUTION
-                                    </span>
-                                    <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">How we solve it</h3>
+                                    <div className="mb-10">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
+                                            OUR SOLUTION
+                                        </span>
+                                        <h3 className="text-3xl md:text-4xl font-bold mb-2">How we solve it</h3>
+                                    </div>
                                     
-                                    {/* Desktop: Vertical Stack, Mobile: Horizontal Scroll */}
                                     <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {solutionSteps.map((step, i) => (
-                                            <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-4 md:gap-6 p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm h-full md:h-auto`}>
-                                                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-black border border-white/20 text-white mb-2 md:mb-0`}>
+                                            <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl backdrop-blur-xl h-full md:h-auto group`}>
+                                                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm bg-gradient-to-br from-white/10 to-transparent border border-white/10 text-white group-hover:scale-110 transition-transform`}>
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold mb-2 text-lg">{step.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-sm md:text-base`}>{step.description}</p>
+                                                    <h4 className="font-bold mb-3 text-xl">{step.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{step.description}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -452,14 +457,14 @@ export default function BusinessLayout({
                                             SPECIFICATIONS
                                         </span>
                                         <h3 className="text-3xl font-bold mb-8">Technical Breakdown</h3>
-                                        <div className={`rounded-3xl ${border} ${bgCard} overflow-hidden`}>
+                                        <div className={`grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10`}>
                                             {specs.map((spec, i) => (
-                                                <div key={i} className={`flex flex-col md:flex-row p-6 md:p-8 border-b ${border} last:border-0 hover:bg-white/5 transition-colors`}>
-                                                    <div className="md:w-1/3 mb-2 md:mb-0">
-                                                        <h4 className={`text-lg font-bold ${textPrimary}`}>{spec.label}</h4>
+                                                <div key={i} className={`p-8 bg-[#0A0A0A] hover:bg-[#111] transition-colors group`}>
+                                                    <div className={`text-xs font-mono uppercase tracking-widest ${textMuted} mb-3 group-hover:${s.accent} transition-colors`}>
+                                                        {spec.label}
                                                     </div>
-                                                    <div className="md:w-2/3">
-                                                        <p className={`${textSecondary} font-mono text-sm leading-relaxed`}>{spec.value}</p>
+                                                    <div className={`text-lg font-medium ${textPrimary} font-mono`}>
+                                                        {spec.value}
                                                     </div>
                                                 </div>
                                             ))}
