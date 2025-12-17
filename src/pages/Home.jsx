@@ -952,41 +952,64 @@ export default function Home() {
 
                     {/* Partners & Backers */}
                     <div className="border-t border-neutral-800 pt-16">
-                        <p className="text-center text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-12">Selected & Backed By</p>
-                        
-                        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-12 md:gap-x-20 opacity-60 hover:opacity-100 transition-opacity duration-500">
-                             {/* NVIDIA */}
-                            <div className="flex items-center gap-3 group cursor-default">
-                                <div className="text-2xl font-bold text-white group-hover:text-[#76B900] transition-colors">NVIDIA</div>
-                                <div className="h-8 w-px bg-neutral-700" />
-                                <div className="text-xs font-bold text-neutral-400 leading-tight">Inception<br/>Program</div>
-                            </div>
-                            
-                            {/* Google Cloud */}
-                            <div className="flex items-center gap-3 group cursor-default">
-                                <div className="text-xl font-bold text-white">Google Cloud</div>
-                                <div className="text-xs text-neutral-500 border border-neutral-700 px-2 py-0.5 rounded-full">Partner</div>
-                            </div>
-
-                            {/* Alchemy */}
-                            <div className="flex items-center gap-2 cursor-default">
-                                <span className="text-2xl font-bold text-blue-500">Alchemy</span>
-                            </div>
-
-                            {/* Story */}
-                            <div className="flex items-center gap-2 cursor-default">
-                                <span className="text-2xl font-black italic text-white">STORY</span>
+                        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
+                            {/* Selected By */}
+                            <div>
+                                <p className="text-center md:text-left text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-8">Selected By</p>
+                                <div className="flex flex-wrap justify-center md:justify-start items-center gap-8">
+                                    {/* NVIDIA */}
+                                    <div className="flex items-center gap-3 group cursor-default bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
+                                        <div className="text-xl font-bold text-white group-hover:text-[#76B900] transition-colors">NVIDIA</div>
+                                        <div className="h-6 w-px bg-white/20" />
+                                        <div className="text-[10px] font-bold text-neutral-400 leading-tight">Inception<br/>Program</div>
+                                    </div>
+                                    
+                                    {/* Google Cloud */}
+                                    <div className="flex items-center gap-3 group cursor-default bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
+                                        <div className="text-xl font-bold text-white">Google Cloud</div>
+                                        <div className="text-[10px] text-neutral-400 border border-neutral-600 px-1.5 py-0.5 rounded-full">Partner</div>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* AppWorks */}
-                            <div className="flex items-center gap-2 cursor-default">
-                                <span className="text-xl font-bold text-[#FF6B00]">AppWorks</span>
-                            </div>
+                            {/* Backed By */}
+                            <div>
+                                <p className="text-center md:text-left text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-8">Backed By</p>
+                                <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-8 gap-y-8 opacity-80 hover:opacity-100 transition-opacity">
+                                    {/* Arbitrum */}
+                                    <div className="flex items-center gap-2" title="Arbitrum">
+                                        <div className="w-8 h-8 rounded-full bg-[#2D374B] flex items-center justify-center border border-white/10">
+                                            <div className="w-4 h-4 bg-[#12AAFF] transform rotate-45" />
+                                        </div>
+                                        <span className="font-bold text-lg text-neutral-300">Arbitrum</span>
+                                    </div>
 
-                             {/* OnePiece */}
-                             <div className="flex items-center gap-2 cursor-default">
-                                <span className="text-xl font-bold text-white">OnePiece</span>
-                                <span className="text-xs text-neutral-500">Labs</span>
+                                    {/* Alchemy */}
+                                    <div className="font-bold text-xl text-blue-500">alchemy</div>
+
+                                    {/* OnePiece Labs */}
+                                    <div className="flex items-center gap-1">
+                                        <span className="font-bold text-xl text-white">onepiece</span>
+                                        <span className="text-xs text-neutral-500 font-mono">labs</span>
+                                    </div>
+
+                                    {/* Seedify */}
+                                    <div className="bg-white/5 px-3 py-1 rounded text-sm font-bold text-white border border-white/10">
+                                        SEEDIFY
+                                    </div>
+
+                                    {/* AppWorks */}
+                                    <div className="font-bold text-xl text-[#FF6B00]">AppWorks</div>
+
+                                    {/* Story */}
+                                    <div className="font-black italic text-xl text-white">STORY</div>
+
+                                    {/* OKX Hackathon */}
+                                    <div className="flex flex-col leading-none">
+                                        <span className="text-[10px] text-neutral-500 uppercase">Winner</span>
+                                        <span className="font-bold text-white">OKX Hackathon</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

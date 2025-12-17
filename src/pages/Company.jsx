@@ -176,7 +176,7 @@ const StickyThesisItem = ({ item, index, total }) => {
 const TeamIdentity = () => (
     <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
         <div className="mb-8 md:mb-16">
-            <div className="w-8 h-8 bg-[#9bf00b] mb-8" />
+            <div className="w-8 h-8 bg-[#4F6F52] mb-8" />
             <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
         </div>
 
@@ -187,7 +187,8 @@ const TeamIdentity = () => (
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                <span className="text-[#9bf00b]">Engineers</span>
+                {/* Matching Green Palette */}
+                <span className="text-[#4F6F52]">Engineers</span>
             </motion.div>
 
             <motion.div 
@@ -197,6 +198,7 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="pl-[1em]"
             >
+                {/* Matching Light/White Palette */}
                 <span className="text-white">Researchers</span>
             </motion.div>
 
@@ -207,7 +209,8 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="pl-[0.5em]"
             >
-                <span className="text-[#3b82f6]">Builders</span>
+                {/* Matching Blue Palette */}
+                <span className="text-[#576CBC]">Builders</span>
             </motion.div>
 
             <motion.div 
@@ -217,7 +220,8 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="pl-[2em]"
             >
-                <span className="text-[#ff69b4]">Veterans</span>
+                {/* Matching Purple Palette */}
+                <span className="text-[#A91D3A]">Veterans</span>
             </motion.div>
         </div>
 
