@@ -294,14 +294,57 @@ export default function Company() {
                                             <div className="text-[10px] text-neutral-400 font-mono">STORAGE LAYER</div>
                                         </motion.div>
                                     </div>
-                                    {/* Connecting Lines (CSS) */}
-                                    <div className="absolute inset-0 pointer-events-none">
-                                        <svg className="w-full h-full opacity-20">
-                                            <line x1="25%" y1="25%" x2="75%" y2="75%" stroke="white" strokeWidth="1" />
-                                            <line x1="75%" y1="25%" x2="25%" y2="75%" stroke="white" strokeWidth="1" />
-                                            <circle cx="50%" cy="50%" r="40" fill="#050505" stroke="currentColor" className="text-indigo-500" />
+                                    {/* Connecting Lines (Animated) */}
+                                    <div className="absolute inset-0 pointer-events-none z-0">
+                                        <svg className="w-full h-full">
+                                            <defs>
+                                                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stopColor="#6366f1" stopOpacity="0" />
+                                                    <stop offset="50%" stopColor="#6366f1" stopOpacity="1" />
+                                                    <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                                                </linearGradient>
+                                            </defs>
+                                            
+                                            {/* Static Base Lines */}
+                                            <line x1="25%" y1="25%" x2="75%" y2="75%" stroke="#333" strokeWidth="1" />
+                                            <line x1="75%" y1="25%" x2="25%" y2="75%" stroke="#333" strokeWidth="1" />
+                                            <line x1="25%" y1="25%" x2="75%" y2="25%" stroke="#333" strokeWidth="1" opacity="0.3" />
+                                            <line x1="25%" y1="75%" x2="75%" y2="75%" stroke="#333" strokeWidth="1" opacity="0.3" />
+                                            <line x1="25%" y1="25%" x2="25%" y2="75%" stroke="#333" strokeWidth="1" opacity="0.3" />
+                                            <line x1="75%" y1="25%" x2="75%" y2="75%" stroke="#333" strokeWidth="1" opacity="0.3" />
+
+                                            {/* Animated Data Flows */}
+                                            <motion.line 
+                                                x1="25%" y1="25%" x2="75%" y2="75%" 
+                                                stroke="url(#lineGrad)" 
+                                                strokeWidth="2" 
+                                                strokeLinecap="round"
+                                                strokeDasharray="100 200"
+                                                animate={{ strokeDashoffset: [300, 0] }}
+                                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                            />
+                                            <motion.line 
+                                                x1="75%" y1="25%" x2="25%" y2="75%" 
+                                                stroke="url(#lineGrad)" 
+                                                strokeWidth="2" 
+                                                strokeLinecap="round"
+                                                strokeDasharray="100 200"
+                                                animate={{ strokeDashoffset: [300, 0] }}
+                                                transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
+                                            />
+                                            
+                                            {/* Central Hub */}
+                                            <motion.circle 
+                                                cx="50%" cy="50%" r="35" 
+                                                fill="#050505" 
+                                                stroke="#6366f1" 
+                                                strokeWidth="1"
+                                                initial={{ opacity: 0.8, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1, strokeWidth: 2 }}
+                                                transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
+                                            />
                                         </svg>
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] font-bold text-indigo-500 bg-[#050505] px-2 py-1 rounded">
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] font-bold text-indigo-500 z-10 bg-[#050505] px-2 py-1 rounded border border-indigo-500/30">
                                             MESH
                                         </div>
                                     </div>
