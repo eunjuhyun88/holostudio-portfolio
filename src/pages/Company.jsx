@@ -461,14 +461,14 @@ export default function Company() {
 
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0 opacity-80">
                     <CosmicBackground />
                 </div>
-                <div className="absolute inset-0 opacity-90">
+                <div className="absolute inset-0 opacity-30">
                     <Background3D />
                 </div>
                 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
 
                  {/* Retain the spinning rings for the tech feel later in scroll */}
                  <motion.div
