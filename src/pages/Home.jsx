@@ -597,9 +597,10 @@ export default function Home() {
                         
                         <div className="relative">
                             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
-                            <div className="grid grid-cols-2 md:grid-cols-6 gap-4 relative z-10">
+                            {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                            <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="bg-[#0A0A0A] p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group">
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-[#0A0A0A] p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group">
                                         <div className="text-xs font-mono text-indigo-500 mb-3">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
                                         <div className="text-xs text-neutral-500 leading-relaxed">{step.desc}</div>
