@@ -52,26 +52,26 @@ const Word = ({ children, progress, range }) => {
     );
 };
 
-// Chapter Component - Consensys Style (Large, Bold, Sticky feel)
+// Chapter Component - Improved for Responsiveness
 const Chapter = ({ headline, content, index, onActive, isLast }) => {
     return (
         <div className={`min-h-screen flex flex-col justify-center px-6 md:px-12 py-24 ${isLast ? 'pb-40' : ''} border-l border-white/10 md:border-l-0 ml-4 md:ml-0`}>
             <motion.div 
-                className="max-w-6xl"
+                className="max-w-6xl w-full"
                 onViewportEnter={() => onActive(index)}
                 viewport={{ margin: "-40% 0px -40% 0px" }}
             >
                 {/* Decorative Line (Consensys style) */}
-                <div className="w-12 h-1 bg-white mb-12 hidden md:block" />
+                <div className="w-12 h-1 bg-white mb-8 md:mb-12 hidden md:block" />
 
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight whitespace-pre-line text-white">
+                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-8 md:mb-12 leading-[1.2] md:leading-[1.1] tracking-tight whitespace-normal md:whitespace-pre-line text-white">
                     <ScrollRevealText>
                         {headline}
                     </ScrollRevealText>
                 </h2>
 
                 {content && (
-                     <div className="text-xl md:text-3xl text-neutral-400 leading-relaxed font-light max-w-4xl">
+                     <div className="text-lg md:text-2xl lg:text-3xl text-neutral-400 leading-relaxed font-light max-w-4xl whitespace-normal md:whitespace-pre-line">
                         <ScrollRevealText>
                             {content}
                         </ScrollRevealText>
@@ -84,22 +84,22 @@ const Chapter = ({ headline, content, index, onActive, isLast }) => {
 
 // Team Identity Component (Engineers, Researchers, Builders)
 const TeamIdentity = () => (
-    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto">
+    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
         <div className="mb-8 md:mb-16">
             <div className="w-8 h-8 bg-white mb-8" />
             <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
         </div>
         
-        <div className="text-[12vw] md:text-[8vw] leading-[0.9] font-bold tracking-tighter text-white">
+        <div className="text-[12vw] md:text-[8vw] leading-[0.9] font-bold tracking-tighter text-white select-none">
             <motion.div 
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="flex items-center gap-4 md:gap-8 mb-4 md:mb-0"
+                className="flex items-center gap-4 md:gap-8 mb-4 md:mb-0 flex-wrap"
             >
                 {/* Green Quarter Circle */}
-                <div className="w-[0.6em] h-[0.6em] bg-[#9bf00b] rounded-tl-full" />
+                <div className="w-[0.6em] h-[0.6em] bg-[#9bf00b] rounded-tl-full flex-shrink-0" />
                 <span>Engineers</span>
             </motion.div>
             
@@ -108,10 +108,10 @@ const TeamIdentity = () => (
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[1.5em] mb-4 md:mb-0"
+                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[1.5em] mb-4 md:mb-0 flex-wrap"
             >
                 {/* Pink Square Ring */}
-                <div className="w-[0.5em] h-[0.5em] border-[0.15em] border-[#ff69b4]" />
+                <div className="w-[0.5em] h-[0.5em] border-[0.15em] border-[#ff69b4] flex-shrink-0" />
                 <span>Researchers</span>
             </motion.div>
             
@@ -120,16 +120,16 @@ const TeamIdentity = () => (
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[3em]"
+                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[3em] flex-wrap"
             >
                 {/* Blue Circle */}
-                <div className="w-[0.5em] h-[0.5em] bg-[#1d4ed8] rounded-full" />
+                <div className="w-[0.5em] h-[0.5em] bg-[#1d4ed8] rounded-full flex-shrink-0" />
                 <span>Builders</span>
             </motion.div>
         </div>
 
         <div className="mt-16 md:mt-24 max-w-2xl ml-auto">
-            <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed">
+            <p className="text-lg md:text-2xl text-neutral-400 leading-relaxed">
                 We are a global team of technologists, cryptographers, and product thinkers working to shape a better internet through verifiable infrastructure.
             </p>
         </div>
@@ -139,16 +139,16 @@ const TeamIdentity = () => (
 // Venture Card - Sleek Dark Theme
 const VentureCard = ({ name, description, link, color }) => (
     <Link to={createPageUrl(link)} className="group block h-full">
-        <div className="relative bg-[#0A0A0A] border border-neutral-800 h-full p-8 md:p-12 transition-all duration-500 hover:border-neutral-600 hover:bg-neutral-900 overflow-hidden">
+        <div className="relative bg-[#0A0A0A] border border-neutral-800 h-full p-8 md:p-12 transition-all duration-500 hover:border-neutral-600 hover:bg-neutral-900 overflow-hidden flex flex-col rounded-3xl">
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
             
-            <div className="flex justify-between items-start mb-12">
-                <h3 className="text-3xl font-bold text-white">{name}</h3>
+            <div className="flex justify-between items-start mb-8 md:mb-12">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">{name}</h3>
                 <ArrowUpRight className="w-6 h-6 text-neutral-600 group-hover:text-white transition-colors duration-300" />
             </div>
             
             <div className="mt-auto">
-                <p className="text-lg text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors duration-300">
+                <p className="text-base md:text-lg text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors duration-300">
                     {description}
                 </p>
             </div>
@@ -161,21 +161,20 @@ export default function Company() {
     const { language } = useLanguage();
     const [activeIndex, setActiveIndex] = React.useState(0);
     
-    // Visual State Management
+    // Visual State Management - Updated indices for new chapter count (11 chapters)
     const visualState = useMemo(() => {
         return {
-            showNoise: [2, 3].includes(activeIndex),
-            showGuardRail: [8, 9].includes(activeIndex),
+            showNoise: [1, 2, 3].includes(activeIndex),
+            showGuardRail: [4, 5].includes(activeIndex),
             showLines: [3].includes(activeIndex),
-            showRouting: [7].includes(activeIndex),
-            showVerification: [5, 6].includes(activeIndex),
-            darker: [0, 11].includes(activeIndex),
+            showRouting: [9].includes(activeIndex),
+            showVerification: [6, 7].includes(activeIndex),
+            darker: [0, 10].includes(activeIndex),
         };
     }, [activeIndex]);
 
     const content = {
         en: {
-            // Mapping the user's new script to chapters
             chapters: [
                 {
                     headline: "We build what comes next\nfor generative media.",
@@ -186,11 +185,11 @@ export default function Company() {
                     content: "As media becomes faster, cheaper, and more abundant, we need to know: Who created this? How it changed? Where it spread? Who should benefit?\nHoloStudio exists to answer those questions at the infrastructure level."
                 },
                 {
-                    headline: "Everyone is becoming a media creator.",
-                    content: "Every brand, every community, every individual now speaks directly to the world. But direct communication introduces a new failure mode.\nStories move faster than systems can verify them."
+                    headline: "Everyone is becoming\na media creator.",
+                    content: "Every brand, every community, every individual now speaks directly to the world.\nBut direct communication introduces a new failure mode.\nStories move faster than systems can verify them."
                 },
                 {
-                    headline: "Attribution breaks. Accountability fades.\nValue leaks.",
+                    headline: "Attribution breaks.\nAccountability fades.\nValue leaks.",
                     content: "AI accelerates this collapse.\nHiring more storytellers does not fix the problem.\nProducing better content does not fix the problem.\nThe problem is structural."
                 },
                 {
@@ -199,7 +198,7 @@ export default function Company() {
                 },
                 {
                     headline: "Media should not disappear into feeds.\nIt should leave a trace.",
-                    content: "We treat content not as static files, but as living events that evolve over time.\nCreation, verification, propagation, contribution, settlement."
+                    content: "We treat content not as static files,\nbut as living events that evolve over time.\nCreation, verification, propagation, contribution, settlement."
                 },
                 {
                     headline: "Each step produces data.\nEach data point can be proven.\nEach proof can unlock value.",
@@ -207,15 +206,15 @@ export default function Company() {
                 },
                 {
                     headline: "We do not operate as a collection\nof disconnected products.",
-                    content: "We build a single coherent system, and express it through multiple execution layers.\nInfrastructure that anchors trust at the moment of creation.\nProtocols that track how narratives move and mutate.\nProducts that prove these systems work in real markets."
+                    content: "We build a single coherent system,\nand express it through multiple execution layers.\nInfrastructure that anchors trust at the moment of creation.\nProtocols that track how narratives move and mutate.\nProducts that prove these systems work in real markets."
                 },
                 {
-                    headline: "Trust enables distribution.\nDistribution creates value.\nValue sustains ecosystems.",
-                    content: "Everything we build is connected by the same logic.\nThis is the loop we design for."
+                    headline: "Everything we build is connected by the same logic.",
+                    content: "Trust enables distribution.\nDistribution creates value.\nValue sustains ecosystems.\nThis is the loop we design for."
                 },
                 {
-                    headline: "The future of media will be created with AI.\nWhether that future is chaotic or credible is a choice.",
-                    content: "HoloStudio is building the safeguards that allow generative media to scale without losing trust, authorship, or accountability."
+                    headline: "The future of media will be created with AI.",
+                    content: "Whether that future is chaotic or credible is a choice.\nHoloStudio is building the safeguards that allow generative media to scale\nwithout losing trust, authorship, or accountability."
                 },
                 {
                     headline: "We are still at the beginning.",
@@ -278,12 +277,12 @@ export default function Company() {
                     content: "우리는 하나의 일관된 시스템을 구축하고, 여러 실행 레이어로 표현합니다.\n생성 시점에 신뢰를 고정하는 인프라.\n서사가 이동하고 변이하는 과정을 추적하는 프로토콜.\n이 시스템이 실제 시장에서 작동함을 증명하는 제품들."
                 },
                 {
-                    headline: "신뢰는 확산을 가능하게 합니다.\n확산은 가치를 창출합니다.\n가치는 생태계를 지속시킵니다.",
-                    content: "우리가 만드는 모든 것은 이 논리로 연결됩니다.\n이것이 우리가 설계하는 루프(Loop)입니다."
+                    headline: "우리가 만드는 모든 것은\n같은 논리로 연결됩니다.",
+                    content: "신뢰는 확산을 가능하게 합니다.\n확산은 가치를 창출합니다.\n가치는 생태계를 지속시킵니다.\n이것이 우리가 설계하는 루프(Loop)입니다."
                 },
                 {
-                    headline: "미디어의 미래는 AI와 함께 만들어집니다.\n그 미래가 혼돈일지 신뢰일지는 선택입니다.",
-                    content: "HoloStudio는 신뢰, 저작권, 책임을 잃지 않으면서도 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다."
+                    headline: "미디어의 미래는 AI와 함께 만들어집니다.",
+                    content: "그 미래가 혼돈일지 신뢰일지는 선택입니다.\nHoloStudio는 신뢰, 저작권, 책임을 잃지 않으면서도 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다."
                 },
                 {
                     headline: "우리는 아직 시작점에 있습니다.",
@@ -374,11 +373,11 @@ export default function Company() {
                 <TeamIdentity />
 
                 {/* Ventures Section */}
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-40">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-40">
                     <div className="mb-12 border-b border-white/10 pb-4">
                          <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400">Our Products</h2>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8 h-[500px] md:h-[400px]">
+                    <div className="grid md:grid-cols-3 gap-6 md:gap-8 min-h-[500px] md:h-[400px]">
                         {c.ventures.map((venture, i) => (
                             <motion.div
                                 key={i}
@@ -396,10 +395,10 @@ export default function Company() {
                 
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to build the trust layer?</h2>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight">Ready to build the trust layer?</h2>
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105">
-                            Connect With Us <ArrowRight className="ml-2 w-6 h-6" />
+                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105">
+                            Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
                         </Button>
                     </Link>
                 </div>
