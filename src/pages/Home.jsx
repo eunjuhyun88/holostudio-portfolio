@@ -482,20 +482,21 @@ export default function Home() {
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
             <section className="py-12 border-y border-neutral-900 bg-[#080808]">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left mb-12">
-                        <div>
+                    {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
+                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
                             <div className="text-3xl font-bold text-white mb-1">{t.market.year.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
                         </div>
-                        <div>
+                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
                             <div className="text-3xl font-bold text-white mb-1">{t.market.eu.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.eu.label}</div>
                         </div>
-                        <div>
+                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
                             <div className="text-3xl font-bold text-white mb-1">{t.market.size.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.size.label}</div>
                         </div>
-                        <div>
+                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
                             <div className="text-3xl font-bold text-white mb-1">{t.market.gap.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
                         </div>
