@@ -98,6 +98,26 @@ const StoryNode = ({ year, headline, content, index }) => (
     </div>
 );
 
+// Thesis Section Component
+const ThesisItem = ({ headline, content }) => (
+    <div className="min-h-[50vh] flex flex-col justify-center py-16 border-l border-white/10 pl-8 md:pl-16 ml-4 md:ml-0">
+        <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ margin: "-20%", once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl"
+        >
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 text-white tracking-tight leading-tight">
+                {headline}
+            </h2>
+            <div className="text-lg md:text-xl lg:text-2xl text-neutral-400 font-light leading-relaxed max-w-4xl">
+                {content}
+            </div>
+        </motion.div>
+    </div>
+);
+
 // Team Identity Component - Inspired by Consensys style
 const TeamIdentity = () => (
     <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
@@ -230,6 +250,24 @@ export default function Company() {
                     content: "We are building the operating system where AI agents can trade, create, and interact securely. A world where 'Made by Human' and 'Verified AI' coexist on a trustless settlement layer."
                 }
             ],
+            thesis: [
+                {
+                    headline: "The scarce resource is no longer creativity—it is credibility.",
+                    content: "AI has radically lowered the cost of creation, but trust has collapsed. As everyone becomes a media creator, stories move faster than verification. Attribution breaks, accountability fades, and value leaks."
+                },
+                {
+                    headline: "Generative media lacks a native trust layer.",
+                    content: "We treat content not as static files, but as living events—Creation, Verification, Propagation, Settlement. HoloStudio builds the infrastructure where stories are verifiable and contribution is attributable."
+                },
+                {
+                    headline: "A unified infrastructure for the Autonomous Age.",
+                    content: "We do not build disconnected products. We build a single coherent system where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
+                },
+                {
+                    headline: "The future is a choice between chaos and credibility.",
+                    content: "We are building the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+                }
+            ],
             founders: [
                 {
                     name: "Steven Park",
@@ -272,6 +310,24 @@ export default function Company() {
                     year: "2025 & Beyond",
                     headline: "The OS for Autonomous Agents",
                     content: "우리는 AI 에이전트들이 안전하게 거래하고, 창작하고, 상호작용할 수 있는 운영 체제를 만듭니다. '인간의 창작'과 '검증된 AI'가 신뢰할 수 있는 정산 레이어 위에서 공존하는 세상을 만듭니다."
+                }
+            ],
+            thesis: [
+                {
+                    headline: "이제 희소한 자원은 창의성이 아니라, '신뢰성'입니다.",
+                    content: "AI는 창작의 비용을 획기적으로 낮췄지만, 신뢰를 무너뜨렸습니다. 모두가 크리에이터가 된 세상에서 이야기는 검증 속도보다 빠르게 확산됩니다. 출처는 끊기고, 책임은 희미해지며, 가치는 누수됩니다."
+                },
+                {
+                    headline: "생성형 미디어에는 '신뢰 레이어'가 필요합니다.",
+                    content: "우리는 콘텐츠를 정적인 파일이 아닌, 생성-검증-전파-정산으로 이어지는 '살아있는 이벤트'로 정의합니다. HoloStudio는 이야기가 검증 가능하고 기여가 투명하게 귀속되는 인프라를 만듭니다."
+                },
+                {
+                    headline: "자율 에이전트 시대를 위한 통합 인프라.",
+                    content: "우리는 분절된 제품이 아닌, 하나의 일관된 시스템을 만듭니다. 신뢰가 확산을 가능하게 하고, 확산이 가치를 창출하는 선순환 구조. 적대적 방어부터 경제적 정산까지 모든 레이어가 연결되어 있습니다."
+                },
+                {
+                    headline: "미래는 혼돈과 신뢰 사이의 선택입니다.",
+                    content: "우리는 인간성을 잃지 않으면서 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다. 다음 10년을 정의할 시스템, HoloStudio가 만듭니다."
                 }
             ],
             founders: [
@@ -353,6 +409,25 @@ export default function Company() {
                             headline={chapter.headline}
                             content={chapter.content}
                             index={i}
+                        />
+                    ))}
+                </div>
+
+                {/* Thesis / Vision Section */}
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-32">
+                    <div className="mb-20">
+                         <div className="w-8 h-8 bg-indigo-500 mb-8" />
+                         <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-400 mb-2">Our Vision</h2>
+                         <h3 className="text-4xl md:text-6xl font-bold text-white max-w-3xl leading-tight">
+                            {language === 'en' ? "Why we are building the Trust Layer." : "우리가 신뢰 레이어를 구축하는 이유."}
+                         </h3>
+                    </div>
+
+                    {c.thesis.map((item, i) => (
+                        <ThesisItem 
+                            key={i}
+                            headline={item.headline}
+                            content={item.content}
                         />
                     ))}
                 </div>
