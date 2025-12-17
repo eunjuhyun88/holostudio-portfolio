@@ -78,8 +78,10 @@ function LayoutContent({ children }) {
         <div className="min-h-screen bg-[#050505] font-sans text-white">
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
+                /* Default everything to lighter weight */
                 strong, b, .font-bold, .font-extrabold, .font-semibold, h1, h2, h3, h4, h5, h6 {
                     font-family: 'Rigid Display', sans-serif !important;
+                    font-weight: 500 !important; /* Force lighter weight as requested */
                 }
             `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">
@@ -345,10 +347,17 @@ function LayoutContent({ children }) {
     );
 }
 
+import LoadingScreen from '@/components/LoadingScreen';
+
 export default function Layout({ children }) {
+    const [loading, setLoading] = useState(true);
+
     return (
         <LanguageProvider>
-            <LayoutContent>{children}</LayoutContent>
+             <AnimatePresence>
+                {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+            </AnimatePresence>
+            {!loading && <LayoutContent>{children}</LayoutContent>}
         </LanguageProvider>
     );
 }
