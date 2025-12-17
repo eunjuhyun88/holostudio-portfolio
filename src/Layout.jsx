@@ -107,27 +107,37 @@ function LayoutContent({ children }) {
                         <div className="flex items-center px-2">
                             {navLinks[language].map((link) => (
                                 link.name === 'Products' || link.name === '프로덕트' ? (
-                                    <DropdownMenu key={link.name}>
-                                        <DropdownMenuTrigger asChild>
-                                            <button className={`px-5 py-2 font-medium text-sm transition-colors flex items-center gap-1 ${
-                                                isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
-                                            }`}>
-                                                {link.name} <ChevronDown className="w-3 h-3" />
-                                            </button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="w-48 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-lg mt-2">
-                                            {products.map((product) => (
-                                                <DropdownMenuItem key={product.name} asChild>
-                                                    <Link 
-                                                        to={createPageUrl(product.path.substring(1))}
-                                                        className="flex items-center w-full px-3 py-2 rounded-lg text-sm text-neutral-300 hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
-                                                    >
-                                                        {product.name}
-                                                    </Link>
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
+                                    <div key={link.name} className="flex items-center">
+                                        <Link 
+                                            to={createPageUrl('Products')}
+                                            className={`pl-5 pr-2 py-2 font-medium text-sm transition-colors ${
+                                                location.pathname === '/Products' || isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <button className={`pr-3 pl-1 py-2 font-medium text-sm transition-colors flex items-center ${
+                                                    isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                                }`}>
+                                                    <ChevronDown className="w-3 h-3" />
+                                                </button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent className="w-48 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-lg mt-2">
+                                                {products.map((product) => (
+                                                    <DropdownMenuItem key={product.name} asChild>
+                                                        <Link 
+                                                            to={createPageUrl(product.path.substring(1))}
+                                                            className="flex items-center w-full px-3 py-2 rounded-lg text-sm text-neutral-300 hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
+                                                        >
+                                                            {product.name}
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                ))}
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
                                 ) : link.isAnchor ? (
                                     <button 
                                         key={link.name}

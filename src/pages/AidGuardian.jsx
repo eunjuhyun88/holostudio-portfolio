@@ -1,19 +1,17 @@
 import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import AidGuardianDemo from '../components/interactive/AidGuardianDemo';
+import { useLanguage } from '@/components/LanguageContext';
 
 export default function AidGuardian() {
-    return (
-        <BusinessLayout 
-            name="AiD Guardian"
-            theme="aidguardian"
-            HeroComponent={AidGuardianDemo}
-            heroContainerClass="min-h-[1200px]"
-            showAnalytics={true}
-            tag="Enterprise Safety"
-            primaryButton={{ text: "Launch Dashboard", url: "http://221.148.221.12:7870" }}
-            oneLiner="Imagine if content safety was autonomous and instant."
-            story={
+    const { language } = useLanguage();
+
+    const content = {
+        en: {
+            tag: "Enterprise Safety",
+            primaryButtonText: "Launch Dashboard",
+            oneLiner: "Imagine if content safety was autonomous and instant.",
+            story: (
                 <>
                     <p className="mb-6">
                         Today, enterprises are paralyzed by the risks of generative AI. 
@@ -27,10 +25,8 @@ export default function AidGuardian() {
                         It's not just a filter; it's an intelligent compliance engine that adapts to your specific policy needs.
                     </p>
                 </>
-            }
-            heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
-            
-            problemPoints={[
+            ),
+            problemPoints: [
                 {
                     title: "The Compliance Gap",
                     description: "New regulations like the EU AI Act & DSA require strict transparency and auditability for AI content that current tools can't provide."
@@ -43,9 +39,8 @@ export default function AidGuardian() {
                     title: "Black Box Liability",
                     description: "Without explainable AI decisions, enterprises face legal risks when content is flagged or blocked without clear reasoning."
                 }
-            ]}
-
-            solutionSteps={[
+            ],
+            solutionSteps: [
                 {
                     title: "Ingest & Decompose",
                     description: "We ingest multi-modal content and decompose it into text, visual frames, and audio segments for granular analysis."
@@ -58,9 +53,8 @@ export default function AidGuardian() {
                     title: "Enforce & Report",
                     description: "Automatically block or flag content, generating an immutable audit trail for compliance reporting."
                 }
-            ]}
-
-            screenshots={[
+            ],
+            screenshots: [
                 {
                     url: "Live monitoring dashboard showing risk levels across multiple content streams",
                     caption: "Enterprise Dashboard: Real-time Risk Monitoring"
@@ -77,16 +71,14 @@ export default function AidGuardian() {
                     url: "Detailed analysis view decomposing video/audio into safety scores",
                     caption: "Deep Multi-Modal Content Analysis"
                 }
-            ]}
-
-            stats={[
+            ],
+            stats: [
                 { value: "Seed", label: "Initial Partnership" },
                 { value: "Enterprise / AI", label: "Categories" },
                 { value: "Global", label: "Location" },
                 { value: "Holo Studio", label: "Partner" }
-            ]}
-
-            useCases={[
+            ],
+            useCases: [
                 {
                     title: "Ad Tech Platforms",
                     description: "Protect advertiser brand equity by ensuring ads never appear next to toxic AI-generated content."
@@ -99,11 +91,9 @@ export default function AidGuardian() {
                     title: "Enterprise GenAI",
                     description: "Wrap internal AI tools with a safety layer to prevent generation of non-compliant or harmful outputs."
                 }
-            ]}
-
-            businessModel="SaaS Subscription (Tiered by Volume) + Enterprise Licensing for On-Premise Deployment."
-
-            roadmap={[
+            ],
+            businessModel: "SaaS Subscription (Tiered by Volume) + Enterprise Licensing for On-Premise Deployment.",
+            roadmap: [
                 {
                     quarter: "Q1 2025",
                     title: "Video Analysis v2",
@@ -119,7 +109,136 @@ export default function AidGuardian() {
                     title: "Global Certification",
                     items: ["EU AI Act Compliance Audit", "ISO 27001"]
                 }
-            ]}
+            ]
+        },
+        ko: {
+            tag: "엔터프라이즈 안전",
+            primaryButtonText: "대시보드 실행",
+            oneLiner: "콘텐츠 안전이 자율적이고 즉각적으로 이루어진다면.",
+            story: (
+                <>
+                    <p className="mb-6">
+                        오늘날 기업들은 생성형 AI의 리스크로 인해 마비 상태에 빠져 있습니다.
+                        컴플라이언스 팀은 방대한 콘텐츠 양에 압도당하고 있으며, 기존 안전 도구들은
+                        멀티모달 생성의 뉘앙스를 파악하지 못합니다.
+                        우리는 이 격차를 해소하기 위해 AiD Guardian을 구축했습니다.
+                    </p>
+                    <p>
+                        GARM(Global Alliance for Responsible Media) 기준 안전 표준과 심층 멀티모달 분석을 결합하여,
+                        귀사의 AI 인프라를 위한 실시간 방패를 제공합니다.
+                        이는 단순한 필터가 아닙니다. 기업의 특정 정책 요구사항에 적응하는 지능형 컴플라이언스 엔진입니다.
+                    </p>
+                </>
+            ),
+            problemPoints: [
+                {
+                    title: "컴플라이언스 격차",
+                    description: "EU AI 법안 및 DSA와 같은 새로운 규제는 AI 콘텐츠에 대해 현재 도구들이 제공할 수 없는 엄격한 투명성과 감사 가능성을 요구합니다."
+                },
+                {
+                    title: "멀티모달 사각지대",
+                    description: "표준 텍스트 필터는 이미지, 비디오 프레임, 오디오 트랙에 포함된 유해하거나 규정에 위배되는 콘텐츠를 탐지하지 못합니다."
+                },
+                {
+                    title: "블랙박스 책임",
+                    description: "설명 가능한 AI 결정 없이는, 기업들은 명확한 이유 없이 콘텐츠가 차단되거나 플래그 지정될 때 법적 위험에 직면하게 됩니다."
+                }
+            ],
+            solutionSteps: [
+                {
+                    title: "수집 및 분해",
+                    description: "멀티모달 콘텐츠를 수집하고 이를 텍스트, 시각적 프레임, 오디오 세그먼트로 분해하여 정밀하게 분석합니다."
+                },
+                {
+                    title: "분석 및 점수화",
+                    description: "당사의 엔진은 전문 모델을 적용하여 실시간으로 GARM 안전 카테고리 및 맞춤형 기업 정책에 따라 콘텐츠 점수를 매깁니다."
+                },
+                {
+                    title: "집행 및 보고",
+                    description: "콘텐츠를 자동으로 차단하거나 플래그를 지정하며, 컴플라이언스 보고를 위한 변경 불가능한 감사 추적을 생성합니다."
+                }
+            ],
+            screenshots: [
+                {
+                    url: "Live monitoring dashboard showing risk levels across multiple content streams",
+                    caption: "엔터프라이즈 대시보드: 실시간 위험 모니터링"
+                },
+                {
+                    url: "Content classification interface aligned with GARM safety standards",
+                    caption: "GARM 기반 분류 시스템"
+                },
+                {
+                    url: "Documentation hub for API integration and SDK usage",
+                    caption: "개발자 중심 API 및 SDK 문서"
+                },
+                {
+                    url: "Detailed analysis view decomposing video/audio into safety scores",
+                    caption: "심층 멀티모달 콘텐츠 분석"
+                }
+            ],
+            stats: [
+                { value: "Seed", label: "초기 파트너십" },
+                { value: "Enterprise / AI", label: "카테고리" },
+                { value: "Global", label: "위치" },
+                { value: "Holo Studio", label: "파트너" }
+            ],
+            useCases: [
+                {
+                    title: "애드테크 플랫폼",
+                    description: "유해한 AI 생성 콘텐츠 옆에 광고가 노출되지 않도록 하여 광고주의 브랜드 자산을 보호합니다."
+                },
+                {
+                    title: "UGC 플랫폼",
+                    description: "자동화된 정책 인식 AI 에이전트를 통해 수백만 개의 이미지와 비디오에 대한 모니터링을 확장합니다."
+                },
+                {
+                    title: "엔터프라이즈 생성형 AI",
+                    description: "내부 AI 도구를 안전 레이어로 감싸 규정 위반이나 유해한 결과물 생성을 방지합니다."
+                }
+            ],
+            businessModel: "SaaS 구독 (볼륨별 등급) + 온프레미스 배포를 위한 엔터프라이즈 라이선싱.",
+            roadmap: [
+                {
+                    quarter: "2025년 1분기",
+                    title: "비디오 분석 v2",
+                    items: ["실시간 스트리밍 지원", "오디오-비주얼 상관관계 분석"]
+                },
+                {
+                    quarter: "2025년 2분기",
+                    title: "엔터프라이즈 스위트",
+                    items: ["SSO/SAML 통합", "맞춤형 정책 엔진"]
+                },
+                {
+                    quarter: "2025년 3분기",
+                    title: "글로벌 인증",
+                    items: ["EU AI 법안 준수 감사", "ISO 27001"]
+                }
+            ]
+        }
+    };
+
+    const c = content[language] || content.en;
+
+    return (
+        <BusinessLayout 
+            name="AiD Guardian"
+            theme="aidguardian"
+            HeroComponent={AidGuardianDemo}
+            heroContainerClass="min-h-[1200px]"
+            showAnalytics={true}
+            tag={c.tag}
+            primaryButton={{ text: c.primaryButtonText, url: "http://221.148.221.12:7870" }}
+            oneLiner={c.oneLiner}
+            story={c.story}
+            heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
+            
+            problemPoints={c.problemPoints}
+            solutionSteps={c.solutionSteps}
+            screenshots={c.screenshots}
+            stats={c.stats}
+            useCases={c.useCases}
+            businessModel={c.businessModel}
+            roadmap={c.roadmap}
         />
     );
 }
