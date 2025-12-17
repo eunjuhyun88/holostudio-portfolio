@@ -354,6 +354,12 @@ export default function Company() {
                     role: "Backend Engineer",
                     bio: "Builds scalable ASP.NET (9.0) and PostgreSQL systems. Expert in authentication, data modeling, and secure cloud deployment.",
                     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                },
+                {
+                    name: "Antonio",
+                    role: "Head of Ecosystem",
+                    bio: "Former CMO & Head of BD at GaFin. Expert in Web3 Gaming infrastructure and ecosystem growth. Leading strategic partnerships and community expansion.",
+                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
                 }
             ],
         },
@@ -445,6 +451,12 @@ export default function Company() {
                     role: "Backend Engineer",
                     bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
                     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                },
+                {
+                    name: "Antonio",
+                    role: "Head of Ecosystem",
+                    bio: "전 GaFin CMO 및 사업 개발 총괄. Web3 게임 인프라 및 생태계 확장 전문가. 전략적 파트너십과 커뮤니티 확장을 주도합니다.",
+                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
                 }
             ],
         }
