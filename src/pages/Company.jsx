@@ -467,19 +467,19 @@ export default function Company() {
                 <PerspectiveCrawl>
                     <div className="py-20 pb-40 w-full">
                         <div className="text-center mb-40 w-full">
-                            <h2 className="text-indigo-400 font-bold tracking-[0.5em] mb-8 text-2xl md:text-3xl uppercase glow-text">
+                            <h2 className="text-indigo-400 font-bold tracking-[0.5em] mb-12 text-3xl md:text-4xl uppercase glow-text">
                                 Episode I
                             </h2>
-                            <h1 className="text-7xl md:text-[12rem] font-black tracking-tighter text-white leading-[0.9] uppercase mb-24 drop-shadow-2xl scale-y-110 w-full">
+                            <h1 className="text-8xl md:text-[12rem] font-black tracking-tighter text-white leading-[0.85] uppercase mb-32 drop-shadow-2xl scale-y-110 w-full">
                                 The Trust Layer
                             </h1>
-                            <div className="space-y-24 w-full px-4">
-                                <p className="text-4xl md:text-8xl text-neutral-100 leading-tight font-bold tracking-wider text-justify opacity-95 w-full block" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)', wordSpacing: '0.1em' }}>
+                            <div className="space-y-32 w-full">
+                                <p className="text-5xl md:text-8xl text-neutral-100 leading-[1.1] font-bold tracking-wider text-justify opacity-95 w-full block" style={{ textShadow: '0 0 15px rgba(255,255,255,0.4)', wordSpacing: '0.15em' }}>
                                     {language === 'en' 
                                         ? "It is a period of digital chaos. Generative AI has unleashed infinite content, but truth has vanished from the galaxy." 
                                         : "디지털 혼돈의 시대입니다. 생성형 AI가 무한한 콘텐츠를 해방시켰으나, 은하계에서 진실은 사라졌습니다."}
                                 </p>
-                                <p className="text-4xl md:text-8xl text-neutral-100 leading-tight font-bold tracking-wider text-justify opacity-95 w-full block" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)', wordSpacing: '0.1em' }}>
+                                <p className="text-5xl md:text-8xl text-neutral-100 leading-[1.1] font-bold tracking-wider text-justify opacity-95 w-full block" style={{ textShadow: '0 0 15px rgba(255,255,255,0.4)', wordSpacing: '0.15em' }}>
                                     {language === 'en' 
                                         ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade. From the ruins of centralized servers, a new hope emerges..." 
                                         : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다. 중앙화된 서버의 폐허 속에서, 새로운 희망이 떠오릅니다..."}
@@ -488,16 +488,16 @@ export default function Company() {
                         </div>
 
                         {/* Chapters integrated into the crawl */}
-                        <div className="space-y-80 w-full">
+                        <div className="space-y-96 w-full">
                             {c.chapters.map((chapter, i) => (
                                 <div key={i} className="flex flex-col items-center text-center w-full">
-                                    <div className="text-indigo-400 font-mono text-3xl tracking-[0.2em] mb-12 border-y-2 border-indigo-500/50 py-6 w-full uppercase bg-indigo-500/10">
+                                    <div className="text-indigo-400 font-mono text-4xl tracking-[0.3em] mb-16 border-y-4 border-indigo-500/50 py-6 w-full uppercase bg-indigo-500/10">
                                         {chapter.year}
                                     </div>
-                                    <h2 className="text-6xl md:text-[10rem] font-black text-white mb-16 tracking-tight uppercase drop-shadow-lg leading-[0.9] w-full">
+                                    <h2 className="text-7xl md:text-[10rem] font-black text-white mb-20 tracking-tight uppercase drop-shadow-lg leading-[0.9] w-full">
                                         {chapter.headline}
                                     </h2>
-                                    <p className="text-3xl md:text-7xl text-neutral-200 w-full leading-tight text-justify font-bold tracking-wider px-4">
+                                    <p className="text-4xl md:text-7xl text-neutral-200 w-full leading-tight text-justify font-bold tracking-wider">
                                         {chapter.content}
                                     </p>
                                 </div>
