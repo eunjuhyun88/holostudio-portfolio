@@ -216,7 +216,7 @@ export default function BusinessLayout({
                         {/* 1. Hero */}
                         <div id="overview">
                         <ColorSection onInView={() => setActiveSection(0)}>
-                            {/* Mobile Title Block (Visible only on mobile to improve hierarchy) */}
+                            {/* Mobile Title Block */}
                             <div className="lg:hidden mb-8">
                                 <Link to="/" className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
@@ -239,7 +239,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className={`relative aspect-[16/9] rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl`}
+                                className={`relative aspect-[16/9] rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
                             >
                                 {heroImage.startsWith('http') ? (
                                     <img 
@@ -248,14 +248,24 @@ export default function BusinessLayout({
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center p-12 text-center">
+                                    <div className="w-full h-full flex items-center justify-center p-8 md:p-12 text-center">
                                         <div>
-                                            <h3 className="text-2xl font-bold mb-4">Project Preview</h3>
-                                            <p className={textSecondary}>{heroImage}</p>
+                                            <h3 className="text-xl md:text-2xl font-bold mb-4">Project Preview</h3>
+                                            <p className={`text-sm md:text-base ${textSecondary}`}>{heroImage}</p>
                                         </div>
                                     </div>
                                 )}
                             </motion.div>
+
+                            {/* Mobile Stats Grid */}
+                            <div className="lg:hidden grid grid-cols-2 gap-3 mb-12">
+                                {stats.map((stat, i) => (
+                                    <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
+                                        <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
+                                        <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </ColorSection>
                         </div>
 
@@ -271,26 +281,26 @@ export default function BusinessLayout({
                                     <div className="space-y-8 md:space-y-12">
                                         {problemPoints.map((p, i) => (
                                             <div key={i} className="group">
-                                                <h4 className={`text-lg md:text-xl font-bold mb-2 md:mb-3 ${textPrimary}`}>{p.title}</h4>
+                                                <h4 className={`text-lg md:text-xl font-bold mb-2 ${textPrimary}`}>{p.title}</h4>
                                                 <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{p.description}</p>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-                                <div className="pt-8 md:pt-32">
+                                <div className="pt-0 md:pt-32">
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         OUR SOLUTION
                                     </span>
                                     <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">How we solve it</h3>
                                     <div className="space-y-4 md:space-y-6">
                                         {solutionSteps.map((step, i) => (
-                                            <div key={i} className={`flex gap-6 p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm`}>
-                                                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-black border border-white/20 text-white`}>
+                                            <div key={i} className={`flex gap-4 md:gap-6 p-5 md:p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm`}>
+                                                <div className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm bg-black border border-white/20 text-white`}>
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold mb-2 text-lg">{step.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed`}>{step.description}</p>
+                                                    <h4 className="font-bold mb-1 md:mb-2 text-base md:text-lg">{step.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-sm md:text-base`}>{step.description}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -334,28 +344,28 @@ export default function BusinessLayout({
                         {/* 4. Use Cases & Roadmap */}
                         <div id="roadmap">
                         <ColorSection onInView={() => setActiveSection(3)}>
-                            <div className="grid md:grid-cols-2 gap-8">
-                                <div className={`p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
-                                    <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${textPrimary}`}>
-                                        <Users className={`w-6 h-6 ${accentText}`} />
+                            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                                <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
+                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
+                                        <Users className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Target Customers
                                     </h3>
                                     <ul className="space-y-6">
                                         {useCases.map((u, i) => (
-                                            <li key={i} className="flex gap-4">
-                                                <CheckCircle2 className={`w-5 h-5 ${accentText} flex-shrink-0 mt-1`} />
+                                            <li key={i} className="flex gap-3 md:gap-4">
+                                                <CheckCircle2 className={`w-5 h-5 ${accentText} flex-shrink-0 mt-0.5 md:mt-1`} />
                                                 <div>
-                                                    <div className={`font-bold ${textPrimary}`}>{u.title}</div>
-                                                    <div className={`text-sm ${textMuted} mt-1`}>{u.description}</div>
+                                                    <div className={`font-bold ${textPrimary} text-sm md:text-base`}>{u.title}</div>
+                                                    <div className={`text-xs md:text-sm ${textMuted} mt-1`}>{u.description}</div>
                                                 </div>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
-                                <div className={`p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
-                                    <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${textPrimary}`}>
-                                        <Milestone className={`w-6 h-6 ${accentText}`} />
+                                <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
+                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
+                                        <Milestone className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Roadmap
                                     </h3>
                                     <div className="space-y-8">
@@ -363,8 +373,8 @@ export default function BusinessLayout({
                                             <div key={i} className={`relative pl-6 border-l ${isLight ? 'border-black/20' : 'border-white/10'}`}>
                                                 <div className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full ${s.accentBg}`} />
                                                 <div className={`text-xs font-bold uppercase tracking-wider ${textMuted} mb-1`}>{item.quarter}</div>
-                                                <div className={`font-bold text-lg mb-2 ${textPrimary}`}>{item.title}</div>
-                                                <div className={`text-sm ${textSecondary}`}>
+                                                <div className={`font-bold text-base md:text-lg mb-1 md:mb-2 ${textPrimary}`}>{item.title}</div>
+                                                <div className={`text-xs md:text-sm ${textSecondary}`}>
                                                     {item.items.join(" • ")}
                                                 </div>
                                             </div>
