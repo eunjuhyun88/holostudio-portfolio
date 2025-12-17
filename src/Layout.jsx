@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { ChevronDown, Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { LanguageProvider, useLanguage } from '@/components/LanguageContext';
 
 function LayoutContent({ children }) {
@@ -97,7 +98,29 @@ function LayoutContent({ children }) {
                         {/* Links */}
                         <div className="flex items-center px-2">
                             {navLinks[language].map((link) => (
-                                link.isAnchor ? (
+                                link.name === 'Products' || link.name === '프로덕트' ? (
+                                    <DropdownMenu key={link.name}>
+                                        <DropdownMenuTrigger asChild>
+                                            <button className={`px-5 py-2 font-medium text-sm transition-colors flex items-center gap-1 ${
+                                                isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                            }`}>
+                                                {link.name} <ChevronDown className="w-3 h-3" />
+                                            </button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-48 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-lg mt-2">
+                                            {products.map((product) => (
+                                                <DropdownMenuItem key={product.name} asChild>
+                                                    <Link 
+                                                        to={createPageUrl(product.path.substring(1))}
+                                                        className="flex items-center w-full px-3 py-2 rounded-lg text-sm text-neutral-300 hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
+                                                    >
+                                                        {product.name}
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            ))}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                ) : link.isAnchor ? (
                                     <button 
                                         key={link.name}
                                         onClick={() => scrollToSection(link.path.substring(2))} 
@@ -174,7 +197,24 @@ function LayoutContent({ children }) {
                             </div>
 
                             {navLinks[language].map((link) => (
-                                link.isAnchor ? (
+                                link.name === 'Products' || link.name === '프로덕트' ? (
+                                    <div key={link.name} className="py-2">
+                                        <div className="font-bold text-white text-lg mb-2">{link.name}</div>
+                                        <ul className="space-y-2 pl-4 border-l border-white/10 ml-1">
+                                            {products.map((product) => (
+                                                <li key={product.name}>
+                                                    <Link
+                                                        to={createPageUrl(product.path.substring(1))}
+                                                        className="block py-1 text-neutral-400 hover:text-white"
+                                                        onClick={() => setMobileMenuOpen(false)}
+                                                    >
+                                                        {product.name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ) : link.isAnchor ? (
                                     <button 
                                         key={link.name}
                                         onClick={() => scrollToSection(link.path.substring(2))}
