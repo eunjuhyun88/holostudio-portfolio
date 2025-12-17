@@ -169,9 +169,11 @@ export default function Home() {
                 en: ["Accuracy / Recall", "Latency < 10ms", "GARM Categories"],
                 ko: ["정확도 / 재현율", "지연시간 < 10ms", "GARM 카테고리"]
             },
-            image: images[0],
+            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc0228bec_2025-12-171042431.png",
             color: "text-indigo-400",
-            bgGradient: "from-indigo-900/40",
+            borderColor: "border-indigo-500",
+            glowColor: "shadow-indigo-500/50",
+            bgGradient: "from-indigo-600",
             path: "/AidGuardian",
             primaryBtn: { en: "Try Demo", ko: "데모 체험" },
             secondaryBtn: { en: "Contact Sales", ko: "도입 문의" }
@@ -188,9 +190,11 @@ export default function Home() {
                 en: ["Proof-of-Creation", "Sentinel Attestations", "Impact Events"],
                 ko: ["생성 증명(PoC)", "Sentinel 검증", "임팩트 이벤트"]
             },
-            image: images[1],
-            color: "text-purple-400",
-            bgGradient: "from-purple-900/40",
+            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/81cf8f3b2_2025-12-17105846.png",
+            color: "text-lime-400",
+            borderColor: "border-lime-400",
+            glowColor: "shadow-lime-400/50",
+            bgGradient: "from-lime-500",
             path: "/PlayArts",
             primaryBtn: { en: "Partnership", ko: "파트너십" },
             secondaryBtn: { en: "Deck", ko: "소개서" }
@@ -207,9 +211,11 @@ export default function Home() {
                 en: ["1v1 PvP Core Loop", "AI Content Expansion", "Safety Rails"],
                 ko: ["1v1 PvP 코어 루프", "AI 콘텐츠 확장", "안전 가드레일"]
             },
-            image: images[2],
-            color: "text-orange-400",
-            bgGradient: "from-orange-900/40",
+            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9692fcde2_2025-12-1463649.png",
+            color: "text-orange-500",
+            borderColor: "border-orange-500",
+            glowColor: "shadow-orange-500/50",
+            bgGradient: "from-orange-600",
             path: "/Elememetal",
             primaryBtn: { en: "Playtest", ko: "플레이 테스트" },
             secondaryBtn: { en: "Publish Kit", ko: "퍼블리싱 키트" }
@@ -226,9 +232,11 @@ export default function Home() {
                 en: ["Zone Chat", "Proof of Profit", "AI Strategy Signals"],
                 ko: ["구간 채팅", "수익 증명", "AI 전략 시그널"]
             },
-            image: images[3],
+            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/45cb06182_2025-12-17105903.png",
             color: "text-emerald-400",
-            bgGradient: "from-emerald-900/40",
+            borderColor: "border-emerald-400",
+            glowColor: "shadow-emerald-400/50",
+            bgGradient: "from-emerald-500",
             path: "/Stocku",
             primaryBtn: { en: "Open App", ko: "앱 열기" },
             secondaryBtn: { en: "Deck", ko: "소개서" }
@@ -396,23 +404,36 @@ export default function Home() {
                                     transition={{ duration: 0.8 }}
                                     className="absolute inset-0 w-full h-full"
                                 >
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-[#050505] opacity-20`} />
-                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 to-transparent opacity-30" />
+                                    {/* Intensified Background Gradient */}
+                                    <div className={`absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] ${prod.bgGradient} via-[#050505] to-[#050505] opacity-40`} />
+                                    <div className={`absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t ${prod.bgGradient} to-transparent opacity-10`} />
                                     
                                     {/* Large Background Text */}
-                                    <div className="absolute bottom-10 right-10 text-[10vw] font-black text-white/5 leading-none select-none text-right">
+                                    <div className={`absolute bottom-0 right-10 text-[12vw] font-black ${prod.color} opacity-10 leading-none select-none text-right tracking-tighter mix-blend-overlay`}>
                                         {prod.name.toUpperCase()}
                                     </div>
                                     
-                                    {/* Central Visual - Using provided screenshots */}
-                                    <div className="absolute top-1/2 left-0 md:left-20 transform -translate-y-1/2 w-full md:w-1/2 h-[60vh] flex items-center justify-center p-6">
-                                        <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#0A0A0A]">
-                                            <img src={prod.image} alt={prod.name} className="w-full h-full object-cover opacity-80" />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                                            <div className="absolute bottom-6 left-6 right-6">
-                                                <div className="text-xs font-mono text-white/70 mb-2 border-b border-white/10 pb-2">PREVIEW</div>
-                                                <div className="text-white font-medium">{prod.name} Dashboard</div>
+                                    {/* Central Visual */}
+                                    <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
+                                        <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} bg-neutral-900/50 backdrop-blur-sm shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group`}>
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-10`} />
+                                            
+                                            {/* Image Container - Adjusted to contain logos properly */}
+                                            <div className="w-full h-full flex items-center justify-center p-8 md:p-12 relative z-10">
+                                                <img 
+                                                    src={prod.image} 
+                                                    alt={prod.name} 
+                                                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105" 
+                                                />
                                             </div>
+
+                                            {/* Decorative UI Overlay */}
+                                            <div className="absolute top-6 left-6 flex items-center gap-2">
+                                                <div className={`w-2 h-2 rounded-full ${prod.color.replace('text-', 'bg-')} animate-pulse`} />
+                                                <div className={`text-xs font-mono ${prod.color} tracking-widest`}>LIVE_VIEW</div>
+                                            </div>
+                                            
+                                            <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
                                         </div>
                                     </div>
                                 </motion.div>
@@ -439,41 +460,46 @@ export default function Home() {
                                     transition={{ duration: 0.5 }}
                                     className="max-w-md w-full pointer-events-auto"
                                 >
-                                    <div className="bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl">
-                                        <div className="flex items-center justify-between mb-6">
-                                            <div className={`text-sm font-bold tracking-wider uppercase ${prod.color}`}>
-                                                {prod.tag[language]}
-                                            </div>
-                                            <div className="text-xs text-neutral-500 font-mono">0{idx + 1}</div>
-                                        </div>
+                                    <div className={`bg-[#0A0A0A]/80 backdrop-blur-2xl border ${prod.borderColor} p-8 rounded-3xl shadow-2xl relative overflow-hidden group`}>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
-                                        <h3 className="text-3xl font-bold mb-4 text-white">
-                                            {prod.name}
-                                        </h3>
-                                        
-                                        <p className="text-neutral-400 leading-relaxed mb-8 text-sm">
-                                            {prod.desc[language]}
-                                        </p>
-
-                                        {/* Features Blocks */}
-                                        <div className="grid grid-cols-1 gap-2 mb-8">
-                                            {prod.features[language].map((feat, i) => (
-                                                <div key={i} className="bg-white/5 px-4 py-2 rounded-lg text-xs font-mono text-neutral-300 border border-white/5 flex items-center gap-2">
-                                                    <div className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')}`} />
-                                                    {feat}
+                                        <div className="relative z-10">
+                                            <div className="flex items-center justify-between mb-6">
+                                                <div className={`text-sm font-bold tracking-wider uppercase ${prod.color} flex items-center gap-2`}>
+                                                    <span className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_10px_currentColor]`} />
+                                                    {prod.tag[language]}
                                                 </div>
-                                            ))}
-                                        </div>
+                                                <div className={`text-sm font-mono ${prod.color} opacity-50`}>0{idx + 1}</div>
+                                            </div>
+                                            
+                                            <h3 className="text-4xl font-black mb-4 text-white tracking-tight">
+                                                {prod.name}
+                                            </h3>
+                                            
+                                            <p className="text-neutral-300 leading-relaxed mb-8 text-base">
+                                                {prod.desc[language]}
+                                            </p>
 
-                                        <div className="flex gap-3">
-                                            <Link to={createPageUrl(prod.path.substring(1))} className="flex-1">
-                                                <Button className="w-full bg-white text-black hover:bg-neutral-200 h-10 rounded-lg text-sm font-bold border-0">
-                                                    {prod.primaryBtn[language]}
+                                            {/* Features Blocks */}
+                                            <div className="grid grid-cols-1 gap-2 mb-8">
+                                                {prod.features[language].map((feat, i) => (
+                                                    <div key={i} className={`bg-black/40 px-4 py-3 rounded-xl text-sm font-medium text-neutral-200 border border-white/5 flex items-center gap-3 hover:border-${prod.color.split('-')[1]}-500/30 transition-colors`}>
+                                                        <div className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_8px_currentColor]`} />
+                                                        {feat}
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <div className="flex gap-4">
+                                                <Link to={createPageUrl(prod.path.substring(1))} className="flex-1">
+                                                    <Button className={`w-full ${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white h-12 rounded-xl text-sm font-bold border-0 shadow-lg shadow-${prod.color.split('-')[1]}-900/20`}>
+                                                        {prod.primaryBtn[language]}
+                                                    </Button>
+                                                </Link>
+                                                <Button variant="outline" className="flex-1 border-neutral-700 text-white hover:bg-white/5 bg-transparent h-12 rounded-xl text-sm font-medium">
+                                                    {prod.secondaryBtn[language]}
                                                 </Button>
-                                            </Link>
-                                            <Button variant="outline" className="flex-1 border-neutral-700 text-white hover:bg-white/5 bg-transparent h-10 rounded-lg text-sm">
-                                                {prod.secondaryBtn[language]}
-                                            </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
