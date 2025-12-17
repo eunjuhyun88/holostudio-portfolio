@@ -6,7 +6,7 @@ import { ArrowRight, ArrowUpRight, Plus, Minus } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import Background3D from '@/components/Background3D';
+import Starfield from '@/components/Starfield';
 import PerspectiveCrawl from '@/components/PerspectiveCrawl';
 
 // --- Components ---
@@ -433,50 +433,58 @@ export default function Company() {
             />
 
             {/* Visual State Management Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                 <div className={`transition-opacity duration-1000 ${visualState.darker ? 'opacity-30' : 'opacity-60'}`}>
-                    <Background3D />
-                 </div>
-                 <div className="absolute inset-0 bg-[#050505] mix-blend-multiply opacity-20" />
+            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+                {/* Starfield Background */}
+                <div className="absolute inset-0 opacity-80">
+                    <Starfield density={800} speed={0.02} />
+                </div>
+                
+                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
+                 
                  <motion.div 
-                    animate={{ opacity: visualState.showNoise ? 0.15 : 0 }}
+                    animate={{ opacity: visualState.showNoise ? 0.1 : 0 }}
                     transition={{ duration: 1 }}
                     className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
                  />
+                 
+                 {/* Retain the spinning rings for the tech feel later in scroll */}
                  <motion.div
                     animate={{ 
-                        opacity: visualState.showGuardRail ? 1 : 0,
+                        opacity: visualState.showGuardRail ? 0.5 : 0,
                         scale: visualState.showGuardRail ? 1 : 0.8
                     }}
                     transition={{ duration: 1, ease: "circOut" }}
                     className="absolute inset-0 flex items-center justify-center"
                  >
-                    <div className="w-[60vh] h-[60vh] rounded-full border border-indigo-500/30 shadow-[0_0_100px_rgba(99,102,241,0.2)] animate-[spin_10s_linear_infinite]" />
-                    <div className="absolute w-[50vh] h-[50vh] rounded-full border border-indigo-400/20 animate-[spin_15s_linear_infinite_reverse]" />
+                    <div className="w-[60vh] h-[60vh] rounded-full border border-indigo-500/20 shadow-[0_0_100px_rgba(99,102,241,0.1)] animate-[spin_20s_linear_infinite]" />
                  </motion.div>
-                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505] z-10" />
+                 
+                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 10%, transparent 90%, #050505 100%)' }} />
             </div>
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
                 <PerspectiveCrawl>
-                    <div className="py-20 pb-40 max-w-6xl mx-auto px-6">
-                        <div className="text-center mb-32">
-                            <h2 className="text-indigo-500 font-bold tracking-[0.3em] mb-6 text-xl md:text-2xl uppercase glow-text">
-                                The Origin Story
+                    {/* Width is controlled by PerspectiveCrawl container, but we use full width here with justify */}
+                    <div className="py-20 pb-40 w-full px-4 md:px-0">
+                        <div className="text-center mb-40">
+                            <h2 className="text-indigo-400 font-bold tracking-[0.5em] mb-8 text-2xl md:text-3xl uppercase glow-text">
+                                Episode I
                             </h2>
-                            <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-tight uppercase mb-16 drop-shadow-2xl">
+                            <h1 className="text-7xl md:text-[10rem] font-black tracking-tighter text-white leading-[0.9] uppercase mb-20 drop-shadow-2xl scale-y-110">
                                 The Trust Layer
                             </h1>
-                            <div className="text-3xl md:text-5xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify mb-16 opacity-90">
-                                {language === 'en' 
-                                    ? "It is a period of digital chaos. Generative AI has unleashed infinite content, but truth has vanished." 
-                                    : "디지털 혼돈의 시대입니다. 생성형 AI가 무한한 콘텐츠를 해방시켰으나, 진실은 사라졌습니다."}
-                            </div>
-                            <div className="text-3xl md:text-5xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify opacity-90">
-                                {language === 'en' 
-                                    ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade. From the ruins of centralized servers, a new infrastructure emerges..." 
-                                    : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다. 중앙화된 서버의 폐허 속에서, 새로운 인프라가 떠오릅니다..."}
+                            <div className="space-y-16">
+                                <p className="text-4xl md:text-6xl text-neutral-100 leading-snug font-bold tracking-wide text-justify opacity-95" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>
+                                    {language === 'en' 
+                                        ? "It is a period of digital chaos. Generative AI has unleashed infinite content, but truth has vanished from the galaxy." 
+                                        : "디지털 혼돈의 시대입니다. 생성형 AI가 무한한 콘텐츠를 해방시켰으나, 은하계에서 진실은 사라졌습니다."}
+                                </p>
+                                <p className="text-4xl md:text-6xl text-neutral-100 leading-snug font-bold tracking-wide text-justify opacity-95" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>
+                                    {language === 'en' 
+                                        ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade. From the ruins of centralized servers, a new hope emerges..." 
+                                        : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다. 중앙화된 서버의 폐허 속에서, 새로운 희망이 떠오릅니다..."}
+                                </p>
                             </div>
                         </div>
 
@@ -484,13 +492,13 @@ export default function Company() {
                         <div className="space-y-64">
                             {c.chapters.map((chapter, i) => (
                                 <div key={i} className="flex flex-col items-center text-center">
-                                    <div className="text-indigo-400 font-mono text-2xl tracking-[0.2em] mb-6 border-y border-indigo-500/50 py-3 w-full uppercase bg-indigo-500/10">
+                                    <div className="text-indigo-400 font-mono text-3xl tracking-[0.2em] mb-8 border-y-2 border-indigo-500/50 py-4 w-full uppercase bg-indigo-500/10">
                                         {chapter.year}
                                     </div>
-                                    <h2 className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tight uppercase drop-shadow-lg">
+                                    <h2 className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tight uppercase drop-shadow-lg leading-none">
                                         {chapter.headline}
                                     </h2>
-                                    <p className="text-2xl md:text-4xl text-neutral-300 max-w-5xl leading-relaxed text-justify mx-auto">
+                                    <p className="text-3xl md:text-5xl text-neutral-200 w-full leading-snug text-justify font-bold tracking-wide">
                                         {chapter.content}
                                     </p>
                                 </div>
