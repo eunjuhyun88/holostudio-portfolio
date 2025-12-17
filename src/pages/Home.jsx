@@ -41,7 +41,7 @@ export default function Home() {
                 keywords: ["Guardrails", "Provenance", "Value Routing"]
             },
             business_intro: {
-                title: "Our Businesses",
+                title: "Our Products",
                 sub: "One Company, Four Specialized Engines."
             },
             milestones: {
@@ -104,7 +104,7 @@ export default function Home() {
                 keywords: ["가드레일", "출처증명", "가치분배"]
             },
             business_intro: {
-                title: "핵심 사업 분야",
+                title: "핵심 제품",
                 sub: "하나의 회사, 네 개의 전문화된 엔진."
             },
             milestones: {
@@ -407,7 +407,7 @@ export default function Home() {
                                     <div className={`absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t ${prod.bgGradient} to-transparent opacity-10`} />
                                     
                                     {/* Large Background Text */}
-                                    <div className={`absolute bottom-0 right-10 text-[12vw] font-black ${prod.color} opacity-10 leading-none select-none text-right tracking-tighter mix-blend-overlay`}>
+                                    <div className={`absolute bottom-10 left-10 text-[13vw] font-black ${prod.color} opacity-20 leading-none select-none text-left tracking-tighter mix-blend-screen`}>
                                         {prod.name.toUpperCase()}
                                     </div>
                                     
@@ -444,7 +444,7 @@ export default function Home() {
                 <div className="relative z-20 -mt-[100vh]">
                     {products.map((prod, idx) => {
                         const ref = useRef(null);
-                        const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+                        const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
 
                         useEffect(() => {
                             if (isInView) setActiveStage(idx);
