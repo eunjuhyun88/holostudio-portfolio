@@ -11,6 +11,22 @@ import Background3D from '@/components/Background3D';
 
 // --- Components ---
 
+// Individual Word Component for Typing Effect
+const TypingWord = ({ word, i, total, progress }) => {
+    const start = i / total;
+    const end = start + (1 / total);
+    const opacity = useTransform(progress, [start, end], [0.2, 1]);
+
+    return (
+        <motion.span 
+            style={{ opacity }}
+            className="inline-block mr-[0.2em]"
+        >
+            {word}
+        </motion.span>
+    );
+};
+
 // Typing Scroll Component
 const TypingBlock = ({ children, className = "" }) => {
     const element = useRef(null);
@@ -30,20 +46,15 @@ const TypingBlock = ({ children, className = "" }) => {
             style={{ scale, y }}
             className={`${className} inline-block w-full`} 
         >
-            {words.map((word, i) => {
-                const start = i / words.length;
-                const end = start + (1 / words.length);
-                const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
-                return (
-                    <motion.span 
-                        key={i}
-                        style={{ opacity }}
-                        className="inline-block mr-[0.2em]"
-                    >
-                        {word}
-                    </motion.span>
-                );
-            })}
+            {words.map((word, i) => (
+                <TypingWord 
+                    key={i} 
+                    word={word} 
+                    i={i} 
+                    total={words.length} 
+                    progress={scrollYProgress} 
+                />
+            ))}
         </motion.p>
     );
 };
