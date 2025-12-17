@@ -36,7 +36,8 @@ export default function BusinessLayout({
     businessModel,
     roadmap = [],
     stats = [],
-    theme = "default"
+    theme = "default",
+    primaryButton = { text: "Request Access", url: null }
 }) {
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Roadmap/Footer]
@@ -220,9 +221,17 @@ export default function BusinessLayout({
                                 </div>
 
                                 <div className="mt-8 pt-8 border-t border-white/5 space-y-3 hidden lg:block">
-                                    <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0`}>
-                                        Request Access
-                                    </Button>
+                                    {primaryButton.url ? (
+                                        <a href={primaryButton.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                            <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0`}>
+                                                {primaryButton.text} <ArrowRight className="w-4 h-4 ml-2" />
+                                            </Button>
+                                        </a>
+                                    ) : (
+                                        <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0`}>
+                                            {primaryButton.text}
+                                        </Button>
+                                    )}
                                     <Button variant="ghost" className="w-full rounded-full h-12 bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5">
                                         Download Deck
                                     </Button>
@@ -431,9 +440,17 @@ export default function BusinessLayout({
                                     <div className="text-xs text-neutral-400 uppercase font-bold">Get Started</div>
                                     <div className="font-bold text-white text-sm">{name}</div>
                                 </div>
-                                <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
-                                    Request Access
-                                </Button>
+                                {primaryButton.url ? (
+                                    <a href={primaryButton.url} target="_blank" rel="noopener noreferrer">
+                                        <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                            {primaryButton.text}
+                                        </Button>
+                                    </a>
+                                ) : (
+                                    <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                        {primaryButton.text}
+                                    </Button>
+                                )}
                             </div>
                         </div>
 

@@ -7,6 +7,7 @@ export default function PlayArts() {
             name="PlayArts"
             theme="playarts"
             tag="Media Protocol"
+            primaryButton={{ text: "Launch App", url: "https://playarts.ai/" }}
             oneLiner="The Proof-of-Creation protocol for verifiable AI media provenance and value routing."
             heroImage="PlayArts Protocol Overview: Visualizing the flow of provenace from creation to value settlement"
             
