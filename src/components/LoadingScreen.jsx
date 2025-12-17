@@ -55,7 +55,7 @@ export default function LoadingScreen({ onComplete }) {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center overflow-hidden font-mono"
+            className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center overflow-hidden font-sans"
         >
             {/* Background Stars & Galaxy */}
             <div className="absolute inset-0 z-0">

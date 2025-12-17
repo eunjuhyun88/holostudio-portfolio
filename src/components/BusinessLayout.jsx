@@ -386,8 +386,8 @@ export default function BusinessLayout({
                                                         {feature.icon && <feature.icon className={`w-7 h-7 ${s.accent}`} />}
                                                     </div>
 
-                                                    <h4 className={`relative z-10 text-xl font-bold mb-3 ${textPrimary} tracking-tight`}>{feature.title}</h4>
-                                                    <p className={`relative z-10 text-base ${textSecondary} leading-relaxed`}>{feature.description}</p>
+                                                    <h4 className={`relative z-10 text-2xl font-bold mb-3 ${textPrimary} tracking-tight`}>{feature.title}</h4>
+                                                    <p className={`relative z-10 text-lg ${textSecondary} leading-relaxed`}>{feature.description}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -433,12 +433,12 @@ export default function BusinessLayout({
                                     <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
                                         {solutionSteps.map((step, i) => (
                                             <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl backdrop-blur-xl h-full md:h-auto group`}>
-                                                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm bg-gradient-to-br from-white/10 to-transparent border border-white/10 text-white group-hover:scale-110 transition-transform`}>
+                                                <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-base bg-gradient-to-br from-white/10 to-transparent border border-white/10 text-white group-hover:scale-110 transition-transform`}>
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold mb-3 text-xl">{step.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{step.description}</p>
+                                                    <h4 className="font-bold mb-3 text-2xl">{step.title}</h4>
+                                                    <p className={`${textSecondary} leading-relaxed text-lg md:text-lg`}>{step.description}</p>
                                                 </div>
                                             </div>
                                         ))}

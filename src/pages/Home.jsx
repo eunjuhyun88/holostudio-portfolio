@@ -451,16 +451,16 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
+                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
                             {t.hero.title}
                         </h1>
-                        <p className="text-base md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
+                        <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-xs md:text-base mt-4 block font-mono">{t.hero.desc}</span>
+                            <span className="text-neutral-500 text-sm md:text-base mt-4 block font-mono">{t.hero.desc}</span>
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
@@ -490,21 +490,21 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
-                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
-                            <div className="text-3xl font-bold text-white mb-1">{t.market.year.val}</div>
-                            <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
                         </div>
-                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
-                            <div className="text-3xl font-bold text-white mb-1">{t.market.eu.val}</div>
-                            <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.eu.label}</div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.eu.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.eu.label}</div>
                         </div>
-                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
-                            <div className="text-3xl font-bold text-white mb-1">{t.market.size.val}</div>
-                            <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.size.label}</div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.size.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.size.label}</div>
                         </div>
-                        <div className="flex-shrink-0 w-[40vw] md:w-auto snap-center">
-                            <div className="text-3xl font-bold text-white mb-1">{t.market.gap.val}</div>
-                            <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.gap.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
                         </div>
                     </div>
                     
@@ -573,9 +573,9 @@ export default function Home() {
                                 <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
                                     {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
                                 </div>
-                                <h4 className="text-xl font-bold mb-3">{card.title}</h4>
-                                <p className="text-neutral-400 mb-6 text-sm leading-relaxed">{card.desc}</p>
-                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-[10px] text-neutral-300 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
+                                <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
+                                <p className="text-neutral-400 mb-6 text-base leading-relaxed">{card.desc}</p>
+                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-300 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
                                     {card.badge}
                                 </span>
                             </motion.div>

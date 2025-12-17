@@ -26,9 +26,9 @@ export default function Background3D() {
         // Finer particles for the main shape
         const material = new THREE.PointsMaterial({
             color: 0x818cf8, // Indigo-400
-            size: 0.08, // Reduced from 0.22 for finer look
+            size: 0.1, // Slightly larger for better visibility
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.9, // Increased opacity
             sizeAttenuation: true,
         });
 
@@ -58,7 +58,7 @@ export default function Background3D() {
         scene.add(corePoints);
 
         // Wireframe
-        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.15 });
+        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.3 });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
 
@@ -124,19 +124,20 @@ export default function Background3D() {
             const time = Date.now() * 0.001;
 
             // Animate Crystal (The Main 3D Effect)
-            crystalMesh.rotation.y += 0.002;
-            crystalMesh.rotation.x += 0.001;
-            corePoints.rotation.y -= 0.004;
-            corePoints.rotation.x -= 0.002;
-            wireframe.rotation.y += 0.002;
-            wireframe.rotation.x += 0.001;
+            crystalMesh.rotation.y += 0.005;
+            crystalMesh.rotation.x += 0.003;
+            corePoints.rotation.y -= 0.008;
+            corePoints.rotation.x -= 0.004;
+            wireframe.rotation.y += 0.005;
+            wireframe.rotation.x += 0.003;
 
             // Animate Background Blocks (Expansion/Movement)
-            // Slowly rotate the field
-            blocksGroup.rotation.z = time * 0.05;
+            // Rotate the field - Increased speed for better visibility
+            blocksGroup.rotation.z = time * 0.3;
+            blocksGroup.rotation.x = Math.sin(time * 0.2) * 0.1;
             
             // Gentle zoom breathe
-            const zoom = Math.sin(time * 0.5) * 2;
+            const zoom = Math.sin(time * 0.5) * 3;
             camera.position.z = 30 + zoom;
 
             // Float entire scene slightly
