@@ -653,7 +653,7 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES */}
-            <section className="py-32 bg-[#050505] relative overflow-hidden">
+            <section id="proof" className="py-32 bg-[#050505] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
@@ -796,11 +796,13 @@ export default function Home() {
             </section>
 
             {/* Section 10: ROADMAP */}
-            <Roadmap 
-                items={t.roadmap.items} 
-                title={t.roadmap.title} 
-                viewAllText={t.roadmap.viewAll} 
-            />
+            <section id="roadmap">
+                <Roadmap 
+                    items={t.roadmap.items} 
+                    title={t.roadmap.title} 
+                    viewAllText={t.roadmap.viewAll} 
+                />
+            </section>
 
             {/* Section 10: CONTACT */}
             <section className="py-32 bg-[#050505] border-t border-neutral-900">

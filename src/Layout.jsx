@@ -22,7 +22,13 @@ function LayoutContent({ children }) {
 
     // Scroll to top and close mobile menu on route change
     useEffect(() => {
-        if (!location.hash) {
+        if (location.hash) {
+            const id = location.hash.substring(1);
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
             window.scrollTo(0, 0);
         }
         setMobileMenuOpen(false);
@@ -57,10 +63,7 @@ function LayoutContent({ children }) {
 
     const scrollToSection = (id) => {
         if (location.pathname !== '/') {
-            setTimeout(() => {
-                const element = document.getElementById(id);
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+            window.location.href = `/#${id}`;
         } else {
             const element = document.getElementById(id);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
