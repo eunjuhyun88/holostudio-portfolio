@@ -28,7 +28,7 @@ export default function PerspectiveCrawl({ children }) {
                         scale,
                         transformStyle: "preserve-3d"
                     }}
-                    className="w-full max-w-[95%] md:max-w-[90%] mx-auto text-center origin-[50%_100%]"
+                    className="w-full mx-auto text-center origin-[50%_100%] px-4 md:px-8"
                 >
                     {children}
                 </motion.div>
