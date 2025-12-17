@@ -185,9 +185,9 @@ export default function BusinessLayout({
                     {/* Sidebar keeps its own dark theme to pop against light backgrounds */}
                     <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1">
                         <div className="lg:sticky lg:top-32 space-y-8">
-                            <Link to="/" className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
+                            <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                                Back to Home
+                                Back to Products
                             </Link>
 
                             <motion.div 
@@ -263,9 +263,9 @@ export default function BusinessLayout({
                         <ColorSection onInView={() => setActiveSection(0)}>
                             {/* Mobile Title Block */}
                             <div className="lg:hidden mb-8">
-                                <Link to="/" className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
+                                <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
-                                    Back to Home
+                                    Back to Products
                                 </Link>
                                 <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary}`}>{name}</h1>
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
