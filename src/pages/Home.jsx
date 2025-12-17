@@ -486,7 +486,7 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className="py-12 border-y border-white/10 bg-black/40 backdrop-blur-md relative z-10">
+            <section className="py-12 border-y border-white/10 bg-[#050505]/80 backdrop-blur-xl relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
@@ -568,7 +568,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-neutral-900/30 border border-neutral-800 hover:border-indigo-500/50 transition-all duration-300"
+                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-[#0A0A0A]/90 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-sm"
                             >
                                 <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
                                     {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
@@ -585,7 +585,7 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/20 backdrop-blur-sm">
+            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-[#050505]/60 backdrop-blur-md">
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
@@ -778,7 +778,7 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className="py-24 border-y border-white/10 text-center relative z-10 bg-black/40 backdrop-blur-md">
+            <section className="py-24 border-y border-white/10 text-center relative z-10 bg-[#0A0A0A]/80 backdrop-blur-xl">
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
                     <p className="text-2xl md:text-4xl font-medium leading-tight mb-12">
@@ -975,7 +975,7 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className="py-32 border-t border-white/5 relative z-10">
+            <section className="py-32 border-t border-white/5 relative z-10 bg-gradient-to-t from-[#050505] to-[#050505]/80">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div>
                         <h2 className="text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
