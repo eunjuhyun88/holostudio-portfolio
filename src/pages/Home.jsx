@@ -6,7 +6,7 @@ import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3,
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
-import SEO from '@/components/SEO.js';
+import SEO from '@/components/SEO';
 
 export default function Home() {
     const { language } = useLanguage();
