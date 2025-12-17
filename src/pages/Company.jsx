@@ -9,47 +9,9 @@ export default function Company() {
 
     const t = {
         en: {
-            hero: {
-                tag: "FULL-MEDIA AI GUARDRAILS",
-                title: "HOLO STUDIO",
-                sub: "Web3 Platform delivering AI Content Creation & Safety Simultaneously",
-                desc: "Full-Media AI Guardrails ensuring safety for Text, Image, and Video generation. Providing fun and safe AI experiences through Gaming and Entertainment.",
-                cta1: "Invest Inquiry",
-                cta2: "Download Deck"
-            },
-            awards: [
-                { title: "SEEDIFY 2025", desc: "AI Agent Hackathon Winner" },
-                { title: "ETHDENVER 2025", desc: "Story Superagent Top 10" },
-                { title: "OKX ETHCC 2025", desc: "Smart Account UX & Abstraction 2nd" },
-                { title: "ETHDENVER 2025", desc: "Story Track Dapp 2nd" }
-            ],
-            problem: {
-                tag: "Core Problem",
-                title: "Key Problems We Solve",
-                desc: "While AI content generation explodes, safety infrastructure remains fragmented and incomplete.",
-                cards: [
-                    { title: "2025 Content Safety Crisis", desc: "Instability due to Meta replacing human moderators with AI.", icon: Shield },
-                    { title: "Limits of Existing Systems", desc: "Lack of multi-modal rails (Image/Video/3D) beyond text filters.", icon: Zap },
-                    { title: "Gaming/3D Safety Gap", desc: "Unregulated toxic UGC in Metaverse and Games.", icon: Gamepad2 }
-                ]
-            },
-            market: {
-                tag: "Market Opportunity",
-                title: "Market Opportunity & Timing",
-                desc: "Solving critical infrastructure needs in the rapidly expanding AI ecosystem.",
-                cards: [
-                    { value: "$80B", label: "Gen AI Content Market", sub: "2030 Forecast (CAGR 32.5%)" },
-                    { value: "$11.6B", label: "Content Moderation", sub: "2025 Market Size (CAGR 14.75%)" },
-                    { value: "$600B", label: "Gaming Industry", sub: "2030 Forecast (CAGR 12.2%)" }
-                ],
-                timing: {
-                    title: "Strategic Leap Point",
-                    points: [
-                        { title: "Regulatory Push", desc: "EU AI Act, DSA coming into full effect in 2025." },
-                        { title: "Market Gap", desc: "Existing players focus on text only; Media/Game guardrails are vacant." },
-                        { title: "First Mover", desc: "Explosive growth point for Gaming/Metaverse markets." }
-                    ]
-                }
+            header: {
+                title: "Technology & Vision",
+                sub: "Building the infrastructure for the next generation of AI media.",
             },
             solution: {
                 tag: "Our Solution",
@@ -144,47 +106,9 @@ export default function Company() {
             }
         },
         ko: {
-            hero: {
-                tag: "FULL-MEDIA AI GUARDRAILS",
-                title: "HOLO STUDIO",
-                sub: "AI 콘텐츠 생성과 안전성을 동시에 제공하는 Web3 플랫폼 회사",
-                desc: "텍스트, 이미지, 비디오 AI 콘텐츠 생성과 동시에 안전성을 보장하는 Full-Media AI Guardrails. 게이밍과 엔터테인먼트를 통해 사용자에게 재미있고 안전한 AI 경험을 제공합니다.",
-                cta1: "투자 문의하기",
-                cta2: "자료 다운로드"
-            },
-            awards: [
-                { title: "SEEDIFY 2025", desc: "AI AGENT 해커톤 1등" },
-                { title: "ETHDENVER 2025", desc: "Story Superagent Top 10" },
-                { title: "OKX ETHCC 2025", desc: "Smart Account UX & Abstraction 2등" },
-                { title: "ETHDENVER 2025", desc: "Story Track Dapp 부문 2등" }
-            ],
-            problem: {
-                tag: "핵심 문제",
-                title: "해결하려는 핵심 문제",
-                desc: "AI 콘텐츠 생성이 폭발적으로 증가하는 가운데, 안전성 인프라는 여전히 단편적이고 불완전합니다.",
-                cards: [
-                    { title: "2025년 콘텐츠 안전성 위기", desc: "Meta가 인간 모더레이터를 AI로 대체, 검열 불완전성 논란 가속화.", icon: Shield },
-                    { title: "기존 AI 안전 시스템의 한계", desc: "LLM 텍스트만 필터링, 이미지/비디오/3D AI 생성 콘텐츠 가드레일 부재.", icon: Zap },
-                    { title: "게이밍/3D 콘텐츠 안전성 사각지대", desc: "메타버스와 게임 내 유해 콘텐츠 생성 무방비 상태.", icon: Gamepad2 }
-                ]
-            },
-            market: {
-                tag: "시장 기회",
-                title: "시장 기회 & 타이밍",
-                desc: "급속히 확장하는 AI 콘텐츠 생태계에서 중요한 인프라 요구 사항 해결",
-                cards: [
-                    { value: "$80B", label: "생성 AI 콘텐츠 시장", sub: "2030년 예상 (CAGR 32.5%)" },
-                    { value: "$11.6B", label: "콘텐츠 모더레이션", sub: "2025년 시장 규모 (CAGR 14.75%)" },
-                    { value: "$600B", label: "게이밍 산업", sub: "2030년 예측 (CAGR 12.2%)" }
-                ],
-                timing: {
-                    title: "전략적 도약 시점",
-                    points: [
-                        { title: "규제 추진력", desc: "EU 디지털 규제(AI Act, DSA) 2025년 본격 시행으로 기업 수요 급증" },
-                        { title: "시장 공백", desc: "기존 솔루션들이 텍스트에만 집중, 미디어 가드레일 공백 상태" },
-                        { title: "선도자 우위", desc: "게이밍/메타버스 시장 폭발적 성장 시점" }
-                    ]
-                }
+            header: {
+                title: "기술 및 비전",
+                sub: "차세대 AI 미디어를 위한 인프라를 구축합니다.",
             },
             solution: {
                 tag: "우리의 솔루션",
@@ -284,98 +208,17 @@ export default function Company() {
 
     return (
         <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
-            {/* 1. HERO */}
-            <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#050505] to-[#050505]" />
-                <div className="max-w-6xl mx-auto text-center relative z-10">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
-                        <div className="inline-block px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-mono font-bold tracking-widest mb-8">
-                            {c.hero.tag}
-                        </div>
-                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
-                            {c.hero.title}
+            {/* Header */}
+            <section className="pt-32 pb-16 px-6 bg-[#050505]">
+                <div className="max-w-7xl mx-auto text-center">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+                        <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">
+                            {c.header.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-neutral-300 font-medium mb-6 max-w-3xl mx-auto">
-                            {c.hero.sub}
+                        <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+                            {c.header.sub}
                         </p>
-                        <p className="text-neutral-500 max-w-2xl mx-auto leading-relaxed mb-10">
-                            {c.hero.desc}
-                        </p>
-                        <div className="flex justify-center gap-4">
-                            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-8 h-12 font-bold">
-                                {c.hero.cta1}
-                            </Button>
-                            <Button variant="outline" size="lg" className="border-neutral-700 text-white hover:bg-white/5 bg-transparent rounded-full px-8 h-12">
-                                {c.hero.cta2} <Download className="w-4 h-4 ml-2" />
-                            </Button>
-                        </div>
                     </motion.div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                        {c.awards.map((award, i) => (
-                            <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-xl text-left hover:border-indigo-500/50 transition-colors">
-                                <Trophy className="w-6 h-6 text-yellow-500 mb-3" />
-                                <div className="font-bold text-sm mb-1 text-indigo-300">{award.title}</div>
-                                <div className="text-xs text-neutral-400 font-medium">{award.desc}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 2. PROBLEM */}
-            <section className="py-24 bg-[#080808]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-xs font-bold mb-4">{c.problem.tag}</div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-indigo-300">{c.problem.title}</h2>
-                        <p className="text-neutral-500 max-w-2xl mx-auto">{c.problem.desc}</p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {c.problem.cards.map((card, i) => (
-                            <div key={i} className="bg-[#111] p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all group">
-                                <div className="w-12 h-12 bg-neutral-800 rounded-lg flex items-center justify-center mb-6 text-indigo-400 group-hover:bg-indigo-500/20 group-hover:scale-110 transition-all">
-                                    <card.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                                <p className="text-neutral-400 leading-relaxed text-sm">{card.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 3. MARKET */}
-            <section className="py-24 bg-[#050505]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <div className="inline-block px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-xs font-bold mb-4">{c.market.tag}</div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-indigo-300">{c.market.title}</h2>
-                        <p className="text-neutral-500 max-w-2xl mx-auto">{c.market.desc}</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8 mb-16">
-                        {c.market.cards.map((card, i) => (
-                            <div key={i} className="bg-gradient-to-br from-[#111] to-[#0a0a0a] p-10 rounded-3xl border border-neutral-800 text-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <div className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tighter">{card.value}</div>
-                                <div className="font-bold text-lg mb-2 text-indigo-200">{card.label}</div>
-                                <div className="inline-block px-3 py-1 bg-indigo-500/10 rounded-full text-indigo-400 text-xs font-bold">{card.sub}</div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="bg-[#111] rounded-3xl border border-neutral-800 p-10 md:p-16">
-                        <h3 className="text-2xl font-bold mb-10 text-center">{c.market.timing.title}</h3>
-                        <div className="grid md:grid-cols-3 gap-12">
-                            {c.market.timing.points.map((pt, i) => (
-                                <div key={i} className="relative pl-6 border-l-2 border-neutral-800 hover:border-indigo-500 transition-colors">
-                                    <h4 className="font-bold text-lg mb-2 text-white">{pt.title}</h4>
-                                    <p className="text-neutral-500 text-sm leading-relaxed">{pt.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </section>
 
