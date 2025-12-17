@@ -12,7 +12,22 @@ export default function AidGuardian() {
             showAnalytics={true}
             tag="Enterprise Safety"
             primaryButton={{ text: "Launch Dashboard", url: "http://221.148.221.12:7870" }}
-            oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
+            oneLiner="Imagine if content safety was autonomous and instant."
+            story={
+                <>
+                    <p className="mb-6">
+                        Today, enterprises are paralyzed by the risks of generative AI. 
+                        Compliance teams are overwhelmed by the volume of content, and traditional safety tools 
+                        are blind to the nuances of multi-modal generation. 
+                        We built AiD Guardian to bridge this gap.
+                    </p>
+                    <p>
+                        By combining GARM-aligned safety standards with deep multi-modal analysis, 
+                        we provide a real-time shield for your AI infrastructure. 
+                        It's not just a filter; it's an intelligent compliance engine that adapts to your specific policy needs.
+                    </p>
+                </>
+            }
             heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
             
             problemPoints={[
@@ -65,10 +80,10 @@ export default function AidGuardian() {
             ]}
 
             stats={[
-                { value: "100%", label: "Accuracy Target" },
-                { value: "86.9%", label: "Precision Rate" },
-                { value: "<10ms", label: "Processing Latency" },
-                { value: "8", label: "GARM Categories" }
+                { value: "Seed", label: "Initial Partnership" },
+                { value: "Enterprise / AI", label: "Categories" },
+                { value: "Global", label: "Location" },
+                { value: "Holo Studio", label: "Partner" }
             ]}
 
             useCases={[

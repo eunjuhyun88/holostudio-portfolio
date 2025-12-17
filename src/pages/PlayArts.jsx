@@ -12,7 +12,20 @@ export default function PlayArts() {
             tag="Media Protocol"
             primaryButton={{ text: "Launch App", url: "https://playarts.ai/" }}
             deckUrl="https://docsend.com/view/wdasib73q44ppc3a"
-            oneLiner="The Proof-of-Creation protocol for verifiable AI media provenance and value routing."
+            oneLiner="Imagine if creators truly owned the value they generate."
+            story={
+                <>
+                    <p className="mb-6">
+                        The AI revolution has created a massive attribution crisis. 
+                        Millions of assets are generated daily, yet the original creators and style pioneers 
+                        see none of the value. The connection between inspiration and output has been severed.
+                    </p>
+                    <p>
+                        PlayArts restores this link. We are building the provenance layer for the AI era, 
+                        ensuring that every piece of media carries its history, its contributors, and its value routing logic on-chain.
+                    </p>
+                </>
+            }
             heroImage="PlayArts Protocol Overview: Visualizing the flow of provenace from creation to value settlement"
             
             problemPoints={[

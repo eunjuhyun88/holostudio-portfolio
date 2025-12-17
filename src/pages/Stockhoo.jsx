@@ -12,7 +12,21 @@ export default function Stockhoo() {
             tag="AI Trading Intelligence"
             primaryButton={{ text: "Launch App", url: "http://stockhoo.playarts.ai" }}
             deckUrl="https://docsend.com/view/ari494ikfzsuix7z"
-            oneLiner="Zone-based AI trading agent optimized via Direct Preference Optimization (DPO)."
+            oneLiner="Imagine if trading intelligence was actually intelligent."
+            story={
+                <>
+                    <p className="mb-6">
+                        Retail traders are drowning in noise. Charts, news, sentiment, on-chain data—it's too much 
+                        for any human to process in real-time. Traditional bots are rigid, and generic AI hallucinations 
+                        make them dangerous for finance.
+                    </p>
+                    <p>
+                        Stockhoo cuts through the noise. We use DPO-optimized agents to identify high-probability zones, 
+                        giving you institutional-grade intelligence without the complexity. 
+                        It's not just data; it's actionable signal.
+                    </p>
+                </>
+            }
             heroImage="Stockhoo Trading Interface: AI-powered zone analysis overlay on price charts"
             
             problemPoints={[

@@ -29,6 +29,7 @@ export default function BusinessLayout({
     name, 
     tag, 
     oneLiner, 
+    story, // Added story prop
     heroImage, 
     problemPoints = [], 
     solutionSteps = [], 
@@ -183,7 +184,6 @@ export default function BusinessLayout({
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sticky Sidebar */}
-                    {/* Sidebar keeps its own dark theme to pop against light backgrounds */}
                     <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1">
                         <div className="lg:sticky lg:top-32 space-y-8">
                             <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
@@ -194,40 +194,24 @@ export default function BusinessLayout({
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className={`rounded-3xl p-8 ${s.sidebarBg} border border-white/10 shadow-2xl relative overflow-hidden backdrop-blur-xl text-white`}
+                                className={`rounded-xl p-6 bg-[#0A0A0A] border border-white/10 shadow-2xl relative overflow-hidden text-white`}
                             >
-                                <div className={`absolute top-0 left-0 w-full h-1 ${s.accentBg}`} />
-                                <div className="mb-8 hidden lg:block">
-                                    <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-black mb-6 shadow-lg">
+                                <div className="mb-8">
+                                    <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-black mb-6 shadow-lg">
                                         <div className="font-bold text-2xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <h1 className="text-3xl font-bold tracking-tighter mb-2">{name}</h1>
-                                    <div className={`text-xs font-bold ${s.accent} uppercase tracking-wider`}>{tag}</div>
+                                    <h1 className="text-2xl font-bold tracking-tighter mb-1">{name}</h1>
                                 </div>
 
-                                {/* Table of Contents */}
-                                <nav className="space-y-2 mb-8 hidden lg:block">
-                                    {sections.map((section, idx) => (
-                                        <button
-                                            key={section.id}
-                                            onClick={() => scrollToId(section.id)}
-                                            className={`block text-sm font-medium transition-colors text-left w-full py-1 ${
-                                                activeSection === idx 
-                                                ? 'text-white translate-x-1' 
-                                                : 'text-neutral-500 hover:text-neutral-300'
-                                            }`}
-                                        >
-                                            <span className={`mr-2 transition-opacity ${activeSection === idx ? 'opacity-100' : 'opacity-0'}`}>→</span>
-                                            {section.label}
-                                        </button>
-                                    ))}
-                                </nav>
-
-                                <div className="space-y-6 pt-6 border-t border-white/5">
-                                    {stats.slice(0, 3).map((stat, i) => (
-                                        <div key={i} className="group/stat">
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1 group-hover/stat:text-white transition-colors">{stat.label}</div>
-                                            <div className={`text-lg font-mono font-medium ${s.accent}`}>{stat.value}</div>
+                                <div className="space-y-6 pt-6 border-t border-white/10">
+                                    <div>
+                                        <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">Category</div>
+                                        <div className="text-sm font-medium text-white">{tag}</div>
+                                    </div>
+                                    {stats.map((stat, i) => (
+                                        <div key={i}>
+                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
+                                            <div className="text-sm font-medium text-white">{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -276,17 +260,28 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8 md:mb-12"
+                                className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8 md:mb-12 max-w-4xl"
                             >
                                 {oneLiner}
                             </motion.h2>
+
+                            {story && (
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    className={`text-lg md:text-xl leading-relaxed max-w-3xl mb-16 ${textSecondary}`}
+                                >
+                                    {story}
+                                </motion.div>
+                            )}
 
                             <MobileTOC />
 
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
+                                transition={{ delay: 0.3 }}
                                 className={`relative ${heroContainerClass} rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
                             >
                                 {HeroComponent ? (

@@ -12,7 +12,21 @@ export default function Elememetal() {
             tag="Competitive Strategy"
             primaryButton={{ text: "Play Now", url: "http://game-dev.playarts.ai" }}
             deckUrl="https://docsend.com/view/97ziwvrkmetmqs82"
-            oneLiner="THINK. GAMBLE. STRIKE. A 5-10 minute competitive card battler where every round is a mind game."
+            oneLiner="Imagine if gaming assets were as liquid as elements."
+            story={
+                <>
+                    <p className="mb-6">
+                        Competitive gaming has become stale. Pay-to-win mechanics and loot boxes 
+                        have replaced skill and strategy. Players spend thousands on assets they don't truly own, 
+                        trapped in walled gardens.
+                    </p>
+                    <p>
+                        EleMEMEtal changes the game. We've built a competitive battler where every card is an asset, 
+                        every match is a high-stakes mind game, and the economy is entirely player-driven. 
+                        No hidden algorithms, just pure strategy.
+                    </p>
+                </>
+            }
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
             
             problemPoints={[
