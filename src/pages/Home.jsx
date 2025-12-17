@@ -553,7 +553,8 @@ export default function Home() {
                         </h3>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
+                    {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                         {t.problem.cards.map((card, idx) => (
                             <motion.div 
                                 key={idx}
@@ -561,7 +562,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group p-8 rounded-2xl bg-neutral-900/30 border border-neutral-800 hover:border-indigo-500/50 transition-all duration-300"
+                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-neutral-900/30 border border-neutral-800 hover:border-indigo-500/50 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
                                     {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
