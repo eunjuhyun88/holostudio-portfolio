@@ -47,12 +47,12 @@ export default function Home() {
             },
             milestones: {
                 title: "Proof & Milestones",
-                sub: "Recognized by Industry Leaders",
+                sub: "Proven Traction & Industry Validation",
                 items: [
-                    { title: "SEEDIFY 2025", desc: "Global Winner" },
-                    { title: "ETHDenver 2025", desc: "Top 10 Finalist" },
-                    { title: "OKX ETHCC 2025", desc: "2nd Place" },
-                    { title: "NVIDIA Inception", desc: "Selected Member" }
+                    { title: "Seedify AI Hackathon", desc: "1st Place Winner" },
+                    { title: "NVIDIA Inception", desc: "Official Member" },
+                    { title: "Top Accelerators", desc: "AppWorks & OnePiece Labs" },
+                    { title: "Major Grants", desc: "Alchemy & Story Protocol" }
                 ]
             },
             diagram: {
@@ -61,11 +61,11 @@ export default function Home() {
             },
             research: {
                 title: "Research & Updates",
-                viewAll: "View All",
+                viewAll: "View Roadmap",
                 items: [
-                    { title: "EU AI Act Response: Multi-modal Safety Taxonomy", date: "Oct 2025", desc: "Comprehensive framework for compliance." },
-                    { title: "Gaming/3D UGC Safety Standards", date: "Sep 2025", desc: "Defining the new standard for metaverse safety." },
-                    { title: "Cross-platform Attribution Primitives", date: "Aug 2025", desc: "On-chain routing for AI media value." }
+                    { title: "PoC Protocol v1 Launch", date: "Q4 2025", desc: "The standard for verifiable AI provenance and IP lineage." },
+                    { title: "MemePing v2 Dashboard", date: "Q1 2026", desc: "Real-time impact tracking across Twitter, Reddit, & Farcaster." },
+                    { title: "INFT & OG Labs Integration", date: "Q1 2026", desc: "Cross-chain interoperability for AI-generated assets." }
                 ]
             },
             contact: {
@@ -110,12 +110,12 @@ export default function Home() {
             },
             milestones: {
                 title: "성과 및 마일스톤",
-                sub: "글로벌 리더들의 인정",
+                sub: "검증된 트랙션 및 업계의 인정",
                 items: [
-                    { title: "SEEDIFY 2025", desc: "글로벌 우승" },
-                    { title: "ETHDenver 2025", desc: "Top 10 선정" },
-                    { title: "OKX ETHCC 2025", desc: "2위 수상" },
-                    { title: "NVIDIA Inception", desc: "프로그램 선정" }
+                    { title: "Seedify AI 해커톤", desc: "1위 우승 (Winner)" },
+                    { title: "NVIDIA Inception", desc: "공식 멤버 선정" },
+                    { title: "글로벌 액셀러레이터", desc: "AppWorks & OnePiece Labs" },
+                    { title: "주요 그랜트 선정", desc: "Alchemy & Story Protocol" }
                 ]
             },
             diagram: {
@@ -124,11 +124,11 @@ export default function Home() {
             },
             research: {
                 title: "리서치 및 업데이트",
-                viewAll: "전체 보기",
+                viewAll: "로드맵 보기",
                 items: [
-                    { title: "EU AI Act 대응: 멀티모달 안전 분류 체계", date: "2025년 10월", desc: "컴플라이언스를 위한 포괄적 프레임워크." },
-                    { title: "게이밍/3D UGC 안전 표준", date: "2025년 9월", desc: "메타버스 안전을 위한 새로운 기준 정의." },
-                    { title: "크로스 플랫폼 기여도 측정", date: "2025년 8월", desc: "AI 미디어 가치를 위한 온체인 라우팅." }
+                    { title: "PoC 프로토콜 v1 런칭", date: "2025년 4분기", desc: "검증 가능한 AI 출처 및 IP 계보 표준." },
+                    { title: "MemePing v2 대시보드", date: "2026년 1분기", desc: "Twitter, Reddit, Farcaster 실시간 영향력 추적." },
+                    { title: "INFT & OG Labs 통합", date: "2026년 1분기", desc: "AI 생성 자산을 위한 크로스체인 상호운용성." }
                 ]
             },
             contact: {
