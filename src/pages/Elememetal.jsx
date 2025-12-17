@@ -6,90 +6,90 @@ export default function Elememetal() {
         <BusinessLayout 
             name="EleMEMEtal"
             tag="Gaming Economy"
-            oneLiner="Safety-native UGC PvP game economy where creation and distribution are trust-managed by design."
+            oneLiner="A safety-native UGC PvP card battler where skill meets trusted creative freedom."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/44fe158d2_2025-12-1785335.png"
             
             problemPoints={[
                 {
-                    title: "Toxic UGC in Gaming",
-                    description: "User-generated content in games is often toxic or non-compliant, leading to bans and revenue loss."
+                    title: "Toxic UGC Risks",
+                    description: "Games engaging with UGC often face moderation nightmares, leading to bans and brand damage."
                 },
                 {
-                    title: "Economic Imbalance",
-                    description: "Traditional game economies fail to reward the creators of high-quality content fairly."
+                    title: "Pay-to-Win Fatigue",
+                    description: "Traditional TCGs rely on expensive card packs, alienating skilled players who want fair competition."
                 },
                 {
-                    title: "Safety Bottlenecks",
-                    description: "Manual moderation slows down the release of new UGC, killing community momentum."
+                    title: "Lack of Ownership",
+                    description: "Players pour hours into creating assets and strategies but own nothing when the servers shut down."
                 }
             ]}
 
             solutionSteps={[
                 {
                     title: "Safety-Native Design",
-                    description: "Content safety checks are embedded directly into the creation flow, preventing toxic assets."
+                    description: "We integrate safety checks directly into the creation flow, ensuring all UGC is brand-safe by default."
                 },
                 {
-                    title: "Trust-Managed Distribution",
-                    description: "Only verified safe content is distributed, ensuring a brand-safe environment for sponsors."
+                    title: "Strategic Depth",
+                    description: "A 5-10 minute high-density decision game with 'Power Bank' and 'Joker' mechanics for skill-based comebacks."
                 },
                 {
-                    title: "Fair Reward Economy",
-                    description: "Creators earn tokens based on the utility and popularity of their safe assets in PvP battles."
+                    title: "Play-to-Prove",
+                    description: "A meritocratic economy where your skill and creative contributions verify your reputation and earnings."
                 }
             ]}
 
             screenshots={[
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/5fa26c821_2025-12-1785323.png",
-                    caption: "Award-Winning Game Design"
+                    caption: "Immersive Card Battle Arena"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/44fe158d2_2025-12-1785335.png",
-                    caption: "Gamification & Asset Utility"
+                    caption: "Asset Customization & Utility"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/b43c87824_2025-12-1785330.png",
-                    caption: "Dual-NFT Game Mechanics"
+                    caption: "Strategic Deck Building"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/749ad41cd_2025-12-1785337.png",
-                    caption: "Infrastructure Architecture"
+                    caption: "Scalable Game Infrastructure"
                 }
             ]}
 
             useCases={[
                 {
-                    title: "Game Studios",
-                    description: "Outsource UGC safety and economy management to a trusted module."
+                    title: "Competitive Gamers",
+                    description: "Experience a fair, skill-based meta where prediction and timing beat spending."
                 },
                 {
-                    title: "Indie Developers",
-                    description: "Quickly integrate safe UGC features without building moderation teams."
+                    title: "Creators",
+                    description: "Design unique skins and assets that are verified, usable, and tradable."
                 },
                 {
-                    title: "Gamers & Creators",
-                    description: "Play and earn in a safe, fair, and transparent ecosystem."
+                    title: "Streamers",
+                    description: "Engage audiences with high-stakes, fast-paced matches perfect for live viewing."
                 }
             ]}
 
-            businessModel="Transaction Fees on Asset Trades + Battle Pass Sales + API Access for Studios."
+            businessModel="Asset Marketplace Fees + Battle Pass / Season Passes + B2B UGC Safety Module."
 
             roadmap={[
                 {
                     quarter: "Q2 2025",
                     title: "Alpha Launch",
-                    items: ["Core PvP Loop", "Basic Asset Minting"]
+                    items: ["Core PvP Loop", "Basic Asset Minting", "Closed Beta Testing"]
                 },
                 {
                     quarter: "Q4 2025",
                     title: "Creator Economy",
-                    items: ["UGC Marketplace", "Creator Tools v1"]
+                    items: ["UGC Marketplace", "Creator Tools v1", "Community Tournaments"]
                 },
                 {
                     quarter: "2026",
                     title: "Metaverse Integration",
-                    items: ["Cross-game Assets", "3D World Expansion"]
+                    items: ["Cross-game Assets", "3D World Expansion", "Mobile Release"]
                 }
             ]}
         />

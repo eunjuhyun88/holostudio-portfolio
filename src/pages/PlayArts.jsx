@@ -6,97 +6,97 @@ export default function PlayArts() {
         <BusinessLayout 
             name="PlayArts"
             tag="Media Protocol"
-            oneLiner="Verifiable AI media provenance + cross-platform impact tracking + settlement-ready value events."
+            oneLiner="The Proof-of-Creation protocol for verifiable AI media provenance and value routing."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/b79d90ba9_2025-12-1785343.png"
             
             problemPoints={[
                 {
                     title: "Attribution Crisis",
-                    description: "Creators lose control and credit as their style is copied by AI without attribution."
+                    description: "Creators lose ownership as their style is copied by AI models without consent or credit."
                 },
                 {
                     title: "Value Leakage",
-                    description: "Platforms capture all the value from AI media, leaving creators and prompters with nothing."
+                    description: "Platforms capture 100% of the value from viral AI content, leaving prompters and remixers with nothing."
                 },
                 {
                     title: "Provenance Gap",
-                    description: "No standard way to verify the origin and remix history of viral AI content."
+                    description: "No standard exists to verify the 'Who, What, and How' of AI content creation across the web."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "On-Chain Provenance",
-                    description: "Every media asset is minted with an immutable record of its origin, prompt, and creator."
+                    title: "Context Anchoring (MCP)",
+                    description: "We capture the generation context (prompt, model, params) at the source via the Model Context Passport."
                 },
                 {
-                    title: "Impact Tracking",
-                    description: "Track how content travels and influences other creations across platforms."
+                    title: "Sentinel Verification",
+                    description: "A distributed network of nodes verifies the content's origin and integrity using perceptual hashing."
                 },
                 {
-                    title: "Value Settlement",
-                    description: "Smart contracts automatically distribute royalties and rewards based on verified impact."
+                    title: "Value Routing",
+                    description: "Smart contracts automatically route rewards to the original creator and amplifiers when value is generated."
                 }
             ]}
 
             screenshots={[
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/a60d41368_2025-12-1785347.png",
-                    caption: "Seed Round Funding & Valuation"
+                    caption: "Protocol Growth & Seed Funding"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/9e752e65e_2025-12-1785328.png",
-                    caption: "Strategic Roadmap 2025-2026"
+                    caption: "Strategic Roadmap: Protocol Expansion"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/9f7c0df24_2025-12-1785338.png",
-                    caption: "Gamification & Community Strategy"
+                    caption: "Community Gamification Mechanics"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/a6d2cc0c8_2025-12-1785333.png",
-                    caption: "Solving Core Media Problems"
+                    caption: "Solving the AI Attribution Problem"
                 }
             ]}
 
             stats={[
-                { value: "500K+", label: "Registered Users" },
-                { value: "1M+", label: "Assets Minted" },
-                { value: "$2M", label: "Seed Funding" },
-                { value: "99.7%", label: "Accuracy" }
+                { value: "500K+", label: "Users" },
+                { value: "1M+", label: "Assets Anchored" },
+                { value: "$2M", label: "Seed Round" },
+                { value: "99.7%", label: "PoC Accuracy" }
             ]}
 
             useCases={[
                 {
-                    title: "AI Artists & Creators",
-                    description: "Protect style and earn from derivative works."
+                    title: "AI Power Users",
+                    description: "Prove ownership of your prompt engineering and creative output."
                 },
                 {
-                    title: "Media Platforms",
-                    description: "Integrate provenance verification to combat deepfakes."
+                    title: "Meme Creators",
+                    description: "Track the viral spread of your memes and earn from their impact."
                 },
                 {
-                    title: "IP Holders",
-                    description: "Monitor and monetize the usage of IP in AI generation."
+                    title: "Enterprise Brands",
+                    description: "Secure IP rights and verify the authenticity of brand assets."
                 }
             ]}
 
-            businessModel="Protocol Fees (Minting/Transfer) + B2B Licensing of Provenance SDK."
+            businessModel="Verification Fees (Node Revenue) + Protocol Transaction Fees + B2B SDK Licensing."
 
             roadmap={[
                 {
-                    quarter: "Q4 2025",
-                    title: "Dual Card Battle Market",
-                    items: ["TCG Launch", "In-game AI Media Utility"]
+                    quarter: "Q1-Q2 2025",
+                    title: "Foundation Phase",
+                    items: ["Sentinel v3.0 Production", "MCP Registry v1.0", "MemePing v1.0 Launch"]
                 },
                 {
-                    quarter: "Q1-Q2 2026",
-                    title: "AI+Web3 Guardrail Core",
-                    items: ["Full-Media AI Guardrails", "Video AI Safety Models"]
+                    quarter: "Q3-Q4 2025",
+                    title: "Expansion Phase",
+                    items: ["Strong PoC (On-chain)", "Public Node Beta", "Cross-chain Support"]
                 },
                 {
-                    quarter: "2026+",
-                    title: "Enterprise Expansion",
-                    items: ["Global Compliance Certs", "DAO Governance"]
+                    quarter: "2026",
+                    title: "Decentralization",
+                    items: ["Permissionless Nodes", "DAO Governance", "ZK-PoC Research"]
                 }
             ]}
         />

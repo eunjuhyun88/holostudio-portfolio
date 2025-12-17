@@ -6,81 +6,81 @@ export default function AidGuardian() {
         <BusinessLayout 
             name="AiD Guardian"
             tag="Enterprise Safety"
-            oneLiner="Multi-modal brand safety & compliance engine for AI content (image, video, audio, text)."
+            oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/11636bcbb_2025-12-1785347.png"
             
             problemPoints={[
                 {
-                    title: "Regulatory Compliance Gap",
-                    description: "Enterprises struggle to meet EU AI Act & DSA transparency requirements for generated content."
+                    title: "The Compliance Gap",
+                    description: "New regulations like the EU AI Act & DSA require strict transparency and auditability for AI content that current tools can't provide."
                 },
                 {
-                    title: "Brand Safety Risks",
-                    description: "Standard text filters miss NSFW/Toxic content in images and videos, risking brand reputation."
+                    title: "Multi-Modal Blindspots",
+                    description: "Standard text filters fail to detect toxic or non-compliant content embedded in Images, Video frames, and Audio tracks."
                 },
                 {
-                    title: "Black Box AI",
-                    description: "Lack of explainability in why content was flagged or blocked creates operational bottlenecks."
+                    title: "Black Box Liability",
+                    description: "Without explainable AI decisions, enterprises face legal risks when content is flagged or blocked without clear reasoning."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Multi-Modal Analysis",
-                    description: "Native understanding of Vision, Audio, and Language to catch context-dependent violations."
+                    title: "Ingest & Decompose",
+                    description: "We ingest multi-modal content and decompose it into text, visual frames, and audio segments for granular analysis."
                 },
                 {
-                    title: "Real-time GARM Scoring",
-                    description: "Maps content risks to industry-standard GARM categories for advertiser suitability."
+                    title: "Analyze & Score",
+                    description: "Our engine applies specialized models to score content against GARM safety categories and custom enterprise policies in real-time."
                 },
                 {
-                    title: "Full Audit Trail",
-                    description: "Immutable logs of every decision for regulatory compliance and human-in-the-loop review."
+                    title: "Enforce & Report",
+                    description: "Automatically block or flag content, generating an immutable audit trail for compliance reporting."
                 }
             ]}
 
             screenshots={[
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/0355a95a1_2025-12-1785353.png",
-                    caption: "High Accuracy Performance Metrics"
+                    caption: "Enterprise Dashboard: Real-time Risk Monitoring"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/8765e1d18_2025-12-1785357.png",
-                    caption: "GARM Framework Classification"
+                    caption: "GARM-Aligned Categorization System"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/23ae40722_2025-12-1792042.png",
-                    caption: "Developer-Friendly API Documentation"
+                    caption: "Developer-First API & SDK Documentation"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/75b195b83_2025-12-1785350.png",
-                    caption: "Comprehensive Multi-Modal Analysis"
+                    caption: "Deep Multi-Modal Content Analysis"
                 }
             ]}
 
             stats={[
-                { value: "100%", label: "Brand Safety Accuracy" },
-                { value: "86.9%", label: "Violence Recall" },
-                { value: "<10ms", label: "CLIP Latency" },
+                { value: "100%", label: "Accuracy Target" },
+                { value: "86.9%", label: "Precision Rate" },
+                { value: "<10ms", label: "Processing Latency" },
                 { value: "8", label: "GARM Categories" }
             ]}
 
             useCases={[
                 {
                     title: "Ad Tech Platforms",
-                    description: "Ensure ad placements don't appear next to toxic AI-generated content."
+                    description: "Protect advertiser brand equity by ensuring ads never appear next to toxic AI-generated content."
                 },
                 {
-                    title: "Social Media Apps",
-                    description: "Automated moderation for user-generated image and video content."
+                    title: "UGC Platforms",
+                    description: "Scale moderation for millions of images and videos with automated, policy-aware AI agents."
                 },
                 {
                     title: "Enterprise GenAI",
-                    description: "Prevent internal AI tools from generating non-compliant or harmful outputs."
+                    description: "Wrap internal AI tools with a safety layer to prevent generation of non-compliant or harmful outputs."
                 }
             ]}
 
-            businessModel="Enterprise Licensing + API Usage Pricing. Tiered plans for volume and retention."
+            businessModel="SaaS Subscription (Tiered by Volume) + Enterprise Licensing for On-Premise Deployment."
 
             roadmap={[
                 {
