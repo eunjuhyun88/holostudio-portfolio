@@ -60,13 +60,7 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
-            sectionColors: [
-                "rgba(30, 27, 75, 0.5)", // indigo-950
-                "rgba(46, 16, 101, 0.5)", // violet-950
-                "rgba(23, 37, 84, 0.5)", // blue-950
-                "rgba(49, 46, 129, 0.5)", // indigo-900
-                "rgba(15, 23, 42, 0.5)" // slate-900
-            ]
+            sectionColors: ["#0f172a", "#1e1b4b", "#312e81", "#172554", "#0f172a"]
         },
         elememetal: {
             accent: "text-orange-500",
@@ -74,13 +68,8 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(249,115,22,0.1)]",
             gradient: "from-orange-950/30",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
-            sectionColors: [
-                "rgba(67, 20, 7, 0.5)", // orange-950
-                "rgba(69, 10, 10, 0.5)", // red-950
-                "rgba(69, 26, 3, 0.5)", // amber-950
-                "rgba(76, 5, 25, 0.5)", // rose-950
-                "rgba(124, 45, 18, 0.5)" // orange-900
-            ]
+            // Deep Orange -> Dark Red -> Brown -> Dark Amber
+            sectionColors: ["#2a0a00", "#450a0a", "#3f1d0b", "#431407", "#2a0a00"]
         },
         aidguardian: {
             accent: "text-indigo-400",
@@ -88,13 +77,8 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
-            sectionColors: [
-                "rgba(30, 27, 75, 0.5)", // indigo-950
-                "rgba(46, 16, 101, 0.5)", // violet-950
-                "rgba(23, 37, 84, 0.5)", // blue-950
-                "rgba(8, 51, 68, 0.5)", // cyan-950
-                "rgba(15, 23, 42, 0.5)" // slate-900
-            ]
+            // Deep Indigo -> Violet -> Blue -> Slate
+            sectionColors: ["#1e1b4b", "#2e1065", "#172554", "#1e3a8a", "#0f172a"]
         },
         playarts: {
             accent: "text-lime-400",
@@ -102,13 +86,8 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(132,204,22,0.1)]",
             gradient: "from-lime-950/30",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
-            sectionColors: [
-                "rgba(26, 46, 5, 0.5)", // lime-950
-                "rgba(2, 44, 34, 0.5)", // emerald-950
-                "rgba(4, 47, 46, 0.5)", // teal-950
-                "rgba(5, 46, 22, 0.5)", // green-950
-                "rgba(20, 83, 45, 0.5)" // green-900
-            ]
+            // Dark Lime -> Deep Green -> Teal -> Dark Moss
+            sectionColors: ["#1a2e05", "#064e3b", "#115e59", "#14532d", "#0f172a"]
         },
         stockhoo: {
             accent: "text-emerald-400",
@@ -116,13 +95,8 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(16,185,129,0.1)]",
             gradient: "from-emerald-950/30",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
-            sectionColors: [
-                "rgba(2, 44, 34, 0.5)", // emerald-950
-                "rgba(8, 51, 68, 0.5)", // cyan-950
-                "rgba(4, 47, 46, 0.5)", // teal-950
-                "rgba(5, 46, 22, 0.5)", // green-950
-                "rgba(15, 23, 42, 0.5)" // slate-900
-            ]
+            // Deep Emerald -> Cyan -> Teal -> Slate
+            sectionColors: ["#022c22", "#083344", "#0f766e", "#042f2e", "#0f172a"]
         }
     };
 
