@@ -65,111 +65,113 @@ function LayoutContent({ children }) {
 
     return (
         <div className="min-h-screen bg-[#050505] font-sans text-white">
-            {/* Global Navigation */}
+            {/* Global Navigation - Trendy Floating "Island" Style */}
             <nav 
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
-                    isScrolled ? 'bg-[#050505]/80 backdrop-blur-xl border-white/5 py-3 shadow-2xl' : 'bg-transparent border-transparent py-6'
-                }`}
+                className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-4 py-6 md:px-8 md:py-8 pointer-events-none transition-all duration-300 ${isScrolled ? 'md:py-4' : ''}`}
             >
-                <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="group flex items-center gap-3 z-50">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 border border-white/20 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all duration-300">
-                            <img 
-                                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
-                                alt="Holo Studio" 
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <span className="text-xl font-bold tracking-tighter text-white hidden sm:block">
-                            HOLO<span className="text-indigo-500">STUDIO</span>
-                        </span>
+                {/* Left Group: Logo + Nav */}
+                <div className="flex items-center gap-4 pointer-events-auto">
+                    {/* Logo Pill */}
+                    <Link to="/" className="group flex items-center justify-center w-12 h-12 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 hover:scale-105 transition-all duration-300">
+                        <img 
+                            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
+                            alt="Holo Studio" 
+                            className="w-8 h-8 rounded-full object-cover opacity-90 group-hover:opacity-100"
+                        />
                     </Link>
 
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-6">
+                    {/* Desktop Nav Island */}
+                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full px-1 h-12 shadow-lg shadow-black/20">
                         {/* Businesses Dropdown */}
                         <div 
-                            className="relative group"
+                            className="relative group px-5 h-full flex items-center"
                             onMouseEnter={() => setBusinessDropdownOpen(true)}
                             onMouseLeave={() => setBusinessDropdownOpen(false)}
                         >
-                            <button className="flex items-center gap-1 font-medium text-sm text-neutral-400 hover:text-white transition-colors py-2">
+                            <button className="flex items-center gap-1.5 font-medium text-sm text-neutral-400 hover:text-white transition-colors">
                                 {language === 'en' ? 'Businesses' : '사업분야'}
-                                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
                             
                             {/* Dropdown Menu */}
-                            <div className={`absolute top-full left-0 w-56 pt-2 transition-all duration-200 ${
+                            <div className={`absolute top-full left-0 w-64 pt-4 transition-all duration-200 ${
                                 businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
                             }`}>
-                                <div className="bg-[#0A0A0A]/95 backdrop-blur-md rounded-xl shadow-2xl border border-neutral-800 overflow-hidden p-2">
+                                <div className="bg-[#0A0A0A]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden p-2 grid gap-1">
                                     {businesses.map((biz) => (
                                         <Link 
                                             key={biz.name}
                                             to={createPageUrl(biz.path.substring(1))}
-                                            className="block px-4 py-3 rounded-lg hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                                            className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-all group/item"
                                         >
                                             {biz.name}
+                                            <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-indigo-400" />
                                         </Link>
                                     ))}
                                 </div>
                             </div>
                         </div>
 
-                        {navLinks[language].map((link) => (
-                            link.isAnchor ? (
-                                <button 
-                                    key={link.name}
-                                    onClick={() => scrollToSection(link.path.substring(2))} 
-                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors"
-                                >
-                                    {link.name}
-                                </button>
-                            ) : (
-                                <Link 
-                                    key={link.name}
-                                    to={createPageUrl(link.path.substring(1))}
-                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors relative group"
-                                >
-                                    {link.name}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-indigo-500 transition-all duration-300 group-hover:w-full" />
-                                </Link>
-                            )
-                        ))}
-                    </div>
+                        {/* Divider */}
+                        <div className="w-px h-4 bg-white/10" />
 
-                    {/* Right Actions */}
-                    <div className="hidden md:flex items-center gap-4">
-                         {/* Language Toggle */}
+                        {/* Links */}
+                        <div className="flex items-center px-2">
+                            {navLinks[language].map((link) => (
+                                link.isAnchor ? (
+                                    <button 
+                                        key={link.name}
+                                        onClick={() => scrollToSection(link.path.substring(2))} 
+                                        className="px-5 py-2 font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                    >
+                                        {link.name}
+                                    </button>
+                                ) : (
+                                    <Link 
+                                        key={link.name}
+                                        to={createPageUrl(link.path.substring(1))}
+                                        className="px-5 py-2 font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right Group: Actions */}
+                <div className="flex items-center gap-3 pointer-events-auto">
+                    {/* Actions Island */}
+                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full p-1.5 h-12 shadow-lg shadow-black/20 gap-2">
+                        {/* Language Toggle */}
                         <button 
                             onClick={toggleLanguage}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/50 text-xs font-mono text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                            className="flex items-center gap-2 px-4 h-full rounded-full hover:bg-white/5 text-xs font-mono text-neutral-400 hover:text-white transition-all border border-transparent hover:border-white/10"
                         >
                             <Globe className="w-3 h-3" />
                             <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>EN</span>
-                            <span className="text-neutral-700">|</span>
+                            <span className="text-neutral-700">/</span>
                             <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>KO</span>
                         </button>
 
-                        <div className="h-6 w-px bg-neutral-800" />
+                        <div className="w-px h-4 bg-white/10" />
 
-                        <div className="flex gap-3">
-                            <Button variant="ghost" className="text-sm text-neutral-400 hover:text-white hover:bg-white/5">
-                                {language === 'en' ? 'Deck' : '소개서'}
-                            </Button>
-                            <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-5 h-9 text-sm font-medium shadow-[0_0_15px_rgba(79,70,229,0.3)] transition-all">
-                                {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'}
-                            </Button>
-                        </div>
+                        <Button variant="ghost" className="rounded-full text-sm text-neutral-400 hover:text-white hover:bg-white/5 px-5 h-9">
+                            {language === 'en' ? 'Deck' : '소개서'}
+                        </Button>
+
+                        <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 h-9 text-sm font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all border border-indigo-500/50">
+                            {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
+                        </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile Menu Button - Styled as a Pill */}
                     <button 
-                        className="md:hidden z-50 p-2 text-white"
+                        className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 text-white shadow-lg shadow-black/20"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X /> : <Menu />}
+                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
 
