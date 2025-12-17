@@ -41,7 +41,8 @@ export default function BusinessLayout({
     primaryButton = { text: "Request Access", url: null },
     deckUrl = null,
     HeroComponent = null,
-    showAnalytics = false
+    showAnalytics = false,
+    heroContainerClass = "aspect-[16/9]" 
 }) {
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
@@ -286,7 +287,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className={`relative aspect-[16/9] rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
+                                className={`relative ${heroContainerClass} rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
                             >
                                 {HeroComponent ? (
                                     <HeroComponent />

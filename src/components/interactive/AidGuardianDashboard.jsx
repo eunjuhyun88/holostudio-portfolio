@@ -55,22 +55,22 @@ export default function AidGuardianDashboard() {
     return (
         <div className="w-full h-[800px] bg-[#0A0A0A] text-white flex flex-col rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
             {/* Header */}
-            <div className="flex justify-between items-center px-6 py-4 border-b border-white/5 bg-[#0A0A0A]/50 backdrop-blur-md z-20">
+            <div className="flex justify-between items-center px-4 md:px-6 py-4 border-b border-white/5 bg-[#0A0A0A]/50 backdrop-blur-md z-20">
                 <div className="flex items-center gap-2 text-indigo-400">
                     <Shield className="w-5 h-5" />
-                    <span className="font-mono text-sm tracking-wider font-bold">AiD GUARDIAN DASHBOARD</span>
+                    <span className="font-mono text-sm tracking-wider font-bold truncate">AiD GUARDIAN DASHBOARD</span>
                 </div>
                 <div className="flex items-center gap-4 text-xs">
-                     <div className="flex items-center gap-2 text-neutral-500">
+                     <div className="hidden md:flex items-center gap-2 text-neutral-500">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
                         LIVE MONITORING
                     </div>
                 </div>
             </div>
 
-            <div className="flex-1 flex overflow-hidden">
+            <div className="flex-1 flex overflow-hidden flex-col md:flex-row">
                 {/* Left Sidebar: History List - Optimized for width */}
-                <div className="w-[280px] lg:w-[350px] flex-shrink-0 border-r border-white/5 bg-[#050505] flex flex-col">
+                <div className="w-full md:w-[250px] lg:w-[300px] flex-shrink-0 border-r-0 md:border-r border-b md:border-b-0 border-white/5 bg-[#050505] flex flex-col max-h-[300px] md:max-h-none">
                     <div className="p-4 border-b border-white/5 space-y-3">
                         <div className="flex justify-between items-center">
                             <h3 className="text-sm font-bold text-white">Analysis History</h3>
