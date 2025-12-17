@@ -27,6 +27,37 @@ export default function BusinessLayout({
         transition: { duration: 0.5 }
     };
 
+    const floatAnim = {
+        animate: {
+            y: [0, -4, 0],
+            rotate: [0, 2, -2, 0],
+            transition: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        }
+    };
+
+    const pulseAnim = {
+        animate: {
+            scale: [1, 1.1, 1],
+            opacity: [0.8, 1, 0.8],
+            transition: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        }
+    };
+
+    const popIn = {
+        initial: { scale: 0, rotate: -90 },
+        whileInView: { scale: 1, rotate: 0 },
+        viewport: { once: true },
+        transition: { type: "spring", stiffness: 260, damping: 20 }
+    };
+
     // Refined theme for the new layout - keeping "dark" as primary but cleaning up classes
     const themes = {
         default: {
@@ -287,12 +318,22 @@ export default function BusinessLayout({
                         <section className="grid md:grid-cols-2 gap-8">
                             <div className={`p-10 rounded-3xl border ${s.sidebarBorder} ${s.sidebarBg}`}>
                                 <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                    <Users className={`w-5 h-5 ${s.accent}`} /> Target Customers
+                                    <motion.div variants={floatAnim} animate="animate">
+                                        <Users className={`w-6 h-6 ${s.accent}`} />
+                                    </motion.div>
+                                    Target Customers
                                 </h3>
                                 <ul className="space-y-6">
                                     {useCases.map((u, i) => (
                                         <li key={i} className="flex gap-4">
-                                            <CheckCircle2 className={`w-5 h-5 ${s.accent} flex-shrink-0 mt-1`} />
+                                            <motion.div 
+                                                variants={popIn}
+                                                initial="initial"
+                                                whileInView="whileInView"
+                                                transition={{ delay: i * 0.1 }}
+                                            >
+                                                <CheckCircle2 className={`w-5 h-5 ${s.accent} flex-shrink-0 mt-1`} />
+                                            </motion.div>
                                             <div>
                                                 <div className="font-bold">{u.title}</div>
                                                 <div className="text-sm text-neutral-400 mt-1">{u.description}</div>
@@ -304,12 +345,20 @@ export default function BusinessLayout({
 
                             <div className={`p-10 rounded-3xl border ${s.sidebarBorder} ${s.sidebarBg}`}>
                                 <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                    <Milestone className={`w-5 h-5 ${s.accent}`} /> Roadmap
+                                    <motion.div variants={pulseAnim} animate="animate">
+                                        <Milestone className={`w-6 h-6 ${s.accent}`} />
+                                    </motion.div>
+                                    Roadmap
                                 </h3>
                                 <div className="space-y-8">
                                     {roadmap.map((item, i) => (
                                         <div key={i} className="relative pl-6 border-l border-white/10">
-                                            <div className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full ${s.accentBg}`} />
+                                            <motion.div 
+                                                initial={{ scale: 0 }}
+                                                whileInView={{ scale: 1 }}
+                                                transition={{ delay: i * 0.2, type: "spring" }}
+                                                className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full ${s.accentBg}`} 
+                                            />
                                             <div className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1">{item.quarter}</div>
                                             <div className="font-bold text-lg mb-2">{item.title}</div>
                                             <div className="text-sm text-neutral-400">
