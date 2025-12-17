@@ -319,7 +319,7 @@ export default function Home() {
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
             <section className="py-12 border-y border-neutral-900 bg-[#080808]">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left mb-12">
                         <div>
                             <div className="text-3xl font-bold text-white mb-1">{t.market.year.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
@@ -335,6 +335,45 @@ export default function Home() {
                         <div>
                             <div className="text-3xl font-bold text-white mb-1">{t.market.gap.val}</div>
                             <div className="text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
+                        </div>
+                    </div>
+                    
+                    {/* Partners / Backers - From Playarts screenshot */}
+                    <div className="border-t border-white/5 pt-8">
+                        <p className="text-center text-xs text-neutral-500 uppercase tracking-widest mb-6">Selected & Backed By</p>
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                            {/* NVIDIA Inception */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-white">NVIDIA</span>
+                                <span className="text-xs text-neutral-400 border-l border-neutral-600 pl-2">Inception</span>
+                            </div>
+                            
+                            {/* Google Cloud */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-white">Google Cloud</span>
+                                <span className="text-xs text-neutral-400">Partner</span>
+                            </div>
+
+                            {/* Alchemy */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-blue-400">Alchemy</span>
+                            </div>
+
+                            {/* OnePiece Labs */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-white">OnePiece</span>
+                                <span className="text-xs text-neutral-400">Labs</span>
+                            </div>
+
+                            {/* AppWorks */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-orange-500">AppWorks</span>
+                            </div>
+
+                            {/* STORY */}
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-lg text-white">STORY</span>
+                            </div>
                         </div>
                     </div>
                 </div>
