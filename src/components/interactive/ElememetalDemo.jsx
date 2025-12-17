@@ -177,24 +177,24 @@ export default function ElememetalDemo() {
                             &larr; Exit
                         </Button>
                         <div className="flex flex-col ml-16">
-                            <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Total Power</span>
-                            <div className={`text-2xl font-black flex items-center gap-2 ${totalPower >= enemyPower ? 'text-green-500' : 'text-white'}`}>
-                                <Swords className="w-5 h-5" /> {totalPower}
-                                <span className="text-xs text-neutral-500 font-normal self-end mb-1">/ {enemyPower} REQUIRED</span>
+                            <span className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Total Power</span>
+                            <div className={`text-3xl font-black flex items-center gap-2 ${totalPower >= enemyPower ? 'text-green-500' : 'text-white'}`}>
+                                <Swords className="w-6 h-6" /> {totalPower}
+                                <span className="text-sm text-neutral-500 font-normal self-end mb-1">/ {enemyPower} REQUIRED</span>
                             </div>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Bank</span>
-                            <div className="text-2xl font-black text-yellow-500 flex items-center gap-1">
-                                <Zap className="w-4 h-4 fill-yellow-500" /> {bank}
+                            <span className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Bank</span>
+                            <div className="text-3xl font-black text-yellow-500 flex items-center gap-1">
+                                <Zap className="w-5 h-5 fill-yellow-500" /> {bank}
                             </div>
                         </div>
                     </div>
 
                     <div className="text-right">
-                        <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Enemy Boss</div>
-                        <div className="text-xl font-bold text-red-500 flex items-center justify-end gap-2">
-                            {enemyPower} HP <Skull className="w-4 h-4" />
+                        <div className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Enemy Boss</div>
+                        <div className="text-2xl md:text-3xl font-bold text-red-500 flex items-center justify-end gap-2">
+                            {enemyPower} HP <Skull className="w-6 h-6" />
                         </div>
                     </div>
                 </div>

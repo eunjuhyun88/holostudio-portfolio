@@ -14,13 +14,13 @@ export default function AidGuardian() {
             oneLiner: "Imagine if content safety was autonomous and instant.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         Today, enterprises are paralyzed by the risks of generative AI. 
                         Compliance teams are overwhelmed by the volume of content, and traditional safety tools 
                         are blind to the nuances of multi-modal generation. 
                         We built AiD Guardian to bridge this gap.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         By combining GARM-aligned safety standards with deep multi-modal analysis, 
                         we provide a real-time shield for your AI infrastructure. 
                         It's not just a filter; it's an intelligent compliance engine that adapts to your specific policy needs.
@@ -118,13 +118,13 @@ export default function AidGuardian() {
             oneLiner: "콘텐츠 안전이 자율적이고 즉각적으로 이루어진다면.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         오늘날 기업들은 생성형 AI의 리스크로 인해 마비 상태에 빠져 있습니다.
                         컴플라이언스 팀은 방대한 콘텐츠 양에 압도당하고 있으며, 기존 안전 도구들은
                         멀티모달 생성의 뉘앙스를 파악하지 못합니다.
                         우리는 이 격차를 해소하기 위해 AiD Guardian을 구축했습니다.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         GARM(Global Alliance for Responsible Media) 기준 안전 표준과 심층 멀티모달 분석을 결합하여,
                         귀사의 AI 인프라를 위한 실시간 방패를 제공합니다.
                         이는 단순한 필터가 아닙니다. 기업의 특정 정책 요구사항에 적응하는 지능형 컴플라이언스 엔진입니다.

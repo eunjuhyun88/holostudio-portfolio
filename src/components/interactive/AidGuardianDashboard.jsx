@@ -113,14 +113,14 @@ export default function AidGuardianDashboard() {
     return (
         <div className="w-full h-[800px] bg-[#0A0A0A] text-white flex flex-col rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
             {/* Header */}
-            <div className="flex justify-between items-center px-4 md:px-6 py-4 border-b border-white/5 bg-[#0A0A0A]/50 backdrop-blur-md z-20">
-                <div className="flex items-center gap-2 text-indigo-400">
-                    <Shield className="w-5 h-5" />
-                    <span className="font-mono text-sm tracking-wider font-bold truncate">AiD GUARDIAN DASHBOARD</span>
+            <div className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-white/5 bg-[#0A0A0A]/50 backdrop-blur-md z-20">
+                <div className="flex items-center gap-3 text-indigo-400">
+                    <Shield className="w-6 h-6" />
+                    <span className="font-mono text-base tracking-widest font-bold truncate">AiD GUARDIAN DASHBOARD</span>
                 </div>
-                <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-4 text-sm">
                      <div className="hidden md:flex items-center gap-2 text-neutral-500">
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"/>
                         LIVE MONITORING
                     </div>
                 </div>
@@ -129,17 +129,17 @@ export default function AidGuardianDashboard() {
             <div className="flex-1 flex overflow-hidden flex-col md:flex-row">
                 {/* Left Sidebar: History List - Optimized for width */}
                 <div className="w-full md:w-[250px] lg:w-[300px] flex-shrink-0 border-r-0 md:border-r border-b md:border-b-0 border-white/5 bg-[#050505] flex flex-col max-h-[300px] md:max-h-none">
-                    <div className="p-4 border-b border-white/5 space-y-3">
+                    <div className="p-5 border-b border-white/5 space-y-4">
                         <div className="flex justify-between items-center">
-                            <h3 className="text-sm font-bold text-white">Analysis History</h3>
-                            <span className="text-[10px] text-neutral-500">{mockHistory.length} RECORDS</span>
+                            <h3 className="text-base font-bold text-white">Analysis History</h3>
+                            <span className="text-xs text-neutral-500 font-mono">{mockHistory.length} RECORDS</span>
                         </div>
                         <div className="relative">
-                            <Search className="w-3 h-3 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+                            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
                             <input 
                                 type="text" 
                                 placeholder="Filter..." 
-                                className="w-full bg-white/5 border border-white/10 rounded-full py-1.5 pl-8 pr-4 text-xs text-neutral-300 placeholder:text-neutral-600 focus:outline-none focus:border-indigo-500/50"
+                                className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-9 pr-4 text-sm text-neutral-300 placeholder:text-neutral-600 focus:outline-none focus:border-indigo-500/50"
                             />
                         </div>
                     </div>

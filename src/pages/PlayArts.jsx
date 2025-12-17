@@ -14,12 +14,12 @@ export default function PlayArts() {
             oneLiner: "Imagine if creators truly owned the value they generate.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         The AI revolution has created a massive attribution crisis. 
                         Millions of assets are generated daily, yet the original creators and style pioneers 
                         see none of the value. The connection between inspiration and output has been severed.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         PlayArts restores this link. We are building the provenance layer for the AI era, 
                         ensuring that every piece of media carries its history, its contributors, and its value routing logic on-chain.
                     </p>
@@ -116,12 +116,12 @@ export default function PlayArts() {
             oneLiner: "창작자가 자신이 만든 가치를 진정으로 소유한다면.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         AI 혁명은 거대한 귀속(Attribution) 위기를 불러왔습니다.
                         매일 수백만 개의 자산이 생성되지만, 원작자와 스타일 개척자들은
                         그 가치를 전혀 인정받지 못하고 있습니다. 영감과 결과물 사이의 연결고리가 끊어졌습니다.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         PlayArts는 이 연결고리를 복원합니다. 우리는 AI 시대를 위한 출처(Provenance) 레이어를 구축하여,
                         모든 미디어가 그 역사, 기여자, 가치 분배 로직을 온체인 상에 담도록 보장합니다.
                     </p>

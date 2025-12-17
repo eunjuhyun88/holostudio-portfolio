@@ -14,11 +14,11 @@ export default function Stockhoo() {
             oneLiner: "The Operating System for Context-Aware Trading",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         <strong>The Zone Context Primitive.</strong> ATR-based bands define dynamic Zones for each coin and timeframe. 
                         Each Zone aggregates CEX, on-chain, perps, liquidations, and social chat.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         The Zone becomes the atomic unit for all trading context and decisions. Instead of watching 10 different screens, 
                         StockHoo unifies CEX Data, Order Flow, Whale Movements, and Liquidation Clusters into one actionable view.
                     </p>
@@ -111,11 +111,11 @@ export default function Stockhoo() {
             oneLiner: "상황 인식 트레이딩을 위한 운영 체제",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         <strong>구역 맥락 프리미티브(Zone Context Primitive).</strong> ATR 기반 밴드는 각 코인과 시간대별로 동적인 구역을 정의합니다.
                         각 구역은 CEX, 온체인, 무기한 선물, 청산, 소셜 채팅 데이터를 집계합니다.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         구역은 모든 트레이딩 맥락과 의사결정을 위한 최소 단위가 됩니다. 10개의 다른 화면을 보는 대신,
                         StockHoo는 CEX 데이터, 오더 플로우, 고래의 움직임, 청산 클러스터를 하나의 실행 가능한 뷰로 통합합니다.
                     </p>

@@ -14,12 +14,12 @@ export default function Elememetal() {
             oneLiner: "Imagine if gaming assets were as liquid as elements.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         Competitive gaming has become stale. Pay-to-win mechanics and loot boxes 
                         have replaced skill and strategy. Players spend thousands on assets they don't truly own, 
                         trapped in walled gardens.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal changes the game. We've built a competitive battler where every card is an asset, 
                         every match is a high-stakes mind game, and the economy is entirely player-driven. 
                         No hidden algorithms, just pure strategy.
@@ -117,12 +117,12 @@ export default function Elememetal() {
             oneLiner: "게임 자산이 원소처럼 유동적이라면.",
             story: (
                 <>
-                    <p className="mb-6">
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
                         경쟁 게임은 진부해졌습니다. Pay-to-Win 메커니즘과 전리품 상자가
                         실력과 전략을 대체했습니다. 플레이어들은 실제로 소유하지도 못하는 자산에 수천 달러를 쓰며,
                         폐쇄적인 정원에 갇혀 있습니다.
                     </p>
-                    <p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal은 게임의 판도를 바꿉니다. 모든 카드가 자산이 되고,
                         모든 매치가 치열한 두뇌 싸움이 되며, 경제가 전적으로 플레이어에 의해 주도되는 경쟁 배틀러를 만들었습니다.
                         숨겨진 알고리즘은 없습니다. 오직 순수한 전략뿐입니다.

@@ -128,28 +128,28 @@ export default function AidGuardianScanner() {
 
     return (
         <div className="w-full h-full bg-[#0A0A0A] text-white p-6 md:p-8 flex flex-col rounded-3xl overflow-hidden border border-white/5">
-            <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-4">
-                <div className="flex items-center gap-2 text-indigo-400">
-                    <Shield className="w-5 h-5" />
-                    <span className="font-mono text-sm tracking-wider font-bold">AiD GUARDIAN CORE v2.0</span>
+            <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
+                <div className="flex items-center gap-3 text-indigo-400">
+                    <Shield className="w-6 h-6" />
+                    <span className="font-mono text-lg tracking-widest font-bold">AiD GUARDIAN CORE v2.0</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-500">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
+                <div className="flex items-center gap-2 text-sm text-neutral-500 font-bold">
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"/>
                     SYSTEM ACTIVE
                 </div>
             </div>
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
                 {/* Controls Sidebar */}
-                <div className="lg:col-span-4 space-y-6">
+                <div className="lg:col-span-4 space-y-8">
                     <div className="space-y-4">
-                        <Label className="text-xs text-neutral-400 uppercase tracking-wider font-bold">Detection Parameters</Label>
+                        <Label className="text-sm text-neutral-400 uppercase tracking-widest font-bold">Detection Parameters</Label>
                         
-                        <div className="bg-white/5 p-4 rounded-xl space-y-4 border border-white/5">
-                            <div className="space-y-2">
-                                <div className="flex justify-between text-xs">
+                        <div className="bg-white/5 p-6 rounded-2xl space-y-6 border border-white/5">
+                            <div className="space-y-3">
+                                <div className="flex justify-between text-sm font-medium">
                                     <span className="text-neutral-300">Sensitivity Threshold</span>
-                                    <span className="text-indigo-400 font-mono">{sensitivity[0]}%</span>
+                                    <span className="text-indigo-400 font-mono font-bold">{sensitivity[0]}%</span>
                                 </div>
                                 <Slider 
                                     value={sensitivity} 
@@ -161,7 +161,7 @@ export default function AidGuardianScanner() {
                             </div>
 
                             <div className="flex items-center justify-between">
-                                <Label htmlFor="strict-mode" className="text-xs text-neutral-300">Strict Compliance Mode</Label>
+                                <Label htmlFor="strict-mode" className="text-sm font-medium text-neutral-300">Strict Compliance Mode</Label>
                                 <Switch 
                                     id="strict-mode" 
                                     checked={strictMode} 
@@ -171,9 +171,9 @@ export default function AidGuardianScanner() {
                         </div>
                     </div>
 
-                    <div className="space-y-3">
-                        <Label className="text-xs text-neutral-400 uppercase tracking-wider font-bold">Input Source</Label>
-                        <div className="grid grid-cols-1 gap-2">
+                    <div className="space-y-4">
+                        <Label className="text-sm text-neutral-400 uppercase tracking-widest font-bold">Input Source</Label>
+                        <div className="grid grid-cols-1 gap-3">
                             {samples.map((s) => (
                                 <button
                                     key={s.id}

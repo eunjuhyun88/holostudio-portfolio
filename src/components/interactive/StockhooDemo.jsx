@@ -86,10 +86,10 @@ export default function StockhooDemo() {
             {/* Top Toolbar */}
             <div className="flex justify-between items-center mb-6 z-10">
                 <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
                         <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`} />
-                        <span className="font-mono text-sm font-bold text-white">BTC/USDT</span>
-                        <span className="text-xs text-neutral-500 ml-1">PERP</span>
+                        <span className="font-mono text-base font-bold text-white">BTC/USDT</span>
+                        <span className="text-sm text-neutral-500 ml-1">PERP</span>
                     </div>
                     
                     <div className="flex gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
@@ -97,7 +97,7 @@ export default function StockhooDemo() {
                             <button 
                                 key={tf}
                                 onClick={() => setTimeframe(tf)}
-                                className={`px-2 py-1 text-xs rounded font-medium transition-colors ${
+                                className={`px-3 py-1.5 text-sm rounded font-medium transition-colors ${
                                     timeframe === tf ? 'bg-white/10 text-white' : 'text-neutral-500 hover:text-white'
                                 }`}
                             >
@@ -109,29 +109,29 @@ export default function StockhooDemo() {
 
                 <div className="flex items-center gap-2">
                     <div className="hidden md:flex items-center gap-2 mr-4">
-                        <span className="text-xs text-neutral-500 uppercase font-bold">Volatility</span>
+                        <span className="text-sm text-neutral-500 uppercase font-bold">Volatility</span>
                         <Slider 
                             value={volatility} 
                             onValueChange={setVolatility} 
                             max={100} 
                             step={1} 
-                            className="w-24"
+                            className="w-32"
                         />
                     </div>
                     <Button
                         onClick={toggleSim}
-                        className={`h-8 text-xs font-bold rounded-full transition-all ${
+                        className={`h-10 text-sm font-bold rounded-full px-4 transition-all ${
                             isPlaying 
                             ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30' 
                             : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
                         }`}
                     >
-                        {isPlaying ? 'STOP SIM' : 'RUN SIMULATION'} <Play className={`w-3 h-3 ml-1 ${isPlaying ? 'hidden' : 'block'}`} />
+                        {isPlaying ? 'STOP SIM' : 'RUN SIMULATION'} <Play className={`w-4 h-4 ml-2 ${isPlaying ? 'hidden' : 'block'}`} />
                     </Button>
                     <Button
                         onClick={runBacktest}
                         variant="outline"
-                        className="h-8 text-xs font-bold rounded-full border-white/10 text-neutral-400 hover:text-white hover:bg-white/5"
+                        className="h-10 text-sm font-bold rounded-full px-4 border-white/10 text-neutral-400 hover:text-white hover:bg-white/5"
                         disabled={isPlaying || isBacktesting}
                     >
                         {isBacktesting ? 'TESTING...' : 'BACKTEST'}
