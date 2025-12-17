@@ -614,78 +614,138 @@ export default function Home() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col justify-between relative min-h-[500px]">
+                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col justify-between relative min-h-[550px] overflow-hidden">
+                                {/* Animated Data Flow Particles */}
+                                <div className="absolute inset-0 z-0 pointer-events-none">
+                                    {/* Particles moving up */}
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                        className="absolute left-1/2 -translate-x-1/2 bottom-20 w-1 h-20 bg-gradient-to-t from-transparent via-indigo-500 to-transparent blur-[2px]"
+                                    />
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
+                                        className="absolute left-[40%] bottom-20 w-[1px] h-16 bg-gradient-to-t from-transparent via-blue-400 to-transparent blur-[1px]"
+                                    />
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 3.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
+                                        className="absolute left-[60%] bottom-20 w-[1px] h-24 bg-gradient-to-t from-transparent via-purple-400 to-transparent blur-[1px]"
+                                    />
+                                </div>
+
                                 {/* Background Glow */}
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 to-transparent pointer-events-none" />
 
                                 {/* Layer 3: Apps */}
-                                <div className="relative z-10 border border-white/10 bg-[#0A0A0A] rounded-xl p-6 mb-4 transform hover:scale-[1.02] transition-transform duration-300">
-                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center">Application Layer</div>
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4 }}
+                                    className="relative z-10 border border-white/10 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors">
-                                            <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group">
+                                            <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             <div className="font-bold text-white text-sm">EleMEMEtal</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Game Asset Ownership</div>
                                         </div>
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors">
-                                            <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group">
+                                            <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             <div className="font-bold text-white text-sm">Stockhoo</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Market Intelligence</div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Connector */}
                                 <div className="flex justify-center -my-3 relative z-0">
-                                    <div className="h-10 w-px bg-gradient-to-b from-white/10 to-indigo-500/50" />
+                                    <div className="h-10 w-px bg-white/10 relative overflow-hidden">
+                                        <motion.div 
+                                            animate={{ y: ["-100%", "100%"] }}
+                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                                            className="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white/50 to-transparent"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Layer 2: Protocols */}
-                                <div className="relative z-10 border border-indigo-500/20 bg-[#0A0A0A] rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] transform hover:scale-[1.02] transition-transform duration-300">
-                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center">Trust & Verification Protocols</div>
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                    className="relative z-10 border border-indigo-500/20 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors">
-                                            <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2" />
+                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group">
+                                            <div className="relative">
+                                                <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                            </div>
                                             <div className="font-bold text-white text-sm">AiD Guardian</div>
                                             <div className="text-[10px] text-indigo-300/70 mt-1">Safety Guardrails</div>
                                         </div>
-                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors">
-                                            <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors group">
+                                            <div className="relative">
+                                                <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                            </div>
                                             <div className="font-bold text-white text-sm">PlayArts</div>
                                             <div className="text-[10px] text-purple-300/70 mt-1">Provenance Layer</div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Connector */}
                                 <div className="flex justify-center -my-3 relative z-0">
-                                    <div className="h-10 w-px bg-gradient-to-b from-indigo-500/50 to-blue-500/50" />
+                                    <div className="h-10 w-px bg-indigo-500/20 relative overflow-hidden">
+                                        <motion.div 
+                                            animate={{ y: ["-100%", "100%"] }}
+                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.2 }}
+                                            className="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-indigo-500 to-transparent"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Layer 1: Infrastructure */}
-                                <div className="relative z-10 border border-blue-500/20 bg-[#0A0A0A] rounded-xl p-6 transform hover:scale-[1.02] transition-transform duration-300">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative z-10 border border-blue-500/20 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl p-6 hover:border-blue-500/40 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="flex items-center justify-between mb-4">
-                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold">DePIN GPU Mesh</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold font-mono">DePIN GPU Mesh</div>
                                         <div className="flex gap-1">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30" />
+                                            <span className="relative flex h-2 w-2">
+                                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-3 gap-3 text-center">
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors">
-                                            <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1" />
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                            <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
                                             <div className="text-[10px] text-blue-200">H100 Nodes</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors">
-                                            <Network className="w-5 h-5 text-blue-400 mx-auto mb-1" />
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                            <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
                                             <div className="text-[10px] text-blue-200">Consumer GPU</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors">
-                                            <Database className="w-5 h-5 text-blue-400 mx-auto mb-1" />
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                            <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
                                             <div className="text-[10px] text-blue-200">Storage</div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>

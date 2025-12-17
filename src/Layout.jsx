@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { ChevronDown, Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { LanguageProvider, useLanguage } from '@/components/LanguageContext';
 function LayoutContent({ children }) {
     const { language, toggleLanguage } = useLanguage();
     const location = useLocation();
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [businessDropdownOpen, setBusinessDropdownOpen] = useState(false);
@@ -64,7 +65,14 @@ function LayoutContent({ children }) {
 
     const scrollToSection = (id) => {
         if (location.pathname !== '/') {
-            window.location.href = `/#${id}`;
+            // Use navigate for client-side transition if possible, but for hash on home page, 
+            // we need to ensure the home page mounts first.
+            navigate('/');
+            // Small timeout to allow navigation to complete before scrolling
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         } else {
             const element = document.getElementById(id);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
