@@ -150,12 +150,7 @@ export default function Home() {
 
     const [activeStage, setActiveStage] = useState(0);
 
-    const images = [
-        "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc0228bec_2025-12-171042431.png", 
-        "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/40f53ee94_2025-12-17104243.png", 
-        "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/f959551ff_2025-12-17104242.png", 
-        "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/86418a4db_2025-12-17104241.png", 
-    ];
+
 
     const products = [
         {
@@ -244,12 +239,18 @@ export default function Home() {
         }
     ];
 
-    const milestones = [
-        { title: t.milestones.items[0].title, desc: t.milestones.items[0].desc, icon: Trophy, color: "text-yellow-500" },
-        { title: t.milestones.items[1].title, desc: t.milestones.items[1].desc, icon: Target, color: "text-blue-500" },
-        { title: t.milestones.items[2].title, desc: t.milestones.items[2].desc, icon: Trophy, color: "text-white" },
-        { title: t.milestones.items[3].title, desc: t.milestones.items[3].desc, icon: Cpu, color: "text-green-500" }
+    const milestoneConfig = [
+        { icon: Trophy, color: "text-yellow-500" },
+        { icon: Target, color: "text-blue-500" },
+        { icon: Trophy, color: "text-white" },
+        { icon: Cpu, color: "text-green-500" }
     ];
+
+    const milestones = t.milestones.items.map((item, idx) => ({
+        ...item,
+        icon: milestoneConfig[idx]?.icon || Trophy,
+        color: milestoneConfig[idx]?.color || "text-white"
+    }));
 
     return (
         <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans">
