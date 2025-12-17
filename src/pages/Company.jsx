@@ -414,37 +414,37 @@ export default function Company() {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
                     bio: "글로벌 전략 및 방어. 실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략 주도. 탈중앙화 프로토콜의 GTM에 대한 깊은 전문 지식.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/5c6b14a61_ChatGPTImage2025121806_49_07.png"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
                     bio: "게임 및 인프라 분야 10년 이상 경력. 전 EA 및 넷마블. 대규모 쿠버네티스, 데브옵스, 테스트 자동화 전문가. 깊은 엔지니어링 엄격함과 AI 혁신의 결합.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9a2afbcfa_ChatGPTImage2025121806_47_40.png"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Co-Founder & Chief Architect",
                     bio: "그래픽 및 시스템 베테랑. 전 유니티, 넷마블, 스마일게이트. 실시간 렌더링 파이프라인 및 성능 중요 시스템 마스터.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/80ae34193_ChatGPTImage2025121806_53_01.png"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
                     bio: "PlayArts 아키텍처와 개발 로드맵을 총괄합니다. 모든 프로토콜 레이어에서 기술적 우수성을 보장합니다.",
-                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/4ec9ba77e_2025-12-1864526.png"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "React, Tailwind, Vite 및 Svelte를 활용한 현대적인 UI 전문. 매끄러운 인터랙션에 중점을 둔 UX 스페셜리스트입니다.",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/ead3229dd_2025-12-1831046.png"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/04bbb834d_2025-12-1864529.png"
                 }
             ],
         }

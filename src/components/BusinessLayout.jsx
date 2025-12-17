@@ -51,92 +51,65 @@ export default function BusinessLayout({
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
     // Adjusted logic to handle variable sections later, but ensuring enough colors
+    // Unified dark theme with subtle glows instead of hard background switches
     const themes = {
         default: {
-            colors: [
-                { bg: "bg-[#050505]", text: "dark" },
-                { bg: "bg-white", text: "light" },
-                { bg: "bg-[#0A0A0A]", text: "dark" },
-                { bg: "bg-[#080808]", text: "dark" },
-                { bg: "bg-[#111111]", text: "dark" }
-            ],
             accent: "text-indigo-500",
             accentBg: "bg-indigo-500",
-            sidebarBg: "bg-[#080808]",
+            glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
+            gradient: "from-indigo-950/20",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
         },
         elememetal: {
-            colors: [
-                { bg: "bg-[#020202]", text: "dark" },
-                { bg: "bg-orange-500", text: "light" },
-                { bg: "bg-[#120800]", text: "dark" },
-                { bg: "bg-black", text: "dark" },
-                { bg: "bg-neutral-100", text: "light" }
-            ],
             accent: "text-orange-500",
             accentBg: "bg-orange-500",
-            accentDark: "text-orange-900", // For light backgrounds
-            sidebarBg: "bg-[#050505]",
+            glow: "shadow-[0_0_100px_rgba(249,115,22,0.1)]",
+            gradient: "from-orange-950/20",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
         },
         aidguardian: {
-            colors: [
-                { bg: "bg-[#050505]", text: "dark" },
-                { bg: "bg-indigo-500", text: "light" },
-                { bg: "bg-[#050510]", text: "dark" },
-                { bg: "bg-[#0A0A0A]", text: "dark" },
-                { bg: "bg-neutral-100", text: "light" }
-            ],
             accent: "text-indigo-400",
             accentBg: "bg-indigo-500",
-            accentDark: "text-indigo-900",
-            sidebarBg: "bg-[#050505]",
+            glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
+            gradient: "from-indigo-950/20",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
         },
         playarts: {
-            colors: [
-                { bg: "bg-[#050505]", text: "dark" },
-                { bg: "bg-[#ccff00]", text: "light" },
-                { bg: "bg-[#0A0A0A]", text: "dark" },
-                { bg: "bg-[#080808]", text: "dark" },
-                { bg: "bg-neutral-100", text: "light" }
-            ],
             accent: "text-lime-400",
             accentBg: "bg-lime-500",
-            accentDark: "text-lime-900",
-            sidebarBg: "bg-[#050505]",
+            glow: "shadow-[0_0_100px_rgba(132,204,22,0.1)]",
+            gradient: "from-lime-950/20",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
         },
         stockhoo: {
-            colors: [
-                { bg: "bg-[#050505]", text: "dark" },
-                { bg: "bg-emerald-500", text: "light" },
-                { bg: "bg-[#001005]", text: "dark" },
-                { bg: "bg-[#050505]", text: "dark" },
-                { bg: "bg-neutral-100", text: "light" }
-            ],
             accent: "text-emerald-400",
             accentBg: "bg-emerald-500",
-            accentDark: "text-emerald-900",
-            sidebarBg: "bg-[#050505]",
+            glow: "shadow-[0_0_100px_rgba(16,185,129,0.1)]",
+            gradient: "from-emerald-950/20",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
         }
     };
 
     const s = themes[theme] || themes.default;
     const [activeSection, setActiveSection] = useState(0);
-    const currentStyle = s.colors[activeSection] || s.colors[0];
-    const isLight = currentStyle.text === 'light';
+    // Always use dark mode for consistency
+    const isLight = false;
 
-    // Dynamic Styles based on background brightness
-    const textPrimary = isLight ? "text-black" : "text-white";
-    const textSecondary = isLight ? "text-neutral-700" : "text-neutral-400";
-    const textMuted = isLight ? "text-neutral-500" : "text-neutral-500";
-    const border = isLight ? "border-black/10" : "border-white/10";
-    const bgCard = isLight ? "bg-black/5" : "bg-white/5";
-    const bgCardHover = isLight ? "hover:border-black/20" : "hover:border-white/20";
-    const accentText = isLight && s.accentDark ? s.accentDark : s.accent;
-    const accentBorder = isLight && s.accentDark ? `border-${s.accentDark.split('-')[1]}-900` : `border-${s.accent.split('-')[1]}-500`;
+    // Dynamic Styles - Always Dark Mode base
+    const textPrimary = "text-white";
+    const textSecondary = "text-neutral-400";
+    const textMuted = "text-neutral-500";
+    const border = "border-white/10";
+    const bgCard = "bg-white/5";
+    const bgCardHover = "hover:border-white/20";
+    const accentText = s.accent;
+    
+    // Background gradient logic based on active section
+    const getBackgroundGradient = () => {
+        // Subtle shift in gradient based on scroll position/active section
+        // But maintaining the dark background consistency
+        return `bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] ${s.gradient} via-[#050505] to-[#050505]`;
+    };
 
     const sections = [
         { id: 'overview', label: 'Overview' },
@@ -176,14 +149,20 @@ export default function BusinessLayout({
     );
 
     return (
-        <div className={`min-h-screen font-sans selection:bg-indigo-500/30 ${currentStyle.bg} ${textPrimary} transition-colors duration-700 ease-in-out`}>
+        <div className={`min-h-screen font-sans selection:bg-indigo-500/30 bg-[#050505] ${textPrimary} relative overflow-hidden`}>
+            {/* Ambient Background Glow */}
+            <div className={`fixed inset-0 pointer-events-none transition-opacity duration-1000 ${getBackgroundGradient()}`} style={{ opacity: 0.6 }} />
+            
+            {/* Grain Overlay */}
+            <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+
             <SEO 
                 title={name} 
                 description={oneLiner}
                 image={heroImage.startsWith('http') ? heroImage : undefined}
             />
 
-            <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 md:py-40">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 md:py-40">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sidebar */}
