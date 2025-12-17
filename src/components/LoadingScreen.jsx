@@ -57,6 +57,12 @@ export default function LoadingScreen({ onComplete }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center overflow-hidden font-sans"
         >
+            <style>{`
+                @import url('https://fonts.cdnfonts.com/css/graphyne');
+                .font-graphyne {
+                    font-family: 'Graphyne', sans-serif;
+                }
+            `}</style>
             {/* Background Stars & Galaxy */}
             <div className="absolute inset-0 z-0">
                 {/* Subtle Galaxy Gradient Blobs */}
@@ -74,7 +80,7 @@ export default function LoadingScreen({ onComplete }) {
                 <motion.div 
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="text-8xl md:text-9xl font-bold tracking-tighter mb-8 tabular-nums"
+                    className="text-8xl md:text-9xl font-graphyne font-bold tracking-tighter mb-8 tabular-nums"
                 >
                     {count}%
                 </motion.div>
