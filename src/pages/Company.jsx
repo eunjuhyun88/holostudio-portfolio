@@ -221,6 +221,7 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
 
 // Closing Statement Component
 const ClosingStatement = () => {
+    const { language } = useLanguage();
     return (
         <div className="min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32">
              <motion.div 
@@ -230,7 +231,7 @@ const ClosingStatement = () => {
                 className="text-center px-6 max-w-6xl mx-auto z-10"
              >
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-neutral-300 mb-8 leading-tight tracking-tight">
-                    The scarce resource is no longer creativity.
+                    {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
                 </h2>
                 <div className="overflow-hidden">
                     <motion.p 
@@ -239,7 +240,7 @@ const ClosingStatement = () => {
                         transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
                         className="text-5xl md:text-7xl lg:text-9xl font-black text-indigo-500 tracking-tighter uppercase glow-text"
                     >
-                        It is credibility.
+                        {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
                     </motion.p>
                 </div>
              </motion.div>
@@ -340,55 +341,55 @@ export default function Company() {
         },
         ko: {
             intro: {
-                episode: "Episode I",
-                title: "The Trust Layer",
-                subtitle: "FROM GAMING ARCHITECTS TO AI TRUST BUILDERS",
+                episode: "The Origin",
+                title: "신뢰 레이어 (The Trust Layer)",
+                subtitle: "게임 아키텍트에서 AI 신뢰 설계자로",
                 text: [
-                    "Long before AI flooded the galaxy with infinite creation, there were builders shaping virtual worlds at scale. We did not arrive here by accident.",
-                    "For over a decade, we were architects inside the largest digital universes—EA, Netmarble, Smilegate—designing economies, simulations, and infrastructure that served millions in real time.",
-                    "In those worlds, we learned a fundamental truth: digital assets must feel as real as physical ones, or the system collapses."
+                    "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년 동안 우리는 가치, 규칙, 신뢰가 대규모로 작동해야 하는 시스템을 구축해 왔습니다.",
+                    "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다. 디지털 자산이 실제 자산처럼 동작해야 하는 시스템들이었습니다.",
+                    "우리는 일찍이 깨달았습니다. 강제력이 없다면 가치는 지속되지 않습니다."
                 ]
             },
             chapters: [
                 {
                     year: "2014 – 2020",
-                    headline: "THE GAMING ERA",
-                    content: "Before “Metaverse” and “Web3” entered the public lexicon, we were already operating massive multiplayer systems—balancing virtual economies, securing high-concurrency environments, and enforcing rules where value had to be earned, not imagined. Games taught us something critical: simulation without rules becomes chaos. Value without enforcement dissolves."
+                    headline: "게이밍 시대",
+                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속 환경. 지속적인 가상 경제. 무엇을 얻고, 소유하고, 교환할 수 있는지를 결정하는 규칙들. 게임은 우리에게 근본적인 교훈을 주었습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
                 },
                 {
                     year: "2021 – 2023",
-                    headline: "THE CONVERGENCE",
-                    content: "Then, two forces collided. AI taught the world how to simulate intelligence. Crypto taught the world how to settle truth. We recognized the missing bridge. Gaming gave us simulation. Blockchain gave us settlement. What was missing was trust for generative assets. So we began building the infrastructure to connect these worlds—solving what became the oracle problem for AI-generated content: How does something created infinitely become verifiable finitely?"
+                    headline: "융합의 시대",
+                    content: "AI와 암호화폐가 성숙해지면서 더 깊은 패턴이 드러났습니다. AI는 지능이 어떻게 시뮬레이션될 수 있는지를 보여주었고, 크립토는 진실이 어떻게 합의될 수 있는지를 보여주었습니다. 그러나 무한히 생성되고 즉시 공유되는 생성형 자산에는 검증, 귀속, 회계 처리를 위한 네이티브 방식이 없었습니다. 그래서 우리는 연결 인프라를 구축하기 시작했습니다. 시뮬레이션과 합의를 연결하는 것. 생성형 미디어에 대한 신뢰를 해결하는 것입니다."
                 },
                 {
                     year: "2024",
-                    headline: "THE COLLAPSE OF TRUST",
-                    content: "Generative AI exploded. Creation became effortless. And trust collapsed. Attribution broke. Accountability faded. Value leaked across platforms without origin or credit. The galaxy was flooded with content—but no system to distinguish signal from noise, human from machine, truth from fabrication. So we pivoted. We focused everything we had learned—from adversarial systems, economic design, and large-scale infrastructure—into one mission: to build the trust layer for the age of infinite creation. That system became HoloStudio."
+                    headline: "신뢰의 붕괴",
+                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 책임 소재는 흐려졌으며, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다. 그 깨달음이 우리가 다음에 구축한 모든 것을 형성했습니다."
                 },
                 {
                     year: "INFRASTRUCTURE",
-                    headline: "BUILDING THE TRUST LAYER",
-                    content: "HoloStudio treats content not as static files, but as living events: Creation. Verification. Propagation. Settlement. Stories move. Value flows. And every contribution must be attributable. We build the infrastructure where provenance is native, credit is programmable, and trust is enforced by systems—not promises."
+                    headline: "신뢰 레이어 구축",
+                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성. 검증. 전파. 정산. 이야기는 움직이고 가치는 흐릅니다. 그리고 모든 기여는 추적 가능해야 합니다. 우리는 출처가 기본적으로 내장되고, 크레딧이 프로그래밍 가능하며, 신뢰가 약속이 아닌 시스템에 의해 강제되는 인프라를 구축합니다."
                 },
                 {
-                    year: "2025 & Beyond",
-                    headline: "THE AUTONOMOUS AGE",
-                    content: "The next era will not be run by applications. It will be run by autonomous agents. Agents that create. Agents that trade. Agents that interact without supervision. We are building the operating system where this is possible—a world where “Made by Human” and “Verified AI” coexist on a trustless settlement layer. Because the scarce resource is no longer creativity. It is credibility."
+                    year: "2025 & BEYOND",
+                    headline: "자율 에이전트의 시대",
+                    content: "다음 시대는 애플리케이션이 아닌 자율 에이전트에 의해 정의될 것입니다. 창조하는 에이전트. 거래하는 에이전트. 독립적으로 상호 작용하는 에이전트. 우리는 이것이 가능한 운영 체제를 구축하고 있습니다. 인간과 AI의 창작물이 검증 가능한 무신뢰 정산 레이어 위에서 공존할 수 있는 시스템입니다."
                 }
             ],
             thesis: [
                 {
-                    headline: "A CHOICE FOR THE FUTURE",
-                    content: "The future is not neutral. It is a choice between chaos and credibility. Between infinite generation and finite trust."
+                    headline: "미래를 위한 선택",
+                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰, 무한한 생성과 집행 가능한 신뢰 사이의 선택입니다."
                 },
                 {
-                    headline: "A UNIFIED SYSTEM",
-                    content: "We do not build disconnected products. We build a single coherent system—where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
+                    headline: "하나의 일관된 시스템",
+                    content: "우리는 단절된 제품을 만들지 않습니다. 신뢰가 유통을 가능하게 하고, 유통이 가치를 창출하는 하나의 일관된 아키텍처를 구축합니다. 적대적 방어부터 경제적 정산까지, 모든 레이어가 함께 작동하도록 설계되었습니다."
                 }
             ],
             identity: {
-                 headline: "WHO WE ARE",
-                 content: "We are not new to this galaxy. For over a decade, we have built infrastructure that served millions. Now, we are converging that experience into one purpose: to build the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+                 headline: "우리의 존재 이유",
+                 content: "우리는 소유권, 책임, 인간의 의도를 잃지 않으면서 생성형 미디어가 확장될 수 있도록 안전장치를 구축하고 있습니다. 다음 10년을 정의할 시스템은 아직 존재하지 않습니다. 우리가 그것을 만들기 위해 여기 있습니다."
             },
             founders: [
                 {
