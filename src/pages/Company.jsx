@@ -385,31 +385,37 @@ export default function Company() {
 
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-                {/* Starfield Background */}
-                <div className="absolute inset-0 opacity-80">
-                    <Starfield density={800} speed={0.02} />
+                {/* Unified 3D Background similar to Home */}
+                <div className="absolute inset-0 opacity-40">
+                    <Background3D />
+                </div>
+
+                {/* Reduced Starfield for subtle depth */}
+                <div className="absolute inset-0 opacity-50">
+                    <Starfield density={300} speed={0.01} />
                 </div>
                 
                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
                  
                  <motion.div 
-                    animate={{ opacity: visualState.showNoise ? 0.1 : 0 }}
+                    animate={{ opacity: visualState.showNoise ? 0.05 : 0 }}
                     transition={{ duration: 1 }}
                     className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
                  />
                  
+                 {/* Retain the spinning rings for the tech feel later in scroll, but larger and more subtle to blend with 3D bg */}
                  <motion.div
                     animate={{ 
-                        opacity: visualState.showGuardRail ? 0.5 : 0,
-                        scale: visualState.showGuardRail ? 1 : 0.8
+                        opacity: visualState.showGuardRail ? 0.3 : 0,
+                        scale: visualState.showGuardRail ? 1 : 0.9
                     }}
                     transition={{ duration: 1, ease: "circOut" }}
                     className="absolute inset-0 flex items-center justify-center"
                  >
-                    <div className="w-[60vh] h-[60vh] rounded-full border border-indigo-500/20 shadow-[0_0_100px_rgba(99,102,241,0.1)] animate-[spin_20s_linear_infinite]" />
+                    <div className="w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_150px_rgba(99,102,241,0.05)] animate-[spin_30s_linear_infinite]" />
                  </motion.div>
                  
-                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 10%, transparent 90%, #050505 100%)' }} />
+                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 15%, transparent 85%, #050505 100%)' }} />
             </div>
 
             {/* Scrolling Content Layer */}
