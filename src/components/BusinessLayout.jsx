@@ -7,6 +7,7 @@ import { createPageUrl } from '@/utils';
 import SEO from '@/components/SEO';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
 import { useLanguage } from '@/components/LanguageContext';
+import Starfield from '@/components/Starfield';
 
 // Helper component to trigger background changes
 const ColorSection = ({ children, onInView, className = "" }) => {
@@ -106,9 +107,17 @@ export default function BusinessLayout({
     
     // Background gradient logic based on active section
     const getBackgroundGradient = () => {
-        // Subtle shift in gradient based on scroll position/active section
-        // But maintaining the dark background consistency
-        return `bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] ${s.gradient} via-[#050505] to-[#050505]`;
+        // Dynamic space colors based on section to give a "journey through space" feel
+        const sectionColors = [
+            s.gradient, // Hero: Theme color
+            "from-purple-900/20", // Challenge: Deep Purple
+            "from-blue-900/20", // Solution: Deep Blue
+            "from-indigo-900/20", // Analytics: Deep Indigo
+            "from-slate-900/20"  // Roadmap: Deep Slate
+        ];
+        
+        const currentGradient = sectionColors[activeSection % sectionColors.length] || s.gradient;
+        return `bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] ${currentGradient} via-[#050505] to-[#050505]`;
     };
 
     const sections = [
@@ -166,8 +175,8 @@ export default function BusinessLayout({
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sidebar */}
-                    <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1">
-                        <div className="space-y-8">
+                    <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1 lg:mt-32">
+                        <div className="space-y-8 sticky top-32">
                             <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                                 {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
