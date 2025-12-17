@@ -454,9 +454,13 @@ export default function Home() {
                         <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
-                            {t.hero.title}
-                        </h1>
+                        <div className="flex justify-center mb-8">
+                            <img 
+                                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/99d7043c1_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG"
+                                alt="Holo Studio"
+                                className="w-full max-w-4xl object-contain mix-blend-screen" 
+                            />
+                        </div>
                         <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
