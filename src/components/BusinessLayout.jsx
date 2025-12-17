@@ -40,6 +40,9 @@ export default function BusinessLayout({
     businessModel,
     roadmap = [],
     stats = [],
+    features = [],
+    specs = [], // New specs prop
+    videoUrl = null, // New videoUrl prop
     theme = "default",
     primaryButton = { text: "Request Access", url: null },
     deckUrl = null,
@@ -119,7 +122,9 @@ export default function BusinessLayout({
 
     const sections = [
         { id: 'overview', label: 'Overview' },
+        { id: 'features', label: 'Features' },
         { id: 'challenge', label: 'Challenge & Solution' },
+        { id: 'specs', label: 'Tech Specs' },
         { id: 'experience', label: 'Experience' },
         ...(showAnalytics ? [{ id: 'analytics', label: 'Analytics' }] : []),
         { id: 'roadmap', label: 'Roadmap' }
@@ -359,6 +364,31 @@ export default function BusinessLayout({
                         </ColorSection>
                           </div>
 
+                        {/* 1.5 Features Section */}
+                        {features.length > 0 && (
+                            <div id="features">
+                                <ColorSection onInView={() => setActiveSection(1)}>
+                                    <div className="mb-12 md:mb-20">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                            KEY FEATURES
+                                        </span>
+                                        <h3 className="text-3xl font-bold mb-8">Capabilities</h3>
+                                        <div className="grid md:grid-cols-3 gap-6">
+                                            {features.map((feature, i) => (
+                                                <div key={i} className={`p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm group`}>
+                                                    <div className={`w-12 h-12 rounded-xl ${s.accentBg} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                                                        {feature.icon && <feature.icon className={`w-6 h-6 ${s.accent}`} />}
+                                                    </div>
+                                                    <h4 className={`text-lg font-bold mb-2 ${textPrimary}`}>{feature.title}</h4>
+                                                    <p className={`text-sm ${textSecondary} leading-relaxed`}>{feature.description}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </ColorSection>
+                            </div>
+                        )}
+
                         {/* 2. Problem & Solution - Optimized for Mobile Horizontal Scroll */}
                         <div id="challenge">
                         <ColorSection onInView={() => setActiveSection(1)}>
@@ -413,10 +443,51 @@ export default function BusinessLayout({
                         </ColorSection>
                         </div>
 
+                        {/* 2.5 Tech Specs */}
+                        {specs.length > 0 && (
+                            <div id="specs">
+                                <ColorSection onInView={() => setActiveSection(3)}>
+                                    <div className="mb-12 md:mb-20">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                            SPECIFICATIONS
+                                        </span>
+                                        <h3 className="text-3xl font-bold mb-8">Technical Breakdown</h3>
+                                        <div className={`rounded-3xl ${border} ${bgCard} overflow-hidden`}>
+                                            {specs.map((spec, i) => (
+                                                <div key={i} className={`flex flex-col md:flex-row p-6 md:p-8 border-b ${border} last:border-0 hover:bg-white/5 transition-colors`}>
+                                                    <div className="md:w-1/3 mb-2 md:mb-0">
+                                                        <h4 className={`text-lg font-bold ${textPrimary}`}>{spec.label}</h4>
+                                                    </div>
+                                                    <div className="md:w-2/3">
+                                                        <p className={`${textSecondary} font-mono text-sm leading-relaxed`}>{spec.value}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </ColorSection>
+                            </div>
+                        )}
+
+                        {/* 2.6 Video Showcase */}
+                        {videoUrl && (
+                            <div className="mb-20">
+                                <div className={`aspect-video rounded-3xl overflow-hidden ${border} ${bgCard} shadow-2xl relative group`}>
+                                     <iframe 
+                                        src={videoUrl} 
+                                        className="w-full h-full" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowFullScreen
+                                        title="Product Demo"
+                                    />
+                                </div>
+                            </div>
+                        )}
+
                         {/* 3. Screenshots - Mobile Horizontal Scroll */}
                         {screenshots.length > 0 && (
                             <div id="experience">
-                            <ColorSection onInView={() => setActiveSection(2)}>
+                            <ColorSection onInView={() => setActiveSection(4)}>
                                 <div className="flex items-end justify-between mb-12">
                                     <h3 className="text-3xl font-bold">Experience</h3>
                                 </div>
