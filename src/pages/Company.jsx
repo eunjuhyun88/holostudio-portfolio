@@ -438,13 +438,13 @@ export default function Company() {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "React, Tailwind, Vite 및 Svelte를 활용한 현대적인 UI 전문. 매끄러운 인터랙션에 중점을 둔 UX 스페셜리스트입니다.",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
-                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=800"
                 }
             ],
         }
