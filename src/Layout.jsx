@@ -266,13 +266,20 @@ function LayoutContent({ children }) {
                 {children}
             </main>
 
-            {/* Global Footer */}
-            <footer className="bg-[#050505] text-white py-16 mt-20 border-t border-neutral-900">
+            {/* Global Footer - Glassmorphic & Connected */}
+            <footer className="relative z-50 bg-black/40 backdrop-blur-xl text-white py-16 mt-20 border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
                         <div className="col-span-1 md:col-span-2">
-                            <Link to="/" className="text-2xl font-bold tracking-tighter mb-6 block">
-                                HOLO<span className="text-indigo-500">STUDIO</span>
+                            <Link to="/" className="flex items-center gap-3 text-2xl font-bold tracking-tighter mb-6 group">
+                                <div className="w-10 h-10 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                                    <img 
+                                        src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
+                                        alt="Holo Studio" 
+                                        className="w-6 h-6 rounded-full object-cover opacity-90"
+                                    />
+                                </div>
+                                <span>HOLO<span className="text-indigo-500">STUDIO</span></span>
                             </Link>
                             <p className="text-neutral-400 max-w-sm mb-6 text-sm leading-relaxed">
                                 {language === 'en' 
@@ -286,7 +293,8 @@ function LayoutContent({ children }) {
                             <ul className="space-y-2">
                                 {products.map(prod => (
                                     <li key={prod.name}>
-                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm">
+                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                                            <span className="w-1 h-1 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                                             {prod.name}
                                         </Link>
                                     </li>
@@ -297,15 +305,16 @@ function LayoutContent({ children }) {
                         <div>
                             <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Company' : '회사소개'}</h4>
                             <ul className="space-y-2">
+                                <li><Link to={createPageUrl('Company')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'About Us' : '소개'}</Link></li>
+                                <li><Link to={createPageUrl('Company') + '#team'} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Team' : '팀'}</Link></li>
                                 <li><button onClick={() => scrollToSection('proof')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
-                                <li><button onClick={() => scrollToSection('research')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Research' : '리서치'}</button></li>
                                 <li><button onClick={() => scrollToSection('roadmap')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
                                 <li><Link to={createPageUrl('Contact')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
+                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
                         <p>© 2025 HOLOSTUDIO. All rights reserved.</p>
                         <div className="flex gap-6 mt-4 md:mt-0">
                             <a href="#" className="hover:text-white">Privacy Policy</a>
