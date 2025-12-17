@@ -115,11 +115,12 @@ export default function BusinessLayout({
                         </div>
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl transform rotate-3" />
-                            <img 
-                                src={heroImage} 
-                                alt={`${name} Solution`} 
-                                className="relative rounded-3xl shadow-xl border border-slate-200 bg-white"
-                            />
+                            <div className="relative rounded-3xl shadow-xl border border-slate-200 bg-white aspect-video flex items-center justify-center p-8 text-center">
+                                <div>
+                                    <div className="text-2xl font-bold text-slate-900 mb-2">{name} Solution</div>
+                                    <p className="text-slate-500 text-lg">{heroImage}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,15 +138,11 @@ export default function BusinessLayout({
                                 <motion.div 
                                     key={idx}
                                     {...fadeIn}
-                                    className="group relative rounded-xl overflow-hidden border border-slate-700 bg-slate-800"
+                                    className="group relative rounded-xl overflow-hidden border border-slate-700 bg-slate-800 aspect-video flex items-center justify-center p-8 text-center"
                                 >
-                                    <img 
-                                        src={screen.url} 
-                                        alt={screen.caption} 
-                                        className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 pt-12">
-                                        <p className="font-medium text-lg">{screen.caption}</p>
+                                    <div className="z-10">
+                                        <div className="text-indigo-400 font-bold text-lg mb-2">{screen.caption}</div>
+                                        <p className="text-slate-400 text-sm">{screen.url}</p>
                                     </div>
                                 </motion.div>
                             ))}

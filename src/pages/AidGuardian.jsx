@@ -7,7 +7,7 @@ export default function AidGuardian() {
             name="AiD Guardian"
             tag="Enterprise Safety"
             oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."
-            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/11636bcbb_2025-12-1785347.png"
+            heroImage="AiD Guardian Dashboard: Main interface showing multi-modal safety analysis and compliance scoring"
             
             problemPoints={[
                 {
@@ -41,19 +41,19 @@ export default function AidGuardian() {
 
             screenshots={[
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/0355a95a1_2025-12-1785353.png",
+                    url: "Live monitoring dashboard showing risk levels across multiple content streams",
                     caption: "Enterprise Dashboard: Real-time Risk Monitoring"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/8765e1d18_2025-12-1785357.png",
+                    url: "Content classification interface aligned with GARM safety standards",
                     caption: "GARM-Aligned Categorization System"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/23ae40722_2025-12-1792042.png",
+                    url: "Documentation hub for API integration and SDK usage",
                     caption: "Developer-First API & SDK Documentation"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/75b195b83_2025-12-1785350.png",
+                    url: "Detailed analysis view decomposing video/audio into safety scores",
                     caption: "Deep Multi-Modal Content Analysis"
                 }
             ]}

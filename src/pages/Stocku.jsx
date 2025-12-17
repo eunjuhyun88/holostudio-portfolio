@@ -7,7 +7,7 @@ export default function Stocku() {
             name="Stocku (StockHoo)"
             tag="AI Trading Intelligence"
             oneLiner="Zone-based AI trading agent optimized via Direct Preference Optimization (DPO)."
-            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/6b3b31eef_2025-12-1785326.png"
+            heroImage="Stocku Trading Interface: AI-powered zone analysis overlay on price charts"
             
             problemPoints={[
                 {
@@ -41,11 +41,11 @@ export default function Stocku() {
 
             screenshots={[
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/6b3b31eef_2025-12-1785326.png",
+                    url: "Visualization of the distributed GPU network used for model training",
                     caption: "Distributed GPU Training Network"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/749ad41cd_2025-12-1785337.png",
+                    url: "Diagram of the decentralized data collection and processing infrastructure",
                     caption: "Decentralized Data Infrastructure"
                 }
             ]}

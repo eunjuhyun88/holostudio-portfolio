@@ -18,7 +18,7 @@ export default function Home() {
             name: "AiD Guardian",
             tag: "Enterprise Safety",
             description: "Multi-modal brand safety & compliance engine for AI content (image/video/audio/text).",
-            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/11636bcbb_2025-12-1785347.png",
+            image: "AiD Guardian Dashboard: Real-time risk monitoring interface showing GARM safety scores",
             path: "/AidGuardian",
             icon: Shield,
             color: "text-indigo-600",
@@ -28,7 +28,7 @@ export default function Home() {
             name: "PlayArts",
             tag: "Media Protocol",
             description: "Verifiable AI media provenance + cross-platform impact tracking + settlement-ready value events.",
-            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/b79d90ba9_2025-12-1785343.png",
+            image: "PlayArts Protocol: Network visualization showing media provenance and value routing",
             path: "/PlayArts",
             icon: Play,
             color: "text-purple-600",
@@ -38,7 +38,7 @@ export default function Home() {
             name: "EleMEMEtal",
             tag: "Gaming Economy",
             description: "Safety-native UGC PvP game economy where creation and distribution are trust-managed by design.",
-            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/44fe158d2_2025-12-1785335.png",
+            image: "EleMEMEtal Game: Card battle arena with safety-verified UGC assets",
             path: "/Elememetal",
             icon: Gamepad2,
             color: "text-pink-600",
@@ -48,7 +48,7 @@ export default function Home() {
             name: "Stocku",
             tag: "Trading Intelligence",
             description: "Zone-based trading intelligence with coin-specific small models trained on on-chain + market microstructure.",
-            image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/6b3b31eef_2025-12-1785326.png",
+            image: "Stocku Intelligence: Zone-based trading charts with AI signals overlay",
             path: "/Stocku",
             icon: BarChart3,
             color: "text-emerald-600",
@@ -99,20 +99,17 @@ export default function Home() {
                             transition={{ duration: 0.8 }}
                             className="relative hidden md:block"
                         >
-                            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                                <img 
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/11636bcbb_2025-12-1785347.png" 
-                                    alt="AiD Guardian Dashboard" 
-                                    className="w-full h-auto opacity-90"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+                            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-800 transform rotate-2 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-8">
+                                <div className="text-center">
+                                    <div className="text-indigo-400 font-bold text-xl mb-2">Platform Dashboard</div>
+                                    <p className="text-slate-400">Comprehensive view of multi-business operations and safety metrics</p>
+                                </div>
                             </div>
-                            <div className="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-xl border border-white bg-white transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-                                <img 
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/a6d2cc0c8_2025-12-1785333.png" 
-                                    alt="Core Problems" 
-                                    className="w-full h-auto"
-                                />
+                            <div className="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-xl border border-white bg-white transform -rotate-3 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-6 bg-slate-50">
+                                <div className="text-center">
+                                    <div className="text-slate-900 font-bold text-lg mb-1">Core Metrics</div>
+                                    <p className="text-slate-500 text-sm">Real-time analysis and performance tracking</p>
+                                </div>
                             </div>
                         </motion.div>
                     </div>
@@ -221,14 +218,13 @@ export default function Home() {
                                 className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
                             >
                                 <Link to={createPageUrl(biz.path.substring(1))} className="flex flex-col h-full">
-                                    <div className="aspect-video bg-slate-100 relative overflow-hidden">
-                                        <img 
-                                            src={biz.image} 
-                                            alt={biz.name} 
-                                            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" 
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                            <span className="text-white font-medium flex items-center gap-2">
+                                    <div className="aspect-video bg-slate-100 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-200 transition-colors">
+                                        <div className="text-center">
+                                            <div className="font-semibold text-slate-700 mb-2">{biz.name} Preview</div>
+                                            <p className="text-slate-500 text-sm">{biz.image}</p>
+                                        </div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span className="text-slate-900 font-medium flex items-center gap-2">
                                                 View Details <ArrowRight className="w-4 h-4" />
                                             </span>
                                         </div>

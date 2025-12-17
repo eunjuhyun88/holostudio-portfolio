@@ -7,7 +7,7 @@ export default function PlayArts() {
             name="PlayArts"
             tag="Media Protocol"
             oneLiner="The Proof-of-Creation protocol for verifiable AI media provenance and value routing."
-            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/b79d90ba9_2025-12-1785343.png"
+            heroImage="PlayArts Protocol Overview: Visualizing the flow of provenace from creation to value settlement"
             
             problemPoints={[
                 {
@@ -41,19 +41,19 @@ export default function PlayArts() {
 
             screenshots={[
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/a60d41368_2025-12-1785347.png",
+                    url: "Growth metrics dashboard showing asset minting and funding milestones",
                     caption: "Protocol Growth & Seed Funding"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/9e752e65e_2025-12-1785328.png",
+                    url: "Timeline visualization of protocol development and ecosystem expansion",
                     caption: "Strategic Roadmap: Protocol Expansion"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/9f7c0df24_2025-12-1785338.png",
+                    url: "Interface showing community rewards and engagement mechanics",
                     caption: "Community Gamification Mechanics"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/a6d2cc0c8_2025-12-1785333.png",
+                    url: "Diagram illustrating the solution for attribution and ownership",
                     caption: "Solving the AI Attribution Problem"
                 }
             ]}

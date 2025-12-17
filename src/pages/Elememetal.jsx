@@ -7,7 +7,7 @@ export default function Elememetal() {
             name="EleMEMEtal"
             tag="Gaming Economy"
             oneLiner="A safety-native UGC PvP card battler where skill meets trusted creative freedom."
-            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/44fe158d2_2025-12-1785335.png"
+            heroImage="EleMEMEtal Game Arena: Action shot of the card battle interface with UGC assets"
             
             problemPoints={[
                 {
@@ -41,19 +41,19 @@ export default function Elememetal() {
 
             screenshots={[
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/5fa26c821_2025-12-1785323.png",
+                    url: "Screenshot of the main card battle arena during a match",
                     caption: "Immersive Card Battle Arena"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/44fe158d2_2025-12-1785335.png",
+                    url: "Interface for customizing and utilizing user-generated assets",
                     caption: "Asset Customization & Utility"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/b43c87824_2025-12-1785330.png",
+                    url: "Deck builder interface showing card collection and strategy",
                     caption: "Strategic Deck Building"
                 },
                 {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_690a8b149c85bcc4b04fe025/749ad41cd_2025-12-1785337.png",
+                    url: "Technical architecture diagram of the game infrastructure",
                     caption: "Scalable Game Infrastructure"
                 }
             ]}
