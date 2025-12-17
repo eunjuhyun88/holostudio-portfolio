@@ -8,6 +8,7 @@ export default function Elememetal() {
             name="EleMEMEtal"
             theme="elememetal"
             HeroComponent={ElememetalDemo}
+            showAnalytics={true}
             tag="Competitive Strategy"
             primaryButton={{ text: "Play Now", url: "http://game-dev.playarts.ai" }}
             deckUrl="https://docsend.com/view/97ziwvrkmetmqs82"

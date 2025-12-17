@@ -8,6 +8,7 @@ export default function AidGuardian() {
             name="AiD Guardian"
             theme="aidguardian"
             HeroComponent={AidGuardianDemo}
+            showAnalytics={true}
             tag="Enterprise Safety"
             primaryButton={{ text: "Launch Dashboard", url: "http://221.148.221.12:7870" }}
             oneLiner="The enterprise-grade multi-modal safety & compliance engine for the AI era."

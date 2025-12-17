@@ -8,6 +8,7 @@ export default function Stockhoo() {
             name="Stockhoo"
             theme="stockhoo"
             HeroComponent={StockhooDemo}
+            showAnalytics={true}
             tag="AI Trading Intelligence"
             primaryButton={{ text: "Launch App", url: "http://stockhoo.playarts.ai" }}
             deckUrl="https://docsend.com/view/ari494ikfzsuix7z"

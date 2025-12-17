@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import SEO from '@/components/SEO';
+import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
 
 // Helper component to trigger background changes
 const ColorSection = ({ children, onInView, className = "" }) => {
@@ -39,16 +40,19 @@ export default function BusinessLayout({
     theme = "default",
     primaryButton = { text: "Request Access", url: null },
     deckUrl = null,
-    HeroComponent = null
+    HeroComponent = null,
+    showAnalytics = false
 }) {
     // Defines themes with specific color sequences for scroll sections
-    // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Roadmap/Footer]
+    // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
+    // Adjusted logic to handle variable sections later, but ensuring enough colors
     const themes = {
         default: {
             colors: [
                 { bg: "bg-[#050505]", text: "dark" },
                 { bg: "bg-white", text: "light" },
                 { bg: "bg-[#0A0A0A]", text: "dark" },
+                { bg: "bg-[#080808]", text: "dark" },
                 { bg: "bg-[#111111]", text: "dark" }
             ],
             accent: "text-indigo-500",
@@ -58,10 +62,11 @@ export default function BusinessLayout({
         },
         elememetal: {
             colors: [
-                { bg: "bg-[#020202]", text: "dark" },       // Hero: Dark
-                { bg: "bg-orange-500", text: "light" },     // Challenge: Brand Orange (Light/Black text)
-                { bg: "bg-[#120800]", text: "dark" },       // Solution: Dark Orange/Black
-                { bg: "bg-neutral-100", text: "light" }     // Roadmap: White/Light Gray
+                { bg: "bg-[#020202]", text: "dark" },
+                { bg: "bg-orange-500", text: "light" },
+                { bg: "bg-[#120800]", text: "dark" },
+                { bg: "bg-black", text: "dark" },
+                { bg: "bg-neutral-100", text: "light" }
             ],
             accent: "text-orange-500",
             accentBg: "bg-orange-500",
@@ -74,6 +79,7 @@ export default function BusinessLayout({
                 { bg: "bg-[#050505]", text: "dark" },
                 { bg: "bg-indigo-500", text: "light" },
                 { bg: "bg-[#050510]", text: "dark" },
+                { bg: "bg-[#0A0A0A]", text: "dark" },
                 { bg: "bg-neutral-100", text: "light" }
             ],
             accent: "text-indigo-400",
@@ -84,10 +90,11 @@ export default function BusinessLayout({
         },
         playarts: {
             colors: [
-                { bg: "bg-[#050505]", text: "dark" },       // Hero: Black
-                { bg: "bg-[#ccff00]", text: "light" },      // Challenge: Lime (First Round Style)
-                { bg: "bg-[#0A0A0A]", text: "dark" },       // Solution: Black
-                { bg: "bg-neutral-100", text: "light" }     // Roadmap: White
+                { bg: "bg-[#050505]", text: "dark" },
+                { bg: "bg-[#ccff00]", text: "light" },
+                { bg: "bg-[#0A0A0A]", text: "dark" },
+                { bg: "bg-[#080808]", text: "dark" },
+                { bg: "bg-neutral-100", text: "light" }
             ],
             accent: "text-lime-400",
             accentBg: "bg-lime-500",
@@ -100,6 +107,7 @@ export default function BusinessLayout({
                 { bg: "bg-[#050505]", text: "dark" },
                 { bg: "bg-emerald-500", text: "light" },
                 { bg: "bg-[#001005]", text: "dark" },
+                { bg: "bg-[#050505]", text: "dark" },
                 { bg: "bg-neutral-100", text: "light" }
             ],
             accent: "text-emerald-400",
@@ -129,6 +137,7 @@ export default function BusinessLayout({
         { id: 'overview', label: 'Overview' },
         { id: 'challenge', label: 'Challenge & Solution' },
         { id: 'experience', label: 'Experience' },
+        ...(showAnalytics ? [{ id: 'analytics', label: 'Analytics' }] : []),
         { id: 'roadmap', label: 'Roadmap' }
     ];
 
@@ -390,9 +399,25 @@ export default function BusinessLayout({
                             </div>
                         )}
 
+                        {/* 3.5. Analytics Dashboard */}
+                        {showAnalytics && (
+                            <div id="analytics">
+                                <ColorSection onInView={() => setActiveSection(screenshots.length > 0 ? 3 : 2)}>
+                                    <div className="mb-12">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                            LIVE METRICS
+                                        </span>
+                                        <h3 className="text-3xl font-bold mb-4">Performance Dashboard</h3>
+                                        <p className="text-neutral-500 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
+                                        <AnalyticsDashboard type={theme} theme={theme} />
+                                    </div>
+                                </ColorSection>
+                            </div>
+                        )}
+
                         {/* 4. Use Cases & Roadmap */}
                         <div id="roadmap">
-                        <ColorSection onInView={() => setActiveSection(3)}>
+                        <ColorSection onInView={() => setActiveSection(showAnalytics ? (screenshots.length > 0 ? 4 : 3) : (screenshots.length > 0 ? 3 : 2))}>
                             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                                 <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
                                     <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>

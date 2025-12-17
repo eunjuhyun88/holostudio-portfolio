@@ -8,6 +8,7 @@ export default function PlayArts() {
             name="PlayArts"
             theme="playarts"
             HeroComponent={PlayArtsVisual}
+            showAnalytics={true}
             tag="Media Protocol"
             primaryButton={{ text: "Launch App", url: "https://playarts.ai/" }}
             deckUrl="https://docsend.com/view/wdasib73q44ppc3a"
