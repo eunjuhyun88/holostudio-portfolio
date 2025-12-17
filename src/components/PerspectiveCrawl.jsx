@@ -8,14 +8,14 @@ export default function PerspectiveCrawl({ children }) {
         offset: ["start start", "end start"]
     });
 
-    const rotateX = 25; // Constant tilt
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+    const rotateX = 20; // Slightly less tilt for better readability of top text
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]); // Move further up to ensure long content clears
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [1, 1, 1, 0]); // Keep visible longer, only fade at very end
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.6]); // More dramatic scaling
 
     return (
-        <div ref={containerRef} className="relative h-[400vh] w-full bg-[#050505]">
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ perspective: '800px' }}>
+        <div ref={containerRef} className="relative h-[500vh] w-full bg-[#050505]">
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ perspective: '400px' }}>
                 
                 {/* Gradient Fades */}
                 <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none" />
