@@ -580,8 +580,8 @@ export default function Company() {
                 {/* Team Identity Section */}
                 <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
 
-                {/* Founder Spotlight Section */}
-                <div id="team" className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48">
+                {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
+                <div id="team" className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48 overflow-hidden">
                     <div className="max-w-[1400px] mx-auto px-6 md:px-12">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-24">
                             <div>
@@ -597,9 +597,12 @@ export default function Company() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+                        {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                        <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-12 lg:gap-16 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                             {c.founders.map((founder, i) => (
-                                <FounderCard key={i} {...founder} delay={i * 0.1} />
+                                <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                                    <FounderCard {...founder} delay={i * 0.1} />
+                                </div>
                             ))}
                         </div>
                     </div>
