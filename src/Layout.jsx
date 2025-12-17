@@ -47,7 +47,7 @@ function LayoutContent({ children }) {
         { name: 'AiD Guardian', path: '/AidGuardian' },
         { name: 'PlayArts', path: '/PlayArts' },
         { name: 'EleMEMEtal', path: '/Elememetal' },
-        { name: 'Stocku', path: '/Stocku' },
+        { name: 'Stockhoo', path: '/Stockhoo' },
     ];
 
     const scrollToSection = (id) => {

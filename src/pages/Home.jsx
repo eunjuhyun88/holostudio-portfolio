@@ -222,8 +222,8 @@ export default function Home() {
             secondaryBtn: { en: "Publish Kit", ko: "퍼블리싱 키트" }
         },
         {
-            id: "stocku",
-            name: "Stocku",
+            id: "stockhoo",
+            name: "Stockhoo",
             tag: { en: "Zone-based Social Intelligence", ko: "구간 기반 소셜 인텔리전스" },
             desc: {
                 en: "Zone-based market conversation + proof + AI signal layer. Credibility and insights for on-chain markets.",
@@ -238,7 +238,7 @@ export default function Home() {
             borderColor: "border-emerald-400",
             glowColor: "shadow-emerald-400/50",
             bgGradient: "from-emerald-500",
-            path: "/Stocku",
+            path: "/Stockhoo",
             primaryBtn: { en: "Open App", ko: "앱 열기" },
             secondaryBtn: { en: "Deck", ko: "소개서" }
         }
@@ -559,7 +559,7 @@ export default function Home() {
                                 EleMEMEtal
                             </div>
                             <div className="bg-emerald-900/20 border border-emerald-500/30 px-6 py-4 rounded-xl text-emerald-400 font-bold text-sm w-40">
-                                Stocku
+                                Stockhoo
                             </div>
                         </div>
                     </div>
