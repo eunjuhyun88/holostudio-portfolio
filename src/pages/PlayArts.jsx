@@ -236,6 +236,60 @@ export default function PlayArts() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            features={[
+                {
+                    icon: Fingerprint,
+                    title: language === 'en' ? "Immutable Provenance" : "불변의 출처 증명",
+                    description: language === 'en' ? "Cryptographic proof of origin for every generated asset." : "생성된 모든 자산에 대한 암호학적 기원 증명."
+                },
+                {
+                    icon: Coins,
+                    title: language === 'en' ? "Value Routing" : "가치 라우팅",
+                    description: language === 'en' ? "Automated royalty distribution via smart contracts." : "스마트 계약을 통한 자동 로열티 분배."
+                },
+                {
+                    icon: Network,
+                    title: language === 'en' ? "Decentralized Verification" : "탈중앙 검증",
+                    description: language === 'en' ? "Node network for consensus-based content verification." : "합의 기반 콘텐츠 검증을 위한 노드 네트워크."
+                },
+                {
+                    icon: Copyright,
+                    title: language === 'en' ? "IP Protection" : "IP 보호",
+                    description: language === 'en' ? "Secure ownership of style and prompt engineering." : "스타일 및 프롬프트 엔지니어링에 대한 안전한 소유권."
+                },
+                {
+                    icon: Share2,
+                    title: language === 'en' ? "Viral Tracking" : "바이럴 추적",
+                    description: language === 'en' ? "Track asset usage and derivatives across platforms." : "플랫폼 전반에 걸친 자산 사용 및 파생물 추적."
+                },
+                {
+                    icon: Globe,
+                    title: language === 'en' ? "Cross-Chain" : "크로스체인",
+                    description: language === 'en' ? "Interoperable asset standards across major blockchains." : "주요 블록체인 간 상호 운용 가능한 자산 표준."
+                }
+            ]}
+            specs={[
+                {
+                    label: language === 'en' ? "Protocol Standard" : "프로토콜 표준",
+                    value: "EIP-7007 (Verifiable AI Generated Content)"
+                },
+                {
+                    label: language === 'en' ? "Verification Method" : "검증 방식",
+                    value: "Perceptual Hashing (pHash) + Zero-Knowledge Proofs"
+                },
+                {
+                    label: language === 'en' ? "Consensus" : "합의 알고리즘",
+                    value: "Proof of Creation (PoC)"
+                },
+                {
+                    label: language === 'en' ? "Throughput" : "처리량",
+                    value: "10,000+ Attestations / Second (L2 Scaling)"
+                },
+                {
+                    label: language === 'en' ? "Storage" : "저장소",
+                    value: "IPFS / Arweave (Decentralized Storage)"
+                }
+            ]}
         />
     );
 }
