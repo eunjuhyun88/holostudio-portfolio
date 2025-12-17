@@ -433,11 +433,14 @@ export default function Home() {
             />
             {/* Section 01: HERO (Pinned) */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+                <CosmicBackground />
                 {/* 3D Background */}
-                <Background3D />
+                <div className="absolute inset-0 opacity-60">
+                    <Background3D />
+                </div>
                 
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505] to-[#050505] opacity-90" />
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
                 </div>
 
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
