@@ -438,6 +438,13 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-60">
                     <Background3D />
                 </div>
+
+                {/* Spinning Rings (Restored) */}
+                <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+                    <div className="absolute w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_100px_rgba(99,102,241,0.05)] animate-[spin_60s_linear_infinite]" />
+                    <div className="absolute w-[60vh] h-[60vh] rounded-full border border-white/5 animate-[spin_40s_linear_infinite_reverse]" />
+                    <div className="absolute w-[100vh] h-[100vh] rounded-full border border-dashed border-white/5 opacity-20 animate-[spin_80s_linear_infinite]" />
+                </div>
                 
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
