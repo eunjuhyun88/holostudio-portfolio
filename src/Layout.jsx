@@ -80,6 +80,8 @@ function LayoutContent({ children }) {
         <div className="min-h-screen bg-[#050505] font-sans text-white">
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
+                @import url('https://fonts.cdnfonts.com/css/graphyne');
+                
                 /* Default everything to lighter weight */
                 strong, b, .font-bold, .font-extrabold, .font-semibold, h1, h2, h3, h4, h5, h6 {
                     font-family: 'Rigid Display', sans-serif !important;
@@ -87,7 +89,10 @@ function LayoutContent({ children }) {
                 }
                 .font-heavy {
                     font-family: 'Rigid Display', sans-serif !important;
-                    font-weight: 800 !important;
+                    font-weight: 700 !important;
+                }
+                .font-inktrap {
+                    font-family: 'Graphyne', sans-serif !important;
                 }
             `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">

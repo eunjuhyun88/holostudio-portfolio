@@ -74,7 +74,7 @@ export default function LoadingScreen({ onComplete }) {
                 <motion.div 
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="text-8xl md:text-9xl font-bold tracking-tighter mb-8 tabular-nums"
+                    className="text-8xl md:text-9xl font-inktrap tracking-tighter mb-8 tabular-nums"
                 >
                     {count}%
                 </motion.div>
