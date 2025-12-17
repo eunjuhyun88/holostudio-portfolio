@@ -8,13 +8,71 @@ import { Label } from "@/components/ui/label";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 const mockHistory = [
-    { id: '99429b8a', name: '99429b8a.mp4', status: 'SAFE', date: '12/17/2025, 12:34:49 PM', frames: 181, category: 'safe', confidence: 36.3, type: 'video', desc: 'Real Video' },
-    { id: 'c3df95be', name: 'c3df95be.mov', status: 'SAFE', date: '12/17/2025, 1:08:42 PM', frames: 13749, category: 'safe', confidence: 26.9, type: 'video', desc: 'Real Video' },
-    { id: '0fa3d8b8', name: '0fa3d8b8.mp4', status: 'UNSAFE', date: '12/16/2025, 6:09:43 PM', frames: 63045, category: 'nsfw_hardcore', confidence: 99.1, type: 'video', desc: 'NSFW Content' },
-    { id: '6680da9b', name: '6680da9b.mp4', status: 'SAFE', date: '12/17/2025, 12:58:39 PM', frames: 1166, category: 'safe', confidence: 12.5, type: 'video', desc: 'Real Video' },
-    { id: '7acb9160', name: '7acb9160.mp4', status: 'SAFE', date: '12/17/2025, 12:47:51 PM', frames: 138, category: 'safe', confidence: 45.2, type: 'video', desc: 'Real Video' },
-    { id: 'f48f52e9', name: 'f48f52e9.mp4', status: 'UNSAFE', date: '12/16/2025, 5:59:21 PM', frames: 57731, category: 'nsfw_hardcore', confidence: 98.4, type: 'video', desc: 'NSFW Content' },
-    { id: '4bb0ffd4', name: '4bb0ffd4.mp4', status: 'SAFE', date: '12/17/2025, 12:38:21 PM', frames: 192, category: 'safe', confidence: 15.7, type: 'video', desc: 'Real Video' },
+    { 
+        id: '99429b8a', 
+        name: '99429b8a.mp4', 
+        status: 'SAFE', 
+        date: '12/17/2025, 12:34:49 PM', 
+        frames: 181, 
+        category: 'safe', 
+        confidence: 36.3, 
+        type: 'video', 
+        desc: 'Real Video',
+        explanation: 'No GARM violations detected. Visual scene classification indicates outdoor nature environment.',
+        garm: { 'Hate Speech': 2, 'Violence': 1, 'Adult Content': 0, 'Spam': 5 }
+    },
+    { 
+        id: 'c3df95be', 
+        name: 'c3df95be.mov', 
+        status: 'SAFE', 
+        date: '12/17/2025, 1:08:42 PM', 
+        frames: 13749, 
+        category: 'safe', 
+        confidence: 26.9, 
+        type: 'video', 
+        desc: 'Real Video',
+        explanation: 'Content is compliant with enterprise safety policies. Minor background audio noise detected but classified as non-speech.',
+        garm: { 'Hate Speech': 0, 'Violence': 0, 'Adult Content': 0, 'Spam': 0 }
+    },
+    { 
+        id: '0fa3d8b8', 
+        name: '0fa3d8b8.mp4', 
+        status: 'UNSAFE', 
+        date: '12/16/2025, 6:09:43 PM', 
+        frames: 63045, 
+        category: 'Adult Content', 
+        confidence: 99.1, 
+        type: 'video', 
+        desc: 'NSFW Content',
+        explanation: 'Frame 1450-1800 triggered high-probability filters for explicit content. Audio analysis confirms prohibited keywords.',
+        garm: { 'Hate Speech': 12, 'Violence': 5, 'Adult Content': 98, 'Spam': 45 }
+    },
+    { 
+        id: '6680da9b', 
+        name: 'LIVE_STREAM_01', 
+        status: 'SAFE', 
+        date: '12/17/2025, 12:58:39 PM', 
+        frames: 1166, 
+        category: 'safe', 
+        confidence: 12.5, 
+        type: 'live', 
+        desc: 'RTMP Ingest',
+        explanation: 'Live monitoring active. No violations in current buffer (last 30s). Latency < 200ms.',
+        garm: { 'Hate Speech': 1, 'Violence': 2, 'Adult Content': 0, 'Spam': 8 }
+    },
+    { 
+        id: 'f48f52e9', 
+        name: 'f48f52e9.mp4', 
+        status: 'UNSAFE', 
+        date: '12/16/2025, 5:59:21 PM', 
+        frames: 57731, 
+        category: 'Hate Speech', 
+        confidence: 98.4, 
+        type: 'video', 
+        desc: 'Hate Speech Detected',
+        explanation: 'Audio transcript contains multiple instances of targeted slurs. Visuals contain symbols associated with hate groups.',
+        garm: { 'Hate Speech': 99, 'Violence': 65, 'Adult Content': 12, 'Spam': 23 }
+    },
 ];
 
 export default function AidGuardianDashboard() {
@@ -143,12 +201,28 @@ export default function AidGuardianDashboard() {
                                         </span>
                                     </div>
                                     <p className="text-sm text-neutral-400 max-w-2xl leading-relaxed">
-                                        AI Analysis: The video depicts content categorized as <span className="text-white font-medium">{selectedItem.category}</span>. 
-                                        {selectedItem.status === 'SAFE' 
-                                            ? ' Showcasing calm behavior in a natural setting. It is safe, family-friendly, and free from harmful content.'
-                                            : ' Contains flagged patterns consistent with restricted policy categories. Immediate review recommended.'}
+                                        AI Analysis: The content was categorized as <span className="text-white font-medium">{selectedItem.category}</span>. 
+                                        {selectedItem.explanation}
                                     </p>
                                 </div>
+                            </div>
+                            
+                            {/* GARM Category Breakdown */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                {selectedItem.garm && Object.entries(selectedItem.garm).map(([key, value]) => (
+                                    <div key={key} className="bg-[#111] p-3 rounded-lg border border-white/10">
+                                        <div className="text-[10px] uppercase text-neutral-500 font-bold mb-1">{key}</div>
+                                        <div className="flex items-end justify-between">
+                                            <span className={`text-xl font-mono font-bold ${value > 50 ? 'text-red-400' : 'text-green-400'}`}>
+                                                {value}%
+                                            </span>
+                                            <div className={`w-2 h-2 rounded-full ${value > 50 ? 'bg-red-500' : 'bg-green-500'} mb-2`} />
+                                        </div>
+                                        <div className="h-1 w-full bg-white/5 rounded-full mt-2 overflow-hidden">
+                                            <div className={`h-full ${value > 50 ? 'bg-red-500' : 'bg-green-500'}`} style={{ width: `${value}%` }} />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
 
                             {/* AI Detection Card */}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, AlertTriangle, CheckCircle, FileAudio, FileVideo, FileText, Scan, Sliders, Image as ImageIcon, Terminal, Lock } from 'lucide-react';
+import { Shield, AlertTriangle, CheckCircle, FileAudio, FileVideo, FileText, Scan, Sliders, Image as ImageIcon, Terminal, Lock, Radio, Info } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
@@ -16,14 +16,15 @@ export default function AidGuardianScanner() {
     const samples = [
         { 
             id: 0, 
-            name: "Mixed Media", 
-            type: "Multimedia", 
-            risk: "Low", 
-            baseScore: 98,
-            details: { hate: 2, violence: 1, selfHarm: 0 },
-            icon: CheckCircle,
-            color: "text-green-500",
-            desc: "User generated content with text and images"
+            name: "Live Broadcast", 
+            type: "RTMP Stream", 
+            risk: "Scanning", 
+            baseScore: 100,
+            details: { "Hate Speech": 0, "Violence": 0, "Sexual Content": 0, "Self-Harm": 0 },
+            icon: Radio,
+            color: "text-blue-500",
+            desc: "Real-time protocol stream monitoring",
+            explanation: "Initializing live stream buffer... Waiting for frame analysis."
         },
         { 
             id: 1, 
@@ -31,10 +32,11 @@ export default function AidGuardianScanner() {
             type: "Audio Stream", 
             risk: "High", 
             baseScore: 12,
-            details: { hate: 88, violence: 45, selfHarm: 12 },
-            icon: AlertTriangle,
+            details: { "Hate Speech": 88, "Harassment": 76, "Violence": 45, "Profanity": 92 },
+            icon: FileAudio,
             color: "text-red-500",
-            desc: "Voice chat recording with flagged keywords"
+            desc: "Voice chat recording with flagged keywords",
+            explanation: "Detected aggressive slurs and targeted harassment keywords at timestamps 0:14, 0:32. Voice sentiment analysis indicates high aggression."
         },
         { 
             id: 2, 
@@ -42,10 +44,11 @@ export default function AidGuardianScanner() {
             type: "Text/Code", 
             risk: "Critical", 
             baseScore: 5,
-            details: { hate: 0, violence: 0, malware: 99 },
+            details: { "Malware": 99, "Exploits": 95, "Phishing": 12, "Spam": 45 },
             icon: Terminal,
             color: "text-purple-500",
-            desc: "Prompt injection attempt detected"
+            desc: "Prompt injection attempt detected",
+            explanation: "Pattern match: 'Ignore previous instructions' followed by privileged function calls. Attempt to override system prompt detected."
         },
         { 
             id: 3, 
@@ -53,10 +56,11 @@ export default function AidGuardianScanner() {
             type: "Video Stream", 
             risk: "Medium", 
             baseScore: 45,
-            details: { hate: 12, violence: 5, manipulation: 82 },
+            details: { "Manipulation": 82, "Misinformation": 65, "Copyright": 12, "Identity Theft": 78 },
             icon: FileVideo,
             color: "text-orange-500",
-            desc: "Synthetic media lacking provenance"
+            desc: "Synthetic media lacking provenance",
+            explanation: "Facial landmarks inconsistent between frames 140-200. Lip-sync analysis shows 85% probability of audio-visual mismatch."
         }
     ];
 
@@ -82,6 +86,45 @@ export default function AidGuardianScanner() {
             });
         }, processingTime);
     };
+
+    // Live Stream Simulation
+    useEffect(() => {
+        if (activeSample === 0 && scanning) {
+            // No specific logic needed during scanning animation for now
+        } else if (activeSample === 0 && result) {
+            // Dynamic updates for live stream result
+            const interval = setInterval(() => {
+                setResult(prev => {
+                    const newScore = Math.min(100, Math.max(0, prev.baseScore + (Math.random() - 0.5) * 10));
+                    const newDetails = { ...prev.details };
+                    Object.keys(newDetails).forEach(k => {
+                        newDetails[k] = Math.max(0, Math.min(100, newDetails[k] + (Math.random() - 0.5) * 5));
+                    });
+                    
+                    // Occasionally spike a risk
+                    if (Math.random() > 0.9) {
+                        newDetails["Violence"] += 20;
+                        return {
+                            ...prev,
+                            score: Math.max(0, newScore - 20),
+                            risk: "High",
+                            details: newDetails,
+                            explanation: "Sudden spike in visual conflict detection. Frame analysis indicates potential physical altercation."
+                        };
+                    }
+
+                    return {
+                        ...prev,
+                        score: newScore,
+                        risk: newScore > 80 ? "Low" : newScore > 50 ? "Medium" : "High",
+                        details: newDetails,
+                        explanation: newScore > 80 ? "Stream content within safety parameters. Audio/Visual checks nominal." : prev.explanation
+                    };
+                });
+            }, 2000);
+            return () => clearInterval(interval);
+        }
+    }, [activeSample, result, scanning]);
 
     return (
         <div className="w-full h-full bg-[#0A0A0A] text-white p-6 md:p-8 flex flex-col rounded-3xl overflow-hidden border border-white/5">
@@ -234,24 +277,38 @@ export default function AidGuardianScanner() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <div className="text-xs text-neutral-500 uppercase tracking-wider font-bold mb-2">Category Breakdown</div>
-                                        {Object.entries(result.details).map(([key, val], i) => (
-                                            <div key={key} className="space-y-1">
-                                                <div className="flex justify-between text-xs">
-                                                    <span className="text-neutral-300 capitalize">{key}</span>
-                                                    <span className="font-mono text-neutral-500">{val}%</span>
+                                        <div className="text-xs text-neutral-500 uppercase tracking-wider font-bold mb-2">GARM Risk Breakdown</div>
+                                        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                                            {Object.entries(result.details).map(([key, val], i) => (
+                                                <div key={key} className="space-y-1">
+                                                    <div className="flex justify-between text-[10px]">
+                                                        <span className="text-neutral-300 capitalize truncate pr-2">{key}</span>
+                                                        <span className={`font-mono ${val > 50 ? 'text-red-400' : 'text-neutral-500'}`}>{Math.round(val)}%</span>
+                                                    </div>
+                                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                                        <motion.div 
+                                                            initial={{ width: 0 }}
+                                                            animate={{ width: `${val}%` }}
+                                                            transition={{ duration: 0.8, delay: 0.1 * i }}
+                                                            className={`h-full rounded-full ${val > 70 ? 'bg-red-500' : val > 30 ? 'bg-orange-500' : 'bg-green-500'}`}
+                                                        />
+                                                    </div>
                                                 </div>
-                                                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                                    <motion.div 
-                                                        initial={{ width: 0 }}
-                                                        animate={{ width: `${val}%` }}
-                                                        transition={{ duration: 0.8, delay: 0.1 * i }}
-                                                        className={`h-full rounded-full ${val > 50 ? 'bg-red-500' : 'bg-indigo-500'}`}
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
+
+                                    {result.explanation && (
+                                        <div className="mt-4 p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                                            <div className="flex items-center gap-2 mb-1 text-indigo-400">
+                                                <Info className="w-3 h-3" />
+                                                <span className="text-[10px] font-bold uppercase">Explainability Engine</span>
+                                            </div>
+                                            <p className="text-xs text-indigo-100 leading-relaxed">
+                                                {result.explanation}
+                                            </p>
+                                        </div>
+                                    )}
 
                                     <div className="pt-4 border-t border-white/5 text-xs text-neutral-500 font-mono">
                                         Analysis ID: {Math.random().toString(36).substr(2, 9).toUpperCase()} • {result.type}
