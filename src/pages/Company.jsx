@@ -323,37 +323,37 @@ export default function Company() {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
                     bio: "Global Strategy & Defense. Led cross-border AI/Web3 strategy connecting Silicon Valley tech with Asian gaming giants. Deep expertise in GTM for decentralized protocols.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/5c6b14a61_ChatGPTImage2025121806_49_07.png"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
                     bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9a2afbcfa_ChatGPTImage2025121806_47_40.png"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Co-Founder & Chief Architect",
                     bio: "Graphics & Systems Veteran. Former Unity, Netmarble, Smilegate. Master of real-time rendering pipelines and performance-critical systems.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/80ae34193_ChatGPTImage2025121806_53_01.png"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
                     bio: "Oversees PlayArts architecture and development roadmap. Ensuring technical excellence across all protocol layers.",
-                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/4ec9ba77e_2025-12-1864526.png"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "Specialized in modern UI with React, Tailwind, Vite and Svelte. UX Specialist focused on seamless interactions.",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/ead3229dd_2025-12-1831046.png"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "Builds scalable ASP.NET (9.0) and PostgreSQL systems. Expert in authentication, data modeling, and secure cloud deployment.",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/04bbb834d_2025-12-1864529.png"
                 }
             ],
         },
