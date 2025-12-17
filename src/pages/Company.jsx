@@ -123,20 +123,22 @@ const StickyThesisItem = ({ item, index, total }) => {
 
     const isEven = index % 2 === 0;
     
+    // Unified Brand Palettes (Deep Dark Versions of Product Colors)
     const palettes = [
-        { bg: "bg-[#2E0249]", text: "text-[#A91D3A]", accent: "text-[#F1E4C3]" },
-        { bg: "bg-[#000033]", text: "text-[#576CBC]", accent: "text-[#A5D7E8]" },
-        { bg: "bg-[#1A4D2E]", text: "text-[#4F6F52]", accent: "text-[#E8DFCA]" },
-        { bg: "bg-[#F5F5F5]", text: "text-[#1A1A1A]", accent: "text-[#FF4C4C]" },
+        { bg: "bg-[#0f172a]", text: "text-indigo-400", accent: "text-indigo-200" }, // Indigo (AiD Guardian)
+        { bg: "bg-[#022c22]", text: "text-emerald-400", accent: "text-emerald-200" }, // Emerald (Stockhoo)
+        { bg: "bg-[#1a140b]", text: "text-orange-400", accent: "text-orange-200" }, // Orange (EleMEMEtal)
+        { bg: "bg-[#141d08]", text: "text-lime-400", accent: "text-lime-200" }, // Lime (PlayArts)
     ];
 
     const currentPalette = palettes[index % palettes.length];
-    const isLight = index === 3;
-
+    
     return (
         <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
             {/* Background Layer */}
             <div className={`absolute inset-0 ${currentPalette.bg} z-0`} />
+            {/* Gradient Overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 z-0" />
             
             <motion.div 
                 style={{ y, opacity, scale }}
@@ -149,11 +151,11 @@ const StickyThesisItem = ({ item, index, total }) => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         {/* Huge Number Index */}
-                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-20 -left-10 select-none ${isLight ? 'text-black' : 'text-white'}`}>
+                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-5 absolute -top-20 -left-10 select-none text-white`}>
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-5xl md:text-7xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] ${isLight ? 'text-black' : 'text-white'} relative`}>
+                        <h2 className={`text-5xl md:text-7xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] text-white relative`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -162,7 +164,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-xl md:text-3xl lg:text-4xl font-light leading-snug max-w-4xl ml-auto ${isLight ? 'text-neutral-800' : 'text-neutral-200'}`}
+                        className={`text-xl md:text-3xl lg:text-4xl font-light leading-snug max-w-4xl ml-auto ${currentPalette.text}`}
                     >
                         {item.content}
                     </motion.div>
@@ -187,8 +189,7 @@ const TeamIdentity = () => (
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                {/* Matching Green Palette */}
-                <span className="text-[#4F6F52]">Engineers</span>
+                <span className="text-indigo-500">Engineers</span>
             </motion.div>
 
             <motion.div 
@@ -198,8 +199,7 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="pl-[1em]"
             >
-                {/* Matching Light/White Palette */}
-                <span className="text-white">Researchers</span>
+                <span className="text-emerald-500">Researchers</span>
             </motion.div>
 
             <motion.div 
@@ -209,8 +209,7 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="pl-[0.5em]"
             >
-                {/* Matching Blue Palette */}
-                <span className="text-[#576CBC]">Builders</span>
+                <span className="text-orange-500">Builders</span>
             </motion.div>
 
             <motion.div 
@@ -220,8 +219,7 @@ const TeamIdentity = () => (
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="pl-[2em]"
             >
-                {/* Matching Purple Palette */}
-                <span className="text-[#A91D3A]">Veterans</span>
+                <span className="text-lime-500">Veterans</span>
             </motion.div>
         </div>
 
