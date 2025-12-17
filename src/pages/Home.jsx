@@ -418,7 +418,7 @@ export default function Home() {
     }));
 
     return (
-        <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans">
+        <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans min-h-screen relative">
             <SEO 
                 title="Home" 
                 description={t.hero.sub} 
@@ -431,20 +431,20 @@ export default function Home() {
                     "description": t.hero.sub
                 }}
             />
-            {/* Section 01: HERO (Pinned) */}
-            <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-30">
+
+            {/* Global Background Layer */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 opacity-60">
                     <CosmicBackground />
                 </div>
-                {/* 3D Background */}
-                <div className="absolute inset-0 opacity-90">
+                <div className="absolute inset-0 opacity-100">
                     <Background3D />
                 </div>
-                
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
-                </div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/50 to-[#050505]/90 opacity-60" />
+            </div>
 
+            {/* Section 01: HERO (Pinned) */}
+            <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden z-10">
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
@@ -486,7 +486,7 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className="py-12 border-y border-neutral-900 bg-[#080808]">
+            <section className="py-12 border-y border-white/10 bg-black/40 backdrop-blur-md relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
@@ -550,7 +550,7 @@ export default function Home() {
             </section>
 
             {/* Section 03: THE CORE PROBLEM */}
-            <section className="py-32 bg-[#050505]">
+            <section className="py-32 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.problem.title}</h2>
@@ -585,7 +585,7 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className="py-32 px-6 md:px-12 bg-[#050505] border-b border-neutral-900">
+            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/20 backdrop-blur-sm">
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
@@ -778,7 +778,7 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className="py-24 bg-[#0A0A0A] border-y border-neutral-900 text-center">
+            <section className="py-24 border-y border-white/10 text-center relative z-10 bg-black/40 backdrop-blur-md">
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
                     <p className="text-2xl md:text-4xl font-medium leading-tight mb-12">
@@ -798,7 +798,7 @@ export default function Home() {
 
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
-            <section id="products" className="relative bg-[#050505]">
+            <section id="products" className="relative z-10">
                 {/* Intro Title */}
                 <div className="absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
                      <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
@@ -806,9 +806,7 @@ export default function Home() {
                 </div>
 
                 {/* Sticky Visual Container */}
-                <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center md:justify-start md:pl-20">
-                    <div className="absolute inset-0 w-full h-full bg-[#050505]" />
-                    
+                <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center md:justify-start md:pl-20 pointer-events-none">
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
                         {products.map((prod, idx) => (
@@ -927,7 +925,7 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES */}
-            <section id="proof" className="py-32 bg-[#050505] relative overflow-hidden">
+            <section id="proof" className="py-32 relative overflow-hidden z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
@@ -968,7 +966,7 @@ export default function Home() {
 
 
             {/* Section 10: ROADMAP */}
-            <section id="roadmap">
+            <section id="roadmap" className="relative z-10">
                 <Roadmap 
                     items={t.roadmap.items} 
                     title={t.roadmap.title} 
@@ -977,7 +975,7 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className="py-32 bg-[#050505] border-t border-neutral-900">
+            <section className="py-32 border-t border-white/5 relative z-10">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div>
                         <h2 className="text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
