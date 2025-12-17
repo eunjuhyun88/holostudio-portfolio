@@ -37,7 +37,8 @@ export default function BusinessLayout({
     roadmap = [],
     stats = [],
     theme = "default",
-    primaryButton = { text: "Request Access", url: null }
+    primaryButton = { text: "Request Access", url: null },
+    deckUrl = null
 }) {
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Roadmap/Footer]
@@ -232,9 +233,13 @@ export default function BusinessLayout({
                                             {primaryButton.text}
                                         </Button>
                                     )}
-                                    <Button variant="ghost" className="w-full rounded-full h-12 bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5">
-                                        Download Deck
-                                    </Button>
+                                    {deckUrl && (
+                                        <a href={deckUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                            <Button variant="ghost" className="w-full rounded-full h-12 bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5">
+                                                Download Deck
+                                            </Button>
+                                        </a>
+                                    )}
                                 </div>
                             </motion.div>
                         </div>
@@ -299,9 +304,13 @@ export default function BusinessLayout({
                                         </div>
                                     ))}
                                 </div>
-                                <Button variant="outline" className={`w-full rounded-xl h-12 bg-transparent ${border} ${textPrimary} hover:bg-white/5`}>
-                                    Download Deck
-                                </Button>
+                                {deckUrl && (
+                                    <a href={deckUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                        <Button variant="outline" className={`w-full rounded-xl h-12 bg-transparent ${border} ${textPrimary} hover:bg-white/5`}>
+                                            Download Deck
+                                        </Button>
+                                    </a>
+                                )}
                             </div>
                         </ColorSection>
                         </div>

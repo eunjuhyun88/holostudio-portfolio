@@ -161,9 +161,11 @@ function LayoutContent({ children }) {
 
                         <div className="w-px h-4 bg-white/10" />
 
-                        <Button variant="ghost" className="rounded-full text-sm text-neutral-400 hover:text-white hover:bg-white/5 px-5 h-9">
-                            {language === 'en' ? 'Deck' : '소개서'}
-                        </Button>
+                        <a href="https://docsend.com/view/6xxvddwgkmbg2a8i" target="_blank" rel="noopener noreferrer">
+                            <Button variant="ghost" className="rounded-full text-sm text-neutral-400 hover:text-white hover:bg-white/5 px-5 h-9">
+                                {language === 'en' ? 'Deck' : '소개서'}
+                            </Button>
+                        </a>
 
                         <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 h-9 text-sm font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all border border-indigo-500/50">
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />

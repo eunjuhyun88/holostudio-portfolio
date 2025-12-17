@@ -8,6 +8,7 @@ export default function Elememetal() {
             theme="elememetal"
             tag="Competitive Strategy"
             primaryButton={{ text: "Play Now", url: "http://game-dev.playarts.ai" }}
+            deckUrl="https://docsend.com/view/97ziwvrkmetmqs82"
             oneLiner="THINK. GAMBLE. STRIKE. A 5-10 minute competitive card battler where every round is a mind game."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
             

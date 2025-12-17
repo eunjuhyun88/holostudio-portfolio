@@ -8,6 +8,7 @@ export default function Stockhoo() {
             theme="stockhoo"
             tag="AI Trading Intelligence"
             primaryButton={{ text: "Launch App", url: "http://stockhoo.playarts.ai" }}
+            deckUrl="https://docsend.com/view/ari494ikfzsuix7z"
             oneLiner="Zone-based AI trading agent optimized via Direct Preference Optimization (DPO)."
             heroImage="Stockhoo Trading Interface: AI-powered zone analysis overlay on price charts"
             
