@@ -759,41 +759,7 @@ export default function Home() {
                  </div>
             </section>
 
-            {/* Section 09: RESEARCH AREAS */}
-            <section id="research" className="py-24 bg-[#0A0A0A] border-t border-neutral-900">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div {...fadeIn} className="mb-16 text-center">
-                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.research.title}</h2>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-4">{t.research.sub}</h3>
-                    </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {t.research.items.map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="bg-neutral-900/50 p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group"
-                            >
-                                <div className="w-12 h-12 bg-neutral-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
-                                    <item.icon className="w-6 h-6" />
-                                </div>
-                                <h4 className="text-xl font-bold mb-3">{item.title}</h4>
-                                <p className="text-neutral-400 mb-6 text-sm leading-relaxed">{item.desc}</p>
-                                <div className="flex gap-2 flex-wrap">
-                                    {item.tags.map((tag, i) => (
-                                        <span key={i} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-neutral-800 text-neutral-400">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Section 10: ROADMAP */}
             <section id="roadmap">

@@ -38,15 +38,15 @@ function LayoutContent({ children }) {
     const navLinks = {
         en: [
             { name: 'Company', path: '/Company', isAnchor: false },
+            { name: 'Products', path: '/Products', isAnchor: false },
             { name: 'Proof', path: '/#proof', isAnchor: true },
-            { name: 'Research', path: '/#research', isAnchor: true },
             { name: 'Roadmap', path: '/#roadmap', isAnchor: true },
             { name: 'Contact', path: '/Contact' },
         ],
         ko: [
             { name: '회사소개', path: '/Company', isAnchor: false },
+            { name: '프로덕트', path: '/Products', isAnchor: false },
             { name: '성과', path: '/#proof', isAnchor: true },
-            { name: '리서치', path: '/#research', isAnchor: true },
             { name: '로드맵', path: '/#roadmap', isAnchor: true },
             { name: '문의', path: '/Contact' },
         ]
@@ -94,50 +94,6 @@ function LayoutContent({ children }) {
 
                     {/* Desktop Nav Island */}
                     <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full px-1 h-12 shadow-lg shadow-black/20">
-                    {/* Products Dropdown */}
-                    <div 
-                        className="relative group px-5 h-full flex items-center"
-                        onMouseEnter={() => setBusinessDropdownOpen(true)}
-                        onMouseLeave={() => setBusinessDropdownOpen(false)}
-                    >
-                        <button className={`flex items-center gap-1.5 font-medium text-sm transition-colors ${isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'}`}>
-                            {language === 'en' ? 'Products' : '프로덕트'}
-                            <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
-
-                        {/* Dropdown Menu */}
-                        <div className={`absolute top-full left-0 w-64 pt-4 transition-all duration-200 ${
-                            businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
-                        }`}>
-                            <div className="bg-[#0A0A0A]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden p-2 grid gap-1">
-                                {products.map((prod) => {
-                                    const isActive = location.pathname.includes(prod.path);
-                                    return (
-                                        <Link 
-                                            key={prod.name}
-                                            to={createPageUrl(prod.path.substring(1))}
-                                            className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all group/item ${
-                                                isActive 
-                                                ? 'bg-white/10 text-white' 
-                                                : 'hover:bg-white/5 text-neutral-400 hover:text-white'
-                                            }`}
-                                        >
-                                            {prod.name}
-                                            <ArrowRight className={`w-3 h-3 transition-all text-indigo-400 ${
-                                                isActive 
-                                                ? 'opacity-100 translate-x-0' 
-                                                : 'opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0'
-                                            }`} />
-                                        </Link>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </div>
-
-                        {/* Divider */}
-                        <div className="w-px h-4 bg-white/10" />
-
                         {/* Links */}
                         <div className="flex items-center px-2">
                             {navLinks[language].map((link) => (
@@ -153,7 +109,9 @@ function LayoutContent({ children }) {
                                     <Link 
                                         key={link.name}
                                         to={createPageUrl(link.path.substring(1))}
-                                        className="px-5 py-2 font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                        className={`px-5 py-2 font-medium text-sm transition-colors ${
+                                            location.pathname === link.path ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                        }`}
                                     >
                                         {link.name}
                                     </Link>
@@ -198,10 +156,10 @@ function LayoutContent({ children }) {
                     >
                         {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
-                </div>
+                    </div>
 
-                {/* Mobile Menu Overlay */}
-                {mobileMenuOpen && (
+                    {/* Mobile Menu Overlay */}
+                    {mobileMenuOpen && (
                     <div className="fixed inset-0 bg-[#050505] z-40 pt-24 px-6 md:hidden overflow-y-auto">
                         <div className="flex flex-col gap-6 text-lg">
                             <div className="flex items-center gap-4 mb-4">
@@ -215,21 +173,6 @@ function LayoutContent({ children }) {
                                 </button>
                             </div>
 
-                            <div className="space-y-4 border-b border-neutral-800 pb-6">
-                                <p className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-2">
-                                    {language === 'en' ? 'Products' : '프로덕트'}
-                                </p>
-                                {products.map((prod) => (
-                                    <Link 
-                                        key={prod.name}
-                                        to={createPageUrl(prod.path.substring(1))}
-                                        className="block font-medium text-white"
-                                    >
-                                        {prod.name}
-                                    </Link>
-                                ))}
-                            </div>
-                            
                             {navLinks[language].map((link) => (
                                 link.isAnchor ? (
                                     <button 
@@ -249,13 +192,13 @@ function LayoutContent({ children }) {
                                     </Link>
                                 )
                             ))}
-                            
+
                             <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-4 h-12">
                                 {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
                             </Button>
                         </div>
                     </div>
-                )}
+                    )}
             </nav>
 
             {/* Page Content */}
