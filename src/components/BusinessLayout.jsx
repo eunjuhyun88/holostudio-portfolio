@@ -130,12 +130,12 @@ export default function BusinessLayout({
                 image={heroImage.startsWith('http') ? heroImage : undefined}
             />
 
-            <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-32 md:py-40">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 md:py-40">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sticky Sidebar */}
                     {/* Sidebar keeps its own dark theme to pop against light backgrounds */}
-                    <aside className="lg:col-span-3 xl:col-span-3 relative z-20">
+                    <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1">
                         <div className="lg:sticky lg:top-32 space-y-8">
                             <Link to="/" className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -178,15 +178,25 @@ export default function BusinessLayout({
                     </aside>
 
                     {/* RIGHT COLUMN - Main Content */}
-                    <main className="lg:col-span-9 xl:col-span-8 space-y-24 md:space-y-40 z-10 relative">
+                    <main className="lg:col-span-9 xl:col-span-8 space-y-20 md:space-y-40 z-10 relative order-1 lg:order-2">
                         
                         {/* 1. Hero */}
                         <ColorSection onInView={() => setActiveSection(0)}>
+                            {/* Mobile Title Block (Visible only on mobile to improve hierarchy) */}
+                            <div className="lg:hidden mb-8">
+                                <Link to="/" className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
+                                    <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+                                    Back to Home
+                                </Link>
+                                <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary}`}>{name}</h1>
+                                <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
+                            </div>
+
                             <motion.h2 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight mb-12"
+                                className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-8 md:mb-12"
                             >
                                 {oneLiner}
                             </motion.h2>
@@ -216,27 +226,27 @@ export default function BusinessLayout({
 
                         {/* 2. Problem & Solution */}
                         <ColorSection onInView={() => setActiveSection(1)}>
-                            <div className="grid md:grid-cols-2 gap-16 md:gap-24">
+                            <div className="grid md:grid-cols-2 gap-12 md:gap-24">
                                 <div>
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         THE CHALLENGE
                                     </span>
-                                    <h3 className="text-3xl font-bold mb-8">Why this matters now</h3>
-                                    <div className="space-y-12">
+                                    <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Why this matters now</h3>
+                                    <div className="space-y-8 md:space-y-12">
                                         {problemPoints.map((p, i) => (
                                             <div key={i} className="group">
-                                                <h4 className={`text-xl font-bold mb-3 ${textPrimary}`}>{p.title}</h4>
-                                                <p className={`${textSecondary} leading-relaxed text-lg`}>{p.description}</p>
+                                                <h4 className={`text-lg md:text-xl font-bold mb-2 md:mb-3 ${textPrimary}`}>{p.title}</h4>
+                                                <p className={`${textSecondary} leading-relaxed text-base md:text-lg`}>{p.description}</p>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-                                <div className="md:pt-32">
+                                <div className="pt-8 md:pt-32">
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         OUR SOLUTION
                                     </span>
-                                    <h3 className="text-3xl font-bold mb-8">How we solve it</h3>
-                                    <div className="space-y-6">
+                                    <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">How we solve it</h3>
+                                    <div className="space-y-4 md:space-y-6">
                                         {solutionSteps.map((step, i) => (
                                             <div key={i} className={`flex gap-6 p-6 rounded-2xl ${bgCard} ${border} ${bgCardHover} transition-colors backdrop-blur-sm`}>
                                                 <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-black border border-white/20 text-white`}>
@@ -324,10 +334,10 @@ export default function BusinessLayout({
                             </div>
 
                             {/* Business Model Banner */}
-                            <div className={`mt-12 rounded-3xl p-10 md:p-16 ${border} ${isLight ? 'bg-white shadow-xl' : 'bg-gradient-to-br from-[#111] to-black'} relative overflow-hidden`}>
+                            <div className={`mt-12 rounded-3xl p-8 md:p-16 ${border} ${isLight ? 'bg-white shadow-xl' : 'bg-gradient-to-br from-[#111] to-black'} relative overflow-hidden`}>
                                  <div className="relative z-10">
                                     <div className={`text-xs font-bold uppercase tracking-widest ${accentText} mb-4`}>BUSINESS MODEL</div>
-                                    <div className={`text-2xl md:text-3xl font-bold leading-relaxed max-w-3xl ${textPrimary}`}>
+                                    <div className={`text-xl md:text-3xl font-bold leading-relaxed max-w-3xl ${textPrimary}`}>
                                         "{businessModel}"
                                     </div>
                                  </div>
@@ -335,11 +345,24 @@ export default function BusinessLayout({
                             </div>
                         </ColorSection>
 
+                        {/* Mobile Action Bar (Sticky Bottom) */}
+                        <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
+                            <div className={`rounded-2xl p-4 ${s.sidebarBg} border border-white/10 shadow-2xl flex items-center justify-between gap-4 backdrop-blur-xl`}>
+                                <div>
+                                    <div className="text-xs text-neutral-400 uppercase font-bold">Get Started</div>
+                                    <div className="font-bold text-white text-sm">{name}</div>
+                                </div>
+                                <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                    Request Access
+                                </Button>
+                            </div>
+                        </div>
+
                     </main>
                 </div>
 
                 {/* Bottom Navigation */}
-                <div className={`mt-40 border-t ${border} pt-20`}>
+                <div className={`mt-24 md:mt-40 border-t ${border} pt-12 md:pt-20 pb-20 md:pb-0`}>
                      <h3 className="text-4xl font-bold mb-12">More Products</h3>
                      <div className="grid md:grid-cols-3 gap-8">
                          {['AidGuardian', 'PlayArts', 'Elememetal', 'Stockhoo'].filter(p => p !== name.replace(/\s+/g, '')).slice(0, 3).map(proj => (

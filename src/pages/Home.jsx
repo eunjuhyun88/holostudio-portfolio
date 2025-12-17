@@ -377,15 +377,15 @@ export default function Home() {
                         <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
+                        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
                             {t.hero.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light tracking-wide">
+                        <p className="text-lg md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-base md:text-lg mt-4 block font-mono">{t.hero.desc}</span>
+                            <span className="text-neutral-500 text-sm md:text-lg mt-4 block font-mono">{t.hero.desc}</span>
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                 {t.hero.cta1}
                             </Button>
@@ -587,23 +587,23 @@ export default function Home() {
 
                 {/* Scrolling Cards Overlay */}
                 <div className="relative z-20 -mt-[100vh]">
-                    {products.map((prod, idx) => {
-                        const ref = useRef(null);
-                        const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+                {products.map((prod, idx) => {
+                    const ref = useRef(null);
+                    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
 
-                        useEffect(() => {
-                            if (isInView) setActiveStage(idx);
-                        }, [isInView, idx]);
+                    useEffect(() => {
+                        if (isInView) setActiveStage(idx);
+                    }, [isInView, idx]);
 
-                        return (
-                            <div key={idx} ref={ref} className="min-h-screen md:h-screen w-full flex items-center justify-center md:justify-end px-4 md:px-24 py-20 md:py-0 pointer-events-none">
-                                <motion.div 
-                                    initial={{ opacity: 0, x: 50, y: 20 }}
-                                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                                    transition={{ duration: 0.5, ease: "easeOut" }}
-                                    className="max-w-md w-full pointer-events-auto"
-                                >
-                                    <div className={`bg-[#0A0A0A]/90 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
+                    return (
+                        <div key={idx} ref={ref} className="min-h-[80vh] md:h-screen w-full flex items-end md:items-center justify-center md:justify-end px-4 md:px-24 pb-24 md:pb-0 pointer-events-none">
+                            <motion.div 
+                                initial={{ opacity: 0, x: 50, y: 20 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="max-w-md w-full pointer-events-auto"
+                            >
+                                <div className={`bg-[#0A0A0A]/90 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
