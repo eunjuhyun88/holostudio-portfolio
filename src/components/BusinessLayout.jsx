@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import SEO from '@/components/SEO';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
+import { useLanguage } from '@/components/LanguageContext';
 
 // Helper component to trigger background changes
 const ColorSection = ({ children, onInView, className = "" }) => {
@@ -46,6 +47,7 @@ export default function BusinessLayout({
     heroContainerClass = "aspect-[16/9]",
     partners = null
 }) {
+    const { language } = useLanguage();
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
     // Adjusted logic to handle variable sections later, but ensuring enough colors
@@ -189,7 +191,7 @@ export default function BusinessLayout({
                         <div className="space-y-8">
                             <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                                Back to Products
+                                {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                             </Link>
 
                             <motion.div 
@@ -251,7 +253,7 @@ export default function BusinessLayout({
                             <div className="lg:hidden mb-8">
                                 <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
-                                    Back to Products
+                                    {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
                                 <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary}`}>{name}</h1>
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
