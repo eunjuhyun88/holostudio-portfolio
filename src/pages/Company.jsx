@@ -460,37 +460,37 @@ export default function Company() {
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
                 <PerspectiveCrawl>
-                    <div className="py-20 pb-40 max-w-3xl mx-auto">
-                        <div className="text-center mb-24">
-                            <h2 className="text-yellow-400 font-bold tracking-[0.2em] mb-4 text-xl md:text-2xl uppercase">
-                                Episode I
+                    <div className="py-20 pb-40 max-w-6xl mx-auto px-6">
+                        <div className="text-center mb-32">
+                            <h2 className="text-indigo-500 font-bold tracking-[0.3em] mb-6 text-xl md:text-2xl uppercase glow-text">
+                                The Origin Story
                             </h2>
-                            <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-yellow-400 leading-tight uppercase mb-12">
+                            <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-tight uppercase mb-16 drop-shadow-2xl">
                                 The Trust Layer
                             </h1>
-                            <div className="text-2xl md:text-4xl text-yellow-100 leading-relaxed font-bold tracking-wide text-justify mb-12">
+                            <div className="text-3xl md:text-5xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify mb-16 opacity-90">
                                 {language === 'en' 
-                                    ? "It is a period of digital chaos. Generative AI has unleashed infinite content, but truth has vanished from the galaxy." 
-                                    : "디지털 혼돈의 시대입니다. 생성형 AI가 무한한 콘텐츠를 해방시켰으나, 은하계에서 진실은 사라졌습니다."}
+                                    ? "It is a period of digital chaos. Generative AI has unleashed infinite content, but truth has vanished." 
+                                    : "디지털 혼돈의 시대입니다. 생성형 AI가 무한한 콘텐츠를 해방시켰으나, 진실은 사라졌습니다."}
                             </div>
-                            <div className="text-2xl md:text-4xl text-yellow-100 leading-relaxed font-bold tracking-wide text-justify">
+                            <div className="text-3xl md:text-5xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify opacity-90">
                                 {language === 'en' 
-                                    ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade. From the ruins of centralized servers, a new hope emerges..." 
-                                    : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다. 중앙화된 서버의 폐허 속에서, 새로운 희망이 떠오릅니다..."}
+                                    ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade. From the ruins of centralized servers, a new infrastructure emerges..." 
+                                    : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다. 중앙화된 서버의 폐허 속에서, 새로운 인프라가 떠오릅니다..."}
                             </div>
                         </div>
 
                         {/* Chapters integrated into the crawl */}
-                        <div className="space-y-48">
+                        <div className="space-y-64">
                             {c.chapters.map((chapter, i) => (
                                 <div key={i} className="flex flex-col items-center text-center">
-                                    <div className="text-yellow-400 font-mono text-xl tracking-[0.2em] mb-4 border-y border-yellow-400/30 py-2 w-full uppercase">
+                                    <div className="text-indigo-400 font-mono text-2xl tracking-[0.2em] mb-6 border-y border-indigo-500/50 py-3 w-full uppercase bg-indigo-500/10">
                                         {chapter.year}
                                     </div>
-                                    <h2 className="text-4xl md:text-5xl font-black text-yellow-400 mb-8 tracking-tight uppercase">
+                                    <h2 className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tight uppercase drop-shadow-lg">
                                         {chapter.headline}
                                     </h2>
-                                    <p className="text-xl md:text-3xl text-yellow-100/90 max-w-3xl leading-relaxed text-justify">
+                                    <p className="text-2xl md:text-4xl text-neutral-300 max-w-5xl leading-relaxed text-justify mx-auto">
                                         {chapter.content}
                                     </p>
                                 </div>
