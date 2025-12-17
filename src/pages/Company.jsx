@@ -208,9 +208,9 @@ export default function Company() {
                         <h3 className="text-lg font-mono text-indigo-400 mb-8 uppercase tracking-widest">{c.tech.pipeline.title}</h3>
                         <div className="relative">
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-indigo-900/20 via-indigo-500/20 to-indigo-900/20 -translate-y-1/2 hidden md:block" />
-                            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+                            <div className="flex overflow-x-auto pb-4 gap-4 md:grid md:grid-cols-6 md:pb-0 snap-x no-scrollbar">
                                 {c.tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="relative bg-[#111] p-4 rounded-xl border border-neutral-800 hover:border-indigo-500/50 transition-all group z-10">
+                                    <div key={i} className="min-w-[150px] md:min-w-0 relative bg-[#111] p-4 rounded-xl border border-neutral-800 hover:border-indigo-500/50 transition-all group z-10 snap-center">
                                         <div className="absolute -top-3 left-4 bg-[#080808] px-2 text-xs font-mono text-neutral-500 group-hover:text-indigo-400 transition-colors">
                                             0{i+1}
                                         </div>
@@ -366,9 +366,9 @@ export default function Company() {
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
                             <h3 className="text-lg font-mono text-indigo-400 mb-6 uppercase tracking-widest">{c.strategy.gamification.title}</h3>
-                            <div className="space-y-4">
+                            <div className="flex overflow-x-auto pb-4 gap-4 md:block md:space-y-4 md:pb-0 snap-x -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {c.strategy.gamification.cards.map((card, i) => (
-                                    <div key={i} className="flex gap-5 p-4 rounded-xl hover:bg-white/5 transition-colors">
+                                    <div key={i} className="min-w-[85vw] md:min-w-0 flex gap-5 p-4 rounded-xl bg-[#111] md:bg-transparent border border-neutral-800 md:border-transparent hover:bg-white/5 transition-colors snap-center">
                                         <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-indigo-500 flex-shrink-0 border border-neutral-800">
                                             <card.icon className="w-5 h-5" />
                                         </div>
@@ -406,9 +406,9 @@ export default function Company() {
                         <p className="text-neutral-500">{c.roadmap.sub}</p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="flex overflow-x-auto pb-8 gap-6 md:grid md:grid-cols-3 md:gap-8 md:pb-0 snap-x -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                         {c.roadmap.phases.map((phase, i) => (
-                            <div key={i} className="group relative">
+                            <div key={i} className="min-w-[85vw] md:min-w-0 group relative snap-center">
                                 <div className="absolute top-0 left-0 w-full h-1 bg-neutral-800 group-hover:bg-indigo-500 transition-colors" />
                                 <div className="pt-8">
                                     <div className="text-4xl font-black text-neutral-800 group-hover:text-white/10 transition-colors mb-4">{phase.year}</div>
