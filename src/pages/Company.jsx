@@ -7,6 +7,7 @@ import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Starfield from '@/components/Starfield';
+import Background3D from '@/components/Background3D';
 
 // --- Components ---
 
