@@ -99,7 +99,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-12 tracking-tighter leading-[1.1] text-white relative`}>
+                        <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tighter leading-[1.1] text-white relative`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -108,7 +108,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-lg md:text-xl lg:text-2xl font-light leading-relaxed max-w-4xl ml-auto ${currentPalette.text}`}
+                        className={`text-lg md:text-xl font-light leading-relaxed max-w-4xl ml-auto ${currentPalette.text}`}
                     >
                         {item.content}
                     </motion.div>
@@ -434,7 +434,7 @@ export default function Company() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1 }}
-                            className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-white leading-[0.9] uppercase mb-16 drop-shadow-2xl scale-y-110 w-full"
+                            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase mb-12 drop-shadow-2xl scale-y-110 w-full"
                         >
                             {c.intro?.title || "The Trust Layer"}
                         </motion.h1>
@@ -449,14 +449,14 @@ export default function Company() {
                             </motion.h3>
                         )}
                         
-                        <div className="space-y-32 w-full max-w-[80vw] mx-auto">
+                        <div className="space-y-24 w-full max-w-4xl mx-auto">
                             {c.intro?.text ? c.intro.text.map((t, i) => (
-                                <TypingBlock key={i} className="text-2xl md:text-4xl lg:text-5xl text-neutral-200 leading-[1.4] font-medium tracking-wide text-justify">
+                                <TypingBlock key={i} className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
                                     {t}
                                 </TypingBlock>
                             )) : (
                                 <>
-                                    <TypingBlock className="text-2xl md:text-4xl lg:text-5xl text-neutral-200 leading-[1.4] font-medium tracking-wide text-justify">
+                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
                                         It is a period of digital chaos.
                                     </TypingBlock>
                                 </>
@@ -479,13 +479,15 @@ export default function Company() {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.8 }}
-                                    className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-16 tracking-tight uppercase drop-shadow-lg leading-[0.9] w-full"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-12 tracking-tight uppercase drop-shadow-lg leading-[0.9] w-full"
                                 >
                                     {chapter.headline}
                                 </motion.h2>
-                                <TypingBlock className="text-2xl md:text-4xl lg:text-5xl text-neutral-200 w-full leading-[1.4] text-justify font-medium tracking-wide">
-                                    {chapter.content}
-                                </TypingBlock>
+                                <div className="max-w-4xl mx-auto">
+                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-300 w-full leading-relaxed text-center font-normal tracking-wide">
+                                        {chapter.content}
+                                    </TypingBlock>
+                                </div>
                             </div>
                         ))}
                     </div>
