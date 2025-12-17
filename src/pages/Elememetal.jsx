@@ -5,6 +5,7 @@ export default function Elememetal() {
     return (
         <BusinessLayout 
             name="EleMEMEtal"
+            theme="elememetal"
             tag="Competitive Strategy"
             oneLiner="THINK. GAMBLE. STRIKE. A 5-10 minute competitive card battler where every round is a mind game."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
