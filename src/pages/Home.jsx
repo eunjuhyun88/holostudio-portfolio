@@ -253,11 +253,6 @@ export default function Home() {
 
     return (
         <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans">
-            {/* Header / Nav (Visual only, actual nav in Layout) */}
-            <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center pointer-events-none mix-blend-difference">
-                {/* Visual placeholder for header layout alignment */}
-            </div>
-
             {/* Section 01: HERO (Pinned) */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
                 {/* 3D Background */}
@@ -273,16 +268,16 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-block px-3 py-1 mb-6 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono tracking-widest uppercase">
+                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none">
+                        <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
                             {t.hero.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                        <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light tracking-wide">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-lg mt-2 block">{t.hero.desc}</span>
+                            <span className="text-neutral-500 text-base md:text-lg mt-4 block font-mono">{t.hero.desc}</span>
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>

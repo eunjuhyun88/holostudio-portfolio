@@ -67,14 +67,14 @@ function LayoutContent({ children }) {
         <div className="min-h-screen bg-[#050505] font-sans text-white">
             {/* Global Navigation */}
             <nav 
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-                    isScrolled ? 'bg-[#050505]/90 backdrop-blur-md border-neutral-800 py-3 shadow-sm' : 'bg-transparent border-transparent py-5'
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+                    isScrolled ? 'bg-[#050505]/80 backdrop-blur-xl border-white/5 py-3 shadow-2xl' : 'bg-transparent border-transparent py-6'
                 }`}
             >
                 <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity z-50">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 border border-white/20">
+                    <Link to="/" className="group flex items-center gap-3 z-50">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 border border-white/20 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all duration-300">
                             <img 
                                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
                                 alt="Holo Studio" 
@@ -130,9 +130,10 @@ function LayoutContent({ children }) {
                                 <Link 
                                     key={link.name}
                                     to={createPageUrl(link.path.substring(1))}
-                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors relative group"
                                 >
                                     {link.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-indigo-500 transition-all duration-300 group-hover:w-full" />
                                 </Link>
                             )
                         ))}
