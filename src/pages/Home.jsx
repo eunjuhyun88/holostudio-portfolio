@@ -17,7 +17,7 @@ export default function Home() {
             hero: {
                 tag: "Full-Media AI Guardrails",
                 title: "HOLO STUDIO",
-                sub: "Holostudio builds the infrastructure that lets AI-era stories be trusted, credited, and sustained.",
+                sub: "Builds the infrastructure that lets AI-era stories be trusted, credited, and sustained.",
                 desc: "Full-stack AI guardrails and Web3-native attribution for the next media economy.",
                 cta1: "Explore Our Businesses",
                 cta2: "Contact / Partnership"

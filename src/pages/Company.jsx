@@ -7,6 +7,7 @@ import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Background3D from '@/components/Background3D';
+import PerspectiveCrawl from '@/components/PerspectiveCrawl';
 
 // --- Components ---
 
@@ -445,25 +446,22 @@ export default function Company() {
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div className="max-w-[1400px] mx-auto pt-24 pb-24 px-6 md:px-12">
-                     {/* Intro Text */}
-                     <div className="text-center max-w-5xl mx-auto mb-32">
-                        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 text-white leading-tight">
-                            <ScrollRevealText>
-                                {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
-                            </ScrollRevealText>
+                <PerspectiveCrawl>
+                    <div className="py-20">
+                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-16 text-indigo-400 leading-tight">
+                            {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
                         </h1>
-                        <div className="text-xl text-neutral-400 leading-relaxed max-w-3xl mx-auto">
-                            <ScrollRevealText>
-                                {language === 'en' 
-                                    ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
-                                    : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
-                            </ScrollRevealText>
+                        <div className="text-2xl md:text-4xl text-neutral-200 leading-relaxed font-bold tracking-wide text-justify">
+                            {language === 'en' 
+                                ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
+                                : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
                         </div>
-                     </div>
+                    </div>
+                </PerspectiveCrawl>
 
+                <div className="max-w-[1400px] mx-auto pb-24 px-6 md:px-12">
                     {c.chapters.map((chapter, i) => (
-                        <StoryNode 
+                        <StoryNode
                             key={i}
                             year={chapter.year}
                             headline={chapter.headline}
