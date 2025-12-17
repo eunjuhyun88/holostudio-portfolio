@@ -36,16 +36,18 @@ function LayoutContent({ children }) {
             { name: 'Team', path: '/Company#team', isAnchor: false },
             { name: 'Proof', path: '/#proof', isAnchor: true },
             { name: 'Roadmap', path: '/#roadmap', isAnchor: true },
+            { name: '3D Showcase', path: '/Showcase3D' },
             { name: 'Contact', path: '/Contact' },
-        ],
-        ko: [
+            ],
+            ko: [
             { name: '회사소개', path: '/Company', isAnchor: false },
             { name: '프로덕트', path: '/Products', isAnchor: false },
             { name: '팀', path: '/Company#team', isAnchor: false },
             { name: '성과', path: '/#proof', isAnchor: true },
             { name: '로드맵', path: '/#roadmap', isAnchor: true },
+            { name: '3D 쇼케이스', path: '/Showcase3D' },
             { name: '문의', path: '/Contact' },
-        ]
+            ]
     };
 
     const products = [
@@ -95,11 +97,11 @@ function LayoutContent({ children }) {
                 {/* Left Group: Logo + Nav */}
                 <div className="flex items-center gap-4 pointer-events-auto">
                     {/* Logo Pill */}
-                    <Link to="/" className="group flex items-center justify-center w-12 h-12 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 hover:scale-105 transition-all duration-300">
+                    <Link to="/" className="group flex items-center justify-center w-16 h-16 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 hover:scale-105 transition-all duration-300">
                         <img 
                             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
                             alt="Holo Studio" 
-                            className="w-8 h-8 rounded-full object-cover opacity-90 group-hover:opacity-100"
+                            className="w-12 h-12 rounded-full object-cover opacity-90 group-hover:opacity-100"
                         />
                     </Link>
 
