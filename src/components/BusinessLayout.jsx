@@ -28,42 +28,42 @@ export default function BusinessLayout({
 
     const themes = {
         default: {
-            pageBg: "bg-white",
-            heroBg: "bg-slate-900",
-            heroOverlay: "bg-gradient-to-r from-slate-900 to-indigo-900/50",
+            pageBg: "bg-[#050505]",
+            heroBg: "bg-[#050505]",
+            heroOverlay: "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#050505] to-[#050505]",
             heroText: "text-white",
-            tagBg: "bg-white/10",
-            tagBorder: "border-white/20",
-            tagText: "text-indigo-300",
-            tagDot: "bg-indigo-400",
-            titleText: "text-white",
-            subText: "text-slate-300",
-            buttonPrimary: "bg-indigo-600 hover:bg-indigo-700 text-white",
-            buttonSecondary: "bg-transparent border-white/30 text-white hover:bg-white/10",
-            sectionAltBg: "bg-slate-50",
-            sectionStandardBg: "bg-white",
-            sectionText: "text-slate-600",
-            sectionHeading: "text-slate-900",
-            label: "text-indigo-600",
-            iconWrapper: "bg-red-50 text-red-600",
-            cardBg: "bg-white border-slate-100",
-            stepNumber: "bg-indigo-100 text-indigo-600",
-            screenshotSectionBg: "bg-slate-900",
+            tagBg: "bg-indigo-500/10",
+            tagBorder: "border-indigo-500/20",
+            tagText: "text-indigo-400",
+            tagDot: "bg-indigo-500",
+            titleText: "text-white tracking-tighter",
+            subText: "text-neutral-400",
+            buttonPrimary: "bg-white text-black hover:bg-neutral-200 border-0 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all",
+            buttonSecondary: "bg-transparent border-neutral-700 text-white hover:border-neutral-500",
+            sectionAltBg: "bg-[#0A0A0A]",
+            sectionStandardBg: "bg-[#050505]",
+            sectionText: "text-neutral-400",
+            sectionHeading: "text-white",
+            label: "text-indigo-500 font-mono uppercase tracking-wider text-xs",
+            iconWrapper: "bg-neutral-900 border border-neutral-800 text-indigo-400",
+            cardBg: "bg-[#0A0A0A] border-neutral-800 hover:border-indigo-500/50 transition-colors",
+            stepNumber: "bg-neutral-900 text-white border border-neutral-800 font-mono",
+            screenshotSectionBg: "bg-[#050505]",
             screenshotText: "text-indigo-400",
-            statsBg: "bg-indigo-600",
-            statsText: "text-white",
-            statsLabel: "text-indigo-200",
-            useCaseBg: "bg-slate-50 border-slate-100",
-            useCaseIcon: "text-indigo-600",
-            modelBg: "bg-slate-900 text-white",
-            roadmapBg: "bg-white border-slate-200",
-            roadmapTag: "bg-indigo-50 text-indigo-600",
-            roadmapText: "text-slate-600",
-            ctaBg: "bg-indigo-600",
+            statsBg: "bg-[#0A0A0A] border-y border-neutral-900",
+            statsText: "text-white font-mono",
+            statsLabel: "text-neutral-500 uppercase tracking-widest text-xs",
+            useCaseBg: "bg-[#0A0A0A] border-neutral-800 hover:border-indigo-500/30 transition-colors",
+            useCaseIcon: "text-indigo-400",
+            modelBg: "bg-neutral-900/30 border border-neutral-800 backdrop-blur text-white",
+            roadmapBg: "bg-[#0A0A0A] border-neutral-800",
+            roadmapTag: "bg-neutral-900 text-neutral-300 border border-neutral-800 font-mono",
+            roadmapText: "text-neutral-400",
+            ctaBg: "bg-gradient-to-br from-indigo-900/20 to-purple-900/20 border border-indigo-500/20",
             ctaTitle: "text-white",
-            ctaText: "text-indigo-100",
-            ctaButtonPrimary: "bg-white text-indigo-600 hover:bg-indigo-50",
-            ctaButtonSecondary: "bg-transparent border-white text-white hover:bg-white/10"
+            ctaText: "text-neutral-300",
+            ctaButtonPrimary: "bg-white text-black hover:bg-neutral-200 border-0",
+            ctaButtonSecondary: "bg-transparent border-neutral-700 text-white hover:bg-neutral-800"
         },
         elememetal: {
             pageBg: "bg-[#050505]", // Deeper black
@@ -147,19 +147,14 @@ export default function BusinessLayout({
                 </div>
             </section>
 
-            {/* 2. Problem Section */}
+            {/* 2. Problem Section (Bento Grid Style) */}
             <section className={`py-24 ${s.sectionAltBg}`}>
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                         <div>
-                            <span className={`${s.label} font-semibold tracking-wide uppercase text-sm block mb-2`}>The Problem</span>
-                            <h2 className={`text-3xl md:text-4xl font-bold ${s.sectionHeading}`}>Why this matters now</h2>
+                            <span className={`${s.label} block mb-2`}>The Problem</span>
+                            <h2 className={`text-3xl md:text-5xl font-bold ${s.sectionHeading} tracking-tight`}>Why this matters now</h2>
                         </div>
-                        {theme === 'elememetal' && (
-                             <p className="text-neutral-500 max-w-sm text-sm">
-                                 Addressing the critical gaps in the current gaming and AI landscape with safety-native infrastructure.
-                             </p>
-                        )}
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {problemPoints.map((point, idx) => (
@@ -167,18 +162,19 @@ export default function BusinessLayout({
                                 key={idx}
                                 {...fadeIn}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`p-8 ${theme === 'elememetal' ? 'rounded-xl' : 'rounded-2xl'} border ${s.cardBg} flex flex-col h-full`}
+                                className={`group p-8 rounded-2xl border ${s.cardBg} flex flex-col h-full relative overflow-hidden`}
                             >
-                                <div className={`w-12 h-12 ${theme === 'elememetal' ? 'rounded-lg' : 'rounded-xl'} flex items-center justify-center mb-6 ${s.iconWrapper}`}>
+                                <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <ArrowRight className={`w-5 h-5 ${theme === 'elememetal' ? 'text-orange-500' : 'text-indigo-500'}`} />
+                                </div>
+                                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${s.iconWrapper}`}>
                                     <Target className="w-6 h-6" />
                                 </div>
-                                <h3 className={`text-xl font-bold mb-3 ${s.sectionHeading}`}>{point.title}</h3>
-                                <p className={`${s.sectionText} leading-relaxed flex-grow`}>{point.description}</p>
-                                {theme === 'elememetal' && (
-                                    <div className="mt-6 pt-6 border-t border-neutral-800">
-                                        <ChevronRight className="w-5 h-5 text-orange-500/50" />
-                                    </div>
-                                )}
+                                <h3 className={`text-2xl font-bold mb-4 ${s.sectionHeading}`}>{point.title}</h3>
+                                <p className={`${s.sectionText} text-lg leading-relaxed flex-grow`}>{point.description}</p>
+
+                                {/* Decorative gradient blob */}
+                                <div className={`absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${theme === 'elememetal' ? 'bg-orange-500' : 'bg-indigo-500'}`} />
                             </motion.div>
                         ))}
                     </div>
