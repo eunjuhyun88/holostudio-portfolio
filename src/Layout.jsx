@@ -77,11 +77,11 @@ function LayoutContent({ children }) {
     return (
         <div className="min-h-screen bg-[#050505] font-sans text-white">
             <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Saira:wdth,wght@50..125,100..900&display=swap');
                 
                 :root {
                     --font-body: 'Rajdhani', sans-serif;
-                    --font-heading: 'Unbounded', sans-serif;
+                    --font-heading: 'Saira', sans-serif;
                 }
 
                 body {
@@ -90,6 +90,8 @@ function LayoutContent({ children }) {
 
                 h1, h2, h3, h4, h5, h6, .font-heading {
                     font-family: var(--font-heading) !important;
+                    font-variation-settings: 'wdth' 125; /* Extra Expanded look like Next Sphere */
+                    letter-spacing: -0.02em;
                 }
                 
                 .font-sans {
