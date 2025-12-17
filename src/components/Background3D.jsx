@@ -24,43 +24,72 @@ export default function Background3D() {
         // Using Icosahedron as base for a "tech/crystal" look
         const geometry = new THREE.IcosahedronGeometry(15, 2);
         
-        // Create custom points material
+        // Create custom points material with vertex colors
         const material = new THREE.PointsMaterial({
-            color: 0x6366f1, // Indigo-500 equivalent
-            size: 0.15,
+            vertexColors: true,
+            size: 0.2,
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.9,
             sizeAttenuation: true,
+            blending: THREE.AdditiveBlending,
         });
 
-        // Add some random noise to vertices to make it look more "organic/glitchy" like the reference
+        // Add some random noise and HOLOGRAPHIC colors
         const positionAttribute = geometry.attributes.position;
+        const colors = [];
         const vertex = new THREE.Vector3();
+        const color = new THREE.Color();
+
+        // Holographic Palette
+        const palette = [
+            new THREE.Color('#00ffff'), // Cyan
+            new THREE.Color('#ff00ff'), // Magenta
+            new THREE.Color('#8a2be2'), // BlueViolet
+            new THREE.Color('#00bfff'), // DeepSkyBlue
+            new THREE.Color('#e0ffff'), // LightCyan
+        ];
+
         for (let i = 0; i < positionAttribute.count; i++) {
             vertex.fromBufferAttribute(positionAttribute, i);
+            
             // Distort slightly
             vertex.x += (Math.random() - 0.5) * 1.0;
             vertex.y += (Math.random() - 0.5) * 1.0;
             vertex.z += (Math.random() - 0.5) * 1.0;
             positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
+
+            // Assign holographic color based on position
+            const mixedColor = palette[Math.floor(Math.random() * palette.length)].clone();
+            // Add a gradient effect based on Y position
+            const t = (vertex.y + 15) / 30;
+            mixedColor.lerp(new THREE.Color('#ffffff'), t * 0.2); // Add some shine
+            
+            colors.push(mixedColor.r, mixedColor.g, mixedColor.b);
         }
 
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
         const points = new THREE.Points(geometry, material);
         scene.add(points);
 
         // Secondary geometry - inner core
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: 0xffffff,
+            color: 0xccffff, // Light cyan glow
             size: 0.1,
             transparent: true,
-            opacity: 0.5,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
         // Connecting lines for the outer shape to give it structure
-        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x4f46e5, transparent: true, opacity: 0.1 });
+        const wireframeMaterial = new THREE.LineBasicMaterial({ 
+            color: 0xffffff, 
+            transparent: true, 
+            opacity: 0.08,
+            blending: THREE.AdditiveBlending
+        });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
 
