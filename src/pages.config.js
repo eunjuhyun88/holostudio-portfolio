@@ -6,6 +6,7 @@ import Contact from './pages/Contact';
 import Stockhoo from './pages/Stockhoo';
 import Company from './pages/Company';
 import Products from './pages/Products';
+import Showcase3D from './pages/Showcase3D';
 import __Layout from './Layout.jsx';
 
 
@@ -18,6 +19,7 @@ export const PAGES = {
     "Stockhoo": Stockhoo,
     "Company": Company,
     "Products": Products,
+    "Showcase3D": Showcase3D,
 }
 
 export const pagesConfig = {

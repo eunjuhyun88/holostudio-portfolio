@@ -36,16 +36,18 @@ function LayoutContent({ children }) {
             { name: 'Team', path: '/Company#team', isAnchor: false },
             { name: 'Proof', path: '/#proof', isAnchor: true },
             { name: 'Roadmap', path: '/#roadmap', isAnchor: true },
+            { name: '3D Showcase', path: '/Showcase3D' },
             { name: 'Contact', path: '/Contact' },
-        ],
-        ko: [
+            ],
+            ko: [
             { name: '회사소개', path: '/Company', isAnchor: false },
             { name: '프로덕트', path: '/Products', isAnchor: false },
             { name: '팀', path: '/Company#team', isAnchor: false },
             { name: '성과', path: '/#proof', isAnchor: true },
             { name: '로드맵', path: '/#roadmap', isAnchor: true },
+            { name: '3D 쇼케이스', path: '/Showcase3D' },
             { name: '문의', path: '/Contact' },
-        ]
+            ]
     };
 
     const products = [
