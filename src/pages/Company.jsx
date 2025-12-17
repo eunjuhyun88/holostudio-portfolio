@@ -45,7 +45,7 @@ const ScrollRevealText = ({ children, className = "" }) => {
 const Word = ({ children, progress, range }) => {
     const opacity = useTransform(progress, range, [0.1, 1]);
     return (
-        <span className="inline-block mr-[0.25em] last:mr-0">
+        <span className="inline-block mr-[0.12em] last:mr-0">
             <motion.span 
                 style={{ opacity }}
                 className="transition-colors duration-100"
