@@ -17,10 +17,8 @@ export default function BusinessLayout({
     businessModel,
     roadmap = [],
     stats = [],
-    heroStats = [],
-    relatedBusinesses = [],
     theme = "default"
-    }) {
+}) {
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
@@ -137,29 +135,17 @@ export default function BusinessLayout({
                         >
                             {oneLiner}
                         </motion.p>
-                        <div className="flex gap-4 mb-16">
+                        <div className="flex gap-4">
                             <Button size="lg" className={`${s.buttonPrimary} rounded-full px-8`}>
-                                Talk to us
+                                Request Demo
                             </Button>
                             <Button variant="outline" size="lg" className={`${s.buttonSecondary} rounded-full px-8`}>
                                 Download Deck
                             </Button>
                         </div>
-
-                        {/* Hero Stats */}
-                        {heroStats.length > 0 && (
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
-                                {heroStats.map((stat, idx) => (
-                                    <div key={idx}>
-                                        <div className={`text-2xl md:text-3xl font-bold font-mono mb-1 ${s.titleText}`}>{stat.value}</div>
-                                        <div className={`text-xs uppercase tracking-wider ${s.subText}`}>{stat.label}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        </div>
-                        </div>
-                        </section>
+                    </div>
+                </div>
+            </section>
 
             {/* 2. Problem Section (Bento Grid Style) */}
             <section className={`py-24 ${s.sectionAltBg}`}>
@@ -389,39 +375,17 @@ export default function BusinessLayout({
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link to={createPageUrl("Contact")}>
                                     <Button size="lg" className={`${s.ctaButtonPrimary} rounded-full px-8 h-12 w-full sm:w-auto`}>
-                                        Book a call
+                                        Contact Sales
                                     </Button>
                                 </Link>
                                 <Button variant="outline" size="lg" className={`${s.ctaButtonSecondary} rounded-full px-8 h-12 w-full sm:w-auto`}>
-                                    Request Enterprise Demo
+                                    View Documentation
                                 </Button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* 9. Related Businesses */}
-            {relatedBusinesses.length > 0 && (
-                <section className={`py-24 border-t border-neutral-900 ${s.sectionAltBg}`}>
-                    <div className="max-w-7xl mx-auto px-6">
-                        <h2 className={`text-2xl font-bold mb-12 ${s.sectionHeading}`}>Related Businesses</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {relatedBusinesses.map((biz, idx) => (
-                                <Link key={idx} to={createPageUrl(biz.path.substring(1))} className="group block">
-                                    <div className={`p-8 rounded-2xl border ${s.cardBg} h-full transition-all duration-300 hover:-translate-y-1`}>
-                                        <div className="flex items-center justify-between mb-4">
-                                            <h3 className={`text-xl font-bold text-white group-hover:text-indigo-400 transition-colors`}>{biz.name}</h3>
-                                            <ArrowRight className="w-5 h-5 text-neutral-500 group-hover:text-indigo-400 transform group-hover:translate-x-1 transition-all" />
-                                        </div>
-                                        <p className={`${s.sectionText}`}>{biz.description}</p>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
-            </div>
-            );
-            }
+        </div>
+    );
+}

@@ -6,55 +6,48 @@ export default function Elememetal() {
         <BusinessLayout 
             name="EleMEMEtal"
             theme="elememetal"
-            tag="Gaming Economy"
-            oneLiner="Safety-native UGC PvP game economy designed for the AI era."
+            tag="Competitive Strategy"
+            oneLiner="THINK. GAMBLE. STRIKE. A 5-10 minute competitive card battler where every round is a mind game."
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
             
-            heroStats={[
-                { value: "0%", label: "Pay-To-Win" },
-                { value: "100%", label: "Ownership" },
-                { value: "5-10m", label: "Match Time" },
-                { value: "Safe", label: "UGC Native" }
-            ]}
-
             problemPoints={[
                 {
-                    title: "The UGC Bottleneck",
-                    description: "User-Generated Content is the future of gaming, but quality control, copyright, and toxicity management are massive operational bottlenecks."
+                    title: "Bank Leverage",
+                    description: "Look weak on purpose to build Power Bank. Sacrifice early rounds to unleash +18 guaranteed damage later."
                 },
                 {
-                    title: "Outdated Economies",
-                    description: "Traditional game economies aren't built for the speed and scale of AI-generated asset creation and distribution."
+                    title: "Readable Mastery",
+                    description: "No hidden info besides the hand. Zero RNG damage ranges. The best players win by reading timing, not getting lucky."
                 },
                 {
-                    title: "Trust & Verification",
-                    description: "Community-driven growth requires a trust layer to verify asset fairness and prevent abuse in competitive environments."
+                    title: "Skill Gap",
+                    description: "Deterministic outcomes mean the better strategist wins. Limited swing tools force real commitment."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Create & Submit",
-                    description: "Players craft unique cards/assets using AI tools. Submission is seamless."
+                    title: "Core Mechanics: Enhance & Combo",
+                    description: "Merge same-element cards to create a stronger unit. Chain consecutive plays to scale damage x1.3, x1.6, up to x1.9."
                 },
                 {
-                    title: "Native Safety Rails",
-                    description: "Built-in AiD Guardian integration filters toxicity and IP infringement instantly."
+                    title: "The X-Factor: Power Bank",
+                    description: "Empty slots aren't wasted—they generate Power Bank points. Spend them for fixed damage that ignores defense."
                 },
                 {
-                    title: "Compete & Earn",
-                    description: "Verified assets enter the PvP economy. Value is generated through skill-based play and settled transparently."
+                    title: "Game Breaker: Joker System",
+                    description: "Only 5 Jokers per game. Attack, Defense, or Utility. Using them at the perfect moment breaks the meta."
                 }
             ]}
 
             screenshots={[
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/7d50a039d_2025-12-17100209.png",
-                    caption: "Deterministic Combat: 5-10 min PvP"
+                    caption: "Deterministic Combat: Instant Resolution"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc19758fb_2025-12-17100150.png",
-                    caption: "The Forge: AI Asset Creation"
+                    caption: "The Forge: Craft, Upgrade, Salvage"
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/86f4b6cbe_2025-12-17100153.png",
@@ -62,55 +55,49 @@ export default function Elememetal() {
                 },
                 {
                     url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/906125d10_2025-12-17100207.png",
-                    caption: "Safety-Verified Asset Details"
+                    caption: "Joker Genesis: AI-Powered Cards"
                 }
+            ]}
+
+            stats={[
+                { value: "0%", label: "Pay-To-Win" },
+                { value: "100%", label: "Ownership" },
+                { value: "5-10m", label: "Match Time" },
+                { value: "Zero", label: "Randomness" }
             ]}
 
             useCases={[
                 {
-                    title: "Competitive Gamers",
-                    description: "Skill-based PvP with true ownership of assets and no pay-to-win mechanics."
+                    title: "Our Mission",
+                    description: "We are gamers building for gamers. We believe in games that respect your time and reward your skill."
                 },
                 {
-                    title: "Creators",
-                    description: "Monetize creativity by designing skins/cards that are safe and tradable."
+                    title: "True Ownership",
+                    description: "Every card is an NFT. Trade freely. Complete ownership of your achievements and assets."
                 },
                 {
-                    title: "Communities",
-                    description: "Build guilds and asset pools backed by verified provenance."
+                    title: "The Team",
+                    description: "Built by veterans from Unity, Netmarble, and Smilegate at the intersection of AI, Gaming, and Web3."
                 }
             ]}
 
-            businessModel="Game revenue (market fees, season passes), UGC economy transaction fees, and Partner IP collaborations."
+            businessModel="Player-Owned Economy. Craft cards in The Forge using Shards and Dust. Trade on the open marketplace. No card packs, no gacha."
 
             roadmap={[
                 {
                     quarter: "Phase 1",
                     title: "Alpha Launch",
-                    items: ["Core PvP Loop", "Basic Asset Forging"]
+                    items: ["Simultaneous Turns", "Instant Resolution", "Zero Randomness"]
                 },
                 {
                     quarter: "Phase 2",
-                    title: "UGC Economy",
-                    items: ["Creator Marketplace", "Safety Integration"]
+                    title: "Joker Genesis",
+                    items: ["AI-Generated Cards", "Experimental Meta", "Unique Abilities"]
                 },
                 {
                     quarter: "Phase 3",
-                    title: "Global Scale",
-                    items: ["Mobile Release", "Esports Tournaments"]
-                }
-            ]}
-
-            relatedBusinesses={[
-                {
-                    name: "AiD Guardian",
-                    description: "Powering the safety layer",
-                    path: "/AidGuardian"
-                },
-                {
-                    name: "PlayArts",
-                    description: "Asset provenance",
-                    path: "/PlayArts"
+                    title: "Global Expansion",
+                    items: ["Mobile Release", "Esports Tournaments", "Cross-IP Collabs"]
                 }
             ]}
         />
