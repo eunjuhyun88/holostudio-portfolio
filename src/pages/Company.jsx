@@ -413,37 +413,37 @@ export default function Company() {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
                     bio: "글로벌 전략 및 방어. 실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략 주도. 탈중앙화 프로토콜의 GTM에 대한 깊은 전문 지식.",
-                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
                     bio: "게임 및 인프라 분야 10년 이상 경력. 전 EA 및 넷마블. 대규모 쿠버네티스, 데브옵스, 테스트 자동화 전문가. 깊은 엔지니어링 엄격함과 AI 혁신의 결합.",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Co-Founder & Chief Architect",
                     bio: "그래픽 및 시스템 베테랑. 전 유니티, 넷마블, 스마일게이트. 실시간 렌더링 파이프라인 및 성능 중요 시스템 마스터.",
-                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
                     bio: "PlayArts 아키텍처와 개발 로드맵을 총괄합니다. 모든 프로토콜 레이어에서 기술적 우수성을 보장합니다.",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "React, Tailwind, Vite 및 Svelte를 활용한 현대적인 UI 전문. 매끄러운 인터랙션에 중점을 둔 UX 스페셜리스트입니다.",
-                    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=800"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
-                    image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=800"
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
                 }
             ],
         }
