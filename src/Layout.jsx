@@ -26,11 +26,22 @@ function LayoutContent({ children }) {
         setBusinessDropdownOpen(false);
     }, [location]);
 
-    const navLinks = [
-        { name: 'Milestones', path: '/#milestones', isAnchor: true },
-        { name: 'Team', path: '/#team', isAnchor: true },
-        { name: 'Contact', path: '/Contact' },
-    ];
+    const navLinks = {
+        en: [
+            { name: 'Company', path: '/', isAnchor: false },
+            { name: 'Products', path: '/#products', isAnchor: true },
+            { name: 'Proof', path: '/#proof', isAnchor: true },
+            { name: 'Research', path: '/#research', isAnchor: true },
+            { name: 'Contact', path: '/Contact' },
+        ],
+        ko: [
+            { name: '회사소개', path: '/', isAnchor: false },
+            { name: '사업분야', path: '/#products', isAnchor: true },
+            { name: '성과', path: '/#proof', isAnchor: true },
+            { name: '리서치', path: '/#research', isAnchor: true },
+            { name: '문의', path: '/Contact' },
+        ]
+    };
 
     const businesses = [
         { name: 'AiD Guardian', path: '/AidGuardian' },
@@ -41,8 +52,6 @@ function LayoutContent({ children }) {
 
     const scrollToSection = (id) => {
         if (location.pathname !== '/') {
-            // If not on home, navigate to home first (handled by Link)
-            // But we need to handle the scroll after navigation
             setTimeout(() => {
                 const element = document.getElementById(id);
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -69,28 +78,28 @@ function LayoutContent({ children }) {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden md:flex items-center gap-6">
                         {/* Businesses Dropdown */}
                         <div 
                             className="relative group"
                             onMouseEnter={() => setBusinessDropdownOpen(true)}
                             onMouseLeave={() => setBusinessDropdownOpen(false)}
                         >
-                            <button className="flex items-center gap-1 font-medium text-neutral-400 hover:text-white transition-colors py-2">
-                                Businesses
-                                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
+                            <button className="flex items-center gap-1 font-medium text-sm text-neutral-400 hover:text-white transition-colors py-2">
+                                {language === 'en' ? 'Businesses' : '사업분야'}
+                                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${businessDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
                             
                             {/* Dropdown Menu */}
                             <div className={`absolute top-full left-0 w-56 pt-2 transition-all duration-200 ${
                                 businessDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
                             }`}>
-                                <div className="bg-[#0A0A0A] rounded-xl shadow-xl border border-neutral-800 overflow-hidden p-2">
+                                <div className="bg-[#0A0A0A]/95 backdrop-blur-md rounded-xl shadow-2xl border border-neutral-800 overflow-hidden p-2">
                                     {businesses.map((biz) => (
                                         <Link 
                                             key={biz.name}
-                                            to={createPageUrl(biz.path.substring(1))} // Remove leading slash for createPageUrl
-                                            className="block px-4 py-3 rounded-lg hover:bg-neutral-900 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                                            to={createPageUrl(biz.path.substring(1))}
+                                            className="block px-4 py-3 rounded-lg hover:bg-white/5 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                                         >
                                             {biz.name}
                                         </Link>
@@ -99,12 +108,12 @@ function LayoutContent({ children }) {
                             </div>
                         </div>
 
-                        {navLinks.map((link) => (
+                        {navLinks[language].map((link) => (
                             link.isAnchor ? (
                                 <button 
                                     key={link.name}
-                                    onClick={() => scrollToSection(link.path.substring(2))} // Remove /#
-                                    className="font-medium text-neutral-400 hover:text-white transition-colors"
+                                    onClick={() => scrollToSection(link.path.substring(2))} 
+                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors"
                                 >
                                     {link.name}
                                 </button>
@@ -112,7 +121,7 @@ function LayoutContent({ children }) {
                                 <Link 
                                     key={link.name}
                                     to={createPageUrl(link.path.substring(1))}
-                                    className="font-medium text-neutral-400 hover:text-white transition-colors"
+                                    className="font-medium text-sm text-neutral-400 hover:text-white transition-colors"
                                 >
                                     {link.name}
                                 </Link>
@@ -120,11 +129,29 @@ function LayoutContent({ children }) {
                         ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden md:block">
-                        <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 border border-indigo-500/20">
-                            Investment Inquiry
-                        </Button>
+                    {/* Right Actions */}
+                    <div className="hidden md:flex items-center gap-4">
+                         {/* Language Toggle */}
+                        <button 
+                            onClick={toggleLanguage}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/50 text-xs font-mono text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                        >
+                            <Globe className="w-3 h-3" />
+                            <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>EN</span>
+                            <span className="text-neutral-700">|</span>
+                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>KO</span>
+                        </button>
+
+                        <div className="h-6 w-px bg-neutral-800" />
+
+                        <div className="flex gap-3">
+                            <Button variant="ghost" className="text-sm text-neutral-400 hover:text-white hover:bg-white/5">
+                                {language === 'en' ? 'Deck' : '소개서'}
+                            </Button>
+                            <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-5 h-9 text-sm font-medium shadow-[0_0_15px_rgba(79,70,229,0.3)] transition-all">
+                                {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'}
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -140,8 +167,21 @@ function LayoutContent({ children }) {
                 {mobileMenuOpen && (
                     <div className="fixed inset-0 bg-[#050505] z-40 pt-24 px-6 md:hidden overflow-y-auto">
                         <div className="flex flex-col gap-6 text-lg">
+                            <div className="flex items-center gap-4 mb-4">
+                                 <button 
+                                    onClick={toggleLanguage}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900"
+                                >
+                                    <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>English</span>
+                                    <span className="text-neutral-700">|</span>
+                                    <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>한국어</span>
+                                </button>
+                            </div>
+
                             <div className="space-y-4 border-b border-neutral-800 pb-6">
-                                <p className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-2">Our Businesses</p>
+                                <p className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-2">
+                                    {language === 'en' ? 'Our Businesses' : '사업분야'}
+                                </p>
                                 {businesses.map((biz) => (
                                     <Link 
                                         key={biz.name}
@@ -153,7 +193,7 @@ function LayoutContent({ children }) {
                                 ))}
                             </div>
                             
-                            {navLinks.map((link) => (
+                            {navLinks[language].map((link) => (
                                 link.isAnchor ? (
                                     <button 
                                         key={link.name}
@@ -173,8 +213,8 @@ function LayoutContent({ children }) {
                                 )
                             ))}
                             
-                            <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-4">
-                                Investment Inquiry
+                            <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-4 h-12">
+                                {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
                             </Button>
                         </div>
                     </div>
@@ -182,7 +222,7 @@ function LayoutContent({ children }) {
             </nav>
 
             {/* Page Content */}
-            <main className="pt-24">
+            <main className="pt-24 min-h-screen">
                 {children}
             </main>
 
@@ -194,20 +234,19 @@ function LayoutContent({ children }) {
                             <Link to="/" className="text-2xl font-bold tracking-tighter mb-6 block">
                                 HOLO<span className="text-indigo-500">STUDIO</span>
                             </Link>
-                            <p className="text-neutral-400 max-w-sm mb-6">
-                                Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.
+                            <p className="text-neutral-400 max-w-sm mb-6 text-sm leading-relaxed">
+                                {language === 'en' 
+                                    ? 'Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.'
+                                    : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰할 수 있는 AI 비즈니스를 구축합니다.'}
                             </p>
-                            <div className="flex gap-4">
-                                {/* Social icons would go here */}
-                            </div>
                         </div>
                         
                         <div>
-                            <h4 className="font-semibold text-lg mb-4">Businesses</h4>
+                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Businesses' : '사업분야'}</h4>
                             <ul className="space-y-2">
                                 {businesses.map(biz => (
                                     <li key={biz.name}>
-                                        <Link to={createPageUrl(biz.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors">
+                                        <Link to={createPageUrl(biz.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm">
                                             {biz.name}
                                         </Link>
                                     </li>
@@ -216,11 +255,11 @@ function LayoutContent({ children }) {
                         </div>
                         
                         <div>
-                            <h4 className="font-semibold text-lg mb-4">Company</h4>
+                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Company' : '회사소개'}</h4>
                             <ul className="space-y-2">
-                                <li><button onClick={() => scrollToSection('milestones')} className="text-neutral-400 hover:text-white transition-colors">Milestones</button></li>
-                                <li><button onClick={() => scrollToSection('team')} className="text-neutral-400 hover:text-white transition-colors">Team</button></li>
-                                <li><Link to={createPageUrl('Contact')} className="text-neutral-400 hover:text-white transition-colors">Contact</Link></li>
+                                <li><button onClick={() => scrollToSection('proof')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
+                                <li><button onClick={() => scrollToSection('research')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Research' : '리서치'}</button></li>
+                                <li><Link to={createPageUrl('Contact')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -235,5 +274,13 @@ function LayoutContent({ children }) {
                 </div>
             </footer>
         </div>
+    );
+}
+
+export default function Layout({ children }) {
+    return (
+        <LanguageProvider>
+            <LayoutContent>{children}</LayoutContent>
+        </LanguageProvider>
     );
 }
