@@ -93,24 +93,23 @@ export default function Home() {
                         </motion.div>
 
                         <motion.div 
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="relative hidden md:block"
+                            className="relative hidden md:flex justify-center"
                         >
-                            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-neutral-800 bg-[#0A0A0A] transform rotate-2 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-8">
-                                <div className="text-center">
-                                    <div className="text-indigo-400 font-bold text-xl mb-2">Platform Dashboard</div>
-                                    <p className="text-neutral-500">Comprehensive view of multi-business operations and safety metrics</p>
-                                </div>
+                            <div className="relative z-10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(79,70,229,0.15)] border border-white/10 bg-[#0A0A0A] w-full max-w-md aspect-square flex items-center justify-center">
+                                <img 
+                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/fab0533e8_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG"
+                                    alt="HOLO STUDIO Identity"
+                                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
                             </div>
-                            <div className="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-xl border border-neutral-800 bg-[#0F0F0F] transform -rotate-3 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-6">
-                                <div className="text-center">
-                                    <div className="text-white font-bold text-lg mb-1">Core Metrics</div>
-                                    <p className="text-neutral-500 text-sm">Real-time analysis and performance tracking</p>
-                                </div>
-                            </div>
+                            {/* Decorative Elements */}
+                            <div className="absolute -top-10 -right-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-3xl" />
+                            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl" />
                         </motion.div>
                     </div>
                 </div>
