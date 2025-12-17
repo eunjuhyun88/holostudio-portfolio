@@ -208,6 +208,34 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
     </motion.div>
 );
 
+// Closing Statement Component
+const ClosingStatement = () => {
+    return (
+        <div className="min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32">
+             <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+                className="text-center px-6 max-w-6xl mx-auto z-10"
+             >
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-neutral-300 mb-8 leading-tight tracking-tight">
+                    The scarce resource is no longer creativity.
+                </h2>
+                <div className="overflow-hidden">
+                    <motion.p 
+                        initial={{ y: "100%" }}
+                        whileInView={{ y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                        className="text-5xl md:text-7xl lg:text-9xl font-black text-indigo-500 tracking-tighter uppercase glow-text"
+                    >
+                        It is credibility.
+                    </motion.p>
+                </div>
+             </motion.div>
+        </div>
+    )
+}
+
 
 export default function Company() {
     const { language } = useLanguage();
@@ -266,10 +294,6 @@ export default function Company() {
                 {
                     headline: "The Structure",
                     content: "One coherent system, not disconnected tools. Trust enables distribution. Distribution creates value. From adversarial defense to economic settlement, every layer is designed to work together."
-                },
-                {
-                    headline: "The scarce resource is no longer creativity.",
-                    content: "It’s credibility."
                 }
             ],
             identity: {
@@ -495,6 +519,9 @@ export default function Company() {
                 <div className="w-full">
                      <ThesisSection items={c.thesis} />
                 </div>
+
+                {/* Closing Statement */}
+                <ClosingStatement />
 
                 {/* Team Identity Section */}
                 <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
