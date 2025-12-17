@@ -43,7 +43,8 @@ export default function BusinessLayout({
     deckUrl = null,
     HeroComponent = null,
     showAnalytics = false,
-    heroContainerClass = "aspect-[16/9]" 
+    heroContainerClass = "aspect-[16/9]",
+    partners = null
 }) {
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
@@ -320,7 +321,14 @@ export default function BusinessLayout({
                                     </a>
                                 )}
                             </div>
-                        </ColorSection>
+
+                            {/* Partners Section */}
+                            {partners && (
+                                <div className="mt-12 md:mt-20 border-t border-white/5 pt-12">
+                                    {partners}
+                                </div>
+                            )}
+                        </ColorSection
                         </div>
 
                         {/* 2. Problem & Solution */}
