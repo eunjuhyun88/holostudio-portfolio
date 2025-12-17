@@ -81,17 +81,11 @@ export default function Products() {
         <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
             {/* Visual State Management Layer - Unified with Company/Home */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+                <CosmicBackground />
                 <div className="absolute inset-0 opacity-40">
                     <Background3D />
                 </div>
-                <div className="absolute inset-0 opacity-50">
-                    <Starfield density={300} speed={0.01} />
-                </div>
                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
-                 <motion.div 
-                    animate={{ opacity: 0.05 }}
-                    className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
-                 />
                  <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 15%, transparent 85%, #050505 100%)' }} />
             </div>
 
