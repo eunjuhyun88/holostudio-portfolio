@@ -65,7 +65,7 @@ const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
             >
                 {/* Title removed for seamless storytelling */}
                 
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight whitespace-pre-line">
                     <ScrollRevealText>
                         {headline}
                     </ScrollRevealText>
@@ -121,42 +121,34 @@ export default function Company() {
         ko: {
             chapters: [
                 {
-                    title: "CH0 — HERO",
                     headline: "We build trust for the AI-native world.",
                     content: "AI가 콘텐츠·거래·의사결정을 대량 생산하는 시대에, 가장 희소한 자원은 ‘정보’가 아니라 신뢰입니다. HoloStudio는 AI가 만든 결과가 안전하고, 검증 가능하며, 책임 있게 유통되도록 하는 안전장치를 설계합니다."
                 },
                 {
-                    title: "CH1 — THE SHIFT",
                     headline: "AI가 “생성”을 넘어 “행동”하는 시대로 들어왔습니다.",
                     content: "모델은 이제 문장을 만들 뿐 아니라, 자동으로 배포하고, 거래하고, 상호작용합니다. 문제는 속도가 아니라, 그 과정이 증명되지 않는다는 것입니다."
                 },
                 {
-                    title: "CH2 — THE BREAK",
                     headline: "When verification disappears, the internet breaks.",
                     content: "무엇이 진짜였는지(출처), 누가 책임지는지(책임), 누가 기여했는지(크레딧)가 끊기면 AI는 혁신이 아니라 위험의 증폭기가 됩니다."
                 },
                 {
-                    title: "CH3 — OUR POSITION",
                     headline: "신뢰는 ‘규칙’이 아니라 ‘인프라’여야 합니다.",
                     content: "정책·약관·사후 신고는 늦습니다. 우리는 생성/유통/행동의 경계(boundary)에서 검증이 시작되는 구조를 만듭니다."
                 },
                 {
-                    title: "CH4 — AiD GUARDIAN",
                     headline: "AiD Guardian is our safety layer.",
                     content: "AiD Guardian은 AI 결과물/행동의 흐름에 검증 가능한 가드레일을 삽입합니다. 검증은 “나중에 확인”이 아니라, 처음부터 증명 가능한 상태로 만드는 것입니다."
                 },
                 {
-                    title: "CH5 — WHY WEB3 HERE",
                     headline: "Web3 makes verification composable.",
                     content: "검증 가능한 기록, 공개 가능한 증명, 그리고 자동 정산은 AI 시대의 신뢰를 프로토콜처럼 재사용할 수 있게 만듭니다."
                 },
                 {
-                    title: "CH6 — HOW WE BUILD",
                     headline: "Trust becomes proof. Proof becomes value.",
                     content: "HoloStudio는 “무엇을 믿을 수 있는가”를 증명 단위로 바꾸고, 그 증명이 실제 제품/시장 안에서 가치 흐름으로 이어지게 설계합니다."
                 },
                 {
-                    title: "CH7 — OUR PRODUCTS",
                     headline: "We ship products that prove the thesis.",
                     content: "HoloStudio는 하나의 세계관을 말로 설명하지 않습니다. 제품으로 증명합니다."
                 },
@@ -190,42 +182,34 @@ export default function Company() {
         en: {
              chapters: [
                 {
-                    title: "CH0 — HERO",
                     headline: "We build trust for the AI-native world.",
                     content: "In an era where AI mass-produces content, transactions, and decisions, the scarcest resource is not 'information' but trust. HoloStudio designs safety mechanisms to ensure AI outputs are safe, verifiable, and responsibly distributed."
                 },
                 {
-                    title: "CH1 — THE SHIFT",
                     headline: "AI has moved beyond “Creation” to “Action”.",
                     content: "Models now not only generate text but automatically distribute, trade, and interact. The problem is not the speed, but that the process remains unverified."
                 },
                 {
-                    title: "CH2 — THE BREAK",
                     headline: "When verification disappears, the internet breaks.",
                     content: "If origin (provenance), responsibility (accountability), and contribution (credit) are severed, AI becomes an amplifier of risk rather than innovation."
                 },
                 {
-                    title: "CH3 — OUR POSITION",
                     headline: "Trust must be ‘Infrastructure’, not ‘Rules’.",
                     content: "Policies and post-incident reporting are too late. We build structures where verification begins at the boundary of generation, distribution, and action."
                 },
                 {
-                    title: "CH4 — AiD GUARDIAN",
                     headline: "AiD Guardian is our safety layer.",
                     content: "AiD Guardian inserts verifiable guardrails into the flow of AI outputs and actions. Verification is not about \"checking later,\" but making it provable from the start."
                 },
                 {
-                    title: "CH5 — WHY WEB3 HERE",
                     headline: "Web3 makes verification composable.",
                     content: "Verifiable records, public proofs, and automated settlement make trust in the AI era reusable like a protocol."
                 },
                 {
-                    title: "CH6 — HOW WE BUILD",
                     headline: "Trust becomes proof. Proof becomes value.",
                     content: "HoloStudio turns \"what can be trusted\" into units of proof, and designs those proofs to flow as value within real products and markets."
                 },
                 {
-                    title: "CH7 — OUR PRODUCTS",
                     headline: "We ship products that prove the thesis.",
                     content: "HoloStudio does not explain its worldview with words. We prove it with products."
                 },
