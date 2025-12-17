@@ -192,11 +192,11 @@ const StickyThesisItem = ({ item, index, total }) => {
 };
 
 // Team Identity Component - Inspired by Consensys style
-const TeamIdentity = () => (
+const TeamIdentity = ({ identity }) => (
     <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
         <div className="mb-8 md:mb-16">
             <div className="w-8 h-8 bg-[#4F6F52] mb-8" />
-            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
+            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">{identity.headline}</h2>
         </div>
 
         <div className="text-[6vw] md:text-[5vw] leading-[0.9] font-bold tracking-tighter text-white select-none flex flex-col">
@@ -242,7 +242,7 @@ const TeamIdentity = () => (
 
         <div className="mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 border-white/20 pl-8">
             <p className="text-lg md:text-2xl text-neutral-300 leading-relaxed">
-                We are not new to this game. For over a decade, we have been building the infrastructure that powers millions of users at companies like EA, Netmarble, and Smilegate. Now, we are converging that expertise to build the trust layer for the AI age.
+                {identity.content}
             </p>
         </div>
     </div>
@@ -301,46 +301,57 @@ export default function Company() {
 
     const content = {
         en: {
+            intro: {
+                episode: "Episode I",
+                title: "The Trust Layer",
+                subtitle: "FROM GAMING ARCHITECTS TO AI TRUST BUILDERS",
+                text: [
+                    "Long before AI flooded the galaxy with infinite creation, there were builders shaping virtual worlds at scale. We did not arrive here by accident.",
+                    "For over a decade, we were architects inside the largest digital universes—EA, Netmarble, Smilegate—designing economies, simulations, and infrastructure that served millions in real time.",
+                    "In those worlds, we learned a fundamental truth: digital assets must feel as real as physical ones, or the system collapses."
+                ]
+            },
             chapters: [
                 {
-                    year: "2014 - 2020",
-                    headline: "The Gaming Era",
-                    content: "Before 'Metaverse' or 'Web3' were buzzwords, we were architects at EA, Netmarble, and Smilegate. We spent a decade optimizing virtual economies and managing high-concurrency infrastructure for millions of users. We learned that digital assets must be as tangible as physical ones."
+                    year: "2014 – 2020",
+                    headline: "THE GAMING ERA",
+                    content: "Before “Metaverse” and “Web3” entered the public lexicon, we were already operating massive multiplayer systems—balancing virtual economies, securing high-concurrency environments, and enforcing rules where value had to be earned, not imagined. Games taught us something critical: simulation without rules becomes chaos. Value without enforcement dissolves."
                 },
                 {
-                    year: "2021 - 2023",
-                    headline: "The Convergence",
-                    content: "We saw the collision of AI and Blockchain. Gaming taught us simulation; Crypto taught us settlement. We began building the infrastructure to connect these worlds—solving the 'Oracle Problem' for generative assets."
+                    year: "2021 – 2023",
+                    headline: "THE CONVERGENCE",
+                    content: "Then, two forces collided. AI taught the world how to simulate intelligence. Crypto taught the world how to settle truth. We recognized the missing bridge. Gaming gave us simulation. Blockchain gave us settlement. What was missing was trust for generative assets. So we began building the infrastructure to connect these worlds—solving what became the oracle problem for AI-generated content: How does something created infinitely become verifiable finitely?"
                 },
                 {
                     year: "2024",
-                    headline: "Building the Trust Layer",
-                    content: "Generative AI exploded, but trust collapsed. We pivoted our deep infrastructure expertise to build HoloStudio: a unified system for verifying provenance, attribution, and value flow in an age of infinite content."
+                    headline: "THE COLLAPSE OF TRUST",
+                    content: "Generative AI exploded. Creation became effortless. And trust collapsed. Attribution broke. Accountability faded. Value leaked across platforms without origin or credit. The galaxy was flooded with content—but no system to distinguish signal from noise, human from machine, truth from fabrication. So we pivoted. We focused everything we had learned—from adversarial systems, economic design, and large-scale infrastructure—into one mission: to build the trust layer for the age of infinite creation. That system became HoloStudio."
+                },
+                {
+                    year: "INFRASTRUCTURE",
+                    headline: "BUILDING THE TRUST LAYER",
+                    content: "HoloStudio treats content not as static files, but as living events: Creation. Verification. Propagation. Settlement. Stories move. Value flows. And every contribution must be attributable. We build the infrastructure where provenance is native, credit is programmable, and trust is enforced by systems—not promises."
                 },
                 {
                     year: "2025 & Beyond",
-                    headline: "The OS for Autonomous Agents",
-                    content: "We are building the operating system where AI agents can trade, create, and interact securely. A world where 'Made by Human' and 'Verified AI' coexist on a trustless settlement layer."
+                    headline: "THE AUTONOMOUS AGE",
+                    content: "The next era will not be run by applications. It will be run by autonomous agents. Agents that create. Agents that trade. Agents that interact without supervision. We are building the operating system where this is possible—a world where “Made by Human” and “Verified AI” coexist on a trustless settlement layer. Because the scarce resource is no longer creativity. It is credibility."
                 }
             ],
             thesis: [
                 {
-                    headline: "The scarce resource is no longer creativity—it is credibility.",
-                    content: "AI has radically lowered the cost of creation, but trust has collapsed. As everyone becomes a media creator, stories move faster than verification. Attribution breaks, accountability fades, and value leaks."
+                    headline: "A CHOICE FOR THE FUTURE",
+                    content: "The future is not neutral. It is a choice between chaos and credibility. Between infinite generation and finite trust."
                 },
                 {
-                    headline: "Generative media lacks a native trust layer.",
-                    content: "We treat content not as static files, but as living events—Creation, Verification, Propagation, Settlement. HoloStudio builds the infrastructure where stories are verifiable and contribution is attributable."
-                },
-                {
-                    headline: "A unified infrastructure for the Autonomous Age.",
-                    content: "We do not build disconnected products. We build a single coherent system where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
-                },
-                {
-                    headline: "The future is a choice between chaos and credibility.",
-                    content: "We are building the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+                    headline: "A UNIFIED SYSTEM",
+                    content: "We do not build disconnected products. We build a single coherent system—where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
                 }
             ],
+            identity: {
+                 headline: "WHO WE ARE",
+                 content: "We are not new to this galaxy. For over a decade, we have built infrastructure that served millions. Now, we are converging that experience into one purpose: to build the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+            },
             founders: [
                 {
                     name: "Steven Park",
@@ -515,7 +526,7 @@ export default function Company() {
                 </div>
 
                 {/* Team Identity Section */}
-                <TeamIdentity />
+                <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
 
                 {/* Founder Spotlight Section */}
                 <div className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48">
