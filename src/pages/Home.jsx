@@ -21,8 +21,8 @@ export default function Home() {
             image: "AiD Guardian Dashboard: Real-time risk monitoring interface showing GARM safety scores",
             path: "/AidGuardian",
             icon: Shield,
-            color: "text-indigo-600",
-            bgColor: "bg-indigo-50"
+            color: "text-indigo-400",
+            bgColor: "bg-indigo-500/10 border-indigo-500/20"
         },
         {
             name: "PlayArts",
@@ -31,8 +31,8 @@ export default function Home() {
             image: "PlayArts Protocol: Network visualization showing media provenance and value routing",
             path: "/PlayArts",
             icon: Play,
-            color: "text-purple-600",
-            bgColor: "bg-purple-50"
+            color: "text-purple-400",
+            bgColor: "bg-purple-500/10 border-purple-500/20"
         },
         {
             name: "EleMEMEtal",
@@ -41,8 +41,8 @@ export default function Home() {
             image: "EleMEMEtal Game: Card battle arena with safety-verified UGC assets",
             path: "/Elememetal",
             icon: Gamepad2,
-            color: "text-pink-600",
-            bgColor: "bg-pink-50"
+            color: "text-orange-400",
+            bgColor: "bg-orange-500/10 border-orange-500/20"
         },
         {
             name: "Stocku",
@@ -51,42 +51,42 @@ export default function Home() {
             image: "Stocku Intelligence: Zone-based trading charts with AI signals overlay",
             path: "/Stocku",
             icon: BarChart3,
-            color: "text-emerald-600",
-            bgColor: "bg-emerald-50"
+            color: "text-emerald-400",
+            bgColor: "bg-emerald-500/10 border-emerald-500/20"
         }
     ];
 
     const milestones = [
         { title: "Seedify 2025 AI Agent Hackathon", award: "Global Winner", icon: Trophy, color: "text-yellow-500" },
         { title: "ETHDenver 2025 Story Superagent", award: "Top 10", icon: Target, color: "text-blue-500" },
-        { title: "ETHDenver 2025 Story Track Dapp", award: "2nd Place", icon: Trophy, color: "text-slate-400" },
+        { title: "ETHDenver 2025 Story Track Dapp", award: "2nd Place", icon: Trophy, color: "text-neutral-400" },
         { title: "OKX ETHCC 2025 Smart Account", award: "2nd Place", icon: Globe, color: "text-indigo-500" }
     ];
 
     return (
-        <div className="overflow-hidden">
+        <div className="overflow-hidden bg-[#050505] text-white">
             {/* Section A: Hero */}
             <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 overflow-hidden">
                 <div className="absolute inset-0 -z-10">
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-50 to-transparent opacity-50" />
-                    <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white via-white to-transparent" />
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#050505] to-[#050505]" />
+                    <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <motion.div {...fadeIn}>
                             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6">
-                                HOLO<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">STUDIO</span>
+                                HOLO<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">STUDIO</span>
                             </h1>
-                            <p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-lg">
-                                We build AI-native businesses at the intersection of <span className="font-semibold text-slate-900">AI + Web3</span>, 
-                                spanning <span className="font-semibold text-slate-900">Safety, Media, Gaming, and Trading</span>.
+                            <p className="text-xl text-neutral-400 leading-relaxed mb-10 max-w-lg">
+                                We build AI-native businesses at the intersection of <span className="font-semibold text-white">AI + Web3</span>, 
+                                spanning <span className="font-semibold text-white">Safety, Media, Gaming, and Trading</span>.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 h-12 text-base" onClick={() => document.getElementById('businesses').scrollIntoView({ behavior: 'smooth' })}>
+                                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-8 h-12 text-base border-0" onClick={() => document.getElementById('businesses').scrollIntoView({ behavior: 'smooth' })}>
                                     Explore Our Businesses
                                 </Button>
-                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-slate-300 hover:bg-slate-50">
+                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-neutral-700 text-white hover:bg-neutral-800 bg-transparent">
                                     Download Deck
                                 </Button>
                             </div>
@@ -99,16 +99,16 @@ export default function Home() {
                             transition={{ duration: 0.8 }}
                             className="relative hidden md:block"
                         >
-                            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-800 transform rotate-2 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-8">
+                            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-neutral-800 bg-[#0A0A0A] transform rotate-2 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-8">
                                 <div className="text-center">
                                     <div className="text-indigo-400 font-bold text-xl mb-2">Platform Dashboard</div>
-                                    <p className="text-slate-400">Comprehensive view of multi-business operations and safety metrics</p>
+                                    <p className="text-neutral-500">Comprehensive view of multi-business operations and safety metrics</p>
                                 </div>
                             </div>
-                            <div className="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-xl border border-white bg-white transform -rotate-3 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-6 bg-slate-50">
+                            <div className="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-xl border border-neutral-800 bg-[#0F0F0F] transform -rotate-3 hover:rotate-0 transition-transform duration-500 aspect-video flex items-center justify-center p-6">
                                 <div className="text-center">
-                                    <div className="text-slate-900 font-bold text-lg mb-1">Core Metrics</div>
-                                    <p className="text-slate-500 text-sm">Real-time analysis and performance tracking</p>
+                                    <div className="text-white font-bold text-lg mb-1">Core Metrics</div>
+                                    <p className="text-neutral-500 text-sm">Real-time analysis and performance tracking</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -117,16 +117,16 @@ export default function Home() {
             </section>
 
             {/* Section C: Why We Exist */}
-            <section className="py-24 bg-slate-50">
+            <section className="py-24 bg-[#0A0A0A]">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div 
                         {...fadeIn}
                         className="text-center max-w-3xl mx-auto mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white">
                             The AI era needs trust rails, not post-hoc moderation.
                         </h2>
-                        <p className="text-lg text-slate-600">
+                        <p className="text-lg text-neutral-400">
                             As AI content generation explodes, safety infrastructure remains fragmented and incomplete.
                         </p>
                     </motion.div>
@@ -158,14 +158,14 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+                                className="bg-[#050505] p-8 rounded-xl shadow-sm border border-neutral-800 hover:border-indigo-500/30 transition-colors"
                             >
-                                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-2xl mb-6">
+                                <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center text-2xl mb-6 border border-neutral-800">
                                     {card.icon}
                                 </div>
-                                <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                                <p className="text-slate-600 mb-6 leading-relaxed">{card.desc}</p>
-                                <span className="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full">
+                                <h3 className="text-xl font-bold mb-3 text-white">{card.title}</h3>
+                                <p className="text-neutral-500 mb-6 leading-relaxed">{card.desc}</p>
+                                <span className="inline-block px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono font-semibold rounded-full">
                                     {card.badge}
                                 </span>
                             </motion.div>
@@ -176,20 +176,20 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-2xl border border-slate-200 p-8 md:p-12 shadow-sm"
+                        className="bg-[#050505] rounded-xl border border-neutral-800 p-8 md:p-12 shadow-sm"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-neutral-800">
                             <div>
-                                <h3 className="text-4xl font-bold text-indigo-600 mb-2">2025</h3>
-                                <p className="text-slate-600 font-medium">Critical Regulatory Inflection</p>
+                                <h3 className="text-4xl font-bold text-indigo-500 mb-2">2025</h3>
+                                <p className="text-neutral-400 font-medium">Critical Regulatory Inflection</p>
                             </div>
                             <div>
-                                <h3 className="text-4xl font-bold text-indigo-600 mb-2">EU AI Act</h3>
-                                <p className="text-slate-600 font-medium">DSA & AI Act Enforcement</p>
+                                <h3 className="text-4xl font-bold text-indigo-500 mb-2">EU AI Act</h3>
+                                <p className="text-neutral-400 font-medium">DSA & AI Act Enforcement</p>
                             </div>
                             <div>
-                                <h3 className="text-4xl font-bold text-indigo-600 mb-2">$80B</h3>
-                                <p className="text-slate-600 font-medium">AI Content Market (2030)</p>
+                                <h3 className="text-4xl font-bold text-indigo-500 mb-2">$80B</h3>
+                                <p className="text-neutral-400 font-medium">AI Content Market (2030)</p>
                             </div>
                         </div>
                     </motion.div>
@@ -197,12 +197,12 @@ export default function Home() {
             </section>
 
             {/* Section D: Our Business Lines */}
-            <section id="businesses" className="py-24">
+            <section id="businesses" className="py-24 bg-[#050505]">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
-                        <span className="text-indigo-600 font-semibold tracking-wide uppercase text-sm">Portfolio</span>
-                        <h2 className="text-4xl font-bold tracking-tight mt-2 mb-4">Our Business Lines</h2>
-                        <p className="text-xl text-slate-600 max-w-2xl">
+                        <span className="text-indigo-500 font-semibold tracking-wide uppercase text-sm">Portfolio</span>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2 mb-4 text-white">Our Business Lines</h2>
+                        <p className="text-xl text-neutral-400 max-w-2xl">
                             HOLOSTUDIO operates four independent business lines, each targeting a distinct market segment with specialized AI technology.
                         </p>
                     </motion.div>
@@ -215,34 +215,34 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                                className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                                className="group relative bg-[#0A0A0A] rounded-xl border border-neutral-800 overflow-hidden hover:border-indigo-500/50 transition-all duration-300 flex flex-col h-full"
                             >
                                 <Link to={createPageUrl(biz.path.substring(1))} className="flex flex-col h-full">
-                                    <div className="aspect-video bg-slate-100 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-200 transition-colors">
-                                        <div className="text-center">
-                                            <div className="font-semibold text-slate-700 mb-2">{biz.name} Preview</div>
-                                            <p className="text-slate-500 text-sm">{biz.image}</p>
+                                    <div className="aspect-video bg-neutral-900 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-neutral-800 transition-colors">
+                                        <div className="text-center z-10">
+                                            <div className="font-semibold text-neutral-300 mb-2">{biz.name} Preview</div>
+                                            <p className="text-neutral-500 text-sm">{biz.image}</p>
                                         </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                            <span className="text-slate-900 font-medium flex items-center gap-2">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                            <span className="text-white font-medium flex items-center gap-2">
                                                 View Details <ArrowRight className="w-4 h-4" />
                                             </span>
                                         </div>
                                     </div>
                                     <div className="p-8 flex flex-col flex-grow">
                                         <div className="flex items-center justify-between mb-4">
-                                            <div className={`p-3 rounded-lg ${biz.bgColor} ${biz.color}`}>
+                                            <div className={`p-3 rounded-lg border ${biz.bgColor} ${biz.color}`}>
                                                 <biz.icon className="w-6 h-6" />
                                             </div>
-                                            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 border border-slate-200 px-3 py-1 rounded-full">
+                                            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 border border-neutral-800 px-3 py-1 rounded-full">
                                                 {biz.tag}
                                             </span>
                                         </div>
-                                        <h3 className="text-2xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">{biz.name}</h3>
-                                        <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+                                        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-indigo-500 transition-colors">{biz.name}</h3>
+                                        <p className="text-neutral-400 leading-relaxed mb-6 flex-grow">
                                             {biz.description}
                                         </p>
-                                        <div className="flex items-center text-indigo-600 font-semibold mt-auto">
+                                        <div className="flex items-center text-indigo-500 font-semibold mt-auto">
                                             Learn more <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                                         </div>
                                     </div>
@@ -254,14 +254,14 @@ export default function Home() {
             </section>
 
             {/* Section E: Shared Capabilities */}
-            <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            <section className="py-24 bg-[#0A0A0A] overflow-hidden relative border-t border-neutral-900">
+                <div className="absolute inset-0 opacity-5">
+                    <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] invert"></div>
                 </div>
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Shared Strengths</h2>
-                        <p className="text-slate-400 text-lg">The core technologies that power our entire ecosystem.</p>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white">Shared Strengths</h2>
+                        <p className="text-neutral-400 text-lg">The core technologies that power our entire ecosystem.</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -288,13 +288,13 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl"
+                                className="bg-[#050505] border border-neutral-800 p-8 rounded-xl hover:border-indigo-500/30 transition-colors"
                             >
-                                <div className="p-3 bg-indigo-500/20 w-fit rounded-xl mb-6">
+                                <div className="p-3 bg-indigo-900/20 border border-indigo-500/20 w-fit rounded-lg mb-6">
                                     <item.icon className="w-8 h-8 text-indigo-400" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                                <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                                <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
+                                <p className="text-neutral-400 leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -302,14 +302,14 @@ export default function Home() {
             </section>
 
             {/* Section F: Milestones */}
-            <section id="milestones" className="py-24 bg-white">
+            <section id="milestones" className="py-24 bg-[#050505]">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                         <div>
-                            <span className="text-indigo-600 font-semibold tracking-wide uppercase text-sm">Validation</span>
-                            <h2 className="text-4xl font-bold tracking-tight mt-2">Milestones</h2>
+                            <span className="text-indigo-500 font-semibold tracking-wide uppercase text-sm">Validation</span>
+                            <h2 className="text-4xl font-bold tracking-tight mt-2 text-white">Milestones</h2>
                         </div>
-                        <p className="text-slate-600 max-w-md text-lg">
+                        <p className="text-neutral-400 max-w-md text-lg">
                             Recognized by global leaders in Web3 and AI for innovation and execution.
                         </p>
                     </motion.div>
@@ -322,14 +322,14 @@ export default function Home() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 transition-colors"
+                                className="bg-[#0A0A0A] p-6 rounded-xl border border-neutral-800 hover:border-indigo-500/30 transition-colors"
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <m.icon className={`w-8 h-8 ${m.color}`} />
-                                    <span className="text-xs font-bold bg-white border border-slate-200 px-2 py-1 rounded shadow-sm">2025</span>
+                                    <span className="text-xs font-bold bg-neutral-900 border border-neutral-800 text-neutral-400 px-2 py-1 rounded shadow-sm">2025</span>
                                 </div>
-                                <h3 className="font-bold text-slate-900 mb-1">{m.title}</h3>
-                                <p className={`font-semibold ${m.color}`}>{m.award}</p>
+                                <h3 className="font-bold text-white mb-1">{m.title}</h3>
+                                <p className={`font-semibold text-sm ${m.color}`}>{m.award}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -337,27 +337,27 @@ export default function Home() {
             </section>
 
             {/* Section G: Company / CTA */}
-            <section id="team" className="py-24 bg-slate-50 border-t border-slate-200">
+            <section id="team" className="py-24 bg-[#0A0A0A] border-t border-neutral-900">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <motion.div {...fadeIn}>
-                        <h2 className="text-3xl font-bold mb-6">Built by Builders</h2>
-                        <p className="text-xl text-slate-600 leading-relaxed mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-white">Built by Builders</h2>
+                        <p className="text-xl text-neutral-400 leading-relaxed mb-12">
                             HOLOSTUDIO is a team of AI researchers, Web3 engineers, and product strategists 
                             united by a mission to build the safety layer for the autonomous future.
                         </p>
                         
-                        <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-indigo-100">
-                            <h3 className="text-2xl font-bold mb-4">Ready to shape the future with us?</h3>
-                            <p className="text-slate-600 mb-8 max-w-lg mx-auto">
+                        <div className="bg-[#050505] p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-800">
+                            <h3 className="text-2xl font-bold mb-4 text-white">Ready to shape the future with us?</h3>
+                            <p className="text-neutral-400 mb-8 max-w-lg mx-auto">
                                 Whether you're an investor, partner, or builder, we'd love to chat about the future of AI safety and provenance.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link to={createPageUrl("Contact")}>
-                                    <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8 h-12 w-full sm:w-auto">
+                                    <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-8 h-12 w-full sm:w-auto border-0">
                                         Talk to Us
                                     </Button>
                                 </Link>
-                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 w-full sm:w-auto">
+                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 w-full sm:w-auto border-neutral-700 text-white hover:bg-neutral-800 bg-transparent">
                                     Partnerships & Investment
                                 </Button>
                             </div>
