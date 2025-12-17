@@ -141,7 +141,7 @@ export default function BusinessLayout({
     const accentText = s.accent;
     
     // Dynamic background color using Motion for smooth interpolation
-    const currentSectionColor = (s.sectionColors || ["rgba(30, 27, 75, 0.5)"])[activeSection % (s.sectionColors?.length || 1)];
+    const currentSectionColor = (s.sectionColors || ["#0f172a"])[activeSection % (s.sectionColors?.length || 1)];
 
     const sections = [
         { id: 'overview', label: 'Overview' },
@@ -182,18 +182,52 @@ export default function BusinessLayout({
 
     return (
         <div className={`min-h-screen font-sans selection:bg-indigo-500/30 bg-[#050505] ${textPrimary} relative overflow-hidden`}>
-            {/* Ambient Background Glow with smooth color transition */}
+            {/* Solid Background Transition Layer */}
             <motion.div 
-                className="fixed inset-0 pointer-events-none"
+                className="fixed inset-0 pointer-events-none z-0"
                 animate={{
-                    background: `radial-gradient(ellipse at top, ${currentSectionColor}, #050505 60%, #050505 100%)`
+                    backgroundColor: currentSectionColor
                 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                style={{ opacity: 0.8 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
             />
+
+            {/* Space Effects Layer */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                {/* 1. Starfield */}
+                <div className="absolute inset-0 opacity-60 mix-blend-screen">
+                    <Starfield density={800} speed={0.03} />
+                </div>
+
+                {/* 2. Nebula/Glow Blobs */}
+                <motion.div
+                    className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
+                    animate={{
+                        backgroundColor: currentSectionColor,
+                        opacity: [0.3, 0.5, 0.3],
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 90, 0]
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    style={{ filter: 'brightness(1.5)' }}
+                />
+                
+                <motion.div
+                    className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px]"
+                    animate={{
+                        backgroundColor: currentSectionColor,
+                        opacity: [0.2, 0.4, 0.2],
+                        scale: [1, 1.2, 1],
+                    }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
+                    style={{ filter: 'brightness(2) hue-rotate(30deg)' }}
+                />
+
+                {/* 3. Gradient Overlay for Depth */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
+            </div>
             
             {/* Grain Overlay */}
-            <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+            <div className="fixed inset-0 pointer-events-none opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-0" />
 
             <SEO 
                 title={name} 
