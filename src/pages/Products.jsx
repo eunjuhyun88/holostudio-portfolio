@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
-import Starfield from '@/components/Starfield';
+import CosmicBackground from '@/components/CosmicBackground';
 
 export default function Products() {
     const { language } = useLanguage();
