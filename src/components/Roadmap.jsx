@@ -143,7 +143,8 @@ export default function Roadmap({ items, title, viewAllText }) {
                     {/* Center Line (Desktop) */}
                     <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-indigo-500 via-neutral-800 to-neutral-900 -translate-x-1/2" />
                     
-                    <div className="space-y-12 md:space-y-24">
+                    {/* Desktop: Vertical, Mobile: Horizontal Scroll */}
+                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:space-y-24 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                         {items.map((item, idx) => (
                             <RoadmapItem 
                                 key={idx} 
