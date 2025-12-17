@@ -41,6 +41,7 @@ function LayoutContent({ children }) {
         en: [
             { name: 'Company', path: '/Company', isAnchor: false },
             { name: 'Products', path: '/Products', isAnchor: false },
+            { name: 'Team', path: '/Company#team', isAnchor: false },
             { name: 'Proof', path: '/#proof', isAnchor: true },
             { name: 'Roadmap', path: '/#roadmap', isAnchor: true },
             { name: 'Contact', path: '/Contact' },
@@ -48,6 +49,7 @@ function LayoutContent({ children }) {
         ko: [
             { name: '회사소개', path: '/Company', isAnchor: false },
             { name: '프로덕트', path: '/Products', isAnchor: false },
+            { name: '팀', path: '/Company#team', isAnchor: false },
             { name: '성과', path: '/#proof', isAnchor: true },
             { name: '로드맵', path: '/#roadmap', isAnchor: true },
             { name: '문의', path: '/Contact' },
