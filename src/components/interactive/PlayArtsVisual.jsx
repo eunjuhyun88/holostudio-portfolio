@@ -25,8 +25,18 @@ export default function PlayArtsVisual() {
             setStep((prev) => {
                 if (prev === 3) {
                     // Add to history on completion
-                    const earnings = (totalValue * royaltyRate[0]) / 100;
-                    setHistory(h => [{ id: Date.now(), value: earnings.toFixed(2), time: new Date().toLocaleTimeString() }, ...h.slice(0, 4)]);
+                    const totalReward = (totalValue * royaltyRate[0]) / 100;
+                    
+                    const creatorShare = totalReward * 0.8;
+                    const verifierShare = totalReward * 0.15;
+                    const platformShare = totalReward * 0.05;
+
+                    setHistory(h => [
+                        { id: Date.now() + 'c', label: 'Creator', value: creatorShare.toFixed(2), color: 'text-lime-400', icon: Wallet },
+                        { id: Date.now() + 'v', label: 'Verifier', value: verifierShare.toFixed(2), color: 'text-blue-400', icon: ShieldCheck },
+                        { id: Date.now() + 'p', label: 'Platform', value: platformShare.toFixed(2), color: 'text-purple-400', icon: Network },
+                        ...h.slice(0, 5) // Keep last 2 batches roughly
+                    ]);
                     return 0;
                 }
                 return prev + 1;
@@ -98,10 +108,10 @@ export default function PlayArtsVisual() {
                                     className="flex justify-between items-center text-sm p-2 rounded-lg bg-white/5"
                                 >
                                     <div className="flex items-center gap-2">
-                                        <Wallet className="w-3 h-3 text-purple-400" />
-                                        <span className="font-mono text-neutral-300">Creator Wallet</span>
+                                        <h.icon className={`w-3 h-3 ${h.color}`} />
+                                        <span className="font-mono text-neutral-300">{h.label}</span>
                                     </div>
-                                    <span className="text-lime-400 font-bold">+${h.value}</span>
+                                    <span className={`${h.color} font-bold`}>+${h.value}</span>
                                 </motion.div>
                             ))}
                             {history.length === 0 && (

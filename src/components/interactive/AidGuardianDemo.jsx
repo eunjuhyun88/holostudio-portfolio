@@ -173,24 +173,39 @@ export default function AidGuardianDemo() {
                                         <Shield className="w-8 h-8 text-indigo-500 absolute top-8 left-8 animate-pulse" />
                                     </div>
                                     <div className="flex flex-col items-center gap-1">
-                                        <div className="text-sm font-mono text-indigo-400 tracking-widest">ANALYZING CONTENT</div>
-                                        <div className="text-xs text-neutral-500">Applying Policy Filters...</div>
-                                    </div>
-                                    <motion.div 
-                                        className="absolute inset-0 bg-indigo-500/5"
-                                        animate={{ 
-                                            background: ["rgba(99, 102, 241, 0.02)", "rgba(99, 102, 241, 0.1)", "rgba(99, 102, 241, 0.02)"] 
-                                        }}
-                                        transition={{ repeat: Infinity, duration: 1.5 }}
-                                    />
-                                    {/* Scanning Lines */}
-                                    <motion.div 
-                                        className="absolute top-0 left-0 right-0 h-1 bg-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.5)]"
-                                        animate={{ top: ["0%", "100%", "0%"] }}
-                                        transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                                    />
-                                </motion.div>
-                            ) : result ? (
+                                            <div className="text-sm font-mono text-indigo-400 tracking-widest">ANALYZING CONTENT</div>
+                                            <div className="text-xs text-neutral-500">Applying Policy Filters...</div>
+                                        </div>
+
+                                        {/* Type Specific Visuals */}
+                                        {samples[activeSample].name === "Code Injection" && (
+                                            <div className="absolute inset-0 p-8 font-mono text-[10px] text-green-500/20 pointer-events-none overflow-hidden leading-tight">
+                                                {Array.from({length: 20}).map((_,i) => (
+                                                    <div key={i}>{`> SYSTEM_OVERRIDE_AUTH_TOKEN_${Math.random().toString(16).substr(2,8)}`}</div>
+                                                ))}
+                                            </div>
+                                        )}
+                                        {samples[activeSample].name === "Mixed Media" && (
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                                <ImageIcon className="w-32 h-32 text-indigo-500" />
+                                            </div>
+                                        )}
+
+                                        <motion.div 
+                                            className="absolute inset-0 bg-indigo-500/5"
+                                            animate={{ 
+                                                background: ["rgba(99, 102, 241, 0.02)", "rgba(99, 102, 241, 0.1)", "rgba(99, 102, 241, 0.02)"] 
+                                            }}
+                                            transition={{ repeat: Infinity, duration: 1.5 }}
+                                        />
+                                        {/* Scanning Lines */}
+                                        <motion.div 
+                                            className="absolute top-0 left-0 right-0 h-1 bg-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.5)]"
+                                            animate={{ top: ["0%", "100%", "0%"] }}
+                                            transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+                                        />
+                                    </motion.div>
+                                    ) : result ? (
                                 <motion.div
                                     key="result"
                                     initial={{ scale: 0.95, opacity: 0 }}

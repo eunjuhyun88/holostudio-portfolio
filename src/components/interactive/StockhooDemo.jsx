@@ -62,6 +62,21 @@ export default function StockhooDemo() {
     }, [isPlaying, volatility]);
 
     const toggleSim = () => setIsPlaying(!isPlaying);
+    const [backtestResults, setBacktestResults] = useState(null);
+    const [isBacktesting, setIsBacktesting] = useState(false);
+
+    const runBacktest = () => {
+        setIsBacktesting(true);
+        setTimeout(() => {
+            setBacktestResults({
+                winRate: 65 + Math.random() * 10,
+                pnl: 120 + Math.random() * 50,
+                trades: 42 + Math.floor(Math.random() * 10),
+                profitFactor: 1.5 + Math.random()
+            });
+            setIsBacktesting(false);
+        }, 1500);
+    };
 
     return (
         <div className="w-full h-full bg-[#050505] p-6 flex flex-col rounded-3xl border border-white/5 relative overflow-hidden">
@@ -113,6 +128,14 @@ export default function StockhooDemo() {
                     >
                         {isPlaying ? 'STOP SIM' : 'RUN SIMULATION'} <Play className={`w-3 h-3 ml-1 ${isPlaying ? 'hidden' : 'block'}`} />
                     </Button>
+                    <Button
+                        onClick={runBacktest}
+                        variant="outline"
+                        className="h-8 text-xs font-bold rounded-full border-white/10 text-neutral-400 hover:text-white hover:bg-white/5"
+                        disabled={isPlaying || isBacktesting}
+                    >
+                        {isBacktesting ? 'TESTING...' : 'BACKTEST'}
+                    </Button>
                 </div>
             </div>
 
@@ -161,10 +184,54 @@ export default function StockhooDemo() {
                     </>
                 )}
 
+                {/* Backtest Overlay */}
+                <AnimatePresence>
+                    {(isBacktesting || backtestResults) && (
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+                        >
+                            {isBacktesting ? (
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
+                                    <div className="text-emerald-500 font-mono font-bold animate-pulse">RUNNING BACKTEST STRATEGY...</div>
+                                </div>
+                            ) : (
+                                <div className="bg-[#0A0A0A] p-6 rounded-2xl border border-emerald-500/30 shadow-2xl min-w-[300px]">
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h3 className="text-lg font-bold text-white">Backtest Results</h3>
+                                        <button onClick={() => setBacktestResults(null)} className="text-neutral-500 hover:text-white"><RotateCcw className="w-4 h-4" /></button>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                                            <div className="text-[10px] text-emerald-400 font-bold uppercase">Win Rate</div>
+                                            <div className="text-2xl font-mono text-white">{backtestResults.winRate.toFixed(1)}%</div>
+                                        </div>
+                                        <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                                            <div className="text-[10px] text-emerald-400 font-bold uppercase">Total PnL</div>
+                                            <div className="text-2xl font-mono text-white">+{backtestResults.pnl.toFixed(1)}%</div>
+                                        </div>
+                                        <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                                            <div className="text-[10px] text-neutral-400 font-bold uppercase">Trades</div>
+                                            <div className="text-xl font-mono text-white">{backtestResults.trades}</div>
+                                        </div>
+                                        <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                                            <div className="text-[10px] text-neutral-400 font-bold uppercase">Profit Factor</div>
+                                            <div className="text-xl font-mono text-white">{backtestResults.profitFactor.toFixed(2)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
                 {/* Active Signals List (Floating) */}
                 <div className="absolute top-4 left-4 space-y-2 pointer-events-none">
                     <AnimatePresence>
-                        {signals.map((sig) => (
+                        {!isBacktesting && !backtestResults && signals.map((sig) => (
                             <motion.div
                                 key={sig.id}
                                 initial={{ x: -20, opacity: 0 }}

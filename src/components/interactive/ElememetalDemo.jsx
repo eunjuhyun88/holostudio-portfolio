@@ -75,6 +75,11 @@ export default function ElememetalDemo() {
         setMessage("Merge duplicate cards to level up!");
     };
 
+    const spawnJoker = () => {
+        setCards(prev => [...prev, { id: Date.now(), type: 'joker', power: 5, level: 1 }]);
+        setMessage("A Wild Joker Appeared!");
+    };
+
     // Calculate total power
     const totalPower = cards.reduce((acc, c) => acc + c.power, 0);
 
@@ -202,6 +207,9 @@ export default function ElememetalDemo() {
                             </Button>
                             <Button variant="outline" size="icon" onClick={reset} className="rounded-full border-neutral-700 hover:bg-white/10 text-white">
                                 <RotateCcw className="w-4 h-4" />
+                            </Button>
+                             <Button variant="ghost" size="sm" onClick={spawnJoker} className="rounded-full text-xs text-purple-400 hover:bg-purple-500/10">
+                                + Joker
                             </Button>
                         </div>
                     )}
