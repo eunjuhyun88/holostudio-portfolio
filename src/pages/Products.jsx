@@ -94,24 +94,24 @@ export default function Products() {
 
             <main className="relative z-10 pt-32 pb-24">
                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 mb-24 text-center">
-                    <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 uppercase"
-                    >
-                        {language === 'en' ? 'Our' : '우리의'} <span className="text-indigo-500">{language === 'en' ? 'Products' : '프로덕트'}</span>
-                    </motion.h1>
-                    <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed"
-                    >
-                        {language === 'en' 
-                            ? 'Building the infrastructure for the next generation of digital trust and value.' 
-                            : '차세대 디지털 신뢰와 가치를 위한 인프라를 구축합니다.'}
-                    </motion.p>
-                </div>
+                     <motion.h1 
+                         initial={{ opacity: 0, y: 20 }}
+                         animate={{ opacity: 1, y: 0 }}
+                         className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 uppercase"
+                     >
+                         {language === 'en' ? 'Our' : '우리의'} <span className="text-indigo-500">{language === 'en' ? 'Products' : '프로덕트'}</span>
+                     </motion.h1>
+                     <motion.p 
+                         initial={{ opacity: 0, y: 20 }}
+                         animate={{ opacity: 1, y: 0 }}
+                         transition={{ delay: 0.1 }}
+                         className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed"
+                     >
+                         {language === 'en' 
+                             ? 'Building the infrastructure for the next generation of digital trust and value.' 
+                             : '차세대 디지털 신뢰와 가치를 위한 인프라를 구축합니다.'}
+                     </motion.p>
+                 </div>
 
                 {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                 <div className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory max-w-[1600px] mx-auto pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar gap-4 md:gap-0">
@@ -126,21 +126,21 @@ export default function Products() {
                             
                             {/* Content */}
                             <div className="relative z-20">
-                                <div className="flex items-center justify-between mb-8">
-                                    <h3 className={`text-2xl md:text-3xl font-bold tracking-tight ${product.accent}`}>
-                                        {product.name}
-                                    </h3>
-                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md group-hover:scale-110 transition-transform duration-300`}>
-                                        <ArrowUpRight className="w-5 h-5 text-white" />
-                                    </div>
+                            <div className="flex items-center justify-between mb-8">
+                                <h3 className={`text-xl md:text-3xl font-bold tracking-tight ${product.accent}`}>
+                                    {product.name}
+                                </h3>
+                                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md group-hover:scale-110 transition-transform duration-300`}>
+                                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-white" />
                                 </div>
-                                
-                                <h2 className="text-3xl md:text-5xl font-black leading-[1.1] mb-6 max-w-xl tracking-tight">
-                                    {product.tagline[language] || product.tagline.en}
-                                </h2>
-                                <p className="text-lg md:text-xl opacity-80 max-w-md font-light leading-relaxed">
-                                    {product.description[language] || product.description.en}
-                                </p>
+                            </div>
+
+                            <h2 className="text-2xl md:text-4xl font-black leading-[1.1] mb-6 max-w-xl tracking-tight">
+                                {product.tagline[language] || product.tagline.en}
+                            </h2>
+                            <p className="text-base md:text-xl opacity-80 max-w-md font-light leading-relaxed">
+                                {product.description[language] || product.description.en}
+                            </p>
                             </div>
 
                             {/* CTA */}

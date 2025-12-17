@@ -454,13 +454,13 @@ export default function Home() {
                         <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
+                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
                             {t.hero.title}
                         </h1>
-                        <p className="text-lg md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
+                        <p className="text-base md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-sm md:text-lg mt-4 block font-mono">{t.hero.desc}</span>
+                            <span className="text-neutral-500 text-xs md:text-base mt-4 block font-mono">{t.hero.desc}</span>
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
@@ -554,7 +554,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.problem.title}</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
+                        <h3 className="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
                             {t.problem.sub}
                         </h3>
                     </motion.div>
@@ -589,8 +589,8 @@ export default function Home() {
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
-                        <h3 className="text-4xl md:text-6xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
-                        <p className="text-xl text-neutral-400 max-w-3xl leading-relaxed">
+                        <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
+                        <p className="text-lg md:text-xl text-neutral-400 max-w-3xl leading-relaxed">
                             We are building the fundamental safety and value layers for the autonomous AI economy.
                             <br/><br/>
                             Beyond simple content creation, we engineer the verifying protocols, decentralized infrastructure, and economic models that make AI sustainable.
@@ -880,17 +880,17 @@ export default function Home() {
                                         
                                         <div className="relative z-10">
                                             <div className="flex items-center justify-between mb-6">
-                                                <div className={`text-sm font-bold tracking-wider uppercase ${prod.color} flex items-center gap-2`}>
+                                                <div className={`text-xs md:text-sm font-bold tracking-wider uppercase ${prod.color} flex items-center gap-2`}>
                                                     <span className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_10px_currentColor]`} />
                                                     {prod.tag[language]}
                                                 </div>
-                                                <div className={`text-sm font-mono ${prod.color} opacity-50`}>0{idx + 1}</div>
+                                                <div className={`text-xs md:text-sm font-mono ${prod.color} opacity-50`}>0{idx + 1}</div>
                                             </div>
-                                            
-                                            <h3 className="text-4xl font-black mb-4 text-white tracking-tight">
+
+                                            <h3 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight">
                                                 {prod.name}
                                             </h3>
-                                            
+
                                             <p className="text-neutral-300 leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none">
                                                 {prod.desc[language]}
                                             </p>
@@ -977,9 +977,9 @@ export default function Home() {
             {/* Section 10: CONTACT */}
             <section className="py-32 border-t border-white/5 relative z-10 bg-gradient-to-t from-[#050505] to-[#050505]/80">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
-                    <div>
-                        <h2 className="text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
-                        <p className="text-neutral-500 text-lg">{t.contact.sub}</p>
+                    <div className="text-center md:text-left">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
+                        <p className="text-neutral-500 text-base md:text-lg">{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link to={createPageUrl("Contact")}>

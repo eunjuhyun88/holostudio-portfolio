@@ -11,8 +11,8 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="max-w-3xl mx-auto text-center mb-16"
             >
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">Let's Build the Future</h1>
-                <p className="text-xl text-neutral-400 leading-relaxed">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">Let's Build the Future</h1>
+                <p className="text-base md:text-xl text-neutral-400 leading-relaxed">
                     We're always looking for partners, investors, and builders who share our vision for a trusted, autonomous future.
                 </p>
             </motion.div>

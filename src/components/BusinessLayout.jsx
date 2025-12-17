@@ -296,7 +296,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-5xl md:text-7xl lg:text-8xl font-bold leading-[1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
+                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
                             >
                                 {oneLiner}
                             </motion.h2>
@@ -306,7 +306,7 @@ export default function BusinessLayout({
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className={`text-lg md:text-2xl leading-relaxed max-w-3xl mb-16 ${textSecondary} font-light`}
+                                    className={`text-base md:text-xl leading-relaxed max-w-3xl mb-12 md:mb-16 ${textSecondary} font-light`}
                                 >
                                     {story}
                                 </motion.div>
@@ -374,7 +374,7 @@ export default function BusinessLayout({
                                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                             KEY FEATURES
                                         </span>
-                                        <h3 className="text-3xl font-bold mb-8">Capabilities</h3>
+                                        <h3 className="text-2xl md:text-3xl font-bold mb-8">Capabilities</h3>
                                         <div className="grid md:grid-cols-3 gap-6">
                                             {features.map((feature, i) => (
                                                 <div key={i} className={`relative p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden`}>
@@ -406,7 +406,7 @@ export default function BusinessLayout({
                                         <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
                                             THE CHALLENGE
                                         </span>
-                                        <h3 className="text-3xl md:text-4xl font-bold mb-2">Why this matters now</h3>
+                                        <h3 className="text-2xl md:text-3xl font-bold mb-2">Why this matters now</h3>
                                     </div>
                                     
                                     <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar space-y-0 md:space-y-12">
@@ -427,7 +427,7 @@ export default function BusinessLayout({
                                         <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
                                             OUR SOLUTION
                                         </span>
-                                        <h3 className="text-3xl md:text-4xl font-bold mb-2">How we solve it</h3>
+                                        <h3 className="text-2xl md:text-3xl font-bold mb-2">How we solve it</h3>
                                     </div>
                                     
                                     <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
