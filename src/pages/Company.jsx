@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, CheckCircle2, Heart, Zap, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -10,9 +10,38 @@ import Background3D from '@/components/Background3D';
 
 // --- Components ---
 
-// Helper component to avoid "Hooks inside loop" error
-const RevealWord = ({ children, progress, range }) => {
-    const opacity = useTransform(progress, range, [0.3, 1]);
+// Smooth Text Reveal Component
+const ScrollRevealText = ({ children, className = "" }) => {
+    const element = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: element,
+        offset: ["start 0.9", "start 0.25"]
+    });
+
+    const text = typeof children === 'string' ? children : String(children);
+    const words = text.split(" ");
+
+    return (
+        <p ref={element} className={`flex flex-wrap leading-tight ${className}`}>
+            {words.map((word, i) => {
+                const start = i / words.length;
+                const end = start + (1 / words.length);
+                return (
+                    <Word 
+                        key={i} 
+                        progress={scrollYProgress} 
+                        range={[start, end]}
+                    >
+                        {word}
+                    </Word>
+                );
+            })}
+        </p>
+    );
+};
+
+const Word = ({ children, progress, range }) => {
+    const opacity = useTransform(progress, range, [0.1, 1]);
     return (
         <motion.span 
             style={{ opacity }}
@@ -23,56 +52,26 @@ const RevealWord = ({ children, progress, range }) => {
     );
 };
 
-// Smooth Text Reveal Component
-const ScrollRevealText = ({ children, className = "" }) => {
-    const element = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: element,
-        offset: ["start 0.9", "start 0.25"]
-    });
-
-    // Ensure children is a string before splitting
-    const text = typeof children === 'string' ? children : String(children);
-    const words = text.split(" ");
-
+// Chapter Component - Consensys Style (Large, Bold, Sticky feel)
+const Chapter = ({ headline, content, index, onActive, isLast }) => {
     return (
-        <p ref={element} className={`flex flex-wrap leading-tight ${className}`}>
-            {words.map((word, i) => {
-                const start = i / words.length;
-                const end = start + (1 / words.length);
-                return (
-                    <RevealWord 
-                        key={i} 
-                        progress={scrollYProgress} 
-                        range={[start, end]}
-                    >
-                        {word}
-                    </RevealWord>
-                );
-            })}
-        </p>
-    );
-};
-
-// Chapter Component
-const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
-    return (
-        <div className={`min-h-screen flex flex-col justify-center px-6 md:px-12 py-24 ${isLast ? 'pb-40' : ''}`}>
+        <div className={`min-h-screen flex flex-col justify-center px-6 md:px-12 py-24 ${isLast ? 'pb-40' : ''} border-l border-white/10 md:border-l-0 ml-4 md:ml-0`}>
             <motion.div 
-                className="max-w-4xl"
+                className="max-w-6xl"
                 onViewportEnter={() => onActive(index)}
                 viewport={{ margin: "-40% 0px -40% 0px" }}
             >
-                {/* Title removed for seamless storytelling */}
-                
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight whitespace-pre-line">
+                {/* Decorative Line (Consensys style) */}
+                <div className="w-12 h-1 bg-white mb-12 hidden md:block" />
+
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight whitespace-pre-line text-white">
                     <ScrollRevealText>
                         {headline}
                     </ScrollRevealText>
                 </h2>
 
                 {content && (
-                     <div className="text-xl md:text-2xl text-neutral-400 leading-relaxed font-light max-w-2xl">
+                     <div className="text-xl md:text-3xl text-neutral-400 leading-relaxed font-light max-w-4xl">
                         <ScrollRevealText>
                             {content}
                         </ScrollRevealText>
@@ -83,17 +82,76 @@ const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
     );
 };
 
-// Venture Card
-const VentureCard = ({ name, description, link }) => (
-    <Link to={createPageUrl(link)} className="group block">
-        <div className="relative bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:p-12 hover:border-indigo-500/50 transition-all duration-500 hover:bg-white/5">
-            <div className="flex justify-between items-start mb-8">
-                <h3 className="text-3xl font-bold text-white group-hover:text-indigo-400 transition-colors">{name}</h3>
-                <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-indigo-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </div>
-            <p className="text-lg text-neutral-400 group-hover:text-neutral-200 transition-colors">
-                {description}
+// Team Identity Component (Engineers, Researchers, Builders)
+const TeamIdentity = () => (
+    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto">
+        <div className="mb-8 md:mb-16">
+            <div className="w-8 h-8 bg-white mb-8" />
+            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
+        </div>
+        
+        <div className="text-[12vw] md:text-[8vw] leading-[0.9] font-bold tracking-tighter text-white">
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex items-center gap-4 md:gap-8 mb-4 md:mb-0"
+            >
+                {/* Green Quarter Circle */}
+                <div className="w-[0.6em] h-[0.6em] bg-[#9bf00b] rounded-tl-full" />
+                <span>Engineers</span>
+            </motion.div>
+            
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[1.5em] mb-4 md:mb-0"
+            >
+                {/* Pink Square Ring */}
+                <div className="w-[0.5em] h-[0.5em] border-[0.15em] border-[#ff69b4]" />
+                <span>Researchers</span>
+            </motion.div>
+            
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex items-center gap-4 md:gap-8 ml-[0em] md:ml-[3em]"
+            >
+                {/* Blue Circle */}
+                <div className="w-[0.5em] h-[0.5em] bg-[#1d4ed8] rounded-full" />
+                <span>Builders</span>
+            </motion.div>
+        </div>
+
+        <div className="mt-16 md:mt-24 max-w-2xl ml-auto">
+            <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed">
+                We are a global team of technologists, cryptographers, and product thinkers working to shape a better internet through verifiable infrastructure.
             </p>
+        </div>
+    </div>
+);
+
+// Venture Card - Sleek Dark Theme
+const VentureCard = ({ name, description, link, color }) => (
+    <Link to={createPageUrl(link)} className="group block h-full">
+        <div className="relative bg-[#0A0A0A] border border-neutral-800 h-full p-8 md:p-12 transition-all duration-500 hover:border-neutral-600 hover:bg-neutral-900 overflow-hidden">
+            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+            
+            <div className="flex justify-between items-start mb-12">
+                <h3 className="text-3xl font-bold text-white">{name}</h3>
+                <ArrowUpRight className="w-6 h-6 text-neutral-600 group-hover:text-white transition-colors duration-300" />
+            </div>
+            
+            <div className="mt-auto">
+                <p className="text-lg text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors duration-300">
+                    {description}
+                </p>
+            </div>
         </div>
     </Link>
 );
@@ -105,144 +163,157 @@ export default function Company() {
     
     // Visual State Management
     const visualState = useMemo(() => {
-        // Defines the visual overlays active for each chapter index
-        // 0: Hero, 1: Shift, 2: Break, 3: Position, 4: Guardian, 5: Web3, 6: Build, 7: Products, 8: Who, 9: CTA
         return {
-            showNoise: [1, 2].includes(activeIndex),
-            showGuardRail: [3, 4].includes(activeIndex),
-            showLines: [2].includes(activeIndex), // Broken lines
-            showRouting: [6].includes(activeIndex),
-            showVerification: [5].includes(activeIndex),
-            darker: [0, 9].includes(activeIndex),
+            showNoise: [2, 3].includes(activeIndex),
+            showGuardRail: [8, 9].includes(activeIndex),
+            showLines: [3].includes(activeIndex),
+            showRouting: [7].includes(activeIndex),
+            showVerification: [5, 6].includes(activeIndex),
+            darker: [0, 11].includes(activeIndex),
         };
     }, [activeIndex]);
 
     const content = {
-        ko: {
+        en: {
+            // Mapping the user's new script to chapters
             chapters: [
                 {
-                    headline: "We build trust for the AI-native world.",
-                    content: "AI가 콘텐츠·거래·의사결정을 대량 생산하는 시대에, 가장 희소한 자원은 ‘정보’가 아니라 신뢰입니다. HoloStudio는 AI가 만든 결과가 안전하고, 검증 가능하며, 책임 있게 유통되도록 하는 안전장치를 설계합니다."
+                    headline: "We build what comes next\nfor generative media.",
+                    content: "AI has radically lowered the cost of creating content.\nWhat it has not solved is trust."
                 },
                 {
-                    headline: "AI가 “생성”을 넘어 “행동”하는 시대로 들어왔습니다.",
-                    content: "모델은 이제 문장을 만들 뿐 아니라, 자동으로 배포하고, 거래하고, 상호작용합니다. 문제는 속도가 아니라, 그 과정이 증명되지 않는다는 것입니다."
+                    headline: "The scarce resource is no longer creativity —\nit is credibility.",
+                    content: "As media becomes faster, cheaper, and more abundant, we need to know: Who created this? How it changed? Where it spread? Who should benefit?\nHoloStudio exists to answer those questions at the infrastructure level."
                 },
                 {
-                    headline: "When verification disappears, the internet breaks.",
-                    content: "무엇이 진짜였는지(출처), 누가 책임지는지(책임), 누가 기여했는지(크레딧)가 끊기면 AI는 혁신이 아니라 위험의 증폭기가 됩니다."
+                    headline: "Everyone is becoming a media creator.",
+                    content: "Every brand, every community, every individual now speaks directly to the world. But direct communication introduces a new failure mode.\nStories move faster than systems can verify them."
                 },
                 {
-                    headline: "신뢰는 ‘규칙’이 아니라 ‘인프라’여야 합니다.",
-                    content: "정책·약관·사후 신고는 늦습니다. 우리는 생성/유통/행동의 경계(boundary)에서 검증이 시작되는 구조를 만듭니다."
+                    headline: "Attribution breaks. Accountability fades.\nValue leaks.",
+                    content: "AI accelerates this collapse.\nHiring more storytellers does not fix the problem.\nProducing better content does not fix the problem.\nThe problem is structural."
                 },
                 {
-                    headline: "AiD Guardian is our safety layer.",
-                    content: "AiD Guardian은 AI 결과물/행동의 흐름에 검증 가능한 가드레일을 삽입합니다. 검증은 “나중에 확인”이 아니라, 처음부터 증명 가능한 상태로 만드는 것입니다."
+                    headline: "Generative media lacks\na native trust layer.",
+                    content: "HoloStudio’s belief is simple.\nStories should be verifiable.\nDistribution should be measurable.\nContribution should be attributable.\nValue should be programmable."
                 },
                 {
-                    headline: "Web3 makes verification composable.",
-                    content: "검증 가능한 기록, 공개 가능한 증명, 그리고 자동 정산은 AI 시대의 신뢰를 프로토콜처럼 재사용할 수 있게 만듭니다."
+                    headline: "Media should not disappear into feeds.\nIt should leave a trace.",
+                    content: "We treat content not as static files, but as living events that evolve over time.\nCreation, verification, propagation, contribution, settlement."
                 },
                 {
-                    headline: "Trust becomes proof. Proof becomes value.",
-                    content: "HoloStudio는 “무엇을 믿을 수 있는가”를 증명 단위로 바꾸고, 그 증명이 실제 제품/시장 안에서 가치 흐름으로 이어지게 설계합니다."
+                    headline: "Each step produces data.\nEach data point can be proven.\nEach proof can unlock value.",
+                    content: "This is how media becomes infrastructure."
                 },
                 {
-                    headline: "We ship products that prove the thesis.",
-                    content: "HoloStudio는 하나의 세계관을 말로 설명하지 않습니다. 제품으로 증명합니다."
+                    headline: "We do not operate as a collection\nof disconnected products.",
+                    content: "We build a single coherent system, and express it through multiple execution layers.\nInfrastructure that anchors trust at the moment of creation.\nProtocols that track how narratives move and mutate.\nProducts that prove these systems work in real markets."
                 },
                 {
-                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
-                    content: "우리는 제품을 만드는 팀이자, 신뢰 인프라를 설계하는 팀입니다. AI와 Web3가 만나는 지점에서, 검증과 안전장치의 표준을 만듭니다."
+                    headline: "Trust enables distribution.\nDistribution creates value.\nValue sustains ecosystems.",
+                    content: "Everything we build is connected by the same logic.\nThis is the loop we design for."
                 },
                 {
-                    headline: "If you’re building in AI × Web3, let’s build trust together.",
-                    content: "파트너십, 투자, 채용, 공동 연구. HoloStudio의 검증 레이어 위에서 함께 확장할 수 있습니다."
-                }
-            ],
-            ventures: [
-                {
-                    name: "PlayArts",
-                    desc: "AI 미디어의 출처·변형·확산을 추적하고, 기여도에 따라 가치 분배를 자동화합니다.",
-                    link: "PlayArts"
+                    headline: "The future of media will be created with AI.\nWhether that future is chaotic or credible is a choice.",
+                    content: "HoloStudio is building the safeguards that allow generative media to scale without losing trust, authorship, or accountability."
                 },
                 {
-                    name: "EleMEMEtal",
-                    desc: "게임에서 ‘재미/경쟁’이 만들어내는 행동 데이터를 신뢰 가능한 구조로 연결합니다.",
-                    link: "Elememetal"
-                },
-                {
-                    name: "StockHoo",
-                    desc: "코인(자산)별 미시구조에 맞춘 Token-Specific AI로 시장 신호를 정밀하게 해석합니다.",
-                    link: "Stockhoo"
-                }
-            ]
-        },
-        en: {
-             chapters: [
-                {
-                    headline: "We build trust for the AI-native world.",
-                    content: "In an era where AI mass-produces content, transactions, and decisions, the scarcest resource is not 'information' but trust. HoloStudio designs safety mechanisms to ensure AI outputs are safe, verifiable, and responsibly distributed."
-                },
-                {
-                    headline: "AI has moved beyond “Creation” to “Action”.",
-                    content: "Models now not only generate text but automatically distribute, trade, and interact. The problem is not the speed, but that the process remains unverified."
-                },
-                {
-                    headline: "When verification disappears, the internet breaks.",
-                    content: "If origin (provenance), responsibility (accountability), and contribution (credit) are severed, AI becomes an amplifier of risk rather than innovation."
-                },
-                {
-                    headline: "Trust must be ‘Infrastructure’, not ‘Rules’.",
-                    content: "Policies and post-incident reporting are too late. We build structures where verification begins at the boundary of generation, distribution, and action."
-                },
-                {
-                    headline: "AiD Guardian is our safety layer.",
-                    content: "AiD Guardian inserts verifiable guardrails into the flow of AI outputs and actions. Verification is not about \"checking later,\" but making it provable from the start."
-                },
-                {
-                    headline: "Web3 makes verification composable.",
-                    content: "Verifiable records, public proofs, and automated settlement make trust in the AI era reusable like a protocol."
-                },
-                {
-                    headline: "Trust becomes proof. Proof becomes value.",
-                    content: "HoloStudio turns \"what can be trusted\" into units of proof, and designs those proofs to flow as value within real products and markets."
-                },
-                {
-                    headline: "We ship products that prove the thesis.",
-                    content: "HoloStudio does not explain its worldview with words. We prove it with products."
-                },
-                 {
-                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
-                    content: "We are a team building products and designing trust infrastructure. At the intersection of AI and Web3, we set the standard for verification and safety."
-                },
-                {
-                    headline: "If you’re building in AI × Web3, let’s build trust together.",
-                    content: "Partnerships, Investment, Hiring, Joint Research. Scale with us on top of HoloStudio's verification layer."
+                    headline: "We are still at the beginning.",
+                    content: "The systems that will define the next decade of media do not exist yet.\nWe are here to build them.\nThis is HoloStudio."
                 }
             ],
             ventures: [
                 {
                     name: "PlayArts",
                     desc: "Tracks origin, mutation, and spread of AI media, automating value distribution based on contribution.",
-                    link: "PlayArts"
+                    link: "PlayArts",
+                    color: "from-lime-400 to-lime-600"
                 },
                 {
                     name: "EleMEMEtal",
                     desc: "Connects behavioral data generated by 'fun/competition' in games to a trustworthy structure.",
-                    link: "Elememetal"
+                    link: "Elememetal",
+                    color: "from-orange-400 to-orange-600"
                 },
                 {
                     name: "StockHoo",
                     desc: "Precisely interprets market signals with Token-Specific AI tailored to asset microstructures.",
-                    link: "Stockhoo"
+                    link: "Stockhoo",
+                    color: "from-emerald-400 to-emerald-600"
+                }
+            ]
+        },
+        ko: {
+             chapters: [
+                {
+                    headline: "우리는 생성형 미디어의\n다음 시대를 만듭니다.",
+                    content: "AI는 콘텐츠 생성 비용을 획기적으로 낮췄습니다.\n하지만 '신뢰'의 문제는 해결하지 못했습니다."
+                },
+                {
+                    headline: "이제 희소한 자원은 창의성이 아니라,\n'신뢰성'입니다.",
+                    content: "미디어가 더 빠르고 저렴해질수록, 우리는 알아야 합니다.\n누가 만들었는가? 어떻게 변형되었는가? 어디로 확산되었는가?\nHoloStudio는 이 질문들에 인프라 레벨에서 답합니다."
+                },
+                {
+                    headline: "모두가 미디어 크리에이터가 되었습니다.",
+                    content: "브랜드, 커뮤니티, 개인 모두가 세상과 직접 소통합니다.\n하지만 직접 소통은 새로운 실패를 야기합니다.\n이야기는 시스템이 검증할 수 있는 속도보다 더 빠르게 움직입니다."
+                },
+                {
+                    headline: "출처는 끊기고, 책임은 희미해지며,\n가치는 누수됩니다.",
+                    content: "AI는 이 붕괴를 가속화합니다.\n더 많은 스토리텔러를 고용한다고 해결되지 않습니다.\n더 좋은 콘텐츠를 만든다고 해결되지 않습니다.\n이것은 구조적인 문제입니다."
+                },
+                {
+                    headline: "생성형 미디어에는\n'신뢰 레이어'가 부재합니다.",
+                    content: "HoloStudio의 믿음은 단순합니다.\n이야기는 검증 가능해야 합니다.\n확산은 측정 가능해야 합니다.\n기여는 귀속 가능해야 합니다.\n가치는 프로그래밍 가능해야 합니다."
+                },
+                {
+                    headline: "미디어는 피드 속으로 사라져선 안 됩니다.\n흔적(Trace)을 남겨야 합니다.",
+                    content: "우리는 콘텐츠를 정적인 파일이 아니라, 시간의 흐름에 따라 진화하는 '살아있는 이벤트'로 다룹니다.\n생성, 검증, 전파, 기여, 정산."
+                },
+                {
+                    headline: "각 단계는 데이터를 생성합니다.\n각 데이터는 증명될 수 있습니다.\n각 증명은 가치를 만듭니다.",
+                    content: "이것이 미디어가 인프라가 되는 방식입니다."
+                },
+                {
+                    headline: "우리는 분절된 제품들의\n집합으로 일하지 않습니다.",
+                    content: "우리는 하나의 일관된 시스템을 구축하고, 여러 실행 레이어로 표현합니다.\n생성 시점에 신뢰를 고정하는 인프라.\n서사가 이동하고 변이하는 과정을 추적하는 프로토콜.\n이 시스템이 실제 시장에서 작동함을 증명하는 제품들."
+                },
+                {
+                    headline: "신뢰는 확산을 가능하게 합니다.\n확산은 가치를 창출합니다.\n가치는 생태계를 지속시킵니다.",
+                    content: "우리가 만드는 모든 것은 이 논리로 연결됩니다.\n이것이 우리가 설계하는 루프(Loop)입니다."
+                },
+                {
+                    headline: "미디어의 미래는 AI와 함께 만들어집니다.\n그 미래가 혼돈일지 신뢰일지는 선택입니다.",
+                    content: "HoloStudio는 신뢰, 저작권, 책임을 잃지 않으면서도 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다."
+                },
+                {
+                    headline: "우리는 아직 시작점에 있습니다.",
+                    content: "다음 10년의 미디어를 정의할 시스템은 아직 존재하지 않습니다.\n우리가 그것을 만들기 위해 여기 있습니다.\nThis is HoloStudio."
+                }
+            ],
+            ventures: [
+                {
+                    name: "PlayArts",
+                    desc: "AI 미디어의 출처·변형·확산을 추적하고, 기여도에 따라 가치 분배를 자동화합니다.",
+                    link: "PlayArts",
+                    color: "from-lime-400 to-lime-600"
+                },
+                {
+                    name: "EleMEMEtal",
+                    desc: "게임에서 ‘재미/경쟁’이 만들어내는 행동 데이터를 신뢰 가능한 구조로 연결합니다.",
+                    link: "Elememetal",
+                    color: "from-orange-400 to-orange-600"
+                },
+                {
+                    name: "StockHoo",
+                    desc: "코인(자산)별 미시구조에 맞춘 Token-Specific AI로 시장 신호를 정밀하게 해석합니다.",
+                    link: "Stockhoo",
+                    color: "from-emerald-400 to-emerald-600"
                 }
             ]
         }
     };
 
-    const c = content[language] || content.ko;
+    const c = content[language] || content.en;
 
     return (
         <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
@@ -258,26 +329,17 @@ export default function Company() {
                     <Background3D />
                  </div>
                  
-                 {/* Overlays based on state */}
+                 {/* Overlays */}
                  <div className="absolute inset-0 bg-[#050505] mix-blend-multiply opacity-20" />
                  
-                 {/* Noise Layer (The Shift / The Break) */}
+                 {/* Noise Layer */}
                  <motion.div 
                     animate={{ opacity: visualState.showNoise ? 0.15 : 0 }}
                     transition={{ duration: 1 }}
                     className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
                  />
                  
-                 {/* Broken Lines (The Break) */}
-                 <motion.div
-                    animate={{ opacity: visualState.showLines ? 1 : 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                 >
-                    <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent blur-[1px]" />
-                 </motion.div>
-
-                 {/* Guard Rail Ring (Position / Guardian) */}
+                 {/* Guard Rail Ring */}
                  <motion.div
                     animate={{ 
                         opacity: visualState.showGuardRail ? 1 : 0,
@@ -290,12 +352,6 @@ export default function Company() {
                     <div className="absolute w-[50vh] h-[50vh] rounded-full border border-indigo-400/20 animate-[spin_15s_linear_infinite_reverse]" />
                  </motion.div>
 
-                 {/* Verification Grid (Web3 / Build) */}
-                 <motion.div
-                     animate={{ opacity: visualState.showVerification ? 1 : 0 }}
-                     className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
-                 />
-
                  <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505] z-10" />
             </div>
 
@@ -305,7 +361,6 @@ export default function Company() {
                     {c.chapters.map((chapter, i) => (
                         <Chapter 
                             key={i}
-                            title={chapter.title}
                             headline={chapter.headline}
                             content={chapter.content}
                             index={i}
@@ -315,9 +370,15 @@ export default function Company() {
                     ))}
                 </div>
 
-                {/* Ventures Section (Attached to CH7 visually via logic, but rendered here for layout) */}
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-40">
-                    <div className="grid md:grid-cols-3 gap-6">
+                {/* Team Identity Section */}
+                <TeamIdentity />
+
+                {/* Ventures Section */}
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-40">
+                    <div className="mb-12 border-b border-white/10 pb-4">
+                         <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400">Our Products</h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8 h-[500px] md:h-[400px]">
                         {c.ventures.map((venture, i) => (
                             <motion.div
                                 key={i}
@@ -325,6 +386,7 @@ export default function Company() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
+                                className="h-full"
                             >
                                 <VentureCard {...venture} />
                             </motion.div>
@@ -332,11 +394,12 @@ export default function Company() {
                     </div>
                 </div>
                 
-                {/* Final CTA Button for CH9 */}
-                <div className="flex justify-center pb-40">
+                {/* Final CTA */}
+                <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to build the trust layer?</h2>
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 h-14 text-lg font-bold transition-transform hover:scale-105">
-                            Connect With Us <ArrowRight className="ml-2 w-5 h-5" />
+                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105">
+                            Connect With Us <ArrowRight className="ml-2 w-6 h-6" />
                         </Button>
                     </Link>
                 </div>
