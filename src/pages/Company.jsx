@@ -1,8 +1,8 @@
 import React, { useRef, useMemo } from 'react';
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Plus, Minus } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -11,7 +11,6 @@ import Background3D from '@/components/Background3D';
 // --- Components ---
 
 // Smooth Text Reveal Component
-// Refactored to use standard inline flow instead of flexbox to fix line-height and spacing issues
 const ScrollRevealText = ({ children, className = "" }) => {
     const element = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -20,7 +19,6 @@ const ScrollRevealText = ({ children, className = "" }) => {
     });
 
     const text = typeof children === 'string' ? children : String(children);
-    // Split by space but preserve it in the rendering
     const words = text.split(" ");
 
     return (
@@ -65,7 +63,6 @@ const Chapter = ({ headline, content, index, onActive, isLast }) => {
                 onViewportEnter={() => onActive(index)}
                 viewport={{ margin: "-20% 0px -20% 0px" }}
             >
-                {/* Decorative Line */}
                 <div className="w-12 h-1 bg-white mb-6 md:mb-8 hidden md:block" />
 
                 <h2 
@@ -92,15 +89,15 @@ const Chapter = ({ headline, content, index, onActive, isLast }) => {
     );
 };
 
-// Team Identity Component
+// Team Identity Component (Refactored for Founder Spotlight)
 const TeamIdentity = () => (
-    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
+    <div className="min-h-[60vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
         <div className="mb-8 md:mb-16">
             <div className="w-8 h-8 bg-white mb-8" />
-            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
+            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Our DNA</h2>
         </div>
         
-        <div className="text-[10vw] md:text-[8vw] leading-[1.1] font-bold tracking-tighter text-white select-none">
+        <div className="text-[8vw] md:text-[6vw] leading-[1.1] font-bold tracking-tighter text-white select-none">
             <motion.div 
                 initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -109,7 +106,7 @@ const TeamIdentity = () => (
                 className="flex items-center gap-4 md:gap-8 mb-4 md:mb-0 flex-wrap"
             >
                 <div className="w-[0.6em] h-[0.6em] bg-[#9bf00b] rounded-tl-full flex-shrink-0" />
-                <span>Engineers</span>
+                <span>Founders</span>
             </motion.div>
             
             <motion.div 
@@ -120,48 +117,87 @@ const TeamIdentity = () => (
                 className="flex items-center gap-4 md:gap-8 md:ml-[1.5em] mb-4 md:mb-0 flex-wrap"
             >
                 <div className="w-[0.5em] h-[0.5em] border-[0.15em] border-[#ff69b4] flex-shrink-0" />
-                <span>Researchers</span>
-            </motion.div>
-            
-            <motion.div 
-                initial={{ x: -30, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex items-center gap-4 md:gap-8 md:ml-[3em] flex-wrap"
-            >
-                <div className="w-[0.5em] h-[0.5em] bg-[#1d4ed8] rounded-full flex-shrink-0" />
                 <span>Builders</span>
             </motion.div>
         </div>
 
         <div className="mt-16 md:mt-24 max-w-2xl ml-auto">
             <p className="text-lg md:text-2xl text-neutral-400 leading-relaxed">
-                We are a global team of technologists, cryptographers, and product thinkers working to shape a better internet through verifiable infrastructure.
+                We are a team built at the intersection of AI infrastructure, gaming, and Web3.
             </p>
         </div>
     </div>
 );
 
-// Venture Card
-const VentureCard = ({ name, description, link, color }) => (
-    <Link to={createPageUrl(link)} className="group block h-full">
-        <div className="relative bg-[#0A0A0A] border border-neutral-800 h-full p-8 md:p-12 transition-all duration-500 hover:border-neutral-600 hover:bg-neutral-900 overflow-hidden flex flex-col rounded-3xl">
-            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+
+// Founder Card Component
+const FounderCard = ({ name, role, bio, image, delay }) => (
+    <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: delay, duration: 0.6 }}
+        className="group relative"
+    >
+        <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900 mb-6">
+            {/* Image Placeholder or Actual Image */}
+            {image ? (
+                <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            ) : (
+                <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">
+                    Image
+                </div>
+            )}
             
-            <div className="flex justify-between items-start mb-8 md:mb-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-white">{name}</h3>
-                <ArrowUpRight className="w-6 h-6 text-neutral-600 group-hover:text-white transition-colors duration-300" />
+            {/* Hover Overlay with Quote/Insight */}
+            <div className="absolute inset-0 bg-indigo-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-center">
+                 <p className="text-white text-lg font-medium leading-relaxed italic">
+                    "{bio}"
+                 </p>
             </div>
             
-            <div className="mt-auto">
-                <p className="text-base md:text-lg text-neutral-400 leading-relaxed group-hover:text-neutral-200 transition-colors duration-300 break-keep">
-                    {description}
-                </p>
+            {/* Arrow Button */}
+            <div className="absolute top-4 right-4 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                <ArrowRight className="w-4 h-4" />
             </div>
         </div>
-    </Link>
+
+        <div className="border-l-2 border-indigo-500 pl-4">
+            <h3 className="text-2xl font-bold text-white mb-1">{name}</h3>
+            <p className="text-sm font-mono text-indigo-400 tracking-wider uppercase">{role}</p>
+        </div>
+    </motion.div>
 );
+
+// FAQ Item Component
+const FAQItem = ({ question, answer }) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    return (
+        <div className="border-t border-neutral-800">
+            <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full py-8 flex justify-between items-start text-left group"
+            >
+                <h3 className="text-xl md:text-3xl font-medium text-white group-hover:text-indigo-400 transition-colors pr-8">
+                    {question}
+                </h3>
+                <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-45 bg-white text-black' : 'text-white'}`}>
+                    <Plus className="w-4 h-4" />
+                </div>
+            </button>
+            <motion.div 
+                initial={false}
+                animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                className="overflow-hidden"
+            >
+                <p className="text-lg text-neutral-400 pb-8 leading-relaxed max-w-3xl">
+                    {answer}
+                </p>
+            </motion.div>
+        </div>
+    );
+};
 
 
 export default function Company() {
@@ -200,24 +236,38 @@ export default function Company() {
                     content: "We are building the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
                 }
             ],
-            ventures: [
+            founders: [
                 {
-                    name: "PlayArts",
-                    desc: "Tracks origin, mutation, and spread of AI media, automating value distribution based on contribution.",
-                    link: "PlayArts",
-                    color: "from-lime-400 to-lime-600"
+                    name: "Steven Park",
+                    role: "Co-Founder & CEO",
+                    bio: "Global GTM & Defense Consulting. Led cross-border AI/Web3 strategy with deep networks in crypto ecosystems and infra partners.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
                 },
                 {
-                    name: "EleMEMEtal",
-                    desc: "Connects behavioral data generated by 'fun/competition' in games to a trustworthy structure.",
-                    link: "Elememetal",
-                    color: "from-orange-400 to-orange-600"
+                    name: "Seongdae Kim",
+                    role: "Co-Founder & CTO",
+                    bio: "Graphics & Systems Expert. Experience at Unity, Netmarble, Smilegate. Expert in real-time graphics, rendering pipelines, and performance-critical systems.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
                 },
                 {
-                    name: "StockHoo",
-                    desc: "Precisely interprets market signals with Token-Specific AI tailored to asset microstructures.",
-                    link: "Stockhoo",
-                    color: "from-emerald-400 to-emerald-600"
+                    name: "Yongwan Kim",
+                    role: "Co-Founder & AI Lead",
+                    bio: "AI & Infra Lead. 10+ years at EA Sports, Netmarble. Expert in GPU optimization, multi-agent systems, and AI infrastructure.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                }
+            ],
+            faq: [
+                {
+                    q: "Are we too early for the AI Trust layer?",
+                    a: "We believe the collapse of trust is happening now. With Deepfakes and AI-generated misinformation scaling, the infrastructure for verification cannot wait."
+                },
+                {
+                    q: "Why combine Gaming, Media, and Infra?",
+                    a: "They are the same problem. Game assets need ownership (EleMEMEtal), Media needs provenance (PlayArts), and both need safe compute (DePIN). We solve the root cause."
+                },
+                {
+                    q: "Is this just another blockchain project?",
+                    a: "No. Blockchain is just the settlement layer. Our core IP is in the AI models (Guardrails) and the off-chain verification nodes."
                 }
             ]
         },
@@ -240,24 +290,38 @@ export default function Company() {
                     content: "우리는 인간성을 잃지 않으면서 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다. 다음 10년을 정의할 시스템, HoloStudio가 만듭니다."
                 }
             ],
-            ventures: [
+            founders: [
                 {
-                    name: "PlayArts",
-                    desc: "AI 미디어의 출처·변형·확산을 추적하고, 기여도에 따라 가치 분배를 자동화합니다.",
-                    link: "PlayArts",
-                    color: "from-lime-400 to-lime-600"
+                    name: "Steven Park",
+                    role: "Co-Founder & CEO",
+                    bio: "Global GTM & Defense Consulting. 크립토 생태계와 인프라 파트너들과의 깊은 네트워크를 바탕으로 크로스보더 AI/Web3 전략을 주도했습니다.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
                 },
                 {
-                    name: "EleMEMEtal",
-                    desc: "게임에서 ‘재미/경쟁’이 만들어내는 행동 데이터를 신뢰 가능한 구조로 연결합니다.",
-                    link: "Elememetal",
-                    color: "from-orange-400 to-orange-600"
+                    name: "Seongdae Kim",
+                    role: "Co-Founder & CTO",
+                    bio: "Graphics & Systems Expert. Unity, Netmarble, Smilegate 출신. 실시간 그래픽스, 렌더링 파이프라인 및 고성능 시스템 전문가.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
                 },
                 {
-                    name: "StockHoo",
-                    desc: "코인(자산)별 미시구조에 맞춘 Token-Specific AI로 시장 신호를 정밀하게 해석합니다.",
-                    link: "Stockhoo",
-                    color: "from-emerald-400 to-emerald-600"
+                    name: "Yongwan Kim",
+                    role: "Co-Founder & AI Lead",
+                    bio: "AI & Infra Lead. EA Sports, Netmarble 10년 이상 경력. GPU 최적화, 멀티 에이전트 시스템 및 AI 인프라 전문가.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                }
+            ],
+            faq: [
+                {
+                    q: "AI 신뢰 레이어 구축, 너무 이른 것 아닌가요?",
+                    a: "신뢰의 붕괴는 이미 시작되었습니다. 딥페이크와 AI 생성 허위 정보가 확산되는 지금, 검증 인프라는 더 이상 기다릴 수 없습니다."
+                },
+                {
+                    q: "왜 게임, 미디어, 인프라를 결합하나요?",
+                    a: "본질적으로 같은 문제입니다. 게임 자산은 소유권(EleMEMEtal)이, 미디어는 출처(PlayArts)가 필요하며, 둘 다 안전한 컴퓨팅(DePIN)이 필요합니다. 우리는 근본 원인을 해결합니다."
+                },
+                {
+                    q: "단순한 블록체인 프로젝트인가요?",
+                    a: "아닙니다. 블록체인은 정산 레이어일 뿐입니다. 우리의 핵심 기술은 AI 모델(Guardrails)과 오프체인 검증 노드에 있습니다."
                 }
             ]
         }
@@ -274,22 +338,15 @@ export default function Company() {
 
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                 {/* Base 3D Background */}
                  <div className={`transition-opacity duration-1000 ${visualState.darker ? 'opacity-30' : 'opacity-60'}`}>
                     <Background3D />
                  </div>
-                 
-                 {/* Overlays */}
                  <div className="absolute inset-0 bg-[#050505] mix-blend-multiply opacity-20" />
-                 
-                 {/* Noise Layer */}
                  <motion.div 
                     animate={{ opacity: visualState.showNoise ? 0.15 : 0 }}
                     transition={{ duration: 1 }}
                     className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
                  />
-                 
-                 {/* Guard Rail Ring */}
                  <motion.div
                     animate={{ 
                         opacity: visualState.showGuardRail ? 1 : 0,
@@ -301,7 +358,6 @@ export default function Company() {
                     <div className="w-[60vh] h-[60vh] rounded-full border border-indigo-500/30 shadow-[0_0_100px_rgba(99,102,241,0.2)] animate-[spin_10s_linear_infinite]" />
                     <div className="absolute w-[50vh] h-[50vh] rounded-full border border-indigo-400/20 animate-[spin_15s_linear_infinite_reverse]" />
                  </motion.div>
-
                  <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505] z-10" />
             </div>
 
@@ -323,30 +379,48 @@ export default function Company() {
                 {/* Team Identity Section */}
                 <TeamIdentity />
 
-                {/* Ventures Section */}
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-40">
-                    <div className="mb-12 border-b border-white/10 pb-4">
-                         <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400">Our Products</h2>
+                {/* Founder Spotlight Section */}
+                <div className="bg-[#0A0A0A] border-y border-neutral-900 py-24 md:py-32">
+                    <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+                            <div>
+                                <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-500 mb-4">Leadership</h2>
+                                <h3 className="text-4xl md:text-6xl font-bold text-white max-w-2xl leading-tight">
+                                    {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
+                                </h3>
+                            </div>
+                            <p className="text-neutral-500 max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base">
+                                {language === 'en' 
+                                    ? "A team combining deep AI research, AAA gaming production, and Web3 economics."
+                                    : "딥 AI 리서치, AAA 게임 프로덕션, 그리고 Web3 경제 설계를 결합한 팀입니다."}
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {c.founders.map((founder, i) => (
+                                <FounderCard key={i} {...founder} delay={i * 0.1} />
+                            ))}
+                        </div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-6 md:gap-8 min-h-[500px] md:h-[400px]">
-                        {c.ventures.map((venture, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="h-full"
-                            >
-                                <VentureCard {...venture} />
-                            </motion.div>
+                </div>
+
+                {/* FAQ Section */}
+                <div className="max-w-[1000px] mx-auto px-6 py-24 md:py-40">
+                    <h2 className="text-[12vw] md:text-[5vw] font-bold text-neutral-800 leading-none mb-16 select-none text-center md:text-left">
+                        FAQ
+                    </h2>
+                    <div className="space-y-2">
+                        {c.faq.map((item, i) => (
+                            <FAQItem key={i} question={item.q} answer={item.a} />
                         ))}
                     </div>
                 </div>
                 
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">Ready to build the trust layer?</h2>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">
+                        {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
+                    </h2>
                     <Link to={createPageUrl('Contact')}>
                         <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105">
                             Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
