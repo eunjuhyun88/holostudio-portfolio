@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, Target, Zap, BarChart3, Users, Milestone, Che
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import SEO from '@/components/SEO';
+import SEO from '@/components/SEO.js';
 
 export default function BusinessLayout({ 
     name, 

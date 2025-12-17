@@ -70,9 +70,6 @@ export default function SEO({
             script.textContent = JSON.stringify(schema);
         }
 
-        // Cleanup function (optional, but good for removing specific tags if needed on unmount, 
-        // though for SPA usually we just overwrite)
-        
     }, [fullTitle, description, image, type, schema, url]);
 
     return null;

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
 import { Download, Shield, Zap, Users, Database, Cpu, Layers, Gamepad2, Network, ArrowRight, CheckCircle2 } from 'lucide-react';
-import SEO from '@/components/SEO';
+import SEO from '@/components/SEO.js';
 
 export default function Company() {
     const { language } = useLanguage();
