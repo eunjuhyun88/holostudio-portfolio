@@ -15,7 +15,7 @@ export default function PerspectiveCrawl({ children }) {
 
     return (
         <div ref={containerRef} className="relative h-[600vh] w-full bg-transparent">
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ perspective: '300px' }}>
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style={{ perspective: '500px' }}>
                 
                 {/* Minimal fade to keep text visible */}
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none" />
@@ -28,7 +28,7 @@ export default function PerspectiveCrawl({ children }) {
                         scale,
                         transformStyle: "preserve-3d"
                     }}
-                    className="w-full mx-auto text-center origin-[50%_100%] px-4 md:px-8"
+                    className="w-[90vw] mx-auto text-center origin-[50%_100%]"
                 >
                     {children}
                 </motion.div>
