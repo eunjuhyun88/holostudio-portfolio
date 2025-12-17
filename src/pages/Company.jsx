@@ -56,7 +56,7 @@ const Word = ({ children, progress, range }) => {
 
 // Timeline Story Component
 const StoryNode = ({ year, headline, content, index }) => (
-    <div className="relative py-24 md:py-32 group">
+    <div className="relative py-12 md:py-20 group">
         {/* Mobile Timeline Line */}
         <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10 md:hidden" />
         
@@ -110,35 +110,38 @@ const ThesisSection = ({ items }) => {
 
 const StickyThesisItem = ({ item, index, total }) => {
     const ref = useRef(null);
+    // Use layout effect for stickiness, but parallax based on viewport
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start end", "end start"]
+        offset: ["start start", "end start"]
     });
+
+    // Parallax and fade effects for content as it scrolls
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
     const isEven = index % 2 === 0;
     
-    // Distinct color palettes for each section based on user screenshots
     const palettes = [
-        { bg: "bg-[#2E0249]", text: "text-[#A91D3A]", accent: "text-[#F1E4C3]" }, // Dark Purple (Reference 1)
-        { bg: "bg-[#000033]", text: "text-[#576CBC]", accent: "text-[#A5D7E8]" }, // Deep Blue (Reference 2)
-        { bg: "bg-[#1A4D2E]", text: "text-[#4F6F52]", accent: "text-[#E8DFCA]" }, // Dark Green (Reference 3)
-        { bg: "bg-[#F5F5F5]", text: "text-[#1A1A1A]", accent: "text-[#FF4C4C]" }, // Light/White (Reference 4)
+        { bg: "bg-[#2E0249]", text: "text-[#A91D3A]", accent: "text-[#F1E4C3]" },
+        { bg: "bg-[#000033]", text: "text-[#576CBC]", accent: "text-[#A5D7E8]" },
+        { bg: "bg-[#1A4D2E]", text: "text-[#4F6F52]", accent: "text-[#E8DFCA]" },
+        { bg: "bg-[#F5F5F5]", text: "text-[#1A1A1A]", accent: "text-[#FF4C4C]" },
     ];
 
     const currentPalette = palettes[index % palettes.length];
-    const isLight = index === 3; // The last one is light based on our cycle
+    const isLight = index === 3;
 
     return (
-        <div ref={ref} className="relative min-h-screen flex items-center sticky top-0">
-            {/* Background Layer with Reveal Effect */}
-            <motion.div 
-                className={`absolute inset-0 ${currentPalette.bg} z-0`}
-                style={{
-                    clipPath: "inset(0 0 0 0)", // Always fully visible as a sticky layer stack
-                }}
-            />
+        <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
+            {/* Background Layer */}
+            <div className={`absolute inset-0 ${currentPalette.bg} z-0`} />
             
-            <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 py-24">
+            <motion.div 
+                style={{ y, opacity, scale }}
+                className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12"
+            >
                  <div className="max-w-6xl">
                     <motion.div 
                         initial={{ opacity: 0, y: 50 }}
@@ -164,7 +167,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         {item.content}
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
