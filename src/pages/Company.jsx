@@ -89,41 +89,58 @@ const Chapter = ({ headline, content, index, onActive, isLast }) => {
     );
 };
 
-// Team Identity Component (Refactored for Founder Spotlight)
+// Team Identity Component - Inspired by Consensys style
 const TeamIdentity = () => (
-    <div className="min-h-[60vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
+    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
         <div className="mb-8 md:mb-16">
-            <div className="w-8 h-8 bg-white mb-8" />
-            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Our DNA</h2>
+            <div className="w-8 h-8 bg-[#9bf00b] mb-8" />
+            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
         </div>
-        
-        <div className="text-[8vw] md:text-[6vw] leading-[1.1] font-bold tracking-tighter text-white select-none">
+
+        <div className="text-[8vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter text-white select-none flex flex-col">
             <motion.div 
-                initial={{ x: -30, opacity: 0 }}
+                initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="flex items-center gap-4 md:gap-8 mb-4 md:mb-0 flex-wrap"
+                transition={{ duration: 0.6 }}
             >
-                <div className="w-[0.6em] h-[0.6em] bg-[#9bf00b] rounded-tl-full flex-shrink-0" />
-                <span>Founders</span>
+                <span className="text-[#9bf00b]">Engineers</span>
             </motion.div>
-            
+
             <motion.div 
-                initial={{ x: -30, opacity: 0 }}
+                initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex items-center gap-4 md:gap-8 md:ml-[1.5em] mb-4 md:mb-0 flex-wrap"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="pl-[1em]"
             >
-                <div className="w-[0.5em] h-[0.5em] border-[0.15em] border-[#ff69b4] flex-shrink-0" />
-                <span>Builders</span>
+                <span className="text-white">Researchers</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="pl-[0.5em]"
+            >
+                <span className="text-[#3b82f6]">Builders</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="pl-[2em]"
+            >
+                <span className="text-[#ff69b4]">Veterans</span>
             </motion.div>
         </div>
 
-        <div className="mt-16 md:mt-24 max-w-2xl ml-auto">
-            <p className="text-lg md:text-2xl text-neutral-400 leading-relaxed">
-                We are a team built at the intersection of AI infrastructure, gaming, and Web3.
+        <div className="mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 border-white/20 pl-8">
+            <p className="text-lg md:text-2xl text-neutral-300 leading-relaxed">
+                We are not new to this game. For over a decade, we have been building the infrastructure that powers millions of users at companies like EA, Netmarble, and Smilegate. Now, we are converging that expertise to build the trust layer for the AI age.
             </p>
         </div>
     </div>
@@ -184,80 +201,80 @@ export default function Company() {
         en: {
             chapters: [
                 {
-                    headline: "The scarce resource is no longer creativity—it is credibility.",
-                    content: "AI has radically lowered the cost of creation, but trust has collapsed. As everyone becomes a media creator, stories move faster than verification. Attribution breaks, accountability fades, and value leaks."
+                    headline: "We saw the convergence 10 years ago.",
+                    content: "Before 'Metaverse' or 'Web3' were buzzwords, we were architects at the world's biggest gaming companies (EA, Netmarble). We spent a decade optimizing virtual economies, managing high-concurrency infrastructure, and building immersive worlds. We knew the physical and digital would eventually merge."
                 },
                 {
-                    headline: "Generative media lacks a native trust layer.",
-                    content: "We treat content not as static files, but as living events—Creation, Verification, Propagation, Settlement. HoloStudio builds the infrastructure where stories are verifiable and contribution is attributable."
+                    headline: "From Gaming to AI: The Evolution.",
+                    content: "Gaming was the training ground. It taught us how to handle millions of transactions, how to prevent fraud in virtual economies, and how to scale simulation. Now, we apply those rigorous standards to AI. We are not just building software; we are building the operating system for the autonomous age."
                 },
                 {
-                    headline: "A unified infrastructure for the Autonomous Age.",
-                    content: "We do not build disconnected products. We build a single coherent system where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is connected."
+                    headline: "We build for the Builders.",
+                    content: "We are engineers, researchers, and builders first. We understand the pain of fragmentation. That's why HoloStudio isn't just a product—it's a cohesive infrastructure. From verifying media provenance to settling agentic value flow, we provide the rails for the next generation of builders."
                 },
                 {
-                    headline: "The future is a choice between chaos and credibility.",
-                    content: "We are building the safeguards that allow generative media to scale without losing humanity. The systems that will define the next decade do not exist yet. We are here to build them."
+                    headline: "Our Vision: The Trust Layer.",
+                    content: "We are building HoloStudio to be the bedrock of credibility in a synthetic world. Our mission is to ensure that as AI scales creativity to infinity, trust remains the anchor. We are here to define the standards of the next digital era."
                 }
             ],
             founders: [
                 {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
-                    bio: "Global GTM & Defense Consulting. Led cross-border AI/Web3 strategy with deep networks in crypto ecosystems and infra partners.",
+                    bio: "Global Strategy & Defense. Led cross-border AI/Web3 strategy connecting Silicon Valley tech with Asian gaming giants. Deep expertise in GTM for decentralized protocols.",
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
                 },
                 {
-                    name: "Seongdae Kim",
+                    name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
-                    bio: "Graphics & Systems Expert. Experience at Unity, Netmarble, Smilegate. Expert in real-time graphics, rendering pipelines, and performance-critical systems.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
+                    bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
                 },
                 {
-                    name: "Yongwan Kim",
-                    role: "Co-Founder & AI Lead",
-                    bio: "AI & Infra Lead. 10+ years at EA Sports, Netmarble. Expert in GPU optimization, multi-agent systems, and AI infrastructure.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                    name: "Seongdae Kim",
+                    role: "Co-Founder & Chief Architect",
+                    bio: "Graphics & Systems Veteran. Former Unity, Netmarble, Smilegate. Master of real-time rendering pipelines and performance-critical systems.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
                 }
             ],
         },
         ko: {
              chapters: [
                 {
-                    headline: "이제 희소한 자원은 창의성이 아니라, '신뢰성'입니다.",
-                    content: "AI는 창작의 비용을 획기적으로 낮췄지만, 신뢰를 무너뜨렸습니다. 모두가 크리에이터가 된 세상에서 이야기는 검증 속도보다 빠르게 확산됩니다. 출처는 끊기고, 책임은 희미해지며, 가치는 누수됩니다."
+                    headline: "10년 전부터 이 교차점을 준비해왔습니다.",
+                    content: "'메타버스'나 'Web3'가 유행하기 훨씬 전부터, 우리는 EA와 넷마블 같은 세계적인 게임 기업의 아키텍트였습니다. 가상 경제 최적화, 대규모 트래픽 인프라 관리, 그리고 몰입형 세계 구축에 10년을 바쳤습니다. 우리는 물리적 세계와 디지털 세계의 융합이 필연적임을 알고 있었습니다."
                 },
                 {
-                    headline: "생성형 미디어에는 '신뢰 레이어'가 필요합니다.",
-                    content: "우리는 콘텐츠를 정적인 파일이 아닌, 생성-검증-전파-정산으로 이어지는 '살아있는 이벤트'로 정의합니다. HoloStudio는 이야기가 검증 가능하고 기여가 투명하게 귀속되는 인프라를 만듭니다."
+                    headline: "게임에서 AI로의 진화.",
+                    content: "게임은 우리의 훈련장이었습니다. 수백만 건의 트랜잭션을 처리하고, 가상 경제 내의 부정행위를 방지하며, 시뮬레이션을 확장하는 법을 배웠습니다. 이제 그 엄격한 기준을 AI에 적용합니다. 우리는 단순한 소프트웨어가 아니라, 자율 에이전트 시대를 위한 운영 체제를 만들고 있습니다."
                 },
                 {
-                    headline: "자율 에이전트 시대를 위한 통합 인프라.",
-                    content: "우리는 분절된 제품이 아닌, 하나의 일관된 시스템을 만듭니다. 신뢰가 확산을 가능하게 하고, 확산이 가치를 창출하는 선순환 구조. 적대적 방어부터 경제적 정산까지 모든 레이어가 연결되어 있습니다."
+                    headline: "빌더를 위해 빌더가 만듭니다.",
+                    content: "우리는 엔지니어이자 연구원이며, 빌더입니다. 파편화된 도구들의 고통을 누구보다 잘 이해합니다. 그래서 HoloStudio는 단순한 제품이 아닌, 응집력 있는 인프라입니다. 미디어 출처 검증부터 에이전트 간 가치 정산까지, 차세대 빌더들을 위한 레일을 제공합니다."
                 },
                 {
-                    headline: "미래는 혼돈과 신뢰 사이의 선택입니다.",
-                    content: "우리는 인간성을 잃지 않으면서 생성형 미디어가 확장될 수 있는 안전장치를 만듭니다. 다음 10년을 정의할 시스템, HoloStudio가 만듭니다."
+                    headline: "우리의 비전: 신뢰 레이어 (Trust Layer).",
+                    content: "우리는 HoloStudio가 합성 현실(Synthetic World)의 신뢰 기반이 되기를 바랍니다. AI가 창의성을 무한대로 확장할 때, '신뢰'가 흔들리지 않도록 하는 것. 그것이 우리의 미션입니다. 우리는 다음 디지털 시대의 표준을 정의하기 위해 여기에 있습니다."
                 }
             ],
             founders: [
                 {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
-                    bio: "Global GTM & Defense Consulting. 크립토 생태계와 인프라 파트너들과의 깊은 네트워크를 바탕으로 크로스보더 AI/Web3 전략을 주도했습니다.",
+                    bio: "Global Strategy & Defense. 실리콘밸리 테크와 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략을 주도했습니다. 탈중앙화 프로토콜 GTM 전문가.",
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/adcd1f3a8_2025-12-1820101.png"
                 },
                 {
-                    name: "Seongdae Kim",
+                    name: "김용완 (Yongwan Kim)",
                     role: "Co-Founder & CTO",
-                    bio: "Graphics & Systems Expert. Unity, Netmarble, Smilegate 출신. 실시간 그래픽스, 렌더링 파이프라인 및 고성능 시스템 전문가.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
+                    bio: "10년 이상의 게임 & 인프라 전문가. EA & 넷마블 출신. Kubernetes, DevOps, 대규모 테스트 자동화 분야의 전문가입니다. 깊이 있는 엔지니어링 역량과 AI 혁신을 결합하여 기술 비전을 이끌고 있습니다.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
                 },
                 {
-                    name: "Yongwan Kim",
-                    role: "Co-Founder & AI Lead",
-                    bio: "AI & Infra Lead. EA Sports, Netmarble 10년 이상 경력. GPU 최적화, 멀티 에이전트 시스템 및 AI 인프라 전문가.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
+                    name: "김성대 (Seongdae Kim)",
+                    role: "Co-Founder & Chief Architect",
+                    bio: "Graphics & Systems Veteran. Unity, 넷마블, 스마일게이트 출신. 실시간 렌더링 파이프라인 및 고성능 시스템 설계의 마스터.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/baf658d9f_2025-12-1820104.png"
                 }
             ],
         }
