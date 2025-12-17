@@ -433,9 +433,11 @@ export default function Home() {
             />
             {/* Section 01: HERO (Pinned) */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-                <CosmicBackground />
+                <div className="absolute inset-0 opacity-30">
+                    <CosmicBackground />
+                </div>
                 {/* 3D Background */}
-                <div className="absolute inset-0 opacity-60">
+                <div className="absolute inset-0 opacity-90">
                     <Background3D />
                 </div>
                 

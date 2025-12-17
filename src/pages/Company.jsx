@@ -461,8 +461,10 @@ export default function Company() {
 
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <CosmicBackground />
-                <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0 opacity-30">
+                    <CosmicBackground />
+                </div>
+                <div className="absolute inset-0 opacity-90">
                     <Background3D />
                 </div>
 
