@@ -155,7 +155,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-5xl md:text-7xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] text-white relative`}>
+                        <h2 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-12 tracking-tighter leading-[0.9] text-white relative`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -164,7 +164,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-xl md:text-3xl lg:text-4xl font-light leading-snug max-w-4xl ml-auto ${currentPalette.text}`}
+                        className={`text-lg md:text-2xl lg:text-3xl font-light leading-snug max-w-4xl ml-auto ${currentPalette.text}`}
                     >
                         {item.content}
                     </motion.div>
@@ -182,7 +182,7 @@ const TeamIdentity = () => (
             <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">Who We Are</h2>
         </div>
 
-        <div className="text-[8vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter text-white select-none flex flex-col">
+        <div className="text-[6vw] md:text-[5vw] leading-[0.9] font-bold tracking-tighter text-white select-none flex flex-col">
             <motion.div 
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -487,7 +487,7 @@ export default function Company() {
                         <div className="flex flex-col md:flex-row justify-between items-end mb-24">
                             <div>
                                 <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-500 mb-4">Leadership</h2>
-                                <h3 className="text-4xl md:text-6xl font-bold text-white max-w-2xl leading-tight">
+                                <h3 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
                                     {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                                 </h3>
                             </div>
@@ -510,7 +510,7 @@ export default function Company() {
                 
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">
                         {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
                     <Link to={createPageUrl('Contact')}>
