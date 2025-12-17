@@ -5,91 +5,98 @@ export default function Elememetal() {
     return (
         <BusinessLayout 
             name="EleMEMEtal"
-            tag="Gaming Economy"
-            oneLiner="A safety-native UGC PvP card battler where skill meets trusted creative freedom."
-            heroImage="EleMEMEtal Game Arena: Action shot of the card battle interface with UGC assets"
+            tag="Competitive Strategy"
+            oneLiner="THINK. GAMBLE. STRIKE. A 5-10 minute competitive card battler where every round is a mind game."
+            heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
             
             problemPoints={[
                 {
-                    title: "Toxic UGC Risks",
-                    description: "Games engaging with UGC often face moderation nightmares, leading to bans and brand damage."
+                    title: "Bank Leverage",
+                    description: "Look weak on purpose to build Power Bank. Sacrifice early rounds to unleash +18 guaranteed damage later."
                 },
                 {
-                    title: "Pay-to-Win Fatigue",
-                    description: "Traditional TCGs rely on expensive card packs, alienating skilled players who want fair competition."
+                    title: "Readable Mastery",
+                    description: "No hidden info besides the hand. Zero RNG damage ranges. The best players win by reading timing, not getting lucky."
                 },
                 {
-                    title: "Lack of Ownership",
-                    description: "Players pour hours into creating assets and strategies but own nothing when the servers shut down."
+                    title: "Skill Gap",
+                    description: "Deterministic outcomes mean the better strategist wins. Limited swing tools force real commitment."
                 }
             ]}
 
             solutionSteps={[
                 {
-                    title: "Safety-Native Design",
-                    description: "We integrate safety checks directly into the creation flow, ensuring all UGC is brand-safe by default."
+                    title: "Core Mechanics: Enhance & Combo",
+                    description: "Merge same-element cards to create a stronger unit. Chain consecutive plays to scale damage x1.3, x1.6, up to x1.9."
                 },
                 {
-                    title: "Strategic Depth",
-                    description: "A 5-10 minute high-density decision game with 'Power Bank' and 'Joker' mechanics for skill-based comebacks."
+                    title: "The X-Factor: Power Bank",
+                    description: "Empty slots aren't wasted—they generate Power Bank points. Spend them for fixed damage that ignores defense."
                 },
                 {
-                    title: "Play-to-Prove",
-                    description: "A meritocratic economy where your skill and creative contributions verify your reputation and earnings."
+                    title: "Game Breaker: Joker System",
+                    description: "Only 5 Jokers per game. Attack, Defense, or Utility. Using them at the perfect moment breaks the meta."
                 }
             ]}
 
             screenshots={[
                 {
-                    url: "Screenshot of the main card battle arena during a match",
-                    caption: "Immersive Card Battle Arena"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/7d50a039d_2025-12-17100209.png",
+                    caption: "Deterministic Combat: Instant Resolution"
                 },
                 {
-                    url: "Interface for customizing and utilizing user-generated assets",
-                    caption: "Asset Customization & Utility"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc19758fb_2025-12-17100150.png",
+                    caption: "The Forge: Craft, Upgrade, Salvage"
                 },
                 {
-                    url: "Deck builder interface showing card collection and strategy",
-                    caption: "Strategic Deck Building"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/86f4b6cbe_2025-12-17100153.png",
+                    caption: "Player Owned Marketplace"
                 },
                 {
-                    url: "Technical architecture diagram of the game infrastructure",
-                    caption: "Scalable Game Infrastructure"
+                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/906125d10_2025-12-17100207.png",
+                    caption: "Joker Genesis: AI-Powered Cards"
                 }
+            ]}
+
+            stats={[
+                { value: "0%", label: "Pay-To-Win" },
+                { value: "100%", label: "Ownership" },
+                { value: "5-10m", label: "Match Time" },
+                { value: "Zero", label: "Randomness" }
             ]}
 
             useCases={[
                 {
-                    title: "Competitive Gamers",
-                    description: "Experience a fair, skill-based meta where prediction and timing beat spending."
+                    title: "Our Mission",
+                    description: "We are gamers building for gamers. We believe in games that respect your time and reward your skill."
                 },
                 {
-                    title: "Creators",
-                    description: "Design unique skins and assets that are verified, usable, and tradable."
+                    title: "True Ownership",
+                    description: "Every card is an NFT. Trade freely. Complete ownership of your achievements and assets."
                 },
                 {
-                    title: "Streamers",
-                    description: "Engage audiences with high-stakes, fast-paced matches perfect for live viewing."
+                    title: "The Team",
+                    description: "Built by veterans from Unity, Netmarble, and Smilegate at the intersection of AI, Gaming, and Web3."
                 }
             ]}
 
-            businessModel="Asset Marketplace Fees + Battle Pass / Season Passes + B2B UGC Safety Module."
+            businessModel="Player-Owned Economy. Craft cards in The Forge using Shards and Dust. Trade on the open marketplace. No card packs, no gacha."
 
             roadmap={[
                 {
-                    quarter: "Q2 2025",
+                    quarter: "Phase 1",
                     title: "Alpha Launch",
-                    items: ["Core PvP Loop", "Basic Asset Minting", "Closed Beta Testing"]
+                    items: ["Simultaneous Turns", "Instant Resolution", "Zero Randomness"]
                 },
                 {
-                    quarter: "Q4 2025",
-                    title: "Creator Economy",
-                    items: ["UGC Marketplace", "Creator Tools v1", "Community Tournaments"]
+                    quarter: "Phase 2",
+                    title: "Joker Genesis",
+                    items: ["AI-Generated Cards", "Experimental Meta", "Unique Abilities"]
                 },
                 {
-                    quarter: "2026",
-                    title: "Metaverse Integration",
-                    items: ["Cross-game Assets", "3D World Expansion", "Mobile Release"]
+                    quarter: "Phase 3",
+                    title: "Global Expansion",
+                    items: ["Mobile Release", "Esports Tournaments", "Cross-IP Collabs"]
                 }
             ]}
         />
