@@ -85,6 +85,10 @@ function LayoutContent({ children }) {
                     font-family: 'Rigid Display', sans-serif !important;
                     font-weight: 500 !important; /* Force lighter weight as requested */
                 }
+                .font-heavy {
+                    font-family: 'Rigid Display', sans-serif !important;
+                    font-weight: 800 !important;
+                }
             `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">
                 Skip to content

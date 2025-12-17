@@ -801,7 +801,7 @@ export default function Home() {
             <section id="products" className="relative z-10">
                 {/* Intro Title */}
                 <div className="absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
-                     <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
+                     <h2 className="text-xl font-heavy text-neutral-500 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
                      <p className="text-xl text-neutral-300">{t.business_intro.sub}</p>
                 </div>
 
