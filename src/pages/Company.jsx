@@ -467,6 +467,8 @@ export default function Company() {
                 <div className="absolute inset-0 opacity-90">
                     <Background3D />
                 </div>
+                
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
 
                  {/* Retain the spinning rings for the tech feel later in scroll */}
                  <motion.div
