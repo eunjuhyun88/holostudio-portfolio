@@ -54,40 +54,49 @@ const Word = ({ children, progress, range }) => {
     );
 };
 
-// Chapter Component
-const Chapter = ({ headline, content, index, onActive, isLast }) => {
-    return (
-        <div className={`min-h-[60vh] flex flex-col justify-center px-6 md:px-12 py-20 ${isLast ? 'pb-32' : ''} border-l border-white/10 md:border-l-0 ml-4 md:ml-0`}>
-            <motion.div 
-                className="max-w-6xl w-full"
-                onViewportEnter={() => onActive(index)}
-                viewport={{ margin: "-20% 0px -20% 0px" }}
-            >
-                <div className="w-12 h-1 bg-white mb-6 md:mb-8 hidden md:block" />
+// Timeline Story Component
+const StoryNode = ({ year, headline, content, index }) => (
+    <div className="relative py-24 md:py-32 group">
+        {/* Mobile Timeline Line */}
+        <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10 md:hidden" />
+        
+        {/* Desktop Center Line */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent hidden md:block" />
 
-                <h2 
-                    className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-white tracking-tight"
-                    style={{ lineHeight: 1.25 }} 
-                >
-                    <ScrollRevealText>
-                        {headline}
-                    </ScrollRevealText>
-                </h2>
-
-                {content && (
-                     <div 
-                        className="text-lg md:text-xl lg:text-2xl text-neutral-400 font-light max-w-4xl"
-                        style={{ lineHeight: 1.6 }}
-                     >
-                        <ScrollRevealText>
-                            {content}
-                        </ScrollRevealText>
+        <div className={`flex flex-col md:flex-row gap-8 md:gap-24 items-center ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+            
+            {/* Year Marker */}
+            <div className="pl-16 md:pl-0 w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-start md:justify-center z-10">
+                 <div className="relative">
+                    <div className="absolute inset-0 bg-indigo-500 blur-xl opacity-20" />
+                    <div className="relative w-auto px-4 h-10 rounded-full border border-indigo-500/30 bg-[#050505] flex items-center justify-center text-indigo-400 font-mono text-sm shadow-lg whitespace-nowrap">
+                        {year}
                     </div>
-                )}
-            </motion.div>
+                 </div>
+            </div>
+
+            {/* Content Side */}
+            <div className={`flex-1 pl-16 md:pl-0 relative ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ margin: "-20%", once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight leading-tight">
+                        {headline}
+                    </h2>
+                    <div className={`text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-2xl ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
+                        {content}
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Empty Side for balance */}
+            <div className="flex-1 hidden md:block" />
         </div>
-    );
-};
+    </div>
+);
 
 // Team Identity Component - Inspired by Consensys style
 const TeamIdentity = () => (
@@ -201,20 +210,24 @@ export default function Company() {
         en: {
             chapters: [
                 {
-                    headline: "We saw the convergence 10 years ago.",
-                    content: "Before 'Metaverse' or 'Web3' were buzzwords, we were architects at the world's biggest gaming companies (EA, Netmarble). We spent a decade optimizing virtual economies, managing high-concurrency infrastructure, and building immersive worlds. We knew the physical and digital would eventually merge."
+                    year: "2014 - 2020",
+                    headline: "The Gaming Era",
+                    content: "Before 'Metaverse' or 'Web3' were buzzwords, we were architects at EA, Netmarble, and Smilegate. We spent a decade optimizing virtual economies and managing high-concurrency infrastructure for millions of users. We learned that digital assets must be as tangible as physical ones."
                 },
                 {
-                    headline: "From Gaming to AI: The Evolution.",
-                    content: "Gaming was the training ground. It taught us how to handle millions of transactions, how to prevent fraud in virtual economies, and how to scale simulation. Now, we apply those rigorous standards to AI. We are not just building software; we are building the operating system for the autonomous age."
+                    year: "2021 - 2023",
+                    headline: "The Convergence",
+                    content: "We saw the collision of AI and Blockchain. Gaming taught us simulation; Crypto taught us settlement. We began building the infrastructure to connect these worlds—solving the 'Oracle Problem' for generative assets."
                 },
                 {
-                    headline: "We build for the Builders.",
-                    content: "We are engineers, researchers, and builders first. We understand the pain of fragmentation. That's why HoloStudio isn't just a product—it's a cohesive infrastructure. From verifying media provenance to settling agentic value flow, we provide the rails for the next generation of builders."
+                    year: "2024",
+                    headline: "Building the Trust Layer",
+                    content: "Generative AI exploded, but trust collapsed. We pivoted our deep infrastructure expertise to build HoloStudio: a unified system for verifying provenance, attribution, and value flow in an age of infinite content."
                 },
                 {
-                    headline: "Our Vision: The Trust Layer.",
-                    content: "We are building HoloStudio to be the bedrock of credibility in a synthetic world. Our mission is to ensure that as AI scales creativity to infinity, trust remains the anchor. We are here to define the standards of the next digital era."
+                    year: "2025 & Beyond",
+                    headline: "The OS for Autonomous Agents",
+                    content: "We are building the operating system where AI agents can trade, create, and interact securely. A world where 'Made by Human' and 'Verified AI' coexist on a trustless settlement layer."
                 }
             ],
             founders: [
@@ -241,20 +254,24 @@ export default function Company() {
         ko: {
              chapters: [
                 {
-                    headline: "10년 전부터 이 교차점을 준비해왔습니다.",
-                    content: "'메타버스'나 'Web3'가 유행하기 훨씬 전부터, 우리는 EA와 넷마블 같은 세계적인 게임 기업의 아키텍트였습니다. 가상 경제 최적화, 대규모 트래픽 인프라 관리, 그리고 몰입형 세계 구축에 10년을 바쳤습니다. 우리는 물리적 세계와 디지털 세계의 융합이 필연적임을 알고 있었습니다."
+                    year: "2014 - 2020",
+                    headline: "The Gaming Era",
+                    content: "EA, 넷마블, 스마일게이트. 우리는 지난 10년간 세계 최고의 게임 회사에서 가상 경제와 대규모 인프라를 설계했습니다. 수백만 유저의 트래픽을 처리하며, 디지털 자산이 물리적 자산만큼 견고해야 함을 배웠습니다."
                 },
                 {
-                    headline: "게임에서 AI로의 진화.",
-                    content: "게임은 우리의 훈련장이었습니다. 수백만 건의 트랜잭션을 처리하고, 가상 경제 내의 부정행위를 방지하며, 시뮬레이션을 확장하는 법을 배웠습니다. 이제 그 엄격한 기준을 AI에 적용합니다. 우리는 단순한 소프트웨어가 아니라, 자율 에이전트 시대를 위한 운영 체제를 만들고 있습니다."
+                    year: "2021 - 2023",
+                    headline: "The Convergence",
+                    content: "AI와 블록체인의 충돌을 목격했습니다. 게임은 우리에게 시뮬레이션을, 크립토는 정산을 가르쳐주었습니다. 우리는 이 두 세계를 연결하는 인프라를 구축하기 시작했고, 생성형 자산을 위한 '오라클 문제'를 해결하는 데 집중했습니다."
                 },
                 {
-                    headline: "빌더를 위해 빌더가 만듭니다.",
-                    content: "우리는 엔지니어이자 연구원이며, 빌더입니다. 파편화된 도구들의 고통을 누구보다 잘 이해합니다. 그래서 HoloStudio는 단순한 제품이 아닌, 응집력 있는 인프라입니다. 미디어 출처 검증부터 에이전트 간 가치 정산까지, 차세대 빌더들을 위한 레일을 제공합니다."
+                    year: "2024",
+                    headline: "Building the Trust Layer",
+                    content: "생성형 AI의 폭발과 함께 신뢰는 붕괴했습니다. 우리는 축적된 인프라 전문성을 바탕으로 HoloStudio를 구축했습니다. 무한한 콘텐츠의 시대에 출처, 기여, 가치 흐름을 투명하게 검증하는 통합 시스템입니다."
                 },
                 {
-                    headline: "우리의 비전: 신뢰 레이어 (Trust Layer).",
-                    content: "우리는 HoloStudio가 합성 현실(Synthetic World)의 신뢰 기반이 되기를 바랍니다. AI가 창의성을 무한대로 확장할 때, '신뢰'가 흔들리지 않도록 하는 것. 그것이 우리의 미션입니다. 우리는 다음 디지털 시대의 표준을 정의하기 위해 여기에 있습니다."
+                    year: "2025 & Beyond",
+                    headline: "The OS for Autonomous Agents",
+                    content: "우리는 AI 에이전트들이 안전하게 거래하고, 창작하고, 상호작용할 수 있는 운영 체제를 만듭니다. '인간의 창작'과 '검증된 AI'가 신뢰할 수 있는 정산 레이어 위에서 공존하는 세상을 만듭니다."
                 }
             ],
             founders: [
@@ -316,15 +333,26 @@ export default function Company() {
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div className="max-w-[1400px] mx-auto">
+                <div className="max-w-[1400px] mx-auto pt-24 pb-24 px-6 md:px-12">
+                     {/* Intro Text */}
+                     <div className="text-center max-w-4xl mx-auto mb-32">
+                        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">
+                            {language === 'en' ? "From Gaming Architects to AI Trust Builders." : "게임 아키텍트에서 AI 신뢰 설계자로."}
+                        </h1>
+                        <p className="text-xl text-neutral-400 leading-relaxed">
+                            {language === 'en' 
+                                ? "We didn't just stumble upon AI. We've been building the prerequisites for this era for a decade." 
+                                : "우리는 AI 시대를 우연히 맞이하지 않았습니다. 지난 10년간 이 시대를 위한 전제 조건들을 구축해왔습니다."}
+                        </p>
+                     </div>
+
                     {c.chapters.map((chapter, i) => (
-                        <Chapter 
+                        <StoryNode 
                             key={i}
+                            year={chapter.year}
                             headline={chapter.headline}
                             content={chapter.content}
                             index={i}
-                            onActive={setActiveIndex}
-                            isLast={i === c.chapters.length - 1}
                         />
                     ))}
                 </div>
