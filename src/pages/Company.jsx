@@ -207,7 +207,7 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
         <div className="space-y-4 pr-4">
             <div>
                 <h3 className="text-3xl font-bold text-white mb-1">{name}</h3>
-                <p className="text-sm font-thin text-indigo-400 tracking-wider uppercase">{role}</p>
+                <p className="text-sm font-mono text-indigo-400 tracking-wider uppercase">{role}</p>
             </div>
             
             <div className="w-12 h-px bg-white/20" />
@@ -520,7 +520,7 @@ export default function Company() {
                             <motion.h3 
                                 initial={{ opacity: 0 }} 
                                 whileInView={{ opacity: 1 }}
-                                className="text-xl md:text-2xl text-neutral-400 font-thin uppercase tracking-[0.2em] mb-48"
+                                className="text-xl md:text-2xl text-neutral-400 font-mono uppercase tracking-[0.2em] mb-48"
                             >
                                 {c.intro.subtitle}
                             </motion.h3>
@@ -548,7 +548,7 @@ export default function Company() {
                                 <motion.div 
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
-                                    className="text-indigo-400 font-thin text-2xl tracking-[0.3em] mb-12 border-y-2 border-indigo-500/50 py-4 w-full uppercase bg-indigo-500/10"
+                                    className="text-indigo-400 font-mono text-2xl tracking-[0.3em] mb-12 border-y-2 border-indigo-500/50 py-4 w-full uppercase bg-indigo-500/10"
                                 >
                                     {chapter.year}
                                 </motion.div>

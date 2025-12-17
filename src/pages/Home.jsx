@@ -451,7 +451,7 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-thin tracking-[0.2em] uppercase backdrop-blur-sm">
+                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
                         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
@@ -460,7 +460,7 @@ export default function Home() {
                         <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
                             {t.hero.sub}
                             <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-sm md:text-base mt-4 block font-thin">{t.hero.desc}</span>
+                            <span className="text-neutral-500 text-sm md:text-base mt-4 block font-mono">{t.hero.desc}</span>
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
@@ -553,7 +553,7 @@ export default function Home() {
             <section className="py-32 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
-                        <h2 className="text-sm font-thin text-indigo-500 mb-4 uppercase tracking-widest">{t.problem.title}</h2>
+                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.problem.title}</h2>
                         <h3 className="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
                             {t.problem.sub}
                         </h3>
@@ -588,7 +588,7 @@ export default function Home() {
             <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/30 backdrop-blur-md">
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20">
-                        <h2 className="text-sm font-thin text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
+                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
                         <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
                         <p className="text-lg md:text-xl text-neutral-400 max-w-3xl leading-relaxed">
                             We are building the fundamental safety and value layers for the autonomous AI economy.
@@ -607,7 +607,7 @@ export default function Home() {
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
                                     <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group backdrop-blur-sm">
-                                        <div className="text-xs font-thin text-indigo-500 mb-3">0{i+1}</div>
+                                        <div className="text-xs font-mono text-indigo-500 mb-3">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
                                         <div className="text-xs text-neutral-500 leading-relaxed">{step.desc}</div>
                                     </div>
@@ -672,7 +672,7 @@ export default function Home() {
                                     className="relative z-10 border border-white/10 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-thin">Application Layer</div>
+                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group">
                                             <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
@@ -707,7 +707,7 @@ export default function Home() {
                                     className="relative z-10 border border-indigo-500/20 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-thin">Trust & Verification Protocols</div>
+                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group">
                                             <div className="relative">
@@ -748,7 +748,7 @@ export default function Home() {
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="flex items-center justify-between mb-4">
-                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold font-thin">DePIN GPU Mesh</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold font-mono">DePIN GPU Mesh</div>
                                         <div className="flex gap-1">
                                             <span className="relative flex h-2 w-2">
                                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -780,11 +780,11 @@ export default function Home() {
             {/* Section 04: COMPANY THESIS */}
             <section className="py-24 border-y border-white/10 text-center relative z-10 bg-transparent">
                 <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-xs font-thin text-neutral-500 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
+                    <h2 className="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
                     <p className="text-2xl md:text-4xl font-medium leading-tight mb-12">
                         "{t.thesis.main}"
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-thin text-neutral-400">
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono text-neutral-400">
                         {t.thesis.keywords.map((kw, i) => (
                             <span key={i} className="flex items-center gap-2">
                                 <span className={`w-2 h-2 rounded-full ${['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]}`}></span>
@@ -845,7 +845,7 @@ export default function Home() {
                                             {/* Decorative UI Overlay */}
                                             <div className="absolute top-6 left-6 flex items-center gap-2">
                                                 <div className={`w-2 h-2 rounded-full ${prod.color.replace('text-', 'bg-')} animate-pulse`} />
-                                                <div className={`text-xs font-thin ${prod.color} tracking-widest`}>LIVE_VIEW</div>
+                                                <div className={`text-xs font-mono ${prod.color} tracking-widest`}>LIVE_VIEW</div>
                                             </div>
                                             
                                             <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
@@ -884,7 +884,7 @@ export default function Home() {
                                                     <span className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_10px_currentColor]`} />
                                                     {prod.tag[language]}
                                                 </div>
-                                                <div className={`text-xs md:text-sm font-thin ${prod.color} opacity-50`}>0{idx + 1}</div>
+                                                <div className={`text-xs md:text-sm font-mono ${prod.color} opacity-50`}>0{idx + 1}</div>
                                             </div>
 
                                             <h3 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight">
