@@ -10,7 +10,7 @@ export default function PerspectiveCrawl({ children }) {
 
     const rotateX = 25; // Constant tilt
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
     return (
