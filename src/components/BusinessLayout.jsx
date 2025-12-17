@@ -183,9 +183,9 @@ export default function BusinessLayout({
             <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 md:py-40">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
-                    {/* LEFT COLUMN - Sticky Sidebar */}
+                    {/* LEFT COLUMN - Sidebar */}
                     <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1">
-                        <div className="lg:sticky lg:top-32 space-y-8">
+                        <div className="space-y-8">
                             <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                                 Back to Products

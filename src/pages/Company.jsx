@@ -171,30 +171,14 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
 
 // FAQ Item Component
 const FAQItem = ({ question, answer }) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
     return (
-        <div className="border-t border-neutral-800">
-            <button 
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full py-8 flex justify-between items-start text-left group"
-            >
-                <h3 className="text-xl md:text-3xl font-medium text-white group-hover:text-indigo-400 transition-colors pr-8">
-                    {question}
-                </h3>
-                <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-45 bg-white text-black' : 'text-white'}`}>
-                    <Plus className="w-4 h-4" />
-                </div>
-            </button>
-            <motion.div 
-                initial={false}
-                animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                className="overflow-hidden"
-            >
-                <p className="text-lg text-neutral-400 pb-8 leading-relaxed max-w-3xl">
-                    {answer}
-                </p>
-            </motion.div>
+        <div className="border-t border-neutral-800 py-8">
+            <h3 className="text-xl md:text-3xl font-medium text-white mb-6 pr-8">
+                {question}
+            </h3>
+            <p className="text-lg text-neutral-400 leading-relaxed max-w-3xl">
+                {answer}
+            </p>
         </div>
     );
 };
