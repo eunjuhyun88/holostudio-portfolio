@@ -25,7 +25,7 @@ const Starfield = ({ speed = 0.1, density = 400 }) => {
             x: Math.random() * width,
             y: Math.random() * height,
             z: Math.random() * 2 + 0.5, // Depth factor for parallax
-            size: Math.random() * 1.5,
+            size: Math.random() * 0.8,
             alpha: Math.random(),
             twinkleSpeed: Math.random() * 0.02 + 0.005
         }));
