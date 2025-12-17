@@ -196,59 +196,73 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section D: Our Business Lines */}
-            <section id="businesses" className="py-24 bg-[#050505]">
+            {/* Section D: Our Business Lines (Sticky Scroll Layout) */}
+            <section id="businesses" className="py-32 bg-[#050505]">
                 <div className="max-w-7xl mx-auto px-6">
-                    <motion.div {...fadeIn} className="mb-16">
-                        <span className="text-indigo-500 font-semibold tracking-wide uppercase text-sm">Portfolio</span>
-                        <h2 className="text-4xl font-bold tracking-tight mt-2 mb-4 text-white">Our Business Lines</h2>
-                        <p className="text-xl text-neutral-400 max-w-2xl">
-                            HOLOSTUDIO operates four independent business lines, each targeting a distinct market segment with specialized AI technology.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {businessLines.map((biz, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                                className="group relative bg-[#0A0A0A] rounded-xl border border-neutral-800 overflow-hidden hover:border-indigo-500/50 transition-all duration-300 flex flex-col h-full"
-                            >
-                                <Link to={createPageUrl(biz.path.substring(1))} className="flex flex-col h-full">
-                                    <div className="aspect-video bg-neutral-900 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-neutral-800 transition-colors">
-                                        <div className="text-center z-10">
-                                            <div className="font-semibold text-neutral-300 mb-2">{biz.name} Preview</div>
-                                            <p className="text-neutral-500 text-sm">{biz.image}</p>
-                                        </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                            <span className="text-white font-medium flex items-center gap-2">
-                                                View Details <ArrowRight className="w-4 h-4" />
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="p-8 flex flex-col flex-grow">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <div className={`p-3 rounded-lg border ${biz.bgColor} ${biz.color}`}>
-                                                <biz.icon className="w-6 h-6" />
-                                            </div>
-                                            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 border border-neutral-800 px-3 py-1 rounded-full">
-                                                {biz.tag}
-                                            </span>
-                                        </div>
-                                        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-indigo-500 transition-colors">{biz.name}</h3>
-                                        <p className="text-neutral-400 leading-relaxed mb-6 flex-grow">
-                                            {biz.description}
+                    <div className="flex flex-col lg:flex-row gap-16">
+                        {/* Sticky Sidebar */}
+                        <div className="lg:w-1/3">
+                            <div className="lg:sticky lg:top-32">
+                                <motion.div {...fadeIn}>
+                                    <span className="text-indigo-500 font-mono text-sm tracking-wider uppercase mb-4 block">Portfolio</span>
+                                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white leading-tight">
+                                        Our Business <br/> Lines
+                                    </h2>
+                                    <p className="text-xl text-neutral-400 leading-relaxed mb-8">
+                                        HOLOSTUDIO operates four independent business lines, each targeting a distinct market segment with specialized AI technology.
+                                    </p>
+                                    <div className="hidden lg:block">
+                                        <div className="h-1 w-20 bg-indigo-600 rounded-full mb-8"></div>
+                                        <p className="text-sm text-neutral-500">
+                                            Scroll to explore <ArrowRight className="inline w-4 h-4 ml-1 rotate-90" />
                                         </p>
-                                        <div className="flex items-center text-indigo-500 font-semibold mt-auto">
-                                            Learn more <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                                        </div>
                                     </div>
-                                </Link>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            </div>
+                        </div>
+
+                        {/* Scrollable Content */}
+                        <div className="lg:w-2/3 space-y-12">
+                            {businessLines.map((biz, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.7 }}
+                                    className="group relative bg-[#0A0A0A] rounded-2xl border border-neutral-800 overflow-hidden hover:border-indigo-500/30 transition-all duration-500"
+                                >
+                                    <Link to={createPageUrl(biz.path.substring(1))} className="grid md:grid-cols-2 gap-0 h-full">
+                                        {/* Image Section */}
+                                        <div className="aspect-video md:aspect-auto md:h-full bg-neutral-900 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-neutral-800 transition-colors">
+                                            <div className="text-center z-10 relative">
+                                                <div className="p-4 bg-[#050505]/50 backdrop-blur-md rounded-xl border border-white/5 inline-block mb-3">
+                                                    <biz.icon className={`w-8 h-8 ${biz.color}`} />
+                                                </div>
+                                                <div className="font-mono text-xs text-neutral-400 uppercase tracking-widest">{biz.tag}</div>
+                                            </div>
+                                            {/* Abstract background gradient */}
+                                            <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${biz.color.replace('text-', 'from-')}/20 to-transparent`} />
+                                        </div>
+
+                                        {/* Content Section */}
+                                        <div className="p-8 md:p-10 flex flex-col justify-center">
+                                            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-indigo-500 transition-colors">{biz.name}</h3>
+                                            <p className="text-neutral-400 leading-relaxed mb-8">
+                                                {biz.description}
+                                            </p>
+                                            
+                                            <div className="flex items-center text-white font-medium text-sm mt-auto group/link">
+                                                <span className="border-b border-transparent group-hover/link:border-indigo-500 group-hover/link:text-indigo-500 transition-colors">
+                                                    Explore {biz.name}
+                                                </span>
+                                                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1 group-hover/link:text-indigo-500" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
