@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform, useInView, AnimatePresence } from "fra
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import SEO from '@/components/SEO';
-import { PoCVisual, MemePingVisual, INFTVisual } from '@/components/ResearchVisuals';
+import Roadmap from '@/components/Roadmap';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -193,66 +193,6 @@ export default function Home() {
     };
 
     const [activeStage, setActiveStage] = useState(0);
-
-    const ResearchItem = ({ item }) => {
-        const [isOpen, setIsOpen] = useState(false);
-        
-        return (
-            <motion.div 
-                layout
-                onClick={() => setIsOpen(!isOpen)}
-                className={`border-t border-neutral-800 pt-6 transition-all cursor-pointer group relative overflow-hidden ${isOpen ? 'md:col-span-2 md:row-span-2 bg-neutral-900/30 rounded-2xl p-6 border-transparent' : 'hover:border-indigo-500'}`}
-            >
-                <motion.div layout className="flex justify-between items-start mb-2">
-                    <div className="text-xs text-neutral-500 font-mono">{item.date}</div>
-                    <motion.div 
-                        animate={{ rotate: isOpen ? 45 : 0 }}
-                        className="text-neutral-500 group-hover:text-indigo-400"
-                    >
-                        <Plus className="w-4 h-4" />
-                    </motion.div>
-                </motion.div>
-                
-                <motion.h3 layout className={`text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors ${isOpen ? 'text-2xl text-indigo-400' : ''}`}>
-                    {item.title}
-                </motion.h3>
-                
-                <motion.p layout className="text-sm text-neutral-400 mb-4 leading-relaxed">
-                    {item.desc}
-                </motion.p>
-
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="overflow-hidden"
-                        >
-                            <div className="pt-4 border-t border-white/5 space-y-4">
-                                {/* Visuals based on ID */}
-                                {item.id === 'poc' && <PoCVisual />}
-                                {item.id === 'memeping' && <MemePingVisual />}
-                                {item.id === 'inft' && <INFTVisual />}
-
-                                <div className="text-sm text-neutral-300 leading-relaxed bg-black/20 p-4 rounded-lg border border-white/5">
-                                    {item.details}
-                                </div>
-                                
-                                <div className="flex gap-2 flex-wrap pt-2">
-                                    {item.tags.map((tag, i) => (
-                                        <span key={i} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.div>
-        );
-    };
 
 
 
@@ -771,23 +711,12 @@ export default function Home() {
                  </div>
             </section>
 
-            {/* Section 09: RESEARCH / UPDATES (Feed) */}
-            <section id="research" className="py-24 bg-[#050505]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex justify-between items-end mb-12">
-                        <h2 className="text-2xl font-bold">{t.research.title}</h2>
-                        <Button variant="link" className="text-indigo-400">{t.research.viewAll}</Button>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <AnimatePresence mode="wait">
-                            {t.research.items.map((item, idx) => (
-                                <ResearchItem key={idx} item={item} />
-                            ))}
-                        </AnimatePresence>
-                    </div>
-                </div>
-            </section>
+            {/* Section 09: ROADMAP / RESEARCH */}
+            <Roadmap 
+                items={t.research.items} 
+                title={t.research.title} 
+                viewAllText={t.research.viewAll} 
+            />
 
             {/* Section 10: CONTACT */}
             <section className="py-32 bg-[#050505] border-t border-neutral-900">
