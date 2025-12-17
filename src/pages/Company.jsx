@@ -55,10 +55,14 @@ const ScrollRevealText = ({ children, className = "" }) => {
 };
 
 // Chapter Component
-const Chapter = ({ title, headline, content, index, isLast }) => {
+const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
     return (
         <div className={`min-h-screen flex flex-col justify-center px-6 md:px-12 py-24 ${isLast ? 'pb-40' : ''}`}>
-            <div className="max-w-4xl">
+            <motion.div 
+                className="max-w-4xl"
+                onViewportEnter={() => onActive(index)}
+                viewport={{ margin: "-40% 0px -40% 0px" }}
+            >
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +85,7 @@ const Chapter = ({ title, headline, content, index, isLast }) => {
                         </ScrollRevealText>
                     </div>
                 )}
-            </div>
+            </motion.div>
         </div>
     );
 };
@@ -104,144 +108,168 @@ const VentureCard = ({ name, description, link }) => (
 
 export default function Company() {
     const { language } = useLanguage();
+    const [activeIndex, setActiveIndex] = React.useState(0);
     
-    // Using Korean as primary source as per prompt, English as fallback/translation
+    // Visual State Management
+    const visualState = useMemo(() => {
+        // Defines the visual overlays active for each chapter index
+        // 0: Hero, 1: Shift, 2: Break, 3: Position, 4: Guardian, 5: Web3, 6: Build, 7: Products, 8: Who, 9: CTA
+        return {
+            showNoise: [1, 2].includes(activeIndex),
+            showGuardRail: [3, 4].includes(activeIndex),
+            showLines: [2].includes(activeIndex), // Broken lines
+            showRouting: [6].includes(activeIndex),
+            showVerification: [5].includes(activeIndex),
+            darker: [0, 9].includes(activeIndex),
+        };
+    }, [activeIndex]);
+
     const content = {
         ko: {
             chapters: [
                 {
-                    title: "CHAPTER 0 — HERO",
-                    headline: "HoloStudio는 AI 시대의 ‘신뢰 가능한 안전장치’를 만든다.",
-                    content: "AI는 무한히 생성하고 퍼뜨리지만, 신뢰와 책임은 자동으로 따라오지 않습니다. 우리는 검증 가능한 구조로 그 공백을 메웁니다."
+                    title: "CH0 — HERO",
+                    headline: "We build trust for the AI-native world.",
+                    content: "AI가 콘텐츠·거래·의사결정을 대량 생산하는 시대에, 가장 희소한 자원은 ‘정보’가 아니라 신뢰입니다. HoloStudio는 AI가 만든 결과가 안전하고, 검증 가능하며, 책임 있게 유통되도록 하는 안전장치를 설계합니다."
                 },
                 {
-                    title: "CHAPTER 1 — THE SHIFT",
-                    headline: "이제 누구나 직접 말하고, 직접 확산시키는 시대다.",
-                    content: "소셜, 유튜브, 팟캐스트, 뉴스레터… 기업과 개인 모두가 미디어가 됐습니다. 하지만 직접 말하기 시작하면 ‘신뢰 비용’이 폭증합니다."
+                    title: "CH1 — THE SHIFT",
+                    headline: "AI가 “생성”을 넘어 “행동”하는 시대로 들어왔습니다.",
+                    content: "모델은 이제 문장을 만들 뿐 아니라, 자동으로 배포하고, 거래하고, 상호작용합니다. 문제는 속도가 아니라, 그 과정이 증명되지 않는다는 것입니다."
                 },
                 {
-                    title: "CHAPTER 2 — THE BREAKDOWN",
-                    headline: "퍼지는 속도만 남고, 출처·크레딧·책임은 끊긴다.",
-                    content: "누가 만들었는지, 어디서 변형됐는지, 무엇이 원본인지—기록이 끊어집니다. AI는 이 단절을 더 빠르게, 더 크게 만듭니다."
+                    title: "CH2 — THE BREAK",
+                    headline: "When verification disappears, the internet breaks.",
+                    content: "무엇이 진짜였는지(출처), 누가 책임지는지(책임), 누가 기여했는지(크레딧)가 끊기면 AI는 혁신이 아니라 위험의 증폭기가 됩니다."
                 },
                 {
-                    title: "CHAPTER 3 — THE MISDIAGNOSIS",
-                    headline: "사람들은 ‘스토리텔러’를 찾지만, 근본 문제는 ‘스토리’가 아니다.",
-                    content: "인력을 늘려도 파생과 채널 확산은 사람의 처리량을 초과합니다. 필요한 것은 더 많은 카피가 아니라, 신뢰가 유지되는 운영 시스템입니다."
+                    title: "CH3 — OUR POSITION",
+                    headline: "신뢰는 ‘규칙’이 아니라 ‘인프라’여야 합니다.",
+                    content: "정책·약관·사후 신고는 늦습니다. 우리는 생성/유통/행동의 경계(boundary)에서 검증이 시작되는 구조를 만듭니다."
                 },
                 {
-                    title: "CHAPTER 4 — THE REAL PROBLEM",
-                    headline: "핵심 병목은 ‘메시지’가 아니라 ‘검증과 정산’이다.",
-                    content: "출처는 어떻게 남기는가. 기여는 어떻게 귀속되는가. 확산은 어떻게 측정되는가. 가치는 어떻게 안전하게 분배되는가. 이 구조가 없으면 신뢰도 수익도 계속 누수됩니다."
+                    title: "CH4 — AiD GUARDIAN",
+                    headline: "AiD Guardian is our safety layer.",
+                    content: "AiD Guardian은 AI 결과물/행동의 흐름에 검증 가능한 가드레일을 삽입합니다. 검증은 “나중에 확인”이 아니라, 처음부터 증명 가능한 상태로 만드는 것입니다."
                 },
                 {
-                    title: "CHAPTER 5 — WHAT WE BUILD",
-                    headline: "HoloStudio는 검증 가능한 안전장치(Guardrails)를 설계한다.",
-                    content: "우리는 신뢰·검증·책임·정산이 끊기지 않도록 시스템 레벨의 가드레일을 구축합니다. 이것이 AI 시대에 우리가 정체성을 강화하는 방식입니다."
+                    title: "CH5 — WHY WEB3 HERE",
+                    headline: "Web3 makes verification composable.",
+                    content: "검증 가능한 기록, 공개 가능한 증명, 그리고 자동 정산은 AI 시대의 신뢰를 프로토콜처럼 재사용할 수 있게 만듭니다."
                 },
                 {
-                    title: "CHAPTER 6 — WHY WEB3 × AI",
-                    headline: "AI가 ‘생성과 행동’을 만들고, Web3는 ‘검증과 권리’를 시스템으로 만든다.",
-                    content: "AI만으로는 신뢰가 자동으로 생기지 않고, Web3만으로는 확장성과 사용성이 부족합니다. 우리는 두 흐름을 결합해 ‘검증 가능한 미래’를 현실화합니다."
+                    title: "CH6 — HOW WE BUILD",
+                    headline: "Trust becomes proof. Proof becomes value.",
+                    content: "HoloStudio는 “무엇을 믿을 수 있는가”를 증명 단위로 바꾸고, 그 증명이 실제 제품/시장 안에서 가치 흐름으로 이어지게 설계합니다."
                 },
                 {
-                    title: "CHAPTER 7 — OUR VENTURES",
-                    headline: "HoloStudio는 하나의 코어 역량 위에서 여러 사업을 확장한다.",
-                    content: "각 사업은 다른 시장에 있지만, 모두 같은 질문을 해결합니다: “무엇이 진짜이며, 누구에게 귀속되는가?” 우리는 이를 각 도메인에서 제품으로 증명합니다."
+                    title: "CH7 — OUR PRODUCTS",
+                    headline: "We ship products that prove the thesis.",
+                    content: "HoloStudio는 하나의 세계관을 말로 설명하지 않습니다. 제품으로 증명합니다."
+                },
+                {
+                    title: "CH8 — WHO WE ARE",
+                    headline: "Engineers. Researchers. Builders.",
+                    content: "우리는 제품을 만드는 팀이자, 신뢰 인프라를 설계하는 팀입니다. AI와 Web3가 만나는 지점에서, 검증과 안전장치의 표준을 만듭니다."
+                },
+                {
+                    title: "CH9 — JOIN US",
+                    headline: "If you’re building in AI × Web3, let’s build trust together.",
+                    content: "파트너십, 투자, 채용, 공동 연구. HoloStudio의 검증 레이어 위에서 함께 확장할 수 있습니다."
                 }
             ],
             ventures: [
                 {
                     name: "PlayArts",
-                    desc: "AI 생성 콘텐츠의 출처 증명과 확산 기반 가치 분배.",
+                    desc: "AI 미디어의 출처·변형·확산을 추적하고, 기여도에 따라 가치 분배를 자동화합니다.",
                     link: "PlayArts"
                 },
                 {
                     name: "EleMEMEtal",
-                    desc: "미디어·게임·밈이 결합된 참여형 IP 실험.",
+                    desc: "게임에서 ‘재미/경쟁’이 만들어내는 행동 데이터를 신뢰 가능한 구조로 연결합니다.",
                     link: "Elememetal"
                 },
                 {
                     name: "StockHoo",
-                    desc: "토큰 단위로 특화된 AI 시장 인텔리전스 엔진.",
+                    desc: "코인(자산)별 미시구조에 맞춘 Token-Specific AI로 시장 신호를 정밀하게 해석합니다.",
                     link: "Stockhoo"
                 }
-            ],
-            cta: {
-                headline: "우리는 ‘말’이 아니라 ‘구조’로 신뢰를 만든다.",
-                sub: "파트너십, 투자, 채용—HoloStudio의 방향성과 실행에 함께할 분을 찾습니다.",
-                button: "Connect With Us"
-            }
+            ]
         },
         en: {
              chapters: [
                 {
-                    title: "CHAPTER 0 — HERO",
-                    headline: "HoloStudio builds the 'Trusted Guardrails' for the AI Era.",
-                    content: "AI generates and spreads infinitely, but trust and responsibility do not follow automatically. We fill that gap with verifiable structures."
+                    title: "CH0 — HERO",
+                    headline: "We build trust for the AI-native world.",
+                    content: "In an era where AI mass-produces content, transactions, and decisions, the scarcest resource is not 'information' but trust. HoloStudio designs safety mechanisms to ensure AI outputs are safe, verifiable, and responsibly distributed."
                 },
                 {
-                    title: "CHAPTER 1 — THE SHIFT",
-                    headline: "An era where everyone speaks and distributes directly.",
-                    content: "Social, YouTube, Podcasts, Newsletters… Companies and individuals have all become media. But as direct speech increases, the 'cost of trust' skyrockets."
+                    title: "CH1 — THE SHIFT",
+                    headline: "AI has moved beyond “Creation” to “Action”.",
+                    content: "Models now not only generate text but automatically distribute, trade, and interact. The problem is not the speed, but that the process remains unverified."
                 },
                 {
-                    title: "CHAPTER 2 — THE BREAKDOWN",
-                    headline: "Only speed remains; Source, Credit, and Responsibility are severed.",
-                    content: "Who made it? Where was it transformed? What is the original? The record is broken. AI accelerates and amplifies this disconnection."
+                    title: "CH2 — THE BREAK",
+                    headline: "When verification disappears, the internet breaks.",
+                    content: "If origin (provenance), responsibility (accountability), and contribution (credit) are severed, AI becomes an amplifier of risk rather than innovation."
                 },
                 {
-                    title: "CHAPTER 3 — THE MISDIAGNOSIS",
-                    headline: "People look for 'Storytellers', but the root problem isn't the 'Story'.",
-                    content: "Even with more people, derivatives and channel diffusion exceed human throughput. What is needed is not more copy, but an operating system that maintains trust."
+                    title: "CH3 — OUR POSITION",
+                    headline: "Trust must be ‘Infrastructure’, not ‘Rules’.",
+                    content: "Policies and post-incident reporting are too late. We build structures where verification begins at the boundary of generation, distribution, and action."
                 },
                 {
-                    title: "CHAPTER 4 — THE REAL PROBLEM",
-                    headline: "The bottleneck is not 'Message', but 'Verification & Settlement'.",
-                    content: "How to preserve provenance? How to attribute contribution? How to measure distribution? How to safely distribute value? Without this structure, trust and revenue leak."
+                    title: "CH4 — AiD GUARDIAN",
+                    headline: "AiD Guardian is our safety layer.",
+                    content: "AiD Guardian inserts verifiable guardrails into the flow of AI outputs and actions. Verification is not about \"checking later,\" but making it provable from the start."
                 },
                 {
-                    title: "CHAPTER 5 — WHAT WE BUILD",
-                    headline: "HoloStudio designs Verifiable Guardrails.",
-                    content: "We build system-level guardrails so trust, verification, responsibility, and settlement are not broken. This is how we reinforce identity in the AI era."
+                    title: "CH5 — WHY WEB3 HERE",
+                    headline: "Web3 makes verification composable.",
+                    content: "Verifiable records, public proofs, and automated settlement make trust in the AI era reusable like a protocol."
                 },
                 {
-                    title: "CHAPTER 6 — WHY WEB3 × AI",
-                    headline: "AI creates 'Generation & Action', Web3 creates 'Verification & Rights' as a system.",
-                    content: "AI alone does not create trust; Web3 alone lacks scalability and usability. We combine the two to realize a 'Verifiable Future'."
+                    title: "CH6 — HOW WE BUILD",
+                    headline: "Trust becomes proof. Proof becomes value.",
+                    content: "HoloStudio turns \"what can be trusted\" into units of proof, and designs those proofs to flow as value within real products and markets."
                 },
                 {
-                    title: "CHAPTER 7 — OUR VENTURES",
-                    headline: "HoloStudio expands multiple ventures upon a single Core Competence.",
-                    content: "Each venture is in a different market, but solves the same question: 'What is real, and to whom does it belong?' We prove this with products in each domain."
+                    title: "CH7 — OUR PRODUCTS",
+                    headline: "We ship products that prove the thesis.",
+                    content: "HoloStudio does not explain its worldview with words. We prove it with products."
+                },
+                 {
+                    title: "CH8 — WHO WE ARE",
+                    headline: "Engineers. Researchers. Builders.",
+                    content: "We are a team building products and designing trust infrastructure. At the intersection of AI and Web3, we set the standard for verification and safety."
+                },
+                {
+                    title: "CH9 — JOIN US",
+                    headline: "If you’re building in AI × Web3, let’s build trust together.",
+                    content: "Partnerships, Investment, Hiring, Joint Research. Scale with us on top of HoloStudio's verification layer."
                 }
             ],
             ventures: [
                 {
                     name: "PlayArts",
-                    desc: "Provenance proof and distribution-based value distribution for AI content.",
+                    desc: "Tracks origin, mutation, and spread of AI media, automating value distribution based on contribution.",
                     link: "PlayArts"
                 },
                 {
                     name: "EleMEMEtal",
-                    desc: "Interactive IP experiment combining media, gaming, and memes.",
+                    desc: "Connects behavioral data generated by 'fun/competition' in games to a trustworthy structure.",
                     link: "Elememetal"
                 },
                 {
                     name: "StockHoo",
-                    desc: "AI market intelligence engine specialized for token units.",
+                    desc: "Precisely interprets market signals with Token-Specific AI tailored to asset microstructures.",
                     link: "Stockhoo"
                 }
-            ],
-            cta: {
-                headline: "We build trust not with 'Words', but with 'Structure'.",
-                sub: "Partnerships, Investment, Hiring — We are looking for those who share HoloStudio's direction and execution.",
-                button: "Connect With Us"
-            }
+            ]
         }
     };
 
-    const c = content[language] || content.ko; // Default to Korean
+    const c = content[language] || content.ko;
 
     return (
         <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
@@ -250,16 +278,56 @@ export default function Company() {
                 description={c.chapters[0].headline}
             />
 
-            {/* Pinned Background Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                 <Background3D />
-                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/50 via-transparent to-[#050505] z-10" />
-                 <div className="absolute inset-0 bg-[#050505]/30 backdrop-blur-[2px] z-10" />
+            {/* Visual State Management Layer */}
+            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                 {/* Base 3D Background */}
+                 <div className={`transition-opacity duration-1000 ${visualState.darker ? 'opacity-30' : 'opacity-60'}`}>
+                    <Background3D />
+                 </div>
+                 
+                 {/* Overlays based on state */}
+                 <div className="absolute inset-0 bg-[#050505] mix-blend-multiply opacity-20" />
+                 
+                 {/* Noise Layer (The Shift / The Break) */}
+                 <motion.div 
+                    animate={{ opacity: visualState.showNoise ? 0.15 : 0 }}
+                    transition={{ duration: 1 }}
+                    className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 mix-blend-overlay"
+                 />
+                 
+                 {/* Broken Lines (The Break) */}
+                 <motion.div
+                    animate={{ opacity: visualState.showLines ? 1 : 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                 >
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent blur-[1px]" />
+                 </motion.div>
+
+                 {/* Guard Rail Ring (Position / Guardian) */}
+                 <motion.div
+                    animate={{ 
+                        opacity: visualState.showGuardRail ? 1 : 0,
+                        scale: visualState.showGuardRail ? 1 : 0.8
+                    }}
+                    transition={{ duration: 1, ease: "circOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                 >
+                    <div className="w-[60vh] h-[60vh] rounded-full border border-indigo-500/30 shadow-[0_0_100px_rgba(99,102,241,0.2)] animate-[spin_10s_linear_infinite]" />
+                    <div className="absolute w-[50vh] h-[50vh] rounded-full border border-indigo-400/20 animate-[spin_15s_linear_infinite_reverse]" />
+                 </motion.div>
+
+                 {/* Verification Grid (Web3 / Build) */}
+                 <motion.div
+                     animate={{ opacity: visualState.showVerification ? 1 : 0 }}
+                     className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
+                 />
+
+                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505] z-10" />
             </div>
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                {/* Chapters */}
                 <div className="max-w-[1400px] mx-auto">
                     {c.chapters.map((chapter, i) => (
                         <Chapter 
@@ -268,68 +336,36 @@ export default function Company() {
                             headline={chapter.headline}
                             content={chapter.content}
                             index={i}
+                            onActive={setActiveIndex}
+                            isLast={i === c.chapters.length - 1}
                         />
                     ))}
                 </div>
 
-                {/* Ventures Grid */}
-                <div className="bg-[#050505]/90 backdrop-blur-xl border-t border-white/10 relative">
-                    <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-32">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="mb-16"
-                        >
-                            <h2 className="text-4xl md:text-6xl font-bold mb-6">Our Ventures</h2>
-                            <p className="text-xl text-neutral-400 max-w-2xl">
-                                {language === 'ko' ? 
-                                    "우리는 각 도메인에서 인프라를 증명하는 제품을 만듭니다." : 
-                                    "We build products that prove our infrastructure in each domain."}
-                            </p>
-                        </motion.div>
-
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {c.ventures.map((venture, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                >
-                                    <VentureCard {...venture} />
-                                </motion.div>
-                            ))}
-                        </div>
+                {/* Ventures Section (Attached to CH7 visually via logic, but rendered here for layout) */}
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-40">
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {c.ventures.map((venture, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                            >
+                                <VentureCard {...venture} />
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
-
-                {/* CTA */}
-                <div className="bg-[#ccff00] text-black py-32 px-6 md:px-12 relative overflow-hidden">
-                    <div className="max-w-[1400px] mx-auto relative z-10 text-center">
-                        <motion.h2 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight"
-                        >
-                            {c.cta.headline}
-                        </motion.h2>
-                        <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto opacity-80 font-medium">
-                            {c.cta.sub}
-                        </p>
-                        <Link to={createPageUrl('Contact')}>
-                            <Button className="bg-black text-white hover:bg-neutral-800 rounded-full px-12 h-16 text-lg font-bold shadow-2xl hover:scale-105 transition-all">
-                                {c.cta.button} <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
-                        </Link>
-                    </div>
-                    {/* Abstract Shapes */}
-                    <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl" />
-                        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white rounded-full blur-[100px]" />
-                    </div>
+                
+                {/* Final CTA Button for CH9 */}
+                <div className="flex justify-center pb-40">
+                    <Link to={createPageUrl('Contact')}>
+                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 h-14 text-lg font-bold transition-transform hover:scale-105">
+                            Connect With Us <ArrowRight className="ml-2 w-5 h-5" />
+                        </Button>
+                    </Link>
                 </div>
             </main>
         </div>
