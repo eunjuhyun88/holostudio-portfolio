@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
@@ -61,8 +61,32 @@ export default function Home() {
                 desc: "HOLO STUDIO executes Safety, Provenance, and Distribution as a unified portfolio."
             },
             research: {
-                title: "Research & Updates",
-                viewAll: "View Roadmap",
+                title: "Core Research Areas",
+                sub: "Pioneering the standards for the Autonomous Age",
+                items: [
+                    {
+                        icon: Shield,
+                        title: "Adversarial Defense",
+                        desc: "Developing next-gen defenses against prompt injection and jailbreaking in multimodal LLMs.",
+                        tags: ["Safety", "LLM Security"]
+                    },
+                    {
+                        icon: Microscope,
+                        title: "Proof of Creation",
+                        desc: "Cryptographic attribution standards for generative content (EIP-7007 extension).",
+                        tags: ["Provenance", "Cryptography"]
+                    },
+                    {
+                        icon: Globe,
+                        title: "Agent Economy",
+                        desc: "Economic models for autonomous agent interaction and value exchange.",
+                        tags: ["Economics", "Game Theory"]
+                    }
+                ]
+            },
+            roadmap: {
+                title: "Roadmap",
+                viewAll: "Full Schedule",
                 items: [
                     { 
                         id: "poc",
@@ -145,8 +169,32 @@ export default function Home() {
                 desc: "HOLO STUDIO는 안전, 출처, 확산의 전 과정을 사업 포트폴리오로 분리해 실행합니다."
             },
             research: {
-                title: "리서치 및 업데이트",
-                viewAll: "로드맵 보기",
+                title: "핵심 리서치 분야",
+                sub: "자율 에이전트 시대를 위한 표준 연구",
+                items: [
+                    {
+                        icon: Shield,
+                        title: "적대적 방어 (Adversarial Defense)",
+                        desc: "멀티모달 LLM의 프롬프트 인젝션 및 탈옥 방지를 위한 차세대 방어 기술 개발.",
+                        tags: ["안전", "LLM 보안"]
+                    },
+                    {
+                        icon: Microscope,
+                        title: "생성 증명 (Proof of Creation)",
+                        desc: "생성형 콘텐츠를 위한 암호학적 출처 증명 표준 (EIP-7007 확장).",
+                        tags: ["출처증명", "암호학"]
+                    },
+                    {
+                        icon: Globe,
+                        title: "에이전트 경제 (Agent Economy)",
+                        desc: "자율 에이전트 간의 상호작용 및 가치 교환을 위한 경제 모델 연구.",
+                        tags: ["경제", "게임이론"]
+                    }
+                ]
+            },
+            roadmap: {
+                title: "로드맵",
+                viewAll: "전체 일정 보기",
                 items: [
                     { 
                         id: "poc",
@@ -711,11 +759,47 @@ export default function Home() {
                  </div>
             </section>
 
-            {/* Section 09: ROADMAP / RESEARCH */}
+            {/* Section 09: RESEARCH AREAS */}
+            <section id="research" className="py-24 bg-[#0A0A0A] border-t border-neutral-900">
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div {...fadeIn} className="mb-16 text-center">
+                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.research.title}</h2>
+                        <h3 className="text-3xl md:text-4xl font-bold mb-4">{t.research.sub}</h3>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {t.research.items.map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="bg-neutral-900/50 p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-neutral-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
+                                    <item.icon className="w-6 h-6" />
+                                </div>
+                                <h4 className="text-xl font-bold mb-3">{item.title}</h4>
+                                <p className="text-neutral-400 mb-6 text-sm leading-relaxed">{item.desc}</p>
+                                <div className="flex gap-2 flex-wrap">
+                                    {item.tags.map((tag, i) => (
+                                        <span key={i} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-neutral-800 text-neutral-400">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 10: ROADMAP */}
             <Roadmap 
-                items={t.research.items} 
-                title={t.research.title} 
-                viewAllText={t.research.viewAll} 
+                items={t.roadmap.items} 
+                title={t.roadmap.title} 
+                viewAllText={t.roadmap.viewAll} 
             />
 
             {/* Section 10: CONTACT */}
