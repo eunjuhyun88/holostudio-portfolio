@@ -137,51 +137,31 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: delay, duration: 0.6 }}
-        className="group relative"
+        className="group"
     >
-        <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900 mb-6">
-            {/* Image Placeholder or Actual Image */}
+        <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900 mb-8 rounded-sm">
             {image ? (
-                <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" />
             ) : (
-                <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">
-                    Image
-                </div>
+                <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">Image</div>
             )}
-            
-            {/* Hover Overlay with Quote/Insight */}
-            <div className="absolute inset-0 bg-indigo-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-center">
-                 <p className="text-white text-lg font-medium leading-relaxed italic">
-                    "{bio}"
-                 </p>
-            </div>
-            
-            {/* Arrow Button */}
-            <div className="absolute top-4 right-4 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                <ArrowRight className="w-4 h-4" />
-            </div>
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
         </div>
 
-        <div className="border-l-2 border-indigo-500 pl-4">
-            <h3 className="text-2xl font-bold text-white mb-1">{name}</h3>
-            <p className="text-sm font-mono text-indigo-400 tracking-wider uppercase">{role}</p>
+        <div className="space-y-4 pr-4">
+            <div>
+                <h3 className="text-3xl font-bold text-white mb-1">{name}</h3>
+                <p className="text-sm font-mono text-indigo-400 tracking-wider uppercase">{role}</p>
+            </div>
+            
+            <div className="w-12 h-px bg-white/20" />
+            
+            <p className="text-neutral-400 leading-relaxed text-sm md:text-base">
+                {bio}
+            </p>
         </div>
     </motion.div>
 );
-
-// FAQ Item Component
-const FAQItem = ({ question, answer }) => {
-    return (
-        <div className="border-t border-neutral-800 py-8">
-            <h3 className="text-xl md:text-3xl font-medium text-white mb-6 pr-8">
-                {question}
-            </h3>
-            <p className="text-lg text-neutral-400 leading-relaxed max-w-3xl">
-                {answer}
-            </p>
-        </div>
-    );
-};
 
 
 export default function Company() {
@@ -240,20 +220,6 @@ export default function Company() {
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
                 }
             ],
-            faq: [
-                {
-                    q: "Are we too early for the AI Trust layer?",
-                    a: "We believe the collapse of trust is happening now. With Deepfakes and AI-generated misinformation scaling, the infrastructure for verification cannot wait."
-                },
-                {
-                    q: "Why combine Gaming, Media, and Infra?",
-                    a: "They are the same problem. Game assets need ownership (EleMEMEtal), Media needs provenance (PlayArts), and both need safe compute (DePIN). We solve the root cause."
-                },
-                {
-                    q: "Is this just another blockchain project?",
-                    a: "No. Blockchain is just the settlement layer. Our core IP is in the AI models (Guardrails) and the off-chain verification nodes."
-                }
-            ]
         },
         ko: {
              chapters: [
@@ -294,20 +260,6 @@ export default function Company() {
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/289c24d41_2025-12-1820103.png"
                 }
             ],
-            faq: [
-                {
-                    q: "AI 신뢰 레이어 구축, 너무 이른 것 아닌가요?",
-                    a: "신뢰의 붕괴는 이미 시작되었습니다. 딥페이크와 AI 생성 허위 정보가 확산되는 지금, 검증 인프라는 더 이상 기다릴 수 없습니다."
-                },
-                {
-                    q: "왜 게임, 미디어, 인프라를 결합하나요?",
-                    a: "본질적으로 같은 문제입니다. 게임 자산은 소유권(EleMEMEtal)이, 미디어는 출처(PlayArts)가 필요하며, 둘 다 안전한 컴퓨팅(DePIN)이 필요합니다. 우리는 근본 원인을 해결합니다."
-                },
-                {
-                    q: "단순한 블록체인 프로젝트인가요?",
-                    a: "아닙니다. 블록체인은 정산 레이어일 뿐입니다. 우리의 핵심 기술은 AI 모델(Guardrails)과 오프체인 검증 노드에 있습니다."
-                }
-            ]
         }
     };
 
@@ -364,9 +316,9 @@ export default function Company() {
                 <TeamIdentity />
 
                 {/* Founder Spotlight Section */}
-                <div className="bg-[#0A0A0A] border-y border-neutral-900 py-24 md:py-32">
+                <div className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48">
                     <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-24">
                             <div>
                                 <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-500 mb-4">Leadership</h2>
                                 <h3 className="text-4xl md:text-6xl font-bold text-white max-w-2xl leading-tight">
@@ -380,7 +332,7 @@ export default function Company() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
                             {c.founders.map((founder, i) => (
                                 <FounderCard key={i} {...founder} delay={i * 0.1} />
                             ))}
@@ -388,17 +340,7 @@ export default function Company() {
                     </div>
                 </div>
 
-                {/* FAQ Section */}
-                <div className="max-w-[1000px] mx-auto px-6 py-24 md:py-40">
-                    <h2 className="text-[12vw] md:text-[5vw] font-bold text-neutral-800 leading-none mb-16 select-none text-center md:text-left">
-                        FAQ
-                    </h2>
-                    <div className="space-y-2">
-                        {c.faq.map((item, i) => (
-                            <FAQItem key={i} question={item.q} answer={item.a} />
-                        ))}
-                    </div>
-                </div>
+
                 
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
