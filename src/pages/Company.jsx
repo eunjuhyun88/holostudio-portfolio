@@ -63,14 +63,7 @@ const Chapter = ({ title, headline, content, index, isLast, onActive }) => {
                 onViewportEnter={() => onActive(index)}
                 viewport={{ margin: "-40% 0px -40% 0px" }}
             >
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-xs md:text-sm font-bold uppercase tracking-widest text-indigo-500 mb-8"
-                >
-                    {title}
-                </motion.div>
+                {/* Title removed for seamless storytelling */}
                 
                 <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 leading-[1.1] tracking-tight">
                     <ScrollRevealText>
@@ -168,12 +161,10 @@ export default function Company() {
                     content: "HoloStudio는 하나의 세계관을 말로 설명하지 않습니다. 제품으로 증명합니다."
                 },
                 {
-                    title: "CH8 — WHO WE ARE",
-                    headline: "Engineers. Researchers. Builders.",
+                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
                     content: "우리는 제품을 만드는 팀이자, 신뢰 인프라를 설계하는 팀입니다. AI와 Web3가 만나는 지점에서, 검증과 안전장치의 표준을 만듭니다."
                 },
                 {
-                    title: "CH9 — JOIN US",
                     headline: "If you’re building in AI × Web3, let’s build trust together.",
                     content: "파트너십, 투자, 채용, 공동 연구. HoloStudio의 검증 레이어 위에서 함께 확장할 수 있습니다."
                 }
@@ -239,12 +230,10 @@ export default function Company() {
                     content: "HoloStudio does not explain its worldview with words. We prove it with products."
                 },
                  {
-                    title: "CH8 — WHO WE ARE",
-                    headline: "Engineers. Researchers. Builders.",
+                    headline: "WHO WE ARE\n\nEngineers. Researchers. Builders.",
                     content: "We are a team building products and designing trust infrastructure. At the intersection of AI and Web3, we set the standard for verification and safety."
                 },
                 {
-                    title: "CH9 — JOIN US",
                     headline: "If you’re building in AI × Web3, let’s build trust together.",
                     content: "Partnerships, Investment, Hiring, Joint Research. Scale with us on top of HoloStudio's verification layer."
                 }
