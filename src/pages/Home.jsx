@@ -17,8 +17,8 @@ export default function Home() {
             hero: {
                 tag: "Full-Media AI Guardrails",
                 title: "HOLO STUDIO",
-                sub: "We build full-stack AI Guardrails + Web3-native attribution for the next media economy.",
-                desc: "Safety, provenance, and programmable distribution across AI media, gaming, and on-chain communities.",
+                sub: "Holostudio builds the infrastructure that lets AI-era stories be trusted, credited, and sustained.",
+                desc: "Full-stack AI guardrails and Web3-native attribution for the next media economy.",
                 cta1: "Explore Our Businesses",
                 cta2: "Contact / Partnership"
             },
@@ -133,8 +133,8 @@ export default function Home() {
             hero: {
                 tag: "Full-Media AI Guardrails",
                 title: "HOLO STUDIO",
-                sub: "AI 콘텐츠 생성과 안전성을 동시에 제공하는 차세대 미디어/게임/Web3 회사.",
-                desc: "안전(Safety) + 출처(Provenance) + 가치(Value)를 하나의 포트폴리오로 구축합니다.",
+                sub: "HoloStudio는 AI 시대의 이야기가 신뢰받고, 인정받으며, 지속될 수 있는 인프라를 구축합니다.",
+                desc: "차세대 미디어 경제를 위한 풀스택 AI 가드레일 및 Web3 네이티브 기여도 측정.",
                 cta1: "사업 포트폴리오 보기",
                 cta2: "제휴 및 문의"
             },
