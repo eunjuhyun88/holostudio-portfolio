@@ -462,6 +462,9 @@ export default function Company() {
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <CosmicBackground />
+                <div className="absolute inset-0 opacity-40">
+                    <Background3D />
+                </div>
 
                  {/* Retain the spinning rings for the tech feel later in scroll */}
                  <motion.div
