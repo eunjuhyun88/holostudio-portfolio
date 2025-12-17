@@ -12,7 +12,7 @@ import Starfield from '@/components/Starfield';
 // Helper component to trigger background changes
 const ColorSection = ({ children, onInView, className = "" }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+    const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" });
 
     useEffect(() => {
         if (isInView && onInView) {
@@ -60,12 +60,12 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
-            sectionGradients: [
-                "from-indigo-950/40",
-                "from-violet-950/40", 
-                "from-blue-950/40", 
-                "from-indigo-900/40", 
-                "from-slate-900/40"
+            sectionColors: [
+                "rgba(30, 27, 75, 0.5)", // indigo-950
+                "rgba(46, 16, 101, 0.5)", // violet-950
+                "rgba(23, 37, 84, 0.5)", // blue-950
+                "rgba(49, 46, 129, 0.5)", // indigo-900
+                "rgba(15, 23, 42, 0.5)" // slate-900
             ]
         },
         elememetal: {
@@ -74,12 +74,12 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(249,115,22,0.1)]",
             gradient: "from-orange-950/30",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
-            sectionGradients: [
-                "from-orange-950/40", 
-                "from-red-950/40", 
-                "from-amber-950/40", 
-                "from-rose-950/40", 
-                "from-orange-900/40"
+            sectionColors: [
+                "rgba(67, 20, 7, 0.5)", // orange-950
+                "rgba(69, 10, 10, 0.5)", // red-950
+                "rgba(69, 26, 3, 0.5)", // amber-950
+                "rgba(76, 5, 25, 0.5)", // rose-950
+                "rgba(124, 45, 18, 0.5)" // orange-900
             ]
         },
         aidguardian: {
@@ -88,12 +88,12 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
-            sectionGradients: [
-                "from-indigo-950/40", 
-                "from-violet-950/40", 
-                "from-blue-950/40", 
-                "from-cyan-950/40", 
-                "from-slate-900/40"
+            sectionColors: [
+                "rgba(30, 27, 75, 0.5)", // indigo-950
+                "rgba(46, 16, 101, 0.5)", // violet-950
+                "rgba(23, 37, 84, 0.5)", // blue-950
+                "rgba(8, 51, 68, 0.5)", // cyan-950
+                "rgba(15, 23, 42, 0.5)" // slate-900
             ]
         },
         playarts: {
@@ -102,12 +102,12 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(132,204,22,0.1)]",
             gradient: "from-lime-950/30",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
-            sectionGradients: [
-                "from-lime-950/40", 
-                "from-emerald-950/40", 
-                "from-teal-950/40", 
-                "from-green-950/40", 
-                "from-lime-900/40"
+            sectionColors: [
+                "rgba(26, 46, 5, 0.5)", // lime-950
+                "rgba(2, 44, 34, 0.5)", // emerald-950
+                "rgba(4, 47, 46, 0.5)", // teal-950
+                "rgba(5, 46, 22, 0.5)", // green-950
+                "rgba(20, 83, 45, 0.5)" // green-900
             ]
         },
         stockhoo: {
@@ -116,12 +116,12 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(16,185,129,0.1)]",
             gradient: "from-emerald-950/30",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
-            sectionGradients: [
-                "from-emerald-950/40", 
-                "from-cyan-950/40", 
-                "from-teal-950/40", 
-                "from-green-950/40", 
-                "from-slate-900/40"
+            sectionColors: [
+                "rgba(2, 44, 34, 0.5)", // emerald-950
+                "rgba(8, 51, 68, 0.5)", // cyan-950
+                "rgba(4, 47, 46, 0.5)", // teal-950
+                "rgba(5, 46, 22, 0.5)", // green-950
+                "rgba(15, 23, 42, 0.5)" // slate-900
             ]
         }
     };
@@ -140,16 +140,8 @@ export default function BusinessLayout({
     const bgCardHover = "hover:border-white/20";
     const accentText = s.accent;
     
-    // Background gradient logic based on active section
-    const getBackgroundGradient = () => {
-        // Use theme-specific gradient sequence
-        // This ensures each product has its own unique "atmosphere" that changes as you scroll
-        const gradients = s.sectionGradients || [s.gradient];
-        const currentGradient = gradients[activeSection % gradients.length];
-        
-        // Using radial gradient at top for a "cosmic light source" effect
-        return `bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] ${currentGradient} via-[#050505] to-[#050505]`;
-    };
+    // Dynamic background color using Motion for smooth interpolation
+    const currentSectionColor = (s.sectionColors || ["rgba(30, 27, 75, 0.5)"])[activeSection % (s.sectionColors?.length || 1)];
 
     const sections = [
         { id: 'overview', label: 'Overview' },
@@ -190,8 +182,15 @@ export default function BusinessLayout({
 
     return (
         <div className={`min-h-screen font-sans selection:bg-indigo-500/30 bg-[#050505] ${textPrimary} relative overflow-hidden`}>
-            {/* Ambient Background Glow */}
-            <div className={`fixed inset-0 pointer-events-none transition-opacity duration-1000 ${getBackgroundGradient()}`} style={{ opacity: 0.6 }} />
+            {/* Ambient Background Glow with smooth color transition */}
+            <motion.div 
+                className="fixed inset-0 pointer-events-none"
+                animate={{
+                    background: `radial-gradient(ellipse at top, ${currentSectionColor}, #050505 60%, #050505 100%)`
+                }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                style={{ opacity: 0.8 }}
+            />
             
             {/* Grain Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
