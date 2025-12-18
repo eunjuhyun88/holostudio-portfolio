@@ -912,13 +912,13 @@ export default function Home() {
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
             <section id="products" className="relative z-10">
                 {/* Intro Title */}
-                <div className="absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
+                <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
                      <h2 className="text-xl font-heavy text-neutral-500 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
                      <p className="text-xl text-neutral-300">{t.business_intro.sub}</p>
                 </div>
 
-                {/* Sticky Visual Container */}
-                <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center md:justify-start md:pl-20 pointer-events-none">
+                {/* Sticky Visual Container - Desktop Only */}
+                <div className="hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none">
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
                         {products.map((prod, idx) => (
@@ -976,7 +976,7 @@ export default function Home() {
                 </div>
 
                 {/* Scrolling Cards Overlay */}
-                <div className="relative z-20 -mt-[100vh]">
+                <div className="relative z-20 mt-0 md:-mt-[100vh]">
                 {products.map((prod, idx) => {
                     const ref = useRef(null);
                     const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
@@ -986,7 +986,7 @@ export default function Home() {
                     }, [isInView, idx]);
 
                     return (
-                        <div key={idx} ref={ref} className="min-h-[80vh] md:h-screen w-full flex items-end md:items-center justify-center md:justify-end px-4 md:px-24 pb-24 md:pb-0 pointer-events-none">
+                        <div key={idx} ref={ref} className="min-h-auto py-12 md:py-0 md:h-screen w-full flex items-end md:items-center justify-center md:justify-end px-4 md:px-24 pointer-events-none">
                             <motion.div 
                                 initial={{ opacity: 0, x: 50, y: 20 }}
                                 whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -1003,6 +1003,16 @@ export default function Home() {
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
+                                            {/* Mobile Image */}
+                                            <div className="md:hidden mb-6 relative rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video group-hover:border-white/20 transition-colors">
+                                                <img 
+                                                    src={prod.image} 
+                                                    alt={prod.name} 
+                                                    className="w-full h-full object-contain p-4" 
+                                                />
+                                                <div className={`absolute inset-0 bg-gradient-to-tr ${prod.bgGradient} to-transparent opacity-20`} />
+                                            </div>
+
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className={`text-xs md:text-sm font-bold tracking-wider uppercase ${prod.color} flex items-center gap-2`}>
                                                     <span className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_10px_currentColor]`} />
