@@ -12,7 +12,6 @@ import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
 import Floating from '@/components/Floating';
 import { BorderBeam } from '@/components/ui/border-beam';
-import SciFiCard from '@/components/SciFiCard';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -539,23 +538,23 @@ export default function Home() {
             <section className="py-12 border-y border-white/10 bg-black/30 backdrop-blur-md relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-4 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
-                        <SciFiCard className="flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 bg-black/20" variant="minimal">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1 font-heavy">{t.market.year.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider font-mono">{t.market.year.label}</div>
-                        </SciFiCard>
-                        <SciFiCard className="flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 bg-black/20" variant="minimal">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1 font-heavy">{t.market.eu.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider font-mono">{t.market.eu.label}</div>
-                        </SciFiCard>
-                        <SciFiCard className="flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 bg-black/20" variant="minimal">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1 font-heavy">{t.market.size.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider font-mono">{t.market.size.label}</div>
-                        </SciFiCard>
-                        <SciFiCard className="flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 bg-black/20" variant="minimal">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1 font-heavy">{t.market.gap.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider font-mono">{t.market.gap.label}</div>
-                        </SciFiCard>
+                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
+                        </div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.eu.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.eu.label}</div>
+                        </div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.size.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.size.label}</div>
+                        </div>
+                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.gap.val}</div>
+                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
+                        </div>
                     </div>
                     
                     {/* Partners / Backers - From Playarts screenshot */}
@@ -618,28 +617,26 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center"
+                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/30 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md"
                             >
-                                <SciFiCard className="h-full p-8 bg-black/40">
-                                    <Floating delay={idx * 0.2} offset={8}>
-                                        <div className="w-12 h-12 bg-neutral-900/80 rounded-sm flex items-center justify-center mb-6 border border-white/10 group-hover:border-indigo-500/50 group-hover:text-indigo-400 transition-colors">
-                                            <motion.div
-                                                animate={{ 
-                                                    scale: [1, 1.15, 1],
-                                                    filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"]
-                                                }}
-                                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.4 }}
-                                            >
-                                                {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
-                                            </motion.div>
-                                        </div>
-                                    </Floating>
-                                    <h4 className="text-2xl font-bold mb-3 font-heavy uppercase">{card.title}</h4>
-                                    <p className="text-neutral-400 mb-6 text-sm leading-relaxed font-mono">{card.desc}</p>
-                                    <span className="inline-block px-3 py-1 bg-indigo-900/20 border border-indigo-500/30 rounded-sm text-xs text-indigo-300 uppercase tracking-widest">
-                                        {card.badge}
-                                    </span>
-                                </SciFiCard>
+                                <Floating delay={idx * 0.2} offset={8}>
+                                    <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
+                                        <motion.div
+                                            animate={{ 
+                                                scale: [1, 1.15, 1],
+                                                filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"]
+                                            }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.4 }}
+                                        >
+                                            {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
+                                        </motion.div>
+                                    </div>
+                                </Floating>
+                                <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
+                                <p className="text-neutral-400 mb-6 text-base leading-relaxed">{card.desc}</p>
+                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-300 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
+                                    {card.badge}
+                                </span>
                             </motion.div>
                         ))}
                     </div>
@@ -668,12 +665,10 @@ export default function Home() {
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                                        <SciFiCard className="p-6 h-full bg-black/40 hover:bg-indigo-900/10" variant="default">
-                                            <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors border-b border-indigo-500/20 pb-2 inline-block">0{i+1}</div>
-                                            <div className="font-bold text-white mb-2 text-sm font-heavy uppercase">{step.name}</div>
-                                            <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-300 transition-colors font-mono">{step.desc}</div>
-                                        </SciFiCard>
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default">
+                                        <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
+                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
+                                        <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{step.desc}</div>
                                     </div>
                                 ))}
                             </div>
@@ -1033,23 +1028,22 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
+                                className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
                             >
-                                <SciFiCard className="p-8 h-full bg-black/40" variant="default">
-                                    <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
-                                        <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
-                                            <m.icon className={`w-12 h-12 ${m.color}`} />
-                                        </div>
-                                    </Floating>
-                                    <Floating delay={idx * 0.2 + 0.5} offset={8}>
-                                        <div className={`w-12 h-12 rounded-sm ${m.bg} flex items-center justify-center mb-6 border border-white/10`}>
-                                            <m.icon className={`w-6 h-6 ${m.color}`} />
-                                        </div>
-                                    </Floating>
-                                    <div>
-                                        <div className="text-lg font-bold text-white mb-2 leading-tight font-heavy uppercase">{m.title}</div>
-                                        <div className="text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors font-mono">{m.desc}</div>
+                                <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
+                                    <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
+                                        <m.icon className={`w-12 h-12 ${m.color}`} />
                                     </div>
-                                </SciFiCard>
+                                </Floating>
+                                <Floating delay={idx * 0.2 + 0.5} offset={8}>
+                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
+                                        <m.icon className={`w-6 h-6 ${m.color}`} />
+                                    </div>
+                                </Floating>
+                                <div>
+                                    <div className="text-lg font-bold text-white mb-2 leading-tight">{m.title}</div>
+                                    <div className="text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors">{m.desc}</div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
