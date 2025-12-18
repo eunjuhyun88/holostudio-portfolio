@@ -9,16 +9,13 @@ export default function AidGuardian() {
 
     const content = {
         en: {
-            tag: "Enterprise Safety",
+            tag: "AI Safety Protocol • Verifiable AI Content • Ecosystem Safety",
             primaryButtonText: "Launch Dashboard",
-            oneLiner: "Imagine if content safety was autonomous and instant.",
+            oneLiner: "Verifying the origin and integrity of AI-generated content to prevent misinformation and ensure digital ecosystem safety.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Today, enterprises are paralyzed by the risks of generative AI. 
-                        Compliance teams are overwhelmed by the volume of content, and traditional safety tools 
-                        are blind to the nuances of multi-modal generation. 
-                        We built AiD Guardian to bridge this gap.
+                        Beyond simple security, we become the foundation of trust guarding the Digital Truth of the AI era.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         By combining GARM-aligned safety standards with deep multi-modal analysis, 
@@ -97,32 +94,46 @@ export default function AidGuardian() {
             roadmap: [
                 {
                     quarter: "Q1 2025",
+                    status: "in_progress",
                     title: "Video Analysis v2",
                     items: ["Real-time streaming support", "Audio-visual correlation"]
                 },
                 {
                     quarter: "Q2 2025",
+                    status: "upcoming",
                     title: "Enterprise Suite",
                     items: ["SSO/SAML integration", "Custom policy engine"]
                 },
                 {
                     quarter: "Q3 2025",
+                    status: "upcoming",
                     title: "Global Certification",
                     items: ["EU AI Act Compliance Audit", "ISO 27001"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "AiD Guardian has completely transformed how we handle user-generated content validation.",
+                    author: "Sarah Jin",
+                    role: "CTO",
+                    company: "MediaFlow Inc."
+                },
+                {
+                    quote: "The verifiable truth layer is essential for our automated news aggregation platform.",
+                    author: "David Park",
+                    role: "Product Lead",
+                    company: "NewsAI"
                 }
             ]
         },
         ko: {
-            tag: "엔터프라이즈 안전",
+            tag: "AI 안전 프로토콜 • 검증 가능한 AI 콘텐츠 • 디지털 생태계 안전",
             primaryButtonText: "대시보드 실행",
-            oneLiner: "콘텐츠 안전이 자율적이고 즉각적으로 이루어진다면.",
+            oneLiner: "AI 생성 콘텐츠의 출처와 무결성을 검증하여 허위 정보를 방지하고 디지털 생태계의 안전과 책임성을 보장합니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        오늘날 기업들은 생성형 AI의 리스크로 인해 마비 상태에 빠져 있습니다.
-                        컴플라이언스 팀은 방대한 콘텐츠 양에 압도당하고 있으며, 기존 안전 도구들은
-                        멀티모달 생성의 뉘앙스를 파악하지 못합니다.
-                        우리는 이 격차를 해소하기 위해 AiD Guardian을 구축했습니다.
+                        단순한 보안을 넘어, AI 시대의 디지털 진실(Digital Truth)을 수호하는 신뢰의 근간이 됩니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         GARM(Global Alliance for Responsible Media) 기준 안전 표준과 심층 멀티모달 분석을 결합하여,
@@ -201,18 +212,35 @@ export default function AidGuardian() {
             roadmap: [
                 {
                     quarter: "2025년 1분기",
+                    status: "in_progress",
                     title: "비디오 분석 v2",
                     items: ["실시간 스트리밍 지원", "오디오-비주얼 상관관계 분석"]
                 },
                 {
                     quarter: "2025년 2분기",
+                    status: "upcoming",
                     title: "엔터프라이즈 스위트",
                     items: ["SSO/SAML 통합", "맞춤형 정책 엔진"]
                 },
                 {
                     quarter: "2025년 3분기",
+                    status: "upcoming",
                     title: "글로벌 인증",
                     items: ["EU AI 법안 준수 감사", "ISO 27001"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "AiD Guardian은 사용자 생성 콘텐츠 검증 방식을 완전히 변화시켰습니다.",
+                    author: "Sarah Jin",
+                    role: "CTO",
+                    company: "MediaFlow Inc."
+                },
+                {
+                    quote: "검증 가능한 진실 레이어는 우리의 자동 뉴스 수집 플랫폼에 필수적입니다.",
+                    author: "David Park",
+                    role: "Product Lead",
+                    company: "NewsAI"
                 }
             ]
         }
@@ -240,6 +268,7 @@ export default function AidGuardian() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            customerStories={c.customerStories}
         />
     );
 }

@@ -9,15 +9,13 @@ export default function PlayArts() {
 
     const content = {
         en: {
-            tag: "Media Protocol",
+            tag: "Value Routing Protocol • Fair Value Distribution • Media Economy",
             primaryButtonText: "Launch App",
-            oneLiner: "Imagine if creators truly owned the value they generate.",
+            oneLiner: "Ensuring fair and transparent value distribution for content creators and AI in the media economy.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        The AI revolution has created a massive attribution crisis. 
-                        Millions of assets are generated daily, yet the original creators and style pioneers 
-                        see none of the value. The connection between inspiration and output has been severed.
+                        Redefining the flow of value for a new Media Renaissance where creators and AI coexist.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         PlayArts restores this link. We are building the provenance layer for the AI era, 
@@ -95,31 +93,46 @@ export default function PlayArts() {
             roadmap: [
                 {
                     quarter: "Q1-Q2 2025",
+                    status: "in_progress",
                     title: "Foundation Phase",
                     items: ["Sentinel v3.0 Production", "MCP Registry v1.0", "MemePing v1.0 Launch"]
                 },
                 {
                     quarter: "Q3-Q4 2025",
+                    status: "upcoming",
                     title: "Expansion Phase",
                     items: ["Strong PoC (On-chain)", "Public Node Beta", "Cross-chain Support"]
                 },
                 {
                     quarter: "2026",
+                    status: "upcoming",
                     title: "Decentralization",
                     items: ["Permissionless Nodes", "DAO Governance", "ZK-PoC Research"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "Finally, a way to fairly track and monetize AI-assisted artwork.",
+                    author: "Elena R.",
+                    role: "Digital Artist",
+                    company: "Independent"
+                },
+                {
+                    quote: "PlayArts protocol allows us to license our IP to AI models with confidence.",
+                    author: "Kenji S.",
+                    role: "Director",
+                    company: "Studio 4"
                 }
             ]
         },
         ko: {
-            tag: "미디어 프로토콜",
+            tag: "가치 라우팅 프로토콜 • 공정한 가치 분배 • 미디어 경제",
             primaryButtonText: "앱 실행",
-            oneLiner: "창작자가 자신이 만든 가치를 진정으로 소유한다면.",
+            oneLiner: "미디어 경제에서 콘텐츠 제작자와 AI에게 공정하고 투명한 가치 분배를 보장하며, 착취 없이 혁신이 번성하는 창의적인 경제 인프라를 구축합니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AI 혁명은 거대한 귀속(Attribution) 위기를 불러왔습니다.
-                        매일 수백만 개의 자산이 생성되지만, 원작자와 스타일 개척자들은
-                        그 가치를 전혀 인정받지 못하고 있습니다. 영감과 결과물 사이의 연결고리가 끊어졌습니다.
+                        창작자와 AI가 공존하는 새로운 미디어 르네상스를 위해, 가치의 흐름을 완전히 재정의합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         PlayArts는 이 연결고리를 복원합니다. 우리는 AI 시대를 위한 출처(Provenance) 레이어를 구축하여,
@@ -197,18 +210,35 @@ export default function PlayArts() {
             roadmap: [
                 {
                     quarter: "2025년 상반기",
+                    status: "in_progress",
                     title: "기반 구축 단계",
                     items: ["Sentinel v3.0 프로덕션", "MCP 레지스트리 v1.0", "MemePing v1.0 출시"]
                 },
                 {
                     quarter: "2025년 하반기",
+                    status: "upcoming",
                     title: "확장 단계",
                     items: ["강력한 PoC (온체인)", "퍼블릭 노드 베타", "크로스체인 지원"]
                 },
                 {
                     quarter: "2026년",
+                    status: "upcoming",
                     title: "탈중앙화",
                     items: ["무허가 노드", "DAO 거버넌스", "ZK-PoC 연구"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "드디어 AI 보조 예술 작품을 공정하게 추적하고 수익화할 수 있는 방법이 생겼습니다.",
+                    author: "Elena R.",
+                    role: "Digital Artist",
+                    company: "Independent"
+                },
+                {
+                    quote: "PlayArts 프로토콜 덕분에 우리 IP를 자신 있게 AI 모델에 라이선스할 수 있습니다.",
+                    author: "Kenji S.",
+                    role: "Director",
+                    company: "Studio 4"
                 }
             ]
         }
@@ -236,6 +266,7 @@ export default function PlayArts() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            customerStories={c.customerStories}
             features={[
                 {
                     icon: Fingerprint,

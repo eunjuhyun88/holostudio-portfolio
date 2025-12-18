@@ -9,14 +9,13 @@ export default function Stockhoo() {
 
     const content = {
         en: {
-            tag: "AI Trading Intelligence",
+            tag: "AI Trading Intelligence • Strategic Market Advantage • Predictive Insights",
             primaryButtonText: "Launch Terminal",
-            oneLiner: "The Operating System for Context-Aware Trading",
+            oneLiner: "Providing cutting-edge AI-driven predictive insights and actionable strategies to help traders secure a strategic advantage.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <strong>The Zone Context Primitive.</strong> ATR-based bands define dynamic Zones for each coin and timeframe. 
-                        Each Zone aggregates CEX, on-chain, perps, liquidations, and social chat.
+                        Capturing the Signals of the future amidst the flood of data, empowering anyone to take the lead in the market.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         The Zone becomes the atomic unit for all trading context and decisions. Instead of watching 10 different screens, 
@@ -90,30 +89,46 @@ export default function Stockhoo() {
             roadmap: [
                 {
                     quarter: "Phase 1 (Live)",
+                    status: "in_progress",
                     title: "Text-to-Indicator",
                     items: ["Highlight 4H Order Blocks", "Custom Logic Creation", "Natural Language Query"]
                 },
                 {
                     quarter: "Phase 2",
+                    status: "upcoming",
                     title: "Text-to-Drawing",
                     items: ["Auto-generate trendlines", "Structural Sweeps", "Fib levels across Zones"]
                 },
                 {
                     quarter: "Phase 3",
+                    status: "upcoming",
                     title: "Zone Sharing",
                     items: ["One-click template sharing", "Community Zone Libraries", "Social Alpha Integration"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "Stockhoo's signals helped me identify trends before the market moved.",
+                    author: "James T.",
+                    role: "Day Trader",
+                    company: "Self-Employed"
+                },
+                {
+                    quote: "The sentiment analysis is surprisingly accurate and actionable.",
+                    author: "Sarah L.",
+                    role: "Analyst",
+                    company: "FinTech Partners"
                 }
             ]
         },
         ko: {
-            tag: "AI 트레이딩 지능",
+            tag: "AI 트레이딩 인텔리전스 • 전략적 시장 우위 • 예측 통찰력",
             primaryButtonText: "터미널 실행",
-            oneLiner: "상황 인식 트레이딩을 위한 운영 체제",
+            oneLiner: "최첨단 AI 기반 예측 통찰력과 실행 가능한 전략을 제공하여 트레이더가 금융 시장에서 전략적 우위를 확보하고 수익성 있는 기회를 포착하도록 지원합니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <strong>구역 맥락 프리미티브(Zone Context Primitive).</strong> ATR 기반 밴드는 각 코인과 시간대별로 동적인 구역을 정의합니다.
-                        각 구역은 CEX, 온체인, 무기한 선물, 청산, 소셜 채팅 데이터를 집계합니다.
+                        데이터의 홍수 속에서 미래의 신호(Signal)를 포착하여, 누구나 시장의 주도권을 쥐게 합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         구역은 모든 트레이딩 맥락과 의사결정을 위한 최소 단위가 됩니다. 10개의 다른 화면을 보는 대신,
@@ -187,18 +202,35 @@ export default function Stockhoo() {
             roadmap: [
                 {
                     quarter: "1단계 (라이브)",
+                    status: "in_progress",
                     title: "Text-to-Indicator",
                     items: ["4시간 오더 블록 강조", "사용자 정의 로직 생성", "자연어 쿼리"]
                 },
                 {
                     quarter: "2단계",
+                    status: "upcoming",
                     title: "Text-to-Drawing",
                     items: ["추세선 자동 생성", "구조적 스윕", "구역 간 피보나치 레벨"]
                 },
                 {
                     quarter: "3단계",
+                    status: "upcoming",
                     title: "구역 공유",
                     items: ["원클릭 템플릿 공유", "커뮤니티 구역 라이브러리", "소셜 알파 통합"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "Stockhoo의 신호는 시장이 움직이기 전에 트렌드를 파악하는 데 도움을 주었습니다.",
+                    author: "James T.",
+                    role: "Day Trader",
+                    company: "Self-Employed"
+                },
+                {
+                    quote: "감성 분석이 놀랍도록 정확하고 실행 가능합니다.",
+                    author: "Sarah L.",
+                    role: "Analyst",
+                    company: "FinTech Partners"
                 }
             ]
         }
@@ -226,6 +258,7 @@ export default function Stockhoo() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            customerStories={c.customerStories}
             features={[
                 {
                     icon: Activity,

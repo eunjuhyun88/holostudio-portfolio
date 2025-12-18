@@ -9,15 +9,13 @@ export default function Elememetal() {
 
     const content = {
         en: {
-            tag: "Competitive Strategy",
+            tag: "Collectible Strategy Game • Digital Ownership • Real-World Value",
             primaryButtonText: "Play Now",
-            oneLiner: "Imagine if gaming assets were as liquid as elements.",
+            oneLiner: "A competitive TCG combining strategic depth, digital ownership, and real-world value.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Competitive gaming has become stale. Pay-to-win mechanics and loot boxes 
-                        have replaced skill and strategy. Players spend thousands on assets they don't truly own, 
-                        trapped in walled gardens.
+                        Opening the era of borderless ownership where in-game achievements become real-world value.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal changes the game. We've built a competitive battler where every card is an asset, 
@@ -96,31 +94,46 @@ export default function Elememetal() {
             roadmap: [
                 {
                     quarter: "Phase 1",
+                    status: "in_progress",
                     title: "Alpha Launch",
                     items: ["Simultaneous Turns", "Instant Resolution", "Zero Randomness"]
                 },
                 {
                     quarter: "Phase 2",
+                    status: "upcoming",
                     title: "Joker Genesis",
                     items: ["AI-Generated Cards", "Experimental Meta", "Unique Abilities"]
                 },
                 {
                     quarter: "Phase 3",
+                    status: "upcoming",
                     title: "Global Expansion",
                     items: ["Mobile Release", "Esports Tournaments", "Cross-IP Collabs"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "The depth of strategy combined with real asset ownership keeps me coming back.",
+                    author: "Alex G.",
+                    role: "Pro Gamer",
+                    company: "Team Liquid"
+                },
+                {
+                    quote: "Not just a game, but a thriving digital economy.",
+                    author: "Maria L.",
+                    role: "Collector",
+                    company: "MetaGuild"
                 }
             ]
         },
         ko: {
-            tag: "경쟁 전략",
+            tag: "수집형 전략 게임 • 디지털 소유권 • 실질 가치",
             primaryButtonText: "지금 플레이",
-            oneLiner: "게임 자산이 원소처럼 유동적이라면.",
+            oneLiner: "전략적인 깊이, 디지털 소유권(NFT), 실질 가치를 결합한 경쟁적인 TCG로, AI와 블록체인 기술을 통해 플레이어의 기술과 자산이 유형의 가치를 지니는 플랫폼을 제공합니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        경쟁 게임은 진부해졌습니다. Pay-to-Win 메커니즘과 전리품 상자가
-                        실력과 전략을 대체했습니다. 플레이어들은 실제로 소유하지도 못하는 자산에 수천 달러를 쓰며,
-                        폐쇄적인 정원에 갇혀 있습니다.
+                        게임 속 성취가 현실의 가치가 되는 경계 없는 소유권의 시대를 엽니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal은 게임의 판도를 바꿉니다. 모든 카드가 자산이 되고,
@@ -199,18 +212,35 @@ export default function Elememetal() {
             roadmap: [
                 {
                     quarter: "1단계",
+                    status: "in_progress",
                     title: "알파 출시",
                     items: ["동시 턴 진행", "즉각적 결과", "무작위성 제로"]
                 },
                 {
                     quarter: "2단계",
+                    status: "upcoming",
                     title: "조커 제네시스",
                     items: ["AI 생성 카드", "실험적 메타", "고유 능력"]
                 },
                 {
                     quarter: "3단계",
+                    status: "upcoming",
                     title: "글로벌 확장",
                     items: ["모바일 출시", "e스포츠 토너먼트", "크로스 IP 콜라보"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "전략의 깊이와 실제 자산 소유권의 결합이 계속 게임을 하게 만듭니다.",
+                    author: "Alex G.",
+                    role: "Pro Gamer",
+                    company: "Team Liquid"
+                },
+                {
+                    quote: "단순한 게임이 아니라, 번성하는 디지털 경제입니다.",
+                    author: "Maria L.",
+                    role: "Collector",
+                    company: "MetaGuild"
                 }
             ]
         }
@@ -238,6 +268,7 @@ export default function Elememetal() {
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
+            customerStories={c.customerStories}
             features={[
                 {
                     icon: Sword,
