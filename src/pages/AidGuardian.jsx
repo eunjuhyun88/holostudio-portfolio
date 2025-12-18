@@ -100,6 +100,44 @@ export default function AidGuardian() {
                 { label: "Deployment", value: "Cloud / On-Premise" },
                 { label: "Compliance", value: "EU AI Act / GARM" }
             ],
+            detailedSpecs: (
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">Multi-Modal Safety Pipeline</h4>
+                        <p className="text-neutral-400 leading-relaxed mb-6">
+                            Our architecture processes inputs through concurrent analysis streams. Video frames are sampled at 2Hz for visual risk, while audio is transcribed via Whisper and analyzed for toxicity. 
+                            Text overlays are OCR'd and cross-referenced.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">INPUT</div>
+                                <div className="text-white font-bold">Video / Stream</div>
+                            </div>
+                            <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">LATENCY</div>
+                                <div className="text-white font-bold">~15ms / frame</div>
+                            </div>
+                            <div className="col-span-2 p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">OUTPUT</div>
+                                <div className="text-white font-bold">Risk Score (0-100) + GARM Categories</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">Compliance Layer</h4>
+                        <ul className="space-y-3">
+                            <li className="flex gap-3 text-neutral-300">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5" />
+                                <span><strong>Audit Logging:</strong> Immutable record of all moderation decisions for EU AI Act Article 50.</span>
+                            </li>
+                            <li className="flex gap-3 text-neutral-300">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5" />
+                                <span><strong>Explainability:</strong> Vector-based similarity search to provide "why" a content was flagged.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            ),
             useCases: [
                 {
                     title: "Live Streaming & Gaming",

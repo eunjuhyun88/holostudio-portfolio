@@ -51,6 +51,7 @@ export default function BusinessLayout({
     features = [],
     customerStories = [],
     specs = [], // New specs prop
+    detailedSpecs = null, // Rich content for technical deep dive
     videoUrl = null, // New videoUrl prop
     theme = "default",
     primaryButton = { text: "Request Access", url: null },
@@ -170,6 +171,7 @@ export default function BusinessLayout({
         { id: 'features', label: 'Features' },
         { id: 'challenge', label: 'Challenge & Solution' },
         { id: 'specs', label: 'Tech Specs' },
+        { id: 'deep-dive', label: 'Deep Dive' },
         ...(HeroComponent ? [{ id: 'demo', label: 'Live Demo' }] : []),
         { id: 'roadmap', label: 'Roadmap' },
         ...(customerStories.length > 0 ? [{ id: 'stories', label: 'Stories' }] : []),
@@ -542,6 +544,32 @@ export default function BusinessLayout({
                                                     </div>
                                                 </div>
                                             ))}
+                                        </div>
+                                    </div>
+                                </ColorSection>
+                            </div>
+                        )}
+
+                        {/* 2.5.2 Detailed Specs / Deep Dive */}
+                        {detailedSpecs && (
+                            <div id="deep-dive">
+                                <ColorSection onInView={() => setActiveSection(getSectionIndex('deep-dive'))}>
+                                    <div className="mb-12 md:mb-20 pt-8 border-t border-white/5">
+                                        <div className="grid md:grid-cols-12 gap-8">
+                                            <div className="md:col-span-4">
+                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                                    DEEP DIVE
+                                                </span>
+                                                <h3 className="text-2xl md:text-3xl font-bold mb-4">Architecture & Logic</h3>
+                                                <p className={`${textSecondary} leading-relaxed`}>
+                                                    A closer look at the underlying systems and engineering principles.
+                                                </p>
+                                            </div>
+                                            <div className="md:col-span-8">
+                                                <div className={`rounded-3xl p-8 bg-white/[0.02] border ${border} relative overflow-hidden`}>
+                                                    {detailedSpecs}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </ColorSection>
