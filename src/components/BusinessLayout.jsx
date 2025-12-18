@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Users, Milestone, ArrowLeft } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Milestone, ArrowLeft, Quote, Circle, CheckCircle } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -49,6 +49,7 @@ export default function BusinessLayout({
     roadmap = [],
     stats = [],
     features = [],
+    customerStories = [],
     specs = [], // New specs prop
     videoUrl = null, // New videoUrl prop
     theme = "default",
@@ -171,6 +172,7 @@ export default function BusinessLayout({
         { id: 'specs', label: 'Tech Specs' },
         ...(HeroComponent ? [{ id: 'demo', label: 'Live Demo' }] : []),
         { id: 'roadmap', label: 'Roadmap' },
+        ...(customerStories.length > 0 ? [{ id: 'stories', label: 'Stories' }] : []),
         { id: 'experience', label: 'Experience' },
         ...(showAnalytics ? [{ id: 'analytics', label: 'Analytics' }] : [])
     ];
@@ -617,20 +619,33 @@ export default function BusinessLayout({
                                     </h3>
                                     {/* Desktop: List, Mobile: Horizontal Scroll */}
                                     <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
-                                        {roadmap.map((item, i) => (
-                                            <div key={i} className={`flex-shrink-0 w-[75vw] md:w-auto snap-center relative pl-6 border-l ${isLight ? 'border-black/20' : 'border-white/10'} md:mb-8 last:mb-0 p-4 md:p-0 rounded-r-xl md:rounded-none bg-white/5 md:bg-transparent md:pl-6`}>
-                                                <div className={`absolute left-0 md:-left-1.5 top-0 md:top-1.5 w-1 md:w-3 h-full md:h-3 rounded-none md:rounded-full ${s.accentBg} md:bg-transparent md:block hidden`} />
-                                                <div className={`absolute left-0 top-0 bottom-0 w-1 ${s.accentBg} md:hidden rounded-l-xl`} />
-                                                
-                                                <div className={`absolute md:-left-1.5 md:top-1.5 w-3 h-3 rounded-full ${s.accentBg} hidden md:block`} />
+                                        {roadmap.map((item, i) => {
+                                            const isCompleted = item.status === 'completed';
+                                            const isInProgress = item.status === 'in_progress';
+                                            const statusColor = isCompleted ? 'text-green-500' : isInProgress ? s.accent : 'text-neutral-600';
+                                            const statusBg = isCompleted ? 'bg-green-500' : isInProgress ? s.accentBg : 'bg-neutral-600';
 
-                                                <div className={`text-xs font-bold uppercase tracking-wider ${textMuted} mb-1`}>{item.quarter}</div>
+                                            return (
+                                            <div key={i} className={`flex-shrink-0 w-[75vw] md:w-auto snap-center relative pl-6 border-l ${isLight ? 'border-black/20' : 'border-white/10'} md:mb-8 last:mb-0 p-4 md:p-0 rounded-r-xl md:rounded-none bg-white/5 md:bg-transparent md:pl-6`}>
+                                                <div className={`absolute left-0 md:-left-1.5 top-0 md:top-1.5 w-1 md:w-3 h-full md:h-3 rounded-none md:rounded-full ${statusBg} md:bg-transparent md:block hidden`} />
+                                                <div className={`absolute left-0 top-0 bottom-0 w-1 ${statusBg} md:hidden rounded-l-xl`} />
+
+                                                <div className={`absolute md:-left-1.5 md:top-1.5 w-3 h-3 rounded-full ${statusBg} hidden md:block`} />
+
+                                                <div className="flex justify-between items-center mb-1">
+                                                    <div className={`text-xs font-bold uppercase tracking-wider ${textMuted}`}>{item.quarter}</div>
+                                                    {item.status && (
+                                                        <div className={`text-[10px] font-bold uppercase tracking-wider ${statusColor} border border-current px-2 py-0.5 rounded-full`}>
+                                                            {item.status.replace('_', ' ')}
+                                                        </div>
+                                                    )}
+                                                </div>
                                                 <div className={`font-bold text-base md:text-lg mb-1 md:mb-2 ${textPrimary}`}>{item.title}</div>
                                                 <div className={`text-xs md:text-sm ${textSecondary}`}>
                                                     {item.items.join(" • ")}
                                                 </div>
                                             </div>
-                                        ))}
+                                        )})}
                                     </div>
                                 </div>
                             </div>
@@ -660,6 +675,39 @@ export default function BusinessLayout({
                                         title="Product Demo"
                                     />
                                 </div>
+                            </div>
+                        )}
+
+                         {/* 2.7 Customer Stories */}
+                         {customerStories.length > 0 && (
+                            <div id="stories">
+                                <ColorSection onInView={() => setActiveSection(getSectionIndex('stories'))}>
+                                    <div className="mb-12 md:mb-20">
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                            TESTIMONIALS
+                                        </span>
+                                        <h3 className="text-3xl font-bold mb-8">What People Say</h3>
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            {customerStories.map((story, i) => (
+                                                <div key={i} className={`p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors relative`}>
+                                                    <Quote className={`w-8 h-8 ${s.accent} opacity-20 absolute top-8 left-8`} />
+                                                    <div className="relative z-10 pl-4">
+                                                        <p className={`text-lg md:text-xl font-light italic leading-relaxed mb-6 ${textSecondary}`}>"{story.quote}"</p>
+                                                        <div className="flex items-center gap-4">
+                                                            {story.image && (
+                                                                <img src={story.image} alt={story.author} className="w-10 h-10 rounded-full object-cover bg-white/10" />
+                                                            )}
+                                                            <div>
+                                                                <div className={`font-bold ${textPrimary}`}>{story.author}</div>
+                                                                <div className={`text-sm ${textMuted}`}>{story.role}, {story.company}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </ColorSection>
                             </div>
                         )}
 
