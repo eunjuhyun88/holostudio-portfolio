@@ -123,13 +123,13 @@ export default function Products() {
                      </motion.p>
                  </div>
 
-                {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                <div className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory max-w-[1600px] mx-auto pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar gap-4 md:gap-0">
+                {/* Responsive Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 max-w-[1600px] mx-auto gap-4 md:gap-0 px-4 md:px-0">
                     {products.map((product, index) => (
                         <Link 
                             key={product.id} 
                             to={createPageUrl(product.path)}
-                            className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group relative min-h-[500px] md:min-h-[600px] p-8 md:p-16 flex flex-col justify-between overflow-hidden transition-all duration-500 border border-white/5 hover:border-white/10 ${product.theme} rounded-3xl md:rounded-none`}
+                            className={`group relative min-h-[400px] md:min-h-[600px] p-6 md:p-16 flex flex-col justify-between overflow-hidden transition-all duration-500 border border-white/5 hover:border-white/10 ${product.theme} rounded-3xl md:rounded-none`}
                         >
                             {/* Background Hover Effect */}
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 z-10" />

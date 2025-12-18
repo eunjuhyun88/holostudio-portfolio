@@ -286,7 +286,7 @@ export default function BusinessLayout({
                 image={heroImage.startsWith('http') ? heroImage : undefined}
             />
 
-            <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 md:py-40">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-40">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sidebar */}
@@ -364,7 +364,7 @@ export default function BusinessLayout({
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                     {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
-                                <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary} drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>{name}</h1>
+                                <h1 className={`text-3xl md:text-4xl font-bold tracking-tighter mb-2 ${textPrimary} drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>{name}</h1>
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
                             </div>
 
@@ -375,7 +375,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl`}
+                                className={`text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl`}
                             >
                                 {oneLiner}
                             </MouseGlowText>
