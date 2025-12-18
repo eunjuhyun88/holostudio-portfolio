@@ -194,7 +194,7 @@ const TeamIdentity = ({ identity }) => (
 );
 
 // Founder Card Component
-const FounderCard = ({ name, role, bio, image, delay, focus = "50% 50%" }) => (
+const FounderCard = ({ name, role, bio, image, delay }) => (
     <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -202,24 +202,26 @@ const FounderCard = ({ name, role, bio, image, delay, focus = "50% 50%" }) => (
         transition={{ delay: delay, duration: 0.6 }}
         className="group"
     >
-        <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900 mb-8 rounded-sm border border-white/10">
+        <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-8 rounded-2xl border border-white/10 group-hover:border-indigo-500/50 transition-colors">
             {image ? (
-                <div className="w-full h-full overflow-hidden">
+                <div className="w-full h-full p-4 flex items-center justify-center bg-[#050505]">
                     <img 
                         src={image} 
                         alt={name} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[3.0]"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                         style={{
-                            transformOrigin: focus,
-                            transform: "scale(2.8)",
-                            filter: "invert(1) grayscale(1)" 
+                            filter: "invert(1) grayscale(1) brightness(1.2)" 
                         }} 
                     />
                 </div>
             ) : (
                 <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">Image</div>
             )}
-            <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+            {/* Tech Corners */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
         </div>
 
         <div className="space-y-4 pr-4">
@@ -389,50 +391,43 @@ export default function Company() {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
                     bio: "Global Strategy & Defense. Led cross-border AI/Web3 strategy connecting Silicon Valley tech with Asian gaming giants. Deep expertise in GTM for decentralized protocols.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "15% 20%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
                     bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 15%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Co-Founder & Chief Architect",
                     bio: "Graphics & Systems Veteran. Former Unity, Netmarble, Smilegate. Master of real-time rendering pipelines and performance-critical systems.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "85% 20%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
                     bio: "Oversees PlayArts architecture and development roadmap. Ensuring technical excellence across all protocol layers.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "15% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "Specialized in modern UI with React, Tailwind, Vite and Svelte. UX Specialist focused on seamless interactions.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "Builds scalable ASP.NET (9.0) and PostgreSQL systems. Expert in authentication, data modeling, and secure cloud deployment.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "85% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
                 },
                 {
                     name: "Antonio",
                     role: "Head of Ecosystem",
                     bio: "Former CMO & Head of BD at GaFin. Expert in Web3 Gaming infrastructure and ecosystem growth. Leading strategic partnerships and community expansion.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 85%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 }
             ],
         },
@@ -493,50 +488,43 @@ export default function Company() {
                     name: "Steven Park",
                     role: "Co-Founder & CEO",
                     bio: "글로벌 전략 및 방어. 실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략 주도. 탈중앙화 프로토콜의 GTM에 대한 깊은 전문 지식.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "15% 20%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "Co-Founder & CTO",
                     bio: "게임 및 인프라 분야 10년 이상 경력. 전 EA 및 넷마블. 대규모 쿠버네티스, 데브옵스, 테스트 자동화 전문가. 깊은 엔지니어링 엄격함과 AI 혁신의 결합.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 15%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Co-Founder & Chief Architect",
                     bio: "그래픽 및 시스템 베테랑. 전 유니티, 넷마블, 스마일게이트. 실시간 렌더링 파이프라인 및 성능 중요 시스템 마스터.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "85% 20%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
                     bio: "PlayArts 아키텍처와 개발 로드맵을 총괄합니다. 모든 프로토콜 레이어에서 기술적 우수성을 보장합니다.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "15% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
                     bio: "React, Tailwind, Vite 및 Svelte를 활용한 현대적인 UI 전문. 매끄러운 인터랙션에 중점을 둔 UX 스페셜리스트입니다.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
                     bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "85% 55%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
                 },
                 {
                     name: "Antonio",
                     role: "Head of Ecosystem",
                     bio: "전 GaFin CMO 및 사업 개발 총괄. Web3 게임 인프라 및 생태계 확장 전문가. 전략적 파트너십과 커뮤니티 확장을 주도합니다.",
-                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/c1493677c_2025-12-1852735.png",
-                    focus: "50% 85%"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 }
             ],
         }
