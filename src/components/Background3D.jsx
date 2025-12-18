@@ -153,17 +153,17 @@ export default function Background3D() {
             // Add some rotation to the tunnel
             dustSystem.rotation.z = time * 0.05;
 
-            // Animate Crystal (The Main 3D Effect)
-            crystalMesh.rotation.y += 0.005;
-            crystalMesh.rotation.x += 0.003;
-            corePoints.rotation.y -= 0.008;
-            corePoints.rotation.x -= 0.004;
-            wireframe.rotation.y += 0.005;
-            wireframe.rotation.x += 0.003;
+            // Animate Crystal (The Main 3D Effect) - Slowed down
+            crystalMesh.rotation.y += 0.001;
+            crystalMesh.rotation.x += 0.0005;
+            corePoints.rotation.y -= 0.002;
+            corePoints.rotation.x -= 0.001;
+            wireframe.rotation.y += 0.001;
+            wireframe.rotation.x += 0.0005;
 
-            // Animate Background Blocks
-            blocksGroup.rotation.z = time * 0.1; // Slower rotation
-            blocksGroup.rotation.x = Math.sin(time * 0.2) * 0.05;
+            // Animate Background Blocks - Slowed down
+            blocksGroup.rotation.z = time * 0.02; 
+            blocksGroup.rotation.x = Math.sin(time * 0.1) * 0.02;
 
             // Gentle zoom breathe - reduced to not interfere with warp
             const zoom = Math.sin(time * 0.3) * 1; 

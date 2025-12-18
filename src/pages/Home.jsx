@@ -440,7 +440,16 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-30">
                     <Background3D />
                 </div>
+                {/* Sci-Fi Grid Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
+                
+                {/* HUD Corners */}
+                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
             </div>
 
             {/* Section 01: HERO (Pinned) */}
@@ -454,14 +463,24 @@ export default function Home() {
                         <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
+                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative">
                             {t.hero.title}
+                            <span className="absolute -top-4 -right-8 text-xs font-mono text-indigo-500 tracking-widest border border-indigo-500/30 px-2 py-0.5 rounded opacity-70 hidden md:block">SYS.ONLINE</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed font-light tracking-wide px-4">
-                            {t.hero.sub}
-                            <br className="hidden md:block"/>
-                            <span className="text-neutral-500 text-sm md:text-base mt-4 block font-mono">{t.hero.desc}</span>
-                        </p>
+                        <div className="relative max-w-3xl mx-auto mb-8 md:mb-12">
+                            {/* Decorative brackets */}
+                            <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />
+                            <div className="absolute -right-4 top-0 h-full w-1 border-r border-white/10 hidden md:block" />
+                            
+                            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light tracking-wide px-4">
+                                {t.hero.sub}
+                                <br className="hidden md:block"/>
+                                <span className="text-neutral-500 text-sm md:text-base mt-4 block font-mono border-t border-white/5 pt-4">
+                                    <span className="text-indigo-500 mr-2">::</span>
+                                    {t.hero.desc}
+                                </span>
+                            </p>
+                        </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                 {t.hero.cta1}
