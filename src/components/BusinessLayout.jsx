@@ -791,7 +791,7 @@ export default function BusinessLayout({
                 <div className={`mt-24 md:mt-40 border-t ${border} pt-12 md:pt-20 pb-20 md:pb-0`}>
                      <h3 className="text-4xl font-bold mb-12">More Products</h3>
                      <div className="grid md:grid-cols-3 gap-8">
-                         {['AidGuardian', 'PlayArts', 'Elememetal', 'Stockhoo'].filter(p => p !== name.replace(/\s+/g, '')).slice(0, 3).map(proj => (
+                         {['AidGuardian', 'PlayArts', 'Elememetal', 'Stockhoo'].filter(p => p.toLowerCase() !== name.replace(/\s+/g, '').toLowerCase()).slice(0, 3).map(proj => (
                              <Link key={proj} to={createPageUrl(proj)} className="group block">
                                  <div className={`aspect-[4/3] ${isLight ? 'bg-black/5' : 'bg-[#111]'} rounded-2xl mb-6 ${border} ${isLight ? 'group-hover:border-black/30' : 'group-hover:border-white/30'} transition-colors relative overflow-hidden`}>
                                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity" />
