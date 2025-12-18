@@ -5,7 +5,8 @@ export default function MouseGlowText({
     children, 
     className = "", 
     glowColor = "rgba(99, 102, 241, 0.6)", // Default Indigo
-    as: Component = motion.div
+    as: Component = motion.div,
+    ...props
 }) {
     const ref = useRef(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -36,9 +37,7 @@ export default function MouseGlowText({
             style={{
                 filter: `drop-shadow(${position.x}px ${position.y}px 15px ${glowColor})`
             }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            {...props}
         >
             {children}
         </Component>
