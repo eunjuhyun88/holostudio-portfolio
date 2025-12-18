@@ -13,8 +13,6 @@ import MouseGlowText from '@/components/MouseGlowText';
 import Floating from '@/components/Floating';
 import TiltCard from '@/components/TiltCard';
 import { BorderBeam } from '@/components/ui/border-beam';
-import TechPipeline from '@/components/TechPipeline';
-import DePinMesh from '@/components/DePinMesh';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -681,17 +679,212 @@ export default function Home() {
                         <h3 className="text-2xl font-bold mb-8 text-white">Core Infrastructure</h3>
                         <p className="text-neutral-500 mb-8 max-w-2xl">Our proprietary technology stack for Full-Media AI Guardrails.</p>
                         
-                        {/* Expanded Interactive Tech Pipeline */}
-                        <div className="mb-32">
-                             <TechPipeline steps={tech.pipeline.steps} />
+                        <div className="relative">
+                            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
+                            {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                            <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                                {tech.pipeline.steps.map((step, i) => (
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden">
+                                        {/* Tech Corners */}
+                                        <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        
+                                        <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
+                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
+                                        <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{step.desc}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+                    </div>
 
-                        {/* Expanded DePIN Mesh Visualization */}
-                        <DePinMesh 
-                            features={tech.depin.features} 
-                            title={tech.depin.title} 
-                            desc={tech.depin.desc} 
-                        />
+                    <div className="bg-white/5 rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden backdrop-blur-md">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+                        
+                        <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                            <div>
+                                <h3 className="text-3xl font-bold mb-6">{tech.depin.title}</h3>
+                                <p className="text-lg text-neutral-400 leading-relaxed mb-10">
+                                    {tech.depin.desc}
+                                </p>
+                                <div className="space-y-6">
+                                    {tech.depin.features.map((feat, i) => (
+                                        <div key={i} className="flex gap-5">
+                                            <Floating delay={i * 0.3} offset={5}>
+                                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20 group-hover:bg-indigo-500/20 transition-colors">
+                                                    <motion.div
+                                                        animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
+                                                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                                                    >
+                                                        <feat.icon className="w-6 h-6" />
+                                                    </motion.div>
+                                                </div>
+                                            </Floating>
+                                            <div>
+                                                <div className="font-bold text-white text-base mb-1">{feat.title}</div>
+                                                <div className="text-sm text-neutral-500">{feat.desc}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col justify-between relative min-h-[550px] overflow-hidden">
+                                {/* Animated Data Flow Particles */}
+                                <div className="absolute inset-0 z-0 pointer-events-none">
+                                    {/* Particles moving up */}
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                        className="absolute left-1/2 -translate-x-1/2 bottom-20 w-1 h-20 bg-gradient-to-t from-transparent via-indigo-500 to-transparent blur-[2px]"
+                                    />
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 1 }}
+                                        className="absolute left-[40%] bottom-20 w-[1px] h-16 bg-gradient-to-t from-transparent via-blue-400 to-transparent blur-[1px]"
+                                    />
+                                    <motion.div 
+                                        animate={{ y: [400, 0], opacity: [0, 1, 0] }}
+                                        transition={{ duration: 3.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
+                                        className="absolute left-[60%] bottom-20 w-[1px] h-24 bg-gradient-to-t from-transparent via-purple-400 to-transparent blur-[1px]"
+                                    />
+                                </div>
+
+                                {/* Background Glow */}
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 to-transparent pointer-events-none" />
+
+                                {/* Layer 3: Apps */}
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4 }}
+                                    className="relative z-10 border border-white/10 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
+                                            <motion.div animate={{ rotate: [0, 8, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+                                                <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
+                                            <div className="font-bold text-white text-sm">EleMEMEtal</div>
+                                            <div className="text-[10px] text-neutral-500 mt-1">Game Asset Ownership</div>
+                                        </div>
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={4} colorFrom="#10b981" colorTo="#059669" />
+                                            <motion.div animate={{ scaleY: [1, 1.15, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
+                                                <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
+                                            <div className="font-bold text-white text-sm">Stockhoo</div>
+                                            <div className="text-[10px] text-neutral-500 mt-1">Market Intelligence</div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Connector */}
+                                <div className="flex justify-center -my-3 relative z-0">
+                                    <div className="h-10 w-px bg-white/10 relative overflow-hidden">
+                                        <motion.div 
+                                            animate={{ y: ["-100%", "100%"] }}
+                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                                            className="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white/50 to-transparent"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Layer 2: Protocols */}
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                    className="relative z-10 border border-indigo-500/20 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={2} colorFrom="#6366f1" colorTo="#818cf8" />
+                                            <div className="relative">
+                                                <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+                                                    <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                </motion.div>
+                                            </div>
+                                            <div className="font-bold text-white text-sm">AiD Guardian</div>
+                                            <div className="text-[10px] text-indigo-300/70 mt-1">Safety Guardrails</div>
+                                        </div>
+                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={6} colorFrom="#a855f7" colorTo="#c084fc" />
+                                            <div className="relative">
+                                                <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
+                                                    <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                </motion.div>
+                                            </div>
+                                            <div className="font-bold text-white text-sm">PlayArts</div>
+                                            <div className="text-[10px] text-purple-300/70 mt-1">Provenance Layer</div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Connector */}
+                                <div className="flex justify-center -my-3 relative z-0">
+                                    <div className="h-10 w-px bg-indigo-500/20 relative overflow-hidden">
+                                        <motion.div 
+                                            animate={{ y: ["-100%", "100%"] }}
+                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.2 }}
+                                            className="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-indigo-500 to-transparent"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Layer 1: Infrastructure */}
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative z-10 border border-blue-500/20 bg-black/50 backdrop-blur-md rounded-xl p-6 hover:border-blue-500/40 transition-colors"
+                                >
+                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold font-mono">DePIN GPU Mesh</div>
+                                        <div className="flex gap-1">
+                                            <span className="relative flex h-2 w-2">
+                                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-3 text-center">
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={0} colorFrom="#3b82f6" colorTo="#60a5fa" />
+                                            <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.5, repeat: Infinity }}>
+                                                <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
+                                            </motion.div>
+                                            <div className="text-[10px] text-blue-200">H100 Nodes</div>
+                                        </div>
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={3} colorFrom="#3b82f6" colorTo="#60a5fa" />
+                                            <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 3.5, repeat: Infinity }}>
+                                                <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
+                                            <div className="text-[10px] text-blue-200">Consumer GPU</div>
+                                        </div>
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={6} colorFrom="#3b82f6" colorTo="#60a5fa" />
+                                            <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 4.5, repeat: Infinity }}>
+                                                <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
+                                            </motion.div>
+                                            <div className="text-[10px] text-blue-200">Storage</div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
