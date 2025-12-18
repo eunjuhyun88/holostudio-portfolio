@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Users, Milestone, ArrowLeft } from 'lucide-react';
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import SEO from '@/components/SEO';
@@ -53,6 +53,32 @@ export default function BusinessLayout({
     partners = null
 }) {
     const { language } = useLanguage();
+    
+    // Parallax & Mouse Interaction Setup
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const springConfig = { damping: 25, stiffness: 70 };
+    const springX = useSpring(mouseX, springConfig);
+    const springY = useSpring(mouseY, springConfig);
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            // Normalize to -1 to 1
+            mouseX.set((clientX / innerWidth) - 0.5);
+            mouseY.set((clientY / innerHeight) - 0.5);
+        };
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
+
+    // Parallax Transforms
+    const bgX = useTransform(springX, [-0.5, 0.5], ['-5%', '5%']);
+    const bgY = useTransform(springY, [-0.5, 0.5], ['-5%', '5%']);
+    const bgXReverse = useTransform(springX, [-0.5, 0.5], ['5%', '-5%']);
+    const bgYReverse = useTransform(springY, [-0.5, 0.5], ['5%', '-5%']);
+
     // Defines themes with specific color sequences for scroll sections
     // Each sequence: [Hero, Problem/Challenge, Screenshots/Solution, Analytics, Roadmap/Footer]
     // Adjusted logic to handle variable sections later, but ensuring enough colors
@@ -188,7 +214,7 @@ export default function BusinessLayout({
                     <Starfield density={800} speed={0.03} />
                 </div>
 
-                {/* 2. Nebula/Glow Blobs */}
+                {/* 2. Nebula/Glow Blobs with Parallax */}
                 <motion.div
                     className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
                     animate={{
@@ -197,8 +223,15 @@ export default function BusinessLayout({
                         scale: [1, 1.1, 1],
                         rotate: [0, 90, 0]
                     }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    style={{ filter: 'brightness(1.5)' }}
+                    transition={{ 
+                        backgroundColor: { duration: 1.2 },
+                        default: { duration: 20, repeat: Infinity, ease: "linear" }
+                    }}
+                    style={{ 
+                        filter: 'brightness(1.5)',
+                        x: bgX,
+                        y: bgY
+                    }}
                 />
                 
                 <motion.div
@@ -208,8 +241,15 @@ export default function BusinessLayout({
                         opacity: [0.2, 0.4, 0.2],
                         scale: [1, 1.2, 1],
                     }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
-                    style={{ filter: 'brightness(2) hue-rotate(30deg)' }}
+                    transition={{ 
+                        backgroundColor: { duration: 1.2 },
+                        default: { duration: 15, repeat: Infinity, ease: "linear", delay: 2 }
+                    }}
+                    style={{ 
+                        filter: 'brightness(2) hue-rotate(30deg)',
+                        x: bgXReverse,
+                        y: bgYReverse
+                    }}
                 />
 
                 {/* 3. Gradient Overlay for Depth */}
@@ -411,8 +451,17 @@ export default function BusinessLayout({
                                                     <div className={`relative z-10 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/20 transition-all duration-500`}>
                                                         {feature.icon && (
                                                             <motion.div
-                                                                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
-                                                                transition={{ duration: 0.5 }}
+                                                                animate={{ 
+                                                                    scale: [1, 1.05, 1],
+                                                                    filter: [`drop-shadow(0 0 0px ${s.glowHex}00)`, `drop-shadow(0 0 8px ${s.glowHex}60)`, `drop-shadow(0 0 0px ${s.glowHex}00)`]
+                                                                }}
+                                                                transition={{ 
+                                                                    duration: 3, 
+                                                                    repeat: Infinity, 
+                                                                    ease: "easeInOut",
+                                                                    delay: i * 0.2 // Stagger the pulses
+                                                                }}
+                                                                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2, filter: `drop-shadow(0 0 15px ${s.glowHex})` }}
                                                             >
                                                                 <feature.icon className={`w-7 h-7 ${s.accent}`} />
                                                             </motion.div>
