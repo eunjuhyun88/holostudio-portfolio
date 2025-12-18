@@ -99,77 +99,132 @@ export default function Showcase3D() {
             </div>
 
             <main className="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
-                <div className="text-center mb-16">
-                    <motion.h1 
+                <div className="text-center mb-16 relative">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-block mb-4 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold tracking-[0.2em] uppercase"
+                    >
+                        {language === 'en' ? 'Metaverse Asset Protocol' : '메타버스 자산 프로토콜'}
+                    </motion.div>
+                    
+                    <MouseGlowText 
+                        as={motion.h1}
+                        glowColor="rgba(99, 102, 241, 0.8)"
+                        secondaryGlowColor="rgba(168, 85, 247, 0.5)"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                        className="text-5xl md:text-7xl font-black tracking-tighter mb-8 uppercase"
                     >
-                        3D <span className="text-indigo-500 drop-shadow-[0_0_25px_rgba(99,102,241,0.8)]">Showcase</span>
-                    </motion.h1>
-                    <p className="text-base md:text-xl text-neutral-400 max-w-2xl mx-auto">
+                        Digital <span className="text-indigo-500">Artifacts</span>
+                    </MouseGlowText>
+
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed"
+                    >
                         {language === 'en' 
-                            ? 'Upload, view, and interact with 3D assets directly in the browser. Supporting GLTF, GLB, and OBJ formats.' 
-                            : '브라우저에서 직접 3D 자산을 업로드하고, 보고, 상호 작용하세요. GLTF, GLB 및 OBJ 형식을 지원합니다.'}
-                    </p>
+                            ? 'Secure, decentralized visualization for high-fidelity 3D assets. Verify provenance and inspect spatial metadata in real-time.' 
+                            : '고화질 3D 자산을 위한 안전한 탈중앙화 시각화. 실시간으로 출처를 확인하고 공간 메타데이터를 검사하세요.'}
+                    </motion.p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-8 h-[calc(100vh-400px)] min-h-[600px]">
                     
                     {/* Sidebar / List */}
                     <div className="lg:col-span-4 flex flex-col gap-6 h-full">
-                        {/* Upload Card */}
-                        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+                        {/* Upload Card - Styled as Minting Interface */}
+                        <div className="bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                            
                             {!isUploading ? (
-                                <Button 
-                                    onClick={() => setIsUploading(true)}
-                                    className="w-full h-12 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-base font-medium"
-                                >
-                                    <Plus className="w-5 h-5 mr-2" />
-                                    {language === 'en' ? 'Upload New Model' : '새 모델 업로드'}
-                                </Button>
+                                <div className="text-center py-4">
+                                    <div className="w-16 h-16 rounded-full bg-white/5 mx-auto flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                                        <Box className="w-8 h-8 text-indigo-400" />
+                                    </div>
+                                    <h3 className="font-bold text-lg mb-2">{language === 'en' ? 'Register Asset' : '자산 등록'}</h3>
+                                    <p className="text-sm text-neutral-500 mb-6 px-4">
+                                        {language === 'en' ? 'Upload 3D files to the decentralized registry.' : '탈중앙화 레지스트리에 3D 파일을 업로드합니다.'}
+                                    </p>
+                                    <Button 
+                                        onClick={() => setIsUploading(true)}
+                                        className="w-full h-12 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-base font-bold tracking-wide shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all"
+                                    >
+                                        <Plus className="w-5 h-5 mr-2" />
+                                        {language === 'en' ? 'Mint Asset' : '자산 민팅'}
+                                    </Button>
+                                </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <h3 className="font-bold text-lg">{language === 'en' ? 'New Asset' : '새 자산'}</h3>
+                                        <span className="text-xs font-mono text-indigo-400 animate-pulse">● NETWORK ACTIVE</span>
+                                    </div>
+                                    
                                     <div className="space-y-2">
-                                        <Label>Name</Label>
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Asset Name</Label>
                                         <Input 
                                             value={uploadForm.name}
                                             onChange={(e) => setUploadForm({...uploadForm, name: e.target.value})}
-                                            className="bg-black/20 border-white/10"
-                                            placeholder="My Awesome Model"
+                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-11"
+                                            placeholder="e.g. Cyber_Artifact_01"
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label>File (GLTF, GLB, OBJ, MP4, MOV)</Label>
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Description</Label>
                                         <Input 
-                                            type="file"
-                                            accept=".gltf,.glb,.obj,.mp4,.mov"
-                                            onChange={handleFileChange}
-                                            className="bg-black/20 border-white/10 cursor-pointer"
+                                            value={uploadForm.description}
+                                            onChange={(e) => setUploadForm({...uploadForm, description: e.target.value})}
+                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-11"
+                                            placeholder="Optional metadata..."
                                         />
                                     </div>
-                                    <div className="flex gap-2 pt-2">
-                                        <Button type="button" variant="ghost" onClick={() => setIsUploading(false)} className="flex-1">
+                                    <div className="space-y-2">
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Payload (GLTF/GLB/OBJ)</Label>
+                                        <div className="relative group/file">
+                                            <Input 
+                                                type="file"
+                                                accept=".gltf,.glb,.obj,.mp4,.mov"
+                                                onChange={handleFileChange}
+                                                className="bg-black/40 border-white/10 cursor-pointer h-24 pt-8 text-center text-transparent file:hidden"
+                                            />
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                                <Upload className="w-6 h-6 text-neutral-500 mb-2 group-hover/file:text-indigo-400 transition-colors" />
+                                                <span className="text-xs text-neutral-400 group-hover/file:text-white transition-colors">
+                                                    {uploadForm.file ? uploadForm.file.name : (language === 'en' ? 'Drop file or click' : '파일 드롭 또는 클릭')}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-3 pt-2">
+                                        <Button type="button" variant="ghost" onClick={() => setIsUploading(false)} className="flex-1 hover:bg-white/5">
                                             Cancel
                                         </Button>
                                         <Button 
                                             type="submit" 
                                             disabled={createModelMutation.isPending || !uploadForm.file}
-                                            className="flex-1 bg-indigo-600 hover:bg-indigo-500"
+                                            className="flex-1 bg-indigo-600 hover:bg-indigo-500 font-bold"
                                         >
-                                            {createModelMutation.isPending ? 'Uploading...' : 'Upload'}
+                                            {createModelMutation.isPending ? 'Minting...' : 'Deploy'}
                                         </Button>
                                     </div>
                                 </form>
                             )}
                         </div>
 
-                        {/* Models List */}
+                        {/* Models List - Styled as Asset Registry */}
                         <div className="flex-1 overflow-y-auto pr-2 space-y-3 custom-scrollbar">
+                            <div className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-4 flex items-center justify-between">
+                                <span>Registry ({models.length})</span>
+                                <span>Recent</span>
+                            </div>
+
                             {models.length === 0 && !isLoading && (
-                                <div className="text-center py-12 text-neutral-500">
-                                    <Box className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                                    <p>No models yet.</p>
+                                <div className="text-center py-12 text-neutral-600 border border-dashed border-white/10 rounded-3xl">
+                                    <Box className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                                    <p className="text-sm">No artifacts found.</p>
                                 </div>
                             )}
                             
@@ -177,64 +232,114 @@ export default function Showcase3D() {
                                 <div 
                                     key={model.id}
                                     onClick={() => setSelectedModel(model)}
-                                    className={`group p-4 rounded-2xl border transition-all cursor-pointer relative ${
+                                    className={`group p-4 rounded-2xl border transition-all cursor-pointer relative backdrop-blur-sm ${
                                         selectedModel?.id === model.id 
-                                        ? 'bg-indigo-600/20 border-indigo-500/50' 
-                                        : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'
+                                        ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.1)]' 
+                                        : 'bg-[#0A0A0A]/60 border-white/5 hover:bg-white/5 hover:border-white/20'
                                     }`}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div>
-                                            <h3 className="font-bold text-white mb-1">{model.name}</h3>
-                                            <span className="text-xs font-mono px-2 py-0.5 rounded bg-black/30 text-neutral-400 uppercase">
-                                                {model.file_type}
-                                            </span>
+                                        <div className="flex items-center gap-3">
+                                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold border ${
+                                                selectedModel?.id === model.id ? 'bg-indigo-500 text-white border-indigo-400' : 'bg-white/5 text-neutral-400 border-white/10'
+                                            }`}>
+                                                {model.file_type.toUpperCase().substring(0,3)}
+                                            </div>
+                                            <div>
+                                                <h3 className={`font-bold text-sm mb-0.5 ${selectedModel?.id === model.id ? 'text-white' : 'text-neutral-300'}`}>{model.name}</h3>
+                                                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-500 uppercase">
+                                                    <span>#{model.id.substring(0,6)}</span>
+                                                    <span className="w-1 h-1 rounded-full bg-neutral-600" />
+                                                    <span>{new Date(model.created_date).toLocaleDateString()}</span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <Button
                                             variant="ghost"
                                             size="icon"
-                                            className="h-8 w-8 text-neutral-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                                            className="h-8 w-8 text-neutral-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/5"
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                if(confirm('Delete this model?')) deleteMutation.mutate(model.id);
+                                                if(confirm('Burn this asset?')) deleteMutation.mutate(model.id);
                                             }}
                                         >
                                             <Trash2 className="w-4 h-4" />
                                         </Button>
                                     </div>
+                                    
+                                    {/* Active Indicator */}
+                                    {selectedModel?.id === model.id && (
+                                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
+                                    )}
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Viewer Area */}
-                    <div className="lg:col-span-8 h-full min-h-[500px]">
+                    {/* Viewer Area - Holographic Style */}
+                    <div className="lg:col-span-8 h-full min-h-[500px] relative">
+                        {/* Decorative Scanner Lines */}
+                        <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-3xl z-0">
+                            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-indigo-500/30 rounded-tl-xl" />
+                            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-indigo-500/30 rounded-tr-xl" />
+                            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-indigo-500/30 rounded-bl-xl" />
+                            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-indigo-500/30 rounded-br-xl" />
+                        </div>
+
                         {selectedModel ? (
-                            <div className="h-full flex flex-col gap-4">
-                                <div className="flex-1">
+                            <div className="h-full flex flex-col gap-4 relative z-10 p-1">
+                                <div className="flex-1 rounded-2xl overflow-hidden bg-black/40 relative group">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05),transparent)] pointer-events-none" />
                                     <ModelViewer 
                                         url={selectedModel.file_url} 
                                         type={selectedModel.file_type} 
                                     />
-                                </div>
-                                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex justify-between items-center backdrop-blur-md">
-                                    <div>
-                                        <h2 className="text-xl font-bold">{selectedModel.name}</h2>
-                                        {selectedModel.description && <p className="text-neutral-400 text-sm">{selectedModel.description}</p>}
+                                    
+                                    {/* Overlay Info */}
+                                    <div className="absolute top-4 left-4 pointer-events-none">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-xs font-mono text-indigo-300">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                                            LIVE RENDER
+                                        </div>
                                     </div>
-                                    <a href={selectedModel.file_url} target="_blank" rel="noopener noreferrer">
-                                        <Button variant="outline" className="gap-2 border-white/10 bg-transparent hover:bg-white/5 text-white">
-                                            <ExternalLink className="w-4 h-4" /> Download
+                                </div>
+                                
+                                <div className="bg-[#0A0A0A]/80 border border-white/10 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center backdrop-blur-xl gap-4">
+                                    <div>
+                                        <div className="flex items-center gap-3 mb-1">
+                                            <h2 className="text-2xl font-bold tracking-tight">{selectedModel.name}</h2>
+                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded border border-indigo-500/30 text-indigo-400 bg-indigo-500/5">VERIFIED</span>
+                                        </div>
+                                        <div className="flex items-center gap-4 text-sm text-neutral-400 font-mono">
+                                            <span>ID: {selectedModel.id}</span>
+                                            <span className="text-neutral-600">|</span>
+                                            <span>SIZE: UNKNOWN</span>
+                                        </div>
+                                        {selectedModel.description && <p className="text-neutral-400 text-sm mt-2 max-w-xl">{selectedModel.description}</p>}
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <a href={selectedModel.file_url} target="_blank" rel="noopener noreferrer">
+                                            <Button variant="outline" className="gap-2 border-white/10 bg-white/5 hover:bg-white/10 text-white h-11 px-6">
+                                                <ExternalLink className="w-4 h-4" /> Export
+                                            </Button>
+                                        </a>
+                                        <Button className="bg-indigo-600 hover:bg-indigo-500 h-11 px-6 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                                            Details
                                         </Button>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         ) : (
-                            <div className="h-full rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-neutral-500 gap-4 border-dashed">
-                                <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center">
-                                    <Box className="w-10 h-10" />
+                            <div className="h-full rounded-3xl bg-[#0A0A0A]/40 border border-white/5 flex flex-col items-center justify-center text-neutral-500 gap-6 border-dashed relative overflow-hidden">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03),transparent)]" />
+                                <div className="w-24 h-24 rounded-full bg-white/5 flex items-center justify-center border border-white/5 relative">
+                                    <div className="absolute inset-0 rounded-full border border-indigo-500/20 animate-ping opacity-20" />
+                                    <Box className="w-10 h-10 text-neutral-600" />
                                 </div>
-                                <p className="text-lg">Select a model to view</p>
+                                <div className="text-center relative z-10">
+                                    <p className="text-xl font-bold text-neutral-300 mb-2">Awaiting Input</p>
+                                    <p className="text-sm font-mono text-neutral-600 uppercase tracking-widest">Select an artifact from registry</p>
+                                </div>
                             </div>
                         )}
                     </div>
