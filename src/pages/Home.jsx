@@ -10,6 +10,7 @@ import CosmicBackground from '@/components/CosmicBackground';
 import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
+import Floating from '@/components/Floating';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -487,12 +488,16 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
-                            <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
-                                {t.hero.cta1}
-                            </Button>
-                            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-neutral-800 text-white hover:bg-white/10 bg-transparent">
-                                {t.hero.cta2}
-                            </Button>
+                            <Floating delay={0} duration={4}>
+                                <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
+                                    {t.hero.cta1}
+                                </Button>
+                            </Floating>
+                            <Floating delay={0.5} duration={4.5}>
+                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-neutral-800 text-white hover:bg-white/10 bg-transparent">
+                                    {t.hero.cta2}
+                                </Button>
+                            </Floating>
                         </div>
                     </motion.div>
                 </div>
@@ -594,9 +599,11 @@ export default function Home() {
                                 transition={{ delay: idx * 0.1 }}
                                 className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/30 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md"
                             >
-                                <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
-                                    {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
-                                </div>
+                                <Floating delay={idx * 0.2} offset={8}>
+                                    <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
+                                        {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
+                                    </div>
+                                </Floating>
                                 <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
                                 <p className="text-neutral-400 mb-6 text-base leading-relaxed">{card.desc}</p>
                                 <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-300 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
@@ -652,9 +659,11 @@ export default function Home() {
                                 <div className="space-y-6">
                                     {tech.depin.features.map((feat, i) => (
                                         <div key={i} className="flex gap-5">
-                                            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20">
-                                                <feat.icon className="w-6 h-6" />
-                                            </div>
+                                            <Floating delay={i * 0.3} offset={5}>
+                                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20">
+                                                    <feat.icon className="w-6 h-6" />
+                                                </div>
+                                            </Floating>
                                             <div>
                                                 <div className="font-bold text-white text-base mb-1">{feat.title}</div>
                                                 <div className="text-sm text-neutral-500">{feat.desc}</div>
@@ -967,12 +976,16 @@ export default function Home() {
                                 transition={{ delay: idx * 0.1 }}
                                 className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
                             >
-                                <div className={`absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
-                                    <m.icon className={`w-12 h-12 ${m.color}`} />
-                                </div>
-                                <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
-                                    <m.icon className={`w-6 h-6 ${m.color}`} />
-                                </div>
+                                <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
+                                    <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
+                                        <m.icon className={`w-12 h-12 ${m.color}`} />
+                                    </div>
+                                </Floating>
+                                <Floating delay={idx * 0.2 + 0.5} offset={8}>
+                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
+                                        <m.icon className={`w-6 h-6 ${m.color}`} />
+                                    </div>
+                                </Floating>
                                 <div>
                                     <div className="text-lg font-bold text-white mb-2 leading-tight">{m.title}</div>
                                     <div className="text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors">{m.desc}</div>
