@@ -389,19 +389,19 @@ export default function Company() {
             founders: [
                 {
                     name: "Steven Park",
-                    role: "Co-Founder & CEO",
+                    role: "CEO",
                     bio: "Global Strategy & Defense. Led cross-border AI/Web3 strategy connecting Silicon Valley tech with Asian gaming giants. Deep expertise in GTM for decentralized protocols.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
                 },
                 {
                     name: "Yongwan Kim",
-                    role: "Co-Founder & CTO",
+                    role: "CTO",
                     bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
                 },
                 {
                     name: "Seongdae Kim",
-                    role: "Co-Founder & Chief Architect",
+                    role: "CHIEF ARCHITECT",
                     bio: "Graphics & Systems Veteran. Former Unity, Netmarble, Smilegate. Master of real-time rendering pipelines and performance-critical systems.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
                 },
@@ -492,19 +492,19 @@ export default function Company() {
             founders: [
                 {
                     name: "Steven Park",
-                    role: "Co-Founder & CEO",
+                    role: "CEO",
                     bio: "글로벌 전략 및 방어. 실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략 주도. 탈중앙화 프로토콜의 GTM에 대한 깊은 전문 지식.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
                 },
                 {
                     name: "Yongwan Kim",
-                    role: "Co-Founder & CTO",
+                    role: "CTO",
                     bio: "게임 및 인프라 분야 10년 이상 경력. 전 EA 및 넷마블. 대규모 쿠버네티스, 데브옵스, 테스트 자동화 전문가. 깊은 엔지니어링 엄격함과 AI 혁신의 결합.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
                 },
                 {
                     name: "Seongdae Kim",
-                    role: "Co-Founder & Chief Architect",
+                    role: "CHIEF ARCHITECT",
                     bio: "그래픽 및 시스템 베테랑. 전 유니티, 넷마블, 스마일게이트. 실시간 렌더링 파이프라인 및 성능 중요 시스템 마스터.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
                 },
