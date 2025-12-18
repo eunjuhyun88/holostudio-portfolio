@@ -260,6 +260,7 @@ export default function Elememetal() {
             oneLiner={c.oneLiner}
             story={c.story}
             heroImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/15a1915ba_2025-12-17100148.png"
+            videoUrl="https://www.youtube.com/embed/L638G0X76Qk"
             
             problemPoints={c.problemPoints}
             solutionSteps={c.solutionSteps}
