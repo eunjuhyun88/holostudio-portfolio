@@ -81,6 +81,7 @@ function LayoutContent({ children }) {
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
                 @import url('https://fonts.cdnfonts.com/css/graphyne');
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
                 
                 /* Default everything to lighter weight */
                 strong, b, .font-bold, .font-extrabold, .font-semibold, h1, h2, h3, h4, h5, h6 {
@@ -93,6 +94,9 @@ function LayoutContent({ children }) {
                 }
                 .font-inktrap {
                     font-family: 'Graphyne', sans-serif !important;
+                }
+                .font-clean {
+                    font-family: 'Montserrat', sans-serif !important;
                 }
             `}</style>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-indigo-600 focus:text-white top-0 left-0">

@@ -528,12 +528,12 @@ export default function Company() {
                         
                         <div className="space-y-24 w-full max-w-4xl mx-auto">
                             {c.intro?.text ? c.intro.text.map((t, i) => (
-                                <TypingBlock key={i} className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
+                                <TypingBlock key={i} className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-clean tracking-wide text-center">
                                     {t}
                                 </TypingBlock>
                             )) : (
                                 <>
-                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
+                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-clean tracking-wide text-center">
                                         It is a period of digital chaos.
                                     </TypingBlock>
                                 </>
