@@ -81,7 +81,7 @@ function LayoutContent({ children }) {
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
                 @import url('https://fonts.cdnfonts.com/css/graphyne');
-                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
                 
                 /* Default everything to lighter weight */
                 strong, b, .font-bold, .font-extrabold, .font-semibold, h1, h2, h3, h4, h5, h6 {
@@ -127,7 +127,7 @@ function LayoutContent({ children }) {
                                     <div key={link.name} className="flex items-center">
                                         <Link 
                                             to={createPageUrl('Products')}
-                                            className={`pl-5 pr-2 py-2 font-medium text-sm transition-colors ${
+                                            className={`pl-5 pr-2 py-2 font-clean font-medium text-sm transition-colors ${
                                                 location.pathname === '/Products' || isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
                                             }`}
                                         >
@@ -135,7 +135,7 @@ function LayoutContent({ children }) {
                                         </Link>
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
-                                                <button className={`pr-3 pl-1 py-2 font-medium text-sm transition-colors flex items-center ${
+                                                <button className={`pr-3 pl-1 py-2 font-clean font-medium text-sm transition-colors flex items-center ${
                                                     isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
                                                 }`}>
                                                     <ChevronDown className="w-3 h-3" />
@@ -159,7 +159,7 @@ function LayoutContent({ children }) {
                                     <button 
                                         key={link.name}
                                         onClick={() => scrollToSection(link.path.substring(2))} 
-                                        className="px-5 py-2 font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                        className="px-5 py-2 font-clean font-medium text-sm text-neutral-400 hover:text-white transition-colors"
                                     >
                                         {link.name}
                                     </button>
@@ -167,7 +167,7 @@ function LayoutContent({ children }) {
                                     <Link 
                                         key={link.name}
                                         to={createPageUrl(link.path.substring(1))}
-                                        className={`px-5 py-2 font-medium text-sm transition-colors ${
+                                        className={`px-5 py-2 font-clean font-medium text-sm transition-colors ${
                                             location.pathname === link.path ? 'text-white' : 'text-neutral-400 hover:text-white'
                                         }`}
                                     >
