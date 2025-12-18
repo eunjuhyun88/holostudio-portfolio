@@ -9,6 +9,7 @@ import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
+import MouseGlowText from '@/components/MouseGlowText';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -463,10 +464,14 @@ export default function Home() {
                         <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
                             {t.hero.tag}
                         </div>
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative drop-shadow-[0_0_35px_rgba(255,255,255,0.3)]">
+                        <MouseGlowText 
+                            as={motion.h1}
+                            glowColor="rgba(99, 102, 241, 0.8)" 
+                            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative"
+                        >
                             {t.hero.title}
                             <span className="absolute -top-4 -right-8 text-xs font-mono text-indigo-500 tracking-widest border border-indigo-500/30 px-2 py-0.5 rounded opacity-70 hidden md:block">SYS.ONLINE</span>
-                        </h1>
+                        </MouseGlowText>
                         <div className="relative max-w-3xl mx-auto mb-8 md:mb-12">
                             {/* Decorative brackets */}
                             <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />

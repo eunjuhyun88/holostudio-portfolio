@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import CosmicBackground from '@/components/CosmicBackground';
 import Background3D from '@/components/Background3D';
+import MouseGlowText from '@/components/MouseGlowText';
 
 // --- Components ---
 
@@ -516,14 +517,16 @@ export default function Company() {
                         >
                             {c.intro?.episode || "Episode I"}
                         </motion.h2>
-                        <motion.h1 
+                        <MouseGlowText 
+                            as={motion.h1}
+                            glowColor="rgba(99, 102, 241, 0.8)"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1 }}
-                            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase mb-12 drop-shadow-[0_0_35px_rgba(255,255,255,0.3)] scale-y-110 w-full"
+                            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase mb-12 scale-y-110 w-full"
                         >
                             {c.intro?.title || "The Trust Layer"}
-                        </motion.h1>
+                        </MouseGlowText>
 
                         {c.intro?.subtitle && (
                             <motion.h3 

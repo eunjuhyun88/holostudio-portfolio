@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
 import { useLanguage } from '@/components/LanguageContext';
 import Starfield from '@/components/Starfield';
+import MouseGlowText from '@/components/MouseGlowText';
 
 // Helper component to trigger background changes
 const ColorSection = ({ children, onInView, className = "" }) => {
@@ -63,7 +64,8 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
-            sectionColors: ["#0f172a", "#1e1b4b", "#312e81", "#172554", "#0f172a"]
+            sectionColors: ["#0f172a", "#1e1b4b", "#312e81", "#172554", "#0f172a"],
+            glowHex: "rgba(99, 102, 241, 0.8)"
         },
         elememetal: {
             accent: "text-orange-500",
@@ -72,7 +74,8 @@ export default function BusinessLayout({
             gradient: "from-orange-950/30",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
             // Deep Orange -> Dark Red -> Brown -> Dark Amber
-            sectionColors: ["#2a0a00", "#450a0a", "#3f1d0b", "#431407", "#2a0a00"]
+            sectionColors: ["#2a0a00", "#450a0a", "#3f1d0b", "#431407", "#2a0a00"],
+            glowHex: "rgba(249, 115, 22, 0.8)"
         },
         aidguardian: {
             accent: "text-indigo-400",
@@ -81,7 +84,8 @@ export default function BusinessLayout({
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
             // Deep Indigo -> Violet -> Blue -> Slate
-            sectionColors: ["#1e1b4b", "#2e1065", "#172554", "#1e3a8a", "#0f172a"]
+            sectionColors: ["#1e1b4b", "#2e1065", "#172554", "#1e3a8a", "#0f172a"],
+            glowHex: "rgba(99, 102, 241, 0.8)"
         },
         playarts: {
             accent: "text-lime-400",
@@ -90,7 +94,8 @@ export default function BusinessLayout({
             gradient: "from-lime-950/30",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
             // Dark Lime -> Deep Green -> Teal -> Dark Moss
-            sectionColors: ["#1a2e05", "#064e3b", "#115e59", "#14532d", "#0f172a"]
+            sectionColors: ["#1a2e05", "#064e3b", "#115e59", "#14532d", "#0f172a"],
+            glowHex: "rgba(132, 204, 22, 0.8)"
         },
         stockhoo: {
             accent: "text-emerald-400",
@@ -99,7 +104,8 @@ export default function BusinessLayout({
             gradient: "from-emerald-950/30",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
             // Deep Emerald -> Cyan -> Teal -> Slate
-            sectionColors: ["#022c22", "#083344", "#0f766e", "#042f2e", "#0f172a"]
+            sectionColors: ["#022c22", "#083344", "#0f766e", "#042f2e", "#0f172a"],
+            glowHex: "rgba(16, 185, 129, 0.8)"
         }
     };
 
@@ -301,14 +307,16 @@ export default function BusinessLayout({
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
                             </div>
 
-                            <motion.h2 
+                            <MouseGlowText 
+                                as={motion.h2}
+                                glowColor={s.glowHex}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]`}
+                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
                             >
                                 {oneLiner}
-                            </motion.h2>
+                            </MouseGlowText>
 
                             {story && (
                                 <motion.div 

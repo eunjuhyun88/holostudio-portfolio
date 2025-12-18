@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
+import MouseGlowText from '@/components/MouseGlowText';
 
 export default function Products() {
     const { language } = useLanguage();

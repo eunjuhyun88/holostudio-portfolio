@@ -4,6 +4,7 @@ import { Mail, MapPin, MessageSquare, ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
 import CosmicBackground from '@/components/CosmicBackground';
 import Background3D from '@/components/Background3D';
+import MouseGlowText from '@/components/MouseGlowText';
 
 export default function Contact() {
     return (
@@ -29,16 +30,22 @@ export default function Contact() {
             </div>
 
             <div className="relative z-10 pt-32 pb-24 px-6 max-w-7xl mx-auto">
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="max-w-3xl mx-auto text-center mb-16"
-                >
-                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.3)]">Let's Build the Future</h1>
-                    <p className="text-base md:text-xl text-neutral-400 leading-relaxed">
+                <div className="max-w-3xl mx-auto text-center mb-16">
+                    <MouseGlowText
+                        as={motion.h1}
+                        glowColor="rgba(99, 102, 241, 0.8)"
+                        className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white"
+                    >
+                        Let's Build the Future
+                    </MouseGlowText>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-base md:text-xl text-neutral-400 leading-relaxed"
+                    >
                         We're always looking for partners, investors, and builders who share our vision for a trusted, autonomous future.
-                    </p>
-                </motion.div>
+                    </motion.p>
+                </div>
 
                 <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                     <motion.div 
