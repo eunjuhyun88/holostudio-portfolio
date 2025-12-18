@@ -313,6 +313,49 @@ export default function Stockhoo() {
                     value: "Non-Custodial API Keys (IP Whitelisted)"
                 }
             ]}
+            detailedSpecs={(
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Zone Heat Score™ Algorithm" : "구역 열기 점수(Zone Heat Score™) 알고리즘"}</h4>
+                        <p className="text-neutral-400 leading-relaxed mb-6">
+                            {language === 'en'
+                                ? "The Heat Score is a composite metric derived from three primary data streams. It identifies 'Coiled' zones where price compression meets high social sentiment and pending order volume, often preceding a breakout."
+                                : "열기 점수는 세 가지 주요 데이터 스트림에서 파생된 복합 지표입니다. 가격 압축이 높은 소셜 센티먼트 및 대기 주문량과 만나는 '응축된(Coiled)' 구역을 식별하여, 종종 돌파 직전의 상황을 포착합니다."}
+                        </p>
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-4 p-3 bg-emerald-900/10 rounded-lg border border-emerald-500/10">
+                                <div className="w-12 text-sm font-bold text-emerald-400">40%</div>
+                                <div className="flex-1">
+                                    <div className="text-sm font-bold text-white">Order Book Density</div>
+                                    <div className="text-xs text-neutral-500">Bid/Ask depth ratio at key levels</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4 p-3 bg-emerald-900/10 rounded-lg border border-emerald-500/10">
+                                <div className="w-12 text-sm font-bold text-emerald-400">30%</div>
+                                <div className="flex-1">
+                                    <div className="text-sm font-bold text-white">Social Velocity</div>
+                                    <div className="text-xs text-neutral-500">Rate of change in mention volume (CT/Telegram)</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4 p-3 bg-emerald-900/10 rounded-lg border border-emerald-500/10">
+                                <div className="w-12 text-sm font-bold text-emerald-400">30%</div>
+                                <div className="flex-1">
+                                    <div className="text-sm font-bold text-white">On-Chain Flow</div>
+                                    <div className="text-xs text-neutral-500">Net exchange inflows/outflows</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "DPO Model Tuning" : "DPO 모델 튜닝"}</h4>
+                        <p className="text-neutral-400 leading-relaxed">
+                            {language === 'en'
+                                ? "We use Direct Preference Optimization (DPO) to fine-tune our Llama-3 based agents. Instead of generic RLHF, our models are rewarded based on the PnL of their simulated trade calls over a 7-day rolling window, aligning AI incentives directly with trader profitability."
+                                : "우리는 Llama-3 기반 에이전트를 미세 조정하기 위해 직접 선호 최적화(DPO)를 사용합니다. 일반적인 RLHF 대신, 우리 모델은 7일 롤링 윈도우 동안 시뮬레이션된 트레이딩 호출의 손익(PnL)을 기반으로 보상을 받아, AI의 인센티브를 트레이더의 수익성과 직접적으로 일치시킵니다."}
+                        </p>
+                    </div>
+                </div>
+            )}
         />
     );
 }

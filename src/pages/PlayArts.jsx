@@ -321,6 +321,55 @@ export default function PlayArts() {
                     value: "IPFS / Arweave (Decentralized Storage)"
                 }
             ]}
+            detailedSpecs={(
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Sentinel Node Verification" : "센티넬 노드 검증"}</h4>
+                        <p className="text-neutral-400 leading-relaxed mb-6">
+                            {language === 'en'
+                                ? "PlayArts utilizes a decentralized network of 'Sentinel' nodes that perform perceptual hashing (pHash) on incoming media. This creates a fingerprint tolerant to minor modifications (compression, resizing) but sensitive to semantic changes, ensuring robust duplicate detection."
+                                : "PlayArts는 들어오는 미디어에 대해 지각 해싱(pHash)을 수행하는 '센티넬' 노드의 탈중앙화 네트워크를 활용합니다. 이는 사소한 수정(압축, 크기 조정)에는 관대하지만 의미적 변경에는 민감한 지문을 생성하여 강력한 중복 탐지를 보장합니다."}
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">99.7%</div>
+                                <div className="text-xs text-neutral-500 uppercase">Detection Rate</div>
+                            </div>
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">&lt;200ms</div>
+                                <div className="text-xs text-neutral-500 uppercase">Verification Time</div>
+                            </div>
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">ZK-Snark</div>
+                                <div className="text-xs text-neutral-500 uppercase">Privacy Proof</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Model Context Passport (MCP)" : "모델 컨텍스트 여권 (MCP)"}</h4>
+                        <p className="text-neutral-400 leading-relaxed mb-4">
+                            {language === 'en'
+                                ? "Every asset includes a cryptographically signed JSON manifest containing the generation parameters. This allows for 'Recipe' trading, where the prompt itself becomes a tradable asset."
+                                : "모든 자산에는 생성 매개변수가 포함된 암호학적으로 서명된 JSON 매니페스트가 포함됩니다. 이를 통해 프롬프트 자체가 거래 가능한 자산이 되는 '레시피' 거래가 가능해집니다."}
+                        </p>
+                        <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/10 overflow-x-auto">
+                            <pre className="text-xs text-lime-300 font-mono">
+{`{
+  "mcp_version": "1.0",
+  "model": "Stable Diffusion XL",
+  "seed": 482910482,
+  "prompt_hash": "0x7f83...2a1b",
+  "contributors": [
+    { "role": "prompter", "address": "0x123...", "share": 0.8 },
+    { "role": "model_provider", "address": "0x456...", "share": 0.2 }
+  ],
+  "signature": "0x98a..."
+}`}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            )}
         />
     );
 }
