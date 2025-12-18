@@ -665,10 +665,10 @@ export default function Home() {
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition-colors group backdrop-blur-sm">
-                                        <div className="text-xs font-mono text-indigo-500 mb-3">0{i+1}</div>
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default">
+                                        <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
-                                        <div className="text-xs text-neutral-500 leading-relaxed">{step.desc}</div>
+                                        <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{step.desc}</div>
                                     </div>
                                 ))}
                             </div>
