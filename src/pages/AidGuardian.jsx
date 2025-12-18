@@ -9,47 +9,48 @@ export default function AidGuardian() {
 
     const content = {
         en: {
-            tag: "AI Safety Protocol • Verifiable AI Content • Ecosystem Safety",
+            tag: "EU AI Act Compliant • GARM Framework • $25B Market Opportunity",
             primaryButtonText: "Launch Dashboard",
-            oneLiner: "Verifying the origin and integrity of AI-generated content to prevent misinformation and ensure digital ecosystem safety.",
+            oneLiner: "Seizing the $25B content moderation market with the only solution combining EU AI Act compliance, GARM framework, and Open Core architecture.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Beyond simple security, we become the foundation of trust guarding the Digital Truth of the AI era.
+                        The convergence of <span className="text-white font-bold">EU AI Act regulations</span>, advertisers' demand for <span className="text-white font-bold">GARM-based brand safety</span>, and the explosion of AI-generated content is creating unprecedented demand for compliant, multi-modal moderation.
+                    </p>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        AiD Guardian secures a unique position by combining regulatory compliance, GARM support, and AI detection. With major cloud providers like AWS and Google yet to declare explicit GARM or EU AI Act compliance, we have a clear <span className="text-white font-bold">First-Mover Advantage</span>.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        By combining GARM-aligned safety standards with deep multi-modal analysis, 
-                        we provide a real-time shield for your AI infrastructure. 
-                        It's not just a filter; it's an intelligent compliance engine that adapts to your specific policy needs.
+                        We are targeting a global market projected to reach <span className="text-white font-bold">$25 billion by 2030</span> (CAGR 13-14%), providing the essential infrastructure for the next generation of safe AI.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
-                    title: "The Compliance Gap",
-                    description: "New regulations like the EU AI Act & DSA require strict transparency and auditability for AI content that current tools can't provide."
+                    title: "Regulatory Tsunami (EU AI Act)",
+                    description: "Violating transparency obligations (Article 50) risks fines up to 7% of global revenue. Enterprises lack solutions for the 2026 full enforcement."
                 },
                 {
-                    title: "Multi-Modal Blindspots",
-                    description: "Standard text filters fail to detect toxic or non-compliant content embedded in Images, Video frames, and Audio tracks."
+                    title: "Brand Safety Crisis",
+                    description: "Failing GARM standards (hate speech, deepfakes) risks advertiser exodus. 68% of consumers lose trust when ads appear near toxic content."
                 },
                 {
-                    title: "Black Box Liability",
-                    description: "Without explainable AI decisions, enterprises face legal risks when content is flagged or blocked without clear reasoning."
+                    title: "The Big Tech Void",
+                    description: "No major cloud provider currently offers explicit GARM compliance or a dedicated EU AI Act response, creating a massive market gap."
                 }
             ],
             solutionSteps: [
                 {
-                    title: "Ingest & Decompose",
-                    description: "We ingest multi-modal content and decompose it into text, visual frames, and audio segments for granular analysis."
+                    title: "Regulatory Compliance",
+                    description: "Internalizing EU AI Act requirements (Transparency, HITL, Audit Logging) at the architecture level to eliminate legal risks."
                 },
                 {
-                    title: "Analyze & Score",
-                    description: "Our engine applies specialized models to score content against GARM safety categories and custom enterprise policies in real-time."
+                    title: "GARM Standard Alignment",
+                    description: "Precision detection of GARM's 11 harmful categories (adult, hate, violence, etc.) to meet global advertising standards."
                 },
                 {
-                    title: "Enforce & Report",
-                    description: "Automatically block or flag content, generating an immutable audit trail for compliance reporting."
+                    title: "AI Generation Detection",
+                    description: "Identifying AI-generated text/images/video (Deepfakes) and applying machine-readable watermarks for transparency."
                 }
             ],
             screenshots: [
@@ -101,37 +102,37 @@ export default function AidGuardian() {
             ],
             useCases: [
                 {
-                    title: "Ad Tech Platforms",
-                    description: "Protect advertiser brand equity by ensuring ads never appear next to toxic AI-generated content."
+                    title: "Live Streaming & Gaming",
+                    description: "Real-time filtering for the fastest growing (18.9% CAGR) media formats, protecting user experience and brand safety."
                 },
                 {
-                    title: "UGC Platforms",
-                    description: "Scale moderation for millions of images and videos with automated, policy-aware AI agents."
+                    title: "Ad Tech & Media",
+                    description: "Strict GARM compliance to secure premium ad inventory and protect brand equity from toxic content associations."
                 },
                 {
-                    title: "Enterprise GenAI",
-                    description: "Wrap internal AI tools with a safety layer to prevent generation of non-compliant or harmful outputs."
+                    title: "Enterprise Compliance",
+                    description: "Risk-proofing against EU AI Act fines and reputation damage by embedding compliance into the AI stack."
                 }
             ],
-            businessModel: "SaaS Subscription (Tiered by Volume) + Enterprise Licensing for On-Premise Deployment.",
+            businessModel: "Buyer-Based Open Core: Free core features for developers, paid Enterprise Compliance/SSO licensing.",
             roadmap: [
                 {
-                    quarter: "Q1 2025",
+                    quarter: "2025 Q1-Q2",
                     status: "in_progress",
-                    title: "Video Analysis v2",
-                    items: ["Real-time streaming support", "Audio-visual correlation"]
+                    title: "Phase 1: Market Entry",
+                    items: ["Korean Enterprise POCs", "AI Act Compliance MVP", "KISA Certification"]
                 },
                 {
-                    quarter: "Q2 2025",
+                    quarter: "2025 Q3-Q4",
                     status: "upcoming",
-                    title: "Enterprise Suite",
-                    items: ["SSO/SAML integration", "Custom policy engine"]
+                    title: "Phase 2: Global Expansion",
+                    items: ["Target EU DSA Platforms", "DoubleVerify Partnership", "$500K ARR Goal"]
                 },
                 {
-                    quarter: "Q3 2025",
+                    quarter: "2026",
                     status: "upcoming",
-                    title: "Global Certification",
-                    items: ["EU AI Act Compliance Audit", "ISO 27001"]
+                    title: "Phase 3: Scale Up",
+                    items: ["Open Source Viral Growth", "North American Expansion", "$3-5M ARR Goal"]
                 }
             ],
             customerStories: [
