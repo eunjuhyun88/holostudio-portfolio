@@ -218,7 +218,7 @@ function LayoutContent({ children }) {
 
                     {/* Mobile Menu Overlay */}
                     {mobileMenuOpen && (
-                    <div className="fixed inset-0 bg-[#050505] z-40 pt-24 px-6 md:hidden overflow-y-auto">
+                    <div className="fixed inset-0 bg-[#050505] z-40 pt-24 px-6 md:hidden overflow-y-auto pointer-events-auto">
                         <div className="flex flex-col gap-6 text-lg">
                             <div className="flex items-center gap-4 mb-4">
                                  <button 

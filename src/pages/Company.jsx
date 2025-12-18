@@ -263,6 +263,38 @@ export default function Company() {
     const { language } = useLanguage();
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+    const [activeSection, setActiveSection] = React.useState('intro');
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['intro', 'history', 'vision', 'identity', 'team'];
+            for (const section of sections) {
+                const el = document.getElementById(section);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top >= -window.innerHeight / 2 && rect.top < window.innerHeight / 2) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToId = (id) => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const navItems = [
+        { id: 'intro', label: 'Intro' },
+        { id: 'history', label: 'History' },
+        { id: 'vision', label: 'Vision' },
+        { id: 'identity', label: 'Identity' },
+        { id: 'team', label: 'Team' },
+    ];
 
     React.useEffect(() => {
         const handleMouseMove = (e) => {
@@ -535,9 +567,25 @@ export default function Company() {
                  </motion.div>
             </div>
 
+            {/* Sticky Navigation (Desktop) */}
+            <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
+                {navItems.map((item) => (
+                    <button
+                        key={item.id}
+                        onClick={() => scrollToId(item.id)}
+                        className="group flex items-center justify-end gap-4"
+                    >
+                        <span className={`text-xs font-bold tracking-widest uppercase transition-all duration-300 ${activeSection === item.id ? 'text-white opacity-100' : 'text-neutral-500 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0'}`}>
+                            {item.label}
+                        </span>
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-indigo-500 scale-150' : 'bg-neutral-600 group-hover:bg-white'}`} />
+                    </button>
+                ))}
+            </div>
+
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div className="relative z-10 py-32 px-6 md:px-12 max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center">
+                <div id="intro" className="relative z-10 py-32 px-6 md:px-12 max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center">
                     <div className="text-center mb-64 w-full">
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
@@ -584,7 +632,7 @@ export default function Company() {
                     </div>
 
                     {/* Chapters integrated as Typing Blocks */}
-                    <div className="space-y-64 w-full max-w-[80vw] mx-auto pb-32">
+                    <div id="history" className="space-y-64 w-full max-w-[80vw] mx-auto pb-32">
                         {c.chapters.map((chapter, i) => (
                             <div key={i} className="flex flex-col items-center text-center w-full">
                                 <motion.div 
@@ -613,7 +661,7 @@ export default function Company() {
                 </div>
 
                 {/* Thesis / Vision Section (Full Width Sticky Scroll) */}
-                <div className="w-full">
+                <div id="vision" className="w-full">
                      <ThesisSection items={c.thesis} />
                 </div>
 
@@ -621,7 +669,9 @@ export default function Company() {
                 <ClosingStatement />
 
                 {/* Team Identity Section */}
-                <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
+                <div id="identity">
+                    <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
+                </div>
 
                 {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
                 <div id="team" className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48 overflow-hidden">
