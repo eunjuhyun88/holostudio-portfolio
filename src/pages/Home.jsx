@@ -930,6 +930,12 @@ export default function Home() {
                                     {/* Central Visual */}
                                     <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
                                         <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} bg-neutral-900/50 backdrop-blur-sm shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group`}>
+                                            {/* Visual Corners */}
+                                            <div className="absolute top-4 left-4 w-12 h-12 border-l border-t border-white/30 rounded-tl-xl pointer-events-none" />
+                                            <div className="absolute top-4 right-4 w-12 h-12 border-r border-t border-white/30 rounded-tr-xl pointer-events-none" />
+                                            <div className="absolute bottom-4 left-4 w-12 h-12 border-l border-b border-white/30 rounded-bl-xl pointer-events-none" />
+                                            <div className="absolute bottom-4 right-4 w-12 h-12 border-r border-b border-white/30 rounded-br-xl pointer-events-none" />
+                                            
                                             <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-10`} />
                                             
                                             {/* Image Container - Adjusted to contain logos properly */}
@@ -975,6 +981,12 @@ export default function Home() {
                                 className="max-w-md w-full pointer-events-auto"
                             >
                                 <div className={`glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1`}>
+                                        {/* Sci-Fi Corners */}
+                                        <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                        <div className={`absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                        <div className={`absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                        <div className={`absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
