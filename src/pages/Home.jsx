@@ -15,6 +15,15 @@ import { BorderBeam } from '@/components/ui/border-beam';
 
 export default function Home() {
     const { language } = useLanguage();
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            setMousePos({ x: e.clientX, y: e.clientY });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     const content = {
         en: {
@@ -443,6 +452,15 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-30">
                     <Background3D />
                 </div>
+                
+                {/* Dynamic Spotlight */}
+                <div 
+                    className="absolute inset-0 z-10 transition-opacity duration-500"
+                    style={{
+                        background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                    }}
+                />
+
                 {/* Sci-Fi Grid Overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
                 
@@ -490,8 +508,9 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Floating delay={0} duration={4}>
-                                <Button size="lg" className="bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
-                                    {t.hero.cta1}
+                                <Button size="lg" className="relative overflow-hidden bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0 group" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
+                                    <span className="relative z-10">{t.hero.cta1}</span>
+                                    <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent z-0" />
                                 </Button>
                             </Floating>
                             <Floating delay={0.5} duration={4.5}>
@@ -943,7 +962,7 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <div className={`bg-black/50 backdrop-blur-xl border ${prod.borderColor} p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-opacity-100 transition-all duration-500`}>
+                                <div className={`glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1`}>
                                         <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
                                         
                                         <div className="relative z-10">
