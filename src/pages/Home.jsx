@@ -730,7 +730,7 @@ export default function Home() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col justify-between relative min-h-[550px] overflow-hidden">
+                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col gap-8 md:gap-0 md:justify-between relative h-auto md:min-h-[600px] overflow-hidden">
                                 {/* Animated Data Flow Particles */}
                                 <div className="absolute inset-0 z-0 pointer-events-none">
                                     {/* Particles moving up */}
@@ -764,7 +764,7 @@ export default function Home() {
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
                                             <motion.div animate={{ rotate: [0, 8, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
@@ -805,7 +805,7 @@ export default function Home() {
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={2} colorFrom="#6366f1" colorTo="#818cf8" />
                                             <div className="relative">
@@ -859,7 +859,7 @@ export default function Home() {
                                             </span>
                                         </div>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-3 text-center">
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
                                         <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={80} duration={10} delay={0} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.5, repeat: Infinity }}>
