@@ -113,6 +113,7 @@ const RoadmapItem = ({ item, index, isLast }) => {
                         </motion.div>
                     )}
                 </AnimatePresence>
+                </div>
             </motion.div>
         </div>
     );
