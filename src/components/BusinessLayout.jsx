@@ -169,6 +169,7 @@ export default function BusinessLayout({
         { id: 'features', label: 'Features' },
         { id: 'challenge', label: 'Challenge & Solution' },
         { id: 'specs', label: 'Tech Specs' },
+        ...(HeroComponent ? [{ id: 'demo', label: 'Live Demo' }] : []),
         { id: 'experience', label: 'Experience' },
         ...(showAnalytics ? [{ id: 'analytics', label: 'Analytics' }] : []),
         { id: 'roadmap', label: 'Roadmap' }
@@ -391,30 +392,6 @@ export default function BusinessLayout({
 
                             <MobileTOC />
 
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                                className={`relative ${heroContainerClass} rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl mb-12`}
-                            >
-                                {HeroComponent ? (
-                                    <HeroComponent />
-                                ) : heroImage.startsWith('http') ? (
-                                    <img 
-                                        src={heroImage} 
-                                        alt={name} 
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center p-8 md:p-12 text-center">
-                                        <div>
-                                            <h3 className="text-xl md:text-2xl font-bold mb-4">Project Preview</h3>
-                                            <p className={`text-sm md:text-base ${textSecondary}`}>{heroImage}</p>
-                                        </div>
-                                    </div>
-                                )}
-                            </motion.div>
-
                             {/* Mobile Stats Grid & Actions */}
                             <div className="lg:hidden space-y-4 mb-12">
                                 <div className="grid grid-cols-2 gap-3">
@@ -566,6 +543,42 @@ export default function BusinessLayout({
                                 </ColorSection>
                             </div>
                         )}
+
+                        {/* 2.5.5 Interactive Hero / Demo - Moved Down */}
+                        <div id="demo">
+                            <ColorSection onInView={() => setActiveSection(HeroComponent ? 4 : 3)}>
+                                <div className="mb-12">
+                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                        LIVE DEMO
+                                    </span>
+                                    <h3 className="text-3xl font-bold mb-8">Interactive Preview</h3>
+                                    
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        className={`relative ${heroContainerClass} rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-2xl`}
+                                    >
+                                        {HeroComponent ? (
+                                            <HeroComponent />
+                                        ) : heroImage.startsWith('http') ? (
+                                            <img 
+                                                src={heroImage} 
+                                                alt={name} 
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center p-8 md:p-12 text-center">
+                                                <div>
+                                                    <h3 className="text-xl md:text-2xl font-bold mb-4">Project Preview</h3>
+                                                    <p className={`text-sm md:text-base ${textSecondary}`}>{heroImage}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                </div>
+                            </ColorSection>
+                        </div>
 
                         {/* 2.6 Video Showcase */}
                         {videoUrl && (
