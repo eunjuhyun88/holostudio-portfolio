@@ -12,6 +12,7 @@ import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 import ScrambleText from '@/components/ScrambleText';
+import DigitalDataBackground from '@/components/DigitalDataBackground';
 
 export default function Showcase3D() {
     const { language } = useLanguage();
@@ -89,7 +90,12 @@ export default function Showcase3D() {
     return (
         <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30">
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-                <div className="absolute inset-0 opacity-30"><CosmicBackground /></div>
+                {/* Digital Data Rain Background */}
+                <div className="absolute inset-0 z-0">
+                    <DigitalDataBackground opacity={0.15} speed={0.5} color="#6366f1" />
+                </div>
+
+                <div className="absolute inset-0 opacity-20"><CosmicBackground /></div>
                 <div className="absolute inset-0 opacity-90"><Background3D /></div>
                 
                 {/* Sci-Fi Grid Overlay */}
