@@ -431,8 +431,8 @@ export default function Company() {
                 },
                 {
                     name: "Eunjoo Hyun",
-                    role: "Web3 Builder",
-                    bio: "Product Director at PlayArts and Core Builder at HoloStudio. Extensive experience in Web3 community building and global business development, having led community growth for major protocols like Algorand, Polkastarter, and Casper Networks. Co-founder of StockHoo.",
+                    role: "Core Web3 Builder",
+                    bio: "Core Director overseeing all HoloStudio projects. Brings extensive Web3 experience and global business development expertise. An active investor in over 150 projects across Layer 1/2, Infrastructure, DeFi, and P2E sectors, providing deep market insights and strategic direction.",
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/259dd70c1_image.png"
                 }
             ],
@@ -534,8 +534,8 @@ export default function Company() {
                 },
                 {
                     name: "Eunjoo Hyun",
-                    role: "Web3 Builder",
-                    bio: "PlayArts 프로덕트 디렉터이자 HoloStudio 코어 빌더입니다. Algorand, Polkastarter, Casper Networks 등 주요 Web3 프로토콜의 커뮤니티 성장을 이끌며 글로벌 사업 개발 및 커뮤니티 빌딩에 풍부한 경험을 보유하고 있습니다. StockHoo의 공동 창업자이기도 합니다.",
+                    role: "Core Web3 Builder",
+                    bio: "HoloStudio의 모든 프로젝트를 총괄하는 핵심 디렉터입니다. 풍부한 Web3 경험과 글로벌 비즈니스 개발 역량을 보유하고 있습니다. Layer 1/2, 인프라, DeFi, P2E 등 150여 개 프로젝트에 투자한 초기 투자자로서 깊은 시장 통찰력과 전략적 방향성을 제시합니다.",
                     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/259dd70c1_image.png"
                 }
             ],
