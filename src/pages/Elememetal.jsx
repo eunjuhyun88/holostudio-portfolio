@@ -267,7 +267,7 @@ export default function Elememetal() {
                 {
                     icon: Box,
                     title: language === 'en' ? "Asset Interop" : "자산 상호운용성",
-                    description: language === 'en' ? "Use your assets across other supported games." : "다른 지원 게임에서 자산 사용 가능."
+                    description: language === 'en' ? "Allow users to trade and use their game assets (NFT cards) in multiple titles, increasing their utility and value." : "사용자가 게임 자산(NFT 카드)을 여러 타이틀에서 거래하고 사용하여 효용성과 가치를 높일 수 있습니다."
                 }
             ]}
             specs={[
