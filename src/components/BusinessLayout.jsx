@@ -175,6 +175,8 @@ export default function BusinessLayout({
         { id: 'roadmap', label: 'Roadmap' }
     ];
 
+    const getSectionIndex = (id) => sections.findIndex(s => s.id === id);
+
     const scrollToId = (id) => {
         const el = document.getElementById(id);
         if (el) {
@@ -353,7 +355,7 @@ export default function BusinessLayout({
                         
                         {/* 1. Hero */}
                         <div id="overview">
-                        <ColorSection onInView={() => setActiveSection(0)}>
+                        <ColorSection onInView={() => setActiveSection(getSectionIndex('overview'))}>
                             {/* Mobile Title Block */}
                             <div className="lg:hidden mb-8">
                                 <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
@@ -423,7 +425,7 @@ export default function BusinessLayout({
                         {/* 1.5 Features Section */}
                         {features.length > 0 && (
                             <div id="features">
-                                <ColorSection onInView={() => setActiveSection(1)}>
+                                <ColorSection onInView={() => setActiveSection(getSectionIndex('features'))}>
                                     <div className="mb-12 md:mb-20">
                                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                             KEY FEATURES
@@ -468,7 +470,7 @@ export default function BusinessLayout({
 
                         {/* 2. Problem & Solution - Optimized for Mobile Horizontal Scroll */}
                         <div id="challenge">
-                        <ColorSection onInView={() => setActiveSection(1)}>
+                        <ColorSection onInView={() => setActiveSection(getSectionIndex('challenge'))}>
                             <div className="grid md:grid-cols-2 gap-12 md:gap-24">
                                 {/* Problem Section */}
                                 <div>
@@ -521,7 +523,7 @@ export default function BusinessLayout({
                         {/* 2.5 Tech Specs */}
                         {specs.length > 0 && (
                             <div id="specs">
-                                <ColorSection onInView={() => setActiveSection(3)}>
+                                <ColorSection onInView={() => setActiveSection(getSectionIndex('specs'))}>
                                     <div className="mb-12 md:mb-20">
                                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                             SPECIFICATIONS
@@ -546,7 +548,7 @@ export default function BusinessLayout({
 
                         {/* 2.5.5 Interactive Hero / Demo - Moved Down */}
                         <div id="demo">
-                            <ColorSection onInView={() => setActiveSection(HeroComponent ? 4 : 3)}>
+                            <ColorSection onInView={() => setActiveSection(getSectionIndex('demo'))}>
                                 <div className="mb-12">
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                         LIVE DEMO
@@ -598,7 +600,7 @@ export default function BusinessLayout({
                         {/* 3. Screenshots - Mobile Horizontal Scroll */}
                         {screenshots.length > 0 && (
                             <div id="experience">
-                            <ColorSection onInView={() => setActiveSection(4)}>
+                            <ColorSection onInView={() => setActiveSection(getSectionIndex('experience'))}>
                                 <div className="flex items-end justify-between mb-12">
                                     <h3 className="text-3xl font-bold">Experience</h3>
                                 </div>
@@ -630,7 +632,7 @@ export default function BusinessLayout({
                         {/* 3.5. Analytics Dashboard */}
                         {showAnalytics && (
                             <div id="analytics">
-                                <ColorSection onInView={() => setActiveSection(screenshots.length > 0 ? 3 : 2)}>
+                                <ColorSection onInView={() => setActiveSection(getSectionIndex('analytics'))}>
                                     <div className="mb-12">
                                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
                                             LIVE METRICS
@@ -645,7 +647,7 @@ export default function BusinessLayout({
 
                         {/* 4. Use Cases & Roadmap - Mobile Horizontal Scroll Optimization */}
                         <div id="roadmap">
-                        <ColorSection onInView={() => setActiveSection(showAnalytics ? (screenshots.length > 0 ? 4 : 3) : (screenshots.length > 0 ? 3 : 2))}>
+                        <ColorSection onInView={() => setActiveSection(getSectionIndex('roadmap'))}>
                             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                                 
                                 {/* Target Customers */}
