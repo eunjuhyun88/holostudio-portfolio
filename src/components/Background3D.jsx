@@ -69,13 +69,13 @@ export default function Background3D() {
         scene.add(blocksGroup);
 
         // Instanced Blocks
-        const boxCount = 200;
+        const boxCount = 300; // Increased count
         const boxGeo = new THREE.BoxGeometry(1, 1, 1);
         const boxMat = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
+            color: 0xa5b4fc, // Indigo tint
             wireframe: true,
             transparent: true,
-            opacity: 0.05, // Very subtle background
+            opacity: 0.15, // Increased visibility
         });
         const boxes = new THREE.InstancedMesh(boxGeo, boxMat, boxCount);
         

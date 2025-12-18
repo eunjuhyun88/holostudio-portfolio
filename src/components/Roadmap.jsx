@@ -53,12 +53,18 @@ const RoadmapItem = ({ item, index, isLast }) => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group relative bg-neutral-900/40 hover:bg-neutral-900/60 border ${isOpen ? 'border-indigo-500/50' : 'border-neutral-800'} hover:border-indigo-500/30 rounded-2xl p-6 transition-all cursor-pointer overflow-hidden`}
+                className="group relative cursor-pointer"
             >
-                {/* Glow Effect */}
-                {isOpen && <div className="absolute inset-0 bg-indigo-500/5 pointer-events-none" />}
+                <div className={`relative bg-neutral-900/40 hover:bg-neutral-900/60 border ${isOpen ? 'border-indigo-500/50' : 'border-white/10'} hover:border-indigo-500/30 p-6 transition-all overflow-hidden [clip-path:polygon(15px_0,100%_0,100%_calc(100%-15px),calc(100%-15px)_100%,0_100%,0_15px)]`}>
+                    
+                    {/* Corner Accents */}
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/20 group-hover:border-indigo-500/50" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/20 group-hover:border-indigo-500/50" />
 
-                <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} gap-2 mb-3 relative z-10`}>
+                    {/* Glow Effect */}
+                    {isOpen && <div className="absolute inset-0 bg-indigo-500/5 pointer-events-none" />}
+
+                    <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} gap-2 mb-3 relative z-10`}>
                     <div className="flex items-center gap-2 text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-full border border-indigo-500/20 w-fit">
                         <Calendar className="w-3 h-3" />
                         {item.date}
