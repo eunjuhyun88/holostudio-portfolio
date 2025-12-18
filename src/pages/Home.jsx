@@ -602,7 +602,15 @@ export default function Home() {
                             >
                                 <Floating delay={idx * 0.2} offset={8}>
                                     <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
-                                        {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
+                                        <motion.div
+                                            animate={{ 
+                                                scale: [1, 1.15, 1],
+                                                filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"]
+                                            }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.4 }}
+                                        >
+                                            {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
+                                        </motion.div>
                                     </div>
                                 </Floating>
                                 <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
@@ -661,8 +669,13 @@ export default function Home() {
                                     {tech.depin.features.map((feat, i) => (
                                         <div key={i} className="flex gap-5">
                                             <Floating delay={i * 0.3} offset={5}>
-                                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20">
-                                                    <feat.icon className="w-6 h-6" />
+                                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 flex-shrink-0 border border-indigo-500/20 group-hover:bg-indigo-500/20 transition-colors">
+                                                    <motion.div
+                                                        animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
+                                                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                                                    >
+                                                        <feat.icon className="w-6 h-6" />
+                                                    </motion.div>
                                                 </div>
                                             </Floating>
                                             <div>
@@ -710,13 +723,17 @@ export default function Home() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
-                                            <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            <motion.div animate={{ rotate: [0, 8, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+                                                <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
                                             <div className="font-bold text-white text-sm">EleMEMEtal</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Game Asset Ownership</div>
                                         </div>
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={4} colorFrom="#10b981" colorTo="#059669" />
-                                            <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            <motion.div animate={{ scaleY: [1, 1.15, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
+                                                <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
                                             <div className="font-bold text-white text-sm">Stockhoo</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Market Intelligence</div>
                                         </div>
@@ -749,7 +766,9 @@ export default function Home() {
                                             <BorderBeam size={100} duration={8} delay={2} colorFrom="#6366f1" colorTo="#818cf8" />
                                             <div className="relative">
                                                 <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+                                                    <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                </motion.div>
                                             </div>
                                             <div className="font-bold text-white text-sm">AiD Guardian</div>
                                             <div className="text-[10px] text-indigo-300/70 mt-1">Safety Guardrails</div>
@@ -758,7 +777,9 @@ export default function Home() {
                                             <BorderBeam size={100} duration={8} delay={6} colorFrom="#a855f7" colorTo="#c084fc" />
                                             <div className="relative">
                                                 <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                                <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
+                                                    <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                </motion.div>
                                             </div>
                                             <div className="font-bold text-white text-sm">PlayArts</div>
                                             <div className="text-[10px] text-purple-300/70 mt-1">Provenance Layer</div>
@@ -797,17 +818,23 @@ export default function Home() {
                                     <div className="grid grid-cols-3 gap-3 text-center">
                                         <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={80} duration={10} delay={0} colorFrom="#3b82f6" colorTo="#60a5fa" />
-                                            <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
+                                            <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.5, repeat: Infinity }}>
+                                                <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
+                                            </motion.div>
                                             <div className="text-[10px] text-blue-200">H100 Nodes</div>
                                         </div>
                                         <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={80} duration={10} delay={3} colorFrom="#3b82f6" colorTo="#60a5fa" />
-                                            <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
+                                            <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 3.5, repeat: Infinity }}>
+                                                <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
+                                            </motion.div>
                                             <div className="text-[10px] text-blue-200">Consumer GPU</div>
                                         </div>
                                         <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={80} duration={10} delay={6} colorFrom="#3b82f6" colorTo="#60a5fa" />
-                                            <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
+                                            <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 4.5, repeat: Infinity }}>
+                                                <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
+                                            </motion.div>
                                             <div className="text-[10px] text-blue-200">Storage</div>
                                         </div>
                                     </div>
