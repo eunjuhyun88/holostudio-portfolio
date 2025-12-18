@@ -41,6 +41,7 @@ export default function Showcase3D() {
             let type = 'gltf';
             if (filename.endsWith('.obj')) type = 'obj';
             if (filename.endsWith('.glb')) type = 'glb';
+            if (filename.endsWith('.mp4')) type = 'mp4';
 
             // 3. Create Entity
             return base44.entities.ThreeDModel.create({
@@ -129,10 +130,10 @@ export default function Showcase3D() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label>File (GLTF, GLB, OBJ)</Label>
+                                        <Label>File (GLTF, GLB, OBJ, MP4)</Label>
                                         <Input 
                                             type="file"
-                                            accept=".gltf,.glb,.obj"
+                                            accept=".gltf,.glb,.obj,.mp4"
                                             onChange={handleFileChange}
                                             className="bg-black/20 border-white/10 cursor-pointer"
                                         />

@@ -10,6 +10,22 @@ export default function ModelViewer({ url, type }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // If video type, render video player directly
+    if (type === 'mp4') {
+        return (
+            <div className="relative w-full h-full bg-white/5 rounded-3xl overflow-hidden border border-white/10 flex items-center justify-center">
+                <video 
+                    src={url} 
+                    controls 
+                    className="max-w-full max-h-full w-full h-full object-contain"
+                    autoPlay
+                    loop
+                    muted
+                />
+            </div>
+        );
+    }
+
     useEffect(() => {
         if (!mountRef.current || !url) return;
 
