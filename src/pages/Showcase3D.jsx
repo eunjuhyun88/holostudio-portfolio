@@ -10,6 +10,7 @@ import { useLanguage } from '@/components/LanguageContext';
 import ModelViewer from '@/components/showcase/ModelViewer.jsx';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
+import MouseGlowText from '@/components/MouseGlowText';
 
 export default function Showcase3D() {
     const { language } = useLanguage();
