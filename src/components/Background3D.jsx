@@ -99,29 +99,59 @@ export default function Background3D() {
         }
         blocksGroup.add(boxes);
 
-        // Fine Dust Particles in background
+        // Fine Dust Particles (Warp Effect)
         const dustGeo = new THREE.BufferGeometry();
-        const dustCount = 3000; // Increased count for "Milky Way" density
+        const dustCount = 4000; 
         const dustPos = new Float32Array(dustCount * 3);
-        for(let i=0; i<dustCount*3; i++) {
-            dustPos[i] = (Math.random() - 0.5) * 120; // Spread wider
+        // Store initial Z positions to reset them
+        for(let i=0; i<dustCount; i++) {
+            dustPos[i*3] = (Math.random() - 0.5) * 200; // x
+            dustPos[i*3+1] = (Math.random() - 0.5) * 200; // y
+            dustPos[i*3+2] = (Math.random() - 0.5) * 200; // z
         }
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+
         const dustMat = new THREE.PointsMaterial({
-            color: 0xffffff,
-            size: 0.012, // Even finer particles
+            color: 0xa5b4fc, // Indigo-200 tint
+            size: 0.08, 
             transparent: true,
-            opacity: 0.4
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
         blocksGroup.add(dustSystem);
 
-
         // Animation Loop
         let animationFrameId;
+        let targetSpeed = 0.2; // Base speed
+
         const animate = () => {
             animationFrameId = requestAnimationFrame(animate);
             const time = Date.now() * 0.001;
+
+            // Scroll interaction for warp speed
+            // Using window.scrollY directly for simplicity
+            const scrollFactor = Math.min(window.scrollY * 0.005, 2.0); 
+            const currentSpeed = 0.1 + scrollFactor; // Base speed + scroll influence
+
+            // Animate Dust (Warp Effect)
+            const positions = dustSystem.geometry.attributes.position.array;
+            for(let i=0; i<dustCount; i++) {
+                // Move particles towards camera (positive Z)
+                positions[i*3+2] += currentSpeed; 
+
+                // If particle passes camera, reset to back
+                if(positions[i*3+2] > 50) {
+                    positions[i*3+2] = -150;
+                    // Randomize X/Y slightly on reset for variety
+                    positions[i*3] = (Math.random() - 0.5) * 200;
+                    positions[i*3+1] = (Math.random() - 0.5) * 200;
+                }
+            }
+            dustSystem.geometry.attributes.position.needsUpdate = true;
+
+            // Add some rotation to the tunnel
+            dustSystem.rotation.z = time * 0.05;
 
             // Animate Crystal (The Main 3D Effect)
             crystalMesh.rotation.y += 0.005;
@@ -131,13 +161,12 @@ export default function Background3D() {
             wireframe.rotation.y += 0.005;
             wireframe.rotation.x += 0.003;
 
-            // Animate Background Blocks (Expansion/Movement)
-            // Rotate the field - Increased speed for better visibility
-            blocksGroup.rotation.z = time * 0.3;
-            blocksGroup.rotation.x = Math.sin(time * 0.2) * 0.1;
-            
-            // Gentle zoom breathe
-            const zoom = Math.sin(time * 0.5) * 3;
+            // Animate Background Blocks
+            blocksGroup.rotation.z = time * 0.1; // Slower rotation
+            blocksGroup.rotation.x = Math.sin(time * 0.2) * 0.05;
+
+            // Gentle zoom breathe - reduced to not interfere with warp
+            const zoom = Math.sin(time * 0.3) * 1; 
             camera.position.z = 30 + zoom;
 
             // Float entire scene slightly
