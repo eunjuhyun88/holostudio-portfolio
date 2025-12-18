@@ -11,6 +11,7 @@ import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
 import Floating from '@/components/Floating';
+import { BorderBeam } from '@/components/ui/border-beam';
 
 export default function Home() {
     const { language } = useLanguage();
@@ -707,12 +708,14 @@ export default function Home() {
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group">
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
                                             <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             <div className="font-bold text-white text-sm">EleMEMEtal</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Game Asset Ownership</div>
                                         </div>
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group">
+                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={4} colorFrom="#10b981" colorTo="#059669" />
                                             <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             <div className="font-bold text-white text-sm">Stockhoo</div>
                                             <div className="text-[10px] text-neutral-500 mt-1">Market Intelligence</div>
@@ -742,7 +745,8 @@ export default function Home() {
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                                     <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group">
+                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={2} colorFrom="#6366f1" colorTo="#818cf8" />
                                             <div className="relative">
                                                 <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
@@ -750,7 +754,8 @@ export default function Home() {
                                             <div className="font-bold text-white text-sm">AiD Guardian</div>
                                             <div className="text-[10px] text-indigo-300/70 mt-1">Safety Guardrails</div>
                                         </div>
-                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors group">
+                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={100} duration={8} delay={6} colorFrom="#a855f7" colorTo="#c084fc" />
                                             <div className="relative">
                                                 <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
@@ -790,15 +795,18 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-3 gap-3 text-center">
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={0} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
                                             <div className="text-[10px] text-blue-200">H100 Nodes</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={3} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
                                             <div className="text-[10px] text-blue-200">Consumer GPU</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group">
+                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                            <BorderBeam size={80} duration={10} delay={6} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
                                             <div className="text-[10px] text-blue-200">Storage</div>
                                         </div>
