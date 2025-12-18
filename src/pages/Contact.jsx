@@ -2,16 +2,39 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, MessageSquare, ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
+import CosmicBackground from '@/components/CosmicBackground';
+import Background3D from '@/components/Background3D';
 
 export default function Contact() {
     return (
-        <div className="pt-32 pb-24 px-6 max-w-7xl mx-auto bg-[#050505] min-h-screen text-white">
+        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30">
+            {/* Global Background Layer */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 opacity-80">
+                    <CosmicBackground />
+                </div>
+                <div className="absolute inset-0 opacity-30">
+                    <Background3D />
+                </div>
+                {/* Sci-Fi Grid Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
+                
+                {/* HUD Corners */}
+                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+            </div>
+
+            <div className="relative z-10 pt-32 pb-24 px-6 max-w-7xl mx-auto">
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="max-w-3xl mx-auto text-center mb-16"
             >
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">Let's Build the Future</h1>
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.3)]">Let's Build the Future</h1>
                 <p className="text-base md:text-xl text-neutral-400 leading-relaxed">
                     We're always looking for partners, investors, and builders who share our vision for a trusted, autonomous future.
                 </p>
@@ -65,7 +88,7 @@ export default function Contact() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-[#0A0A0A] p-8 rounded-2xl border border-white/10 shadow-xl"
+                    className="bg-[#0A0A0A]/50 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-xl"
                 >
                     <h2 className="text-2xl font-bold mb-6 text-white">Send a Message</h2>
                     <form className="space-y-4">

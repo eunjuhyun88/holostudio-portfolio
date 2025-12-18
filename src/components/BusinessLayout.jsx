@@ -203,6 +203,15 @@ export default function BusinessLayout({
 
                 {/* 3. Gradient Overlay for Depth */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
+
+                {/* Sci-Fi Grid Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                
+                {/* HUD Corners */}
+                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
             </div>
             
             {/* Grain Overlay */}
@@ -237,7 +246,7 @@ export default function BusinessLayout({
                                     <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-white to-neutral-400 flex items-center justify-center text-black mb-6 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
                                         <div className="font-bold text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <h1 className="text-3xl font-bold tracking-tighter mb-2">{name}</h1>
+                                    <h1 className="text-3xl font-bold tracking-tighter mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">{name}</h1>
                                     <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide bg-white/5 border border-white/10 ${s.accent}`}>
                                         {tag}
                                     </div>
@@ -288,7 +297,7 @@ export default function BusinessLayout({
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                     {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
-                                <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary}`}>{name}</h1>
+                                <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary} drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>{name}</h1>
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
                             </div>
 
@@ -296,7 +305,7 @@ export default function BusinessLayout({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
+                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]`}
                             >
                                 {oneLiner}
                             </motion.h2>
@@ -306,9 +315,12 @@ export default function BusinessLayout({
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className={`text-base md:text-xl leading-relaxed max-w-3xl mb-12 md:mb-16 ${textSecondary} font-light`}
+                                    className={`relative max-w-3xl mb-12 md:mb-16`}
                                 >
-                                    {story}
+                                    <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />
+                                    <div className={`text-base md:text-xl leading-relaxed ${textSecondary} font-light pl-4 md:pl-6`}>
+                                        {story}
+                                    </div>
                                 </motion.div>
                             )}
 

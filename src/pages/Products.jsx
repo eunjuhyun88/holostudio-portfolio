@@ -90,6 +90,15 @@ export default function Products() {
                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
                  <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 15%, transparent 85%, #050505 100%)' }} />
+                
+                {/* Sci-Fi Grid Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                
+                {/* HUD Corners */}
+                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
             </div>
 
             <main className="relative z-10 pt-32 pb-24">
@@ -97,9 +106,9 @@ export default function Products() {
                      <motion.h1 
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
-                         className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 uppercase"
+                         className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                      >
-                         {language === 'en' ? 'Our' : '우리의'} <span className="text-indigo-500">{language === 'en' ? 'Products' : '프로덕트'}</span>
+                         {language === 'en' ? 'Our' : '우리의'} <span className="text-indigo-500 drop-shadow-[0_0_25px_rgba(99,102,241,0.6)]">{language === 'en' ? 'Products' : '프로덕트'}</span>
                      </motion.h1>
                      <motion.p 
                          initial={{ opacity: 0, y: 20 }}
