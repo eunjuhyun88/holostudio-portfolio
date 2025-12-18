@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch, Network, Database } from 'lucide-react';
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValue, useMotionTemplate } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
@@ -11,19 +11,24 @@ import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
 import Floating from '@/components/Floating';
+import TiltCard from '@/components/TiltCard';
 import { BorderBeam } from '@/components/ui/border-beam';
 
 export default function Home() {
     const { language } = useLanguage();
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    
+    // Performance Optimization: Use MotionValues instead of State to prevent re-renders
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-            setMousePos({ x: e.clientX, y: e.clientY });
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
         };
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    }, [mouseX, mouseY]);
 
     const content = {
         en: {
@@ -453,11 +458,11 @@ export default function Home() {
                     <Background3D />
                 </div>
                 
-                {/* Dynamic Spotlight */}
-                <div 
-                    className="absolute inset-0 z-10 transition-opacity duration-500"
+                {/* Dynamic Spotlight - Optimized with MotionTemplate */}
+                <motion.div 
+                    className="absolute inset-0 z-10"
                     style={{
-                        background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                        background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
                     }}
                 />
 
@@ -980,7 +985,7 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <div className={`glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1`}>
+                                <TiltCard className={`glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl`}>
                                         {/* Sci-Fi Corners */}
                                         <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
                                         <div className={`absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -1027,7 +1032,7 @@ export default function Home() {
                                                 </Button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </TiltCard>
                                 </motion.div>
                             </div>
                         );
