@@ -40,9 +40,11 @@ const RoadmapItem = ({ item, index, isLast }) => {
             {/* Timeline Line (Desktop) */}
             <div className="hidden md:block absolute top-0 bottom-0 w-px bg-neutral-800 left-full -translate-x-1/2 md:left-auto md:right-0 md:translate-x-1/2 origin-center">
                 {/* Connector Dot */}
-                <div className={`absolute top-6 -right-[5px] w-[9px] h-[9px] rounded-full ${isOpen ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]' : 'bg-neutral-800'} transition-all duration-300 z-10`} 
-                     style={{ right: index % 2 === 0 ? '-5px' : 'auto', left: index % 2 === 0 ? 'auto' : '-5px' }}
-                />
+                <div className="absolute top-6 -right-[5px] z-10 flex items-center justify-center" style={{ right: index % 2 === 0 ? '-5px' : 'auto', left: index % 2 === 0 ? 'auto' : '-5px' }}>
+                     <div className={`w-[9px] h-[9px] rounded-full ${isOpen ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]' : 'bg-neutral-800'} transition-all duration-300 relative`}>
+                        {isOpen && <div className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-75" />}
+                     </div>
+                </div>
             </div>
 
             <motion.div
@@ -141,7 +143,9 @@ export default function Roadmap({ items, title, viewAllText }) {
 
                 <div className="relative">
                     {/* Center Line (Desktop) */}
-                    <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-indigo-500 via-neutral-800 to-neutral-900 -translate-x-1/2" />
+                    <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-neutral-900 -translate-x-1/2 overflow-hidden">
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-indigo-500 to-transparent animate-shimmer opacity-50" style={{ backgroundSize: '100% 50%', animationDuration: '3s' }} />
+                    </div>
                     
                     {/* Desktop: Vertical, Mobile: Horizontal Scroll */}
                     <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:space-y-24 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
