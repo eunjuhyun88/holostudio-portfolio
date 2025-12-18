@@ -105,7 +105,7 @@ function LayoutContent({ children }) {
             {/* Global Navigation - Trendy Floating "Island" Style */}
             <nav 
                 aria-label="Main Navigation"
-                className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-4 py-6 md:px-8 md:py-8 pointer-events-none transition-all duration-300 ${isScrolled ? 'md:py-4' : ''}`}
+                className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-4 py-6 md:px-8 md:py-8 pointer-events-none transition-all duration-300 font-clean ${isScrolled ? 'md:py-4' : ''}`}
             >
                 {/* Left Group: Logo + Nav */}
                 <div className="flex items-center gap-4 pointer-events-auto">
