@@ -202,37 +202,39 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
         transition={{ delay: delay, duration: 0.6 }}
         className="group"
     >
-        <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-8 rounded-2xl border border-white/10 group-hover:border-indigo-500/50 transition-colors">
+        <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-4 rounded-xl border border-white/10 group-hover:border-indigo-500/50 transition-colors">
             {image ? (
-                <div className="w-full h-full p-4 flex items-center justify-center bg-[#050505]">
+                <div className="w-full h-full flex items-center justify-center bg-neutral-800/50 relative overflow-hidden">
                     <img 
                         src={image} 
                         alt={name} 
-                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         style={{
-                            filter: "invert(1) grayscale(1) brightness(1.2)" 
+                            filter: "grayscale(1) contrast(1.1)" 
                         }} 
                     />
+                    <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-colors duration-300 mix-blend-overlay" />
                 </div>
             ) : (
                 <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">Image</div>
             )}
-            {/* Tech Corners */}
-            <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-white/20 group-hover:border-indigo-500 transition-colors" />
+            
+            {/* Tech Corners - Smaller */}
+            <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
         </div>
 
-        <div className="space-y-4 pr-4">
+        <div className="space-y-2 pr-2">
             <div>
-                <h3 className="text-3xl font-bold text-white mb-1">{name}</h3>
-                <p className="text-sm font-mono text-indigo-400 tracking-wider uppercase">{role}</p>
+                <h3 className="text-lg font-bold text-white leading-tight">{name}</h3>
+                <p className="text-[10px] font-mono text-indigo-400 tracking-wider uppercase mt-1">{role}</p>
             </div>
             
-            <div className="w-12 h-px bg-white/20" />
+            <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
             
-            <p className="text-neutral-400 leading-relaxed text-sm md:text-base">
+            <p className="text-neutral-500 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all">
                 {bio}
             </p>
         </div>
@@ -716,9 +718,9 @@ export default function Company() {
                         </div>
 
                         {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                        <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-12 lg:gap-16 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                        <div className="flex md:grid md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                             {c.founders.map((founder, i) => (
-                                <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                                <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                                     <FounderCard {...founder} delay={i * 0.1} />
                                 </div>
                             ))}
