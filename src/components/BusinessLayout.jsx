@@ -65,7 +65,8 @@ export default function BusinessLayout({
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
             sectionColors: ["#0f172a", "#1e1b4b", "#312e81", "#172554", "#0f172a"],
-            glowHex: "rgba(99, 102, 241, 0.8)"
+            glowHex: "rgba(99, 102, 241, 0.8)",
+            glowSecondary: "rgba(168, 85, 247, 0.5)" // Indigo -> Purple
         },
         elememetal: {
             accent: "text-orange-500",
@@ -75,7 +76,8 @@ export default function BusinessLayout({
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
             // Deep Orange -> Dark Red -> Brown -> Dark Amber
             sectionColors: ["#2a0a00", "#450a0a", "#3f1d0b", "#431407", "#2a0a00"],
-            glowHex: "rgba(249, 115, 22, 0.8)"
+            glowHex: "rgba(249, 115, 22, 0.8)",
+            glowSecondary: "rgba(220, 38, 38, 0.5)" // Orange -> Red
         },
         aidguardian: {
             accent: "text-indigo-400",
@@ -85,7 +87,8 @@ export default function BusinessLayout({
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
             // Deep Indigo -> Violet -> Blue -> Slate
             sectionColors: ["#1e1b4b", "#2e1065", "#172554", "#1e3a8a", "#0f172a"],
-            glowHex: "rgba(99, 102, 241, 0.8)"
+            glowHex: "rgba(99, 102, 241, 0.8)",
+            glowSecondary: "rgba(168, 85, 247, 0.5)" // Indigo -> Purple
         },
         playarts: {
             accent: "text-lime-400",
@@ -95,7 +98,8 @@ export default function BusinessLayout({
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
             // Dark Lime -> Deep Green -> Teal -> Dark Moss
             sectionColors: ["#1a2e05", "#064e3b", "#115e59", "#14532d", "#0f172a"],
-            glowHex: "rgba(132, 204, 22, 0.8)"
+            glowHex: "rgba(132, 204, 22, 0.8)",
+            glowSecondary: "rgba(16, 185, 129, 0.5)" // Lime -> Emerald
         },
         stockhoo: {
             accent: "text-emerald-400",
@@ -105,7 +109,8 @@ export default function BusinessLayout({
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
             // Deep Emerald -> Cyan -> Teal -> Slate
             sectionColors: ["#022c22", "#083344", "#0f766e", "#042f2e", "#0f172a"],
-            glowHex: "rgba(16, 185, 129, 0.8)"
+            glowHex: "rgba(16, 185, 129, 0.8)",
+            glowSecondary: "rgba(6, 182, 212, 0.5)" // Emerald -> Cyan
         }
     };
 
@@ -310,10 +315,11 @@ export default function BusinessLayout({
                             <MouseGlowText 
                                 as={motion.h2}
                                 glowColor={s.glowHex}
+                                secondaryGlowColor={s.glowSecondary}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50`}
+                                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl`}
                             >
                                 {oneLiner}
                             </MouseGlowText>
@@ -402,8 +408,15 @@ export default function BusinessLayout({
                                                         <div className={`w-32 h-32 rounded-full ${s.accentBg} blur-[60px]`} />
                                                     </div>
 
-                                                    <div className={`relative z-10 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-white/20 transition-all duration-500`}>
-                                                        {feature.icon && <feature.icon className={`w-7 h-7 ${s.accent}`} />}
+                                                    <div className={`relative z-10 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/20 transition-all duration-500`}>
+                                                        {feature.icon && (
+                                                            <motion.div
+                                                                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
+                                                                transition={{ duration: 0.5 }}
+                                                            >
+                                                                <feature.icon className={`w-7 h-7 ${s.accent}`} />
+                                                            </motion.div>
+                                                        )}
                                                     </div>
 
                                                     <h4 className={`relative z-10 text-2xl font-bold mb-3 ${textPrimary} tracking-tight`}>{feature.title}</h4>
