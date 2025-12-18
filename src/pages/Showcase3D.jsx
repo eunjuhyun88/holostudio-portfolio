@@ -94,9 +94,9 @@ export default function Showcase3D() {
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase"
+                        className="text-4xl md:text-6xl font-black tracking-tighter mb-6 uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
                     >
-                        3D <span className="text-indigo-500">Showcase</span>
+                        3D <span className="text-indigo-500 drop-shadow-[0_0_25px_rgba(99,102,241,0.8)]">Showcase</span>
                     </motion.h1>
                     <p className="text-base md:text-xl text-neutral-400 max-w-2xl mx-auto">
                         {language === 'en' 
