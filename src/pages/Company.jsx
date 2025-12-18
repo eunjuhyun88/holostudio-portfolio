@@ -432,7 +432,7 @@ export default function Company() {
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
-                    name: "Eunjoo Hyun",
+                    name: "0xchew Hyun",
                     role: "Core Web3 Builder",
                     bio: "Core Director overseeing all HoloStudio projects. Brings extensive Web3 experience and global business development expertise. An active investor in over 150 projects across Layer 1/2, Infrastructure, DeFi, and P2E sectors, providing deep market insights and strategic direction.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent"
@@ -535,7 +535,7 @@ export default function Company() {
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
-                    name: "Eunjoo Hyun",
+                    name: "0xchew Hyun",
                     role: "Core Web3 Builder",
                     bio: "HoloStudio의 모든 프로젝트를 총괄하는 핵심 디렉터입니다. 풍부한 Web3 경험과 글로벌 비즈니스 개발 역량을 보유하고 있습니다. Layer 1/2, 인프라, DeFi, P2E 등 150여 개 프로젝트에 투자한 초기 투자자로서 깊은 시장 통찰력과 전략적 방향성을 제시합니다.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent"
