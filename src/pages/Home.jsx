@@ -449,7 +449,7 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-80">
                     <CosmicBackground />
                 </div>
-                <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0 opacity-40">
                     <Background3D />
                 </div>
                 
@@ -617,8 +617,14 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/30 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md"
+                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/30 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md relative overflow-hidden"
                             >
+                                {/* Sci-Fi Corner Accents */}
+                                <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
+                                <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
+                                <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
+                                <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
+
                                 <Floating delay={idx * 0.2} offset={8}>
                                     <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
                                         <motion.div
@@ -665,7 +671,13 @@ export default function Home() {
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default">
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden">
+                                        {/* Tech Corners */}
+                                        <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        
                                         <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
                                         <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{step.desc}</div>
@@ -1030,6 +1042,10 @@ export default function Home() {
                                 transition={{ delay: idx * 0.1 }}
                                 className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
                             >
+                                {/* Sci-Fi Corners */}
+                                <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                
                                 <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
                                     <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
                                         <m.icon className={`w-12 h-12 ${m.color}`} />

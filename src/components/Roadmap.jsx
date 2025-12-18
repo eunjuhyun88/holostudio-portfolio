@@ -55,6 +55,10 @@ const RoadmapItem = ({ item, index, isLast }) => {
                 onClick={() => setIsOpen(!isOpen)}
                 className={`group relative bg-neutral-900/40 hover:bg-neutral-900/60 border ${isOpen ? 'border-indigo-500/50' : 'border-neutral-800'} hover:border-indigo-500/30 rounded-2xl p-6 transition-all cursor-pointer overflow-hidden`}
             >
+                {/* Tech Corners */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
+
                 {/* Glow Effect */}
                 {isOpen && <div className="absolute inset-0 bg-indigo-500/5 pointer-events-none" />}
 
