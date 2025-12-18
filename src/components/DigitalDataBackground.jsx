@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
 export default function DigitalDataBackground({ 
-    color = "#4f46e5", // Indigo-600
-    speed = 1, // Fall speed
-    density = 0.6, // How many columns
-    opacity = 0.1 // Background opacity
+    color = "#818cf8", // Indigo-400 (Brighter)
+    speed = 1, 
+    density = 0.6, 
+    opacity = 1,
+    fontSize = 16 
 }) {
     const canvasRef = useRef(null);
 
@@ -15,7 +16,6 @@ export default function DigitalDataBackground({
         let animationFrameId;
         let w, h;
         let columns = [];
-        const fontSize = 14;
         // const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
         // Using the "222" style numbers and some tech chars
         const chars = "0123456789"; 
@@ -38,17 +38,15 @@ export default function DigitalDataBackground({
             ctx.fillRect(0, 0, w, h);
 
             ctx.fillStyle = color;
-            ctx.font = `bold ${fontSize}px monospace`; // Monospace for alignment
+            ctx.font = `bold ${fontSize}px monospace`; 
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = color;
 
             for (let i = 0; i < columns.length; i++) {
-                // Randomly skip some columns for density control
                 if (Math.random() > density) continue;
 
-                // Pick a random char
                 const text = chars[Math.floor(Math.random() * chars.length)];
                 
-                // x = column index * font size
-                // y = current vertical position
                 ctx.fillText(text, i * fontSize, columns[i]);
 
                 // Reset to top randomly or move down

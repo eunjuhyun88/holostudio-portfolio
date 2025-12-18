@@ -92,7 +92,7 @@ export default function Showcase3D() {
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                 {/* Digital Data Rain Background */}
                 <div className="absolute inset-0 z-0">
-                    <DigitalDataBackground opacity={0.15} speed={0.5} color="#6366f1" />
+                    <DigitalDataBackground opacity={0.8} speed={0.8} fontSize={20} color="#818cf8" />
                 </div>
 
                 <div className="absolute inset-0 opacity-20"><CosmicBackground /></div>
