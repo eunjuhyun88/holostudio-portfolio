@@ -11,6 +11,7 @@ import ModelViewer from '@/components/showcase/ModelViewer.jsx';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 import MouseGlowText from '@/components/MouseGlowText';
+import ScrambleText from '@/components/ScrambleText';
 
 export default function Showcase3D() {
     const { language } = useLanguage();
@@ -71,48 +72,7 @@ export default function Showcase3D() {
         }
     });
 
-    // Typing Effect Components
-    const TypingWord = ({ word, i, total, progress }) => {
-        const start = i / total;
-        const end = start + (1 / total);
-        const opacity = useTransform(progress, [start, end], [0, 1]);
-        const y = useTransform(progress, [start, end], [15, 0]);
-        const blur = useTransform(progress, [start, end], [5, 0]);
-        const rotate = useTransform(progress, [start, end], [5, 0]);
 
-        return (
-            <motion.span 
-                style={{ opacity, y, filter: useTransform(blur, b => `blur(${b}px)`), rotate }}
-                className="inline-block mr-[0.25em]"
-            >
-                {word}
-            </motion.span>
-        );
-    };
-
-    const TypingBlock = ({ children, className = "" }) => {
-        const element = useRef(null);
-        const { scrollYProgress } = useScroll({
-            target: element,
-            offset: ['start 0.9', 'end 0.5']
-        });
-        
-        const words = String(children).split(" ");
-        
-        return (
-            <p ref={element} className={`${className} inline-block w-full`}>
-                {words.map((word, i) => (
-                    <TypingWord 
-                        key={i} 
-                        word={word} 
-                        i={i} 
-                        total={words.length} 
-                        progress={scrollYProgress} 
-                    />
-                ))}
-            </p>
-        );
-    };
 
     const handleFileChange = (e) => {
         if (e.target.files && e.target.files[0]) {
@@ -163,11 +123,13 @@ export default function Showcase3D() {
                         Digital <span className="text-indigo-500">Artifacts</span>
                     </MouseGlowText>
 
-                    <TypingBlock className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono">
-                        {language === 'en' 
-                            ? 'Secure, decentralized visualization for high-fidelity 3D assets. Verify provenance and inspect spatial metadata in real-time.' 
-                            : '고화질 3D 자산을 위한 안전한 탈중앙화 시각화. 실시간으로 출처를 확인하고 공간 메타데이터를 검사하세요.'}
-                    </TypingBlock>
+                    <p className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono">
+                        <ScrambleText speed={30} revealSpeed={0.4} delay={500}>
+                            {language === 'en' 
+                                ? 'Secure, decentralized visualization for high-fidelity 3D assets. Verify provenance and inspect spatial metadata in real-time.' 
+                                : '고화질 3D 자산을 위한 안전한 탈중앙화 시각화. 실시간으로 출처를 확인하고 공간 메타데이터를 검사하세요.'}
+                        </ScrambleText>
+                    </p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-8 h-[calc(100vh-400px)] min-h-[600px]">
