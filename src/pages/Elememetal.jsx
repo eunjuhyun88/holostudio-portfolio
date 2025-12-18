@@ -52,24 +52,7 @@ export default function Elememetal() {
                     description: "Only 5 Jokers per game. Attack, Defense, or Utility. Using them at the perfect moment breaks the meta."
                 }
             ],
-            screenshots: [
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/7d50a039d_2025-12-17100209.png",
-                    caption: "Deterministic Combat: Instant Resolution"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc19758fb_2025-12-17100150.png",
-                    caption: "The Forge: Craft, Upgrade, Salvage"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/86f4b6cbe_2025-12-17100153.png",
-                    caption: "Player Owned Marketplace"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/906125d10_2025-12-17100207.png",
-                    caption: "Joker Genesis: AI-Powered Cards"
-                }
-            ],
+            screenshots: [],
             stats: [
                 { value: "0%", label: "Pay-To-Win" },
                 { value: "100%", label: "Ownership" },
@@ -170,24 +153,7 @@ export default function Elememetal() {
                     description: "게임당 조커는 단 5장. 공격, 방어, 또는 유틸리티. 완벽한 순간에 사용하여 메타를 깨부수세요."
                 }
             ],
-            screenshots: [
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/7d50a039d_2025-12-17100209.png",
-                    caption: "결정론적 전투: 즉각적인 결과"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc19758fb_2025-12-17100150.png",
-                    caption: "대장간: 제작, 업그레이드, 분해"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/86f4b6cbe_2025-12-17100153.png",
-                    caption: "플레이어 소유 마켓플레이스"
-                },
-                {
-                    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/906125d10_2025-12-17100207.png",
-                    caption: "조커 제네시스: AI 구동 카드"
-                }
-            ],
+            screenshots: [],
             stats: [
                 { value: "0%", label: "Pay-To-Win" },
                 { value: "100%", label: "소유권" },
@@ -324,61 +290,7 @@ export default function Elememetal() {
                     value: "Reinforcement Learning Agents (PPO)"
                 }
             ]}
-            partners={
-                <div className="grid md:grid-cols-2 gap-12 items-start">
-                    {/* Selected By */}
-                    <div>
-                        <p className="text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-6">Selected By</p>
-                        <div className="flex flex-wrap items-center gap-4">
-                            {/* NVIDIA */}
-                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                                <div className="text-xl font-bold text-white">NVIDIA</div>
-                                <div className="h-6 w-px bg-white/20" />
-                                <div className="text-[10px] font-bold text-neutral-400 leading-tight">Inception<br/>Program</div>
-                            </div>
-                            {/* Google Cloud */}
-                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">
-                                <div className="text-xl font-bold text-white">Google Cloud</div>
-                                <div className="text-[10px] text-neutral-400 border border-neutral-600 px-1.5 py-0.5 rounded-full">Partner</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Backed By */}
-                    <div>
-                        <p className="text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-6">Backed By</p>
-                        <div className="flex flex-wrap items-center gap-x-6 gap-y-6 opacity-90">
-                            {/* Arbitrum */}
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-[#2D374B] flex items-center justify-center border border-white/10">
-                                    <div className="w-4 h-4 bg-[#12AAFF] transform rotate-45" />
-                                </div>
-                                <span className="font-bold text-lg text-neutral-300">Arbitrum</span>
-                            </div>
-                            {/* Alchemy */}
-                            <div className="font-bold text-xl text-blue-500">alchemy</div>
-                            {/* OnePiece Labs */}
-                            <div className="flex items-center gap-1">
-                                <span className="font-bold text-xl text-white">onepiece</span>
-                                <span className="text-xs text-neutral-500 font-mono">labs</span>
-                            </div>
-                            {/* Seedify */}
-                            <div className="bg-white/5 px-3 py-1 rounded text-sm font-bold text-white border border-white/10">
-                                SEEDIFY
-                            </div>
-                            {/* AppWorks */}
-                            <div className="font-bold text-xl text-[#FF6B00]">AppWorks</div>
-                            {/* Story */}
-                            <div className="font-black italic text-xl text-white">STORY</div>
-                            {/* OKX Hackathon */}
-                            <div className="flex flex-col leading-none">
-                                <span className="text-[10px] text-neutral-500 uppercase">Winner</span>
-                                <span className="font-bold text-white">OKX Hackathon</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+            partners={null}
         />
     );
 }
