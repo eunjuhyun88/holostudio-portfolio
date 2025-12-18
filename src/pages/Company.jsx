@@ -428,6 +428,12 @@ export default function Company() {
                     role: "Head of Ecosystem",
                     bio: "Former CMO & Head of BD at GaFin. Expert in Web3 Gaming infrastructure and ecosystem growth. Leading strategic partnerships and community expansion.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
+                },
+                {
+                    name: "Eunjoo Hyun",
+                    role: "Web3 Builder",
+                    bio: "Product Director at PlayArts and Core Builder at HoloStudio. Extensive experience in Web3 community building and global business development, having led community growth for major protocols like Algorand, Polkastarter, and Casper Networks. Co-founder of StockHoo.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/259dd70c1_image.png"
                 }
             ],
         },
@@ -525,6 +531,12 @@ export default function Company() {
                     role: "Head of Ecosystem",
                     bio: "전 GaFin CMO 및 사업 개발 총괄. Web3 게임 인프라 및 생태계 확장 전문가. 전략적 파트너십과 커뮤니티 확장을 주도합니다.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
+                },
+                {
+                    name: "Eunjoo Hyun",
+                    role: "Web3 Builder",
+                    bio: "PlayArts 프로덕트 디렉터이자 HoloStudio 코어 빌더입니다. Algorand, Polkastarter, Casper Networks 등 주요 Web3 프로토콜의 커뮤니티 성장을 이끌며 글로벌 사업 개발 및 커뮤니티 빌딩에 풍부한 경험을 보유하고 있습니다. StockHoo의 공동 창업자이기도 합니다.",
+                    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/259dd70c1_image.png"
                 }
             ],
         }
