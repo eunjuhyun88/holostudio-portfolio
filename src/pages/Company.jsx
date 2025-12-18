@@ -235,14 +235,17 @@ const ClosingStatement = () => {
                     {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
                 </h2>
                 <div className="overflow-hidden">
-                    <motion.p 
+                    <MouseGlowText 
+                        as={motion.p}
+                        glowColor="rgba(99, 102, 241, 0.8)" // Indigo
+                        secondaryGlowColor="rgba(168, 85, 247, 0.5)" // Purple for contrast
                         initial={{ y: "100%" }}
                         whileInView={{ y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                        className="text-5xl md:text-7xl lg:text-9xl font-black text-indigo-500 tracking-tighter uppercase glow-text"
+                        className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
                     >
                         {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
-                    </motion.p>
+                    </MouseGlowText>
                 </div>
              </motion.div>
         </div>
