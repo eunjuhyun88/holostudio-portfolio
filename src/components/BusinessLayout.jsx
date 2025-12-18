@@ -10,7 +10,7 @@ import { useLanguage } from '@/components/LanguageContext';
 import Starfield from '@/components/Starfield';
 import MouseGlowText from '@/components/MouseGlowText';
 
-// Helper component to trigger background changes
+// Helper component to trigger background changes and animate entry
 const ColorSection = ({ children, onInView, className = "" }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" });
@@ -22,9 +22,16 @@ const ColorSection = ({ children, onInView, className = "" }) => {
     }, [isInView, onInView]);
 
     return (
-        <div ref={ref} className={className}>
+        <motion.div 
+            ref={ref} 
+            className={className}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
             {children}
-        </div>
+        </motion.div>
     );
 };
 
@@ -315,14 +322,18 @@ export default function BusinessLayout({
                                 <div className="mt-8 pt-8 border-t border-white/5 space-y-3 hidden lg:block">
                                     {primaryButton.url ? (
                                         <a href={primaryButton.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                            <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0`}>
-                                                {primaryButton.text} <ArrowRight className="w-4 h-4 ml-2" />
-                                            </Button>
+                                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                                <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-shadow`}>
+                                                    {primaryButton.text} <ArrowRight className="w-4 h-4 ml-2" />
+                                                </Button>
+                                            </motion.div>
                                         </a>
                                     ) : (
-                                        <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0`}>
-                                            {primaryButton.text}
-                                        </Button>
+                                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                            <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-shadow`}>
+                                                {primaryButton.text}
+                                            </Button>
+                                        </motion.div>
                                     )}
                                     {deckUrl && (
                                         <a href={deckUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
@@ -694,14 +705,18 @@ export default function BusinessLayout({
                                 </div>
                                 {primaryButton.url ? (
                                     <a href={primaryButton.url} target="_blank" rel="noopener noreferrer">
+                                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                            <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                                {primaryButton.text}
+                                            </Button>
+                                        </motion.div>
+                                    </a>
+                                ) : (
+                                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                         <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
                                             {primaryButton.text}
                                         </Button>
-                                    </a>
-                                ) : (
-                                    <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
-                                        {primaryButton.text}
-                                    </Button>
+                                    </motion.div>
                                 )}
                             </div>
                         </div>

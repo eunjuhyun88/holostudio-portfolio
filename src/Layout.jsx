@@ -13,6 +13,7 @@ function LayoutContent({ children }) {
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [mobileProductsOpen, setMobileProductsOpen] = useState(true); // Default open for better visibility or false? Let's make it toggleable but maybe default open is easier for users? Let's stick to false and let user toggle. actually user asked for "clearly indicated", so toggle is good.
     const [businessDropdownOpen, setBusinessDropdownOpen] = useState(false);
 
     useEffect(() => {
@@ -27,6 +28,7 @@ function LayoutContent({ children }) {
     useEffect(() => {
         setMobileMenuOpen(false);
         setBusinessDropdownOpen(false);
+        setMobileProductsOpen(false);
     }, [location]);
 
     const navLinks = {
@@ -217,63 +219,96 @@ function LayoutContent({ children }) {
                     </div>
 
                     {/* Mobile Menu Overlay */}
+                    <AnimatePresence>
                     {mobileMenuOpen && (
-                    <div className="fixed inset-0 bg-[#050505] z-40 pt-24 px-6 md:hidden overflow-y-auto pointer-events-auto">
-                        <div className="flex flex-col gap-6 text-lg">
-                            <div className="flex items-center gap-4 mb-4">
-                                 <button 
-                                    onClick={toggleLanguage}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-800 bg-neutral-900"
-                                >
-                                    <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>English</span>
-                                    <span className="text-neutral-700">|</span>
-                                    <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>한국어</span>
-                                </button>
-                            </div>
+                        <motion.div 
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-40 pt-24 px-6 md:hidden overflow-y-auto pointer-events-auto"
+                        >
+                            {/* Decorative Gradients */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] pointer-events-none" />
 
-                            {navLinks[language].map((link) => (
-                                link.name === 'Products' || link.name === '프로덕트' ? (
-                                    <div key={link.name} className="py-2">
-                                        <div className="font-bold text-white text-lg mb-2">{link.name}</div>
-                                        <ul className="space-y-2 pl-4 border-l border-white/10 ml-1">
-                                            {products.map((product) => (
-                                                <li key={product.name}>
-                                                    <Link
-                                                        to={createPageUrl(product.path.substring(1))}
-                                                        className="block py-1 text-neutral-400 hover:text-white"
-                                                        onClick={() => setMobileMenuOpen(false)}
-                                                    >
-                                                        {product.name}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ) : link.isAnchor ? (
-                                    <button 
-                                        key={link.name}
-                                        onClick={() => scrollToSection(link.path.substring(2))}
-                                        className="text-left font-medium text-neutral-400 hover:text-white"
+                            <div className="flex flex-col gap-6 text-lg relative z-10">
+                                <div className="flex items-center gap-4 mb-4">
+                                     <button 
+                                        onClick={toggleLanguage}
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
                                     >
-                                        {link.name}
+                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>English</span>
+                                        <span className="text-neutral-700">|</span>
+                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>한국어</span>
                                     </button>
-                                ) : (
-                                    <Link 
-                                        key={link.name}
-                                        to={createPageUrl(link.path.substring(1))}
-                                        className="font-medium text-neutral-400 hover:text-white"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                )
-                            ))}
+                                </div>
 
-                            <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-4 h-12">
-                                {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
-                            </Button>
-                        </div>
-                    </div>
+                                {navLinks[language].map((link) => (
+                                    link.name === 'Products' || link.name === '프로덕트' ? (
+                                        <div key={link.name} className="py-2 border-b border-white/5 pb-4">
+                                            <button 
+                                                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                                                className="flex items-center justify-between w-full font-bold text-white text-xl mb-2"
+                                            >
+                                                {link.name}
+                                                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileProductsOpen ? 'rotate-180' : ''}`} />
+                                            </button>
+                                            <AnimatePresence>
+                                                {mobileProductsOpen && (
+                                                    <motion.ul 
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: 'auto', opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                        className="space-y-3 pl-4 border-l border-white/10 ml-1 overflow-hidden"
+                                                    >
+                                                        {products.map((product) => (
+                                                            <motion.li 
+                                                                key={product.name}
+                                                                initial={{ x: -10, opacity: 0 }}
+                                                                animate={{ x: 0, opacity: 1 }}
+                                                                transition={{ duration: 0.3 }}
+                                                            >
+                                                                <Link
+                                                                    to={createPageUrl(product.path.substring(1))}
+                                                                    className="block py-1 text-neutral-400 hover:text-white text-base"
+                                                                    onClick={() => setMobileMenuOpen(false)}
+                                                                >
+                                                                    {product.name}
+                                                                </Link>
+                                                            </motion.li>
+                                                        ))}
+                                                    </motion.ul>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ) : link.isAnchor ? (
+                                        <button 
+                                            key={link.name}
+                                            onClick={() => scrollToSection(link.path.substring(2))}
+                                            className="text-left font-medium text-neutral-300 hover:text-white text-xl py-2 border-b border-white/5"
+                                        >
+                                            {link.name}
+                                        </button>
+                                    ) : (
+                                        <Link 
+                                            key={link.name}
+                                            to={createPageUrl(link.path.substring(1))}
+                                            className="font-medium text-neutral-300 hover:text-white text-xl py-2 border-b border-white/5"
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    )
+                                ))}
+
+                                <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-8 h-12 text-lg font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                                    {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
+                                </Button>
+                            </div>
+                        </motion.div>
                     )}
+                    </AnimatePresence>
             </nav>
 
             {/* Page Content */}
