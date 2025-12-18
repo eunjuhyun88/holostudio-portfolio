@@ -127,47 +127,48 @@ export default function AidGuardian() {
             ]
         },
         ko: {
-            tag: "AI 안전 프로토콜 • 검증 가능한 AI 콘텐츠 • 디지털 생태계 안전",
+            tag: "EU AI Act 준수 • GARM 브랜드 세이프티 • 250억 달러 시장",
             primaryButtonText: "대시보드 실행",
-            oneLiner: "AI 생성 콘텐츠의 출처와 무결성을 검증하여 허위 정보를 방지하고 디지털 생태계의 안전과 책임성을 보장합니다.",
+            oneLiner: "규제 압박과 브랜드 안전 요구가 급증하는 250억 달러 규모의 콘텐츠 모더레이션 시장을 선점하는 EU AI Act 및 GARM 준수 솔루션입니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        단순한 보안을 넘어, AI 시대의 디지털 진실(Digital Truth)을 수호하는 신뢰의 근간이 됩니다.
+                        EU AI Act 규제, 광고주들의 GARM 기반 브랜드 세이프티 요구, AI 생성 콘텐츠의 폭발적 증가는 규제 준수형·멀티모달 모더레이션 솔루션에 대한 전례 없는 수요를 창출하고 있습니다.
+                    </p>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        AiD Guardian은 <span className="text-white font-bold">EU AI Act 규제 대응</span>, <span className="text-white font-bold">GARM 프레임워크 지원</span>, <span className="text-white font-bold">AI 생성 콘텐츠 탐지</span>를 결합하여 독보적인 위치를 점합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        GARM(Global Alliance for Responsible Media) 기준 안전 표준과 심층 멀티모달 분석을 결합하여,
-                        귀사의 AI 인프라를 위한 실시간 방패를 제공합니다.
-                        이는 단순한 필터가 아닙니다. 기업의 특정 정책 요구사항에 적응하는 지능형 컴플라이언스 엔진입니다.
+                        현재 AWS, Google 등 주요 클라우드 플랫폼의 부재로 인한 명확한 퍼스트 무버(First-mover) 기회를 통해, 2030년까지 250억 달러 규모(CAGR 13~14%)로 성장할 글로벌 시장을 공략합니다.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
-                    title: "컴플라이언스 격차",
-                    description: "EU AI 법안 및 DSA와 같은 새로운 규제는 AI 콘텐츠에 대해 현재 도구들이 제공할 수 없는 엄격한 투명성과 감사 가능성을 요구합니다."
+                    title: "규제 해일 (EU AI Act)",
+                    description: "투명성 의무(Article 50) 위반 시 글로벌 매출의 최대 7% 벌금. 2026년 전면 적용에 대비한 긴급한 컴플라이언스 솔루션이 부재합니다."
                 },
                 {
-                    title: "멀티모달 사각지대",
-                    description: "표준 텍스트 필터는 이미지, 비디오 프레임, 오디오 트랙에 포함된 유해하거나 규정에 위배되는 콘텐츠를 탐지하지 못합니다."
+                    title: "브랜드 세이프티 위기",
+                    description: "GARM 기준(혐오 발언, 딥페이크 등) 미충족 시 광고주 이탈 위험. 유해 콘텐츠 옆 광고 노출 시 소비자 68%가 브랜드 신뢰를 철회합니다."
                 },
                 {
-                    title: "블랙박스 책임",
-                    description: "설명 가능한 AI 결정 없이는, 기업들은 명확한 이유 없이 콘텐츠가 차단되거나 플래그 지정될 때 법적 위험에 직면하게 됩니다."
+                    title: "빅테크의 공백",
+                    description: "주요 클라우드 사업자 중 누구도 명시적인 GARM 준수나 EU AI Act 대응을 선언하지 않아 시장의 명확한 기회가 존재합니다."
                 }
             ],
             solutionSteps: [
                 {
-                    title: "수집 및 분해",
-                    description: "멀티모달 콘텐츠를 수집하고 이를 텍스트, 시각적 프레임, 오디오 세그먼트로 분해하여 정밀하게 분석합니다."
+                    title: "규제 완벽 대응",
+                    description: "EU AI Act의 투명성 의무, Human-in-the-Loop, 감사 로그(Audit Logging) 요건을 아키텍처 레벨에서 내재화하여 법적 리스크를 해소합니다."
                 },
                 {
-                    title: "분석 및 점수화",
-                    description: "당사의 엔진은 전문 모델을 적용하여 실시간으로 GARM 안전 카테고리 및 맞춤형 기업 정책에 따라 콘텐츠 점수를 매깁니다."
+                    title: "GARM 표준 적용",
+                    description: "성인, 혐오, 딥페이크 등 GARM의 11개 유해 콘텐츠 카테고리를 정밀 탐지하여 글로벌 광고 표준을 충족합니다."
                 },
                 {
-                    title: "집행 및 보고",
-                    description: "콘텐츠를 자동으로 차단하거나 플래그를 지정하며, 컴플라이언스 보고를 위한 변경 불가능한 감사 추적을 생성합니다."
+                    title: "AI 생성 콘텐츠 탐지",
+                    description: "딥페이크 및 AI 생성 텍스트/이미지를 식별하고 기계 판독 가능 표시를 부착하여 투명성을 보장합니다."
                 }
             ],
             screenshots: [
@@ -189,23 +190,23 @@ export default function AidGuardian() {
                 }
             ],
             stats: [
-                { value: "Seed", label: "초기 파트너십" },
-                { value: "Enterprise / AI", label: "카테고리" },
-                { value: "Global", label: "위치" },
-                { value: "Holo Studio", label: "파트너" }
+                { value: "250억 달러", label: "2030년 시장 규모" },
+                { value: "18.6%", label: "AI 모더레이션 성장률" },
+                { value: "170억 유로", label: "AI 컴플라이언스 시장" },
+                { value: "First Mover", label: "GARM/EU AI Act" }
             ],
             useCases: [
                 {
-                    title: "애드테크 플랫폼",
-                    description: "유해한 AI 생성 콘텐츠 옆에 광고가 노출되지 않도록 하여 광고주의 브랜드 자산을 보호합니다."
+                    title: "라이브 스트리밍/게임",
+                    description: "18.9%의 높은 성장률을 보이는 라이브 스트리밍 및 게임 플랫폼을 위한 실시간 유해 콘텐츠 필터링."
                 },
                 {
-                    title: "UGC 플랫폼",
-                    description: "자동화된 정책 인식 AI 에이전트를 통해 수백만 개의 이미지와 비디오에 대한 모니터링을 확장합니다."
+                    title: "광고 및 미디어",
+                    description: "GARM 표준 준수를 통해 브랜드 가치를 보호하고 글로벌 광고주들의 신뢰를 확보."
                 },
                 {
-                    title: "엔터프라이즈 생성형 AI",
-                    description: "내부 AI 도구를 안전 레이어로 감싸 규정 위반이나 유해한 결과물 생성을 방지합니다."
+                    title: "엔터프라이즈 컴플라이언스",
+                    description: "EU AI Act 등 강화되는 글로벌 규제에 대응하여 과징금 리스크 제거 및 기업 신뢰도 제고."
                 }
             ],
             businessModel: "SaaS 구독 (볼륨별 등급) + 온프레미스 배포를 위한 엔터프라이즈 라이선싱.",
