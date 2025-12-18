@@ -16,12 +16,18 @@ import MouseGlowText from '@/components/MouseGlowText';
 const TypingWord = ({ word, i, total, progress }) => {
     const start = i / total;
     const end = start + (1 / total);
-    const opacity = useTransform(progress, [start, end], [0.2, 1]);
+    const opacity = useTransform(progress, [start, end], [0, 1]);
+    const y = useTransform(progress, [start, end], [10, 0]);
+    const blur = useTransform(progress, [start, end], [4, 0]);
 
     return (
         <motion.span 
-            style={{ opacity }}
-            className="inline-block mr-[0.2em]"
+            style={{ 
+                opacity, 
+                y,
+                filter: useTransform(blur, b => `blur(${b}px)`)
+            }}
+            className="inline-block mr-[0.25em]"
         >
             {word}
         </motion.span>
@@ -256,6 +262,19 @@ const ClosingStatement = () => {
 export default function Company() {
     const { language } = useLanguage();
     const [activeIndex, setActiveIndex] = React.useState(0);
+    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+
+    React.useEffect(() => {
+        const handleMouseMove = (e) => {
+            // Smooth damping could be added here, but direct mapping is responsive
+            setMousePos({
+                x: (e.clientX - window.innerWidth / 2) / 40,
+                y: (e.clientY - window.innerHeight / 2) / 40
+            });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
     
     // Visual State Management
     const visualState = useMemo(() => {
@@ -499,12 +518,20 @@ export default function Company() {
                  <motion.div
                     animate={{ 
                         opacity: visualState.showGuardRail ? 0.3 : 0,
-                        scale: visualState.showGuardRail ? 1 : 0.9
+                        scale: visualState.showGuardRail ? 1 : 0.9,
+                        x: mousePos.x * -1, // Parallax effect
+                        y: mousePos.y * -1
                     }}
-                    transition={{ duration: 1, ease: "circOut" }}
+                    transition={{ 
+                        opacity: { duration: 1, ease: "circOut" },
+                        scale: { duration: 1, ease: "circOut" },
+                        x: { type: "spring", stiffness: 50, damping: 20 },
+                        y: { type: "spring", stiffness: 50, damping: 20 }
+                    }}
                     className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
                  >
                     <div className="w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_150px_rgba(99,102,241,0.05)] animate-[spin_30s_linear_infinite]" />
+                    <div className="absolute w-[60vh] h-[60vh] rounded-full border border-indigo-500/5 animate-[spin_20s_linear_infinite_reverse]" />
                  </motion.div>
             </div>
 
