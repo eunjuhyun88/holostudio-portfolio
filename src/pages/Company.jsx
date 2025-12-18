@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -194,13 +194,13 @@ const TeamIdentity = ({ identity }) => (
 );
 
 // Founder Card Component
-const FounderCard = ({ name, role, bio, image, delay }) => (
+const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
     <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: delay, duration: 0.6 }}
-        className="group"
+        className="group relative"
     >
         <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-4 rounded-xl border border-white/10 group-hover:border-indigo-500/50 transition-colors">
             {image ? (
@@ -227,9 +227,16 @@ const FounderCard = ({ name, role, bio, image, delay }) => (
         </div>
 
         <div className="space-y-2 pr-2">
-            <div>
-                <h3 className="text-lg font-bold text-white leading-tight">{name}</h3>
-                <p className="text-[10px] font-mono text-indigo-400 tracking-wider uppercase mt-1">{role}</p>
+            <div className="flex justify-between items-start">
+                <div>
+                    <h3 className="text-lg font-bold text-white leading-tight">{name}</h3>
+                    <p className="text-[10px] font-mono text-indigo-400 tracking-wider uppercase mt-1">{role}</p>
+                </div>
+                {linkedin && (
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[#0077b5] transition-colors p-1">
+                        <Linkedin className="w-4 h-4" />
+                    </a>
+                )}
             </div>
             
             <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
@@ -399,7 +406,8 @@ export default function Company() {
                     name: "Yongwan Kim",
                     role: "CTO",
                     bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
+                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
                     name: "Seongdae Kim",
@@ -435,7 +443,8 @@ export default function Company() {
                     name: "0xchew Hyun",
                     role: "Core Web3 Builder",
                     bio: "Core Director overseeing all HoloStudio projects. Brings extensive Web3 experience and global business development expertise. An active investor in over 150 projects across Layer 1/2, Infrastructure, DeFi, and P2E sectors, providing deep market insights and strategic direction.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 }
             ],
         },
