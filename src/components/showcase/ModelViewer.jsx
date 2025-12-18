@@ -11,7 +11,7 @@ export default function ModelViewer({ url, type }) {
     const [error, setError] = useState(null);
 
     // If video type, render video player directly
-    if (type === 'mp4') {
+    if (type === 'mp4' || type === 'mov') {
         return (
             <div className="relative w-full h-full bg-white/5 rounded-3xl overflow-hidden border border-white/10 flex items-center justify-center">
                 <video 
@@ -21,6 +21,7 @@ export default function ModelViewer({ url, type }) {
                     autoPlay
                     loop
                     muted
+                    playsInline
                 />
             </div>
         );
