@@ -4,7 +4,7 @@ import { createPageUrl } from '@/utils';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageContext';
-import VideoBackground from '@/components/VideoBackground';
+import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 
 export default function Products() {
@@ -84,8 +84,8 @@ export default function Products() {
                 <div className="absolute inset-0 opacity-30">
                     <CosmicBackground />
                 </div>
-                <div className="absolute inset-0 opacity-100">
-                    <VideoBackground />
+                <div className="absolute inset-0 opacity-90">
+                    <Background3D />
                 </div>
                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
