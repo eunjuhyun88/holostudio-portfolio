@@ -6,6 +6,16 @@ import { PoCVisual, MemePingVisual, INFTVisual } from '@/components/ResearchVisu
 const RoadmapItem = ({ item, index, isLast }) => {
     const [isOpen, setIsOpen] = useState(false);
     
+    // Status configuration
+    const statusConfig = {
+        past: { color: 'text-neutral-400', border: 'border-neutral-800', bg: 'bg-neutral-900/40', glow: '' },
+        current: { color: 'text-indigo-400', border: 'border-indigo-500', bg: 'bg-indigo-900/20', glow: 'shadow-[0_0_30px_rgba(99,102,241,0.2)]' },
+        upcoming: { color: 'text-blue-400', border: 'border-blue-500/50', bg: 'bg-blue-900/10', glow: '' },
+        future: { color: 'text-neutral-500', border: 'border-neutral-800', bg: 'bg-neutral-900/20', glow: '' }
+    };
+    
+    const status = statusConfig[item.status] || statusConfig.future;
+    
     // Visual selection based on ID
     const renderVisual = () => {
         switch(item.id) {
@@ -40,9 +50,9 @@ const RoadmapItem = ({ item, index, isLast }) => {
             {/* Timeline Line (Desktop) */}
             <div className="hidden md:block absolute top-0 bottom-0 w-px bg-neutral-800 left-full -translate-x-1/2 md:left-auto md:right-0 md:translate-x-1/2 origin-center">
                 {/* Connector Dot */}
-                <div className="absolute top-6 -right-[5px] z-10 flex items-center justify-center" style={{ right: index % 2 === 0 ? '-5px' : 'auto', left: index % 2 === 0 ? 'auto' : '-5px' }}>
-                     <div className={`w-[9px] h-[9px] rounded-full ${isOpen ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]' : 'bg-neutral-800'} transition-all duration-300 relative`}>
-                        {isOpen && <div className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-75" />}
+                <div className="absolute top-6 z-10 flex items-center justify-center" style={{ right: index % 2 === 0 ? '-5px' : 'auto', left: index % 2 === 0 ? 'auto' : '-5px' }}>
+                     <div className={`w-[11px] h-[11px] rounded-full border-2 border-[#050505] ${item.status === 'current' ? 'bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,1)]' : item.status === 'upcoming' ? 'bg-blue-500' : 'bg-neutral-700'} transition-all duration-300 relative`}>
+                        {item.status === 'current' && <div className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-75" />}
                      </div>
                 </div>
             </div>
@@ -53,21 +63,22 @@ const RoadmapItem = ({ item, index, isLast }) => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group relative bg-neutral-900/40 hover:bg-neutral-900/60 border ${isOpen ? 'border-indigo-500/50' : 'border-neutral-800'} hover:border-indigo-500/30 rounded-2xl p-6 transition-all cursor-pointer overflow-hidden`}
+                className={`group relative ${isOpen ? status.bg : 'bg-neutral-900/40'} hover:bg-neutral-900/80 border ${isOpen ? status.border : 'border-neutral-800'} hover:${status.border} ${item.status === 'current' ? status.glow : ''} rounded-2xl p-6 transition-all cursor-pointer overflow-hidden`}
             >
                 {/* Tech Corners */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
+                <div className={`absolute top-0 left-0 w-3 h-3 border-l border-t border-white/10 group-hover:${status.border.replace('border', 'border')} transition-colors`} />
+                <div className={`absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/10 group-hover:${status.border.replace('border', 'border')} transition-colors`} />
 
                 {/* Glow Effect */}
-                {isOpen && <div className="absolute inset-0 bg-indigo-500/5 pointer-events-none" />}
+                {isOpen && <div className={`absolute inset-0 ${status.bg} pointer-events-none opacity-50`} />}
+                {item.status === 'current' && <div className="absolute top-0 right-0 px-3 py-1 bg-indigo-500 text-white text-[10px] font-bold uppercase tracking-widest rounded-bl-xl shadow-lg">Active Phase</div>}
 
                 <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} gap-2 mb-3 relative z-10`}>
-                    <div className="flex items-center gap-2 text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-full border border-indigo-500/20 w-fit">
+                    <div className={`flex items-center gap-2 text-xs font-mono ${status.color} bg-white/5 px-2 py-1 rounded-full border border-white/5 w-fit`}>
                         <Calendar className="w-3 h-3" />
                         {item.date}
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                    <h3 className={`text-xl font-bold text-white group-hover:${status.color} transition-colors`}>
                         {item.title}
                     </h3>
                 </div>

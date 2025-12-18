@@ -110,6 +110,7 @@ export default function Home() {
                         id: "poc",
                         title: "PoC Protocol v1 Launch", 
                         date: "Q4 2025", 
+                        status: "current",
                         desc: "The standard for verifiable AI provenance and IP lineage.",
                         details: "Implementing EIP-7007 compatible verification for generative assets. Full mainnet deployment with gas-optimized verification proofs.",
                         tags: ["Protocol", "Security", "Mainnet"]
@@ -118,6 +119,7 @@ export default function Home() {
                         id: "memeping",
                         title: "MemePing v2 Dashboard", 
                         date: "Q1 2026", 
+                        status: "upcoming",
                         desc: "Real-time impact tracking across Twitter, Reddit, & Farcaster.",
                         details: "Enhanced sentiment analysis engine with 50ms latency. New 'Virality Score' metric for instant trend detection across decentralized social graphs.",
                         tags: ["Analytics", "AI", "Social"]
@@ -126,6 +128,7 @@ export default function Home() {
                         id: "stockhoo",
                         title: "Stockhoo Launch", 
                         date: "Q1 2026", 
+                        status: "upcoming",
                         desc: "Zone-based market intelligence and social trading platform.",
                         details: "Public launch of Stockhoo web and mobile apps. Integration with on-chain verification for trader reputation and 'Proof of Profit'.",
                         tags: ["Fintech", "Social", "Market"]
@@ -134,6 +137,7 @@ export default function Home() {
                         id: "elememetal",
                         title: "EleMEMEtal Game Launch", 
                         date: "Q2 2026", 
+                        status: "future",
                         desc: "The first AI-native PvP strategy game with provenance.",
                         details: "Global launch of EleMEMEtal. Full UGC editor release allowing players to create and trade verified game assets.",
                         tags: ["Game", "UGC", "AI"]
@@ -226,6 +230,7 @@ export default function Home() {
                         id: "poc",
                         title: "PoC 프로토콜 v1 런칭", 
                         date: "2025년 4분기", 
+                        status: "current",
                         desc: "검증 가능한 AI 출처 및 IP 계보 표준.",
                         details: "생성형 자산을 위한 EIP-7007 호환 검증 구현. 가스 최적화된 검증 증명과 함께 메인넷 배포.",
                         tags: ["프로토콜", "보안", "메인넷"]
@@ -234,6 +239,7 @@ export default function Home() {
                         id: "memeping",
                         title: "MemePing v2 대시보드", 
                         date: "2026년 1분기", 
+                        status: "upcoming",
                         desc: "Twitter, Reddit, Farcaster 실시간 영향력 추적.",
                         details: "50ms 지연 시간의 향상된 감성 분석 엔진. 탈중앙화 소셜 그래프 전반의 즉각적인 트렌드 감지를 위한 새로운 '바이럴 점수' 지표.",
                         tags: ["분석", "AI", "소셜"]
@@ -242,6 +248,7 @@ export default function Home() {
                         id: "stockhoo",
                         title: "Stockhoo 런칭", 
                         date: "2026년 1분기", 
+                        status: "upcoming",
                         desc: "구간(Zone) 기반 시장 인텔리전스 및 소셜 트레이딩 플랫폼.",
                         details: "Stockhoo 웹 및 모바일 앱 퍼블릭 런칭. 트레이더 평판 및 '수익 증명(Proof of Profit)'을 위한 온체인 검증 통합.",
                         tags: ["핀테크", "소셜", "마켓"]
@@ -250,6 +257,7 @@ export default function Home() {
                         id: "elememetal",
                         title: "EleMEMEtal 게임 런칭", 
                         date: "2026년 2분기", 
+                        status: "future",
                         desc: "출처 증명이 적용된 최초의 AI 네이티브 PvP 전략 게임.",
                         details: "EleMEMEtal 글로벌 런칭. 플레이어가 검증된 게임 자산을 생성하고 거래할 수 있는 완전한 UGC 에디터 공개.",
                         tags: ["게임", "UGC", "AI"]
