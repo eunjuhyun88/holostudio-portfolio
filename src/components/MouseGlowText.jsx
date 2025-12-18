@@ -17,10 +17,9 @@ export default function MouseGlowText({
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
       
-      // Reduced movement range for better legibility (less "shaky")
-      // Dividing by larger numbers makes the movement smaller
-      const x = (centerX - e.clientX) / 50; 
-      const y = (centerY - e.clientY) / 50;
+      // Calculate distance from center, capped for subtlety
+      const x = (centerX - e.clientX) / 20; 
+      const y = (centerY - e.clientY) / 20;
       
       setPosition({ x, y });
     };
@@ -34,18 +33,20 @@ export default function MouseGlowText({
       ref={ref}
       className={`relative inline-block cursor-default transition-all duration-100 ${className}`}
       style={{
-        // Using the provided glowColor for the shadows to match the theme
-        // Reduced offsets for sharper text
+        // Using text-shadow for a sharper, multi-colored layered look
+        // Layer 1: White/Bright core (closest)
+        // Layer 2: Cyan/Blue tint (middle)
+        // Layer 3: Purple/Pink tint (outer)
         textShadow: `
-            ${position.x * 0.5}px ${position.y * 0.5}px 0px rgba(255,255,255,0.1),
-            ${position.x * 1.5}px ${position.y * 1.5}px 4px ${glowColor},
-            ${position.x * 3.0}px ${position.y * 3.0}px 12px ${glowColor}
+            ${position.x * 0.2}px ${position.y * 0.2}px 0px rgba(255,255,255,0.7),
+            ${position.x * 0.5}px ${position.y * 0.5}px 2px rgba(34, 211, 238, 0.5),
+            ${position.x * 0.8}px ${position.y * 0.8}px 4px rgba(168, 85, 247, 0.4)
         `,
         ...props.style,
       }}
       {...props}
     >
-      <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/90">
+      <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-br from-white via-indigo-50 to-white/90">
           {children}
       </span>
     </Component>

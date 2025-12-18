@@ -252,13 +252,7 @@ export default function BusinessLayout({
                                     <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-white to-neutral-400 flex items-center justify-center text-black mb-6 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
                                         <div className="font-bold text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <MouseGlowText 
-                                        as="h1" 
-                                        glowColor={s.glowHex}
-                                        className="text-3xl font-bold tracking-tighter mb-2"
-                                    >
-                                        {name}
-                                    </MouseGlowText>
+                                    <h1 className="text-3xl font-bold tracking-tighter mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">{name}</h1>
                                     <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide bg-white/5 border border-white/10 ${s.accent}`}>
                                         {tag}
                                     </div>
@@ -309,13 +303,7 @@ export default function BusinessLayout({
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                     {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
-                                <MouseGlowText 
-                                    as="h1" 
-                                    glowColor={s.glowHex}
-                                    className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary}`}
-                                >
-                                    {name}
-                                </MouseGlowText>
+                                <h1 className={`text-4xl font-bold tracking-tighter mb-2 ${textPrimary} drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>{name}</h1>
                                 <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
                             </div>
 
