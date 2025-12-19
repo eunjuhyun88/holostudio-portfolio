@@ -351,50 +351,50 @@ export default function Company() {
     const content = {
         en: {
             intro: {
-                episode: "The Origin",
+                episode: "The Foundation",
                 title: "The Trust Layer",
-                subtitle: "Engineering Certainty for the AI Media Age",
+                subtitle: "Designing Trust for the AI Media Age",
                 text: [
-                    "We did not arrive here by accident. We have been building systems where value, rules, and trust must work at scale—for over a decade.",
+                    "Our arrival here is no accident. For over a decade, we have been building systems where value, rules, and trust must work at scale.",
                     "At EA, Netmarble, and Smilegate, we designed real-time infrastructure and virtual economies for millions of users.",
-                    "We learned early: Without enforceability, value does not persist."
+                    "We learned early: Value without enforceability does not persist."
                 ]
             },
             chapters: [
                 {
                     year: "2014 – 2020",
                     headline: "THE GAMING ERA",
-                    content: "Before “Metaverse” or “Web3”, we operated large-scale multiplayer systems. High concurrency. Persistent virtual economies. Rules determining ownership and exchange. The lesson was absolute: simulation without rules becomes chaos."
+                    content: "Before “Metaverse” or “Web3”, we operated massive multiplayer systems. High concurrency. Persistent economies. Rules of ownership. The lesson was absolute: Simulation without rules is merely chaos."
                 },
                 {
                     year: "2021 – 2023",
                     headline: "THE CONVERGENCE",
-                    content: "AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But infinite generative content lacked a native way for verification, attribution, or settlement."
+                    content: "AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But for infinite generative content, no native structure existed for verification, attribution, or settlement."
                 },
                 {
                     year: "2024",
-                    headline: "THE COLLAPSE OF TRUST",
-                    content: "Generative AI scaled creation cost to zero. Trust did not scale. Attribution broke, accountability faded, and value leaked. The problem was never creativity. It was the absence of a trust layer."
+                    headline: "THE COLLAPSE",
+                    content: "Generative AI drove creation costs to zero. Trust did not scale. Contribution blurred, and value leaked across platforms. The problem was never creativity. It was the absence of a trust layer."
                 },
                 {
                     year: "2025 & BEYOND",
                     headline: "THE TRUST LAYER",
-                    content: "HoloStudio treats content as living events: Creation → Verification → Propagation → Settlement. Stories move, value flows. Every contribution is traceable. As AI creates infinite content, the value of trust infrastructure becomes absolute."
+                    content: "When AI becomes an economic actor, trust becomes infrastructure. Holo Studio treats content as living events: Creation → Verification → Propagation → Settlement. As AI scales, the value of trust infrastructure becomes absolute."
                 }
             ],
             thesis: [
                 {
                     headline: "ENGINEERED CERTAINTY",
-                    content: "The future is not neutral. It is a choice between chaos and trust. We do not hope for trust; we engineer it."
+                    content: "The future is a choice between chaos and trust. We do not hope for trust; we engineer it."
                 },
                 {
-                    headline: "ONE COHERENT SYSTEM",
+                    headline: "ONE SYSTEM",
                     content: "We do not build disconnected products. We build a single, coherent architecture where trust enables distribution, and distribution creates value."
                 }
             ],
             identity: {
                  headline: "WHY THIS TEAM",
-                 content: "\"Growth Hacker + Deep Tech Builder.\" We are architects of virtual economies, optimizing for real user value, not just storytelling."
+                 content: "\"Growth Hacker + Deep Tech Builder.\" We are system architects who prioritize real user value and functioning economies over storytelling or speculation."
             },
             founders: [
                 {
@@ -440,12 +440,12 @@ Proven Track Record of Scaling Communities from Zero to Millions.`,
                 {
                     name: "Antonio",
                     role: "Head of Ecosystem",
-                    bio: "Ecosystem growth expert focusing on performance-driven growth. Scaling ecosystems through GTM strategy and marketing.",
+                    bio: "Performance-driven Web3 ecosystem growth specialist. Scaling ecosystems through GTM strategy, optimization, and expansion.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
-                    role: "Dev Team Leader",
+                    role: "Dev Team Lead",
                     bio: "Oversees PlayArts architecture and development roadmap.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
@@ -458,10 +458,13 @@ Proven Track Record of Scaling Communities from Zero to Millions.`,
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
-                    bio: "Builds ASP.NET 9.0, PostgreSQL systems.",
+                    bio: "High-performance backend systems with ASP.NET 9.0 & PostgreSQL.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
                 }
             ],
+            footer: {
+                main: "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading."
+            }
         },
         ko: {
             intro: {
@@ -469,37 +472,37 @@ Proven Track Record of Scaling Communities from Zero to Millions.`,
                 title: "The Trust Layer",
                 subtitle: "AI 미디어 시대, 신뢰를 설계하는 팀",
                 text: [
-                    "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년 동안 우리는 가치, 규칙, 신뢰가 대규모로 작동해야 하는 시스템을 구축해 왔습니다.",
-                    "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다.",
-                    "우리는 일찍이 깨달았습니다. 구속력이 없다면 가치는 지속되지 않습니다."
+                    "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년간 우리는 가치·규칙·신뢰가 대규모로 작동해야 하는 시스템을 구축해왔습니다.",
+                    "EA, 넷마블, 스마일게이트에서 수백만 사용자를 위한 실시간 인프라와 가상경제를 설계했습니다.",
+                    "우리는 일찍이 깨달았습니다. 구속력이 없는 가치는 지속되지 않습니다."
                 ]
             },
             chapters: [
                 {
                     year: "2014 – 2020",
-                    headline: "게이밍 시대",
-                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속. 지속적인 가상 경제. 소유와 교환의 규칙들. 게임이 준 교훈은 명확했습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
+                    headline: "게이밍의 시대",
+                    content: "‘메타버스’와 ‘Web3’가 등장하기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시접속. 지속되는 가상경제. 소유와 교환의 규칙. 게임이 준 교훈은 명확했습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
                 },
                 {
                     year: "2021 – 2023",
                     headline: "융합의 시대",
-                    content: "AI는 지능이 어떻게 시뮬레이션될 수 있는지를 보여주었고, 크립토는 진실이 어떻게 합의될 수 있는지를 보여주었습니다. 그러나 무한히 생성되는 콘텐츠에는 검증, 귀속, 정산을 위한 네이티브 방식이 없었습니다."
+                    content: "AI는 지능이 어떻게 시뮬레이션될 수 있는지를 보여주었고, 크립토는 진실이 어떻게 합의될 수 있는지를 증명했습니다. 그러나 무한히 생성되는 콘텐츠에는 검증, 귀속, 정산을 위한 네이티브 구조가 존재하지 않았습니다."
                 },
                 {
                     year: "2024",
                     headline: "신뢰의 붕괴",
-                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다."
+                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 그러나 신뢰는 확장되지 않았습니다. 기여는 흐려졌고, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다."
                 },
                 {
                     year: "2025 & BEYOND",
                     headline: "Trust Layer",
-                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성 → 검증 → 전파 → 정산. 이야기는 움직이고 가치는 흐릅니다. 모든 기여는 추적 가능해야 합니다. AI가 콘텐츠를 무한히 만들수록, 신뢰 인프라의 가치는 절대적입니다."
+                    content: "When AI becomes an economic actor, trust becomes infrastructure. Holo Studio는 콘텐츠를 정적 결과물이 아닌 ‘살아있는 이벤트’로 취급합니다. 생성 → 검증 → 전파 → 정산. 이야기는 이동하고, 가치는 흐릅니다. 모든 기여는 추적 가능해야 합니다. AI가 무한히 만들어낼수록, 신뢰 인프라의 가치는 절대적입니다."
                 }
             ],
             thesis: [
                 {
                     headline: "설계된 확신",
-                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰 사이의 선택입니다. 우리는 신뢰를 희망하지 않습니다. 설계합니다."
+                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰 사이의 선택입니다. 우리는 신뢰를 기대하지 않습니다. 설계합니다."
                 },
                 {
                     headline: "하나의 일관된 시스템",
@@ -507,17 +510,17 @@ Proven Track Record of Scaling Communities from Zero to Millions.`,
                 }
             ],
             identity: {
-                 headline: "왜 이 팀인가",
-                 content: "\"Growth Hacker + Deep Tech Builder.\" 우리는 스토리텔링과 투기보다는 실제 유저 가치에 최적화된 가상 경제의 아키텍트들입니다."
+                 headline: "WHY THIS TEAM",
+                 content: "\"Growth Hacker + Deep Tech Builder.\" 우리는 스토리텔링이나 투기보다 실제 유저 가치와 작동하는 경제에 집중해온 시스템 아키텍트들입니다."
             },
             founders: [
                 {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "국경을 넘어 산업, 사람, 아이디어를 연결합니다.",
-                    bio: `3000억 원 규모 금융 리스크 관리 및 해외 국방부 협상 총괄.
-Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 주도.
-Stony Brook 수석 졸업 (Summa Cum Laude).`,
+                    bio: `50억+ M&A 실사 · 3,000억+ 리스크 평가 주도.
+전 Duel Partners 대표, Ares Corp 글로벌 BD.
+연세대 석사 · Stony Brook 수석 졸업 (GPA 4.0).`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -525,9 +528,9 @@ Stony Brook 수석 졸업 (Summa Cum Laude).`,
                     name: "Yongwan Kim",
                     role: "CTO",
                     motto: "스케일은 이미 증명되었습니다.",
-                    bio: `EA FIFA/Netmarble에서 100만 동시접속 글로벌 인프라 설계.
-대규모 게임 서비스의 99.99% 가용성 달성 및 운영.
-서버/인프라 핵심 특허 5건 보유.`,
+                    bio: `EA FIFA / Sports · 넷마블 10년+.
+100만 동시접속 인프라 구축 · 99.8% 가용성.
+인프라 관련 특허 5건.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
@@ -535,47 +538,49 @@ Stony Brook 수석 졸업 (Summa Cum Laude).`,
                     name: "Seongdae Kim",
                     role: "Chief Architect",
                     motto: "실시간 렌더링 파이프라인 마스터.",
-                    bio: `Unity, 넷마블 등에서 15년 이상 코어 엔진 개발 리드.
-실시간 렌더링 및 고성능 최적화 아키텍처 전문가.
-글로벌 AAA 타이틀의 메인 아키텍트 역임.`,
+                    bio: `Unity · Netmarble · Smilegate.
+고성능 그래픽 엔진 아키텍처 전문가.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
                     name: "0xchew Hyun",
                     role: "Chief Builder",
-                    motto: "무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다.",
-                    bio: `국내 1위 Web3 마케팅 펌 MintedLab 창업.
-150개 이상의 글로벌 프로젝트 GTM 총괄 (Polkadot, Algorand 등).
-제로 베이스에서 대규모 커뮤니티 스케일링 성공 경험.`,
+                    motto: "무엇이 작동하고, 무엇이 실패하는지 직접 경험했습니다.",
+                    bio: `MintedLab 창업 (국내 1위 Web3 마케팅).
+150+ 글로벌 프로젝트 · $1M+ 매출.
+Polkadot · Algorand · DFINITY 파트너십.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
                     role: "Head of Ecosystem",
-                    bio: "Ecosystem growth expert with a strong focus on performance-driven growth across Web3 projects. Scaling ecosystems through GTM strategy, project optimization, and marketing.",
+                    bio: "Performance-driven Web3 ecosystem growth specialist. GTM 전략, 프로젝트 최적화, 확장 중심의 운영.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
-                    role: "Dev Team Leader",
-                    bio: "PlayArts 아키텍처와 개발 로드맵 총괄.",
+                    role: "Dev Team Lead",
+                    bio: "PlayArts 아키텍처 및 개발 로드맵 총괄.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
-                    bio: "React, Tailwind, Vite, Svelte 현대적 UI 전문.",
+                    bio: "React · Tailwind · Vite · Svelte 현대적 UI 전문.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
-                    bio: "ASP.NET 9.0, PostgreSQL 시스템 구축.",
+                    bio: "ASP.NET 9.0 · PostgreSQL 고성능 백엔드 시스템 구축.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
                 }
             ],
+            footer: {
+                main: "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다."
+            }
         }
     };
 
@@ -767,6 +772,15 @@ Stony Brook 수석 졸업 (Summa Cum Laude).`,
                 
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
+                    <div className="max-w-4xl mx-auto mb-16">
+                         <h3 className="text-sm font-bold tracking-widest text-indigo-500 uppercase mb-4">HOLO STUDIO</h3>
+                         <p className="text-2xl md:text-3xl font-bold leading-relaxed text-neutral-200">
+                            {c.footer?.main || (language === 'en' 
+                                ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading." 
+                                : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.")}
+                         </p>
+                    </div>
+
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">
                         {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
