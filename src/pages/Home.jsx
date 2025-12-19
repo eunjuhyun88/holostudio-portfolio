@@ -349,14 +349,14 @@ export default function Home() {
         {
             id: "aidguardian",
             name: "AiD Guardian",
-            tag: { en: "Multi-Modal Safety Engine", ko: "멀티모달 안전 엔진" },
+            tag: { en: "Enterprise Safety Engine", ko: "엔터프라이즈 안전 엔진" },
             desc: { 
-                en: "Low-latency safety classification for image, video, audio, and text — with timeline-level risk visibility.",
-                ko: "이미지/영상/오디오/텍스트를 위한 멀티모달 콘텐츠 안전 엔진. 초저지연 분류 및 타임라인 위험 분석."
+                en: "Real-time liability protection for platforms. We filter toxic AI content with <10ms latency, ensuring brand safety and GARM compliance.",
+                ko: "플랫폼을 위한 실시간 리스크 방어. 10ms 미만의 지연시간으로 유해 AI 콘텐츠를 필터링하여 브랜드 안전과 컴플라이언스를 보장합니다."
             },
             features: {
-                en: ["Accuracy / Recall", "Latency < 10ms", "GARM-Aligned Categories"],
-                ko: ["정확도 / 재현율", "지연시간 < 10ms", "GARM 카테고리"]
+                en: ["Risk Mitigation", "Latency < 10ms", "Regulatory Compliance"],
+                ko: ["리스크 완화", "지연시간 < 10ms", "규제 준수"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc0228bec_2025-12-171042431.png",
             color: "text-indigo-400",
@@ -364,20 +364,20 @@ export default function Home() {
             glowColor: "shadow-indigo-500/50",
             bgGradient: "from-indigo-600",
             path: "/AidGuardian",
-            primaryBtn: { en: "Try Demo", ko: "데모 체험" },
-            secondaryBtn: { en: "Contact Sales", ko: "도입 문의" }
+            primaryBtn: { en: "Request Demo", ko: "데모 요청" },
+            secondaryBtn: { en: "Integration", ko: "도입 문의" }
         },
         {
             id: "playarts",
             name: "PlayArts",
-            tag: { en: "Creation-Time Provenance Layer", ko: "생성 시점 출처 증명" },
+            tag: { en: "IP Provenance Protocol", ko: "IP 출처 증명 프로토콜" },
             desc: {
-                en: "Source-level verification and cross-platform impact tracking — not post-hoc watermarking, but proof at creation.",
-                ko: "생성 시점의 출처 증명 및 크로스 플랫폼 영향력 추적. 사후 워터마킹이 아닌 원천 검증 기술."
+                en: "The standard for verifiable AI assets. We cryptographically bind ownership and origin to content at the moment of generation.",
+                ko: "검증 가능한 AI 자산의 표준. 생성되는 순간 콘텐츠에 소유권과 출처를 암호학적으로 결합합니다."
             },
             features: {
-                en: ["Proof-of-Creation", "Sentinel Attestations", "Impact Events"],
-                ko: ["생성 증명(PoC)", "Sentinel 검증", "임팩트 이벤트"]
+                en: ["IP Protection", "On-Chain Evidence", "Royalty Routing"],
+                ko: ["IP 보호", "온체인 증거", "로열티 분배"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/81cf8f3b2_2025-12-17105846.png",
             color: "text-lime-400",
@@ -385,20 +385,20 @@ export default function Home() {
             glowColor: "shadow-lime-400/50",
             bgGradient: "from-lime-500",
             path: "/PlayArts",
-            primaryBtn: { en: "Partnership", ko: "파트너십" },
-            secondaryBtn: { en: "Deck", ko: "소개서" }
+            primaryBtn: { en: "Partner", ko: "파트너십" },
+            secondaryBtn: { en: "Read Spec", ko: "기술 명세" }
         },
         {
             id: "elememetal",
             name: "EleMEMEtal",
-            tag: { en: "Game-First AI UGC Economy", ko: "게임 중심 UGC 생태계" },
+            tag: { en: "Web3 Gaming Showcase", ko: "Web3 게이밍 쇼케이스" },
             desc: {
-                en: "High-decision PvP with AI-native UGC loops — where every player-created asset is safe, attributable, and ownable.",
-                ko: "AI 기반 UGC 루프가 결합된 고전략 PvP. 플레이어 생성 자산의 안전성과 출처를 보장합니다."
+                en: "Demonstrating the protocol in action. A fully on-chain battle arena where every asset is user-generated, verified, and traded.",
+                ko: "프로토콜의 실증 사례. 모든 자산이 유저에 의해 생성, 검증, 거래되는 완전 온체인 배틀 아레나."
             },
             features: {
-                en: ["1v1 PvP Core Loop", "AI Content Expansion", "Built-In Safety Rails"],
-                ko: ["1v1 PvP 코어 루프", "AI 콘텐츠 확장", "안전 가드레일"]
+                en: ["Protocol Demo", "Asset Ownership", "Safe UGC"],
+                ko: ["프로토콜 데모", "자산 소유권", "안전한 UGC"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9692fcde2_2025-12-1463649.png",
             color: "text-orange-500",
@@ -406,20 +406,20 @@ export default function Home() {
             glowColor: "shadow-orange-500/50",
             bgGradient: "from-orange-600",
             path: "/Elememetal",
-            primaryBtn: { en: "Playtest", ko: "플레이 테스트" },
-            secondaryBtn: { en: "Publish Kit", ko: "퍼블리싱 키트" }
+            primaryBtn: { en: "View Economy", ko: "경제 구조" },
+            secondaryBtn: { en: "For Publishers", ko: "퍼블리셔용" }
         },
         {
             id: "stockhoo",
             name: "Stockhoo",
             tag: { en: "Zone-Based Market Intelligence", ko: "구간 기반 소셜 인텔리전스" },
             desc: {
-                en: "Social market zones with proof, credibility, and AI strategy signals for on-chain trading.",
-                ko: "구간(Zone) 기반 시장 대화 + 증명 + AI 시그널 레이어. 온체인 시장을 위한 신뢰와 인사이트."
+                en: "Verifiable reputation for AI trading signals. We bring on-chain proof of profit to social market intelligence.",
+                ko: "AI 트레이딩 시그널을 위한 검증된 평판. 소셜 시장 정보에 온체인 수익 증명을 도입합니다."
             },
             features: {
-                en: ["Zone Chat", "Proof of Profit", "AI Strategy Signals"],
-                ko: ["구간 채팅", "수익 증명", "AI 전략 시그널"]
+                en: ["Verified Signals", "Proof of Profit", "AI Strategy"],
+                ko: ["검증된 시그널", "수익 증명", "AI 전략"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/45cb06182_2025-12-17105903.png",
             color: "text-emerald-400",
