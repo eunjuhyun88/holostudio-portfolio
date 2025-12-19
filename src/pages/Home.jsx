@@ -153,10 +153,10 @@ export default function Home() {
         },
         ko: {
             hero: {
-                tag: "Full-Media AI Guardrails",
+                tag: "Trust Layer for AI Economy",
                 title: "HOLO STUDIO",
-                sub: "HoloStudio는 AI 시대의 이야기가 신뢰받고, 인정받으며, 지속될 수 있는 인프라를 구축합니다.",
-                desc: "차세대 미디어 경제를 위한 풀스택 AI 가드레일 및 Web3 네이티브 기여도 측정.",
+                sub: "AI 시대, 콘텐츠는 무한하다. 하지만 신뢰는 희소하다. 우리는 신뢰를 인프라로 만든다.",
+                desc: "AI가 콘텐츠 생성 비용을 0으로 만들었습니다. 모든 사람이 스토리텔러가 되었습니다. 하지만 우리는 여전히 묻습니다: 안전한가? 누가 만들었는가? 가치는 어디로 가는가?",
                 cta1: "사업 포트폴리오 보기",
                 cta2: "제휴 및 문의"
             },
@@ -168,21 +168,21 @@ export default function Home() {
             },
             problem: {
                 title: "해결하려는 핵심 문제",
-                sub: "AI 콘텐츠 생성이 폭발적으로 증가하는데, 안전성 인프라는 여전히 단편적이고 불완전합니다.",
+                sub: "\"AI가 만들어내는 'slop'들이 너무 많은 불신을 낳고 있습니다.\"",
                 cards: [
-                    { title: "2025 콘텐츠 안전성 위기", desc: "대형 플랫폼의 검열 자동화로 인한 불안정성 심화.", badge: "AI 리스크" },
-                    { title: "기존 안전 시스템의 한계", desc: "텍스트 중심 필터링의 한계. 이미지/영상/3D 가드레일 부재.", badge: "범위 제한" },
-                    { title: "게이밍/3D 안전성 사각지대", desc: "메타버스 내 무방비한 유해 콘텐츠 생성.", badge: "3D 격차" }
+                    { title: "안전의 부재", desc: "딥페이크, 유해 콘텐츠가 브랜드와 플랫폼을 위협합니다.", badge: "AI 리스크" },
+                    { title: "출처의 소멸", desc: "AI 콘텐츠의 진짜 창작자가 누구인지 증명할 방법이 없습니다.", badge: "출처 증명" },
+                    { title: "가치의 유출", desc: "바이럴이 되어도 창작자가 아닌 플랫폼이 가치를 독점합니다.", badge: "가치 분배" }
                 ]
             },
             thesis: {
                 label: "HOLO STUDIO Thesis",
-                main: "우리는 AI 콘텐츠를 검증 가능하고, 안전하며, 수익화 가능한 객체로 전환합니다.",
-                keywords: ["가드레일", "출처증명", "가치분배"]
+                main: "더 이상 희소한 자원은 창의성이 아닙니다. 바로 신뢰입니다.",
+                keywords: ["AiD Guardian", "PlayArts", "Value Routing"]
             },
             business_intro: {
                 title: "프로덕트",
-                sub: "하나의 회사, 네 개의 전문화된 엔진."
+                sub: "하나의 회사, 하나의 Trust Layer, 네 개의 엔진."
             },
             milestones: {
                 title: "성과 및 마일스톤",
@@ -190,7 +190,7 @@ export default function Home() {
                 items: [
                     { title: "Seedify AI 해커톤", desc: "1위 우승 (Winner)" },
                     { title: "NVIDIA Inception", desc: "공식 멤버 선정" },
-                    { title: "글로벌 액셀러레이터", desc: "AppWorks & OnePiece Labs" },
+                    { title: "Google Cloud Partner", desc: "에코시스템 선정" },
                     { title: "주요 그랜트 선정", desc: "Alchemy & Story Protocol" }
                 ]
             },
@@ -240,7 +240,7 @@ export default function Home() {
                         title: "MemePing v2 대시보드", 
                         date: "2026년 1분기", 
                         status: "upcoming",
-                        desc: "Twitter, Reddit, Farcaster 실시간 영향력 추적.",
+                        desc: "크로스 플랫폼 영향력 추적.",
                         details: "50ms 지연 시간의 향상된 감성 분석 엔진. 탈중앙화 소셜 그래프 전반의 즉각적인 트렌드 감지를 위한 새로운 '바이럴 점수' 지표.",
                         tags: ["분석", "AI", "소셜"]
                     },
@@ -249,7 +249,7 @@ export default function Home() {
                         title: "Stockhoo 런칭", 
                         date: "2026년 1분기", 
                         status: "upcoming",
-                        desc: "구간(Zone) 기반 시장 인텔리전스 및 소셜 트레이딩 플랫폼.",
+                        desc: "구간(Zone) 기반 시장 인텔리전스.",
                         details: "Stockhoo 웹 및 모바일 앱 퍼블릭 런칭. 트레이더 평판 및 '수익 증명(Proof of Profit)'을 위한 온체인 검증 통합.",
                         tags: ["핀테크", "소셜", "마켓"]
                     },
@@ -266,7 +266,7 @@ export default function Home() {
             },
             contact: {
                 title: "HOLO와 함께하세요.",
-                sub: "신뢰할 수 있는 자율 에이전트의 미래를 만듭니다.",
+                sub: "AI 시대의 Trust Layer를 함께 만듭니다.",
                 cta1: "투자 / 제휴 문의",
                 cta2: "기업 도입 문의"
             }
@@ -302,16 +302,16 @@ export default function Home() {
         },
         ko: {
             title: "핵심 기술 인프라",
-            sub: "Full-Media AI Guardrails를 위한 독자적인 기술 스택.",
+            sub: "Trust Layer를 위한 기술 스택",
             pipeline: {
                 title: "6단계 검증 파이프라인",
                 steps: [
                     { name: "입력 분석", desc: "멀티모달 프롬프트 인젝션 탐지" },
                     { name: "AI 생성", desc: "실시간 콘텐츠 합성" },
-                    { name: "Media Guard", desc: "초고속 시각/청각 안전성 검사" },
-                    { name: "DAO 합의", desc: "커뮤니티 기반 엣지 케이스 해결" },
-                    { name: "온체인 증명", desc: "불변의 출처 기록 (Provenance)" },
-                    { name: "게임 자산화", desc: "엔진 호환 안전 출력" }
+                    { name: "Media Guard", desc: "초고속 안전성 검사" },
+                    { name: "DAO 합의", desc: "엣지 케이스 해결" },
+                    { name: "온체인 증명", desc: "불변의 출처 기록" },
+                    { name: "게임 자산화", desc: "엔진 호환 출력" }
                 ]
             },
             depin: {
@@ -345,10 +345,10 @@ export default function Home() {
         {
             id: "aidguardian",
             name: "AiD Guardian",
-            tag: { en: "Multi-Modal Safety Engine", ko: "멀티모달 안전 엔진" },
+            tag: { en: "Multi-Modal Safety Engine", ko: "안전 검증 — '이게 안전한가?'" },
             desc: { 
                 en: "Multi-modal content safety engine for image/video/audio/text. Low-latency classification + timeline risk view.",
-                ko: "이미지/영상/오디오/텍스트를 위한 멀티모달 콘텐츠 안전 엔진. 초저지연 분류 및 타임라인 위험 분석."
+                ko: "멀티모달 안전 검증. 이미지/영상/오디오/텍스트를 위한 콘텐츠 안전 엔진."
             },
             features: {
                 en: ["Accuracy / Recall", "Latency < 10ms", "GARM Categories"],
@@ -366,10 +366,10 @@ export default function Home() {
         {
             id: "playarts",
             name: "PlayArts",
-            tag: { en: "Creation-time Provenance", ko: "생성 시점 출처 증명" },
+            tag: { en: "Creation-time Provenance", ko: "출처 증명 + 가치 분배" },
             desc: {
                 en: "Creation-time provenance + cross-platform impact tracking. Not post-hoc watermarking, but verification at the source.",
-                ko: "생성 시점의 출처 증명 및 크로스 플랫폼 영향력 추적. 사후 워터마킹이 아닌 원천 검증 기술."
+                ko: "'누가 만들었는가? 가치는 어디로?' — 생성 시점의 출처 증명 및 크로스 플랫폼 영향력 추적."
             },
             features: {
                 en: ["Proof-of-Creation", "Sentinel Attestations", "Impact Events"],
@@ -387,7 +387,7 @@ export default function Home() {
         {
             id: "elememetal",
             name: "EleMEMEtal",
-            tag: { en: "Game-first UGC Ecosystem", ko: "게임 중심 UGC 생태계" },
+            tag: { en: "Game-first UGC Ecosystem", ko: "Trust Layer 위의 게임" },
             desc: {
                 en: "High-decision PvP with AI-native UGC loops. Ensuring safety and provenance for player-created assets.",
                 ko: "AI 기반 UGC 루프가 결합된 고전략 PvP. 플레이어 생성 자산의 안전성과 출처를 보장합니다."
@@ -408,7 +408,7 @@ export default function Home() {
         {
             id: "stockhoo",
             name: "Stockhoo",
-            tag: { en: "Zone-based Social Intelligence", ko: "구간 기반 소셜 인텔리전스" },
+            tag: { en: "Zone-based Social Intelligence", ko: "Trust Layer 위의 트레이딩" },
             desc: {
                 en: "Zone-based market conversation + proof + AI signal layer. Credibility and insights for on-chain markets.",
                 ko: "구간(Zone) 기반 시장 대화 + 증명 + AI 시그널 레이어. 온체인 시장을 위한 신뢰와 인사이트."
