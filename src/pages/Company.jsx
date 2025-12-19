@@ -113,11 +113,11 @@ const StickyThesisItem = ({ item, index, total }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div className={`text-[12rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-20 -left-10 select-none text-transparent stroke-white`} style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>
+                        <div className={`text-[8rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-10 -left-4 md:-top-20 md:-left-10 select-none text-transparent stroke-white`} style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-5xl md:text-7xl lg:text-8xl font-black mb-10 tracking-tighter leading-[0.9] text-white relative uppercase`}>
+                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-10 tracking-tighter leading-[0.9] text-white relative uppercase`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -603,11 +603,11 @@ Scaled communities from zero to millions of users.`,
             />
 
             {/* Visual State Management Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
+            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 opacity-80">
                     <CosmicBackground />
                 </div>
-                <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0 opacity-20 md:opacity-30">
                     <Background3D />
                 </div>
                 
@@ -644,7 +644,7 @@ Scaled communities from zero to millions of users.`,
             </div>
 
             {/* Sticky Navigation (Desktop) */}
-            <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
+            <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
@@ -661,13 +661,13 @@ Scaled communities from zero to millions of users.`,
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div id="intro" className="relative z-10 py-32 px-6 md:px-12 max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center">
-                    <div className="text-center mb-64 w-full">
+                <div id="intro" className="relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
+                    <div className="text-center mb-32 md:mb-64 w-full px-2">
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className="text-indigo-400 font-bold tracking-[0.5em] mb-12 text-2xl md:text-3xl uppercase glow-text"
+                            className="text-indigo-400 font-bold tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase glow-text"
                         >
                             {c.intro?.episode || "Episode I"}
                         </motion.h2>
@@ -677,7 +677,7 @@ Scaled communities from zero to millions of users.`,
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1 }}
-                            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase mb-12 scale-y-110 w-full"
+                            className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
                         >
                             {c.intro?.title || "The Trust Layer"}
                         </MouseGlowText>
@@ -686,7 +686,7 @@ Scaled communities from zero to millions of users.`,
                             <motion.h3 
                                 initial={{ opacity: 0 }} 
                                 whileInView={{ opacity: 1 }}
-                                className="text-xl md:text-2xl text-neutral-400 font-mono uppercase tracking-[0.2em] mb-48"
+                                className="text-sm md:text-2xl text-neutral-400 font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4"
                             >
                                 {c.intro.subtitle}
                             </motion.h3>
@@ -708,13 +708,13 @@ Scaled communities from zero to millions of users.`,
                     </div>
 
                     {/* Chapters integrated as Typing Blocks */}
-                    <div id="history" className="space-y-64 w-full max-w-[80vw] mx-auto pb-32">
+                    <div id="history" className="space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32">
                         {c.chapters.map((chapter, i) => (
                             <div key={i} className="flex flex-col items-center text-center w-full">
                                 <motion.div 
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
-                                    className="text-indigo-400 font-mono text-2xl tracking-[0.3em] mb-12 border-y-2 border-indigo-500/50 py-4 w-full uppercase bg-indigo-500/10"
+                                    className="text-indigo-400 font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 border-indigo-500/50 py-2 md:py-4 w-full uppercase bg-indigo-500/10"
                                 >
                                     {chapter.year}
                                 </motion.div>
@@ -722,12 +722,12 @@ Scaled communities from zero to millions of users.`,
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.8 }}
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-12 tracking-tight uppercase drop-shadow-lg leading-[0.9] w-full"
+                                    className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-6 md:mb-12 tracking-tight uppercase drop-shadow-lg leading-[0.95] md:leading-[0.9] w-full px-2"
                                 >
                                     {chapter.headline}
                                 </motion.h2>
-                                <div className="max-w-4xl mx-auto">
-                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-300 w-full leading-relaxed text-center font-normal tracking-wide">
+                                <div className="max-w-4xl mx-auto px-4">
+                                    <TypingBlock className="text-lg md:text-2xl lg:text-3xl text-neutral-300 w-full leading-relaxed text-center font-normal tracking-wide">
                                         {chapter.content}
                                     </TypingBlock>
                                 </div>
