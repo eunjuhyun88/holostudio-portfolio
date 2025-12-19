@@ -690,13 +690,36 @@ export default function Home() {
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
             <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/30 backdrop-blur-md">
                 <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
-                        <p className="text-lg md:text-xl text-neutral-200 max-w-3xl leading-relaxed">
-                            We provide the <span className="text-white font-bold">audit trails, IP protection, and payment rails</span> that turn chaotic AI generation into a trusted asset class.
+                    <div className="mb-20 relative">
+                        {/* Sci-Fi Decorative Elements */}
+                        <div className="absolute -top-10 -left-10 w-20 h-20 border-t border-l border-indigo-500/20 rounded-tl-3xl hidden md:block" />
+                        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+                        
+                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                            <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+                            TECHNOLOGY & STRATEGY
+                        </h2>
+                        <h3 className="text-3xl md:text-5xl font-bold mb-8 text-white relative inline-block">
+                            {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
+                            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-600/50" />
+                        </h3>
+                        
+                        <p className="text-lg md:text-xl text-neutral-300 max-w-3xl leading-relaxed font-light tracking-wide">
+                            {tech.intro.main_pre}
+                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                                {tech.intro.main_bold}
+                            </span>
+                            {tech.intro.main_post}
                             <br/><br/>
-                            For enterprises, this means <span className="text-white font-bold">compliance and safety</span>. For creators, it means <span className="text-white font-bold">ownership and revenue</span>.
+                            {tech.intro.sub_pre}
+                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                                {tech.intro.sub_bold1}
+                            </span>
+                            {tech.intro.sub_mid}
+                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                                {tech.intro.sub_bold2}
+                            </span>
+                            {tech.intro.sub_post}
                         </p>
                     </div>
 
