@@ -194,7 +194,7 @@ const TeamIdentity = ({ identity }) => (
 );
 
 // Founder Card Component
-const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
+const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => (
     <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -226,7 +226,7 @@ const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
             <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
         </div>
 
-        <div className="space-y-2 pr-2">
+        <div className="space-y-3 pr-2">
             <div className="flex justify-between items-start">
                 <div>
                     <h3 className="text-lg font-bold text-white leading-tight">{name}</h3>
@@ -238,10 +238,16 @@ const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
                     </a>
                 )}
             </div>
+
+            {motto && (
+                <div className="relative py-2">
+                     <p className="text-indigo-300 font-bold text-sm leading-snug">"{motto}"</p>
+                </div>
+            )}
             
             <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
             
-            <p className="text-neutral-400 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all whitespace-pre-line">
+            <p className="text-neutral-400 leading-snug text-xs whitespace-pre-line">
                 {bio}
             </p>
         </div>
@@ -394,40 +400,38 @@ export default function Company() {
                 {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
+                    motto: "Connecting industries, people, and ideas across borders.",
                     bio: `Yonsei Masters & Stony Brook Valedictorian (GPA 4.0).
 Ex-CEO of Duel Partners, Global BD at Ares Corp.
-Led 5B+ KRW M&A DD & 300B+ Risk Assessment.
-
-"Connecting industries, people, and ideas across borders."`,
+Led 5B+ KRW M&A DD & 300B+ Risk Assessment.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "CTO",
+                    motto: "Scale has already been proven.",
                     bio: `10+ years at EA FIFA/Sports & Netmarble.
 Built 1M+ CCU Infrastructure, 99.8% Uptime.
-Holder of 5+ Infrastructure Patents.
-
-"Scale has already been proven."`,
+Holder of 5+ Infrastructure Patents.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Chief Architect",
-                    bio: "Unity, Netmarble, Smilegate veteran. Master of real-time rendering pipelines.",
+                    motto: "Master of real-time rendering pipelines.",
+                    bio: "Unity, Netmarble, Smilegate veteran. Expert in high-performance graphics engine architecture.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
                     name: "0xchew Hyun",
                     role: "Chief Builder",
+                    motto: "Experienced firsthand what works and what fails.",
                     bio: `Founder of MintedLab (#1 Web3 Marketing Firm).
 Marketed 150+ Global Projects, $1M+ Sales.
-Partners: Polkadot, Algorand, DFINITY.
-
-"Experienced firsthand what works and what fails."`,
+Partners: Polkadot, Algorand, DFINITY.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
@@ -508,40 +512,38 @@ Partners: Polkadot, Algorand, DFINITY.
                 {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
+                    motto: "국경을 넘어 산업, 사람, 아이디어를 연결합니다.",
                     bio: `연세대 석사 & Stony Brook 수석 졸업 (GPA 4.0).
 전 Duel Partners 대표, Ares Corp 글로벌 BD.
-50억+ M&A 실사 및 3000억+ 리스크 평가 주도.
-
-"국경을 넘어 산업, 사람, 아이디어를 연결합니다."`,
+50억+ M&A 실사 및 3000억+ 리스크 평가 주도.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
                     name: "Yongwan Kim",
                     role: "CTO",
+                    motto: "스케일은 이미 증명되었습니다.",
                     bio: `EA FIFA/Sports, 넷마블 10년+ 경력.
 100만 동시접속 인프라 및 99.8% 가용성 구축.
-인프라 관련 특허 5건 보유.
-
-"스케일은 이미 증명되었습니다."`,
+인프라 관련 특허 5건 보유.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Chief Architect",
-                    bio: "Unity, Netmarble, Smilegate 출신. 실시간 렌더링 파이프라인 마스터.",
+                    motto: "실시간 렌더링 파이프라인 마스터.",
+                    bio: "Unity, Netmarble, Smilegate 출신. 고성능 그래픽스 엔진 아키텍처 전문가.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
                     name: "0xchew Hyun",
                     role: "Chief Builder",
+                    motto: "무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다.",
                     bio: `MintedLab(국내 1위 Web3 마케팅) 창업.
 150+ 글로벌 프로젝트 마케팅, $1M+ 매출.
-Polkadot, Algorand, DFINITY 파트너십.
-
-"무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다."`,
+Polkadot, Algorand, DFINITY 파트너십.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
