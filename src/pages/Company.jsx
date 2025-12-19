@@ -347,7 +347,7 @@ export default function Company() {
             intro: {
                 episode: "The Origin",
                 title: "The Trust Layer",
-                subtitle: "Team building the Trust Layer for the AI Media Age",
+                subtitle: "Engineering Certainty for the AI Media Age",
                 text: [
                     "We did not arrive here by accident. We have been building systems where value, rules, and trust must work at scale—for over a decade.",
                     "At EA, Netmarble, and Smilegate, we designed real-time infrastructure and virtual economies for millions of users.",
@@ -358,28 +358,28 @@ export default function Company() {
                 {
                     year: "2014 – 2020",
                     headline: "THE GAMING ERA",
-                    content: "Before “Metaverse” or “Web3” entered the mainstream, we were already operating large-scale multiplayer systems. High concurrency. Persistent virtual economies. Rules determining what could be earned, owned, and exchanged. Gaming taught us a foundational lesson: simulation without rules becomes chaos."
+                    content: "Before “Metaverse” or “Web3”, we operated large-scale multiplayer systems. High concurrency. Persistent virtual economies. Rules determining ownership and exchange. The lesson was absolute: simulation without rules becomes chaos."
                 },
                 {
                     year: "2021 – 2023",
                     headline: "THE CONVERGENCE",
-                    content: "AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But infinite generative content had no native way for verification, attribution, or settlement."
+                    content: "AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But infinite generative content lacked a native way for verification, attribution, or settlement."
                 },
                 {
                     year: "2024",
                     headline: "THE COLLAPSE OF TRUST",
-                    content: "Generative AI scaled creation cost to zero. But trust did not scale. Attribution broke, accountability faded, and value leaked across platforms. The problem was never creativity. It was the absence of a trust layer."
+                    content: "Generative AI scaled creation cost to zero. Trust did not scale. Attribution broke, accountability faded, and value leaked. The problem was never creativity. It was the absence of a trust layer."
                 },
                 {
                     year: "2025 & BEYOND",
                     headline: "THE TRUST LAYER",
-                    content: "HoloStudio treats content as living events: Creation → Verification → Propagation → Settlement. Stories move, value flows. Every contribution must be traceable. As AI creates infinite content, the value of infrastructure providing trust increases exponentially."
+                    content: "HoloStudio treats content as living events: Creation → Verification → Propagation → Settlement. Stories move, value flows. Every contribution is traceable. As AI creates infinite content, the value of trust infrastructure becomes absolute."
                 }
             ],
             thesis: [
                 {
-                    headline: "A CHOICE FOR THE FUTURE",
-                    content: "The future is not neutral. It is a choice between chaos and trust."
+                    headline: "ENGINEERED CERTAINTY",
+                    content: "The future is not neutral. It is a choice between chaos and trust. We do not hope for trust; we engineer it."
                 },
                 {
                     headline: "ONE COHERENT SYSTEM",
@@ -388,7 +388,7 @@ export default function Company() {
             ],
             identity: {
                  headline: "WHY THIS TEAM",
-                 content: "\"Growth Hacker + Deep Tech Builder = A team that knows both technology and market.\" We optimize for real user value, not just storytelling."
+                 content: "\"Growth Hacker + Deep Tech Builder.\" We are architects of virtual economies, optimizing for real user value, not just storytelling."
             },
             founders: [
                 {
@@ -447,7 +447,7 @@ export default function Company() {
             intro: {
                 episode: "The Origin",
                 title: "The Trust Layer",
-                subtitle: "AI 미디어 시대의 Trust Layer를 구축하는 팀",
+                subtitle: "AI 미디어 시대, 신뢰를 설계하는 팀",
                 text: [
                     "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년 동안 우리는 가치, 규칙, 신뢰가 대규모로 작동해야 하는 시스템을 구축해 왔습니다.",
                     "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다.",
@@ -458,7 +458,7 @@ export default function Company() {
                 {
                     year: "2014 – 2020",
                     headline: "게이밍 시대",
-                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속. 지속적인 가상 경제. 무엇을 얻고, 소유하고, 교환할 수 있는지를 결정하는 규칙들. 게임은 우리에게 근본적인 교훈을 주었습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
+                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속. 지속적인 가상 경제. 소유와 교환의 규칙들. 게임이 준 교훈은 명확했습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
                 },
                 {
                     year: "2021 – 2023",
@@ -468,18 +468,18 @@ export default function Company() {
                 {
                     year: "2024",
                     headline: "신뢰의 붕괴",
-                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 책임 소재는 흐려졌으며, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다."
+                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다."
                 },
                 {
                     year: "2025 & BEYOND",
                     headline: "Trust Layer",
-                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성 → 검증 → 전파 → 정산. 이야기는 움직이고 가치는 흐릅니다. 그리고 모든 기여는 추적 가능해야 합니다. AI가 콘텐츠를 무한히 만들수록, 신뢰를 제공하는 인프라의 가치는 기하급수적으로 증가합니다."
+                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성 → 검증 → 전파 → 정산. 이야기는 움직이고 가치는 흐릅니다. 모든 기여는 추적 가능해야 합니다. AI가 콘텐츠를 무한히 만들수록, 신뢰 인프라의 가치는 절대적입니다."
                 }
             ],
             thesis: [
                 {
-                    headline: "미래를 위한 선택",
-                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰 사이의 선택입니다."
+                    headline: "설계된 확신",
+                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰 사이의 선택입니다. 우리는 신뢰를 희망하지 않습니다. 설계합니다."
                 },
                 {
                     headline: "하나의 일관된 시스템",
@@ -488,7 +488,7 @@ export default function Company() {
             ],
             identity: {
                  headline: "왜 이 팀인가",
-                 content: "\"Growth Hacker + Deep Tech Builder = 기술과 시장을 모두 아는 팀\". 우리는 스토리텔링과 투기보다는 실제 유저 가치에 최적화합니다."
+                 content: "\"Growth Hacker + Deep Tech Builder.\" 우리는 스토리텔링과 투기보다는 실제 유저 가치에 최적화된 가상 경제의 아키텍트들입니다."
             },
             founders: [
                 {

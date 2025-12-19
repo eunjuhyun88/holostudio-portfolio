@@ -15,11 +15,11 @@ export default function Elememetal() {
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        The era where in-game achievements become real-world value.
+                        <span className="text-white font-bold">Ownership without Borders. Strategy without Randomness.</span>
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal changes the game. Every card is an asset, every match is a high-stakes mind game, and the economy is entirely player-driven.
-                        <span className="text-white font-bold ml-2">No hidden algorithms. Just pure strategy.</span>
+                        No hidden algorithms. Just pure strategy.
                     </p>
                 </>
             ),
@@ -88,17 +88,17 @@ export default function Elememetal() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer 위의 게임 | 실력 기반 전략 TCG",
+            tag: "Trust Layer: Gaming | 실력 기반 전략 TCG",
             primaryButtonText: "지금 플레이",
             oneLiner: "모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        게임 속 성취가 현실의 가치가 되는 시대.
+                        <span className="text-white font-bold">경계 없는 소유권. 무작위성 없는 전략.</span>
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         EleMEMEtal은 게임의 판도를 바꿉니다. 모든 카드가 자산이 되고, 모든 매치가 치열한 두뇌 싸움이 되며, 경제가 전적으로 플레이어에 의해 주도됩니다.
-                        <span className="text-white font-bold ml-2">숨겨진 알고리즘은 없습니다. 오직 순수한 전략뿐입니다.</span>
+                        숨겨진 알고리즘은 없습니다. 오직 순수한 전략뿐입니다.
                     </p>
                 </>
             ),

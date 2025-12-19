@@ -9,27 +9,27 @@ export default function AidGuardian() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Safety | The First Gate of Content Safety",
+            tag: "Trust Layer: Safety | The Security Standard",
             primaryButtonText: "Launch Dashboard",
-            oneLiner: "The multi-modal verification engine answering the first question of AI content: \"Is it safe?\"",
+            oneLiner: "The absolute barrier against toxic AI content. Multi-modal verification at scale.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">"Is this content safe?"</span>
+                        <span className="text-white font-bold">Content Safety is Non-Negotiable.</span>
                     </p>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        With the explosion of AI-generated content, this question has become a survival issue for all platforms and brands.
-                        EU AI Act regulations, GARM brand safety requirements, and the spread of deepfakes.
+                        The explosion of AI-generated content has made safety a survival issue for all platforms.
+                        EU AI Act regulations, GARM brand safety requirements, and the spread of deepfakes require a new standard.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AiD Guardian answers this. Analyzing image, video, audio, and text simultaneously to detect toxic content and AI generation. Combining with PlayArts' proof of provenance to form a complete Trust Layer.
+                        AiD Guardian is that standard. We analyze image, video, audio, and text simultaneously to enforce safety and detect AI generation.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "Regulatory Tsunami",
-                    description: "Fines up to 7% of global revenue for violating EU AI Act transparency obligations."
+                    description: "EU AI Act transparency obligations are mandatory. Fines up to 7% of global revenue."
                 },
                 {
                     title: "Brand Safety Crisis",
@@ -37,21 +37,21 @@ export default function AidGuardian() {
                 },
                 {
                     title: "Big Tech Void",
-                    description: "Neither AWS nor Google has declared explicit GARM compliance."
+                    description: "Explicit GARM compliance is missing from major cloud providers. We fill that gap."
                 }
             ],
             solutionSteps: [
                 {
                     title: "Regulatory Compliance",
-                    description: "EU AI Act transparency, HITL, Audit Logging internalized in architecture."
+                    description: "Internalized EU AI Act transparency, HITL, and Audit Logging in the architecture."
                 },
                 {
                     title: "GARM Standard",
-                    description: "Precision detection of 11 harmful categories."
+                    description: "Precision detection of 11 harmful categories aligned with global advertising standards."
                 },
                 {
                     title: "AI Detection",
-                    description: "Deepfake & AI content identification with machine-readable tagging."
+                    description: "Identification of Deepfake & AI content with machine-readable tagging."
                 }
             ],
             screenshots: [
@@ -150,49 +150,49 @@ export default function AidGuardian() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Safety | 콘텐츠 안전성의 첫 번째 관문",
+            tag: "Trust Layer: Safety | 콘텐츠 안전성의 기준",
             primaryButtonText: "대시보드 실행",
-            oneLiner: "AI 콘텐츠의 첫 번째 질문 \"안전한가?\"에 답하는 멀티모달 검증 엔진.",
+            oneLiner: "유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">"이 콘텐츠가 안전한가?"</span>
+                        <span className="text-white font-bold">안전은 타협할 수 없습니다.</span>
                     </p>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AI 생성 콘텐츠가 폭발적으로 증가하면서, 이 질문은 모든 플랫폼과 브랜드의 생존 문제가 되었습니다.
-                        EU AI Act 규제, GARM 브랜드 세이프티 요구, 딥페이크의 확산.
+                        AI 생성 콘텐츠의 폭발적인 증가는 모든 플랫폼의 생존 문제입니다.
+                        EU AI Act 규제, GARM 브랜드 세이프티 요구, 딥페이크의 확산은 새로운 기준을 요구합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AiD Guardian은 이 질문에 답합니다. 이미지, 비디오, 오디오, 텍스트를 동시에 분석하여 유해 콘텐츠와 AI 생성물을 탐지합니다. PlayArts의 출처 증명과 결합하여 완전한 Trust Layer를 구성합니다.
+                        AiD Guardian이 바로 그 기준입니다. 이미지, 영상, 오디오, 텍스트를 동시에 분석하여 유해성을 차단하고 AI 생성을 식별합니다. 이것은 단순한 필터링이 아닌, 완전한 Trust Layer의 시작입니다.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "규제 해일",
-                    description: "EU AI Act 투명성 의무 위반 시 글로벌 매출 최대 7% 벌금."
+                    description: "EU AI Act 투명성 의무는 필수입니다. 위반 시 글로벌 매출 최대 7%의 벌금이 부과됩니다."
                 },
                 {
                     title: "브랜드 세이프티 위기",
-                    description: "유해 콘텐츠 옆 광고 노출 시 소비자 68%가 브랜드 신뢰를 철회."
+                    description: "유해 콘텐츠 옆에 광고가 노출될 때, 소비자의 68%는 브랜드에 대한 신뢰를 철회합니다."
                 },
                 {
                     title: "빅테크의 공백",
-                    description: "AWS, Google 중 누구도 명시적 GARM 준수를 선언하지 않음."
+                    description: "주요 클라우드 제공업체들은 명시적인 GARM 준수를 선언하지 않았습니다. 우리가 그 공백을 메웁니다."
                 }
             ],
             solutionSteps: [
                 {
                     title: "규제 완벽 대응",
-                    description: "EU AI Act 투명성, HITL, 감사 로그를 아키텍처에 내재화."
+                    description: "EU AI Act 투명성, HITL, 감사 로그를 아키텍처에 내재화하여 법적 리스크를 제거합니다."
                 },
                 {
                     title: "GARM 표준 적용",
-                    description: "11개 유해 콘텐츠 카테고리 정밀 탐지."
+                    description: "11개 유해 콘텐츠 카테고리를 정밀 탐지하여 글로벌 광고 표준을 충족합니다."
                 },
                 {
                     title: "AI 생성 콘텐츠 탐지",
-                    description: "딥페이크 및 AI 생성물 식별, 기계 판독 가능 표시 부착."
+                    description: "딥페이크 및 AI 생성물 식별과 기계 판독 가능 표시 부착을 보장합니다."
                 }
             ],
             screenshots: [

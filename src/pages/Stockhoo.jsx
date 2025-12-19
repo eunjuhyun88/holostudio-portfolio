@@ -15,7 +15,7 @@ export default function Stockhoo() {
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Capturing future signals in a flood of data to give anyone market leadership.
+                        <span className="text-white font-bold">Signal amidst the Noise. Market Leadership for Everyone.</span>
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
                         While creators understand content context, traders must understand market context.
@@ -109,17 +109,17 @@ export default function Stockhoo() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer 위의 트레이딩 | Zone 기반 시장 인텔리전스",
+            tag: "Trust Layer: Trading | Zone 기반 시장 인텔리전스",
             primaryButtonText: "터미널 실행",
-            oneLiner: "63K에서 진입한 사람과 70K에서 진입한 사람의 고민은 다릅니다. Zone이 맥락을 줍니다.",
+            oneLiner: "63K 진입과 70K 진입의 고민은 다릅니다. Zone이 맥락을 줍니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        데이터의 홍수 속에서 미래의 신호를 포착하여, 누구나 시장의 주도권을 쥐게 합니다.
+                        <span className="text-white font-bold">노이즈 속의 신호. 모두를 위한 시장 주도권.</span>
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        For Creators가 콘텐츠의 맥락을 이해한다면, For Traders는 시장의 맥락을 이해합니다.
-                        Zone은 모든 트레이딩 맥락과 의사결정의 최소 단위가 됩니다. 10개의 화면 대신, StockHoo는 CEX 데이터, 오더 플로우, 고래 움직임, 청산 클러스터를 하나의 실행 가능한 뷰로 통합합니다.
+                        크리에이터에게 콘텐츠 맥락이 있다면, 트레이더에게는 시장 맥락이 있습니다.
+                        Zone은 모든 의사결정의 최소 단위입니다. StockHoo는 CEX 데이터, 오더 플로우, 고래 움직임, 청산 클러스터를 하나의 실행 가능한 뷰로 통합합니다.
                     </p>
                 </>
             ),

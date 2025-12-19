@@ -9,40 +9,41 @@ export default function PlayArts() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Provenance + Value | The Git of AI Content",
+            tag: "Trust Layer: Provenance + Value | The Immutable Record",
             primaryButtonText: "Launch App",
-            oneLiner: "The protocol answering \"Who made it?\" and \"Where does the value go?\" for AI content.",
+            oneLiner: "The protocol that guarantees provenance and value routing for AI content.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">"Who made it? Where does the value go?"</span>
+                        <span className="text-white font-bold">Immutable Provenance. Automatic Value Routing.</span>
                     </p>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        In an age where AI generates infinite content, creators receive no credit when their style is mimicked. Platforms monopolize value even when content goes viral.
+                        Infinite content generation creates an attribution crisis. Creators are erased; platforms monopolize value. 
+                        We do not ask "who made it"—we prove it.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        PlayArts restores this link. Cryptographically anchoring provenance at the moment of generation, confirmed by a decentralized verification network. Automatically distributing value to creators and amplifiers.
+                        PlayArts cryptographically anchors provenance at the moment of generation. It is the "Git for AI Content," ensuring that every piece of media carries its history and value logic on-chain.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "Attribution Crisis",
-                    description: "Creators receive no credit for AI mimicry of their style."
+                    description: "Creators lose ownership as AI models mimic style without credit."
                 },
                 {
                     title: "Value Leakage",
-                    description: "Platforms capture 100% of value from viral content."
+                    description: "Platforms capture 100% of viral value. Prompters and remixers get nothing."
                 },
                 {
                     title: "Provenance Gap",
-                    description: "No standard to verify 'Who, What, How' of AI content."
+                    description: "No standard exists to verify the 'Who, What, and How' of AI content."
                 }
             ],
             solutionSteps: [
                 {
                     title: "Context Anchoring (MCP)",
-                    description: "Model Context Passport captures generation context."
+                    description: "Model Context Passport captures generation context at source."
                 },
                 {
                     title: "Sentinel Verification",
@@ -50,7 +51,7 @@ export default function PlayArts() {
                 },
                 {
                     title: "Value Routing",
-                    description: "Smart contracts distribute rewards to creators and contributors."
+                    description: "Smart contracts automatically distribute rewards to contributors."
                 }
             ],
             screenshots: [
@@ -80,15 +81,15 @@ export default function PlayArts() {
             useCases: [
                 {
                     title: "AI Power Users",
-                    description: "Prove ownership of prompts and outputs."
+                    description: "Proof of ownership for prompt engineering and output."
                 },
                 {
                     title: "Meme Creators",
-                    description: "Track viral spread and earn from impact."
+                    description: "Tracking of viral spread and monetization of impact."
                 },
                 {
                     title: "Enterprise Brands",
-                    description: "Protect IP and verify asset authenticity."
+                    description: "IP protection and asset authenticity verification."
                 }
             ],
             businessModel: "Verification Fees (Node Revenue) + Protocol Transaction Fees + B2B SDK Licensing.",
@@ -115,48 +116,49 @@ export default function PlayArts() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Provenance + Value | AI 콘텐츠의 Git",
+            tag: "Trust Layer: Provenance + Value | 불변의 출처 기록",
             primaryButtonText: "앱 실행",
-            oneLiner: "AI 콘텐츠의 \"누가 만들었는가?\"와 \"가치는 어디로?\"에 답하는 프로토콜.",
+            oneLiner: "AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">"누가 만들었는가? 가치는 어디로 가는가?"</span>
+                        <span className="text-white font-bold">불변의 출처 증명. 자동화된 가치 라우팅.</span>
                     </p>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AI가 콘텐츠를 무한히 생성하는 시대. 창작자들은 AI 모델이 자신의 스타일을 모방해도 크레딧을 받지 못합니다. 바이럴이 되어도 플랫폼이 가치를 독점합니다.
+                        무한한 콘텐츠 생성은 귀속의 위기를 초래했습니다. 창작자는 지워지고, 플랫폼이 가치를 독점합니다.
+                        우리는 "누가 만들었는가"를 묻지 않습니다. 증명합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        PlayArts는 이 연결고리를 복원합니다. AI 콘텐츠의 출처를 생성 시점에 암호학적으로 고정하고, 분산 검증 네트워크가 이를 확정합니다. 가치가 생성되면 창작자와 확산 기여자에게 자동으로 분배됩니다.
+                        PlayArts는 생성 시점에 출처를 암호학적으로 고정합니다. 이것은 "AI 콘텐츠를 위한 Git"이며, 모든 미디어가 자신의 역사와 가치 분배 로직을 온체인에 영구적으로 담도록 보장합니다.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "귀속의 위기",
-                    description: "창작자들이 AI 모방에 대해 크레딧을 받지 못함."
+                    description: "창작자의 스타일이 동의 없이 모방되어도 크레딧을 받지 못합니다."
                 },
                 {
                     title: "가치 유출",
-                    description: "플랫폼이 바이럴 콘텐츠의 가치를 100% 독점."
+                    description: "플랫폼이 바이럴 콘텐츠의 가치를 100% 독점합니다."
                 },
                 {
                     title: "출처의 공백",
-                    description: "AI 콘텐츠의 '누가, 무엇을, 어떻게'를 검증할 표준 부재."
+                    description: "AI 콘텐츠의 '누가, 무엇을, 어떻게'를 검증할 표준이 없습니다."
                 }
             ],
             solutionSteps: [
                 {
                     title: "맥락 앵커링 (MCP)",
-                    description: "Model Context Passport로 생성 맥락 포착."
+                    description: "Model Context Passport로 생성 맥락을 소스 단계에서 포착합니다."
                 },
                 {
                     title: "센티넬 검증",
-                    description: "분산 노드가 Perceptual Hashing으로 기원과 무결성 검증."
+                    description: "분산 노드가 지각 해싱으로 기원과 무결성을 검증합니다."
                 },
                 {
                     title: "가치 라우팅",
-                    description: "스마트 계약이 원작자와 확산 기여자에게 자동 분배."
+                    description: "스마트 계약이 원작자와 기여자에게 자동으로 보상을 분배합니다."
                 }
             ],
             screenshots: [
@@ -186,15 +188,15 @@ export default function PlayArts() {
             useCases: [
                 {
                     title: "AI 파워 유저",
-                    description: "프롬프트와 창작물 소유권 증명."
+                    description: "프롬프트 엔지니어링 및 창작물에 대한 소유권 증명."
                 },
                 {
                     title: "밈 크리에이터",
-                    description: "바이럴 추적, 영향력에서 수익 창출."
+                    description: "바이럴 확산 추적 및 영향력 수익화."
                 },
                 {
                     title: "엔터프라이즈 브랜드",
-                    description: "IP 보호, 브랜드 자산 진위 검증."
+                    description: "IP 권리 보호 및 자산 진위 검증."
                 }
             ],
             businessModel: "검증 수수료 (노드 수익) + 프로토콜 거래 수수료 + B2B SDK 라이선싱.",
