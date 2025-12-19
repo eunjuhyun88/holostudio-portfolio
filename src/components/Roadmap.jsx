@@ -163,7 +163,7 @@ export default function Roadmap({ items, title, viewAllText }) {
                     </div>
                     
                     {/* Desktop: Vertical, Mobile: Horizontal Scroll */}
-                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:space-y-24 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:space-y-24 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                         {items.map((item, idx) => (
                             <RoadmapItem 
                                 key={idx} 

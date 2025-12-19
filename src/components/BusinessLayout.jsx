@@ -191,7 +191,7 @@ export default function BusinessLayout({
 
     // Mobile Table of Contents (Horizontal Scroll)
     const MobileTOC = () => (
-        <div className="lg:hidden sticky top-[80px] z-30 -mx-4 px-4 mb-8 overflow-x-auto no-scrollbar bg-gradient-to-b from-inherit to-transparent pb-4">
+        <div className="lg:hidden sticky top-[80px] z-30 -mx-4 px-4 mb-8 overflow-x-auto custom-scrollbar bg-gradient-to-b from-inherit to-transparent pb-4">
              <div className={`inline-flex gap-2 p-1 rounded-full ${isLight ? 'bg-black/5 border-black/10' : 'bg-white/10 border-white/10'} border backdrop-blur-md`}>
                 {sections.map((section, idx) => (
                     <button
@@ -485,7 +485,7 @@ export default function BusinessLayout({
                                         <h3 className="text-2xl md:text-3xl font-bold mb-2">Why this matters now</h3>
                                     </div>
                                     
-                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar space-y-0 md:space-y-12">
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar space-y-0 md:space-y-12">
                                         {problemPoints.map((p, i) => (
                                             <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center">
                                                 <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
@@ -506,7 +506,7 @@ export default function BusinessLayout({
                                         <h3 className="text-2xl md:text-3xl font-bold mb-2">How we solve it</h3>
                                     </div>
                                     
-                                    <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
+                                    <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
                                         {solutionSteps.map((step, i) => (
                                             <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl backdrop-blur-xl h-full md:h-auto group`}>
                                                 <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-base bg-gradient-to-br from-white/10 to-transparent border border-white/10 text-white group-hover:scale-110 transition-transform`}>
@@ -624,7 +624,7 @@ export default function BusinessLayout({
                                         Target Customers
                                     </h3>
                                     {/* Desktop: List, Mobile: Horizontal Scroll */}
-                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
                                         {useCases.map((u, i) => (
                                             <div key={i} className="flex-shrink-0 w-[80vw] md:w-auto snap-center flex md:block gap-3 md:gap-4 p-4 md:p-0 rounded-xl bg-white/5 md:bg-transparent border md:border-0 border-white/10 md:mb-6 last:mb-0">
                                                 <div className="flex gap-3 md:gap-4">
@@ -646,7 +646,7 @@ export default function BusinessLayout({
                                         Roadmap
                                     </h3>
                                     {/* Desktop: List, Mobile: Horizontal Scroll */}
-                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
+                                    <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
                                         {roadmap.map((item, i) => {
                                             const isCompleted = item.status === 'completed';
                                             const isInProgress = item.status === 'in_progress';
@@ -747,7 +747,7 @@ export default function BusinessLayout({
                                     <h3 className="text-3xl font-bold">Experience</h3>
                                 </div>
                                 {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                                <div className="flex md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-8 pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar">
+                                <div className="flex md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-8 pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
                                     {screenshots.map((screen, i) => (
                                         <div key={i} className={`flex-shrink-0 w-[90vw] md:w-full snap-center relative rounded-3xl overflow-hidden ${isLight ? 'bg-black/5' : 'bg-[#111]'} ${border} group shadow-xl`}>
                                             {screen.url.startsWith('http') ? (

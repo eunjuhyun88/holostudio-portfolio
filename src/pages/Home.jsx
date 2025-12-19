@@ -555,7 +555,7 @@ export default function Home() {
             <section className="py-12 border-y border-white/10 bg-black/30 backdrop-blur-md relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
+                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 custom-scrollbar text-center md:text-left">
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
                             <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.year.label}</div>
@@ -626,7 +626,7 @@ export default function Home() {
                     </motion.div>
 
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                         {t.problem.cards.map((card, idx) => (
                             <motion.div 
                                 key={idx}
@@ -686,7 +686,7 @@ export default function Home() {
                         <div className="relative">
                             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                            <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                            <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
                                     <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden">
                                         {/* Tech Corners */}
