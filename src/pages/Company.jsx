@@ -403,17 +403,6 @@ Led 5B+ KRW M&A DD & 300B+ Risk Assessment.
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
-                    name: "0xchew Hyun",
-                    role: "Chief Builder",
-                    bio: `Founder of MintedLab (#1 Web3 Marketing Firm).
-Marketed 150+ Global Projects, $1M+ Sales.
-Partners: Polkadot, Algorand, DFINITY.
-
-"Experienced firsthand what works and what fails."`,
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
-                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
-                },
-                {
                     name: "Yongwan Kim",
                     role: "CTO",
                     bio: `10+ years at EA FIFA/Sports & Netmarble.
@@ -430,6 +419,17 @@ Holder of 5+ Infrastructure Patents.
                     bio: "Unity, Netmarble, Smilegate veteran. Master of real-time rendering pipelines.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
+                },
+                {
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: `Founder of MintedLab (#1 Web3 Marketing Firm).
+Marketed 150+ Global Projects, $1M+ Sales.
+Partners: Polkadot, Algorand, DFINITY.
+
+"Experienced firsthand what works and what fails."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
@@ -517,17 +517,6 @@ Holder of 5+ Infrastructure Patents.
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
-                    name: "0xchew Hyun",
-                    role: "Chief Builder",
-                    bio: `MintedLab(국내 1위 Web3 마케팅) 창업.
-150+ 글로벌 프로젝트 마케팅, $1M+ 매출.
-Polkadot, Algorand, DFINITY 파트너십.
-
-"무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다."`,
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
-                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
-                },
-                {
                     name: "Yongwan Kim",
                     role: "CTO",
                     bio: `EA FIFA/Sports, 넷마블 10년+ 경력.
@@ -544,6 +533,17 @@ Polkadot, Algorand, DFINITY 파트너십.
                     bio: "Unity, Netmarble, Smilegate 출신. 실시간 렌더링 파이프라인 마스터.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
+                },
+                {
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: `MintedLab(국내 1위 Web3 마케팅) 창업.
+150+ 글로벌 프로젝트 마케팅, $1M+ 매출.
+Polkadot, Algorand, DFINITY 파트너십.
+
+"무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
