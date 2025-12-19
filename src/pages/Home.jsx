@@ -528,7 +528,7 @@ export default function Home() {
                         <MouseGlowText 
                             as={motion.h1}
                             glowColor="rgba(99, 102, 241, 0.8)" 
-                            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative"
+                            className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative"
                         >
                             {t.hero.title}
                             <span className="absolute -top-4 -right-8 text-xs font-mono text-indigo-500 tracking-widest border border-indigo-500/30 px-2 py-0.5 rounded opacity-70 hidden md:block">SYS.ONLINE</span>
@@ -579,8 +579,8 @@ export default function Home() {
             <section className="py-12 border-y border-white/10 bg-black/30 backdrop-blur-md relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 custom-scrollbar text-center md:text-left">
-                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar md:custom-scrollbar text-center md:text-left">
+                        <div className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
                             <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.year.label}</div>
                         </div>
@@ -651,7 +651,7 @@ export default function Home() {
                     </motion.div>
 
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
+                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar md:custom-scrollbar">
                         {t.problem.cards.map((card, idx) => (
                             <motion.div 
                                 key={idx}
@@ -703,12 +703,12 @@ export default function Home() {
                             <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
                             TECHNOLOGY & STRATEGY
                         </h2>
-                        <h3 className="text-3xl md:text-5xl font-bold mb-8 text-white relative inline-block">
+                        <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 text-white relative inline-block">
                             {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
                             <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-600/50" />
                         </h3>
                         
-                        <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 max-w-4xl leading-relaxed font-light tracking-wide">
+                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-300 max-w-4xl leading-relaxed font-light tracking-wide">
                             {tech.intro.main_pre}
                             <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-blue-400 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(96,165,250,0.5)] hover:drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]">
                                 {tech.intro.main_bold}
