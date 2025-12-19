@@ -57,7 +57,7 @@ export default function Home() {
             },
             thesis: {
                 label: "HOLO STUDIO Thesis",
-                main: "Creativity is abundant. Trust is scarce.\nWe provide the core infrastructure for:\nSafety. Provenance. Value Routing.",
+                main: "Creativity is abundant. Trust is scarce.\n\nWhen AI becomes an economic actor, trust becomes infrastructure.",
                 keywords: ["Safety", "Provenance", "Value Routing"]
             },
             business_intro: {
@@ -178,7 +178,7 @@ export default function Home() {
             },
             thesis: {
                 label: "HOLO STUDIO Thesis",
-                main: "더 이상 희소한 자원은 창의성이 아닙니다. 바로 신뢰입니다.\n우리는 세 가지 절대적인 인프라를 제공합니다:\n안전 검증. 출처 증명. 가치 라우팅.",
+                main: "창의성은 무한하지만, 신뢰는 희소합니다.\n\nAI가 경제 주체가 될 때, 신뢰는 인프라가 됩니다.",
                 keywords: ["가드레일", "출처증명", "가치분배"]
             },
             business_intro: {
@@ -681,8 +681,8 @@ export default function Home() {
                     </div>
 
                     <div className="mb-24">
-                        <h3 className="text-2xl font-bold mb-8 text-white">Core Infrastructure</h3>
-                        <p className="text-neutral-200 mb-8 max-w-2xl">Our proprietary technology stack for Full-Media AI Guardrails.</p>
+                        <h3 className="text-2xl font-bold mb-8 text-white">{tech.title}</h3>
+                        <p className="text-neutral-200 mb-8 max-w-2xl">{tech.sub}</p>
                         
                         <div className="relative">
                             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
