@@ -38,7 +38,6 @@ function LayoutContent({ children }) {
             { name: 'Team', path: '/Company#team', isAnchor: false },
             { name: 'Proof', path: '/#proof', isAnchor: true },
             { name: 'Roadmap', path: '/#roadmap', isAnchor: true },
-            { name: '3D Showcase', path: '/Showcase3D' },
             { name: 'Contact', path: '/Contact' },
             ],
             ko: [
@@ -47,7 +46,6 @@ function LayoutContent({ children }) {
             { name: '팀', path: '/Company#team', isAnchor: false },
             { name: '성과', path: '/#proof', isAnchor: true },
             { name: '로드맵', path: '/#roadmap', isAnchor: true },
-            { name: '3D 쇼케이스', path: '/Showcase3D' },
             { name: '문의', path: '/Contact' },
             ]
     };
@@ -379,6 +377,7 @@ function LayoutContent({ children }) {
                                 <li><Link to={createPageUrl('Company') + '#team'} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Team' : '팀'}</Link></li>
                                 <li><button onClick={() => scrollToSection('proof')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
                                 <li><button onClick={() => scrollToSection('roadmap')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
+                                <li><Link to={createPageUrl('Showcase3D')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? '3D Showcase' : '3D 쇼케이스'}</Link></li>
                                 <li><Link to={createPageUrl('Contact')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
                             </ul>
                         </div>
