@@ -401,9 +401,9 @@ export default function Company() {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "Connecting industries, people, and ideas across borders.",
-                    bio: `Yonsei Masters & Stony Brook Valedictorian (GPA 4.0).
-Ex-CEO of Duel Partners, Global BD at Ares Corp.
-Led 5B+ KRW M&A DD & 300B+ Risk Assessment.`,
+                    bio: `Stony Brook Valedictorian (Summa Cum Laude).
+Spearheaded Global Tech Commercialization as CEO of Duel Partners.
+Managed 300B+ KRW Financial Risk & Cross-border Gov Negotiations.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -513,9 +513,9 @@ Partners: Polkadot, Algorand, DFINITY.`,
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "국경을 넘어 산업, 사람, 아이디어를 연결합니다.",
-                    bio: `연세대 석사 & Stony Brook 수석 졸업 (GPA 4.0).
-전 Duel Partners 대표, Ares Corp 글로벌 BD.
-50억+ M&A 실사 및 3000억+ 리스크 평가 주도.`,
+                    bio: `Stony Brook 수석 졸업 (Summa Cum Laude).
+Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 주도.
+3000억 원 규모 금융 리스크 관리 및 해외 국방부 협상 총괄.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
