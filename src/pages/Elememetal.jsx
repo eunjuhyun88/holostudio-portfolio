@@ -255,7 +255,7 @@ export default function Elememetal() {
                                 ? "Unlike traditional TCGs that rely on RNG for damage variance, EleMEMEtal uses a fully deterministic state machine. Every interaction is calculable, allowing for 'Solve' states where skilled players can guarantee victory 3 turns in advance." 
                                 : "데미지 변동을 위해 RNG에 의존하는 기존 TCG와 달리, EleMEMEtal은 완전한 결정론적 상태 머신을 사용합니다. 모든 상호작용은 계산 가능하며, 숙련된 플레이어는 3턴 전에 승리를 확정 짓는 '해결(Solve)' 상태를 만들어낼 수 있습니다."}
                         </p>
-                        <div className="p-4 bg-orange-900/10 rounded-xl border border-orange-500/20 mb-6">
+                        <div className="p-4 bg-orange-900/10 rounded-xl border border-orange-500/20 mb-6 overflow-x-auto custom-scrollbar">
                             <code className="text-sm font-mono text-orange-200 block">
                                 Damage = (Base * ElementMult) + ComboBonus + BankSpend<br/>
                                 <span className="opacity-50">// No random() calls in core logic</span>

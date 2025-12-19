@@ -566,7 +566,7 @@ export default function BusinessLayout({
                                                 </p>
                                             </div>
                                             <div className="md:col-span-8">
-                                                <div className={`rounded-3xl p-8 bg-white/[0.02] border ${border} relative overflow-hidden`}>
+                                                <div className={`rounded-3xl p-6 md:p-8 bg-white/[0.02] border ${border} relative overflow-hidden`}>
                                                     {detailedSpecs}
                                                 </div>
                                             </div>

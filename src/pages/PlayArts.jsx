@@ -332,7 +332,7 @@ export default function PlayArts() {
                                 ? "Every asset includes a cryptographically signed JSON manifest containing the generation parameters. This allows for 'Recipe' trading, where the prompt itself becomes a tradable asset."
                                 : "모든 자산에는 생성 매개변수가 포함된 암호학적으로 서명된 JSON 매니페스트가 포함됩니다. 이를 통해 프롬프트 자체가 거래 가능한 자산이 되는 '레시피' 거래가 가능해집니다."}
                         </p>
-                        <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/10 overflow-x-auto">
+                        <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/10 overflow-x-auto custom-scrollbar">
                             <pre className="text-xs text-lime-300 font-mono">
 {`{
   "mcp_version": "1.0",
