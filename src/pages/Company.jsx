@@ -394,14 +394,9 @@ export default function Company() {
                 {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
-                    bio: `Yonsei University Master's - International Trade Finance (GPA 3.9)
-Stony Brook University Bachelor's - Finance (GPA 4.0, Valedictorian, Summa Cum Laude)
-
-Career:
-- Holo Studio CEO (2025 - Present)
-- Duel Partners CEO (2023-2025) - Global commercialization of Korean innovation tech
-- Ares Corporation Global BD Director (2022-2023) - Negotiations with Southeast Asia/Middle East Defense Ministries
-- Law Firm Daeryook Aju Intern (2022) - 5B+ KRW M&A Due Diligence, 300B+ Financial Risk Assessment
+                    bio: `Yonsei Masters & Stony Brook Valedictorian (GPA 4.0).
+Ex-CEO of Duel Partners, Global BD at Ares Corp.
+Led 5B+ KRW M&A DD & 300B+ Risk Assessment.
 
 "Connecting industries, people, and ideas across borders."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
@@ -410,12 +405,9 @@ Career:
                 {
                     name: "0xchew Hyun",
                     role: "Chief Builder",
-                    bio: `Growth Hacker | Web3 Native
-
-- Founder of MintedLab - Korea's #1 Web3 Marketing Firm
-- 150+ Global Web3 Projects Marketing & Investment
-- $1M+ Web3 sales
-- Tier 1 Partnerships: Polkadot, Algorand, Casper, DFINITY, HOPR
+                    bio: `Founder of MintedLab (#1 Web3 Marketing Firm).
+Marketed 150+ Global Projects, $1M+ Sales.
+Partners: Polkadot, Algorand, DFINITY.
 
 "Experienced firsthand what works and what fails."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
@@ -424,12 +416,9 @@ Career:
                 {
                     name: "Yongwan Kim",
                     role: "CTO",
-                    bio: `Deep Tech Builder | Infrastructure Master
-
-- Ex-EA FIFA/Sports, Netmarble (10+ years)
-- Built 1M+ CCU Infrastructure
-- 99.8%+ Uptime Kubernetes Operation
-- 5+ Infrastructure Patents
+                    bio: `10+ years at EA FIFA/Sports & Netmarble.
+Built 1M+ CCU Infrastructure, 99.8% Uptime.
+Holder of 5+ Infrastructure Patents.
 
 "Scale has already been proven."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
@@ -519,14 +508,9 @@ Career:
                 {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
-                    bio: `연세대학교 석사 - International Trade Finance (GPA 3.9)
-Stony Brook University 학사 - Finance (GPA 4.0, Valedictorian, Summa Cum Laude)
-
-경력:
-- Holo Studio CEO (2025 - 현재)
-- Duel Partners 대표 (2023-2025) - 한국 혁신기술 글로벌 상용화
-- Ares Corporation Global BD Director (2022-2023) - 동남아/중동 국방부 협상
-- 법무법인 대륙아주 Intern (2022) - 5B+ KRW M&A 실사, 300B+ 재무 리스크 평가
+                    bio: `연세대 석사 & Stony Brook 수석 졸업 (GPA 4.0).
+전 Duel Partners 대표, Ares Corp 글로벌 BD.
+50억+ M&A 실사 및 3000억+ 리스크 평가 주도.
 
 "국경을 넘어 산업, 사람, 아이디어를 연결합니다."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
@@ -535,12 +519,9 @@ Stony Brook University 학사 - Finance (GPA 4.0, Valedictorian, Summa Cum Laude
                 {
                     name: "0xchew Hyun",
                     role: "Chief Builder",
-                    bio: `Growth Hacker | Web3 Native
-
-- MintedLab 창업 - Korea's #1 Web3 Marketing Firm
-- 150+ 글로벌 Web3 프로젝트 마케팅 & 투자
-- $1M+ Web3 sales 달성
-- Tier 1 파트너십: Polkadot, Algorand, Casper, DFINITY, HOPR
+                    bio: `MintedLab(국내 1위 Web3 마케팅) 창업.
+150+ 글로벌 프로젝트 마케팅, $1M+ 매출.
+Polkadot, Algorand, DFINITY 파트너십.
 
 "무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
@@ -549,12 +530,9 @@ Stony Brook University 학사 - Finance (GPA 4.0, Valedictorian, Summa Cum Laude
                 {
                     name: "Yongwan Kim",
                     role: "CTO",
-                    bio: `Deep Tech Builder | Infrastructure Master
-
-- EA FIFA/Sports, Netmarble 출신 (10년+)
-- 1M+ CCU 인프라 구축 경험
-- 99.8%+ Uptime Kubernetes 운영
-- 5+ 인프라 관련 특허 보유
+                    bio: `EA FIFA/Sports, 넷마블 10년+ 경력.
+100만 동시접속 인프라 및 99.8% 가용성 구축.
+인프라 관련 특허 5건 보유.
 
 "스케일은 이미 증명되었습니다."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
