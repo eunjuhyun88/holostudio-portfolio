@@ -17,12 +17,12 @@ export default function Products() {
             name: 'AiD Guardian',
             path: 'AidGuardian',
             tagline: {
-                en: 'Imagine if content safety was autonomous and instant.',
-                ko: '콘텐츠 안전이 자율적이고 즉각적으로 이루어진다면.'
+                en: 'Automated Compliance & Safety Layer',
+                ko: '자동화된 컴플라이언스 및 안전 레이어'
             },
             description: {
-                en: 'Enterprise-grade safety and compliance engine for AI.',
-                ko: 'AI를 위한 엔터프라이즈급 안전 및 규정 준수 엔진.'
+                en: 'Protecting platforms from liability. <10ms latency API for filtering toxic, NSFW, and copyrighted AI content.',
+                ko: '플랫폼 리스크 방어. 10ms 미만의 초저지연 API로 유해 콘텐츠 및 저작권 침해를 실시간으로 필터링합니다.'
             },
             theme: 'bg-[#1e1b4b] text-indigo-100', // Indigo-950
             accent: 'text-indigo-400',
@@ -33,12 +33,12 @@ export default function Products() {
             name: 'PlayArts',
             path: 'PlayArts',
             tagline: {
-                en: 'Imagine if creators truly owned the value they generate.',
-                ko: '창작자가 자신이 만든 가치를 진정으로 소유한다면.'
+                en: 'Verifiable IP Provenance Protocol',
+                ko: '검증 가능한 IP 출처 증명 프로토콜'
             },
             description: {
-                en: 'The Proof-of-Creation protocol for verifiable AI media.',
-                ko: '검증 가능한 AI 미디어를 위한 창작 증명(Proof-of-Creation) 프로토콜.'
+                en: 'Turning generation into ownership. Cryptographic Proof-of-Creation for AI assets to ensure attribution and royalties.',
+                ko: '생성을 소유권으로 전환합니다. AI 자산을 위한 암호학적 창작 증명(PoC)으로 귀속과 로열티를 보장합니다.'
             },
             theme: 'bg-[#1a2e05] text-lime-100', // Lime-950/Dark
             accent: 'text-[#ccff00]',
@@ -49,12 +49,12 @@ export default function Products() {
             name: 'EleMEMEtal',
             path: 'Elememetal',
             tagline: {
-                en: 'Imagine if gaming assets were as liquid as elements.',
-                ko: '게임 자산이 원소처럼 유동적이라면.'
+                en: 'On-Chain Asset Economy Showcase',
+                ko: '온체인 자산 경제 쇼케이스'
             },
             description: {
-                en: 'A competitive card battler built on elemental mechanics.',
-                ko: '원소 메커니즘을 기반으로 구축된 경쟁형 카드 배틀 게임.'
+                en: 'A battle-tested environment for our protocol. High-velocity trading and verified asset generation in a competitive gaming economy.',
+                ko: '프로토콜의 실증 환경. 경쟁적 게임 경제 내에서 검증된 자산 생성과 고속 거래를 시연합니다.'
             },
             theme: 'bg-[#2c1205] text-orange-100', // Orange-950
             accent: 'text-orange-500',
@@ -65,12 +65,12 @@ export default function Products() {
             name: 'Stockhoo',
             path: 'Stockhoo',
             tagline: {
-                en: 'Imagine if trading intelligence was actually intelligent.',
-                ko: '트레이딩 지능이 실제로 지능적이라면.'
+                en: 'Verified Market Intelligence',
+                ko: '검증된 시장 인텔리전스'
             },
             description: {
-                en: 'Zone-based AI trading agent optimized via DPO.',
-                ko: 'DPO로 최적화된 구역 기반 AI 트레이딩 에이전트.'
+                en: 'Eliminating signal noise. AI agents that verify trader reputation and profit history on-chain for trusted market data.',
+                ko: '시그널 노이즈 제거. 온체인 수익 내역과 평판을 검증하는 AI 에이전트로 신뢰할 수 있는 시장 데이터를 제공합니다.'
             },
             theme: 'bg-[#022c22] text-emerald-100', // Emerald-950
             accent: 'text-emerald-400',
