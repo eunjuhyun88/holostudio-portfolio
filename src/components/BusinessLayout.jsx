@@ -157,7 +157,7 @@ export default function BusinessLayout({
     // Dynamic Styles - Always Dark Mode base
     const textPrimary = "text-white";
     const textSecondary = "text-neutral-300";
-    const textMuted = "text-neutral-500";
+    const textMuted = "text-neutral-400";
     const border = "border-white/10";
     const bgCard = "bg-white/5";
     const bgCardHover = "hover:border-white/20";
@@ -320,7 +320,7 @@ export default function BusinessLayout({
                                 <div className="relative z-10 space-y-8 pt-8 border-t border-white/10">
                                     {stats.map((stat, i) => (
                                         <div key={i} className="group">
-                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-500 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
+                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
                                             <div className="text-lg font-mono font-medium text-white group-hover:text-white transition-colors">{stat.value}</div>
                                         </div>
                                     ))}
