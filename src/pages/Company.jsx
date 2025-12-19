@@ -402,13 +402,15 @@ export default function Company() {
                     name: "Steven Park",
                     role: "CEO",
                     bio: "Cross-border AI/Web3 Strategy connecting Silicon Valley tech with Asian gaming giants.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Chief Architect",
                     bio: "Unity, Netmarble, Smilegate veteran. Master of real-time rendering pipelines.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
                     name: "0xchew Hyun",
@@ -502,13 +504,15 @@ export default function Company() {
                     name: "Steven Park",
                     role: "CEO",
                     bio: "실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
                     name: "Seongdae Kim",
                     role: "Chief Architect",
                     bio: "Unity, Netmarble, Smilegate 출신. 실시간 렌더링 파이프라인 마스터.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
                     name: "0xchew Hyun",
