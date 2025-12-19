@@ -104,7 +104,7 @@ export default function AidGuardian() {
                 <div className="space-y-8">
                     <div>
                         <h4 className="text-xl font-bold text-white mb-4">Multi-Modal Safety Pipeline</h4>
-                        <p className="text-neutral-400 leading-relaxed mb-6">
+                        <p className="text-neutral-300 leading-relaxed mb-6">
                             Our architecture processes inputs through concurrent analysis streams. Video frames are sampled at 2Hz for visual risk, while audio is transcribed via Whisper and analyzed for toxicity. 
                             Text overlays are OCR'd and cross-referenced.
                         </p>
@@ -280,6 +280,44 @@ export default function AidGuardian() {
                 { label: "배포 방식", value: "클라우드 / 온프레미스" },
                 { label: "규제 준수", value: "EU AI Act / GARM" }
             ],
+            detailedSpecs: (
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">심층 멀티모달 안전 파이프라인</h4>
+                        <p className="text-neutral-300 leading-relaxed mb-6">
+                            당사의 아키텍처는 동시 분석 스트림을 통해 입력을 처리합니다. 비디오 프레임은 시각적 위험을 위해 2Hz로 샘플링되며, 오디오는 Whisper를 통해 텍스트로 변환되어 독성 분석이 수행됩니다. 
+                            텍스트 오버레이는 OCR 처리되어 상호 참조됩니다.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">INPUT</div>
+                                <div className="text-white font-bold">Video / Stream</div>
+                            </div>
+                            <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">LATENCY</div>
+                                <div className="text-white font-bold">~15ms / frame</div>
+                            </div>
+                            <div className="col-span-2 p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-xs text-indigo-400 font-mono mb-2">OUTPUT</div>
+                                <div className="text-white font-bold">Risk Score (0-100) + GARM Categories</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">컴플라이언스 레이어</h4>
+                        <ul className="space-y-3">
+                            <li className="flex gap-3 text-neutral-300">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5" />
+                                <span><strong>감사 로그(Audit Logging):</strong> EU AI Act 제50조 준수를 위한 모든 모더레이션 결정의 불변 기록.</span>
+                            </li>
+                            <li className="flex gap-3 text-neutral-300">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5" />
+                                <span><strong>설명 가능성(Explainability):</strong> 콘텐츠가 플래그된 이유를 제공하기 위한 벡터 기반 유사성 검색.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            ),
             useCases: [
                 {
                     title: "라이브 스트리밍/게임",
@@ -353,6 +391,7 @@ export default function AidGuardian() {
             specs={c.specs}
             screenshots={c.screenshots}
             stats={c.stats}
+            detailedSpecs={c.detailedSpecs}
             useCases={c.useCases}
             businessModel={c.businessModel}
             roadmap={c.roadmap}
