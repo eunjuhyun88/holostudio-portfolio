@@ -347,104 +347,99 @@ export default function Company() {
             intro: {
                 episode: "The Origin",
                 title: "The Trust Layer",
-                subtitle: "FROM GAMING ARCHITECTS TO AI TRUST BUILDERS",
+                subtitle: "Team building the Trust Layer for the AI Media Age",
                 text: [
                     "We did not arrive here by accident. We have been building systems where value, rules, and trust must work at scale—for over a decade.",
-                    "At EA, Netmarble, and Smilegate, we designed real-time infrastructure and virtual economies for millions of users. Systems where digital assets had to behave like real ones.",
-                    "We learned early: without enforcement, value does not persist."
+                    "At EA, Netmarble, and Smilegate, we designed real-time infrastructure and virtual economies for millions of users.",
+                    "We learned early: Without enforcement, value does not persist."
                 ]
             },
             chapters: [
                 {
                     year: "2014 – 2020",
                     headline: "THE GAMING ERA",
-                    content: "Before “Metaverse” or “Web3” entered the mainstream, we were already operating large-scale multiplayer systems. High-concurrency environments. Persistent virtual economies. Rules that determined what could be earned, owned, and exchanged. Gaming taught us a foundational lesson: simulation without rules becomes chaos."
+                    content: "Before “Metaverse” or “Web3” entered the mainstream, we were already operating large-scale multiplayer systems. High concurrency. Persistent virtual economies. Rules determining what could be earned, owned, and exchanged. Gaming taught us a foundational lesson: simulation without rules becomes chaos."
                 },
                 {
                     year: "2021 – 2023",
                     headline: "THE CONVERGENCE",
-                    content: "As AI and crypto matured, a deeper pattern emerged. AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But generative assets—created infinitely, shared instantly—had no native way to be verified, attributed, or accounted for. So we began building the connective infrastructure. Bridging simulation and settlement. Solving trust for generative media."
+                    content: "AI showed how intelligence could be simulated. Crypto showed how truth could be settled. But infinite generative content had no native way for verification, attribution, or settlement."
                 },
                 {
                     year: "2024",
                     headline: "THE COLLAPSE OF TRUST",
-                    content: "Generative AI scaled creation to zero cost. But trust did not scale. Attribution broke. Accountability faded. Value leaked across platforms. The problem was never creativity. It was the absence of a trust layer. That realization shaped everything we built next."
-                },
-                {
-                    year: "INFRASTRUCTURE",
-                    headline: "BUILDING THE TRUST LAYER",
-                    content: "HoloStudio treats content not as static files, but as living events. Creation. Verification. Propagation. Settlement. Stories move. Value flows. And every contribution must be attributable. We build infrastructure where provenance is native, credit is programmable, and trust is enforced by systems—not promises."
+                    content: "Generative AI scaled creation cost to zero. But trust did not scale. Attribution broke, accountability faded, and value leaked across platforms. The problem was never creativity. It was the absence of a trust layer."
                 },
                 {
                     year: "2025 & BEYOND",
-                    headline: "THE AUTONOMOUS AGE",
-                    content: "The next era will not be defined by applications. It will be defined by autonomous agents. Agents that create. Agents that trade. Agents that interact independently. We are building the operating system where this is possible—a system where human and AI creation can coexist on a verifiable, trustless settlement layer."
+                    headline: "THE TRUST LAYER",
+                    content: "HoloStudio treats content as living events: Creation → Verification → Propagation → Settlement. Stories move, value flows. Every contribution must be traceable. As AI creates infinite content, the value of infrastructure providing trust increases exponentially."
                 }
             ],
             thesis: [
                 {
                     headline: "A CHOICE FOR THE FUTURE",
-                    content: "The future is not neutral. It is a choice between chaos and credibility. Between infinite generation and enforceable trust."
+                    content: "The future is not neutral. It is a choice between chaos and trust."
                 },
                 {
                     headline: "ONE COHERENT SYSTEM",
-                    content: "We do not build disconnected products. We build a single, coherent architecture where trust enables distribution, and distribution creates value. From adversarial defense to economic settlement, every layer is designed to work together."
+                    content: "We do not build disconnected products. We build a single, coherent architecture where trust enables distribution, and distribution creates value."
                 }
             ],
             identity: {
-                 headline: "WHY WE EXIST",
-                 content: "We are building the safeguards that allow generative media to scale without losing ownership, accountability, or human intent. The systems that will define the next decade do not exist yet. We are here to build them."
+                 headline: "WHY THIS TEAM",
+                 content: "\"Growth Hacker + Deep Tech Builder = A team that knows both technology and market.\" We optimize for real user value, not just storytelling."
             },
             founders: [
                 {
-                    name: "Steven Park",
-                    role: "CEO",
-                    bio: "Global Strategy & Defense. Led cross-border AI/Web3 strategy connecting Silicon Valley tech with Asian gaming giants. Deep expertise in GTM for decentralized protocols.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
-                },
-                {
                     name: "Yongwan Kim",
                     role: "CTO",
-                    bio: "10+ years in Gaming & Infra. Former EA & Netmarble. Expert in Kubernetes, DevOps, and Test Automation at massive scale. Combining deep engineering rigor with AI innovation.",
+                    bio: "10+ years at EA FIFA/Sports & Netmarble. Built infrastructure for 1M+ CCU. 99.8% Uptime Kubernetes. 5+ Infrastructure Patents.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
+                    name: "Steven Park",
+                    role: "CEO",
+                    bio: "Cross-border AI/Web3 Strategy connecting Silicon Valley tech with Asian gaming giants.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
+                },
+                {
                     name: "Seongdae Kim",
-                    role: "CHIEF ARCHITECT",
-                    bio: "Graphics & Systems Veteran. Former Unity, Netmarble, Smilegate. Master of real-time rendering pipelines and performance-critical systems.",
+                    role: "Chief Architect",
+                    bio: "Unity, Netmarble, Smilegate veteran. Master of real-time rendering pipelines.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
+                },
+                {
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: "Founder of MintedLab. Invested/Marketed 150+ Web3 projects. Partnerships with Polkadot, Algorand, DFINITY.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
+                },
+                {
+                    name: "Antonio",
+                    role: "Head of Ecosystem",
+                    bio: "Ecosystem growth expert focusing on performance-driven growth. Scaling ecosystems through GTM strategy and marketing.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
-                    bio: "Oversees PlayArts architecture and development roadmap. Ensuring technical excellence across all protocol layers.",
+                    bio: "Oversees PlayArts architecture and development roadmap.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
-                    bio: "Specialized in modern UI with React, Tailwind, Vite and Svelte. UX Specialist focused on seamless interactions.",
+                    bio: "Specialized in modern UI with React, Tailwind, Vite, Svelte.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
-                    bio: "Builds scalable ASP.NET (9.0) and PostgreSQL systems. Expert in authentication, data modeling, and secure cloud deployment.",
+                    bio: "Builds ASP.NET 9.0, PostgreSQL systems.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
-                },
-                {
-                    name: "Antonio",
-                    role: "Head of Ecosystem",
-                    bio: "Former CMO & Head of BD at GaFin. Expert in Web3 Gaming infrastructure and ecosystem growth. Leading strategic partnerships and community expansion.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
-                },
-                {
-                    name: "0xchew Hyun",
-                    role: "Core Web3 Builder",
-                    bio: "Core Director overseeing all HoloStudio projects. Brings extensive Web3 experience and global business development expertise. An active investor in over 150 projects across Layer 1/2, Infrastructure, DeFi, and P2E sectors, providing deep market insights and strategic direction.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
-                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 }
             ],
         },
@@ -452,10 +447,10 @@ export default function Company() {
             intro: {
                 episode: "The Origin",
                 title: "The Trust Layer",
-                subtitle: "게임 아키텍트에서 AI 신뢰 설계자로",
+                subtitle: "AI 미디어 시대의 Trust Layer를 구축하는 팀",
                 text: [
                     "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년 동안 우리는 가치, 규칙, 신뢰가 대규모로 작동해야 하는 시스템을 구축해 왔습니다.",
-                    "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다. 디지털 자산이 실제 자산처럼 동작해야 하는 시스템들이었습니다.",
+                    "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다.",
                     "우리는 일찍이 깨달았습니다. 강제력이 없다면 가치는 지속되지 않습니다."
                 ]
             },
@@ -463,91 +458,88 @@ export default function Company() {
                 {
                     year: "2014 – 2020",
                     headline: "게이밍 시대",
-                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속 환경. 지속적인 가상 경제. 무엇을 얻고, 소유하고, 교환할 수 있는지를 결정하는 규칙들. 게임은 우리에게 근본적인 교훈을 주었습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
+                    content: "‘메타버스’나 ‘Web3’가 주류가 되기 전부터 우리는 이미 대규모 멀티플레이어 시스템을 운영하고 있었습니다. 높은 동시 접속. 지속적인 가상 경제. 무엇을 얻고, 소유하고, 교환할 수 있는지를 결정하는 규칙들. 게임은 우리에게 근본적인 교훈을 주었습니다. 규칙 없는 시뮬레이션은 혼란일 뿐입니다."
                 },
                 {
                     year: "2021 – 2023",
                     headline: "융합의 시대",
-                    content: "AI와 암호화폐가 성숙해지면서 더 깊은 패턴이 드러났습니다. AI는 지능이 어떻게 시뮬레이션될 수 있는지를 보여주었고, 크립토는 진실이 어떻게 합의될 수 있는지를 보여주었습니다. 그러나 무한히 생성되고 즉시 공유되는 생성형 자산에는 검증, 귀속, 회계 처리를 위한 네이티브 방식이 없었습니다. 그래서 우리는 연결 인프라를 구축하기 시작했습니다. 시뮬레이션과 합의를 연결하는 것. 생성형 미디어에 대한 신뢰를 해결하는 것입니다."
+                    content: "AI는 지능이 어떻게 시뮬레이션될 수 있는지를 보여주었고, 크립토는 진실이 어떻게 합의될 수 있는지를 보여주었습니다. 그러나 무한히 생성되는 콘텐츠에는 검증, 귀속, 정산을 위한 네이티브 방식이 없었습니다."
                 },
                 {
                     year: "2024",
                     headline: "신뢰의 붕괴",
-                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 책임 소재는 흐려졌으며, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다. 그 깨달음이 우리가 다음에 구축한 모든 것을 형성했습니다."
-                },
-                {
-                    year: "INFRASTRUCTURE",
-                    headline: "신뢰 레이어 구축",
-                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성. 검증. 전파. 정산. 이야기는 움직이고 가치는 흐릅니다. 그리고 모든 기여는 추적 가능해야 합니다. 우리는 출처가 기본적으로 내장되고, 크레딧이 프로그래밍 가능하며, 신뢰가 약속이 아닌 시스템에 의해 강제되는 인프라를 구축합니다."
+                    content: "생성형 AI는 창작 비용을 0으로 만들었습니다. 하지만 신뢰는 확장되지 않았습니다. 기여는 무너졌고, 책임 소재는 흐려졌으며, 가치는 플랫폼 전반으로 유출되었습니다. 문제는 결코 창의성이 아니었습니다. 신뢰 레이어의 부재였습니다."
                 },
                 {
                     year: "2025 & BEYOND",
-                    headline: "자율 에이전트의 시대",
-                    content: "다음 시대는 애플리케이션이 아닌 자율 에이전트에 의해 정의될 것입니다. 창조하는 에이전트. 거래하는 에이전트. 독립적으로 상호 작용하는 에이전트. 우리는 이것이 가능한 운영 체제를 구축하고 있습니다. 인간과 AI의 창작물이 검증 가능한 무신뢰 정산 레이어 위에서 공존할 수 있는 시스템입니다."
+                    headline: "Trust Layer",
+                    content: "HoloStudio는 콘텐츠를 정적 파일이 아닌 살아있는 이벤트로 취급합니다. 생성 → 검증 → 전파 → 정산. 이야기는 움직이고 가치는 흐릅니다. 그리고 모든 기여는 추적 가능해야 합니다. AI가 콘텐츠를 무한히 만들수록, 신뢰를 제공하는 인프라의 가치는 기하급수적으로 증가합니다."
                 }
             ],
             thesis: [
                 {
                     headline: "미래를 위한 선택",
-                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰, 무한한 생성과 집행 가능한 신뢰 사이의 선택입니다."
+                    content: "미래는 중립적이지 않습니다. 혼돈과 신뢰 사이의 선택입니다."
                 },
                 {
                     headline: "하나의 일관된 시스템",
-                    content: "우리는 단절된 제품을 만들지 않습니다. 신뢰가 유통을 가능하게 하고, 유통이 가치를 창출하는 하나의 일관된 아키텍처를 구축합니다. 적대적 방어부터 경제적 정산까지, 모든 레이어가 함께 작동하도록 설계되었습니다."
+                    content: "우리는 단절된 제품을 만들지 않습니다. 신뢰가 유통을 가능하게 하고, 유통이 가치를 창출하는 하나의 일관된 아키텍처를 구축합니다."
                 }
             ],
             identity: {
-                 headline: "우리의 존재 이유",
-                 content: "우리는 소유권, 책임, 인간의 의도를 잃지 않으면서 생성형 미디어가 확장될 수 있도록 안전장치를 구축하고 있습니다. 다음 10년을 정의할 시스템은 아직 존재하지 않습니다. 우리가 그것을 만들기 위해 여기 있습니다."
+                 headline: "왜 이 팀인가",
+                 content: "\"Growth Hacker + Deep Tech Builder = 기술과 시장을 모두 아는 팀\". 우리는 스토리텔링과 투기보다는 실제 유저 가치에 최적화합니다."
             },
             founders: [
                 {
+                    name: "Yongwan Kim",
+                    role: "CTO",
+                    bio: "EA FIFA/Sports, Netmarble 10년+. 1M+ CCU 인프라 구축. 99.8% Uptime Kubernetes. 5+ 인프라 특허.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
+                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
+                },
+                {
                     name: "Steven Park",
                     role: "CEO",
-                    bio: "글로벌 전략 및 방어. 실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략 주도. 탈중앙화 프로토콜의 GTM에 대한 깊은 전문 지식.",
+                    bio: "실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent"
                 },
                 {
-                    name: "Yongwan Kim",
-                    role: "CTO",
-                    bio: "게임 및 인프라 분야 10년 이상 경력. 전 EA 및 넷마블. 대규모 쿠버네티스, 데브옵스, 테스트 자동화 전문가. 깊은 엔지니어링 엄격함과 AI 혁신의 결합.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100"
+                    name: "Seongdae Kim",
+                    role: "Chief Architect",
+                    bio: "Unity, Netmarble, Smilegate 출신. 실시간 렌더링 파이프라인 마스터.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
                 },
                 {
-                    name: "Seongdae Kim",
-                    role: "CHIEF ARCHITECT",
-                    bio: "그래픽 및 시스템 베테랑. 전 유니티, 넷마블, 스마일게이트. 실시간 렌더링 파이프라인 및 성능 중요 시스템 마스터.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent"
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: "MintedLab 창업. 150+ Web3 프로젝트 투자/마케팅. Polkadot, Algorand, DFINITY 파트너십.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
+                },
+                {
+                    name: "Antonio",
+                    role: "Head of Ecosystem",
+                    bio: "Ecosystem growth expert with a strong focus on performance-driven growth across Web3 projects. Scaling ecosystems through GTM strategy, project optimization, and marketing.",
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
                     name: "Junhyeok Choi",
                     role: "Dev Team Leader",
-                    bio: "PlayArts 아키텍처와 개발 로드맵을 총괄합니다. 모든 프로토콜 레이어에서 기술적 우수성을 보장합니다.",
+                    bio: "PlayArts 아키텍처와 개발 로드맵 총괄.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
                     name: "Minji You",
                     role: "Front Engineer",
-                    bio: "React, Tailwind, Vite 및 Svelte를 활용한 현대적인 UI 전문. 매끄러운 인터랙션에 중점을 둔 UX 스페셜리스트입니다.",
+                    bio: "React, Tailwind, Vite, Svelte 현대적 UI 전문.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
                     name: "Jaehyeon Kwon",
                     role: "Backend Engineer",
-                    bio: "확장 가능한 ASP.NET (9.0) 및 PostgreSQL 시스템 구축. 인증, 데이터 모델링 및 안전한 클라우드 배포 전문가입니다.",
+                    bio: "ASP.NET 9.0, PostgreSQL 시스템 구축.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
-                },
-                {
-                    name: "Antonio",
-                    role: "Head of Ecosystem",
-                    bio: "전 GaFin CMO 및 사업 개발 총괄. Web3 게임 인프라 및 생태계 확장 전문가. 전략적 파트너십과 커뮤니티 확장을 주도합니다.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
-                },
-                {
-                    name: "0xchew Hyun",
-                    role: "Core Web3 Builder",
-                    bio: "HoloStudio의 모든 프로젝트를 총괄하는 핵심 디렉터입니다. 풍부한 Web3 경험과 글로벌 비즈니스 개발 역량을 보유하고 있습니다. Layer 1/2, 인프라, DeFi, P2E 등 150여 개 프로젝트에 투자한 초기 투자자로서 깊은 시장 통찰력과 전략적 방향성을 제시합니다.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent"
                 }
             ],
         }

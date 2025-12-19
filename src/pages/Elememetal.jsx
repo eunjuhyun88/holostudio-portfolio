@@ -9,47 +9,38 @@ export default function Elememetal() {
 
     const content = {
         en: {
-            tag: "Collectible Strategy Game • Digital Ownership • Real-World Value",
+            tag: "Trust Layer: Gaming | Skill-Based Strategy TCG",
             primaryButtonText: "Play Now",
-            oneLiner: "A competitive TCG combining strategic depth, digital ownership, and real-world value.",
+            oneLiner: "A competitive battler where every card is an asset and every match is pure strategy.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Opening the era of borderless ownership where in-game achievements become real-world value.
+                        The era where in-game achievements become real-world value.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        EleMEMEtal changes the game. We've built a competitive battler where every card is an asset, 
-                        every match is a high-stakes mind game, and the economy is entirely player-driven. 
-                        No hidden algorithms, just pure strategy.
+                        EleMEMEtal changes the game. Every card is an asset, every match is a high-stakes mind game, and the economy is entirely player-driven.
+                        <span className="text-white font-bold ml-2">No hidden algorithms. Just pure strategy.</span>
                     </p>
                 </>
             ),
             problemPoints: [
                 {
-                    title: "Bank Leverage",
-                    description: "Look weak on purpose to build Power Bank. Sacrifice early rounds to unleash +18 guaranteed damage later."
+                    title: "Enhance & Combo",
+                    description: "Merge same-element cards. Chain consecutive plays for 1.3x → 1.9x damage multiplier."
                 },
                 {
-                    title: "Readable Mastery",
-                    description: "No hidden info besides the hand. Zero RNG damage ranges. The best players win by reading timing, not getting lucky."
+                    title: "Power Bank",
+                    description: "Empty slots generate Power Bank points. Use for fixed damage ignoring defense."
                 },
                 {
-                    title: "Skill Gap",
-                    description: "Deterministic outcomes mean the better strategist wins. Limited swing tools force real commitment."
+                    title: "Joker System",
+                    description: "5 Jokers per game. Break the meta at the perfect moment."
                 }
             ],
             solutionSteps: [
                 {
-                    title: "Core Mechanics: Enhance & Combo",
-                    description: "Merge same-element cards to create a stronger unit. Chain consecutive plays to scale damage x1.3, x1.6, up to x1.9."
-                },
-                {
-                    title: "The X-Factor: Power Bank",
-                    description: "Empty slots aren't wasted—they generate Power Bank points. Spend them for fixed damage that ignores defense."
-                },
-                {
-                    title: "Game Breaker: Joker System",
-                    description: "Only 5 Jokers per game. Attack, Defense, or Utility. Using them at the perfect moment breaks the meta."
+                    title: "Connected Trust Layer",
+                    description: "AiD Guardian validates UGC safety. PlayArts proves asset origin. Value Routing distributes economy rewards."
                 }
             ],
             screenshots: [],
@@ -61,96 +52,74 @@ export default function Elememetal() {
             ],
             useCases: [
                 {
-                    title: "Our Mission",
-                    description: "We are gamers building for gamers. We believe in games that respect your time and reward your skill."
+                    title: "Mission",
+                    description: "Gamers building for gamers. Respecting time and rewarding skill."
                 },
                 {
                     title: "True Ownership",
-                    description: "Every card is an NFT. Trade freely. Complete ownership of your achievements and assets."
+                    description: "Every card is an NFT. Trade freely. Complete ownership."
                 },
                 {
-                    title: "The Team",
-                    description: "Built by veterans from Unity, Netmarble, and Smilegate at the intersection of AI, Gaming, and Web3."
+                    title: "Team",
+                    description: "Veterans from Unity, Netmarble, Smilegate."
                 }
             ],
-            businessModel: "Player-Owned Economy. Craft cards in The Forge using Shards and Dust. Trade on the open marketplace. No card packs, no gacha.",
+            businessModel: "Player-Owned Economy. Craft in Forge. Trade in Marketplace. No card packs, no gacha.",
             roadmap: [
                 {
                     quarter: "Phase 1",
                     status: "in_progress",
                     title: "Alpha Launch",
-                    items: ["Simultaneous Turns", "Instant Resolution", "Zero Randomness"]
+                    items: ["Simultaneous Turns", "Instant Result", "Zero Random"]
                 },
                 {
                     quarter: "Phase 2",
                     status: "upcoming",
                     title: "Joker Genesis",
-                    items: ["AI-Generated Cards", "Experimental Meta", "Unique Abilities"]
+                    items: ["AI Generated Cards", "Unique Abilities"]
                 },
                 {
                     quarter: "Phase 3",
                     status: "upcoming",
                     title: "Global Expansion",
-                    items: ["Mobile Release", "Esports Tournaments", "Cross-IP Collabs"]
+                    items: ["Mobile", "Esports", "Cross-IP"]
                 }
             ],
-            customerStories: [
-                {
-                    quote: "The depth of strategy combined with real asset ownership keeps me coming back.",
-                    author: "Alex G.",
-                    role: "Pro Gamer",
-                    company: "Team Liquid"
-                },
-                {
-                    quote: "Not just a game, but a thriving digital economy.",
-                    author: "Maria L.",
-                    role: "Collector",
-                    company: "MetaGuild"
-                }
-            ]
+            customerStories: []
         },
         ko: {
-            tag: "수집형 전략 게임 • 디지털 소유권 • 실질 가치",
+            tag: "Trust Layer 위의 게임 | 실력 기반 전략 TCG",
             primaryButtonText: "지금 플레이",
-            oneLiner: "전략적인 깊이, 디지털 소유권(NFT), 실질 가치를 결합한 경쟁적인 TCG로, AI와 블록체인 기술을 통해 플레이어의 기술과 자산이 유형의 가치를 지니는 플랫폼을 제공합니다.",
+            oneLiner: "모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        게임 속 성취가 현실의 가치가 되는 경계 없는 소유권의 시대를 엽니다.
+                        게임 속 성취가 현실의 가치가 되는 시대.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        EleMEMEtal은 게임의 판도를 바꿉니다. 모든 카드가 자산이 되고,
-                        모든 매치가 치열한 두뇌 싸움이 되며, 경제가 전적으로 플레이어에 의해 주도되는 경쟁 배틀러를 만들었습니다.
-                        숨겨진 알고리즘은 없습니다. 오직 순수한 전략뿐입니다.
+                        EleMEMEtal은 게임의 판도를 바꿉니다. 모든 카드가 자산이 되고, 모든 매치가 치열한 두뇌 싸움이 되며, 경제가 전적으로 플레이어에 의해 주도됩니다.
+                        <span className="text-white font-bold ml-2">숨겨진 알고리즘은 없습니다. 오직 순수한 전략뿐입니다.</span>
                     </p>
                 </>
             ),
             problemPoints: [
                 {
-                    title: "뱅크 레버리지",
-                    description: "파워 뱅크를 쌓기 위해 일부러 약한 척하세요. 초반 라운드를 희생하여 나중에 +18의 확정 피해를 입히세요."
+                    title: "강화 & 콤보",
+                    description: "같은 원소 카드를 합쳐 더 강력한 유닛. 연속 플레이로 1.3x → 1.9x 데미지."
                 },
                 {
-                    title: "예측 가능한 숙련도",
-                    description: "손패 외에는 숨겨진 정보가 없습니다. 무작위 데미지 범위도 없습니다. 운이 아니라 타이밍을 읽는 플레이어가 승리합니다."
+                    title: "파워 뱅크",
+                    description: "빈 슬롯이 파워 뱅크 포인트 생성. 방어력 무시 고정 피해."
                 },
                 {
-                    title: "실력 격차",
-                    description: "결정론적 결과는 더 나은 전략가가 승리함을 의미합니다. 변수 요소를 제한하여 진정한 헌신을 강요합니다."
+                    title: "조커 시스템",
+                    description: "게임당 5장. 완벽한 순간에 메타를 깨부수세요."
                 }
             ],
             solutionSteps: [
                 {
-                    title: "핵심 메커니즘: 강화 & 콤보",
-                    description: "같은 원소 카드를 합쳐 더 강력한 유닛을 만드세요. 연속 플레이를 통해 데미지를 1.3배, 1.6배, 최대 1.9배까지 증폭시키세요."
-                },
-                {
-                    title: "X-팩터: 파워 뱅크",
-                    description: "빈 슬롯은 낭비되지 않습니다—파워 뱅크 포인트를 생성합니다. 방어력을 무시하는 고정 피해를 입히는 데 사용하세요."
-                },
-                {
-                    title: "게임 브레이커: 조커 시스템",
-                    description: "게임당 조커는 단 5장. 공격, 방어, 또는 유틸리티. 완벽한 순간에 사용하여 메타를 깨부수세요."
+                    title: "Trust Layer 연결",
+                    description: "AiD Guardian으로 UGC 안전성 검증, PlayArts로 자산 출처 증명, Value Routing으로 가치 분배."
                 }
             ],
             screenshots: [],
@@ -162,53 +131,40 @@ export default function Elememetal() {
             ],
             useCases: [
                 {
-                    title: "우리의 미션",
-                    description: "우리는 게이머를 위해 게임을 만드는 게이머입니다. 우리는 당신의 시간을 존중하고 실력을 보상하는 게임을 믿습니다."
+                    title: "미션",
+                    description: "게이머를 위해 게임을 만드는 게이머. 시간을 존중하고 실력을 보상."
                 },
                 {
                     title: "진정한 소유권",
-                    description: "모든 카드는 NFT입니다. 자유롭게 거래하세요. 당신의 업적과 자산에 대한 완전한 소유권을 가집니다."
+                    description: "모든 카드는 NFT. 자유롭게 거래. 완전한 소유권."
                 },
                 {
                     title: "팀",
-                    description: "Unity, 넷마블, 스마일게이트 출신의 베테랑들이 AI, 게임, Web3의 교차점에서 만들었습니다."
+                    description: "Unity, 넷마블, 스마일게이트 출신 베테랑."
                 }
             ],
-            businessModel: "플레이어 소유 경제. 대장간에서 조각과 가루를 사용해 카드를 제작하세요. 오픈 마켓플레이스에서 거래하세요. 카드 팩도, 가챠도 없습니다.",
+            businessModel: "플레이어 소유 경제. 대장간에서 카드 제작. 오픈 마켓플레이스 거래. 카드 팩도 가챠도 없음.",
             roadmap: [
                 {
                     quarter: "1단계",
                     status: "in_progress",
                     title: "알파 출시",
-                    items: ["동시 턴 진행", "즉각적 결과", "무작위성 제로"]
+                    items: ["동시 턴", "즉각 결과", "제로 랜덤"]
                 },
                 {
                     quarter: "2단계",
                     status: "upcoming",
                     title: "조커 제네시스",
-                    items: ["AI 생성 카드", "실험적 메타", "고유 능력"]
+                    items: ["AI 생성 카드", "고유 능력"]
                 },
                 {
                     quarter: "3단계",
                     status: "upcoming",
                     title: "글로벌 확장",
-                    items: ["모바일 출시", "e스포츠 토너먼트", "크로스 IP 콜라보"]
+                    items: ["모바일", "e스포츠", "크로스 IP"]
                 }
             ],
-            customerStories: [
-                {
-                    quote: "전략의 깊이와 실제 자산 소유권의 결합이 계속 게임을 하게 만듭니다.",
-                    author: "Alex G.",
-                    role: "Pro Gamer",
-                    company: "Team Liquid"
-                },
-                {
-                    quote: "단순한 게임이 아니라, 번성하는 디지털 경제입니다.",
-                    author: "Maria L.",
-                    role: "Collector",
-                    company: "MetaGuild"
-                }
-            ]
+            customerStories: []
         }
     };
 

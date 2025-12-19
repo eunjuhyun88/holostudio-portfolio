@@ -9,46 +9,46 @@ export default function Stockhoo() {
 
     const content = {
         en: {
-            tag: "AI Trading Intelligence • Strategic Market Advantage • Predictive Insights",
+            tag: "Trust Layer: Trading | Zone-Based Market Intelligence",
             primaryButtonText: "Launch Terminal",
-            oneLiner: "Providing cutting-edge AI-driven predictive insights and actionable strategies to help traders secure a strategic advantage.",
+            oneLiner: "The concerns of entering at 63K differ from 70K. Context matters. Zones provide context.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        Capturing the Signals of the future amidst the flood of data, empowering anyone to take the lead in the market.
+                        Capturing future signals in a flood of data to give anyone market leadership.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        The Zone becomes the atomic unit for all trading context and decisions. Instead of watching 10 different screens, 
-                        StockHoo unifies CEX Data, Order Flow, Whale Movements, and Liquidation Clusters into one actionable view.
+                        While creators understand content context, traders must understand market context.
+                        The Zone is the atomic unit of decision making. StockHoo unifies CEX Data, Order Flow, Whale Movements, and Liquidation Clusters into one actionable view.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "Information Overload",
-                    description: "Traders are overwhelmed by fragmented data across charts, on-chain metrics, and social sentiment."
+                    description: "Fragmented data across charts, on-chain metrics, and social sentiment."
                 },
                 {
                     title: "Noisy Social Signals",
-                    description: "Telegram and Discord are noisy. You need to know who is underwater, in profit, or trapped—anchored to price zones."
+                    description: "Telegram/Discord noise. You need to know who is underwater vs winning, anchored to price zones."
                 },
                 {
-                    title: "Generic AI Models",
-                    description: "Standard LLMs hallucinate on financial data. You need models fine-tuned for specific asset microstructures (BTC vs SOL)."
+                    title: "Generic AI Limits",
+                    description: "Standard LLMs hallucinate on finance. You need asset-specific fine-tuning."
                 }
             ],
             solutionSteps: [
                 {
                     title: "Zone Heat Score™",
-                    description: "Calculates the 'temperature' of every price zone in real-time. Combining volatility, comment velocity, and order book density into a single score (0-100)."
+                    description: "Calculates 'temperature' (0-100) of every price zone based on volatility and order density."
                 },
                 {
                     title: "Natural Language Trading",
-                    description: "Ask your coin-specific AI to find opportunities. It scans the Zone, calculates risk, and delivers a complete trade plan."
+                    description: "Coin-specific AI scans zones, calculates risk, and suggests trade plans."
                 },
                 {
                     title: "Context-Anchored Chat",
-                    description: "Talk from your zone. A Zone with verified social positions reveals trapped vs. winning traders."
+                    description: "Verified social positions reveal trapped vs winning traders."
                 }
             ],
             screenshots: [
@@ -68,100 +68,87 @@ export default function Stockhoo() {
             stats: [
                 { value: "0-100", label: "Zone Heat Score" },
                 { value: "3", label: "Specialized Models" },
-                { value: "Real-time", label: "Order Flow Aggregation" },
+                { value: "Real-time", label: "Order Flow" },
                 { value: "Context-Aware", label: "Social Sentiment" }
             ],
             useCases: [
                 {
                     title: "Retail Traders",
-                    description: "Find high-probability setups with Zone Heat Scores and execute with AI-generated trade plans."
+                    description: "High probability setups with Zone Heat Score."
                 },
                 {
                     title: "Social Traders",
-                    description: "See exactly where the community is positioned—trapped or winning—anchored to price levels."
+                    description: "Anchor community positions to price levels."
                 },
                 {
                     title: "Analysts",
-                    description: "Use Programmable AI Charting to automate technical analysis and share zone templates."
+                    description: "Automate technical analysis with AI."
                 }
             ],
-            businessModel: "Freemium SaaS (Basic Zones) + Pro Subscription (AI Models & Heat Score) + B2B API.",
+            businessModel: "Freemium SaaS + Pro Subscription + B2B API.",
             roadmap: [
                 {
                     quarter: "Phase 1 (Live)",
                     status: "in_progress",
                     title: "Text-to-Indicator",
-                    items: ["Highlight 4H Order Blocks", "Custom Logic Creation", "Natural Language Query"]
+                    items: ["Order Blocks", "Natural Language Query"]
                 },
                 {
                     quarter: "Phase 2",
                     status: "upcoming",
                     title: "Text-to-Drawing",
-                    items: ["Auto-generate trendlines", "Structural Sweeps", "Fib levels across Zones"]
+                    items: ["Auto Trendlines", "Fib Levels"]
                 },
                 {
                     quarter: "Phase 3",
                     status: "upcoming",
                     title: "Zone Sharing",
-                    items: ["One-click template sharing", "Community Zone Libraries", "Social Alpha Integration"]
+                    items: ["Community Libraries", "Social Alpha"]
                 }
             ],
-            customerStories: [
-                {
-                    quote: "Stockhoo's signals helped me identify trends before the market moved.",
-                    author: "James T.",
-                    role: "Day Trader",
-                    company: "Self-Employed"
-                },
-                {
-                    quote: "The sentiment analysis is surprisingly accurate and actionable.",
-                    author: "Sarah L.",
-                    role: "Analyst",
-                    company: "FinTech Partners"
-                }
-            ]
+            customerStories: []
         },
         ko: {
-            tag: "AI 트레이딩 인텔리전스 • 전략적 시장 우위 • 예측 통찰력",
+            tag: "Trust Layer 위의 트레이딩 | Zone 기반 시장 인텔리전스",
             primaryButtonText: "터미널 실행",
-            oneLiner: "최첨단 AI 기반 예측 통찰력과 실행 가능한 전략을 제공하여 트레이더가 금융 시장에서 전략적 우위를 확보하고 수익성 있는 기회를 포착하도록 지원합니다.",
+            oneLiner: "63K에서 진입한 사람과 70K에서 진입한 사람의 고민은 다릅니다. Zone이 맥락을 줍니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        데이터의 홍수 속에서 미래의 신호(Signal)를 포착하여, 누구나 시장의 주도권을 쥐게 합니다.
+                        데이터의 홍수 속에서 미래의 신호를 포착하여, 누구나 시장의 주도권을 쥐게 합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        구역은 모든 트레이딩 맥락과 의사결정을 위한 최소 단위가 됩니다. 10개의 다른 화면을 보는 대신,
-                        StockHoo는 CEX 데이터, 오더 플로우, 고래의 움직임, 청산 클러스터를 하나의 실행 가능한 뷰로 통합합니다.
+                        For Creators가 콘텐츠의 맥락을 이해한다면, For Traders는 시장의 맥락을 이해합니다.
+                        Zone은 모든 트레이딩 맥락과 의사결정의 최소 단위가 됩니다. 10개의 화면 대신, StockHoo는 CEX 데이터, 오더 플로우, 고래 움직임, 청산 클러스터를 하나의 실행 가능한 뷰로 통합합니다.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "정보 과부하",
-                    description: "트레이더들은 차트, 온체인 지표, 소셜 센티먼트에 흩어진 데이터에 압도당하고 있습니다."
+                    description: "차트, 온체인 지표, 소셜 센티먼트에 흩어진 데이터."
                 },
                 {
                     title: "소셜 신호의 노이즈",
-                    description: "텔레그램과 디스코드는 시끄럽습니다. 누가 손실 중인지, 이익 중인지, 아니면 갇혀 있는지를 가격 구역에 고정하여 파악해야 합니다."
+                    description: "텔레그램/디스코드 소음 속 진짜 신호. 가격 레벨에 고정된 포지션 확인 필요."
                 },
                 {
-                    title: "일반적인 AI 모델",
-                    description: "표준 LLM은 금융 데이터에 대해 환각 현상을 보입니다. 특정 자산의 미시 구조(BTC vs SOL)에 맞게 미세 조정된 모델이 필요합니다."
+                    title: "일반 AI의 한계",
+                    description: "표준 LLM은 금융 데이터에 환각. 자산별 미세 조정 필요."
                 }
             ],
             solutionSteps: [
                 {
-                    title: "구역 열기 점수(Zone Heat Score™)",
-                    description: "실시간으로 모든 가격 구역의 '온도'를 계산합니다. 변동성, 댓글 속도, 호가창 밀도를 하나의 점수(0-100)로 결합합니다."
+                    title: "Zone Heat Score™",
+                    description: "모든 가격 구역의 '온도'를 0-100으로 계산."
                 },
                 {
                     title: "자연어 트레이딩",
-                    description: "코인별 특화 AI에게 기회를 찾도록 요청하세요. AI가 구역을 스캔하고, 리스크를 계산하며, 완벽한 트레이딩 계획을 제시합니다."
+                    description: "코인별 특화 AI가 구역 스캔, 리스크 계산, 트레이딩 플랜 제시."
                 },
                 {
                     title: "맥락 고정 채팅",
-                    description: "구역에서 대화하세요. 검증된 소셜 포지션이 있는 구역은 갇힌 트레이더와 승리하는 트레이더를 드러냅니다."
+                    description: "검증된 소셜 포지션으로 갇힌 트레이더와 승리하는 트레이더 구분."
                 }
             ],
             screenshots: [
@@ -179,60 +166,47 @@ export default function Stockhoo() {
                 }
             ],
             stats: [
-                { value: "0-100", label: "구역 열기 점수" },
+                { value: "0-100", label: "Zone Heat Score" },
                 { value: "3", label: "특화 모델" },
-                { value: "Real-time", label: "오더 플로우 집계" },
+                { value: "Real-time", label: "오더 플로우" },
                 { value: "Context-Aware", label: "소셜 센티먼트" }
             ],
             useCases: [
                 {
                     title: "개인 트레이더",
-                    description: "구역 열기 점수로 높은 확률의 셋업을 찾고 AI가 생성한 트레이딩 계획으로 실행하세요."
+                    description: "Zone Heat Score로 높은 확률 셋업, AI 트레이딩 플랜."
                 },
                 {
                     title: "소셜 트레이더",
-                    description: "커뮤니티가 정확히 어디에 위치해 있는지—갇혀 있는지, 이기고 있는지—를 가격 레벨에 고정하여 확인하세요."
+                    description: "커뮤니티 포지션을 가격 레벨에 고정."
                 },
                 {
                     title: "분석가",
-                    description: "프로그래밍 가능한 AI 차트를 사용하여 기술적 분석을 자동화하고 구역 템플릿을 공유하세요."
+                    description: "AI 차트로 기술적 분석 자동화, Zone 템플릿 공유."
                 }
             ],
-            businessModel: "부분 유료화 SaaS (기본 구역) + 프로 구독 (AI 모델 & 열기 점수) + B2B API.",
+            businessModel: "부분 유료화 SaaS (기본 Zone) + 프로 구독 (AI 모델 & Heat Score) + B2B API.",
             roadmap: [
                 {
                     quarter: "1단계 (라이브)",
                     status: "in_progress",
                     title: "Text-to-Indicator",
-                    items: ["4시간 오더 블록 강조", "사용자 정의 로직 생성", "자연어 쿼리"]
+                    items: ["오더 블록", "자연어 쿼리"]
                 },
                 {
                     quarter: "2단계",
                     status: "upcoming",
                     title: "Text-to-Drawing",
-                    items: ["추세선 자동 생성", "구조적 스윕", "구역 간 피보나치 레벨"]
+                    items: ["추세선", "피보나치 자동 생성"]
                 },
                 {
                     quarter: "3단계",
                     status: "upcoming",
-                    title: "구역 공유",
-                    items: ["원클릭 템플릿 공유", "커뮤니티 구역 라이브러리", "소셜 알파 통합"]
+                    title: "Zone 공유",
+                    items: ["커뮤니티 라이브러리", "소셜 알파"]
                 }
             ],
-            customerStories: [
-                {
-                    quote: "Stockhoo의 신호는 시장이 움직이기 전에 트렌드를 파악하는 데 도움을 주었습니다.",
-                    author: "James T.",
-                    role: "Day Trader",
-                    company: "Self-Employed"
-                },
-                {
-                    quote: "감성 분석이 놀랍도록 정확하고 실행 가능합니다.",
-                    author: "Sarah L.",
-                    role: "Analyst",
-                    company: "FinTech Partners"
-                }
-            ]
+            customerStories: []
         }
     };
 
