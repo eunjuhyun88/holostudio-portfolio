@@ -241,7 +241,7 @@ const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
             
             <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
             
-            <p className="text-neutral-400 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all">
+            <p className="text-neutral-400 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all whitespace-pre-line">
                 {bio}
             </p>
         </div>
@@ -392,18 +392,48 @@ export default function Company() {
             },
             founders: [
                 {
-                    name: "Yongwan Kim",
-                    role: "CTO",
-                    bio: "10+ years at EA FIFA/Sports & Netmarble. Built infrastructure for 1M+ CCU. 99.8% Uptime Kubernetes. 5+ Infrastructure Patents.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
-                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
-                },
-                {
-                    name: "Steven Park",
+                    name: "Sungchul (Steven) Park",
                     role: "CEO",
-                    bio: "Cross-border AI/Web3 Strategy connecting Silicon Valley tech with Asian gaming giants.",
+                    bio: `Yonsei University Master's - International Trade Finance (GPA 3.9)
+Stony Brook University Bachelor's - Finance (GPA 4.0, Valedictorian, Summa Cum Laude)
+
+Career:
+- Holo Studio CEO (2025 - Present)
+- Duel Partners CEO (2023-2025) - Global commercialization of Korean innovation tech
+- Ares Corporation Global BD Director (2022-2023) - Negotiations with Southeast Asia/Middle East Defense Ministries
+- Law Firm Daeryook Aju Intern (2022) - 5B+ KRW M&A Due Diligence, 300B+ Financial Risk Assessment
+
+"Connecting industries, people, and ideas across borders."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
+                },
+                {
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: `Growth Hacker | Web3 Native
+
+- Founder of MintedLab - Korea's #1 Web3 Marketing Firm
+- 150+ Global Web3 Projects Marketing & Investment
+- $1M+ Web3 sales
+- Tier 1 Partnerships: Polkadot, Algorand, Casper, DFINITY, HOPR
+
+"Experienced firsthand what works and what fails."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
+                },
+                {
+                    name: "Yongwan Kim",
+                    role: "CTO",
+                    bio: `Deep Tech Builder | Infrastructure Master
+
+- Ex-EA FIFA/Sports, Netmarble (10+ years)
+- Built 1M+ CCU Infrastructure
+- 99.8%+ Uptime Kubernetes Operation
+- 5+ Infrastructure Patents
+
+"Scale has already been proven."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
+                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
                     name: "Seongdae Kim",
@@ -411,13 +441,6 @@ export default function Company() {
                     bio: "Unity, Netmarble, Smilegate veteran. Master of real-time rendering pipelines.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
-                },
-                {
-                    name: "0xchew Hyun",
-                    role: "Chief Builder",
-                    bio: "Founder of MintedLab. Invested/Marketed 150+ Web3 projects. Partnerships with Polkadot, Algorand, DFINITY.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
-                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
@@ -494,18 +517,48 @@ export default function Company() {
             },
             founders: [
                 {
-                    name: "Yongwan Kim",
-                    role: "CTO",
-                    bio: "EA FIFA/Sports, Netmarble 10년+. 1M+ CCU 인프라 구축. 99.8% Uptime Kubernetes. 5+ 인프라 특허.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
-                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
-                },
-                {
-                    name: "Steven Park",
+                    name: "Sungchul (Steven) Park",
                     role: "CEO",
-                    bio: "실리콘밸리 기술과 아시아 게임 거인을 연결하는 크로스보더 AI/Web3 전략.",
+                    bio: `연세대학교 석사 - International Trade Finance (GPA 3.9)
+Stony Brook University 학사 - Finance (GPA 4.0, Valedictorian, Summa Cum Laude)
+
+경력:
+- Holo Studio CEO (2025 - 현재)
+- Duel Partners 대표 (2023-2025) - 한국 혁신기술 글로벌 상용화
+- Ares Corporation Global BD Director (2022-2023) - 동남아/중동 국방부 협상
+- 법무법인 대륙아주 Intern (2022) - 5B+ KRW M&A 실사, 300B+ 재무 리스크 평가
+
+"국경을 넘어 산업, 사람, 아이디어를 연결합니다."`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
+                },
+                {
+                    name: "0xchew Hyun",
+                    role: "Chief Builder",
+                    bio: `Growth Hacker | Web3 Native
+
+- MintedLab 창업 - Korea's #1 Web3 Marketing Firm
+- 150+ 글로벌 Web3 프로젝트 마케팅 & 투자
+- $1M+ Web3 sales 달성
+- Tier 1 파트너십: Polkadot, Algorand, Casper, DFINITY, HOPR
+
+"무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
+                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
+                },
+                {
+                    name: "Yongwan Kim",
+                    role: "CTO",
+                    bio: `Deep Tech Builder | Infrastructure Master
+
+- EA FIFA/Sports, Netmarble 출신 (10년+)
+- 1M+ CCU 인프라 구축 경험
+- 99.8%+ Uptime Kubernetes 운영
+- 5+ 인프라 관련 특허 보유
+
+"스케일은 이미 증명되었습니다."`,
+                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
+                    linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
                     name: "Seongdae Kim",
@@ -513,13 +566,6 @@ export default function Company() {
                     bio: "Unity, Netmarble, Smilegate 출신. 실시간 렌더링 파이프라인 마스터.",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
-                },
-                {
-                    name: "0xchew Hyun",
-                    role: "Chief Builder",
-                    bio: "MintedLab 창업. 150+ Web3 프로젝트 투자/마케팅. Polkadot, Algorand, DFINITY 파트너십.",
-                    image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
-                    linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
