@@ -708,19 +708,19 @@ export default function Home() {
                             <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-600/50" />
                         </h3>
                         
-                        <p className="text-lg md:text-xl text-neutral-300 max-w-3xl leading-relaxed font-light tracking-wide">
+                        <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 max-w-4xl leading-relaxed font-light tracking-wide">
                             {tech.intro.main_pre}
-                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-blue-400 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(96,165,250,0.5)] hover:drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]">
                                 {tech.intro.main_bold}
                             </span>
                             {tech.intro.main_post}
                             <br/><br/>
                             {tech.intro.sub_pre}
-                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-indigo-400 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(129,140,248,0.5)] hover:drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]">
                                 {tech.intro.sub_bold1}
                             </span>
                             {tech.intro.sub_mid}
-                            <span className="text-white font-bold transition-all duration-300 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.6)] cursor-default border-b border-white/10 hover:border-indigo-500 pb-0.5">
+                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(52,211,153,0.5)] hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]">
                                 {tech.intro.sub_bold2}
                             </span>
                             {tech.intro.sub_post}
