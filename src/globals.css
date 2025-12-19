@@ -133,6 +133,38 @@
 
 .glass-card:hover {
   background: rgba(15, 15, 15, 0.7);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 0 30px rgba(79, 70, 229, 0.1);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.2), inset 0 0 20px rgba(79, 70, 229, 0.05);
+}
+
+@keyframes scan {
+  0% { top: -100px; }
+  100% { top: 100%; }
+}
+
+.sci-fi-border {
+  position: relative;
+  background: linear-gradient(90deg, transparent 50%, rgba(99, 102, 241, 0.1) 50%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+.sci-fi-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sci-fi-corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.sci-fi-corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.sci-fi-corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.sci-fi-corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.group:hover .sci-fi-corner {
+  width: 20px;
+  height: 20px;
+  border-color: rgba(99, 102, 241, 1);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }

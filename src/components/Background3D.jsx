@@ -132,10 +132,25 @@ export default function Background3D() {
             // Scroll interaction for warp speed
             // Using window.scrollY directly for simplicity
             const scrollFactor = Math.min(window.scrollY * 0.005, 2.0); 
-            const currentSpeed = 0.1 + scrollFactor; // Base speed + scroll influence
+            
+            // Random surge effect for "occasional emphasis"
+            // occasional burst of speed/intensity
+            const timeSeconds = Date.now() / 1000;
+            const surge = Math.sin(timeSeconds * 0.5) > 0.9 ? 2.0 : 1.0; // Every few seconds, double speed
+            const currentSpeed = (0.1 + scrollFactor) * surge; 
 
             // Animate Dust (Warp Effect)
             const positions = dustSystem.geometry.attributes.position.array;
+            
+            // Pulse color intensity during surge
+            if (surge > 1.0) {
+                dustMat.color.setHex(0xc7d2fe); // Lighter indigo
+                dustMat.opacity = 0.8;
+            } else {
+                dustMat.color.setHex(0xa5b4fc); // Original
+                dustMat.opacity = 0.6;
+            }
+
             for(let i=0; i<dustCount; i++) {
                 // Move particles towards camera (positive Z)
                 positions[i*3+2] += currentSpeed; 

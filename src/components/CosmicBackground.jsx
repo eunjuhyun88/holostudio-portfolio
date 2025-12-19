@@ -22,10 +22,12 @@ export default function CosmicBackground() {
             {/* 1. Deep Space Base */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]" />
 
-            {/* 2. Dynamic Starfield */}
-            <div className="absolute inset-0 opacity-80 mix-blend-screen">
+            {/* 2. Dynamic Starfield with occasional flash */}
+            <div className="absolute inset-0 opacity-80 mix-blend-screen animate-[pulse_8s_ease-in-out_infinite]">
                 <Starfield density={1200} speed={0.05} />
             </div>
+            {/* Occasional background flare */}
+            <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay animate-[ping_10s_cubic-bezier(0,0,0.2,1)_infinite] opacity-0" />
 
             {/* 3. Nebula Clouds (Parallax Layer 1 - Slow) */}
             <motion.div 
