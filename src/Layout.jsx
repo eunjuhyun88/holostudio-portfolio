@@ -128,7 +128,7 @@ function LayoutContent({ children }) {
                                         <Link 
                                             to={createPageUrl('Products')}
                                             className={`pl-5 pr-2 py-2 font-medium text-sm transition-colors ${
-                                                location.pathname === '/Products' || isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                                location.pathname === '/Products' || isProductActive ? 'text-white' : 'text-neutral-300 hover:text-white'
                                             }`}
                                         >
                                             {link.name}
@@ -136,7 +136,7 @@ function LayoutContent({ children }) {
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
                                                 <button className={`pr-3 pl-1 py-2 font-medium text-sm transition-colors flex items-center ${
-                                                    isProductActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                                    isProductActive ? 'text-white' : 'text-neutral-300 hover:text-white'
                                                 }`}>
                                                     <ChevronDown className="w-3 h-3" />
                                                 </button>
@@ -159,7 +159,7 @@ function LayoutContent({ children }) {
                                     <button 
                                         key={link.name}
                                         onClick={() => scrollToSection(link.path.substring(2))} 
-                                        className="px-5 py-2 font-medium text-sm text-neutral-400 hover:text-white transition-colors"
+                                        className="px-5 py-2 font-medium text-sm text-neutral-300 hover:text-white transition-colors"
                                     >
                                         {link.name}
                                     </button>
@@ -168,7 +168,7 @@ function LayoutContent({ children }) {
                                         key={link.name}
                                         to={createPageUrl(link.path.substring(1))}
                                         className={`px-5 py-2 font-medium text-sm transition-colors ${
-                                            location.pathname === link.path ? 'text-white' : 'text-neutral-400 hover:text-white'
+                                            location.pathname === link.path ? 'text-white' : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
                                         {link.name}
@@ -186,18 +186,18 @@ function LayoutContent({ children }) {
                         {/* Language Toggle */}
                         <button 
                             onClick={toggleLanguage}
-                            className="flex items-center gap-2 px-4 h-full rounded-full hover:bg-white/5 text-xs font-mono text-neutral-400 hover:text-white transition-all border border-transparent hover:border-white/10"
+                            className="flex items-center gap-2 px-4 h-full rounded-full hover:bg-white/5 text-xs font-mono text-neutral-300 hover:text-white transition-all border border-transparent hover:border-white/10"
                         >
                             <Globe className="w-3 h-3" />
-                            <span className={language === 'en' ? 'text-white' : 'text-neutral-400'}>EN</span>
+                            <span className={language === 'en' ? 'text-white' : 'text-neutral-300'}>EN</span>
                             <span className="text-neutral-700">/</span>
-                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-400'}>KO</span>
+                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-300'}>KO</span>
                         </button>
 
                         <div className="w-px h-4 bg-white/10" />
 
                         <a href="https://docsend.com/view/6xxvddwgkmbg2a8i" target="_blank" rel="noopener noreferrer">
-                            <Button variant="ghost" className="rounded-full text-sm text-neutral-400 hover:text-white hover:bg-white/5 px-5 h-9">
+                            <Button variant="ghost" className="rounded-full text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-5 h-9">
                                 {language === 'en' ? 'Deck' : '소개서'}
                             </Button>
                         </a>
@@ -236,9 +236,9 @@ function LayoutContent({ children }) {
                                         onClick={toggleLanguage}
                                         className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
                                     >
-                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-400'}>English</span>
+                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-300'}>English</span>
                                         <span className="text-neutral-700">|</span>
-                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-400'}>한국어</span>
+                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-300'}>한국어</span>
                                     </button>
                                 </div>
 
@@ -270,7 +270,7 @@ function LayoutContent({ children }) {
                                                             >
                                                                 <Link
                                                                     to={createPageUrl(product.path.substring(1))}
-                                                                    className="block py-1 text-neutral-400 hover:text-white text-base"
+                                                                    className="block py-1 text-neutral-300 hover:text-white text-base"
                                                                     onClick={() => setMobileMenuOpen(false)}
                                                                 >
                                                                     {product.name}
@@ -349,7 +349,7 @@ function LayoutContent({ children }) {
                                 </div>
                                 <span>HOLO<span className="text-indigo-500">STUDIO</span></span>
                             </Link>
-                            <p className="text-neutral-400 max-w-sm mb-6 text-sm leading-relaxed">
+                            <p className="text-neutral-300 max-w-sm mb-6 text-sm leading-relaxed">
                                 {language === 'en' 
                                     ? 'Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.'
                                     : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰할 수 있는 AI 비즈니스를 구축합니다.'}
@@ -361,7 +361,7 @@ function LayoutContent({ children }) {
                             <ul className="space-y-2">
                                 {products.map(prod => (
                                     <li key={prod.name}>
-                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-400 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                                             <span className="w-1 h-1 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                                             {prod.name}
                                         </Link>
@@ -373,17 +373,17 @@ function LayoutContent({ children }) {
                         <div>
                             <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Company' : '회사소개'}</h4>
                             <ul className="space-y-2">
-                                <li><Link to={createPageUrl('Company')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'About Us' : '소개'}</Link></li>
-                                <li><Link to={createPageUrl('Company') + '#team'} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Team' : '팀'}</Link></li>
-                                <li><button onClick={() => scrollToSection('proof')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
-                                <li><button onClick={() => scrollToSection('roadmap')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
-                                <li><Link to={createPageUrl('Showcase3D')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? '3D Showcase' : '3D 쇼케이스'}</Link></li>
-                                <li><Link to={createPageUrl('Contact')} className="text-neutral-400 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
+                                <li><Link to={createPageUrl('Company')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'About Us' : '소개'}</Link></li>
+                                <li><Link to={createPageUrl('Company') + '#team'} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Team' : '팀'}</Link></li>
+                                <li><button onClick={() => scrollToSection('proof')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
+                                <li><button onClick={() => scrollToSection('roadmap')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
+                                <li><Link to={createPageUrl('Showcase3D')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? '3D Showcase' : '3D 쇼케이스'}</Link></li>
+                                <li><Link to={createPageUrl('Contact')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-400 text-sm">
+                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-300 text-sm">
                         <p>© 2025 HOLOSTUDIO. All rights reserved.</p>
                         <div className="flex gap-6 mt-4 md:mt-0">
                             <a href="#" className="hover:text-white">Privacy Policy</a>

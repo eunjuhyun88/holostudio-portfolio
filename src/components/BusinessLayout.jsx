@@ -157,7 +157,7 @@ export default function BusinessLayout({
     // Dynamic Styles - Always Dark Mode base
     const textPrimary = "text-white";
     const textSecondary = "text-neutral-300";
-    const textMuted = "text-neutral-400";
+    const textMuted = "text-neutral-300";
     const border = "border-white/10";
     const bgCard = "bg-white/5";
     const bgCardHover = "hover:border-white/20";
@@ -320,7 +320,7 @@ export default function BusinessLayout({
                                 <div className="relative z-10 space-y-8 pt-8 border-t border-white/10">
                                     {stats.map((stat, i) => (
                                         <div key={i} className="group">
-                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
+                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-300 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
                                             <div className="text-lg font-mono font-medium text-white group-hover:text-white transition-colors">{stat.value}</div>
                                         </div>
                                     ))}
@@ -403,7 +403,7 @@ export default function BusinessLayout({
                                 <div className="grid grid-cols-2 gap-3">
                                     {stats.map((stat, i) => (
                                         <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold mb-1">{stat.label}</div>
+                                            <div className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold mb-1">{stat.label}</div>
                                             <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
                                         </div>
                                     ))}
@@ -780,7 +780,7 @@ export default function BusinessLayout({
                                             LIVE METRICS
                                         </span>
                                         <h3 className="text-3xl font-bold mb-4">Performance Dashboard</h3>
-                                        <p className="text-neutral-400 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
+                                        <p className="text-neutral-300 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
                                         <AnalyticsDashboard type={theme} theme={theme} />
                                     </div>
                                 </ColorSection>
@@ -791,7 +791,7 @@ export default function BusinessLayout({
                         <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
                             <div className={`rounded-2xl p-4 ${s.sidebarBg} border border-white/10 shadow-2xl flex items-center justify-between gap-4 backdrop-blur-xl`}>
                                 <div>
-                                    <div className="text-xs text-neutral-400 uppercase font-bold">Get Started</div>
+                                    <div className="text-xs text-neutral-300 uppercase font-bold">Get Started</div>
                                     <div className="font-bold text-white text-sm">{name}</div>
                                 </div>
                                 {primaryButton.url ? (
