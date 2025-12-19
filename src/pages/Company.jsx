@@ -351,7 +351,7 @@ export default function Company() {
                 text: [
                     "We did not arrive here by accident. We have been building systems where value, rules, and trust must work at scale—for over a decade.",
                     "At EA, Netmarble, and Smilegate, we designed real-time infrastructure and virtual economies for millions of users.",
-                    "We learned early: Without enforcement, value does not persist."
+                    "We learned early: Without enforceability, value does not persist."
                 ]
             },
             chapters: [
@@ -451,7 +451,7 @@ export default function Company() {
                 text: [
                     "우리가 이곳에 이른 것은 우연이 아닙니다. 지난 10년 동안 우리는 가치, 규칙, 신뢰가 대규모로 작동해야 하는 시스템을 구축해 왔습니다.",
                     "EA, 넷마블, 스마일게이트에서 수백만 명의 사용자를 위한 실시간 인프라와 가상 경제를 설계했습니다.",
-                    "우리는 일찍이 깨달았습니다. 강제력이 없다면 가치는 지속되지 않습니다."
+                    "우리는 일찍이 깨달았습니다. 구속력이 없다면 가치는 지속되지 않습니다."
                 ]
             },
             chapters: [
