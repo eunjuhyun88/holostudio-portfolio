@@ -241,7 +241,7 @@ const FounderCard = ({ name, role, bio, image, delay, linkedin }) => (
             
             <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
             
-            <p className="text-neutral-500 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all">
+            <p className="text-neutral-400 leading-snug text-xs line-clamp-4 hover:line-clamp-none transition-all">
                 {bio}
             </p>
         </div>
@@ -719,7 +719,7 @@ export default function Company() {
                                     {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                                 </h3>
                             </div>
-                            <p className="text-neutral-500 max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base">
+                            <p className="text-neutral-400 max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base">
                                 {language === 'en' 
                                     ? "A team combining deep AI research, AAA gaming production, and Web3 economics."
                                     : "딥 AI 리서치, AAA 게임 프로덕션, 그리고 Web3 경제 설계를 결합한 팀입니다."}

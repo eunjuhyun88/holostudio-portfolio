@@ -294,7 +294,7 @@ export default function Elememetal() {
                 <div className="space-y-8">
                     <div>
                         <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Deterministic Combat Engine" : "결정론적 전투 엔진"}</h4>
-                        <p className="text-neutral-400 leading-relaxed mb-6">
+                        <p className="text-neutral-300 leading-relaxed mb-6">
                             {language === 'en' 
                                 ? "Unlike traditional TCGs that rely on RNG for damage variance, EleMEMEtal uses a fully deterministic state machine. Every interaction is calculable, allowing for 'Solve' states where skilled players can guarantee victory 3 turns in advance." 
                                 : "데미지 변동을 위해 RNG에 의존하는 기존 TCG와 달리, EleMEMEtal은 완전한 결정론적 상태 머신을 사용합니다. 모든 상호작용은 계산 가능하며, 숙련된 플레이어는 3턴 전에 승리를 확정 짓는 '해결(Solve)' 상태를 만들어낼 수 있습니다."}
@@ -308,7 +308,7 @@ export default function Elememetal() {
                     </div>
                     <div>
                         <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Dynamic NFT Metadata" : "동적 NFT 메타데이터"}</h4>
-                        <p className="text-neutral-400 leading-relaxed">
+                        <p className="text-neutral-300 leading-relaxed">
                             {language === 'en'
                                 ? "Cards evolve based on match history. Win rates, tournament badges, and 'Shiny' status are written directly to the NFT metadata via Oracle updates, permanently increasing the asset's provenance value."
                                 : "카드는 경기 기록에 따라 진화합니다. 승률, 토너먼트 배지, '샤이니' 상태가 오라클 업데이트를 통해 NFT 메타데이터에 직접 기록되어 자산의 가치를 영구적으로 높입니다."}
