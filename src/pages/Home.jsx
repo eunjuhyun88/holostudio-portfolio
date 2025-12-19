@@ -314,6 +314,16 @@ export default function Home() {
             }
         },
         ko: {
+            intro: {
+                main_pre: "우리는 무질서한 AI 생성을 신뢰할 수 있는 자산으로 전환하는 ",
+                main_bold: "감사 추적, IP 보호, 결제 레일",
+                main_post: "을 제공합니다.",
+                sub_pre: "기업에게는 ",
+                sub_bold1: "컴플라이언스와 안전",
+                sub_mid: "을, 창작자에게는 ",
+                sub_bold2: "소유권과 수익",
+                sub_post: "을 보장합니다."
+            },
             title: "핵심 기술 인프라",
             sub: "Full-Media AI Guardrails를 위한 독자적인 기술 스택.",
             pipeline: {
