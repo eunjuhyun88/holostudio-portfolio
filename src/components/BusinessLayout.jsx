@@ -156,7 +156,7 @@ export default function BusinessLayout({
 
     // Dynamic Styles - Always Dark Mode base
     const textPrimary = "text-white";
-    const textSecondary = "text-neutral-400";
+    const textSecondary = "text-neutral-300";
     const textMuted = "text-neutral-500";
     const border = "border-white/10";
     const bgCard = "bg-white/5";
