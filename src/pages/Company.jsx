@@ -401,9 +401,9 @@ export default function Company() {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "Cross-border Strategy & Risk Management",
-                    bio: `Managed 300B+ KRW Financial Risk portfolios.
-Ex-CEO of Duel Partners, led global tech commercialization.
-Stony Brook Valedictorian (Summa Cum Laude).`,
+                    bio: `Managed 300B+ KRW Risk portfolios & $4M+ M&A Due Diligence.
+Ex-CEO of Duel Partners, Ares Corp Global BD.
+Stony Brook Valedictorian (GPA 4.0).`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -431,8 +431,8 @@ Lead Architect for global AAA titles.`,
                     name: "0xchew Hyun",
                     role: "Chief Builder",
                     motto: "Zero to One GTM Execution",
-                    bio: `Founded MintedLab, Korea's #1 Web3 Growth Firm.
-Led GTM for 150+ projects including Polkadot & Algorand.
+                    bio: `Founded MintedLab (#1 Web3 Growth Firm, $1M+ Revenue).
+Led GTM for 150+ projects: Polkadot, Algorand, DFINITY.
 Scaled communities from zero to millions of users.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
@@ -522,9 +522,9 @@ Scaled communities from zero to millions of users.`,
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "Cross-border Strategy & Risk Management",
-                    bio: `3,000억 원 규모 리스크 평가 및 M&A 실사 주도.
-전 Duel Partners 대표, 글로벌 기술 사업화 총괄.
-Stony Brook 수석 졸업 (Summa Cum Laude).`,
+                    bio: `50억+ M&A 실사 · 3,000억+ 리스크 평가 주도.
+전 Duel Partners 대표, Ares Corp 글로벌 BD.
+연세대 석사 · Stony Brook 수석 졸업 (GPA 4.0).`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -552,8 +552,8 @@ Stony Brook 수석 졸업 (Summa Cum Laude).`,
                     name: "0xchew Hyun",
                     role: "Chief Builder",
                     motto: "Zero to One GTM Execution",
-                    bio: `국내 1위 Web3 그로스 펌 MintedLab 창업.
-Polkadot, Algorand 등 150+ 글로벌 프로젝트 GTM 총괄.
+                    bio: `MintedLab 창업 (국내 1위 Web3 마케팅, $1M+ 매출).
+150+ 프로젝트 GTM: Polkadot, Algorand, DFINITY.
 커뮤니티 0 to Million 스케일업 경험.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
