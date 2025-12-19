@@ -279,6 +279,16 @@ export default function Home() {
 
     const techContent = {
         en: {
+            intro: {
+                main_pre: "We provide the ",
+                main_bold: "audit trails, IP protection, and payment rails",
+                main_post: " that turn chaotic AI generation into a trusted asset class.",
+                sub_pre: "For enterprises, this means ",
+                sub_bold1: "compliance and safety",
+                sub_mid: ". For creators, it means ",
+                sub_bold2: "ownership and revenue",
+                sub_post: "."
+            },
             title: "Core Infrastructure",
             sub: "Agent Action Verification Stack",
             pipeline: {
