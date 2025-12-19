@@ -293,12 +293,13 @@ export default function Home() {
                 ]
             },
             depin: {
-                title: "DePIN GPU Mesh",
-                desc: "Decentralized Physical Infrastructure Network democratizing safety compute.",
+                tag: "DePIN GPU MESH",
+                title: "The Engine of Trust",
+                desc: "Verification must be cheaper than generation. We built a decentralized GPU mesh to drive the marginal cost of safety to zero.",
                 features: [
-                    { icon: Network, title: "Heterogeneous Compute", desc: "Unifying GB200 to Consumer GPUs." },
-                    { icon: Cpu, title: "MIG Slicing", desc: "Optimized resource allocation via Multi-Instance GPU." },
-                    { icon: Database, title: "Distributed Training", desc: "Decentralized checkpointing for model evolution." }
+                    { icon: Network, title: "Unstoppable Scale", desc: "Aggregating 10,000+ consumer & enterprise nodes into a single verification layer." },
+                    { icon: Cpu, title: "90% Cost Reduction", desc: "Optimized MIG slicing makes verification affordable for every creator." },
+                    { icon: Database, title: "Sovereign Infrastructure", desc: "Owned by the community, not Big Tech. Resistant to censorship." }
                 ]
             }
         },
@@ -317,12 +318,13 @@ export default function Home() {
                 ]
             },
             depin: {
-                title: "DePIN GPU 메쉬",
-                desc: "안전성 컴퓨팅 접근을 민주화하는 탈중앙화 물리 인프라 네트워크.",
+                tag: "DePIN GPU 메쉬",
+                title: "신뢰의 엔진",
+                desc: "검증 비용은 생성 비용보다 저렴해야 합니다. 우리는 안전성의 한계 비용을 0으로 만들기 위해 탈중앙화 GPU 메쉬를 구축했습니다.",
                 features: [
-                    { icon: Network, title: "이기종 컴퓨팅", desc: "GB200부터 소비자용 GPU까지 단일 메쉬로 통합." },
-                    { icon: Cpu, title: "MIG 슬라이싱", desc: "Multi-Instance GPU 분할을 통한 최적화된 자원 배분." },
-                    { icon: Database, title: "분산 학습", desc: "견고한 모델 진화를 위한 탈중앙 체크포인트 저장." }
+                    { icon: Network, title: "멈추지 않는 확장성", desc: "10,000+ 소비자 및 기업용 노드를 단일 검증 레이어로 통합." },
+                    { icon: Cpu, title: "90% 비용 절감", desc: "최적화된 MIG 슬라이싱으로 모든 창작자가 감당 가능한 검증 비용 실현." },
+                    { icon: Database, title: "주권 인프라", desc: "빅테크가 아닌 커뮤니티가 소유하며, 검열에 저항하는 인프라." }
                 ]
             }
         }
@@ -707,8 +709,9 @@ export default function Home() {
                         
                         <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
                             <div>
-                                <h3 className="text-3xl font-bold mb-6">{tech.depin.title}</h3>
-                                <p className="text-lg text-neutral-200 leading-relaxed mb-10">
+                                <div className="text-sm font-mono text-indigo-500 mb-2 uppercase tracking-widest">{tech.depin.tag}</div>
+                                <h3 className="text-3xl md:text-4xl font-black mb-6 text-white leading-tight">{tech.depin.title}</h3>
+                                <p className="text-lg text-neutral-200 leading-relaxed mb-10 border-l-2 border-indigo-500/30 pl-6">
                                     {tech.depin.desc}
                                 </p>
                                 <div className="space-y-6">
