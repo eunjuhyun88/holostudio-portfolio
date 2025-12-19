@@ -459,10 +459,10 @@ export default function Home() {
 
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 opacity-80">
+                <div className="absolute inset-0 opacity-100">
                     <CosmicBackground />
                 </div>
-                <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0 opacity-70">
                     <Background3D />
                 </div>
                 
@@ -477,7 +477,7 @@ export default function Home() {
                 {/* Sci-Fi Grid Overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
                 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/30 to-[#050505] opacity-50" />
                 
                 {/* HUD Corners */}
                 <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
