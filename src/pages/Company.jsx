@@ -401,9 +401,9 @@ export default function Company() {
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "Connecting industries, people, and ideas across borders.",
-                    bio: `Stony Brook Valedictorian (Summa Cum Laude).
+                    bio: `Managed 300B+ KRW Financial Risk & Cross-border Gov Negotiations.
 Spearheaded Global Tech Commercialization as CEO of Duel Partners.
-Managed 300B+ KRW Financial Risk & Cross-border Gov Negotiations.`,
+Stony Brook Valedictorian (Summa Cum Laude).`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -411,9 +411,9 @@ Managed 300B+ KRW Financial Risk & Cross-border Gov Negotiations.`,
                     name: "Yongwan Kim",
                     role: "CTO",
                     motto: "Scale has already been proven.",
-                    bio: `10+ years at EA FIFA/Sports & Netmarble.
-Built 1M+ CCU Infrastructure, 99.8% Uptime.
-Holder of 5+ Infrastructure Patents.`,
+                    bio: `Architected 1M+ CCU Global Infrastructure at EA & Netmarble.
+Achieved 99.99% Uptime for Massive Multiplayer Games.
+Holder of 5+ Core Infrastructure Patents.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
@@ -421,7 +421,9 @@ Holder of 5+ Infrastructure Patents.`,
                     name: "Seongdae Kim",
                     role: "Chief Architect",
                     motto: "Master of real-time rendering pipelines.",
-                    bio: "Unity, Netmarble, Smilegate veteran. Expert in high-performance graphics engine architecture.",
+                    bio: `15+ Years developing Core Engines at Unity & Netmarble.
+Expert in Real-time Rendering & High-Performance Optimization.
+Lead Architect for Global AAA Titles.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
@@ -429,9 +431,9 @@ Holder of 5+ Infrastructure Patents.`,
                     name: "0xchew Hyun",
                     role: "Chief Builder",
                     motto: "Experienced firsthand what works and what fails.",
-                    bio: `Founder of MintedLab (#1 Web3 Marketing Firm).
-Marketed 150+ Global Projects, $1M+ Sales.
-Partners: Polkadot, Algorand, DFINITY.`,
+                    bio: `Founded MintedLab, Korea's #1 Web3 Marketing Firm.
+Led Go-to-Market for 150+ Global Projects (Polkadot, Algorand).
+Proven Track Record of Scaling Communities from Zero to Millions.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
@@ -513,9 +515,9 @@ Partners: Polkadot, Algorand, DFINITY.`,
                     name: "Sungchul (Steven) Park",
                     role: "CEO",
                     motto: "국경을 넘어 산업, 사람, 아이디어를 연결합니다.",
-                    bio: `Stony Brook 수석 졸업 (Summa Cum Laude).
+                    bio: `3000억 원 규모 금융 리스크 관리 및 해외 국방부 협상 총괄.
 Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 주도.
-3000억 원 규모 금융 리스크 관리 및 해외 국방부 협상 총괄.`,
+Stony Brook 수석 졸업 (Summa Cum Laude).`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
@@ -523,9 +525,9 @@ Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 �
                     name: "Yongwan Kim",
                     role: "CTO",
                     motto: "스케일은 이미 증명되었습니다.",
-                    bio: `EA FIFA/Sports, 넷마블 10년+ 경력.
-100만 동시접속 인프라 및 99.8% 가용성 구축.
-인프라 관련 특허 5건 보유.`,
+                    bio: `EA FIFA/Netmarble에서 100만 동시접속 글로벌 인프라 설계.
+대규모 게임 서비스의 99.99% 가용성 달성 및 운영.
+서버/인프라 핵심 특허 5건 보유.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
@@ -533,7 +535,9 @@ Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 �
                     name: "Seongdae Kim",
                     role: "Chief Architect",
                     motto: "실시간 렌더링 파이프라인 마스터.",
-                    bio: "Unity, Netmarble, Smilegate 출신. 고성능 그래픽스 엔진 아키텍처 전문가.",
+                    bio: `Unity, 넷마블 등에서 15년 이상 코어 엔진 개발 리드.
+실시간 렌더링 및 고성능 최적화 아키텍처 전문가.
+글로벌 AAA 타이틀의 메인 아키텍트 역임.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
@@ -541,9 +545,9 @@ Duel Partners 대표로서 국내 기술의 글로벌 사업화 및 엑시트 �
                     name: "0xchew Hyun",
                     role: "Chief Builder",
                     motto: "무엇이 작동하고 무엇이 실패하는지 직접 경험했습니다.",
-                    bio: `MintedLab(국내 1위 Web3 마케팅) 창업.
-150+ 글로벌 프로젝트 마케팅, $1M+ 매출.
-Polkadot, Algorand, DFINITY 파트너십.`,
+                    bio: `국내 1위 Web3 마케팅 펌 MintedLab 창업.
+150개 이상의 글로벌 프로젝트 GTM 총괄 (Polkadot, Algorand 등).
+제로 베이스에서 대규모 커뮤니티 스케일링 성공 경험.`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
