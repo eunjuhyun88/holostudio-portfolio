@@ -157,23 +157,23 @@ export default function Home() {
                 tag: "Trust Layer for AI Economy",
                 title: "HOLO STUDIO",
                 sub: "콘텐츠는 무한하지만, 신뢰는 희소합니다. 우리는 신뢰를 인프라로 만듭니다.",
-                desc: "AI는 창작 비용을 0으로 만들었지만, 검증 비용은 폭등했습니다. 우리는 코드로서 안전을 보장하고, 출처를 증명하며, 가치를 분배하는 Trust Layer를 구축합니다.",
-                cta1: "사업 포트폴리오 보기",
-                cta2: "제휴 및 문의"
+                desc: "AI가 확장될수록 신뢰가 병목이 됩니다. 우리는 AI 콘텐츠를 안전하고, 소유 가능하며, 수익화할 수 있는 검증 레이어를 구축합니다.",
+                cta1: "솔루션 보기",
+                cta2: "파트너십 문의"
             },
             market: {
-                year: { val: "2025", label: "AI 규제/안전성 전환점" },
-                eu: { val: "EU Act", label: "DSA 및 AI Act 시행" },
-                size: { val: "$80B", label: "AI 콘텐츠 시장 (2030)" },
-                gap: { val: "$13B+", label: "게이밍/3D 안전성 갭" }
+                year: { val: "2025", label: "규제 컴플라이언스 원년" },
+                eu: { val: "EU Act", label: "DSA & AI Act 의무화" },
+                size: { val: "$80B", label: "AI 콘텐츠 경제 (2030)" },
+                gap: { val: "$13B+", label: "신뢰 인프라 시장 기회" }
             },
             problem: {
-                title: "해결하려는 핵심 문제",
-                sub: "\"AI가 만들어내는 'slop'들이 불신을 낳고 있습니다.\" — Steve Hirsch\n신뢰는 더 이상 기본값이 아닙니다. 설계되어야 합니다.",
+                title: "시장 실패 (The Market Failure)",
+                sub: "\"AI가 만들어내는 'slop'들이 불신을 낳고 있습니다.\" — Steve Hirsch\n인프라 없이는 AI 경제가 작동할 수 없습니다.",
                 cards: [
-                    { title: "안전의 부재", desc: "딥페이크와 유해 콘텐츠가 플랫폼의 생존을 위협합니다.", badge: "AI 리스크" },
-                    { title: "출처의 소멸", desc: "무한한 생성 속에서 원작자는 지워지고 있습니다.", badge: "출처 불명" },
-                    { title: "가치의 유출", desc: "바이럴이 되어도 창작자가 아닌 플랫폼이 가치를 독점합니다.", badge: "가치 독점" }
+                    { title: "플랫폼 리스크", desc: "딥페이크와 유해 콘텐츠는 플랫폼에게 실존적인 법적/브랜드 리스크를 초래합니다.", badge: "Enterprise Risk" },
+                    { title: "IP 및 수익 손실", desc: "검증되지 않은 AI 콘텐츠의 범람으로 창작자는 수익을 잃고 있습니다.", badge: "Lost Revenue" },
+                    { title: "경제적 비효율", desc: "출처 증명 없이는 가치가 올바른 소유자나 컴퓨팅 제공자에게 전달될 수 없습니다.", badge: "Inefficiency" }
                 ]
             },
             thesis: {
