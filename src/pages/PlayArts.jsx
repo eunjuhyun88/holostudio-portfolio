@@ -126,48 +126,46 @@ export default function PlayArts() {
             ]
         },
         ko: {
-            tag: "Trust Layer: Provenance + Value | AI 콘텐츠의 Git",
+            tag: "가치 라우팅 프로토콜 • 공정한 가치 분배 • 미디어 경제",
             primaryButtonText: "앱 실행",
-            oneLiner: "AI 콘텐츠의 \"누가 만들었는가?\"와 \"가치는 어디로?\"에 답하는 프로토콜.",
+            oneLiner: "미디어 경제에서 콘텐츠 제작자와 AI에게 공정하고 투명한 가치 분배를 보장하며, 착취 없이 혁신이 번성하는 창의적인 경제 인프라를 구축합니다.",
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        "누가 만들었는가? 가치는 어디로 가는가?"
-                    </p>
-                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        AI가 콘텐츠를 무한히 생성하는 시대. 창작자들은 AI 모델이 자신의 스타일을 모방해도 크레딧을 받지 못합니다. 바이럴이 되어도 플랫폼이 가치를 독점합니다.
+                        창작자와 AI가 공존하는 새로운 미디어 르네상스를 위해, 가치의 흐름을 완전히 재정의합니다.
                     </p>
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
-                        PlayArts는 이 연결고리를 복원합니다. AI 콘텐츠의 출처를 생성 시점에 암호학적으로 고정하고, 분산 검증 네트워크가 이를 확정합니다. 가치가 생성되면 창작자와 확산 기여자에게 자동으로 분배됩니다.
+                        PlayArts는 이 연결고리를 복원합니다. 우리는 AI 시대를 위한 출처(Provenance) 레이어를 구축하여,
+                        모든 미디어가 그 역사, 기여자, 가치 분배 로직을 온체인 상에 담도록 보장합니다.
                     </p>
                 </>
             ),
             problemPoints: [
                 {
                     title: "귀속의 위기",
-                    description: "창작자들이 AI 모방에 대해 크레딧을 받지 못함."
+                    description: "창작자들은 AI 모델이 동의나 크레딧 없이 자신의 스타일을 모방함에 따라 소유권을 잃고 있습니다."
                 },
                 {
                     title: "가치 유출",
-                    description: "플랫폼이 바이럴 콘텐츠의 가치를 100% 독점."
+                    description: "플랫폼이 바이럴 AI 콘텐츠의 가치를 100% 독점하며, 프롬프트 작성자와 리믹스 제작자는 아무런 보상을 받지 못합니다."
                 },
                 {
                     title: "출처의 공백",
-                    description: "AI 콘텐츠의 '누가, 무엇을, 어떻게'를 검증할 표준 부재."
+                    description: "웹 전반에 걸쳐 AI 콘텐츠 생성의 '누가, 무엇을, 어떻게'를 검증할 표준이 존재하지 않습니다."
                 }
             ],
             solutionSteps: [
                 {
                     title: "맥락 앵커링 (MCP)",
-                    description: "Model Context Passport로 생성 맥락 포착."
+                    description: "Model Context Passport를 통해 생성 맥락(프롬프트, 모델, 파라미터)을 소스 단계에서 포착합니다."
                 },
                 {
                     title: "센티넬 검증",
-                    description: "분산 노드가 Perceptual Hashing으로 기원과 무결성 검증."
+                    description: "분산된 노드 네트워크가 지각 해싱(Perceptual Hashing)을 사용하여 콘텐츠의 기원과 무결성을 검증합니다."
                 },
                 {
                     title: "가치 라우팅",
-                    description: "스마트 계약이 원작자와 확산 기여자에게 자동 분배."
+                    description: "스마트 계약은 가치가 생성될 때 원작자와 확산 기여자에게 자동으로 보상을 분배합니다."
                 }
             ],
             screenshots: [
@@ -197,36 +195,36 @@ export default function PlayArts() {
             useCases: [
                 {
                     title: "AI 파워 유저",
-                    description: "프롬프트와 창작물 소유권 증명."
+                    description: "프롬프트 엔지니어링 및 창작물에 대한 소유권을 증명하세요."
                 },
                 {
-                    title: "밈 크리에이터",
-                    description: "바이럴 추적, 영향력에서 수익 창출."
+                    title: "밈(Meme) 크리에이터",
+                    description: "밈의 바이럴 확산을 추적하고 그 영향력으로부터 수익을 창출하세요."
                 },
                 {
                     title: "엔터프라이즈 브랜드",
-                    description: "IP 보호, 브랜드 자산 진위 검증."
+                    description: "IP 권리를 보호하고 브랜드 자산의 진위 여부를 검증하세요."
                 }
             ],
             businessModel: "검증 수수료 (노드 수익) + 프로토콜 거래 수수료 + B2B SDK 라이선싱.",
             roadmap: [
                 {
-                    quarter: "2025 상반기",
+                    quarter: "2025년 상반기",
                     status: "in_progress",
-                    title: "기반 구축",
-                    items: ["Sentinel v3.0", "MCP 레지스트리 v1.0", "MemePing v1.0"]
+                    title: "기반 구축 단계",
+                    items: ["Sentinel v3.0 프로덕션", "MCP 레지스트리 v1.0", "MemePing v1.0 출시"]
                 },
                 {
-                    quarter: "2025 하반기",
+                    quarter: "2025년 하반기",
                     status: "upcoming",
-                    title: "확장",
-                    items: ["Strong PoC (온체인)", "퍼블릭 노드 베타", "크로스체인"]
+                    title: "확장 단계",
+                    items: ["강력한 PoC (온체인)", "퍼블릭 노드 베타", "크로스체인 지원"]
                 },
                 {
-                    quarter: "2026",
+                    quarter: "2026년",
                     status: "upcoming",
                     title: "탈중앙화",
-                    items: ["무허가 노드", "DAO 거버넌스", "ZK-PoC"]
+                    items: ["무허가 노드", "DAO 거버넌스", "ZK-PoC 연구"]
                 }
             ],
             customerStories: [
