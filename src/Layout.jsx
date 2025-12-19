@@ -191,9 +191,9 @@ function LayoutContent({ children }) {
                             className="flex items-center gap-2 px-4 h-full rounded-full hover:bg-white/5 text-xs font-mono text-neutral-400 hover:text-white transition-all border border-transparent hover:border-white/10"
                         >
                             <Globe className="w-3 h-3" />
-                            <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>EN</span>
+                            <span className={language === 'en' ? 'text-white' : 'text-neutral-400'}>EN</span>
                             <span className="text-neutral-700">/</span>
-                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>KO</span>
+                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-400'}>KO</span>
                         </button>
 
                         <div className="w-px h-4 bg-white/10" />
@@ -238,9 +238,9 @@ function LayoutContent({ children }) {
                                         onClick={toggleLanguage}
                                         className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
                                     >
-                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-500'}>English</span>
+                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-400'}>English</span>
                                         <span className="text-neutral-700">|</span>
-                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-500'}>한국어</span>
+                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-400'}>한국어</span>
                                     </button>
                                 </div>
 
@@ -384,7 +384,7 @@ function LayoutContent({ children }) {
                         </div>
                     </div>
                     
-                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
+                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-400 text-sm">
                         <p>© 2025 HOLOSTUDIO. All rights reserved.</p>
                         <div className="flex gap-6 mt-4 md:mt-0">
                             <a href="#" className="hover:text-white">Privacy Policy</a>

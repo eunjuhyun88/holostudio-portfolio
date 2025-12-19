@@ -403,7 +403,7 @@ export default function BusinessLayout({
                                 <div className="grid grid-cols-2 gap-3">
                                     {stats.map((stat, i) => (
                                         <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">{stat.label}</div>
+                                            <div className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold mb-1">{stat.label}</div>
                                             <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
                                         </div>
                                     ))}
@@ -780,7 +780,7 @@ export default function BusinessLayout({
                                             LIVE METRICS
                                         </span>
                                         <h3 className="text-3xl font-bold mb-4">Performance Dashboard</h3>
-                                        <p className="text-neutral-500 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
+                                        <p className="text-neutral-400 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
                                         <AnalyticsDashboard type={theme} theme={theme} />
                                     </div>
                                 </ColorSection>
