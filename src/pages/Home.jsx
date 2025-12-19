@@ -510,10 +510,10 @@ export default function Home() {
                             <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />
                             <div className="absolute -right-4 top-0 h-full w-1 border-r border-white/10 hidden md:block" />
                             
-                            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light tracking-wide px-4">
+                            <p className="text-lg md:text-xl text-neutral-200 leading-relaxed font-light tracking-wide px-4">
                                 {t.hero.sub}
                                 <br className="hidden md:block"/>
-                                <span className="text-neutral-500 text-sm md:text-base mt-4 block font-mono border-t border-white/5 pt-4">
+                                <span className="text-neutral-200 text-sm md:text-base mt-4 block font-mono border-t border-white/5 pt-4">
                                     <span className="text-indigo-500 mr-2">::</span>
                                     {t.hero.desc}
                                 </span>
@@ -554,36 +554,36 @@ export default function Home() {
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar text-center md:text-left">
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.year.label}</div>
+                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.year.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.eu.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.eu.label}</div>
+                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.eu.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.size.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.size.label}</div>
+                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.size.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
                             <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.gap.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-500 uppercase tracking-wider">{t.market.gap.label}</div>
+                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.gap.label}</div>
                         </div>
                     </div>
                     
                     {/* Partners / Backers - From Playarts screenshot */}
                     <div className="border-t border-white/5 pt-8">
-                        <p className="text-center text-xs text-neutral-500 uppercase tracking-widest mb-6">Selected & Backed By</p>
+                        <p className="text-center text-xs text-neutral-200 uppercase tracking-widest mb-6">Selected & Backed By</p>
                         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
                             {/* NVIDIA Inception */}
                             <div className="flex items-center gap-2">
                                 <span className="font-bold text-lg text-white">NVIDIA</span>
-                                <span className="text-xs text-neutral-400 border-l border-neutral-600 pl-2">Inception</span>
+                                <span className="text-xs text-neutral-200 border-l border-neutral-600 pl-2">Inception</span>
                             </div>
                             
                             {/* Google Cloud */}
                             <div className="flex items-center gap-2">
                                 <span className="font-bold text-lg text-white">Google Cloud</span>
-                                <span className="text-xs text-neutral-400">Partner</span>
+                                <span className="text-xs text-neutral-200">Partner</span>
                             </div>
 
                             {/* Alchemy */}
@@ -594,7 +594,7 @@ export default function Home() {
                             {/* OnePiece Labs */}
                             <div className="flex items-center gap-2">
                                 <span className="font-bold text-lg text-white">OnePiece</span>
-                                <span className="text-xs text-neutral-400">Labs</span>
+                                <span className="text-xs text-neutral-200">Labs</span>
                             </div>
 
                             {/* AppWorks */}
@@ -652,8 +652,8 @@ export default function Home() {
                                     </div>
                                 </Floating>
                                 <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
-                                <p className="text-neutral-400 mb-6 text-base leading-relaxed">{card.desc}</p>
-                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-300 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
+                                <p className="text-neutral-200 mb-6 text-base leading-relaxed">{card.desc}</p>
+                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-200 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
                                     {card.badge}
                                 </span>
                             </motion.div>
@@ -668,7 +668,7 @@ export default function Home() {
                     <div className="mb-20">
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
                         <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
-                        <p className="text-lg md:text-xl text-neutral-400 max-w-3xl leading-relaxed">
+                        <p className="text-lg md:text-xl text-neutral-200 max-w-3xl leading-relaxed">
                             We are building the fundamental safety and value layers for the autonomous AI economy.
                             <br/><br/>
                             Beyond simple content creation, we engineer the verifying protocols, decentralized infrastructure, and economic models that make AI sustainable.
@@ -677,7 +677,7 @@ export default function Home() {
 
                     <div className="mb-24">
                         <h3 className="text-2xl font-bold mb-8 text-white">Core Infrastructure</h3>
-                        <p className="text-neutral-500 mb-8 max-w-2xl">Our proprietary technology stack for Full-Media AI Guardrails.</p>
+                        <p className="text-neutral-200 mb-8 max-w-2xl">Our proprietary technology stack for Full-Media AI Guardrails.</p>
                         
                         <div className="relative">
                             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
@@ -693,7 +693,7 @@ export default function Home() {
                                         
                                         <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
                                         <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
-                                        <div className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{step.desc}</div>
+                                        <div className="text-xs text-neutral-200 leading-relaxed group-hover:text-neutral-200 transition-colors">{step.desc}</div>
                                     </div>
                                 ))}
                             </div>
@@ -706,7 +706,7 @@ export default function Home() {
                         <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
                             <div>
                                 <h3 className="text-3xl font-bold mb-6">{tech.depin.title}</h3>
-                                <p className="text-lg text-neutral-400 leading-relaxed mb-10">
+                                <p className="text-lg text-neutral-200 leading-relaxed mb-10">
                                     {tech.depin.desc}
                                 </p>
                                 <div className="space-y-6">
@@ -724,7 +724,7 @@ export default function Home() {
                                             </Floating>
                                             <div>
                                                 <div className="font-bold text-white text-base mb-1">{feat.title}</div>
-                                                <div className="text-sm text-neutral-500">{feat.desc}</div>
+                                                <div className="text-sm text-neutral-200">{feat.desc}</div>
                                             </div>
                                         </div>
                                     ))}
@@ -763,7 +763,7 @@ export default function Home() {
                                     className="relative z-10 border border-white/10 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
                                 >
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-                                    <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-4 text-center font-mono">Application Layer</div>
+                                    <div className="text-[10px] uppercase tracking-widest text-neutral-200 mb-4 text-center font-mono">Application Layer</div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
@@ -771,7 +771,7 @@ export default function Home() {
                                                 <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             </motion.div>
                                             <div className="font-bold text-white text-sm">EleMEMEtal</div>
-                                            <div className="text-[10px] text-neutral-500 mt-1">Game Asset Ownership</div>
+                                            <div className="text-[10px] text-neutral-200 mt-1">Game Asset Ownership</div>
                                         </div>
                                         <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
                                             <BorderBeam size={100} duration={8} delay={4} colorFrom="#10b981" colorTo="#059669" />
@@ -779,7 +779,7 @@ export default function Home() {
                                                 <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             </motion.div>
                                             <div className="font-bold text-white text-sm">Stockhoo</div>
-                                            <div className="text-[10px] text-neutral-500 mt-1">Market Intelligence</div>
+                                            <div className="text-[10px] text-neutral-200 mt-1">Market Intelligence</div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -892,11 +892,11 @@ export default function Home() {
             {/* Section 04: COMPANY THESIS */}
             <section className="py-24 border-y border-white/10 text-center relative z-10 bg-transparent">
                 <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
+                    <h2 className="text-xs font-mono text-neutral-200 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
                     <p className="text-2xl md:text-4xl font-medium leading-tight mb-12">
                         "{t.thesis.main}"
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono text-neutral-400">
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono text-neutral-200">
                         {t.thesis.keywords.map((kw, i) => (
                             <span key={i} className="flex items-center gap-2">
                                 <span className={`w-2 h-2 rounded-full ${['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]}`}></span>
@@ -913,8 +913,8 @@ export default function Home() {
             <section id="products" className="relative z-10">
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
-                     <h2 className="text-xl font-heavy text-neutral-500 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
-                     <p className="text-xl text-neutral-300">{t.business_intro.sub}</p>
+                     <h2 className="text-xl font-heavy text-neutral-200 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
+                     <p className="text-xl text-neutral-200">{t.business_intro.sub}</p>
                 </div>
 
                 {/* Sticky Visual Container - Desktop Only */}
@@ -1025,7 +1025,7 @@ export default function Home() {
                                                 {prod.name}
                                             </h3>
 
-                                            <p className="text-neutral-300 leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none">
+                                            <p className="text-neutral-200 leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none">
                                                 {prod.desc[language]}
                                             </p>
 
@@ -1064,7 +1064,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.milestones.title}</h2>
-                        <p className="text-neutral-500 max-w-2xl">{t.milestones.sub}</p>
+                        <p className="text-neutral-200 max-w-2xl">{t.milestones.sub}</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
@@ -1093,7 +1093,7 @@ export default function Home() {
                                 </Floating>
                                 <div>
                                     <div className="text-lg font-bold text-white mb-2 leading-tight">{m.title}</div>
-                                    <div className="text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors">{m.desc}</div>
+                                    <div className="text-sm text-neutral-200 group-hover:text-neutral-200 transition-colors">{m.desc}</div>
                                 </div>
                             </motion.div>
                         ))}
@@ -1121,7 +1121,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
                         <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
-                        <p className="text-neutral-500 text-base md:text-lg">{t.contact.sub}</p>
+                        <p className="text-neutral-200 text-base md:text-lg">{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link to={createPageUrl("Contact")}>
