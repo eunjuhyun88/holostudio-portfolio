@@ -352,7 +352,7 @@ function LayoutContent({ children }) {
                             <p className="text-neutral-300 max-w-sm mb-6 text-sm leading-relaxed">
                                 {language === 'en' 
                                     ? 'Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.'
-                                    : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰할 수 있는 AI 비즈니스를 구축합니다.'}
+                                    : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.'}
                             </p>
                         </div>
                         
