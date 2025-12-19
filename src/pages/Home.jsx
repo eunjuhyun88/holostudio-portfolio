@@ -674,9 +674,9 @@ export default function Home() {
                         <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">TECHNOLOGY & STRATEGY</h2>
                         <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">The Infrastructure of Trust</h3>
                         <p className="text-lg md:text-xl text-neutral-200 max-w-3xl leading-relaxed">
-                            We are building the fundamental safety and value layers for the autonomous AI economy.
+                            We build the <span className="text-white font-bold">verification, provenance, and settlement layers</span> required for the autonomous AI economy.
                             <br/><br/>
-                            Beyond simple content creation, we engineer the verifying protocols, decentralized infrastructure, and economic models that make AI sustainable.
+                            Beyond content creation, we engineer <span className="text-white font-bold">protocols, decentralized infrastructure, and economic rails</span> that make AI outcomes auditable, verifiable, and payable.
                         </p>
                     </div>
 
