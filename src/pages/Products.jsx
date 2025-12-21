@@ -154,7 +154,7 @@ export default function Products() {
             <ProductsBackground theme={theme} />
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 overflow-hidden z-10">
+            <section className="relative pt-32 pb-12 px-6 overflow-hidden z-10">
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
@@ -170,7 +170,7 @@ export default function Products() {
                         }`}>
                             {t.hero.tag}
                         </div>
-                        <h1 className={`text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight ${
+                        <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {theme === 'dark' ? (
@@ -179,7 +179,7 @@ export default function Products() {
                                 t.hero.title
                             )}
                         </h1>
-                        <p className={`text-lg md:text-xl max-w-3xl mx-auto font-medium ${
+                        <p className={`text-base md:text-lg max-w-3xl mx-auto font-medium ${
                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                         }`}>
                             {t.hero.subtitle}
