@@ -153,34 +153,22 @@ export default function Products() {
             {/* Products Unique Background */}
             <ProductsBackground theme={theme} />
 
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-12 px-6 overflow-hidden z-10">
-
+            {/* Hero Section - Condensed */}
+            <section className="relative pt-28 pb-8 px-6 overflow-hidden z-10">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center mb-8"
+                        className="text-center"
                     >
-                        <div className={`inline-block px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-6 ${
-                            theme === 'dark'
-                                ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                                : 'bg-neutral-900 text-white'
-                        }`}>
-                            {t.hero.tag}
-                        </div>
-                        <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight ${
+                        <h1 className={`text-2xl md:text-3xl font-black mb-2 tracking-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
-                            {theme === 'dark' ? (
-                                <GlitchText glitchIntensity="low">{t.hero.title}</GlitchText>
-                            ) : (
-                                t.hero.title
-                            )}
+                            {t.hero.tag}
                         </h1>
-                        <p className={`text-base md:text-lg max-w-3xl mx-auto font-medium ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                        <p className={`text-sm md:text-base max-w-2xl mx-auto ${
+                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                         }`}>
                             {t.hero.subtitle}
                         </p>
