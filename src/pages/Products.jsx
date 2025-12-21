@@ -7,9 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '@/components/ThemeContext';
 import { useLanguage } from '@/components/LanguageContext';
 import SEO from '@/components/SEO';
-import CosmicBackground from '@/components/CosmicBackground';
-import Background3D from '@/components/Background3D';
-import ScrollMotionBackground from '@/components/ScrollMotionBackground';
+import ProductsBackground from '@/components/ProductsBackground';
 import SciFiCard from '@/components/SciFiCard';
 import GlitchText from '@/components/GlitchText';
 
@@ -152,26 +150,8 @@ export default function Products() {
                 description={t.hero.subtitle}
             />
 
-            {/* Global Background Layer - Only dark mode */}
-            {theme === 'dark' && (
-                <div className="fixed inset-0 z-0 pointer-events-none">
-                    <div className="absolute inset-0 opacity-100">
-                        <CosmicBackground theme={theme} />
-                    </div>
-                    <div className="absolute inset-0 opacity-75">
-                        <Background3D theme={theme} />
-                    </div>
-                    <ScrollMotionBackground theme={theme} />
-                    
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/60 to-[#050505] opacity-60" />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.08)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
-                    
-                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/20 rounded-tl-3xl m-8" />
-                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/20 rounded-tr-3xl m-8" />
-                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/20 rounded-bl-3xl m-8" />
-                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/20 rounded-br-3xl m-8" />
-                </div>
-            )}
+            {/* Products Unique Background */}
+            <ProductsBackground theme={theme} />
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 px-6 overflow-hidden z-10">
@@ -350,48 +330,34 @@ function ProductCard({ product, theme, language, t, delay }) {
                     animated={true}
                     className="h-full"
                 >
-                    {/* Image Container */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-black/50">
-                        <img 
-                            src={product.image} 
-                            alt={product.name}
-                            className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        {/* Status Badge with Holographic Effect */}
-                        <div className={`absolute top-6 right-6 px-4 py-2 rounded-full text-xs font-bold border backdrop-blur-md ${status.color} shadow-lg`}>
+                    {/* Content */}
+                    <div className="p-8 relative">
+                        {/* Status Badge */}
+                        <div className={`absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${status.color}`}>
                             {status.label}
                         </div>
-                        
-                        {/* Animated Data Lines */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-8">
-                        <div className={`text-xs font-bold uppercase tracking-widest mb-3 ${product.color.text} flex items-center gap-2`}>
+                        <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${product.color.text} flex items-center gap-2`}>
                             <span className={`w-2 h-2 rounded-full ${product.color.bg} animate-pulse`} />
                             {product.tagline[language]}
                         </div>
 
-                        <h3 className="text-3xl font-black mb-4 text-white">
+                        <h3 className="text-4xl font-black mb-4 text-white">
                             <GlitchText glitchIntensity="low">{product.name}</GlitchText>
                         </h3>
 
-                        <p className="mb-6 leading-relaxed text-neutral-300">
+                        <p className="mb-8 leading-relaxed text-neutral-300 text-base">
                             {product.description[language]}
                         </p>
 
-                        {/* Features Grid */}
-                        <div className="grid grid-cols-2 gap-2 mb-6">
+                        {/* Features List */}
+                        <div className="space-y-2 mb-8">
                             {product.features[language].map((feature, i) => (
                                 <div
                                     key={i}
-                                    className="px-3 py-2 rounded-lg text-xs font-medium border bg-white/5 border-white/10 text-neutral-300 hover:border-indigo-500/50 transition-colors"
+                                    className="flex items-center gap-3 text-sm text-neutral-300"
                                 >
-                                    <span className="text-indigo-400 mr-1.5">›</span>
-                                    {feature}
+                                    <div className={`w-1.5 h-1.5 rounded-full ${product.color.bg}`} />
+                                    <span className="font-medium">{feature}</span>
                                 </div>
                             ))}
                         </div>
@@ -425,66 +391,42 @@ function ProductCard({ product, theme, language, t, delay }) {
             transition={{ delay, duration: 0.5 }}
         >
             <Link to={createPageUrl(product.path.substring(1))}>
-                <div className="group relative rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 h-full bg-white border-neutral-200 hover:shadow-2xl shadow-lg">
-                    {/* Image Container */}
-                    <div className={`relative aspect-[4/3] overflow-hidden ${
-                        theme === 'dark' ? 'bg-black/50' : 'bg-neutral-100'
-                    }`}>
-                        <img 
-                            src={product.image} 
-                            alt={product.name}
-                            className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500"
-                        />
-                        {/* Gradient Overlay */}
-                        <div className={`absolute inset-0 bg-gradient-to-t ${
-                            theme === 'dark' ? 'from-black/80 via-transparent' : 'from-white/80 via-transparent'
-                        } to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                        
-                        {/* Status Badge */}
-                        <div className={`absolute top-6 right-6 px-4 py-2 rounded-full text-xs font-bold border backdrop-blur-md ${status.color}`}>
-                            {status.label}
-                        </div>
+                <div className="group relative rounded-3xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 h-full bg-white border-neutral-200 hover:shadow-2xl shadow-lg p-8">
+                    {/* Status Badge */}
+                    <div className={`absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-bold border ${status.color}`}>
+                        {status.label}
                     </div>
 
-                    {/* Content */}
-                    <div className="p-8">
-                        <div className={`text-xs font-bold uppercase tracking-widest mb-3 ${product.color.text}`}>
-                            {product.tagline[language]}
-                        </div>
+                    <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${product.color.text} flex items-center gap-2`}>
+                        <span className={`w-2 h-2 rounded-full ${product.color.bg}`} />
+                        {product.tagline[language]}
+                    </div>
 
-                        <h3 className={`text-3xl font-black mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
-                            {product.name}
-                        </h3>
+                    <h3 className="text-4xl font-black mb-4 text-neutral-900">
+                        {product.name}
+                    </h3>
 
-                        <p className={`mb-6 leading-relaxed ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                        }`}>
-                            {product.description[language]}
-                        </p>
+                    <p className="mb-8 leading-relaxed text-neutral-700 text-base">
+                        {product.description[language]}
+                    </p>
 
-                        {/* Features Grid */}
-                        <div className="grid grid-cols-2 gap-2 mb-6">
-                            {product.features[language].map((feature, i) => (
-                                <div
-                                    key={i}
-                                    className={`px-3 py-2 rounded-lg text-xs font-medium border ${
-                                        theme === 'dark'
-                                            ? 'bg-white/5 border-white/10 text-neutral-300'
-                                            : 'bg-neutral-50 border-neutral-200 text-neutral-700'
-                                    }`}
-                                >
-                                    {feature}
-                                </div>
-                            ))}
-                        </div>
+                    {/* Features List */}
+                    <div className="space-y-2 mb-8">
+                        {product.features[language].map((feature, i) => (
+                            <div
+                                key={i}
+                                className="flex items-center gap-3 text-sm text-neutral-700"
+                            >
+                                <div className={`w-1.5 h-1.5 rounded-full ${product.color.bg}`} />
+                                <span className="font-medium">{feature}</span>
+                            </div>
+                        ))}
+                    </div>
 
-                        {/* CTA */}
-                        <div className={`flex items-center gap-2 font-bold ${product.color.text} group-hover:gap-3 transition-all`}>
-                            {product.status === 'coming-soon' ? t.cta.soon : t.cta.explore}
-                            <ArrowRight className="w-4 h-4" />
-                        </div>
+                    {/* CTA */}
+                    <div className={`flex items-center gap-2 font-bold ${product.color.text} group-hover:gap-3 transition-all`}>
+                        {product.status === 'coming-soon' ? t.cta.soon : t.cta.explore}
+                        <ArrowRight className="w-4 h-4" />
                     </div>
                 </div>
             </Link>
