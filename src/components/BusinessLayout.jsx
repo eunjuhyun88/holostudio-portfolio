@@ -158,12 +158,20 @@ export default function BusinessLayout({
 
     // Dynamic Styles based on theme
     const textPrimary = isLight ? "text-neutral-900" : "text-white";
-    const textSecondary = isLight ? "text-neutral-700" : "text-neutral-300";
-    const textMuted = isLight ? "text-neutral-600" : "text-neutral-300";
+    const textSecondary = isLight ? "text-neutral-800" : "text-neutral-200";
+    const textMuted = isLight ? "text-neutral-700" : "text-neutral-300";
     const border = isLight ? "border-neutral-300/30" : "border-white/10";
     const bgCard = isLight ? "bg-white" : "bg-white/5";
     const bgCardHover = isLight ? "hover:shadow-xl" : "hover:border-white/20";
-    const accentText = isLight ? "text-violet-700" : s.accent;
+    
+    // Enhanced accent text with better contrast
+    const accentText = isLight 
+        ? (theme === 'aidguardian' ? 'text-blue-700' : 
+           theme === 'playarts' ? 'text-yellow-700' : 
+           theme === 'elememetal' ? 'text-orange-700' : 
+           theme === 'stockhoo' ? 'text-emerald-700' : 
+           'text-violet-700')
+        : s.accent;
     
     // Dynamic background color using Motion for smooth interpolation
     const currentSectionColor = isLight
@@ -379,9 +387,9 @@ export default function BusinessLayout({
                                     {stats.map((stat, i) => (
                                         <div key={i} className="group">
                                             <div className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-2 transition-colors ${
-                                                isLight ? 'text-neutral-600' : 'text-neutral-300'
+                                                isLight ? 'text-neutral-700' : 'text-neutral-300'
                                             }`}>{stat.label}</div>
-                                            <div className={`text-lg font-mono font-medium transition-colors ${
+                                            <div className={`text-lg font-mono font-bold transition-colors ${
                                                 isLight ? 'text-neutral-900' : 'text-white'
                                             }`}>{stat.value}</div>
                                         </div>
@@ -438,12 +446,16 @@ export default function BusinessLayout({
                         <ColorSection onInView={() => setActiveSection(getSectionIndex('overview'))}>
                             {/* Mobile Title Block */}
                             <div className="lg:hidden mb-8">
-                                <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-4 text-xs font-medium group`}>
+                                <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 transition-colors mb-4 text-xs font-bold group ${
+                                    isLight ? 'text-neutral-700 hover:text-neutral-900' : 'text-neutral-300 hover:text-white'
+                                }`}>
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                     {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
-                                <h1 className={`text-3xl md:text-4xl font-bold tracking-tighter mb-2 ${textPrimary} drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>{name}</h1>
-                                <div className={`text-xs font-bold ${accentText} uppercase tracking-wider`}>{tag}</div>
+                                <h1 className={`text-3xl md:text-4xl font-bold tracking-tighter mb-2 ${
+                                    isLight ? 'text-neutral-900' : 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'
+                                }`}>{name}</h1>
+                                <div className={`text-xs font-bold uppercase tracking-wider ${accentText}`}>{tag}</div>
                             </div>
 
                             <MouseGlowText 
@@ -465,8 +477,12 @@ export default function BusinessLayout({
                                     transition={{ delay: 0.2 }}
                                     className={`relative max-w-3xl mb-12 md:mb-16`}
                                 >
-                                    <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />
-                                    <div className={`text-base md:text-xl leading-relaxed ${textSecondary} font-light pl-4 md:pl-6`}>
+                                    <div className={`absolute -left-4 top-0 h-full w-1 border-l hidden md:block ${
+                                        isLight ? 'border-neutral-300' : 'border-white/10'
+                                    }`} />
+                                    <div className={`text-base md:text-xl leading-relaxed font-light pl-4 md:pl-6 ${
+                                        isLight ? 'text-neutral-800' : 'text-neutral-200'
+                                    }`}>
                                         {story}
                                     </div>
                                 </motion.div>
@@ -507,10 +523,12 @@ export default function BusinessLayout({
                             <div id="features">
                                 <ColorSection onInView={() => setActiveSection(getSectionIndex('features'))}>
                                     <div className="mb-12 md:mb-20">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                            isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
+                                        }`}>
                                             KEY FEATURES
                                         </span>
-                                        <h3 className="text-2xl md:text-3xl font-bold mb-8">Capabilities</h3>
+                                        <h3 className={`text-2xl md:text-3xl font-bold mb-8 ${textPrimary}`}>Capabilities</h3>
                                         <div className="grid md:grid-cols-3 gap-6">
                                             {features.map((feature, i) => (
                                                <div key={i} className={`relative p-8 rounded-3xl border transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden ${
@@ -548,8 +566,12 @@ export default function BusinessLayout({
                                                         )}
                                                     </div>
 
-                                                    <h4 className={`relative z-10 text-2xl font-bold mb-3 ${textPrimary} tracking-tight`}>{feature.title}</h4>
-                                                    <p className={`relative z-10 text-lg ${textSecondary} leading-relaxed`}>{feature.description}</p>
+                                                    <h4 className={`relative z-10 text-xl font-bold mb-3 tracking-tight ${
+                                                       isLight ? 'text-neutral-900' : 'text-white'
+                                                   }`}>{feature.title}</h4>
+                                                    <p className={`relative z-10 leading-relaxed ${
+                                                        isLight ? 'text-neutral-700' : 'text-neutral-200'
+                                                    }`}>{feature.description}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -565,10 +587,12 @@ export default function BusinessLayout({
                                 {/* Problem Section */}
                                 <div>
                                     <div className="mb-10">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
+                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${
+                                            isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `bg-white/5 border-white/10 ${s.accent}`
+                                        }`}>
                                             THE CHALLENGE
                                         </span>
-                                        <h3 className="text-2xl md:text-3xl font-bold mb-2">Why this matters now</h3>
+                                        <h3 className={`text-2xl md:text-3xl font-bold mb-2 ${textPrimary}`}>Why this matters now</h3>
                                     </div>
                                     
                                     <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar space-y-0 md:space-y-12">
@@ -579,8 +603,12 @@ export default function BusinessLayout({
                                                         ? 'bg-white border-neutral-200 hover:shadow-lg shadow-md'
                                                         : 'bg-white/[0.02] border-white/5 hover:bg-white/[0.04]'
                                                 }`}>
-                                                    <h4 className={`text-xl font-bold mb-4 ${textPrimary}`}>{p.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-lg`}>{p.description}</p>
+                                                    <h4 className={`text-xl font-bold mb-4 ${
+                                                        isLight ? 'text-neutral-900' : 'text-white'
+                                                    }`}>{p.title}</h4>
+                                                    <p className={`leading-relaxed ${
+                                                        isLight ? 'text-neutral-700 text-base' : 'text-neutral-200 text-lg'
+                                                    }`}>{p.description}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -590,10 +618,12 @@ export default function BusinessLayout({
                                 {/* Solution Section */}
                                 <div className="pt-0 md:pt-32">
                                     <div className="mb-10">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${accentText} bg-white/5 border-white/10`}>
+                                        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border mb-6 ${
+                                            isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `bg-white/5 border-white/10 ${s.accent}`
+                                        }`}>
                                             OUR SOLUTION
                                         </span>
-                                        <h3 className="text-2xl md:text-3xl font-bold mb-2">How we solve it</h3>
+                                        <h3 className={`text-2xl md:text-3xl font-bold mb-2 ${textPrimary}`}>How we solve it</h3>
                                     </div>
                                     
                                     <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
@@ -611,8 +641,12 @@ export default function BusinessLayout({
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold mb-3 text-2xl">{step.title}</h4>
-                                                    <p className={`${textSecondary} leading-relaxed text-lg md:text-lg`}>{step.description}</p>
+                                                    <h4 className={`font-bold mb-3 text-xl ${
+                                                        isLight ? 'text-neutral-900' : 'text-white'
+                                                    }`}>{step.title}</h4>
+                                                    <p className={`leading-relaxed ${
+                                                        isLight ? 'text-neutral-700 text-base' : 'text-neutral-200 text-lg'
+                                                    }`}>{step.description}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -627,10 +661,12 @@ export default function BusinessLayout({
                             <div id="specs">
                                 <ColorSection onInView={() => setActiveSection(getSectionIndex('specs'))}>
                                     <div className="mb-12 md:mb-20">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                            isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
+                                        }`}>
                                             SPECIFICATIONS
                                         </span>
-                                        <h3 className="text-3xl font-bold mb-8">Technical Breakdown</h3>
+                                        <h3 className={`text-3xl font-bold mb-8 ${textPrimary}`}>Technical Breakdown</h3>
                                         <div className={`grid grid-cols-1 md:grid-cols-2 gap-px rounded-3xl overflow-hidden border ${
                                             isLight
                                                 ? 'bg-neutral-300/30 border-neutral-300/30'
@@ -642,10 +678,16 @@ export default function BusinessLayout({
                                                         ? 'bg-white hover:bg-neutral-50'
                                                         : 'bg-[#0A0A0A] hover:bg-[#111]'
                                                 }`}>
-                                                    <div className={`text-xs font-mono uppercase tracking-widest ${textMuted} mb-3 group-hover:${s.accent} transition-colors`}>
+                                                    <div className={`text-xs font-mono uppercase tracking-widest mb-3 transition-colors ${
+                                                        isLight 
+                                                            ? `text-neutral-700 group-hover:${accentText.replace('text-', 'text-')}` 
+                                                            : `${textMuted} group-hover:${s.accent}`
+                                                    }`}>
                                                         {spec.label}
                                                     </div>
-                                                    <div className={`text-lg font-medium ${textPrimary} font-mono`}>
+                                                    <div className={`text-lg font-bold font-mono ${
+                                                        isLight ? 'text-neutral-900' : 'text-white'
+                                                    }`}>
                                                         {spec.value}
                                                     </div>
                                                 </div>
@@ -660,14 +702,20 @@ export default function BusinessLayout({
                         {detailedSpecs && (
                             <div id="deep-dive">
                                 <ColorSection onInView={() => setActiveSection(getSectionIndex('deep-dive'))}>
-                                    <div className="mb-12 md:mb-20 pt-8 border-t border-white/5">
+                                    <div className={`mb-12 md:mb-20 pt-8 border-t ${
+                                        isLight ? 'border-neutral-200' : 'border-white/5'
+                                    }`}>
                                         <div className="grid md:grid-cols-12 gap-8">
                                             <div className="md:col-span-4">
-                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                                    isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
+                                                }`}>
                                                     DEEP DIVE
                                                 </span>
-                                                <h3 className="text-2xl md:text-3xl font-bold mb-4">Architecture & Logic</h3>
-                                                <p className={`${textSecondary} leading-relaxed`}>
+                                                <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${textPrimary}`}>Architecture & Logic</h3>
+                                                <p className={`leading-relaxed ${
+                                                    isLight ? 'text-neutral-700' : 'text-neutral-200'
+                                                }`}>
                                                     A closer look at the underlying systems and engineering principles.
                                                 </p>
                                             </div>
@@ -690,10 +738,12 @@ export default function BusinessLayout({
                         <div id="demo">
                             <ColorSection onInView={() => setActiveSection(getSectionIndex('demo'))}>
                                 <div className="mb-12">
-                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                        isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
+                                    }`}>
                                         LIVE DEMO
                                     </span>
-                                    <h3 className="text-3xl font-bold mb-8">Interactive Preview</h3>
+                                    <h3 className={`text-3xl font-bold mb-8 ${textPrimary}`}>Interactive Preview</h3>
                                     
                                     <motion.div 
                                         initial={{ opacity: 0, y: 20 }}
@@ -729,7 +779,9 @@ export default function BusinessLayout({
                                 
                                 {/* Target Customers */}
                                 <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
-                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
+                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${
+                                        isLight ? 'text-neutral-900' : 'text-white'
+                                    }`}>
                                         <Users className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Target Customers
                                     </h3>
@@ -740,8 +792,12 @@ export default function BusinessLayout({
                                                 <div className="flex gap-3 md:gap-4">
                                                     <CheckCircle2 className={`w-5 h-5 ${accentText} flex-shrink-0 mt-0.5 md:mt-1`} />
                                                     <div>
-                                                        <div className={`font-bold ${textPrimary} text-sm md:text-base`}>{u.title}</div>
-                                                        <div className={`text-xs md:text-sm ${textMuted} mt-1`}>{u.description}</div>
+                                                        <div className={`font-bold text-sm md:text-base ${
+                                                            isLight ? 'text-neutral-900' : 'text-white'
+                                                        }`}>{u.title}</div>
+                                                        <div className={`text-xs md:text-sm mt-1 ${
+                                                            isLight ? 'text-neutral-700' : 'text-neutral-300'
+                                                        }`}>{u.description}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -751,7 +807,9 @@ export default function BusinessLayout({
 
                                 {/* Roadmap */}
                                 <div className={`p-6 md:p-10 rounded-3xl ${border} ${bgCard} backdrop-blur-sm`}>
-                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${textPrimary}`}>
+                                    <h3 className={`text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 ${
+                                        isLight ? 'text-neutral-900' : 'text-white'
+                                    }`}>
                                         <Milestone className={`w-5 h-5 md:w-6 md:h-6 ${accentText}`} />
                                         Roadmap
                                     </h3>
@@ -771,15 +829,21 @@ export default function BusinessLayout({
                                                 <div className={`absolute md:-left-1.5 md:top-1.5 w-3 h-3 rounded-full ${statusBg} hidden md:block`} />
 
                                                 <div className="flex justify-between items-center mb-1">
-                                                    <div className={`text-xs font-bold uppercase tracking-wider ${textMuted}`}>{item.quarter}</div>
+                                                    <div className={`text-xs font-bold uppercase tracking-wider ${
+                                                        isLight ? 'text-neutral-700' : 'text-neutral-300'
+                                                    }`}>{item.quarter}</div>
                                                     {item.status && (
                                                         <div className={`text-[10px] font-bold uppercase tracking-wider ${statusColor} border border-current px-2 py-0.5 rounded-full`}>
                                                             {item.status.replace('_', ' ')}
                                                         </div>
                                                     )}
                                                 </div>
-                                                <div className={`font-bold text-base md:text-lg mb-1 md:mb-2 ${textPrimary}`}>{item.title}</div>
-                                                <div className={`text-xs md:text-sm ${textSecondary}`}>
+                                                <div className={`font-bold text-base md:text-lg mb-1 md:mb-2 ${
+                                                    isLight ? 'text-neutral-900' : 'text-white'
+                                                }`}>{item.title}</div>
+                                                <div className={`text-xs md:text-sm ${
+                                                    isLight ? 'text-neutral-700' : 'text-neutral-200'
+                                                }`}>
                                                     {item.items.join(" • ")}
                                                 </div>
                                             </div>
@@ -795,8 +859,10 @@ export default function BusinessLayout({
                                     : 'bg-gradient-to-br from-[#111] to-black border-white/10'
                             }`}>
                                  <div className="relative z-10">
-                                    <div className={`text-xs font-bold uppercase tracking-widest ${accentText} mb-4`}>BUSINESS MODEL</div>
-                                    <div className={`text-xl md:text-3xl font-bold leading-relaxed max-w-3xl ${textPrimary}`}>
+                                    <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${accentText}`}>BUSINESS MODEL</div>
+                                    <div className={`text-xl md:text-3xl font-bold leading-relaxed max-w-3xl ${
+                                        isLight ? 'text-neutral-900' : 'text-white'
+                                    }`}>
                                         "{businessModel}"
                                     </div>
                                  </div>
@@ -892,11 +958,15 @@ export default function BusinessLayout({
                             <div id="analytics">
                                 <ColorSection onInView={() => setActiveSection(getSectionIndex('analytics'))}>
                                     <div className="mb-12">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${accentText} ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'}`}>
+                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                            isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
+                                        }`}>
                                             LIVE METRICS
                                         </span>
-                                        <h3 className="text-3xl font-bold mb-4">Performance Dashboard</h3>
-                                        <p className="text-neutral-300 max-w-2xl mb-8">Real-time system metrics and ecosystem growth data.</p>
+                                        <h3 className={`text-3xl font-bold mb-4 ${textPrimary}`}>Performance Dashboard</h3>
+                                        <p className={`max-w-2xl mb-8 ${
+                                            isLight ? 'text-neutral-700' : 'text-neutral-200'
+                                        }`}>Real-time system metrics and ecosystem growth data.</p>
                                         <AnalyticsDashboard type={theme} theme={theme} />
                                     </div>
                                 </ColorSection>
@@ -933,7 +1003,7 @@ export default function BusinessLayout({
 
                 {/* Bottom Navigation */}
                 <div className={`mt-24 md:mt-40 border-t ${border} pt-12 md:pt-20 pb-20 md:pb-0`}>
-                     <h3 className="text-4xl font-bold mb-12">More Products</h3>
+                     <h3 className={`text-4xl font-bold mb-12 ${textPrimary}`}>More Products</h3>
                      <div className="grid md:grid-cols-3 gap-8">
                          {['AidGuardian', 'PlayArts', 'Elememetal', 'Stockhoo'].filter(p => p.toLowerCase() !== name.replace(/\s+/g, '').toLowerCase()).slice(0, 3).map(proj => (
                              <Link key={proj} to={createPageUrl(proj)} className="group block">
@@ -945,8 +1015,12 @@ export default function BusinessLayout({
                                         </span>
                                      </div>
                                  </div>
-                                 <h4 className={`text-xl font-bold mb-2 ${isLight ? 'group-hover:text-black' : 'group-hover:text-indigo-400'} transition-colors`}>{proj}</h4>
-                                 <div className={`${textSecondary} text-sm flex items-center gap-2`}>
+                                 <h4 className={`text-xl font-bold mb-2 transition-colors ${
+                                     isLight ? 'text-neutral-900 group-hover:text-black' : 'text-white group-hover:text-indigo-400'
+                                 }`}>{proj}</h4>
+                                 <div className={`text-sm flex items-center gap-2 ${
+                                     isLight ? 'text-neutral-700' : 'text-neutral-300'
+                                 }`}>
                                      View Case Study <ArrowRight className="w-4 h-4" />
                                  </div>
                              </Link>
