@@ -559,6 +559,41 @@ export default function Home() {
     }));
 
     const [currentSection, setCurrentSection] = useState(0);
+    const heroRef = useRef(null);
+    const proofRef = useRef(null);
+    const whyNowRef = useRef(null);
+    const challengeRef = useRef(null);
+    const milestonesRef = useRef(null);
+
+    useEffect(() => {
+        const observers = [];
+        const sections = [
+            { ref: heroRef, index: 0 },
+            { ref: proofRef, index: 1 },
+            { ref: whyNowRef, index: 2 },
+            { ref: challengeRef, index: 3 },
+            { ref: milestonesRef, index: 5 }
+        ];
+
+        sections.forEach(({ ref, index }) => {
+            if (ref.current) {
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            setCurrentSection(index);
+                        }
+                    },
+                    { threshold: 0.5 }
+                );
+                observer.observe(ref.current);
+                observers.push(observer);
+            }
+        });
+
+        return () => {
+            observers.forEach(observer => observer.disconnect());
+        };
+    }, []);
 
     return (
         <motion.div 
@@ -667,18 +702,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 lg:px-12 py-20 md:py-24" ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(0);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                <section ref={heroRef} className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 lg:px-12 py-20 md:py-24">
                     <div className="max-w-5xl mx-auto text-center w-full">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -851,20 +875,9 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={proofRef} className={`min-h-screen flex flex-col items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(1);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="text-center mb-20 md:mb-24">
                             <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
@@ -942,20 +955,9 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section - Combined */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-8 lg:px-12 py-24 sm:py-28 md:py-32 relative overflow-hidden ${
+                <section ref={whyNowRef} className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-8 lg:px-12 py-24 sm:py-28 md:py-32 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(2);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`}>
                     {theme === 'dark' && (
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/3 via-transparent to-red-500/3 pointer-events-none" />
                     )}
@@ -1102,20 +1104,9 @@ export default function Home() {
 
 
                 {/* Company Thesis Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={challengeRef} className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(4);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`}>
                     <div className="max-w-6xl mx-auto text-center w-full">
                         <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
@@ -1337,20 +1328,9 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={milestonesRef} id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(5);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="mb-16 md:mb-20 text-center max-w-4xl mx-auto">
                             <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
