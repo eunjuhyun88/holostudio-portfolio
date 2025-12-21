@@ -916,7 +916,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -930,9 +930,16 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-5xl mx-auto text-center w-full">
+                    {theme === 'dark' && (
+                        <>
+                            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5 pointer-events-none" />
+                            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+                            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
+                        </>
+                    )}
+                    <div className="max-w-5xl mx-auto text-center w-full relative z-10">
                         <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
+                            theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                         }`}>
                             {language === 'en' ? 'Why Now' : '왜 지금인가'}
                         </h2>
@@ -970,9 +977,9 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ x: 4, scale: 1.01 }}
-                                    className={`p-5 md:p-6 rounded-2xl border-2 transition-all duration-300 ${
+                                    className={`p-5 md:p-6 rounded-2xl border-2 transition-all duration-300 relative group ${
                                         theme === 'dark'
-                                            ? 'bg-black/50 border-orange-500/30 hover:border-orange-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]'
+                                            ? 'bg-gradient-to-br from-orange-950/40 to-black/60 border-orange-500/30 hover:border-orange-400/60 hover:shadow-[0_0_40px_rgba(249,115,22,0.3)] backdrop-blur-sm'
                                             : 'bg-white/80 backdrop-blur-sm border-orange-300/60 hover:border-orange-400 hover:shadow-[0_8px_30px_rgba(249,115,22,0.15)]'
                                     }`}
                                 >
@@ -986,9 +993,12 @@ export default function Home() {
                                             }`}>{point.detail}</div>
                                         </div>
                                     ) : (
-                                        <p className={`text-sm md:text-base ${
-                                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                        }`}>{point.text}</p>
+                                       <p className={`text-sm md:text-base ${
+                                           theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                       }`}>{point.text}</p>
+                                    )}
+                                    {theme === 'dark' && (
+                                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                                     )}
                                 </motion.div>
                             ))}
@@ -1003,7 +1013,7 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-red-50/40 via-rose-50/30 to-pink-50/40 border-red-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -1017,10 +1027,17 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-6xl mx-auto w-full">
+                    {theme === 'dark' && (
+                        <>
+                            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-rose-500/5 pointer-events-none" />
+                            <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
+                            <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
+                        </>
+                    )}
+                    <div className="max-w-6xl mx-auto w-full relative z-10">
                         <div className="mb-16 md:mb-20 text-center max-w-4xl mx-auto">
                             <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
-                                theme === 'dark' ? 'text-red-500' : 'text-red-700'
+                                theme === 'dark' ? 'text-red-400' : 'text-red-700'
                             }`}>
                                 {t.cost.title}
                             </h2>
@@ -1050,9 +1067,9 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -2 }}
-                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border-2 text-center transition-all duration-300 ${
+                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border-2 text-center transition-all duration-300 relative group ${
                                         theme === 'dark'
-                                            ? 'bg-black/30 border-red-500/20'
+                                            ? 'bg-gradient-to-br from-red-950/40 to-black/60 border-red-500/30 hover:border-red-400/60 hover:shadow-[0_0_40px_rgba(239,68,68,0.3)] backdrop-blur-sm'
                                             : 'bg-white/80 backdrop-blur-sm border-red-300/60 hover:border-red-400 hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)]'
                                     }`}
                                 >
@@ -1062,6 +1079,9 @@ export default function Home() {
                                     <p className={`text-xs md:text-sm ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
+                                    {theme === 'dark' && (
+                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/0 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                    )}
                                 </motion.div>
                             ))}
                         </div>
@@ -1075,9 +1095,9 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -2 }}
-                                    className={`p-4 md:p-6 rounded-xl border-2 transition-all duration-300 ${
+                                    className={`p-4 md:p-6 rounded-xl border-2 transition-all duration-300 relative group ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-white/10 hover:bg-black/60 hover:border-white/20'
+                                            ? 'bg-gradient-to-br from-neutral-900/60 to-black/80 border-red-500/20 hover:border-red-400/40 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] backdrop-blur-sm'
                                             : 'bg-white/80 backdrop-blur-sm border-red-200/50 hover:border-red-300 hover:shadow-[0_4px_20px_rgba(239,68,68,0.1)]'
                                     }`}
                                 >
@@ -1087,6 +1107,9 @@ export default function Home() {
                                     <p className={`text-xs md:text-sm leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
+                                    {theme === 'dark' && (
+                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-red-500/0 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                    )}
                                 </motion.div>
                             ))}
                         </div>
