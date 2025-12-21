@@ -486,8 +486,6 @@ function ProductCard({ product, theme, language, t, delay }) {
                             <ArrowRight className="w-4 h-4" />
                         </div>
                     </div>
-
-                    </div>
                 </div>
             </Link>
         </motion.div>
