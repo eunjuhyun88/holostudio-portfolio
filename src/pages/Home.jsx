@@ -1372,35 +1372,160 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 04: COMPANY THESIS */}
-            <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
+            {/* Section 04: COMPANY THESIS - Enhanced with scroll animations */}
+            <section className={`min-h-screen flex items-center justify-center border-y relative z-10 overflow-hidden ${
                 theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
-                <div className="max-w-5xl mx-auto px-6">
-                    <h2 className={`text-sm font-mono mb-8 uppercase tracking-widest font-bold ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
-                    }`}>{t.thesis.label}</h2>
-                    <p className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-16 ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}
-                        style={theme === 'dark' ? { textShadow: '0 4px 12px rgba(0,0,0,0.5)' } : {}}
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.3, 0.5], [-100, 100]),
+                        opacity: useTransform(scrollYProgress, [0.3, 0.4, 0.5], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+
+                <div className="max-w-6xl mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center"
                     >
-                        {t.thesis.main}
-                    </p>
-                    <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono font-bold ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                    }`}>
-                        {t.thesis.keywords.map((kw, i) => (
-                            <span key={i} className="flex items-center gap-2">
-                                <span className={`w-2 h-2 rounded-full ${
-                                    theme === 'dark' 
-                                        ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
-                                        : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
-                                }`}></span>
-                                {kw}
-                            </span>
-                        ))}
-                    </div>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.35, 0.45], [30, 0])
+                            }}
+                        >
+                            {t.thesis.label}
+                        </motion.h2>
+                        
+                        {/* Main message with enhanced typography */}
+                        <div className="mb-20">
+                            {language === 'en' ? (
+                                <motion.div
+                                    style={{
+                                        y: useTransform(scrollYProgress, [0.35, 0.45], [40, 0]),
+                                        scale: useTransform(scrollYProgress, [0.35, 0.42], [0.95, 1])
+                                    }}
+                                >
+                                    <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>
+                                        Creativity is abundant.
+                                    </p>
+                                    {theme === 'dark' ? (
+                                        <MouseGlowText
+                                            as="p"
+                                            glowColor="rgba(99, 102, 241, 0.9)"
+                                            secondaryGlowColor="rgba(168, 85, 247, 0.6)"
+                                            className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8"
+                                        >
+                                            Trust is scarce.
+                                        </MouseGlowText>
+                                    ) : (
+                                        <p className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                            Trust is scarce.
+                                        </p>
+                                    )}
+                                    <p className={`text-2xl md:text-3xl lg:text-4xl font-bold leading-tight ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    }`}>
+                                        When AI becomes an economic actor,<br/>
+                                        <span className={theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'}>
+                                            trust becomes infrastructure.
+                                        </span>
+                                    </p>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    style={{
+                                        y: useTransform(scrollYProgress, [0.35, 0.45], [40, 0]),
+                                        scale: useTransform(scrollYProgress, [0.35, 0.42], [0.95, 1])
+                                    }}
+                                >
+                                    <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>
+                                        더 이상 희소한 자원은
+                                    </p>
+                                    <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>
+                                        창의성이 아닙니다.
+                                    </p>
+                                    {theme === 'dark' ? (
+                                        <MouseGlowText
+                                            as="p"
+                                            glowColor="rgba(99, 102, 241, 0.9)"
+                                            secondaryGlowColor="rgba(168, 85, 247, 0.6)"
+                                            className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8"
+                                        >
+                                            바로 신뢰입니다.
+                                        </MouseGlowText>
+                                    ) : (
+                                        <p className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                            바로 신뢰입니다.
+                                        </p>
+                                    )}
+                                </motion.div>
+                            )}
+                        </div>
+
+                        {/* Keywords with staggered animation */}
+                        <motion.div 
+                            className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.38, 0.45], [30, 0])
+                            }}
+                        >
+                            {t.thesis.keywords.map((kw, i) => (
+                                <motion.span 
+                                    key={i} 
+                                    className="flex items-center gap-3 group cursor-default"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.15, duration: 0.6 }}
+                                    whileHover={{ scale: 1.1 }}
+                                >
+                                    <motion.span 
+                                        className={`w-3 h-3 rounded-full ${
+                                            theme === 'dark' 
+                                                ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
+                                                : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
+                                        }`}
+                                        animate={{ 
+                                            scale: [1, 1.3, 1],
+                                            boxShadow: [
+                                                '0 0 0px rgba(99, 102, 241, 0)',
+                                                '0 0 20px rgba(99, 102, 241, 0.8)',
+                                                '0 0 0px rgba(99, 102, 241, 0)'
+                                            ]
+                                        }}
+                                        transition={{ 
+                                            duration: 2, 
+                                            repeat: Infinity, 
+                                            delay: i * 0.3 
+                                        }}
+                                    />
+                                    <span className="group-hover:tracking-wider transition-all duration-300">
+                                        {kw}
+                                    </span>
+                                </motion.span>
+                            ))}
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
