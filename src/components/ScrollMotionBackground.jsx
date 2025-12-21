@@ -134,31 +134,31 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
 
             {/* Animated corner decorations with pulse */}
             <motion.div 
-                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.7, 1, 0.7] }}
+                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className={`absolute top-0 left-0 w-40 h-40 border-l-[3px] border-t-[3px] rounded-tl-3xl m-8 ${
-                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-500/95 shadow-lg shadow-violet-500/10'
+                    theme === 'dark' ? 'border-indigo-400/60' : 'border-gray-300/60'
                 }`}
             />
             <motion.div 
-                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.7, 1, 0.7] }}
+                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className={`absolute top-0 right-0 w-40 h-40 border-r-[3px] border-t-[3px] rounded-tr-3xl m-8 ${
-                    theme === 'dark' ? 'border-purple-400/60' : 'border-purple-500/95 shadow-lg shadow-purple-500/10'
+                    theme === 'dark' ? 'border-purple-400/60' : 'border-gray-300/60'
                 }`}
             />
             <motion.div 
-                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.7, 1, 0.7] }}
+                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 className={`absolute bottom-0 left-0 w-40 h-40 border-l-[3px] border-b-[3px] rounded-bl-3xl m-8 ${
-                    theme === 'dark' ? 'border-blue-400/60' : 'border-indigo-500/95 shadow-lg shadow-indigo-500/10'
+                    theme === 'dark' ? 'border-blue-400/60' : 'border-gray-300/60'
                 }`}
             />
             <motion.div 
-                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.7, 1, 0.7] }}
+                animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 }}
                 className={`absolute bottom-0 right-0 w-40 h-40 border-r-[3px] border-b-[3px] rounded-br-3xl m-8 ${
-                    theme === 'dark' ? 'border-pink-400/60' : 'border-pink-500/95 shadow-lg shadow-pink-500/10'
+                    theme === 'dark' ? 'border-pink-400/60' : 'border-gray-300/60'
                 }`}
             />
             
@@ -168,12 +168,12 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     key={i}
                     style={{
                         y: useTransform(scrollYProgress, [0, 1], [Math.random() * 100, Math.random() * -500]),
-                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0, 0.4, 0] : [0, 1, 0])
+                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0, 0.4, 0] : [0, 0.5, 0])
                     }}
                     className={`absolute rounded-full ${
                         theme === 'dark' 
                             ? 'w-1 h-1 blur-[0.5px] bg-indigo-400/70' 
-                            : 'w-3 h-3 bg-violet-500/90 shadow-lg shadow-violet-500/30'
+                            : 'w-2 h-2 bg-gray-400/40'
                     }`}
                     initial={{
                         top: `${Math.random() * 100}%`,
