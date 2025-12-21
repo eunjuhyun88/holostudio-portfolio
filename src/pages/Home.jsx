@@ -917,7 +917,7 @@ export default function Home() {
 
                 {/* Why Now Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
-                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
@@ -947,10 +947,12 @@ export default function Home() {
                                     : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent px-4">
-                                {language === 'en' 
-                                    ? 'AI verification is no longer optional.' 
-                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight px-4 relative">
+                                <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                                    {language === 'en' 
+                                        ? 'AI verification is no longer optional.' 
+                                        : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                                </span>
                             </h3>
                         )}
                         <p className={`text-sm md:text-base lg:text-lg max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-4 ${
@@ -968,10 +970,10 @@ export default function Home() {
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.15, duration: 0.5 }}
                                     whileHover={{ x: 4, scale: 1.01 }}
-                                    className={`p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
+                                    className={`p-5 md:p-6 rounded-2xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/50 border-orange-500/30 hover:border-orange-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]'
-                                            : 'bg-orange-50 border-orange-200 hover:border-orange-300 hover:shadow-lg'
+                                            : 'bg-white/80 backdrop-blur-sm border-orange-300/60 hover:border-orange-400 hover:shadow-[0_8px_30px_rgba(249,115,22,0.15)]'
                                     }`}
                                 >
                                     {point.label ? (
@@ -1002,7 +1004,7 @@ export default function Home() {
 
                 {/* The Challenge Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
-                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-red-50/40 via-rose-50/30 to-pink-50/40 border-red-200/40'
                 }`} ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
@@ -1031,8 +1033,10 @@ export default function Home() {
                                     {t.cost.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent px-4">
-                                    {t.cost.sub}
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight px-4 relative">
+                                    <span className="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
+                                        {t.cost.sub}
+                                    </span>
                                 </h3>
                             )}
                         </div>
@@ -1044,10 +1048,11 @@ export default function Home() {
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border text-center ${
+                                    whileHover={{ scale: 1.02, y: -2 }}
+                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border-2 text-center transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/30 border-red-500/20'
-                                            : 'bg-red-50/50 border-red-200'
+                                            : 'bg-white/80 backdrop-blur-sm border-red-300/60 hover:border-red-400 hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)]'
                                     }`}
                                 >
                                     <div className={`text-2xl md:text-3xl font-black mb-2 ${
@@ -1068,10 +1073,11 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className={`p-4 md:p-6 rounded-xl border ${
+                                    whileHover={{ scale: 1.02, y: -2 }}
+                                    className={`p-4 md:p-6 rounded-xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-white/10'
-                                            : 'bg-white border-neutral-200'
+                                            ? 'bg-black/40 border-white/10 hover:bg-black/60 hover:border-white/20'
+                                            : 'bg-white/80 backdrop-blur-sm border-red-200/50 hover:border-red-300 hover:shadow-[0_4px_20px_rgba(239,68,68,0.1)]'
                                     }`}
                                 >
                                     <h4 className={`text-base md:text-lg font-black mb-2 ${
