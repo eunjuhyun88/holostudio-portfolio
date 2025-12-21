@@ -27,7 +27,10 @@ export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    const { scrollYProgress } = useScroll();
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
 
     const backgroundColor = useTransform(
         scrollYProgress,
@@ -49,87 +52,69 @@ export default function Home() {
     const content = {
         en: {
             hero: {
-                tag: "TRUST INFRASTRUCTURE FOR THE AI ECONOMY",
+                tag: "TRUST LAYER FOR THE AI ECONOMY",
                 title: "HOLO STUDIO",
-                sub: "AI can create infinitely. But without verification, nothing holds value.",
-                desc: "HOLO STUDIO builds the trust layer that makes AI content safe, attributable, and economically usable.",
-                cta1: "View Our Solutions",
+                sub: "Infinite Creation. Finite Trust. We engineer the infrastructure of certainty for autonomous AI.",
+                desc: "As AI scales, trust becomes the bottleneck. We build the verification layer that makes AI content safe, owned, and monetizeable for the global economy.",
+                cta1: "View Solutions",
                 cta2: "Partner With Us"
             },
-            identity: {
-                tag: "WHAT WE DO",
-                title: "As AI-generated content becomes the default, trust becomes the bottleneck.",
-                problems: [
-                    "Platforms can't verify what's real.",
-                    "Creators can't prove ownership.",
-                    "Markets can't route value correctly."
-                ],
-                solution: "HOLO STUDIO exists to solve this.",
-                approach: "We don't build a single product. We build one trust layer, expressed across safety, media, gaming, and markets."
+            market: {
+                year: { val: "88.89%", label: "AI Detection Accuracy" },
+                eu: { val: "<10ms", label: "Response Time" },
+                size: { val: "98.9%", label: "ROC AUC" },
+                gap: { val: "100%", label: "Brand Safety Accuracy" }
             },
-            proofWorks: {
-                tag: "PROOF IT WORKS",
-                title: "This is not a concept. This is working infrastructure.",
-                stats: {
-                    detection: { val: "88.89%", label: "AI-generated content detection accuracy" },
-                    latency: { val: "<10ms", label: "Real-time verification latency" },
-                    roc: { val: "98.9%", label: "ROC AUC" },
-                    garm: { val: "100%", label: "GARM brand safety accuracy" }
-                },
-                footer: "Deployed, benchmarked, and production-ready."
-            },
-            whyNow: {
-                tag: "WHY NOW",
-                title: "AI verification is no longer optional.",
-                context: "The brand safety market stopped at classification. Regulation is forcing verification.",
-                facts: [
-                    "EU AI Act enforcement begins August 2026",
-                    "Fines up to 7% of global revenue",
-                    "AI-generated media is scaling faster than moderation or law",
-                    "Platforms are becoming legally and reputationally liable"
-                ],
-                deadline: "August 2026",
-                warning: "18 months. That's the window to build trust infrastructure before enforcement hits."
-            },
-            costOfInaction: {
-                tag: "THE COST OF INACTION",
-                title: "Without trust infrastructure, everyone loses.",
-                impacts: [
-                    { val: "$330M", desc: "Lost from a single deepfake CFO video call" },
-                    { val: "68%", desc: "Of consumers permanently distrust brands after unsafe ad placement" }
-                ],
-                risks: [
-                    "Platforms face existential legal and regulatory risk",
-                    "Creators lose ownership in an ocean of unverifiable AI content",
-                    "Value cannot be routed without provenance"
-                ],
-                conclusion: "AI without trust doesn't scale. It collapses."
-            },
-            thesis: {
-                tag: "OUR THESIS",
-                line1: "Creativity is abundant.",
-                line2: "Trust is scarce.",
-                line3: "When AI becomes an economic actor, trust becomes infrastructure.",
-                intro: "HOLO STUDIO builds that infrastructure through three core primitives:",
-                primitives: [
-                    { name: "Safety", desc: "What is allowed" },
-                    { name: "Provenance", desc: "Who created it" },
-                    { name: "Value Routing", desc: "Who gets paid" }
+            opportunity: {
+                title: "The Opportunity",
+                sub: "AI media market lacks verification.\nThe $13B brand safety market stopped at 'classification'. The AI era requires verification.",
+                points: [
+                    "\"Is it violent?\" ✓",
+                    "\"Is it adult content?\" ✓", 
+                    "\"Is it AI-generated?\" ✗"
                 ]
             },
-            business_intro: {
-                tag: "PRODUCTS",
-                title: "One Trust Layer. Four Engines."
+            regulatory: {
+                title: "Regulatory Pressure",
+                date: "August 2026",
+                desc: "EU AI Act full enforcement. Up to 7% of global revenue in fines for violations.",
+                warning: "18 months. That's all the time you have."
             },
-            validation: {
-                tag: "VALIDATION",
-                title: "Proven traction. Industry validation.",
+            cost: {
+                title: "The Cost of No Verification",
+                items: [
+                    { val: "$330M", desc: "One deepfake video call. CFO impersonation. Wire transfer complete." },
+                    { val: "68%", desc: "Consumers who permanently distrust brands after seeing ads next to harmful content." },
+                    { val: "+347%", desc: "Year-over-year increase in deepfake fraud." }
+                ]
+            },
+            problem: {
+                title: "The Market Failure",
+                sub: "\"The slop generated by AI is breeding distrust.\" — Steve Hirsch\nWithout infrastructure, the AI economy cannot function.",
+                cards: [
+                    { title: "Platform Liability", desc: "Deepfakes and toxic content create existential legal & brand risk for platforms.", badge: "Enterprise Risk" },
+                    { title: "IP Attribution", desc: "Creators cannot monetize their work in an ocean of unverified AI content.", badge: "Lost Revenue" },
+                    { title: "Economic Waste", desc: "Without provenance, value cannot be routed to the correct owners or compute providers.", badge: "Inefficiency" }
+                ]
+            },
+            thesis: {
+                label: "HOLO STUDIO Thesis",
+                main: "Creativity is abundant. Trust is scarce.\n\nWhen AI becomes an economic actor, trust becomes infrastructure.",
+                keywords: ["Safety", "Provenance", "Value Routing"]
+            },
+            business_intro: {
+                title: "Products",
+                sub: "One Company. One Trust Layer. Four Engines."
+            },
+            milestones: {
+                title: "Proof & Milestones",
+                sub: "Proven Traction & Industry Validation",
                 items: [
                     { title: "Seedify AI Hackathon", desc: "1st Place" },
                     { title: "NVIDIA Inception", desc: "Official Member" },
                     { title: "Google Cloud", desc: "Ecosystem Partner" },
-                    { title: "AppWorks · OnePiece Labs", desc: "Global Accelerators" },
-                    { title: "Alchemy · Story Protocol", desc: "Major Grants" }
+                    { title: "Global Accelerators", desc: "AppWorks · OnePiece Labs" },
+                    { title: "Major Grants", desc: "Alchemy · Story Protocol" }
                 ]
             },
             diagram: {
@@ -161,9 +146,7 @@ export default function Home() {
                 ]
             },
             roadmap: {
-                tag: "ROADMAP",
-                title: "From foundation to standard.",
-                subtitle: "Each milestone strengthens the trust layer for autonomous AI.",
+                title: "Roadmap",
                 viewAll: "Full Schedule",
                 items: [
                     { 
@@ -204,98 +187,77 @@ export default function Home() {
                     }
                 ]
             },
-            closing: {
-                tag: "CLOSING",
-                line1: "AI is moving fast. Trust infrastructure isn't.",
-                line2: "HOLO STUDIO is building the missing layer that allows AI content to be used, owned, and monetized responsibly.",
-                line3: "We don't manage content. We verify reality.",
+            contact: {
+                title: "Work with HOLO.",
+                sub: "Building the trusted autonomous future.",
                 cta1: "Invest / Partner",
                 cta2: "Enterprise Inquiry"
             }
         },
         ko: {
             hero: {
-                tag: "AI 경제의 신뢰 인프라",
+                tag: "AI 경제의 신뢰 레이어",
                 title: "HOLO STUDIO",
-                sub: "AI는 무한히 생성합니다. 하지만 검증 없이는 아무것도 가치를 갖지 못합니다.",
-                desc: "HOLO STUDIO는 AI 콘텐츠를 안전하고, 귀속 가능하며, 경제적으로 사용 가능하게 만드는 신뢰 레이어를 구축합니다.",
+                sub: "AI 콘텐츠는 무한합니다. 신뢰는 희소합니다.",
+                desc: "우리는 AI 콘텐츠를 검증하고, 소유권을 증명하고, 가치를 정산하는 인프라를 만듭니다.",
                 cta1: "솔루션 보기",
                 cta2: "파트너 문의"
             },
-            identity: {
-                tag: "우리가 하는 일",
-                title: "AI 생성 콘텐츠가 기본이 되면서, 신뢰가 병목이 됩니다.",
-                problems: [
-                    "플랫폼은 무엇이 진짜인지 검증할 수 없습니다.",
-                    "창작자는 소유권을 증명할 수 없습니다.",
-                    "시장은 가치를 올바르게 전달할 수 없습니다."
-                ],
-                solution: "HOLO STUDIO는 이를 해결하기 위해 존재합니다.",
-                approach: "우리는 단일 제품을 만들지 않습니다. 안전, 미디어, 게임, 시장 전반에 걸쳐 표현되는 하나의 신뢰 레이어를 구축합니다."
+            market: {
+                year: { val: "88.89%", label: "AI 탐지 정확도" },
+                eu: { val: "<10ms", label: "응답 시간" },
+                size: { val: "98.9%", label: "ROC AUC" },
+                gap: { val: "100%", label: "브랜드 안전 정확도" }
             },
-            proofWorks: {
-                tag: "작동하는 증거",
-                title: "이것은 개념이 아닙니다. 작동하는 인프라입니다.",
-                stats: {
-                    detection: { val: "88.89%", label: "AI 생성 콘텐츠 탐지 정확도" },
-                    latency: { val: "<10ms", label: "실시간 검증 지연시간" },
-                    roc: { val: "98.9%", label: "ROC AUC" },
-                    garm: { val: "100%", label: "GARM 브랜드 안전 정확도" }
-                },
-                footer: "배포되고, 벤치마크되고, 프로덕션 준비 완료."
-            },
-            whyNow: {
-                tag: "왜 지금인가",
-                title: "AI 검증은 더 이상 선택이 아닙니다.",
-                context: "브랜드 안전 시장은 분류에서 멈췄습니다. 규제가 검증을 강제하고 있습니다.",
-                facts: [
-                    "EU AI Act 시행 2026년 8월 시작",
-                    "글로벌 매출 7%까지 과징금",
-                    "AI 생성 미디어가 규제나 법보다 빠르게 확장 중",
-                    "플랫폼들이 법적·평판적 책임을 지게 됨"
-                ],
-                deadline: "2026년 8월",
-                warning: "18개월. 집행 전 신뢰 인프라를 구축할 수 있는 시간입니다."
-            },
-            costOfInaction: {
-                tag: "방치의 대가",
-                title: "신뢰 인프라 없이는 모두가 잃습니다.",
-                impacts: [
-                    { val: "$330M", desc: "단일 딥페이크 CFO 화상회의로 인한 손실" },
-                    { val: "68%", desc: "불안전한 광고 배치 후 브랜드를 영구히 불신하는 소비자" }
-                ],
-                risks: [
-                    "플랫폼은 존재적 법적·규제 리스크에 직면",
-                    "창작자는 검증 불가능한 AI 콘텐츠의 바다에서 소유권을 잃음",
-                    "출처 증명 없이는 가치가 전달될 수 없음"
-                ],
-                conclusion: "신뢰 없는 AI는 확장되지 않습니다. 무너집니다."
-            },
-            thesis: {
-                tag: "우리의 테제",
-                line1: "창의성은 풍부합니다.",
-                line2: "신뢰는 희소합니다.",
-                line3: "AI가 경제 주체가 될 때, 신뢰는 인프라가 됩니다.",
-                intro: "HOLO STUDIO는 세 가지 핵심 요소를 통해 이 인프라를 구축합니다:",
-                primitives: [
-                    { name: "안전", desc: "무엇이 허용되는가" },
-                    { name: "출처 증명", desc: "누가 만들었는가" },
-                    { name: "가치 전달", desc: "누가 보상받는가" }
+            opportunity: {
+                title: "시장 기회",
+                sub: "AI 미디어 시장, 검증이 없습니다.\n7조원 브랜드 안전 시장은 '분류'에서 멈췄습니다.",
+                points: [
+                    "\"폭력적인가?\" ✓",
+                    "\"성인용인가?\" ✓",
+                    "\"AI가 만들었나?\" ✗"
                 ]
             },
-            business_intro: {
-                tag: "프로덕트",
-                title: "하나의 신뢰 레이어. 네 개의 엔진."
+            regulatory: {
+                title: "규제 압박",
+                date: "2026년 8월",
+                desc: "EU AI Act 전면 시행. 위반 시 글로벌 매출 7% 과징금.",
+                warning: "18개월 후면 늦습니다."
             },
-            validation: {
-                tag: "검증",
-                title: "검증된 트랙션. 산업 검증.",
+            cost: {
+                title: "검증 없는 AI 경제의 비용",
+                items: [
+                    { val: "330억원", desc: "딥페이크 화상회의 한 번. CFO 사칭. 송금 완료." },
+                    { val: "68%", desc: "유해 콘텐츠 옆 광고 노출 시 브랜드를 영구히 불신하는 소비자." },
+                    { val: "+347%", desc: "딥페이크 사기 연간 증가율." }
+                ]
+            },
+            problem: {
+                title: "시장 실패",
+                sub: "\"AI가 생성한 슬롭(slop)이 불신을 키우고 있습니다.\" — Steve Hirsch\n인프라 없이는 AI 경제가 작동할 수 없습니다.",
+                cards: [
+                    { title: "플랫폼 리스크", desc: "딥페이크와 유해 콘텐츠는 플랫폼에게 존재적 법적·브랜드 리스크를 초래합니다.", badge: "기업 리스크" },
+                    { title: "IP 귀속", desc: "검증되지 않은 AI 콘텐츠의 바다에서 창작자는 자신의 작품으로 수익을 낼 수 없습니다.", badge: "수익 손실" },
+                    { title: "경제적 낭비", desc: "출처 증명 없이는 가치가 올바른 소유자나 컴퓨팅 제공자에게 전달될 수 없습니다.", badge: "비효율" }
+                ]
+            },
+            thesis: {
+                label: "HOLO STUDIO Thesis",
+                main: "더 이상 희소한 자원은 창의성이 아닙니다.\n\n바로 신뢰입니다.",
+                keywords: ["검증", "소유권", "수익화"]
+            },
+            business_intro: {
+                title: "프로덕트",
+                sub: "검증에서 시작해 경제로 확장합니다."
+            },
+            milestones: {
+                title: "트랙션",
+                sub: "검증된 성과 및 파트너십",
                 items: [
                     { title: "Seedify AI Hackathon", desc: "1st Place" },
                     { title: "NVIDIA Inception", desc: "Official Member" },
                     { title: "Google Cloud", desc: "Ecosystem Partner" },
-                    { title: "AppWorks · OnePiece Labs", desc: "Global Accelerators" },
-                    { title: "Alchemy · Story Protocol", desc: "Major Grants" }
+                    { title: "Alchemy · Arbitrum · Story", desc: "Major Grants" }
                 ]
             },
             diagram: {
@@ -327,9 +289,7 @@ export default function Home() {
                 ]
             },
             roadmap: {
-                tag: "로드맵",
-                title: "기초에서 표준으로.",
-                subtitle: "각 마일스톤은 자율 AI를 위한 신뢰 레이어를 강화합니다.",
+                title: "로드맵",
                 viewAll: "전체 일정 보기",
                 items: [
                     { 
@@ -370,13 +330,11 @@ export default function Home() {
                     }
                 ]
             },
-            closing: {
-                tag: "마무리",
-                line1: "AI는 빠르게 움직입니다. 신뢰 인프라는 그렇지 않습니다.",
-                line2: "HOLO STUDIO는 AI 콘텐츠를 책임감 있게 사용, 소유, 수익화할 수 있도록 하는 누락된 레이어를 구축하고 있습니다.",
-                line3: "우리는 콘텐츠를 관리하지 않습니다. 현실을 검증합니다.",
-                cta1: "투자 / 파트너",
-                cta2: "기업 문의"
+            contact: {
+                title: "AI 미디어 경제의 신뢰 인프라.",
+                sub: "검증에서 시작해 경제로 확장합니다.",
+                cta1: "투자 문의",
+                cta2: "파트너십"
             }
         }
     };
@@ -554,7 +512,7 @@ export default function Home() {
         { icon: Award, color: "text-purple-400", bg: "bg-purple-400/10" }
     ];
 
-    const milestones = t.validation.items.map((item, idx) => ({
+    const milestones = t.milestones.items.map((item, idx) => ({
         ...item,
         icon: milestoneConfig[idx]?.icon || Trophy,
         color: milestoneConfig[idx]?.color || "text-white",
@@ -562,18 +520,6 @@ export default function Home() {
     }));
 
     const [currentSection, setCurrentSection] = useState(0);
-    
-    const observeSection = (el, index) => {
-        if (!el) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setCurrentSection(index);
-            },
-            { threshold: 0.5 }
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    };
 
     return (
         <motion.div 
@@ -623,28 +569,14 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.5 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
                                 <>
-                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '4s' }} />
-                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '5s' }} />
+                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
+                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
                                 </>
-                            )}
-                        </motion.div>
-                    )}
-                    {currentSection === 1 && (
-                        <motion.div
-                            key="numbers-bg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-0 z-20"
-                        >
-                            {theme === 'dark' && (
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
                             )}
                         </motion.div>
                     )}
@@ -654,7 +586,7 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.5 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
@@ -668,7 +600,7 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.5 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
@@ -676,76 +608,17 @@ export default function Home() {
                             )}
                         </motion.div>
                     )}
-                    {currentSection === 4 && (
-                        <motion.div
-                            key="thesis-bg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-0 z-20"
-                        >
-                            {theme === 'dark' && (
-                                <>
-                                    <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[120px]" />
-                                    <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
-                                </>
-                            )}
-                        </motion.div>
-                    )}
                     {currentSection === 5 && (
-                        <motion.div
-                            key="products-bg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-0 z-20"
-                        >
-                            {theme === 'dark' && (
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px]" />
-                            )}
-                        </motion.div>
-                    )}
-                    {currentSection === 6 && (
                         <motion.div
                             key="milestones-bg"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.5 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" />
-                            )}
-                        </motion.div>
-                    )}
-                    {currentSection === 7 && (
-                        <motion.div
-                            key="roadmap-bg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-0 z-20"
-                        >
-                            {theme === 'dark' && (
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
-                            )}
-                        </motion.div>
-                    )}
-                    {currentSection === 8 && (
-                        <motion.div
-                            key="contact-bg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-0 z-20"
-                        >
-                            {theme === 'dark' && (
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px]" />
                             )}
                         </motion.div>
                     )}
@@ -755,7 +628,18 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => observeSection(el, 0)}>
+                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(0);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-5xl mx-auto text-center">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -774,24 +658,24 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 md:mb-10 leading-[1.1]"
+                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1]"
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 md:mb-10 leading-[1.1] text-neutral-900">
+                                <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] text-neutral-900">
                                     {t.hero.title}
                                 </motion.h1>
                             )}
                             <motion.p 
-                                className={`text-2xl sm:text-3xl md:text-4xl max-w-4xl mx-auto leading-tight mb-6 ${
+                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
                                     theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900 font-bold'
                                 }`}
                             >
                                 {t.hero.sub}
                             </motion.p>
                             <motion.p 
-                                className={`text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed mb-12 md:mb-16 ${
+                                className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
                                     theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                 }`}
                             >
@@ -805,307 +689,253 @@ export default function Home() {
                                 }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                     {t.hero.cta1}
                                 </Button>
-                                <Link to={createPageUrl('Contact')}>
-                                    <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
-                                        theme === 'dark'
-                                            ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                            : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm'
-                                    }`}>
-                                        {t.hero.cta2}
-                                    </Button>
-                                </Link>
+                                <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
+                                    theme === 'dark'
+                                        ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
+                                        : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm'
+                                }`}>
+                                    {t.hero.cta2}
+                                </Button>
                             </div>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
-                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 1)}>
-                    <div className="max-w-5xl mx-auto text-center">
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>
-                            {t.identity.tag}
-                        </h2>
-                        <motion.p 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-12 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                            }`}
-                        >
-                            {t.identity.title}
-                        </motion.p>
-                        <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
-                            {t.identity.problems.map((problem, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15 }}
-                                    className={`p-8 rounded-2xl border-2 text-center ${
-                                        theme === 'dark' 
-                                            ? 'bg-red-500/5 border-red-500/30' 
-                                            : 'bg-red-50 border-red-300'
-                                    }`}
-                                >
-                                    <div className={`text-6xl mb-4 ${
-                                        theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                                    }`}>✗</div>
-                                    <p className={`text-lg font-bold leading-tight ${
-                                        theme === 'dark' ? 'text-red-300' : 'text-red-700'
-                                    }`}>
-                                        {problem}
-                                    </p>
-                                </motion.div>
-                            ))}
-                        </div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className={`max-w-4xl mx-auto p-10 rounded-3xl border-2 ${
-                                theme === 'dark' 
-                                    ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
-                                    : 'bg-gradient-to-br from-cyan-50 via-violet-50 to-pink-50 border-violet-300'
-                            }`}
-                        >
-                            <p className={`text-3xl md:text-4xl font-black mb-6 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                            }`}>
-                                {t.identity.solution}
-                            </p>
-                            <p className={`text-xl md:text-2xl leading-relaxed ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                            }`}>
-                                {t.identity.approach}
-                            </p>
-                        </motion.div>
-                    </div>
-                </section>
-
-                {/* Proof It Works Section */}
+                {/* By The Numbers Section */}
                 <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 2)}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(1);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="text-center mb-16">
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
-                                {t.proofWorks.tag}
+                                {language === 'en' ? 'PROVEN PERFORMANCE' : '검증된 성과'}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
                                 >
-                                    {t.proofWorks.title}
+                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent mb-8">
-                                    {t.proofWorks.title}
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
                                 </h3>
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center">
-                            {Object.values(t.proofWorks.stats).map((stat, idx) => (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 text-center">
+                            {Object.values(t.market).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
-                                    initial={{ opacity: 0, y: 30 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    whileHover={{ scale: 1.08, y: -5 }}
-                                    className={`p-8 rounded-2xl border-2 ${
-                                        theme === 'dark' 
-                                            ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
-                                            : 'bg-gradient-to-br from-white to-neutral-50 border-neutral-300 shadow-lg'
-                                    }`}
+                                    whileHover={{ scale: 1.05 }}
                                 >
-                                    <div className={`text-5xl md:text-6xl lg:text-7xl font-black mb-4 ${
+                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
-                                    <div className={`text-sm md:text-base leading-tight font-bold ${
+                                    <div className={`text-xs uppercase tracking-wider font-bold ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{stat.label}</div>
                                 </motion.div>
                             ))}
                         </div>
                         
-                        <motion.p 
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className={`text-center text-xl font-bold ${
-                                theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
-                            }`}
-                        >
-                            {t.proofWorks.footer}
-                        </motion.p>
+                        <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
+                            <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            }`}>BACKED BY</p>
+                            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 {/* Why Now Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 3)}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(2);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
                         }`}>
-                            {t.whyNow.tag}
+                            {language === 'en' ? 'Why Now' : '왜 지금인가'}
                         </h2>
                         {theme === 'dark' ? (
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 leading-tight"
+                                className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
                             >
-                                {t.whyNow.title}
+                                {language === 'en' 
+                                    ? 'AI verification is no longer optional.' 
+                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
-                                {t.whyNow.title}
+                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                                {language === 'en' 
+                                    ? 'AI verification is no longer optional.' 
+                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </h3>
                         )}
-                        <p className={`text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed font-bold ${
+                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {t.whyNow.context}
+                            {language === 'en'
+                                ? 'The $13B brand safety market stopped at "classification." EU AI Act enforcement begins August 2026 — with fines up to 7% of global revenue.'
+                                : '7조원 브랜드 안전 시장은 "분류"에서 멈췄습니다. EU AI Act는 2026년 8월 시행되며, 위반 시 글로벌 매출 7%까지 과징금이 부과됩니다.'}
                         </p>
-                        <div className={`space-y-3 mb-12 text-lg md:text-xl max-w-2xl mx-auto ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <div className={`inline-block px-8 py-4 rounded-2xl border ${
+                            theme === 'dark' ? 'bg-orange-500/10 border-orange-500/30' : 'bg-orange-100 border-orange-300'
                         }`}>
-                            {t.whyNow.facts.map((fact, idx) => (
-                                <motion.p 
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                >
-                                    • {fact}
-                                </motion.p>
-                            ))}
-                        </div>
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.05 }}
-                            className={`inline-block px-12 py-8 rounded-3xl border-4 ${
-                                theme === 'dark' 
-                                    ? 'bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-500/50 shadow-[0_0_60px_rgba(249,115,22,0.3)]' 
-                                    : 'bg-gradient-to-br from-orange-100 to-red-100 border-orange-400 shadow-2xl'
-                            }`}
-                        >
-                            <div className={`text-7xl md:text-8xl font-black mb-4 tracking-tighter ${
+                            <div className={`text-5xl md:text-6xl font-black mb-2 ${
                                 theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-                            }`}>{t.whyNow.deadline}</div>
-                            <div className={`text-xl md:text-2xl font-black max-w-md ${
+                            }`}>{t.regulatory.date}</div>
+                            <div className={`text-sm font-bold ${
                                 theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                            }`}>{t.whyNow.warning}</div>
-                        </motion.div>
+                            }`}>{t.regulatory.warning}</div>
+                        </div>
                     </div>
                 </section>
 
-                {/* Cost of Inaction Section */}
+                {/* The Challenge Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 4)}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(3);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-500' : 'text-red-700'
                             }`}>
-                                {t.costOfInaction.tag}
+                                {language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(239, 68, 68, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
                                 >
-                                    {t.costOfInaction.title}
+                                    {language === 'en'
+                                        ? 'Without trust infrastructure, everyone loses.'
+                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent mb-12">
-                                    {t.costOfInaction.title}
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
+                                    {language === 'en'
+                                        ? 'Without trust infrastructure, everyone loses.'
+                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
                                 </h3>
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
-                            {t.costOfInaction.impacts.map((item, idx) => (
+                        <div className="grid md:grid-cols-2 gap-6 mb-12">
+                            {t.cost.items.slice(0, 2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    whileHover={{ scale: 1.05 }}
-                                    className={`p-10 rounded-3xl border-4 text-center ${
+                                    className={`p-6 rounded-2xl border text-center ${
                                         theme === 'dark'
-                                            ? 'bg-gradient-to-br from-red-500/10 to-rose-500/10 border-red-500/40 shadow-[0_0_40px_rgba(239,68,68,0.2)]'
-                                            : 'bg-gradient-to-br from-red-50 to-rose-50 border-red-300 shadow-xl'
+                                            ? 'bg-black/30 border-red-500/20'
+                                            : 'bg-red-50/50 border-red-200'
                                     }`}
                                 >
-                                    <div className={`text-7xl md:text-8xl font-black mb-6 ${
+                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                     }`}>{item.val}</div>
-                                    <p className={`text-lg md:text-xl font-bold leading-tight ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                    <p className={`text-sm ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className={`space-y-4 mb-12 text-center max-w-3xl mx-auto text-lg ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}>
-                            {t.costOfInaction.risks.map((risk, idx) => (
-                                <motion.p 
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {t.problem.cards.map((card, idx) => (
+                                <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="font-medium"
+                                    className={`p-6 rounded-xl border ${
+                                        theme === 'dark'
+                                            ? 'bg-black/40 border-white/10'
+                                            : 'bg-white border-neutral-200'
+                                    }`}
                                 >
-                                    • {risk}
-                                </motion.p>
+                                    <h4 className={`text-lg font-black mb-2 ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>{card.title}</h4>
+                                    <p className={`text-sm leading-relaxed ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    }`}>{card.desc}</p>
+                                </motion.div>
                             ))}
                         </div>
-
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className={`max-w-3xl mx-auto p-10 rounded-3xl border-4 text-center ${
-                                theme === 'dark' 
-                                    ? 'bg-black/40 border-red-500/50' 
-                                    : 'bg-white border-red-400 shadow-2xl'
-                            }`}
-                        >
-                            <p className={`text-3xl md:text-4xl lg:text-5xl font-black leading-tight ${
-                                theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                            }`}>
-                                {t.costOfInaction.conclusion}
-                            </p>
-                        </motion.div>
                     </div>
                 </section>
 
                 {/* Company Thesis Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 4)}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(4);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-6xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
@@ -1167,33 +997,26 @@ export default function Home() {
                             )}
                         </div>
 
-                        <p className={`text-2xl md:text-3xl font-bold mb-12 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <div className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>
-                            {t.thesis.intro}
-                        </p>
-                        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                            {t.thesis.primitives.map((prim, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                            {t.thesis.keywords.map((kw, i) => (
+                                <motion.span 
+                                    key={i} 
+                                    className="flex items-center gap-3 cursor-default"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.15 }}
-                                    whileHover={{ scale: 1.05, y: -5 }}
-                                    className={`p-10 rounded-2xl border-2 text-center ${
-                                        theme === 'dark' 
-                                            ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
-                                            : 'bg-gradient-to-br from-white to-neutral-50 border-violet-300 shadow-lg'
-                                    }`}
+                                    whileHover={{ scale: 1.1 }}
                                 >
-                                    <div className={`text-2xl md:text-3xl font-black mb-4 ${
-                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                                    }`}>{prim.name}</div>
-                                    <div className={`text-base md:text-lg font-medium ${
-                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                                    }`}>{prim.desc}</div>
-                                </motion.div>
+                                    <span className={`w-3 h-3 rounded-full ${
+                                        theme === 'dark' 
+                                            ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
+                                            : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
+                                    }`} />
+                                    {kw}
+                                </motion.span>
                             ))}
                         </div>
                     </div>
@@ -1202,7 +1025,7 @@ export default function Home() {
                 {/* Products Section - Keep existing scrollytelling implementation */}
                 <section id="products" className={`relative border-y ${
                     theme === 'dark' ? 'border-white/5' : 'border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 5)}>
+                }`}>
                     <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
                          <h2 className={`text-xl font-heavy uppercase tracking-widest mb-2 ${
                              theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
@@ -1336,7 +1159,18 @@ export default function Home() {
                 {/* Milestones Section */}
                 <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 6)}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(5);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-7xl mx-auto w-full py-20">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -1350,17 +1184,17 @@ export default function Home() {
                                     glowColor="rgba(234, 179, 8, 0.8)"
                                     className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
                                 >
-                                    {t.validation.title}
+                                    {t.milestones.title}
                                 </MouseGlowText>
                             ) : (
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">
-                                    {t.validation.title}
+                                    {t.milestones.title}
                                 </h3>
                             )}
                             <p className={`text-lg md:text-xl font-medium ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>
-                                {language === 'en' ? 'Proven traction. Industry validation.' : '검증된 트랙션. 산업 검증.'}
+                                {t.milestones.sub}
                             </p>
                         </div>
 
@@ -1372,22 +1206,19 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    whileHover={{ scale: 1.05, y: -5 }}
-                                    className={`p-8 rounded-2xl border-2 ${
+                                    className={`p-8 rounded-2xl border ${
                                         theme === 'dark'
-                                            ? 'bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-yellow-500/30'
-                                            : 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-300 shadow-lg'
+                                            ? 'bg-black/40 border-white/10'
+                                            : 'bg-white border-neutral-200 shadow-md'
                                     }`}
                                 >
-                                    <div className={`w-16 h-16 rounded-xl ${m.bg} flex items-center justify-center mb-6 ${
-                                        theme === 'dark' ? 'bg-yellow-500/20' : 'bg-amber-200'
-                                    }`}>
-                                        <m.icon className={`w-8 h-8 ${m.color}`} />
+                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
+                                        <m.icon className={`w-6 h-6 ${m.color}`} />
                                     </div>
-                                    <div className={`text-xl font-black mb-3 ${
+                                    <div className={`text-lg font-black mb-2 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{m.title}</div>
-                                    <div className={`text-base font-bold ${
+                                    <div className={`text-sm font-medium ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
                                 </motion.div>
@@ -1397,7 +1228,7 @@ export default function Home() {
                 </section>
 
                 {/* Roadmap Section */}
-                <section id="roadmap" className="relative" ref={(el) => observeSection(el, 7)}>
+                <section id="roadmap" className="relative">
                     <Roadmap 
                         items={t.roadmap.items} 
                         title={t.roadmap.title} 
@@ -1410,35 +1241,30 @@ export default function Home() {
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 8)}>
+                }`}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>
-                            {t.closing.tag}
+                            {language === 'en' ? 'JOIN THE FUTURE' : '함께 만들어가요'}
                         </h2>
                         {theme === 'dark' ? (
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(99, 102, 241, 0.9)"
                                 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight"
-                                >
-                                {t.closing.line1}
-                                </MouseGlowText>
+                            >
+                                {t.contact.title}
+                            </MouseGlowText>
                         ) : (
                             <h3 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
-                                {t.closing.line1}
+                                {t.contact.title}
                             </h3>
                         )}
-                        <p className={`text-xl md:text-2xl font-medium mb-6 leading-relaxed ${
+                        <p className={`text-xl md:text-2xl font-medium mb-12 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {t.closing.line2}
-                        </p>
-                        <p className={`text-xl md:text-2xl font-medium mb-12 leading-relaxed ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}>
-                            {t.closing.line3}
+                            {t.contact.sub}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to={createPageUrl("Contact")}>
@@ -1447,7 +1273,7 @@ export default function Home() {
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_40px_rgba(79,70,229,0.4)]'
                                         : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 text-white shadow-xl'
                                 }`}>
-                                    {t.closing.cta1}
+                                    {t.contact.cta1}
                                 </Button>
                             </Link>
                             <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all hover:scale-105 ${
@@ -1455,7 +1281,7 @@ export default function Home() {
                                     ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
                                     : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg'
                             }`}>
-                                {t.closing.cta2}
+                                {t.contact.cta2}
                             </Button>
                         </div>
                     </div>
