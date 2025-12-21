@@ -505,7 +505,7 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-100">
                     <CosmicBackground theme={theme} />
                 </div>
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-70' : 'opacity-40'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-90' : 'opacity-40'}`}>
                     <Background3D theme={theme} />
                 </div>
                 <ScrollMotionBackground theme={theme} />
