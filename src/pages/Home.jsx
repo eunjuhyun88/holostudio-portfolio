@@ -1528,27 +1528,25 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-neutral-900 border-neutral-800'
+                    : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
             }`}>
                 {/* Light Mode: Holographic Gradient Background */}
                 {theme === 'light' && (
-                    <div className="absolute inset-0 pointer-events-none opacity-20">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-200 via-purple-200 to-pink-200 animate-[shimmer_8s_ease-in-out_infinite]" />
-                        <div className="absolute inset-0 bg-gradient-to-tl from-indigo-200 via-violet-200 to-purple-200 opacity-60 mix-blend-overlay" />
+                    <div className="absolute inset-0 pointer-events-none opacity-30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/40 via-violet-200/40 to-pink-200/40 animate-[shimmer_8s_ease-in-out_infinite]" />
+                        <div className="absolute inset-0 bg-gradient-to-tl from-indigo-200/30 via-lavender-200/30 to-purple-200/30 opacity-60 mix-blend-overlay" />
                     </div>
                 )}
                 
                 <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
                     <div className="mb-12">
                         <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 ${
-                            theme === 'dark' ? 'text-white' : 'text-white'
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
-                            style={theme === 'dark' ? {} : { textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
                         >{t.contact.title}</h2>
                         <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-100'
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}
-                            style={theme === 'dark' ? {} : { textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
                         >{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1564,7 +1562,7 @@ export default function Home() {
                         <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-white/40 text-white hover:bg-white/20 bg-white/10 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
+                                : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
                         }`}>
                             {t.contact.cta2}
                         </Button>
