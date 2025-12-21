@@ -9,6 +9,7 @@ export default function SciFiCard({
     cornerSize = "w-4 h-4",
     theme = "dark"
 }) {
+    const [isHovered, setIsHovered] = React.useState(false);
     const glowColors = {
         dark: {
             indigo: "shadow-[0_0_30px_rgba(79,70,229,0.3)] hover:shadow-[0_0_40px_rgba(79,70,229,0.5)]",
@@ -68,6 +69,8 @@ export default function SciFiCard({
             whileInView={animated ? { opacity: 1, y: 0 } : false}
             viewport={{ once: true }}
             className={`group relative ${className}`}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
         >
             {/* Main Card */}
             <div className={`relative h-full border rounded-2xl overflow-hidden transition-all duration-500 ${

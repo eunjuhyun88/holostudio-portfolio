@@ -276,9 +276,13 @@ export default function Showcase3D() {
                                     
                                     {/* Active Indicator */}
                                     {selectedModel?.id === model.id && (
-                                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
+                                        <motion.div 
+                                            layoutId="activeIndicator"
+                                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+                                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                        />
                                     )}
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
@@ -294,7 +298,13 @@ export default function Showcase3D() {
                         </div>
 
                         {selectedModel ? (
-                            <div className="h-full flex flex-col gap-4 relative z-10 p-1">
+                            <motion.div 
+                                key={selectedModel.id}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                className="h-full flex flex-col gap-4 relative z-10 p-1"
+                            >
                                 <div className="flex-1 rounded-2xl overflow-hidden bg-black/40 relative group">
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05),transparent)] pointer-events-none" />
                                     <ModelViewer 
@@ -335,7 +345,7 @@ export default function Showcase3D() {
                                         </Button>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ) : (
                             <div className="h-full rounded-3xl bg-[#0A0A0A]/40 border border-white/5 flex flex-col items-center justify-center text-neutral-500 gap-6 border-dashed relative overflow-hidden">
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03),transparent)]" />

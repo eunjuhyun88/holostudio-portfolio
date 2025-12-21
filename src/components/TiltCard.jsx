@@ -12,6 +12,11 @@ export default function TiltCard({ children, className = "" }) {
 
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-12deg", "12deg"]);
+  
+  const glowIntensity = useTransform(
+    [mouseX, mouseY],
+    ([mx, my]) => Math.abs(mx) + Math.abs(my)
+  );
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;
@@ -45,8 +50,16 @@ export default function TiltCard({ children, className = "" }) {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className={className}
+      className={`${className} relative`}
     >
+      {/* Glow Effect */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(99, 102, 241, 0.2), transparent 70%)",
+          opacity: glowIntensity,
+        }}
+      />
       <div style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }} className="h-full w-full">
         {children}
       </div>
