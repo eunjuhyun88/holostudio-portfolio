@@ -78,7 +78,12 @@ export default function SciFiCard({
                     ? 'bg-black/40 backdrop-blur-xl border-white/10 hover:border-white/20'
                     : 'bg-white/90 backdrop-blur-sm border-neutral-200 hover:border-neutral-300'
             } ${glowColors[t][glowColor]}`}>
-                {children}
+                <motion.div
+                    animate={isHovered ? { y: -2 } : { y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    {children}
+                </motion.div>
             </div>
 
             {/* Animated Tech Corners */}

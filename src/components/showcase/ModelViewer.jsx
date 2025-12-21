@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { Loader2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ModelViewer({ url, type }) {
     const mountRef = useRef(null);
@@ -138,12 +139,35 @@ export default function ModelViewer({ url, type }) {
             <div ref={mountRef} className="w-full h-full" />
             
             {loading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-10">
-                    <div className="flex flex-col items-center gap-2">
-                        <Loader2 className="w-8 h-8 text-indigo-500 animate-spin" />
-                        <span className="text-sm text-neutral-300">Loading Model...</span>
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-10"
+                >
+                    <div className="flex flex-col items-center gap-3">
+                        <motion.div
+                            className="relative"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        >
+                            <div className="w-16 h-16 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full" />
+                            <motion.div
+                                className="absolute inset-0 rounded-full"
+                                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                style={{ boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)' }}
+                            />
+                        </motion.div>
+                        <motion.span 
+                            className="text-sm text-neutral-300 font-mono"
+                            animate={{ opacity: [0.5, 1, 0.5] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                        >
+                            Loading Model...
+                        </motion.span>
                     </div>
-                </div>
+                </motion.div>
             )}
             
             {error && (
