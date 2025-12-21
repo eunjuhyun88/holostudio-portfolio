@@ -1313,11 +1313,11 @@ export default function Home() {
                                     glowColor="rgba(234, 179, 8, 0.8)"
                                     className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
                                 >
-                                    {t.milestones.title}
+                                    {t.validation.title}
                                 </MouseGlowText>
                             ) : (
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">
-                                    {t.milestones.title}
+                                    {t.validation.title}
                                 </h3>
                             )}
                             <p className={`text-lg md:text-xl font-medium ${
@@ -1382,12 +1382,12 @@ export default function Home() {
                                 as="h3"
                                 glowColor="rgba(99, 102, 241, 0.9)"
                                 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight"
-                            >
-                                {t.contact.title}
-                            </MouseGlowText>
+                                >
+                                {t.closing.line1}
+                                </MouseGlowText>
                         ) : (
                             <h3 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
-                                {t.contact.title}
+                                {t.closing.line1}
                             </h3>
                         )}
                         <p className={`text-xl md:text-2xl font-medium mb-6 leading-relaxed ${
