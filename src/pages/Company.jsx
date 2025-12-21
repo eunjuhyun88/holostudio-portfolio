@@ -381,27 +381,13 @@ Scaled communities from zero to millions of users.`,
         cta: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' }
     };
 
-    // Build story sections for scrollytelling
+    // Build story sections - Condensed for impact
     const storySections = [
         { id: 'foundation', type: 'intro', data: c.intro, palette: scenePalettes.foundation },
-        ...c.intro.text.map((text, i) => ({ 
-            id: `obs-${i}`, 
-            type: 'observation', 
-            data: { text }, 
-            palette: scenePalettes.observation 
-        })),
-        ...c.chapters.map((chapter, i) => ({ 
-            id: `phase-${i}`, 
-            type: 'chapter', 
-            data: chapter, 
-            palette: scenePalettes[`phase${i + 1}`] 
-        })),
-        ...c.thesis.map((item, i) => ({ 
-            id: `thesis-${i}`, 
-            type: 'thesis', 
-            data: item, 
-            palette: i === 0 ? scenePalettes.engineered : scenePalettes.unified 
-        })),
+        { id: 'obs-1', type: 'observation', data: { text: c.intro.text[0] }, palette: scenePalettes.observation },
+        { id: 'phase-0', type: 'chapter', data: c.chapters[0], palette: scenePalettes.phase1 },
+        { id: 'phase-3', type: 'chapter', data: c.chapters[3], palette: scenePalettes.phase4 },
+        { id: 'thesis-0', type: 'thesis', data: c.thesis[0], palette: scenePalettes.engineered },
         { id: 'credibility', type: 'credibility', data: {}, palette: scenePalettes.credibility },
         { id: 'fit', type: 'fit', data: c.identity, palette: scenePalettes.fit }
     ];
@@ -526,6 +512,8 @@ Scaled communities from zero to millions of users.`,
                             if (isInView) setActiveStage(idx);
                         }, [isInView, idx]);
 
+                        const [isHovered, setIsHovered] = useState(false);
+
                         return (
                             <div 
                                 key={section.id} 
@@ -533,42 +521,64 @@ Scaled communities from zero to millions of users.`,
                                 className={`min-h-screen w-full flex items-center justify-center px-6 md:px-12 sticky top-0 ${
                                     theme === 'light' ? section.palette.bg : ''
                                 }`}
+                                onMouseMove={(e) => {
+                                    const card = e.currentTarget.querySelector('.story-card');
+                                    if (card) {
+                                        const rect = card.getBoundingClientRect();
+                                        const x = e.clientX - rect.left - rect.width / 2;
+                                        const y = e.clientY - rect.top - rect.height / 2;
+                                        card.style.transform = `perspective(1000px) rotateY(${x / 50}deg) rotateX(${-y / 50}deg)`;
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    const card = e.currentTarget.querySelector('.story-card');
+                                    if (card) {
+                                        card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+                                    }
+                                }}
                             >
                                 <motion.div
                                     style={{ y, opacity, scale }}
-                                    className={`max-w-4xl w-full ${
+                                    className={`story-card max-w-5xl w-full transition-transform duration-300 ease-out ${
                                         theme === 'dark' 
-                                            ? 'backdrop-blur-md bg-black/30 p-8 md:p-16 rounded-3xl border border-white/10 shadow-2xl' 
-                                            : 'p-8 md:p-16'
+                                            ? 'backdrop-blur-md bg-black/30 p-12 md:p-20 rounded-3xl border border-white/10 shadow-2xl' 
+                                            : 'p-12 md:p-20'
                                     }`}
+                                    onHoverStart={() => setIsHovered(true)}
+                                    onHoverEnd={() => setIsHovered(false)}
                                 >
                                     {section.type === 'intro' && (
-                                        <div className="space-y-8">
+                                        <div className="space-y-10">
                                             <motion.div 
-                                                initial={{ opacity: 0, x: -20 }}
-                                                whileInView={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.2, duration: 0.8 }}
-                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.6 }}
+                                                className={`inline-block text-sm font-mono tracking-[0.3em] uppercase px-5 py-2.5 rounded-full border font-bold cursor-pointer ${
                                                     theme === 'dark' 
-                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                                        : 'text-orange-600 border-orange-300 bg-orange-100'
+                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20' 
+                                                        : 'text-orange-600 border-orange-300 bg-orange-100 hover:bg-orange-200'
                                                 }`}
                                             >
                                                 {section.data.episode}
                                             </motion.div>
                                             <motion.h1 
-                                                initial={{ opacity: 0, y: 30 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.3, duration: 1 }}
-                                                className={`text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
+                                                initial={{ opacity: 0, y: 50 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-7xl md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-[0.8] ${section.palette.text}`}
+                                                style={{ 
+                                                    textShadow: theme === 'dark' 
+                                                        ? '0 0 100px rgba(99, 102, 241, 0.3)' 
+                                                        : 'none'
+                                                }}
                                             >
                                                 {section.data.title}
                                             </motion.h1>
                                             <motion.p 
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.5, duration: 0.8 }}
-                                                className={`text-xl md:text-3xl font-light leading-relaxed ${
+                                                initial={{ opacity: 0, y: 30 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.4, duration: 0.8 }}
+                                                className={`text-2xl md:text-4xl font-light leading-relaxed max-w-4xl ${
                                                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                                 }`}
                                             >
@@ -579,18 +589,23 @@ Scaled communities from zero to millions of users.`,
 
                                     {section.type === 'observation' && (
                                         <motion.div 
-                                            initial={{ opacity: 0, x: -40 }}
+                                            initial={{ opacity: 0, x: -60 }}
                                             whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 0.8, ease: "easeOut" }}
-                                            className={`border-l-4 pl-8 ${
-                                                theme === 'dark' ? 'border-indigo-500/50' : 'border-blue-400'
+                                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                            className={`border-l-8 pl-12 relative group cursor-pointer ${
+                                                theme === 'dark' ? 'border-indigo-500/50 hover:border-indigo-500' : 'border-blue-400 hover:border-blue-600'
                                             }`}
                                         >
+                                            <motion.div
+                                                className="absolute left-0 top-0 w-2 h-full bg-current opacity-0 group-hover:opacity-100 transition-opacity"
+                                                layoutId="highlight"
+                                            />
                                             <motion.p 
                                                 initial={{ opacity: 0 }}
                                                 whileInView={{ opacity: 1 }}
                                                 transition={{ delay: 0.3, duration: 0.8 }}
-                                                className={`text-2xl md:text-5xl font-bold leading-tight ${section.palette.text}`}
+                                                className={`text-3xl md:text-6xl font-black leading-tight ${section.palette.text}`}
+                                                whileHover={{ x: 10 }}
                                             >
                                                 {section.data.text}
                                             </motion.p>
@@ -598,32 +613,33 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'chapter' && (
-                                        <div className="space-y-8">
+                                        <div className="space-y-10">
                                             <motion.div 
-                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                initial={{ opacity: 0, scale: 0.8 }}
                                                 whileInView={{ opacity: 1, scale: 1 }}
-                                                transition={{ duration: 0.6 }}
-                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
+                                                transition={{ duration: 0.7 }}
+                                                whileHover={{ scale: 1.05 }}
+                                                className={`inline-block text-sm font-mono tracking-[0.3em] uppercase px-5 py-2.5 rounded-full border font-bold cursor-pointer ${
                                                     theme === 'dark' 
-                                                        ? `${section.palette.accent} border-current/30 bg-current/10` 
-                                                        : `${section.palette.accent} border-current/30 bg-current/10`
+                                                        ? `${section.palette.accent} border-current/30 bg-current/10 hover:bg-current/20` 
+                                                        : `${section.palette.accent} border-current/30 bg-current/10 hover:bg-current/20`
                                                 }`}
                                             >
                                                 {section.data.year}
                                             </motion.div>
                                             <motion.h2 
-                                                initial={{ opacity: 0, y: 40 }}
+                                                initial={{ opacity: 0, y: 60 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.2, duration: 0.9 }}
-                                                className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
+                                                transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.8] ${section.palette.text}`}
                                             >
                                                 {section.data.headline}
                                             </motion.h2>
                                             <motion.p 
-                                                initial={{ opacity: 0, y: 30 }}
+                                                initial={{ opacity: 0, y: 40 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.4, duration: 0.8 }}
-                                                className={`text-xl md:text-3xl font-light leading-relaxed ${
+                                                transition={{ delay: 0.4, duration: 0.9 }}
+                                                className={`text-2xl md:text-4xl font-light leading-relaxed max-w-4xl ${
                                                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                                 }`}
                                             >
@@ -658,12 +674,12 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'credibility' && (
-                                        <div className="text-center space-y-16">
+                                        <div className="text-center space-y-20">
                                             <motion.p 
-                                                initial={{ opacity: 0, y: 30 }}
+                                                initial={{ opacity: 0, y: 40 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 1 }}
-                                                className={`text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed ${
+                                                transition={{ duration: 1.2 }}
+                                                className={`text-4xl md:text-5xl lg:text-6xl font-light leading-relaxed ${
                                                     theme === 'dark' ? 'text-neutral-400' : 'text-neutral-300'
                                                 }`}
                                             >
@@ -672,16 +688,17 @@ Scaled communities from zero to millions of users.`,
                                                     : "더 이상 희소한 자원은 창의성이 아닙니다."}
                                             </motion.p>
                                             <motion.h2 
-                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                initial={{ opacity: 0, scale: 0.7 }}
                                                 whileInView={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: 0.3, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tight leading-[0.8] ${
+                                                whileHover={{ scale: 1.05 }}
+                                                transition={{ delay: 0.3, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-7xl md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-[0.75] cursor-pointer ${
                                                     theme === 'dark' ? 'text-white' : 'text-white'
                                                 }`}
                                                 style={{ 
                                                     textShadow: theme === 'dark' 
-                                                        ? '0 0 80px rgba(99, 102, 241, 0.3)' 
-                                                        : '0 0 60px rgba(0, 0, 0, 0.2)'
+                                                        ? '0 0 120px rgba(99, 102, 241, 0.5), 0 0 60px rgba(139, 92, 246, 0.3)' 
+                                                        : '0 0 80px rgba(0, 0, 0, 0.3)'
                                                 }}
                                             >
                                                 {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
