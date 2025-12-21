@@ -776,149 +776,112 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 02.5: WHY IT MATTERS (Opportunity + Regulatory) */}
-            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y ${
+            {/* Section 02.5: WHY IT MATTERS (Opportunity + Regulatory merged & condensed) */}
+            <section className={`min-h-[70vh] flex items-center justify-center relative z-10 border-y ${
                 theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
             }`}>
-                <div className="max-w-6xl mx-auto px-6 w-full">
+                <div className="max-w-5xl mx-auto px-6 w-full text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
                     >
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{language === 'en' ? 'Why It Matters' : '왜 중요한가'}</h2>
-                        <h3 className={`text-3xl md:text-5xl font-black mb-8 leading-tight ${
+                        }`}>{language === 'en' ? 'Why Now' : '왜 지금인가'}</h2>
+                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>{t.opportunity.sub}</h3>
-                        <div className={`flex flex-wrap justify-center gap-6 text-lg mb-16 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>
-                            {t.opportunity.points.map((point, idx) => (
-                                <span key={idx} className="font-mono">{point}</span>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Regulatory Deadline */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className={`rounded-3xl p-12 border text-center ${
+                            {language === 'en' 
+                                ? 'AI verification is no longer optional.' 
+                                : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                        </h3>
+                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>
+                            {language === 'en'
+                                ? 'The $13B brand safety market stopped at "classification." EU AI Act enforcement begins August 2026 — with fines up to 7% of global revenue.'
+                                : '7조원 브랜드 안전 시장은 "분류"에서 멈췄습니다. EU AI Act는 2026년 8월 시행되며, 위반 시 글로벌 매출 7%까지 과징금이 부과됩니다.'}
+                        </p>
+                        <div className={`inline-block px-8 py-4 rounded-2xl border ${
                             theme === 'dark'
-                                ? 'bg-black/40 border-orange-500/20 backdrop-blur-sm'
-                                : 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-300/40'
-                        }`}
-                    >
-                        <div className={`text-6xl md:text-7xl font-black mb-4 ${
-                            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-                        }`}>{t.regulatory.date}</div>
-                        <p className={`text-xl md:text-2xl font-bold mb-2 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>{t.regulatory.desc}</p>
-                        <p className={`text-lg font-medium ${
-                            theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                        }`}>{t.regulatory.warning}</p>
+                                ? 'bg-orange-500/10 border-orange-500/30'
+                                : 'bg-orange-100 border-orange-300'
+                        }`}>
+                            <div className={`text-5xl md:text-6xl font-black mb-2 ${
+                                theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+                            }`}>{t.regulatory.date}</div>
+                            <div className={`text-sm font-bold ${
+                                theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                            }`}>{t.regulatory.warning}</div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Section 02.6: THE CHALLENGE (Cost + Market Failure) */}
-            <section className="min-h-screen flex items-center justify-center relative z-10">
-                <div className="max-w-7xl mx-auto px-6 w-full">
-                    <FadeInSection delay={0} direction="up" className="mb-16 text-center max-w-5xl mx-auto">
+            {/* Section 02.6: THE CHALLENGE (Cost + Market Failure merged & condensed) */}
+            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 border-y ${
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
+            }`}>
+                <div className="max-w-6xl mx-auto px-6 w-full">
+                    <FadeInSection delay={0} direction="up" className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{language === 'en' ? 'The Challenge' : '해결 과제'}</h2>
-                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-12 leading-tight ${
+                        }`}>{language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}</h2>
+                        <h3 className={`text-3xl md:text-5xl font-black mb-6 leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}
-                            style={theme === 'dark' ? { textShadow: '0 4px 12px rgba(0,0,0,0.5)' } : {}}
-                        >
-                            {t.problem.sub}
+                        }`}>
+                            {language === 'en'
+                                ? 'Without trust infrastructure, everyone loses.'
+                                : '신뢰 인프라 없이는 모두가 잃습니다.'}
                         </h3>
                     </FadeInSection>
 
-                    {/* Cost Examples */}
-                    <div className="grid md:grid-cols-3 gap-8 mb-20">
-                        {t.cost.items.map((item, idx) => (
+                    {/* Condensed Impact Grid: 2 stats + 3 structural issues */}
+                    <div className="grid md:grid-cols-2 gap-6 mb-12">
+                        {/* Key Stats - First 2 from cost */}
+                        {t.cost.items.slice(0, 2).map((item, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: idx * 0.15 }}
-                                className={`p-8 rounded-2xl border text-center ${
+                                transition={{ delay: idx * 0.1 }}
+                                className={`p-6 rounded-2xl border text-center ${
                                     theme === 'dark'
-                                        ? 'bg-black/30 border-red-500/20 hover:border-red-500/50'
-                                        : 'bg-white border-red-200 hover:shadow-lg'
+                                        ? 'bg-black/30 border-red-500/20'
+                                        : 'bg-red-50/50 border-red-200'
                                 }`}
                             >
-                                <div className={`text-4xl md:text-5xl font-black mb-4 ${
+                                <div className={`text-3xl md:text-4xl font-black mb-2 ${
                                     theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                 }`}>{item.val}</div>
-                                <p className={`text-sm leading-relaxed ${
+                                <p className={`text-sm ${
                                     theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                 }`}>{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Market Failure Cards */}
-                    <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar md:custom-scrollbar">
+                    {/* Structural Problems - 3 cards condensed */}
+                    <div className="grid md:grid-cols-3 gap-6">
                         {t.problem.cards.map((card, idx) => (
                             <FadeInSection
                                 key={idx}
-                                delay={idx * 0.15}
+                                delay={idx * 0.1}
                                 direction="up"
-                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border transition-all duration-300 ${
+                                className={`p-6 rounded-xl border transition-all ${
                                     theme === 'dark'
-                                        ? 'bg-black/40 border-white/10 hover:border-indigo-500/50 backdrop-blur-sm relative overflow-hidden'
-                                        : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
+                                        ? 'bg-black/40 border-white/10 hover:border-indigo-500/50'
+                                        : 'bg-white border-neutral-200 hover:shadow-lg'
                                 }`}
                             >
-                                {theme === 'dark' && (
-                                    <>
-                                        <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
-                                        <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
-                                        <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
-                                        <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
-                                    </>
-                                )}
-
-                                <Floating delay={idx * 0.2} offset={8}>
-                                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
-                                        theme === 'dark'
-                                            ? 'bg-neutral-900 group-hover:bg-indigo-500/10 group-hover:text-indigo-400'
-                                            : 'bg-gradient-to-br from-cyan-200/50 via-violet-200/50 to-pink-200/50 text-violet-700 border border-violet-300/30'
-                                    }`}>
-                                        <motion.div
-                                            animate={{ 
-                                                scale: [1, 1.15, 1],
-                                                filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"]
-                                            }}
-                                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.4 }}
-                                        >
-                                            {[Shield, Layers, Gamepad2][idx] && React.createElement([Shield, Layers, Gamepad2][idx], { className: "w-6 h-6" })}
-                                        </motion.div>
-                                    </div>
-                                </Floating>
-                                <h4 className={`text-2xl font-black mb-3 ${
+                                <h4 className={`text-lg font-black mb-2 ${
                                     theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                 }`}>{card.title}</h4>
-                                <p className={`mb-6 text-base leading-relaxed font-medium ${
-                                    theme === 'dark' ? 'text-neutral-100' : 'text-neutral-800'
+                                <p className={`text-sm leading-relaxed ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                 }`}>{card.desc}</p>
-                                <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide font-bold transition-colors ${
-                                    theme === 'dark'
-                                        ? 'bg-neutral-800 text-neutral-200 group-hover:bg-indigo-500/20 group-hover:text-indigo-300'
-                                        : 'bg-gradient-to-r from-cyan-200 via-violet-200 to-pink-200 text-violet-900 border border-violet-300/40'
-                                }`}>
-                                    {card.badge}
-                                </span>
                             </FadeInSection>
                         ))}
                     </div>
