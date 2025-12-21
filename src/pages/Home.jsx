@@ -670,7 +670,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20" ref={(el) => {
+                <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-6 py-16 md:py-20" ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
                             ([entry]) => {
@@ -682,7 +682,7 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-6xl mx-auto text-center">
+                    <div className="max-w-5xl mx-auto text-center w-full">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -692,7 +692,7 @@ export default function Home() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className={`inline-block px-6 py-2.5 mb-10 rounded-full text-xs md:text-sm font-bold tracking-wider uppercase border ${
+                                className={`inline-block px-4 md:px-6 py-2 md:py-2.5 mb-6 md:mb-8 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase border ${
                                 theme === 'dark'
                                     ? 'border-indigo-500/40 bg-indigo-500/15 text-indigo-300 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
                                     : 'bg-gradient-to-r from-cyan-100 via-violet-100 to-pink-100 border-violet-300/50 text-violet-900 backdrop-blur-sm shadow-sm'
@@ -704,12 +704,12 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 md:mb-12 leading-[0.95]"
+                                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95]"
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 md:mb-12 leading-[0.95] text-neutral-900">
+                                <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] text-neutral-900">
                                     {t.hero.title}
                                 </motion.h1>
                             )}
@@ -717,7 +717,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-5xl mx-auto leading-tight mb-8 font-bold ${
+                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-tight mb-4 md:mb-6 font-bold px-4 ${
                                     theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
                                 }`}
                             >
@@ -727,7 +727,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-12 md:mb-16 font-medium ${
+                                className={`text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12 font-medium px-4 ${
                                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                 }`}
                             >
@@ -737,17 +737,17 @@ export default function Home() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.6 }}
-                                className="flex flex-col sm:flex-row gap-4 justify-center"
+                                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4"
                             >
-                                <Button size="lg" className={`group rounded-full px-10 h-14 text-base md:text-lg font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 ${
+                                <Button size="lg" className={`group rounded-full px-6 md:px-10 h-12 md:h-14 text-sm md:text-base font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto ${
                                     theme === 'dark'
                                         ? 'bg-white text-black hover:bg-neutral-100 shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]'
                                         : 'bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 hover:from-cyan-500 hover:via-violet-500 hover:to-pink-500 text-white shadow-xl hover:shadow-2xl'
                                 }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                     {t.hero.cta1}
-                                    <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                                 </Button>
-                                <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 active:scale-95 ${
+                                <Button variant="outline" size="lg" className={`rounded-full px-6 md:px-10 h-12 md:h-14 text-sm md:text-base font-bold transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto ${
                                     theme === 'dark'
                                         ? 'border-neutral-700 text-white hover:bg-white/10 hover:border-neutral-600 bg-transparent backdrop-blur-sm'
                                         : 'border-violet-200 text-neutral-900 hover:bg-violet-50 hover:border-violet-300 bg-white/80 backdrop-blur-sm shadow-md'
@@ -760,12 +760,12 @@ export default function Home() {
                 </section>
 
                 {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}>
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-20">
-                            <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                    <div className="max-w-5xl mx-auto w-full">
+                        <div className="text-center mb-12 md:mb-16">
+                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.whatWeDo.title}
@@ -774,18 +774,18 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12"
+                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-8 md:mb-12 px-4"
                                 >
                                     {t.whatWeDo.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-8 md:mb-12 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
                                     {t.whatWeDo.sub}
                                 </h3>
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-16">
+                        <div className="grid md:grid-cols-3 gap-3 md:gap-4 mb-12 md:mb-16">
                             {t.whatWeDo.problems.map((problem, idx) => (
                                 <motion.div
                                     key={idx}
@@ -794,26 +794,26 @@ export default function Home() {
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.15, duration: 0.5 }}
                                     whileHover={{ scale: 1.02, y: -4 }}
-                                    className={`p-6 md:p-8 rounded-2xl border transition-all duration-300 ${
+                                    className={`p-4 md:p-6 rounded-xl md:rounded-2xl border transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/50 border-red-500/30 hover:border-red-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)]'
                                             : 'bg-white border-red-200 hover:border-red-300 hover:shadow-lg'
                                     }`}
                                 >
-                                    <p className={`text-base md:text-lg font-bold leading-relaxed ${
+                                    <p className={`text-sm md:text-base font-bold leading-relaxed ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-700'
                                     }`}>{problem}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="text-center space-y-6 md:space-y-8">
+                        <div className="text-center space-y-4 md:space-y-6 px-4">
                             <motion.p 
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
-                                className={`text-2xl md:text-3xl lg:text-5xl font-black leading-tight ${
+                                className={`text-xl md:text-2xl lg:text-3xl font-black leading-tight ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>
                                 {t.whatWeDo.solution}
@@ -823,7 +823,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
-                                className={`text-lg md:text-xl lg:text-2xl font-medium leading-relaxed max-w-3xl mx-auto ${
+                                className={`text-sm md:text-base lg:text-lg font-medium leading-relaxed max-w-3xl mx-auto ${
                                 theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                             }`}>
                                 {t.whatWeDo.explanation}
@@ -833,7 +833,7 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 py-20 ${
+                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -848,8 +848,8 @@ export default function Home() {
                     }
                 }}>
                     <div className="max-w-7xl mx-auto w-full">
-                        <div className="text-center mb-16">
-                            <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                        <div className="text-center mb-12 md:mb-16">
+                            <h2 className={`text-xs md:text-sm font-mono mb-4 md:mb-6 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.proof.title}
@@ -858,18 +858,18 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8"
+                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 md:mb-8 px-4"
                                 >
                                     {t.proof.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
                                     {t.proof.sub}
                                 </h3>
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-20 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16 text-center">
                             {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
@@ -877,39 +877,39 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.15, duration: 0.6 }}
-                                    whileHover={{ scale: 1.05, y: -8 }}
-                                    className={`p-6 md:p-8 rounded-3xl border-2 transition-all duration-300 ${
+                                    whileHover={{ scale: 1.05, y: -4 }}
+                                    className={`p-4 md:p-6 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] hover:bg-black/60'
-                                            : 'bg-white border-violet-200 hover:border-violet-400 hover:shadow-2xl'
+                                            ? 'bg-black/40 border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:bg-black/60'
+                                            : 'bg-white border-violet-200 hover:border-violet-400 hover:shadow-xl'
                                     }`}
                                 >
-                                    <div className={`text-4xl md:text-5xl lg:text-6xl font-black mb-4 ${
+                                    <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 md:mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
-                                    <div className={`text-xs md:text-sm uppercase tracking-wider font-bold leading-tight ${
+                                    <div className={`text-[10px] md:text-xs uppercase tracking-wider font-bold leading-tight ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                     }`}>{stat.label}</div>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <p className={`text-center text-lg font-bold mb-12 ${
+                        <p className={`text-center text-sm md:text-base font-bold mb-8 md:mb-12 px-4 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.proof.footer}
                         </p>
                         
-                        <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
-                            <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
+                        <div className={`border-t pt-8 md:pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
+                            <p className={`text-center text-xs md:text-sm uppercase tracking-widest font-bold mb-6 md:mb-8 ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
                             }`}>BACKED BY</p>
-                            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
+                            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 px-4">
+                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
+                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
+                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
+                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
+                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
                             </div>
                         </div>
                     </div>
