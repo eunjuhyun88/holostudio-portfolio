@@ -272,7 +272,7 @@ export default function Products() {
                                 <Button size="lg" className={`rounded-full px-10 h-14 text-base font-bold ${
                                     theme === 'dark'
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                        : 'bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:from-cyan-500 hover:via-purple-500 hover:to-pink-500 text-white'
+                                        : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
                                 }`}>
                                     {language === 'en' ? 'Get in Touch' : '문의하기'}
                                     <ArrowRight className="w-5 h-5 ml-2" />

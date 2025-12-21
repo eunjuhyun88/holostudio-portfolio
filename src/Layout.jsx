@@ -257,7 +257,7 @@ function LayoutContent({ children }) {
                         <Button className={`rounded-full px-6 h-9 text-sm font-bold transition-all ${
                             theme === 'dark'
                                 ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] border border-indigo-500/50'
-                                : 'bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:from-cyan-500 hover:via-purple-500 hover:to-pink-500 text-white border-0'
+                                : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white border-0 shadow-lg'
                         }`}>
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
                         </Button>
