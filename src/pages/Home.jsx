@@ -9,6 +9,7 @@ import { useTheme } from '@/components/ThemeContext';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 import ScrollMotionBackground from '@/components/ScrollMotionBackground';
+import MeshGradient from '@/components/MeshGradient';
 import FadeInSection from '@/components/FadeInSection';
 import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
@@ -621,17 +622,24 @@ export default function Home() {
             <div className="sticky top-0 h-screen w-full overflow-hidden pointer-events-none">
                 {/* Fixed Global Background Layer */}
                 <div className="absolute inset-0 z-0">
-                    <CosmicBackground key={`cosmic-${theme}`} theme={theme} />
-                    <Background3D key={`bg3d-${theme}`} theme={theme} />
-                    <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
-                    
-                    {theme === 'dark' && (
-                        <motion.div 
-                            className="absolute inset-0 z-10"
-                            style={{
-                                background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            }}
-                        />
+                    {theme === 'dark' ? (
+                        <>
+                            <CosmicBackground key={`cosmic-${theme}`} theme={theme} />
+                            <Background3D key={`bg3d-${theme}`} theme={theme} />
+                            <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
+                            
+                            <motion.div 
+                                className="absolute inset-0 z-10"
+                                style={{
+                                    background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                                }}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <MeshGradient key={`mesh-${theme}`} theme={theme} />
+                            <Background3D key={`bg3d-${theme}`} theme={theme} />
+                        </>
                     )}
                 </div>
 
