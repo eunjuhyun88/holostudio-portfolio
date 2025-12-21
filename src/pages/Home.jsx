@@ -718,7 +718,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-tight mb-4 md:mb-6 font-bold px-4 ${
+                                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto leading-snug mb-6 md:mb-8 font-bold px-4 ${
                                     theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
                                 }`}
                             >
@@ -728,7 +728,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className={`text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12 font-medium px-4 ${
+                                className={`text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12 md:mb-16 font-medium px-4 ${
                                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                 }`}
                             >
@@ -761,12 +761,12 @@ export default function Home() {
                 </section>
 
                 {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}>
-                    <div className="max-w-5xl mx-auto w-full">
-                        <div className="text-center mb-16 md:mb-20">
-                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
+                    <div className="max-w-4xl mx-auto w-full">
+                        <div className="text-center mb-20 md:mb-24">
+                            <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.whatWeDo.title}
@@ -775,18 +775,18 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-8 md:mb-12 px-4"
+                                    className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight px-4 max-w-3xl mx-auto"
                                 >
                                     {t.whatWeDo.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-8 md:mb-12 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
+                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto">
                                     {t.whatWeDo.sub}
                                 </h3>
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-3 md:gap-4 mb-12 md:mb-16">
+                        <div className="grid md:grid-cols-3 gap-4 md:gap-5 mb-16 md:mb-20">
                             {t.whatWeDo.problems.map((problem, idx) => (
                                 <motion.div
                                     key={idx}
@@ -808,13 +808,13 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="text-center space-y-4 md:space-y-6 px-4">
+                        <div className="text-center space-y-6 md:space-y-8 px-4">
                             <motion.p 
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
-                                className={`text-xl md:text-2xl lg:text-3xl font-black leading-tight ${
+                                className={`text-2xl md:text-3xl lg:text-4xl font-black leading-tight ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>
                                 {t.whatWeDo.solution}
@@ -824,7 +824,7 @@ export default function Home() {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
-                                className={`text-sm md:text-base lg:text-lg font-medium leading-relaxed max-w-3xl mx-auto ${
+                                className={`text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mx-auto ${
                                 theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                             }`}>
                                 {t.whatWeDo.explanation}
@@ -834,7 +834,7 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -848,9 +848,9 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-7xl mx-auto w-full">
-                        <div className="text-center mb-16 md:mb-20">
-                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
+                    <div className="max-w-6xl mx-auto w-full">
+                        <div className="text-center mb-20 md:mb-24">
+                            <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.proof.title}
@@ -859,18 +859,18 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 md:mb-8 px-4"
+                                    className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight px-4 max-w-3xl mx-auto"
                                 >
                                     {t.proof.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
+                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto">
                                     {t.proof.sub}
                                 </h3>
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-20 text-center">
                             {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
@@ -917,7 +917,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 relative overflow-hidden ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -938,8 +938,8 @@ export default function Home() {
                             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
                         </>
                     )}
-                    <div className="max-w-5xl mx-auto text-center w-full relative z-10">
-                        <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
+                    <div className="max-w-4xl mx-auto text-center w-full relative z-10">
+                        <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                         }`}>
                             {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
@@ -1034,7 +1034,7 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 relative overflow-hidden ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-red-50/40 via-rose-50/30 to-pink-50/40 border-red-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -1055,9 +1055,9 @@ export default function Home() {
                             <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
                         </>
                     )}
-                    <div className="max-w-6xl mx-auto w-full relative z-10">
-                        <div className="mb-16 md:mb-20 text-center max-w-4xl mx-auto">
-                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
+                    <div className="max-w-5xl mx-auto w-full relative z-10">
+                        <div className="mb-20 md:mb-24 text-center max-w-3xl mx-auto">
+                            <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-400' : 'text-red-700'
                             }`}>
                                 {t.cost.title}
@@ -1144,7 +1144,7 @@ export default function Home() {
                 </section>
 
                 {/* Company Thesis Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1379,7 +1379,7 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
+                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1460,7 +1460,7 @@ export default function Home() {
                 </section>
 
                 {/* Contact Section */}
-                <section className={`min-h-screen flex items-center justify-center border-t px-4 md:px-8 py-20 md:py-24 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
