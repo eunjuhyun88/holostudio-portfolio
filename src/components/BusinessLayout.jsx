@@ -136,8 +136,9 @@ export default function BusinessLayout({
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-white text-black hover:bg-neutral-200",
             sectionColors: ["#0f172a", "#1e1b4b", "#312e81", "#172554", "#0f172a"],
+            sectionColorsLight: ["#eff6ff", "#dbeafe", "#bfdbfe", "#93c5fd", "#eff6ff"],
             glowHex: "rgba(99, 102, 241, 0.8)",
-            glowSecondary: "rgba(168, 85, 247, 0.5)" // Indigo -> Purple
+            glowSecondary: "rgba(168, 85, 247, 0.5)"
         },
         elememetal: {
             accent: "text-orange-500",
@@ -145,10 +146,10 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(249,115,22,0.1)]",
             gradient: "from-orange-950/30",
             buttonPrimary: "bg-orange-600 text-white hover:bg-orange-500",
-            // Deep Orange -> Dark Red -> Brown -> Dark Amber
-            sectionColors: ["#2a0a00", "#450a0a", "#3f1d0b", "#431407", "#2a0a00"],
+            sectionColors: ["#451a03", "#7c2d12", "#991b1b", "#7f1d1d", "#451a03"],
+            sectionColorsLight: ["#fff7ed", "#ffedd5", "#fed7aa", "#fdba74", "#fff7ed"],
             glowHex: "rgba(249, 115, 22, 0.8)",
-            glowSecondary: "rgba(220, 38, 38, 0.5)" // Orange -> Red
+            glowSecondary: "rgba(220, 38, 38, 0.5)"
         },
         aidguardian: {
             accent: "text-indigo-400",
@@ -156,10 +157,10 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(99,102,241,0.1)]",
             gradient: "from-indigo-950/30",
             buttonPrimary: "bg-indigo-600 text-white hover:bg-indigo-500",
-            // Deep Indigo -> Violet -> Blue -> Slate
-            sectionColors: ["#1e1b4b", "#2e1065", "#172554", "#1e3a8a", "#0f172a"],
+            sectionColors: ["#1e3a8a", "#1e1b4b", "#312e81", "#4338ca", "#1e3a8a"],
+            sectionColorsLight: ["#dbeafe", "#e0e7ff", "#c7d2fe", "#a5b4fc", "#dbeafe"],
             glowHex: "rgba(99, 102, 241, 0.8)",
-            glowSecondary: "rgba(168, 85, 247, 0.5)" // Indigo -> Purple
+            glowSecondary: "rgba(168, 85, 247, 0.5)"
         },
         playarts: {
             accent: "text-lime-400",
@@ -167,10 +168,10 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(132,204,22,0.1)]",
             gradient: "from-lime-950/30",
             buttonPrimary: "bg-lime-500 text-black hover:bg-lime-400",
-            // Dark Lime -> Deep Green -> Teal -> Dark Moss
-            sectionColors: ["#1a2e05", "#064e3b", "#115e59", "#14532d", "#0f172a"],
+            sectionColors: ["#1a2e05", "#365314", "#3f6212", "#4d7c0f", "#1a2e05"],
+            sectionColorsLight: ["#fef9c3", "#fef08a", "#fde047", "#facc15", "#fef9c3"],
             glowHex: "rgba(132, 204, 22, 0.8)",
-            glowSecondary: "rgba(16, 185, 129, 0.5)" // Lime -> Emerald
+            glowSecondary: "rgba(16, 185, 129, 0.5)"
         },
         stockhoo: {
             accent: "text-emerald-400",
@@ -178,10 +179,10 @@ export default function BusinessLayout({
             glow: "shadow-[0_0_100px_rgba(16,185,129,0.1)]",
             gradient: "from-emerald-950/30",
             buttonPrimary: "bg-emerald-600 text-white hover:bg-emerald-500",
-            // Deep Emerald -> Cyan -> Teal -> Slate
-            sectionColors: ["#022c22", "#083344", "#0f766e", "#042f2e", "#0f172a"],
+            sectionColors: ["#064e3b", "#065f46", "#047857", "#059669", "#064e3b"],
+            sectionColorsLight: ["#d1fae5", "#a7f3d0", "#6ee7b7", "#34d399", "#d1fae5"],
             glowHex: "rgba(16, 185, 129, 0.8)",
-            glowSecondary: "rgba(6, 182, 212, 0.5)" // Emerald -> Cyan
+            glowSecondary: "rgba(6, 182, 212, 0.5)"
         }
     };
 
@@ -199,7 +200,9 @@ export default function BusinessLayout({
     const accentText = isLight ? "text-violet-700" : s.accent;
     
     // Dynamic background color using Motion for smooth interpolation
-    const currentSectionColor = (s.sectionColors || ["#0f172a"])[activeSection % (s.sectionColors?.length || 1)];
+    const currentSectionColor = isLight
+        ? (s.sectionColorsLight || ["#ffffff"])[activeSection % (s.sectionColorsLight?.length || 1)]
+        : (s.sectionColors || ["#0f172a"])[activeSection % (s.sectionColors?.length || 1)];
 
     const sections = [
         { id: 'overview', label: 'Overview' },
@@ -252,15 +255,13 @@ export default function BusinessLayout({
                 : 'selection:bg-indigo-500/30 bg-[#050505] text-white'
         } relative overflow-hidden`}>
             {/* Solid Background Transition Layer */}
-            {!isLight && (
-                <motion.div 
-                    className="fixed inset-0 pointer-events-none z-0"
-                    animate={{
-                        backgroundColor: currentSectionColor
-                    }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
-                />
-            )}
+            <motion.div 
+                className="fixed inset-0 pointer-events-none z-0"
+                animate={{
+                    backgroundColor: currentSectionColor
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+            />
 
             {/* Space Effects Layer - Only in Dark Mode */}
             {!isLight && (
@@ -322,12 +323,31 @@ export default function BusinessLayout({
                 </div>
             )}
             
-            {/* Light Mode Background */}
+            {/* Light Mode Accent Overlays */}
             {isLight && (
                 <div className="fixed inset-0 z-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-br from-violet-50/40 via-cyan-50/40 to-pink-50/40" />
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-violet-300/20 to-transparent rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-cyan-300/20 to-transparent rounded-full blur-[100px]" />
+                    <motion.div 
+                        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+                        animate={{
+                            backgroundColor: currentSectionColor,
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{
+                            backgroundColor: { duration: 0.8 },
+                            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                    />
+                    <motion.div 
+                        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[100px]"
+                        animate={{
+                            backgroundColor: currentSectionColor,
+                            opacity: [0.2, 0.4, 0.2]
+                        }}
+                        transition={{
+                            backgroundColor: { duration: 0.8 },
+                            opacity: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                        }}
+                    />
                 </div>
             )}
             
