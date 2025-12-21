@@ -187,7 +187,7 @@ export default function Contact() {
                             <Button className={`w-full h-12 rounded-full text-base font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-orange-500 hover:bg-orange-600 text-white'
+                                    : 'bg-cyan-500 hover:bg-cyan-600 text-white'
                             }`}>
                                 Send Message <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>

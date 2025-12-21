@@ -257,7 +257,7 @@ function LayoutContent({ children }) {
                         <Button className={`rounded-full px-6 h-9 text-sm font-bold transition-all ${
                             theme === 'dark'
                                 ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] border border-indigo-500/50'
-                                : 'bg-orange-500 hover:bg-orange-600 text-white border-0'
+                                : 'bg-cyan-500 hover:bg-cyan-600 text-white border-0'
                         }`}>
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
                         </Button>
