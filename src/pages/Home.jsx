@@ -776,107 +776,13 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 02.5: THE OPPORTUNITY */}
-            <section className={`min-h-[60vh] flex items-center justify-center relative z-10 border-y ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-            }`}>
-                <div className="max-w-5xl mx-auto px-6 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{t.opportunity.title}</h2>
-                        <h3 className={`text-3xl md:text-5xl font-black mb-8 leading-tight ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>{t.opportunity.sub}</h3>
-                        <div className={`flex flex-wrap justify-center gap-6 text-lg ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                        }`}>
-                            {t.opportunity.points.map((point, idx) => (
-                                <span key={idx} className="font-mono">{point}</span>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Section 02.6: THE COST */}
-            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 border-y ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-            }`}>
-                <div className="max-w-6xl mx-auto px-6 w-full">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className={`text-3xl md:text-5xl font-black text-center mb-16 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}
-                    >
-                        {t.cost.title}
-                    </motion.h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {t.cost.items.map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.15 }}
-                                className={`p-8 rounded-2xl border text-center ${
-                                    theme === 'dark'
-                                        ? 'bg-black/30 border-red-500/20 hover:border-red-500/50'
-                                        : 'bg-white border-red-200 hover:shadow-lg'
-                                }`}
-                            >
-                                <div className={`text-4xl md:text-5xl font-black mb-4 ${
-                                    theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                                }`}>{item.val}</div>
-                                <p className={`text-sm leading-relaxed ${
-                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                }`}>{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Section 02.7: REGULATORY PRESSURE */}
-            <section className={`min-h-[60vh] flex items-center justify-center relative z-10 border-y ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-orange-50/50 border-neutral-300/30'
-            }`}>
-                <div className="max-w-4xl mx-auto px-6 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
-                        }`}>{t.regulatory.title}</h2>
-                        <div className={`text-6xl md:text-7xl font-black mb-6 ${
-                            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-                        }`}>{t.regulatory.date}</div>
-                        <p className={`text-xl md:text-2xl font-bold mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>{t.regulatory.desc}</p>
-                        <p className={`text-lg ${
-                            theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                        }`}>{t.regulatory.warning}</p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Section 03: THE CORE PROBLEM */}
+            {/* Section 02.5: THE CHALLENGE (Merged: Opportunity + Problem) */}
             <section className="min-h-screen flex items-center justify-center relative z-10">
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <FadeInSection delay={0} direction="up" className="mb-16 text-center max-w-5xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{t.problem.title}</h2>
+                        }`}>{language === 'en' ? 'The Challenge' : '해결 과제'}</h2>
                         <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
