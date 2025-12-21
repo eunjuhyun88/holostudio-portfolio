@@ -593,14 +593,14 @@ export default function Home() {
                     <Background3D key={`bg3d-${theme}`} theme={theme} />
                     <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
                     
-                    <motion.div 
-                        className="absolute inset-0 z-10"
-                        style={{
-                            background: theme === 'dark' 
-                                ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                                : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(139, 92, 246, 0.06), transparent 60%)`
-                        }}
-                    />
+                    {theme === 'dark' && (
+                        <motion.div 
+                            className="absolute inset-0 z-10"
+                            style={{
+                                background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                            }}
+                        />
+                    )}
                 </div>
 
                 {/* Dynamic Background Effects per Section */}
@@ -616,8 +616,8 @@ export default function Home() {
                         >
                             {theme === 'dark' && (
                                 <>
-                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
-                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+                                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
+                                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
                                 </>
                             )}
                         </motion.div>
@@ -670,7 +670,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-20 md:py-24" ref={(el) => {
+                <section className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 lg:px-12 py-20 md:py-24" ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
                             ([entry]) => {
@@ -687,14 +687,15 @@ export default function Home() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
+                            className="flex flex-col items-center"
                         >
                             <motion.div 
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className={`inline-block px-4 md:px-6 py-2 md:py-2.5 mb-6 md:mb-8 rounded-full text-[10px] md:text-xs font-bold tracking-wider uppercase border ${
+                                className={`inline-block px-5 md:px-7 py-2.5 md:py-3 mb-8 md:mb-10 rounded-full text-[11px] md:text-sm font-bold tracking-wider uppercase border ${
                                 theme === 'dark'
-                                    ? 'border-indigo-500/40 bg-indigo-500/15 text-indigo-300 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
+                                    ? 'border-indigo-500/50 bg-indigo-500/20 text-indigo-200 shadow-[0_0_30px_rgba(99,102,241,0.3)]'
                                     : 'bg-gradient-to-r from-cyan-100 via-violet-100 to-pink-100 border-violet-300/50 text-violet-900 backdrop-blur-sm shadow-sm'
                             }`}>
                                 {t.hero.tag}
@@ -704,12 +705,12 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95]"
+                                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95]"
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] text-neutral-900">
+                                <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] text-neutral-900">
                                     {t.hero.title}
                                 </motion.h1>
                             )}
