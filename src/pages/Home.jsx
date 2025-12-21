@@ -380,10 +380,10 @@ export default function Home() {
                 ko: ["리스크 완화", "지연시간 < 10ms", "규제 준수"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc0228bec_2025-12-171042431.png",
-            color: "text-indigo-400",
-            borderColor: "border-indigo-500",
-            glowColor: "shadow-indigo-500/50",
-            bgGradient: "from-indigo-600",
+            color: "text-cyan-400",
+            borderColor: "border-cyan-400",
+            glowColor: "shadow-cyan-400/50",
+            bgGradient: "from-cyan-500",
             path: "/AidGuardian",
             primaryBtn: { en: "Request Demo", ko: "데모 요청" },
             secondaryBtn: { en: "Integration", ko: "도입 문의" }
@@ -422,10 +422,10 @@ export default function Home() {
                 ko: ["프로토콜 데모", "자산 소유권", "안전한 UGC"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9692fcde2_2025-12-1463649.png",
-            color: "text-orange-500",
-            borderColor: "border-orange-500",
-            glowColor: "shadow-orange-500/50",
-            bgGradient: "from-orange-600",
+            color: "text-yellow-400",
+            borderColor: "border-yellow-400",
+            glowColor: "shadow-yellow-400/50",
+            bgGradient: "from-yellow-500",
             path: "/Elememetal",
             primaryBtn: { en: "View Economy", ko: "경제 구조" },
             secondaryBtn: { en: "For Publishers", ko: "퍼블리셔용" }
@@ -443,10 +443,10 @@ export default function Home() {
                 ko: ["검증된 시그널", "수익 증명", "AI 전략"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/45cb06182_2025-12-17105903.png",
-            color: "text-emerald-400",
-            borderColor: "border-emerald-400",
-            glowColor: "shadow-emerald-400/50",
-            bgGradient: "from-emerald-500",
+            color: "text-fuchsia-400",
+            borderColor: "border-fuchsia-400",
+            glowColor: "shadow-fuchsia-400/50",
+            bgGradient: "from-fuchsia-500",
             path: "/Stockhoo",
             primaryBtn: { en: "Open App", ko: "앱 열기" },
             secondaryBtn: { en: "Deck", ko: "소개서" }
