@@ -969,7 +969,7 @@ export default function Home() {
                             {t.opportunity.sub}
                         </p>
 
-                        <div className="max-w-4xl mx-auto space-y-5 md:space-y-6 mb-14 md:mb-16">
+                        <div className="max-w-2xl md:max-w-3xl mx-auto space-y-5 md:space-y-6 mb-14 md:mb-16">
                             {t.opportunity.points.map((point, idx) => (
                                 <motion.div
                                     key={idx}
