@@ -939,23 +939,23 @@ export default function Home() {
                         </>
                     )}
                     <div className="max-w-5xl mx-auto text-center w-full relative z-10">
-                        <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
+                        <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                         }`}>
-                            {language === 'en' ? 'Why Now' : '왜 지금인가'}
+                            {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
                         </h2>
                         {theme === 'dark' ? (
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight px-4"
+                                className="text-3xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 leading-tight px-4"
                             >
                                 {language === 'en' 
                                     ? 'AI verification is no longer optional.' 
                                     : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight px-4 relative">
+                            <h3 className="text-3xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 leading-tight px-4 relative">
                                 <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
@@ -963,53 +963,73 @@ export default function Home() {
                                 </span>
                             </h3>
                         )}
-                        <p className={`text-sm md:text-base lg:text-lg max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-4 ${
+                        <p className={`text-base md:text-lg lg:text-xl max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed font-medium px-4 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.opportunity.sub}
                         </p>
 
-                        <div className="max-w-3xl mx-auto space-y-4 md:space-y-6 mb-12">
+                        <div className="max-w-4xl mx-auto space-y-5 md:space-y-6 mb-14 md:mb-16">
                             {t.opportunity.points.map((point, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
-                                    whileHover={{ x: 4, scale: 1.01 }}
-                                    className={`p-5 md:p-6 rounded-2xl border-2 transition-all duration-300 relative group ${
-                                        theme === 'dark'
-                                            ? 'bg-gradient-to-br from-orange-950/40 to-black/60 border-orange-500/30 hover:border-orange-400/60 hover:shadow-[0_0_40px_rgba(249,115,22,0.3)] backdrop-blur-sm'
-                                            : 'bg-white/80 backdrop-blur-sm border-orange-300/60 hover:border-orange-400 hover:shadow-[0_8px_30px_rgba(249,115,22,0.15)]'
+                                    transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
+                                    whileHover={{ x: 6, scale: 1.01 }}
+                                    className={`p-6 md:p-8 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 relative group overflow-hidden ${
+                                        idx === 0 
+                                            ? (theme === 'dark'
+                                                ? 'bg-gradient-to-br from-orange-900/60 via-red-950/50 to-black/70 border-orange-500/50 hover:border-orange-400/80 hover:shadow-[0_0_50px_rgba(249,115,22,0.4)] backdrop-blur-md'
+                                                : 'bg-gradient-to-br from-orange-50 to-red-50/50 border-orange-400/70 hover:border-orange-500 hover:shadow-[0_10px_40px_rgba(249,115,22,0.2)]')
+                                            : (theme === 'dark'
+                                                ? 'bg-gradient-to-br from-orange-950/30 to-black/60 border-orange-500/25 hover:border-orange-400/50 hover:shadow-[0_0_40px_rgba(249,115,22,0.25)] backdrop-blur-sm'
+                                                : 'bg-white/90 backdrop-blur-sm border-orange-300/50 hover:border-orange-400 hover:shadow-[0_8px_30px_rgba(249,115,22,0.12)]')
                                     }`}
                                 >
-                                    {point.label ? (
-                                        <div>
-                                            <div className={`font-black mb-2 text-base md:text-lg ${
-                                                theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
-                                            }`}>{point.label}</div>
-                                            <div className={`text-sm md:text-base ${
-                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                            }`}>{point.detail}</div>
-                                        </div>
-                                    ) : (
-                                       <p className={`text-sm md:text-base ${
-                                           theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                       }`}>{point.text}</p>
-                                    )}
                                     {theme === 'dark' && (
-                                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                        <>
+                                            <div className={`absolute -top-20 -right-20 w-40 h-40 ${idx === 0 ? 'bg-orange-500/20' : 'bg-orange-500/10'} rounded-full blur-[60px] group-hover:blur-[80px] transition-all duration-500`} />
+                                            <div className={`absolute -bottom-20 -left-20 w-40 h-40 ${idx === 0 ? 'bg-red-500/15' : 'bg-red-500/8'} rounded-full blur-[60px] group-hover:blur-[80px] transition-all duration-500`} />
+                                        </>
+                                    )}
+                                    <div className="relative z-10">
+                                        {point.label ? (
+                                            <div>
+                                                <div className={`font-black mb-3 text-lg md:text-xl lg:text-2xl ${
+                                                    idx === 0
+                                                        ? (theme === 'dark' ? 'text-orange-300' : 'text-orange-700')
+                                                        : (theme === 'dark' ? 'text-orange-400' : 'text-orange-600')
+                                                }`}>{point.label}</div>
+                                                <div className={`text-base md:text-lg font-medium leading-relaxed ${
+                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                                }`}>{point.detail}</div>
+                                            </div>
+                                        ) : (
+                                           <p className={`text-base md:text-lg font-medium leading-relaxed ${
+                                               theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                           }`}>{point.text}</p>
+                                        )}
+                                    </div>
+                                    {theme === 'dark' && (
+                                       <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${idx === 0 ? 'from-orange-500/10 to-red-500/10' : 'from-orange-500/0 to-orange-500/5'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
                                     )}
                                 </motion.div>
                             ))}
                         </div>
 
-                        <p className={`text-lg md:text-xl lg:text-2xl font-black text-center px-4 ${
-                            theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
-                        }`}>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className={`text-xl md:text-2xl lg:text-3xl font-black text-center px-4 leading-tight ${
+                                theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                            }`}
+                        >
                             {t.opportunity.conclusion}
-                        </p>
+                        </motion.p>
                     </div>
                 </section>
 
