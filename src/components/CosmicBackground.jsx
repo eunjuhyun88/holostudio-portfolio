@@ -25,7 +25,7 @@ export default function CosmicBackground({ theme = 'dark' }) {
             <div className={`absolute inset-0 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]'
-                    : 'bg-gradient-to-br from-[#FEFEFA] via-[#F8F8F6] to-[#F5F5F0]'
+                    : 'bg-gradient-to-br from-[#FAF8F5] via-[#F5EFE6] to-[#F0E8E0]'
             }`} />
 
             {/* 2. Minimal Noise Texture */}
