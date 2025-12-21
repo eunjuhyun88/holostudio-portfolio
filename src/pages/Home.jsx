@@ -1137,26 +1137,30 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                        <p className={`text-xl md:text-2xl font-bold mb-8 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {t.thesis.keywords.map((kw, i) => (
-                                <motion.span 
-                                    key={i} 
-                                    className="flex items-center gap-3 cursor-default"
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
+                            {t.thesis.intro}
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                            {t.thesis.primitives.map((prim, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.15 }}
-                                    whileHover={{ scale: 1.1 }}
+                                    className={`p-6 rounded-xl border ${
+                                        theme === 'dark' ? 'bg-black/40 border-white/10' : 'bg-white border-neutral-200 shadow-md'
+                                    }`}
                                 >
-                                    <span className={`w-3 h-3 rounded-full ${
-                                        theme === 'dark' 
-                                            ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
-                                            : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
-                                    }`} />
-                                    {kw}
-                                </motion.span>
+                                    <div className={`text-lg font-black mb-2 ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>{prim.name}</div>
+                                    <div className={`text-sm ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                                    }`}>{prim.desc}</div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
