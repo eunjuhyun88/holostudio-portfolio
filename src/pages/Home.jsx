@@ -1258,14 +1258,12 @@ export default function Home() {
                                         </>
                                     )}
                                     
-                                    {/* Large Background Text */}
-                                    <div className={`absolute bottom-10 left-10 text-[13vw] font-black leading-none select-none text-left tracking-tighter ${
-                                        theme === 'dark' 
-                                            ? `${prod.color} opacity-20 mix-blend-screen`
-                                            : 'text-neutral-900/10 opacity-30'
-                                    }`}>
-                                        {prod.name.toUpperCase()}
-                                    </div>
+                                    {/* Large Background Text - Only dark mode */}
+                                    {theme === 'dark' && (
+                                        <div className={`absolute bottom-10 left-10 text-[13vw] font-black ${prod.color} opacity-20 leading-none select-none text-left tracking-tighter mix-blend-screen`}>
+                                            {prod.name.toUpperCase()}
+                                        </div>
+                                    )}
                                     
                                     {/* Central Visual */}
                                     <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
