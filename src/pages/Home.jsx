@@ -701,12 +701,20 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95]"
+                                    className={`font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] ${
+                                        language === 'ko' 
+                                            ? 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl' 
+                                            : 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'
+                                    }`}
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] text-neutral-900">
+                                <motion.h1 className={`font-black tracking-tighter mb-6 md:mb-8 leading-[0.95] text-neutral-900 ${
+                                    language === 'ko' 
+                                        ? 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl' 
+                                        : 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'
+                                }`}>
                                     {t.hero.title}
                                 </motion.h1>
                             )}
@@ -714,9 +722,11 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto leading-snug mb-6 md:mb-8 font-bold px-4 ${
-                                    theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
-                                }`}
+                                className={`max-w-4xl mx-auto mb-6 md:mb-8 font-bold px-4 ${
+                                    language === 'ko'
+                                        ? 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight break-keep'
+                                        : 'text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug'
+                                } ${theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'}`}
                             >
                                 {t.hero.sub}
                             </motion.p>
@@ -724,9 +734,11 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className={`text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12 md:mb-16 font-medium px-4 ${
-                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                }`}
+                                className={`max-w-2xl mx-auto mb-12 md:mb-16 font-medium px-4 ${
+                                    language === 'ko'
+                                        ? 'text-lg sm:text-xl md:text-2xl leading-relaxed break-keep'
+                                        : 'text-base sm:text-lg md:text-xl leading-relaxed'
+                                } ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}
                             >
                                 {t.hero.desc}
                             </motion.p>
@@ -771,12 +783,20 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight px-4 max-w-3xl mx-auto"
+                                    className={`font-black leading-tight px-4 max-w-3xl mx-auto ${
+                                        language === 'ko'
+                                            ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                            : 'text-3xl md:text-4xl lg:text-5xl'
+                                    }`}
                                 >
                                     {t.whatWeDo.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto">
+                                <h3 className={`font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto ${
+                                    language === 'ko'
+                                        ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                        : 'text-3xl md:text-4xl lg:text-5xl'
+                                }`}>
                                     {t.whatWeDo.sub}
                                 </h3>
                             )}
@@ -855,12 +875,20 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight px-4 max-w-3xl mx-auto"
+                                    className={`font-black leading-tight px-4 max-w-3xl mx-auto ${
+                                        language === 'ko'
+                                            ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                            : 'text-3xl md:text-4xl lg:text-5xl'
+                                    }`}
                                 >
                                     {t.proof.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto">
+                                <h3 className={`font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 max-w-3xl mx-auto ${
+                                    language === 'ko'
+                                        ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                        : 'text-3xl md:text-4xl lg:text-5xl'
+                                }`}>
                                     {t.proof.sub}
                                 </h3>
                             )}
@@ -941,14 +969,22 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(249, 115, 22, 0.8)"
-                                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4"
+                                    className={`font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4 ${
+                                        language === 'ko'
+                                            ? 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl break-keep'
+                                            : 'text-xl sm:text-2xl md:text-3xl lg:text-4xl'
+                                    }`}
                                 >
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
                                         : 'AI 검증은 더 이상 선택이 아닙니다.'}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4 relative">
+                                <h3 className={`font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4 relative ${
+                                    language === 'ko'
+                                        ? 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl break-keep'
+                                        : 'text-xl sm:text-2xl md:text-3xl lg:text-4xl'
+                                }`}>
                                     <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
                                         {language === 'en' 
                                             ? 'AI verification is no longer optional.' 
@@ -956,9 +992,11 @@ export default function Home() {
                                     </span>
                                 </h3>
                             )}
-                            <p className={`text-[11px] sm:text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-medium px-2 sm:px-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                            }`}>
+                            <p className={`max-w-2xl mx-auto leading-relaxed font-medium px-2 sm:px-4 ${
+                                language === 'ko'
+                                    ? 'text-sm sm:text-base md:text-lg break-keep'
+                                    : 'text-[11px] sm:text-xs md:text-sm'
+                            } ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'}`}>
                                 {t.opportunity.sub}
                             </p>
                         </div>
@@ -1116,7 +1154,7 @@ export default function Home() {
                                 </>
                             ) : (
                                 <>
-                                    <p className={`text-xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 ${
+                                    <p className={`text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 md:mb-6 break-keep ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>
                                         더 이상 희소한 자원은 창의성이 아닙니다.
@@ -1125,12 +1163,12 @@ export default function Home() {
                                         <MouseGlowText
                                             as="p"
                                             glowColor="rgba(99, 102, 241, 0.9)"
-                                            className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8"
+                                            className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 md:mb-8 break-keep"
                                         >
                                             바로 신뢰입니다.
                                         </MouseGlowText>
                                     ) : (
-                                        <p className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                        <p className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent break-keep">
                                             바로 신뢰입니다.
                                         </p>
                                     )}
@@ -1323,12 +1361,20 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(234, 179, 8, 0.8)"
-                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 md:mb-6 px-4"
+                                    className={`font-black leading-tight mb-4 md:mb-6 px-4 ${
+                                        language === 'ko'
+                                            ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                            : 'text-2xl md:text-4xl lg:text-5xl'
+                                    }`}
                                 >
                                     {t.milestones.title}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent px-4">
+                                <h3 className={`font-black leading-tight mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent px-4 ${
+                                    language === 'ko'
+                                        ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                        : 'text-2xl md:text-4xl lg:text-5xl'
+                                }`}>
                                     {t.milestones.title}
                                 </h3>
                             )}
@@ -1394,23 +1440,35 @@ export default function Home() {
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(99, 102, 241, 0.9)"
-                                className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-6 md:mb-8 leading-tight px-4"
+                                className={`font-black tracking-tighter mb-6 md:mb-8 leading-tight px-4 ${
+                                    language === 'ko'
+                                        ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                        : 'text-2xl md:text-4xl lg:text-5xl'
+                                }`}
                             >
                                 {t.contact.title}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-6 md:mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
+                            <h3 className={`font-black tracking-tighter mb-6 md:mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4 ${
+                                language === 'ko'
+                                    ? 'text-3xl md:text-5xl lg:text-6xl break-keep'
+                                    : 'text-2xl md:text-4xl lg:text-5xl'
+                            }`}>
                                 {t.contact.title}
                             </h3>
                         )}
-                        <p className={`text-sm md:text-base lg:text-lg font-medium mb-6 md:mb-8 px-4 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}>
+                        <p className={`font-medium mb-6 md:mb-8 px-4 ${
+                            language === 'ko'
+                                ? 'text-base md:text-lg lg:text-xl break-keep'
+                                : 'text-sm md:text-base lg:text-lg'
+                        } ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'}`}>
                             {t.contact.sub}
                         </p>
-                        <p className={`text-base md:text-lg font-bold italic mb-8 md:mb-12 px-4 ${
-                            theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
-                        }`}>
+                        <p className={`font-bold italic mb-8 md:mb-12 px-4 ${
+                            language === 'ko'
+                                ? 'text-lg md:text-xl break-keep'
+                                : 'text-base md:text-lg'
+                        } ${theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'}`}>
                             {t.contact.tagline}
                         </p>
                         <motion.div 
