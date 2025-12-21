@@ -714,6 +714,18 @@ export default function Home() {
                         : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
             >
+                {/* Parallax decorative elements */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.1, 0.3], [-50, 50])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 right-[5%] w-48 h-48 bg-indigo-500/5 rounded-full blur-[60px]" />
+                    )}
+                </motion.div>
+                
                 <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -722,25 +734,40 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16 w-full"
                     >
-                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.1, 0.2], [20, 0])
+                            }}
+                        >
                             {language === 'en' ? 'PROVEN PERFORMANCE' : '검증된 성과'}
-                        </h2>
+                        </motion.h2>
                         
                         {theme === 'dark' ? (
                             <MouseGlowText
-                                as="h3"
+                                as={motion.h3}
                                 glowColor="rgba(99, 102, 241, 0.8)"
                                 secondaryGlowColor="rgba(168, 85, 247, 0.5)"
                                 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                style={{
+                                    y: useTransform(scrollYProgress, [0.1, 0.2], [30, 0]),
+                                    scale: useTransform(scrollYProgress, [0.1, 0.18], [0.95, 1])
+                                }}
                             >
                                 {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                            <motion.h3
+                                className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent"
+                                style={{
+                                    y: useTransform(scrollYProgress, [0.1, 0.2], [30, 0]),
+                                    scale: useTransform(scrollYProgress, [0.1, 0.18], [0.95, 1])
+                                }}
+                            >
                                 {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
-                            </h3>
+                            </motion.h3>
                         )}
                     </motion.div>
                     
@@ -868,6 +895,19 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}
             >
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.22, 0.32], [-80, 80]),
+                        opacity: useTransform(scrollYProgress, [0.22, 0.27, 0.32], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
                 <div className="max-w-5xl mx-auto px-6 w-full text-center relative z-10">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -875,13 +915,23 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.23, 0.3], [30, 0])
+                            }}
+                        >
                             {language === 'en' ? 'Why Now' : '왜 지금인가'}
-                        </h2>
+                        </motion.h2>
                         
-                        <div>
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.23, 0.3], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.23, 0.28], [0.95, 1])
+                            }}
+                        >
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
@@ -898,10 +948,10 @@ export default function Home() {
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
                                         : 'AI 검증은 더 이상 선택이 아닙니다.'}
-                                        </h3>
-                                        )}
-                                        </div>
-                                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+                                </h3>
+                            )}
+                        </motion.div>
+                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {language === 'en'
@@ -930,6 +980,19 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
                 }`}
             >
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.32, 0.42], [-100, 100]),
+                        opacity: useTransform(scrollYProgress, [0.32, 0.37, 0.42], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
                 <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
                     <motion.div 
                         initial={{ opacity: 0 }}
@@ -938,13 +1001,23 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="mb-16 text-center max-w-4xl mx-auto"
                     >
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-red-500' : 'text-red-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-red-500' : 'text-red-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.33, 0.4], [30, 0])
+                            }}
+                        >
                             {language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}
-                        </h2>
+                        </motion.h2>
                         
-                        <div>
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.33, 0.4], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.33, 0.38], [0.95, 1])
+                            }}
+                        >
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
@@ -961,10 +1034,10 @@ export default function Home() {
                                     {language === 'en'
                                         ? 'Without trust infrastructure, everyone loses.'
                                         : '신뢰 인프라 없이는 모두가 잃습니다.'}
-                                        </h3>
-                                        )}
-                                        </div>
-                                        </motion.div>
+                                </h3>
+                            )}
+                        </motion.div>
+                    </motion.div>
 
                     {/* Condensed Impact Grid: 2 stats + 3 structural issues */}
                     <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -1414,6 +1487,19 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
             >
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.3, 0.5], [-100, 100]),
+                        opacity: useTransform(scrollYProgress, [0.3, 0.4, 0.5], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+
                 <div className="max-w-6xl mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -1422,16 +1508,26 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="text-center"
                     >
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.35, 0.45], [30, 0])
+                            }}
+                        >
                             {t.thesis.label}
-                        </h2>
+                        </motion.h2>
                         
                         {/* Main message with enhanced typography */}
                         <div className="mb-20">
                             {language === 'en' ? (
-                                <div>
+                                <motion.div
+                                    style={{
+                                        y: useTransform(scrollYProgress, [0.35, 0.45], [40, 0]),
+                                        scale: useTransform(scrollYProgress, [0.35, 0.42], [0.95, 1])
+                                    }}
+                                >
                                     <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>
@@ -1459,9 +1555,14 @@ export default function Home() {
                                             trust becomes infrastructure.
                                         </span>
                                     </p>
-                                </div>
+                                </motion.div>
                             ) : (
-                                <div>
+                                <motion.div
+                                    style={{
+                                        y: useTransform(scrollYProgress, [0.35, 0.45], [40, 0]),
+                                        scale: useTransform(scrollYProgress, [0.35, 0.42], [0.95, 1])
+                                    }}
+                                >
                                     <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>
@@ -1486,14 +1587,19 @@ export default function Home() {
                                             바로 신뢰입니다.
                                         </p>
                                     )}
-                                </div>
+                                </motion.div>
                             )}
                         </div>
 
                         {/* Keywords with staggered animation */}
-                        <div className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                        }`}>
+                        <motion.div 
+                            className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.38, 0.45], [30, 0])
+                            }}
+                        >
                             {t.thesis.keywords.map((kw, i) => (
                                 <motion.span 
                                     key={i} 
@@ -1529,7 +1635,7 @@ export default function Home() {
                                     </span>
                                 </motion.span>
                             ))}
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </section>
@@ -1747,6 +1853,19 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
             >
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.7, 0.8], [-80, 80]),
+                        opacity: useTransform(scrollYProgress, [0.7, 0.75, 0.8], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
                     <motion.div 
                         initial={{ opacity: 0 }}
@@ -1755,13 +1874,23 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="mb-16 text-center max-w-4xl mx-auto"
                     >
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-yellow-500' : 'text-orange-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-yellow-500' : 'text-orange-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.72, 0.78], [30, 0])
+                            }}
+                        >
                             {language === 'en' ? 'VALIDATION' : '검증'}
-                        </h2>
+                        </motion.h2>
                         
-                        <div>
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.72, 0.78], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.72, 0.76], [0.95, 1])
+                            }}
+                        >
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
@@ -1776,13 +1905,18 @@ export default function Home() {
                                     {t.milestones.title}
                                 </h3>
                             )}
-                        </div>
+                        </motion.div>
                         
-                        <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}>
+                        <motion.p 
+                            className={`text-lg md:text-xl font-medium ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.73, 0.78], [20, 0])
+                            }}
+                        >
                             {t.milestones.sub}
-                        </p>
+                        </motion.p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
@@ -1859,6 +1993,22 @@ export default function Home() {
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
                 }`}
             >
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.9, 1], [-60, 60]),
+                        opacity: useTransform(scrollYProgress, [0.9, 0.95, 1], [0, 1, 1])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <>
+                            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px]" />
+                            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
+                        </>
+                    )}
+                </motion.div>
+                
                 {/* Light Mode: Holographic Gradient Background */}
                 {theme === 'light' && (
                     <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -1875,13 +2025,23 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="mb-12"
                     >
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.92, 0.98], [30, 0])
+                            }}
+                        >
                             {language === 'en' ? 'JOIN THE FUTURE' : '함께 만들어가요'}
-                        </h2>
+                        </motion.h2>
                         
-                        <div>
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.92, 0.98], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.92, 0.96], [0.95, 1])
+                            }}
+                        >
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
@@ -1896,13 +2056,18 @@ export default function Home() {
                                     {t.contact.title}
                                 </h3>
                             )}
-                        </div>
+                        </motion.div>
                         
-                        <p className={`text-xl md:text-2xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}>
+                        <motion.p 
+                            className={`text-xl md:text-2xl font-medium ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.93, 0.98], [20, 0])
+                            }}
+                        >
                             {t.contact.sub}
-                        </p>
+                        </motion.p>
                     </motion.div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
