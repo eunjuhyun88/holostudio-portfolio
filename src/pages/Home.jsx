@@ -423,6 +423,14 @@ export default function Home() {
     };
 
     const [activeStage, setActiveStage] = useState(0);
+    
+    // Counter animation hook
+    const useCountUp = (end, duration = 2000) => {
+        const [count, setCount] = useState(0);
+        const [hasAnimated, setHasAnimated] = useState(false);
+        
+        return { count, setCount, hasAnimated, setHasAnimated };
+    };
 
 
 
@@ -598,23 +606,34 @@ export default function Home() {
                         }`}>
                             {t.hero.tag}
                         </div>
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.6 }}
-                            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] ${
-                                theme === 'dark' 
-                                    ? 'text-white'
-                                    : 'text-neutral-900'
-                            }`}
-                        >
-                            {t.hero.title}
-                            <span className={`absolute -top-4 -right-8 text-xs font-mono tracking-widest border px-2 py-0.5 rounded opacity-70 hidden md:block ${
-                                theme === 'dark' 
-                                    ? 'text-indigo-500 border-indigo-500/30'
-                                    : 'text-violet-600 border-violet-400/50 bg-gradient-to-r from-cyan-50 via-violet-50 to-pink-50'
-                            }`}>SYS.ONLINE</span>
-                        </motion.h1>
+                        {theme === 'dark' ? (
+                            <MouseGlowText
+                                as={motion.h1}
+                                glowColor="rgba(99, 102, 241, 0.8)"
+                                secondaryGlowColor="rgba(168, 85, 247, 0.5)"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.6 }}
+                                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] relative"
+                            >
+                                {t.hero.title}
+                                <span className="absolute -top-4 -right-8 text-xs font-mono tracking-widest border px-2 py-0.5 rounded opacity-70 hidden md:block text-indigo-500 border-indigo-500/30">
+                                    SYS.ONLINE
+                                </span>
+                            </MouseGlowText>
+                        ) : (
+                            <motion.h1
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.6 }}
+                                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] text-neutral-900 relative"
+                            >
+                                {t.hero.title}
+                                <span className="absolute -top-4 -right-8 text-xs font-mono tracking-widest border px-2 py-0.5 rounded opacity-70 hidden md:block text-violet-600 border-violet-400/50 bg-gradient-to-r from-cyan-50 via-violet-50 to-pink-50">
+                                    SYS.ONLINE
+                                </span>
+                            </motion.h1>
+                        )}
                         <motion.p 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -638,17 +657,20 @@ export default function Home() {
                             {t.hero.desc}
                         </motion.p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
-                            <Button size="lg" className={`rounded-full px-8 h-12 text-base font-bold border-0 ${
+                            <Button size="lg" className={`group rounded-full px-8 h-12 text-base font-bold border-0 relative overflow-hidden transition-all hover:scale-105 ${
                                 theme === 'dark'
-                                    ? 'bg-white text-black hover:bg-neutral-200'
-                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl transition-shadow'
+                                    ? 'bg-white text-black hover:bg-neutral-200 shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-2xl'
                             }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
-                                {t.hero.cta1}
+                                {theme === 'dark' && (
+                                    <span className="absolute inset-0 bg-gradient-to-r from-white via-neutral-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                                )}
+                                <span className="relative">{t.hero.cta1}</span>
                             </Button>
-                            <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold ${
+                            <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
                                 theme === 'dark'
-                                    ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-md transition-shadow'
+                                    ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]'
+                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-lg'
                             }`}>
                                 {t.hero.cta2}
                             </Button>
@@ -688,38 +710,66 @@ export default function Home() {
                     
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-12 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-16 no-scrollbar md:custom-scrollbar text-center">
-                        <div className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        <motion.div 
+                            className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
+                                theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
                             }`}>{t.market.year.val}</div>
                             <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.year.label}</div>
-                        </div>
-                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        </motion.div>
+                        <motion.div 
+                            className="flex-shrink-0 w-[60vw] md:w-auto snap-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
+                                theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
                             }`}>{t.market.eu.val}</div>
                             <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.eu.label}</div>
-                        </div>
-                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        </motion.div>
+                        <motion.div 
+                            className="flex-shrink-0 w-[60vw] md:w-auto snap-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
+                                theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
                             }`}>{t.market.size.val}</div>
                             <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.size.label}</div>
-                        </div>
-                        <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
-                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        </motion.div>
+                        <motion.div 
+                            className="flex-shrink-0 w-[60vw] md:w-auto snap-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
+                                theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
                             }`}>{t.market.gap.val}</div>
                             <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.gap.label}</div>
-                        </div>
+                        </motion.div>
                     </div>
                     
                     {/* Partners / Backers */}
@@ -1423,10 +1473,10 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <TiltCard className={`p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
+                                <TiltCard className={`group p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
                                     theme === 'dark'
-                                        ? 'bg-black/40 border-white/10 hover:border-white/20 hover:shadow-2xl backdrop-blur-xl relative overflow-hidden'
-                                        : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
+                                        ? 'bg-black/40 border-white/10 hover:border-white/20 hover:shadow-2xl backdrop-blur-xl relative overflow-hidden hover:shadow-[0_0_60px_rgba(99,102,241,0.3)]'
+                                        : 'bg-white border-neutral-200 hover:shadow-2xl shadow-md'
                                 }`}>
                                         {/* Sci-Fi Corners - Only dark mode */}
                                         {theme === 'dark' && (
@@ -1630,18 +1680,21 @@ export default function Home() {
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
-                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 transition-all ${
+                            <Button size="lg" className={`group rounded-full px-12 h-16 text-lg font-bold border-0 transition-all hover:scale-105 relative overflow-hidden ${
                                 theme === 'dark'
-                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-xl hover:shadow-2xl hover:scale-105'
+                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_40px_rgba(79,70,229,0.4)] hover:shadow-[0_0_60px_rgba(79,70,229,0.7)]'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-xl hover:shadow-2xl'
                             }`}>
-                                {t.contact.cta1}
+                                {theme === 'dark' && (
+                                    <span className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
+                                )}
+                                <span className="relative">{t.contact.cta1}</span>
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all ${
+                        <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all hover:scale-105 ${
                             theme === 'dark'
-                                ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
+                                ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(79,70,229,0.2)]'
+                                : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg hover:shadow-2xl'
                         }`}>
                             {t.contact.cta2}
                         </Button>
