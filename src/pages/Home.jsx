@@ -525,7 +525,9 @@ export default function Home() {
             </div>
 
             {/* Section 01: HERO (Pinned) */}
-            <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden z-10">
+            <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10 ${
+                theme === 'dark' ? '' : 'bg-white'
+            }`}>
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
@@ -608,10 +610,10 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className={`py-12 border-y relative z-10 ${
+            <section className={`min-h-screen flex items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'bg-neutral-50 border-neutral-200'
+                    : 'bg-[#FFF5F0] border-neutral-200'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -705,7 +707,9 @@ export default function Home() {
             </section>
 
             {/* Section 03: THE CORE PROBLEM */}
-            <section className="py-32 relative z-10">
+            <section className={`min-h-screen flex items-center justify-center relative z-10 ${
+                theme === 'dark' ? '' : 'bg-[#F0FFF4]'
+            }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
                         <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest font-bold ${
@@ -780,10 +784,10 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className={`py-32 px-6 md:px-12 relative z-10 border-y ${
+            <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'bg-neutral-50 border-neutral-200'
+                    : 'bg-[#EFF6FF] border-neutral-200'
             }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
@@ -1172,8 +1176,8 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className={`py-24 border-y text-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-white border-neutral-200'
+            <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
+                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-[#FAF5FF] border-neutral-200'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -1406,13 +1410,10 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES */}
-            <section id="proof" className={`py-32 relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'border-white/5' : 'bg-white border-neutral-200'
+            <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
+                theme === 'dark' ? 'border-white/5' : 'bg-[#FFFBEB] border-neutral-200'
             }`}>
-                <div className={`absolute inset-0 bg-gradient-to-b to-transparent pointer-events-none ${
-                    theme === 'dark' ? 'from-indigo-900/5' : 'from-transparent'
-                }`} />
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
                         <h2 className={`text-3xl md:text-4xl font-black mb-4 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -1484,18 +1485,18 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className={`py-32 border-t relative z-10 ${
+            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-neutral-50 border-neutral-200'
+                    : 'bg-neutral-900 border-neutral-900'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
                         <h2 className={`text-3xl md:text-5xl font-black tracking-tighter mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            theme === 'dark' ? 'text-white' : 'text-white'
                         }`}>{t.contact.title}</h2>
                         <p className={`text-base md:text-lg font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-300'
                         }`}>{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
@@ -1503,7 +1504,7 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-10 h-14 text-lg font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-orange-500 hover:bg-orange-600 text-white'
+                                    : 'bg-white hover:bg-neutral-100 text-neutral-900'
                             }`}>
                                 {t.contact.cta1}
                             </Button>
@@ -1511,7 +1512,7 @@ export default function Home() {
                         <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-lg font-bold ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
+                                : 'border-white text-white hover:bg-white/10 bg-transparent'
                         }`}>
                             {t.contact.cta2}
                         </Button>
