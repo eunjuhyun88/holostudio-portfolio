@@ -593,6 +593,22 @@ export default function Home() {
 
             {/* Section 01: HERO (Pinned) */}
             <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10">
+                {/* Parallax Background Elements */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0, 0.3], [0, 150]),
+                        opacity: useTransform(scrollYProgress, [0, 0.3], [1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <>
+                            <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
+                            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+                        </>
+                    )}
+                </motion.div>
+                
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
@@ -691,16 +707,31 @@ export default function Home() {
             </section>
 
             {/* Section 02: BY THE NUMBERS */}
-            <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
+            <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-black/20 border-white/5'
                     : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
-                <div className="max-w-7xl mx-auto px-6 w-full">
+                {/* Parallax decorative elements */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.1, 0.3], [-50, 50])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 right-[5%] w-48 h-48 bg-indigo-500/5 rounded-full blur-[60px]" />
+                    )}
+                </motion.div>
+                
+                <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        style={{
+                            y: useTransform(scrollYProgress, [0.15, 0.25], [0, -20])
+                        }}
                         className={`text-3xl md:text-5xl font-black text-center mb-16 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
@@ -717,6 +748,9 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                             whileHover={{ scale: 1.05 }}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [20, -20])
+                            }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
                                 theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
@@ -732,6 +766,9 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             whileHover={{ scale: 1.05 }}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [10, -30])
+                            }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
                                 theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
@@ -747,6 +784,9 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             whileHover={{ scale: 1.05 }}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -25])
+                            }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
                                 theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
@@ -762,6 +802,9 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             whileHover={{ scale: 1.05 }}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [25, -15])
+                            }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
                                 theme === 'dark' ? 'text-white hover:text-indigo-400' : 'text-neutral-900 hover:text-violet-600'
@@ -1409,7 +1452,15 @@ export default function Home() {
                                     </div>
                                     
                                     {/* Central Visual */}
-                                    <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
+                                    <motion.div 
+                                        className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6"
+                                        style={{
+                                            y: useTransform(scrollYProgress, 
+                                                [0.5 + (idx * 0.15), 0.5 + ((idx + 1) * 0.15)], 
+                                                [30, -30]
+                                            )
+                                        }}
+                                    >
                                         <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group ${
                                             theme === 'dark' ? 'bg-neutral-900/50 backdrop-blur-sm' : 'bg-white'
                                         }`}>
@@ -1448,7 +1499,7 @@ export default function Home() {
                                             
                                             <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 </motion.div>
                             )
                         ))}
@@ -1471,6 +1522,12 @@ export default function Home() {
                                 initial={{ opacity: 0, x: 50, y: 20 }}
                                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
+                                style={{
+                                    y: useTransform(scrollYProgress, 
+                                        [0.5 + (idx * 0.15), 0.5 + ((idx + 1) * 0.15)], 
+                                        [20, -20]
+                                    )
+                                }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
                                 <TiltCard className={`group p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
