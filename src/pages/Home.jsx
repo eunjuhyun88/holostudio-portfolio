@@ -509,7 +509,7 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite] ${
                     theme === 'dark' 
                         ? 'bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)]'
-                        : 'bg-[linear-gradient(rgba(168,85,247,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.15)_1px,transparent_1px)]'
+                        : 'bg-[linear-gradient(rgba(168,85,247,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.2)_1px,transparent_1px)]'
                 }`} />
                 
                 <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
@@ -518,34 +518,34 @@ export default function Home() {
                         : 'opacity-60 from-transparent via-white/20 to-white/40'
                 }`} />
                 
-                {/* Dynamic Sci-Fi Scanlines - Holographic RGB in light */}
+                {/* Dynamic Sci-Fi Scanlines - Strong holographic RGB in light */}
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark'
                         ? 'opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]'
-                        : 'opacity-[0.08] bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.15)_50%),linear-gradient(90deg,rgba(236,72,153,0.08),rgba(96,165,250,0.08),rgba(34,211,238,0.08))]'
+                        : 'opacity-[0.12] bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.2)_50%),linear-gradient(90deg,rgba(236,72,153,0.12),rgba(96,165,250,0.12),rgba(34,211,238,0.12))]'
                 }`} style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                {/* Moving Scanline Bar - Rainbow shimmer in light */}
+                {/* Moving Scanline Bar - Strong rainbow shimmer in light */}
                 <div className={`absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite] ${
-                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/15'
+                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/25'
                 }`} style={{ top: '-100px' }} />
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark' 
                         ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
-                        : 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(255,255,255,0.3)_100%)]'
+                        : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(255,255,255,0.5)_100%)]'
                 }`} />
 
                 {/* HUD Corners */}
                 <div className={`absolute top-0 left-0 w-32 h-32 border-l border-t rounded-tl-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                    theme === 'dark' ? 'border-white/10' : 'border-purple-400/40'
                 }`} />
                 <div className={`absolute top-0 right-0 w-32 h-32 border-r border-t rounded-tr-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                    theme === 'dark' ? 'border-white/10' : 'border-blue-400/40'
                 }`} />
                 <div className={`absolute bottom-0 left-0 w-32 h-32 border-l border-b rounded-bl-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                    theme === 'dark' ? 'border-white/10' : 'border-cyan-400/40'
                 }`} />
                 <div className={`absolute bottom-0 right-0 w-32 h-32 border-r border-b rounded-br-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                    theme === 'dark' ? 'border-white/10' : 'border-pink-400/40'
                 }`} />
             </div>
 

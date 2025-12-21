@@ -19,13 +19,13 @@ export default function CosmicBackground({ theme = 'dark' }) {
 
     return (
         <div ref={ref} className={`fixed inset-0 z-0 pointer-events-none overflow-hidden ${
-            theme === 'dark' ? 'bg-[#050505]' : 'bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-100 via-blue-50 to-neutral-50'
+            theme === 'dark' ? 'bg-[#050505]' : 'bg-neutral-100'
         }`}>
             {/* 1. Base Layer */}
             <div className={`absolute inset-0 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]'
-                    : 'bg-gradient-to-br from-purple-50/50 via-cyan-50/30 to-pink-50/40'
+                    : 'bg-gradient-to-br from-white via-neutral-50 to-neutral-100'
             }`} />
 
             {/* 2. Dynamic Starfield with occasional flash */}
@@ -42,13 +42,13 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 </div>
             )}
 
-            {/* 3. Holographic Orbs - Rainbow gradient blobs */}
+            {/* 3. Holographic Orbs - Vibrant rainbow gradients in light mode */}
             <motion.div 
                 style={{ y: y3 }}
                 className={`absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[140px] animate-pulse ${
                     theme === 'dark' 
                         ? 'mix-blend-screen opacity-20 bg-indigo-900/30'
-                        : 'mix-blend-normal opacity-30 bg-gradient-to-br from-purple-300 via-blue-300 to-cyan-300'
+                        : 'mix-blend-normal opacity-60 bg-gradient-to-br from-purple-400 via-blue-400 to-cyan-400'
                 }`}
             />
             <motion.div 
@@ -56,7 +56,7 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] animate-pulse ${
                     theme === 'dark' 
                         ? 'bg-indigo-900/20 mix-blend-screen'
-                        : 'bg-gradient-to-tr from-pink-300 via-purple-300 to-blue-300 opacity-40 mix-blend-normal'
+                        : 'bg-gradient-to-tr from-pink-400 via-purple-400 to-blue-400 opacity-70 mix-blend-normal'
                 }`}
             />
             <motion.div 
@@ -64,7 +64,7 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[100px] animate-pulse ${
                     theme === 'dark' 
                         ? 'bg-blue-900/10 mix-blend-screen'
-                        : 'bg-gradient-to-bl from-cyan-300 via-blue-300 to-indigo-300 opacity-35 mix-blend-normal'
+                        : 'bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 opacity-65 mix-blend-normal'
                 }`}
             />
             <motion.div 
@@ -72,17 +72,17 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full blur-[150px] ${
                     theme === 'dark' 
                         ? 'bg-purple-900/20 mix-blend-screen opacity-10'
-                        : 'bg-gradient-to-tl from-pink-300 via-purple-300 to-indigo-300 opacity-25 mix-blend-normal'
+                        : 'bg-gradient-to-tl from-pink-400 via-purple-400 to-indigo-400 opacity-50 mix-blend-normal'
                 }`}
             />
 
-            {/* 4. Holographic Orbs (Parallax Layer 2 - Medium) */}
+            {/* 4. Additional Holographic Orbs (Parallax Layer 2 - Medium) */}
             <motion.div
                 style={{ y: y1, rotate: rotate1 }}
                 className={`absolute top-[10%] right-[5%] w-[30vw] h-[30vw] rounded-full blur-[80px] ${
                     theme === 'dark' 
                         ? 'opacity-10 bg-gradient-to-br from-indigo-500 to-purple-800'
-                        : 'opacity-40 bg-gradient-to-br from-purple-300 via-pink-300 to-fuchsia-300'
+                        : 'opacity-70 bg-gradient-to-br from-purple-400 via-pink-400 to-fuchsia-400'
                 }`}
             />
              <motion.div
@@ -90,16 +90,17 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute top-[40%] left-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px] ${
                     theme === 'dark' 
                         ? 'opacity-5 bg-gradient-to-tr from-emerald-900 to-blue-900'
-                        : 'opacity-35 bg-gradient-to-tr from-cyan-300 via-blue-300 to-indigo-300'
+                        : 'opacity-60 bg-gradient-to-tr from-cyan-400 via-blue-400 to-indigo-400'
                 }`}
             />
 
-            {/* 5. Holographic shimmer overlay */}
+            {/* 5. Holographic shimmer overlay - Strong rainbow */}
             {theme === 'light' && (
                 <>
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 via-transparent to-cyan-200/20 opacity-60" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.15),transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(96,165,250,0.15),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-300/30 via-pink-200/20 to-cyan-300/30 opacity-80" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.25),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(96,165,250,0.25),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.15),transparent_50%)]" />
                 </>
             )}
             
