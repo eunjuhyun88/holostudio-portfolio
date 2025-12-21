@@ -7,8 +7,8 @@ export default function TiltCard({ children, className = "" }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseX = useSpring(x, { stiffness: 500, damping: 100 });
-  const mouseY = useSpring(y, { stiffness: 500, damping: 100 });
+  const mouseX = useSpring(x, { stiffness: 300, damping: 40, mass: 0.2 });
+  const mouseY = useSpring(y, { stiffness: 300, damping: 40, mass: 0.2 });
 
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-12deg", "12deg"]);

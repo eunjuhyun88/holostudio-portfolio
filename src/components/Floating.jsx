@@ -17,7 +17,7 @@ export default function Floating({
             transition={{ 
                 duration: duration, 
                 repeat: Infinity, 
-                ease: "easeInOut",
+                ease: [0.45, 0, 0.55, 1],
                 delay: delay
             }}
         >

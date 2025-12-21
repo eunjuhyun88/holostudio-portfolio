@@ -36,9 +36,9 @@ export default function FadeInSection({
                 x: 0 
             } : {}}
             transition={{ 
-                duration: 0.6, 
+                duration: 0.8, 
                 delay,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: [0.22, 1, 0.36, 1]
             }}
             className={className}
         >
