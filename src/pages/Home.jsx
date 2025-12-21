@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap, Layers, Trophy, Target, Globe, Cpu, BarChart3, Gamepad2, Play, ChevronDown, ExternalLink, FileText, Rocket, Medal, Award, Plus, Minus, Microscope, Beaker, FileSearch, Network, Database } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValue, useMotionTemplate } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
 import SEO from '@/components/SEO';
@@ -16,6 +17,7 @@ import { BorderBeam } from '@/components/ui/border-beam';
 
 export default function Home() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
     
     // Performance Optimization: Use MotionValues instead of State to prevent re-renders
     const mouseX = useMotionValue(0);
@@ -466,7 +468,11 @@ export default function Home() {
     }));
 
     return (
-        <div className="bg-[#050505] text-white selection:bg-indigo-500/30 font-sans min-h-screen relative">
+        <div className={`font-sans min-h-screen relative transition-colors duration-300 ${
+            theme === 'dark' 
+                ? 'bg-[#050505] text-white selection:bg-indigo-500/30' 
+                : 'bg-neutral-50 text-neutral-900 selection:bg-indigo-300/30'
+        }`}>
             <SEO 
                 title="Home" 
                 description={t.hero.sub} 

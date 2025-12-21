@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from 'framer-motion';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { LanguageProvider, useLanguage } from '@/components/LanguageContext';
+import { ThemeProvider, useTheme } from '@/components/ThemeContext';
 
 function LayoutContent({ children }) {
     const { language, toggleLanguage } = useLanguage();
+    const { theme, toggleTheme } = useTheme();
     const location = useLocation();
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -77,7 +79,9 @@ function LayoutContent({ children }) {
     };
 
     return (
-        <div className="min-h-screen bg-[#050505] font-sans text-white">
+        <div className={`min-h-screen font-sans transition-colors duration-300 ${
+            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-neutral-50 text-neutral-900'
+        }`}>
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
                 @import url('https://fonts.cdnfonts.com/css/graphyne');
@@ -119,7 +123,11 @@ function LayoutContent({ children }) {
                     </Link>
 
                     {/* Desktop Nav Island */}
-                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full px-1 h-12 shadow-lg shadow-black/20">
+                    <div className={`hidden md:flex items-center backdrop-blur-xl border rounded-full px-1 h-12 shadow-lg ${
+                        theme === 'dark' 
+                            ? 'bg-[#0A0A0A]/80 border-white/10 shadow-black/20' 
+                            : 'bg-white/80 border-neutral-300/30 shadow-neutral-300/20'
+                    }`}>
                         {/* Links */}
                         <div className="flex items-center px-2">
                             {navLinks[language].map((link) => (
@@ -128,7 +136,9 @@ function LayoutContent({ children }) {
                                         <Link 
                                             to={createPageUrl('Products')}
                                             className={`pl-5 pr-2 py-2 font-medium text-sm transition-colors ${
-                                                location.pathname === '/Products' || isProductActive ? 'text-white' : 'text-neutral-300 hover:text-white'
+                                                location.pathname === '/Products' || isProductActive 
+                                                    ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') 
+                                                    : (theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900')
                                             }`}
                                         >
                                             {link.name}
@@ -136,17 +146,25 @@ function LayoutContent({ children }) {
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
                                                 <button className={`pr-3 pl-1 py-2 font-medium text-sm transition-colors flex items-center ${
-                                                    isProductActive ? 'text-white' : 'text-neutral-300 hover:text-white'
+                                                    isProductActive 
+                                                        ? (theme === 'dark' ? 'text-white' : 'text-neutral-900')
+                                                        : (theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900')
                                                 }`}>
                                                     <ChevronDown className="w-3 h-3" />
                                                 </button>
                                             </DropdownMenuTrigger>
-                                            <DropdownMenuContent className="w-48 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 rounded-xl p-1 shadow-lg mt-2">
+                                            <DropdownMenuContent className={`w-48 backdrop-blur-xl border rounded-xl p-1 shadow-lg mt-2 ${
+                                                theme === 'dark' ? 'bg-[#0A0A0A]/90 border-white/10' : 'bg-white/90 border-neutral-300/30'
+                                            }`}>
                                                 {products.map((product) => (
                                                     <DropdownMenuItem key={product.name} asChild>
                                                         <Link 
                                                             to={createPageUrl(product.path.substring(1))}
-                                                            className="flex items-center w-full px-3 py-2 rounded-lg text-sm text-neutral-300 hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
+                                                            className={`flex items-center w-full px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${
+                                                                theme === 'dark' 
+                                                                    ? 'text-neutral-300 hover:bg-white/5 hover:text-white' 
+                                                                    : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900'
+                                                            }`}
                                                         >
                                                             {product.name}
                                                         </Link>
@@ -159,7 +177,9 @@ function LayoutContent({ children }) {
                                     <button 
                                         key={link.name}
                                         onClick={() => scrollToSection(link.path.substring(2))} 
-                                        className="px-5 py-2 font-medium text-sm text-neutral-300 hover:text-white transition-colors"
+                                        className={`px-5 py-2 font-medium text-sm transition-colors ${
+                                            theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                        }`}
                                     >
                                         {link.name}
                                     </button>
@@ -168,7 +188,9 @@ function LayoutContent({ children }) {
                                         key={link.name}
                                         to={createPageUrl(link.path.substring(1))}
                                         className={`px-5 py-2 font-medium text-sm transition-colors ${
-                                            location.pathname === link.path ? 'text-white' : 'text-neutral-300 hover:text-white'
+                                            location.pathname === link.path 
+                                                ? (theme === 'dark' ? 'text-white' : 'text-neutral-900')
+                                                : (theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900')
                                         }`}
                                     >
                                         {link.name}
@@ -182,22 +204,48 @@ function LayoutContent({ children }) {
                 {/* Right Group: Actions */}
                 <div className="flex items-center gap-3 pointer-events-auto">
                     {/* Actions Island */}
-                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full p-1.5 h-12 shadow-lg shadow-black/20 gap-2">
+                    <div className={`hidden md:flex items-center backdrop-blur-xl border rounded-full p-1.5 h-12 shadow-lg gap-2 ${
+                        theme === 'dark' 
+                            ? 'bg-[#0A0A0A]/80 border-white/10 shadow-black/20' 
+                            : 'bg-white/80 border-neutral-300/30 shadow-neutral-300/20'
+                    }`}>
+                        {/* Theme Toggle */}
+                        <button 
+                            onClick={toggleTheme}
+                            className={`flex items-center gap-2 px-4 h-full rounded-full transition-all border border-transparent ${
+                                theme === 'dark' 
+                                    ? 'hover:bg-white/5 text-neutral-300 hover:text-white hover:border-white/10' 
+                                    : 'hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900 hover:border-neutral-300'
+                            }`}
+                        >
+                            {theme === 'dark' ? '🌙' : '☀️'}
+                        </button>
+
+                        <div className={`w-px h-4 ${theme === 'dark' ? 'bg-white/10' : 'bg-neutral-300'}`} />
+
                         {/* Language Toggle */}
                         <button 
                             onClick={toggleLanguage}
-                            className="flex items-center gap-2 px-4 h-full rounded-full hover:bg-white/5 text-xs font-mono text-neutral-300 hover:text-white transition-all border border-transparent hover:border-white/10"
+                            className={`flex items-center gap-2 px-4 h-full rounded-full text-xs font-mono transition-all border border-transparent ${
+                                theme === 'dark' 
+                                    ? 'hover:bg-white/5 text-neutral-300 hover:text-white hover:border-white/10' 
+                                    : 'hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900 hover:border-neutral-300'
+                            }`}
                         >
                             <Globe className="w-3 h-3" />
-                            <span className={language === 'en' ? 'text-white' : 'text-neutral-300'}>EN</span>
-                            <span className="text-neutral-700">/</span>
-                            <span className={language === 'ko' ? 'text-white' : 'text-neutral-300'}>KO</span>
+                            <span className={language === 'en' ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') : (theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600')}>EN</span>
+                            <span className={theme === 'dark' ? 'text-neutral-700' : 'text-neutral-400'}>/</span>
+                            <span className={language === 'ko' ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') : (theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600')}>KO</span>
                         </button>
 
-                        <div className="w-px h-4 bg-white/10" />
+                        <div className={`w-px h-4 ${theme === 'dark' ? 'bg-white/10' : 'bg-neutral-300'}`} />
 
                         <a href="https://docsend.com/view/6xxvddwgkmbg2a8i" target="_blank" rel="noopener noreferrer">
-                            <Button variant="ghost" className="rounded-full text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-5 h-9">
+                            <Button variant="ghost" className={`rounded-full text-sm px-5 h-9 ${
+                                theme === 'dark' 
+                                    ? 'text-neutral-300 hover:text-white hover:bg-white/5' 
+                                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                            }`}>
                                 {language === 'en' ? 'Deck' : '소개서'}
                             </Button>
                         </a>
@@ -209,7 +257,11 @@ function LayoutContent({ children }) {
 
                     {/* Mobile Menu Button - Styled as a Pill */}
                     <button 
-                        className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 text-white shadow-lg shadow-black/20"
+                        className={`md:hidden flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-xl border shadow-lg ${
+                            theme === 'dark' 
+                                ? 'bg-[#0A0A0A]/80 border-white/10 text-white shadow-black/20' 
+                                : 'bg-white/80 border-neutral-300/30 text-neutral-900 shadow-neutral-300/20'
+                        }`}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -402,11 +454,13 @@ export default function Layout({ children }) {
     const [loading, setLoading] = useState(true);
 
     return (
-        <LanguageProvider>
-             <AnimatePresence>
-                {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-            </AnimatePresence>
-            {!loading && <LayoutContent>{children}</LayoutContent>}
-        </LanguageProvider>
+        <ThemeProvider>
+            <LanguageProvider>
+                 <AnimatePresence>
+                    {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+                </AnimatePresence>
+                {!loading && <LayoutContent>{children}</LayoutContent>}
+            </LanguageProvider>
+        </ThemeProvider>
     );
 }
