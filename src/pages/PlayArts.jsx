@@ -1,490 +1,387 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import React from 'react';
+import BusinessLayout from '../components/BusinessLayout';
+import PlayArtsVisual from '../components/interactive/PlayArtsVisual';
 import { useLanguage } from '@/components/LanguageContext';
 import { useTheme } from '@/components/ThemeContext';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import SEO from '@/components/SEO';
-
-// Scene Component - Full viewport section with scroll-triggered animations
-const Scene = ({ children, bgColor, id, index }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
-    
-    return (
-        <motion.section
-            ref={ref}
-            id={id}
-            className="min-h-screen flex items-center justify-center relative"
-            style={{ backgroundColor: bgColor }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isInView ? 1 : 0.3 }}
-            transition={{ duration: 0.6 }}
-        >
-            <div className="max-w-6xl mx-auto px-6 md:px-12 py-20">
-                {children}
-            </div>
-        </motion.section>
-    );
-};
-
-// Typography Component with staggered animation
-const Message = ({ children, delay = 0, size = "large", align = "left" }) => {
-    const sizeClasses = {
-        huge: "text-5xl md:text-8xl lg:text-9xl",
-        large: "text-4xl md:text-6xl lg:text-7xl",
-        medium: "text-3xl md:text-5xl lg:text-6xl",
-        small: "text-2xl md:text-4xl lg:text-5xl",
-        body: "text-xl md:text-2xl lg:text-3xl"
-    };
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, delay, ease: "easeOut" }}
-            className={`${sizeClasses[size]} font-bold leading-[1.1] tracking-tight ${
-                align === 'center' ? 'text-center' : 'text-left'
-            }`}
-        >
-            {children}
-        </motion.div>
-    );
-};
-
-const Subtitle = ({ children, delay = 0 }) => {
-    return (
-        <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, delay, ease: "easeOut" }}
-            className="text-base md:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl opacity-70"
-        >
-            {children}
-        </motion.p>
-    );
-};
+import { Fingerprint, Network, Scale, Database, Code, Globe, Copyright, Share2, Coins } from 'lucide-react';
 
 export default function PlayArts() {
     const { language } = useLanguage();
     const { theme } = useTheme();
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"]
-    });
 
     const content = {
         en: {
-            scenes: [
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}>Trust Layer: Provenance + Value</span> | <span className={theme === 'dark' ? 'text-lime-300' : 'text-lime-600'}>The Immutable Record</span></span>,
+            primaryButtonText: "Launch App",
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}`}>The protocol that guarantees provenance and value routing for AI content.</span>,
+            story: (
+                <>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        <span className="text-white font-bold">Immutable Provenance. Automatic Value Routing.</span>
+                    </p>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        Infinite content generation creates an attribution crisis. Creators are erased; platforms monopolize value. 
+                        We do not ask "who made it"—we prove it.
+                    </p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
+                        PlayArts cryptographically anchors provenance at the moment of generation. It is the "Git for AI Content," ensuring that every piece of media carries its history and value logic on-chain.
+                    </p>
+                </>
+            ),
+            problemPoints: [
                 {
-                    id: "foundation",
-                    bg: "#0a0a0a",
-                    textColor: "text-white",
-                    content: {
-                        headline: "THE FOUNDATION",
-                        subhead: "ATTRIBUTION GAP",
-                        message: "ENGINEERING THE MISSING LINK IN THE AI CONTENT ECONOMY"
-                    }
+                    title: "Attribution Crisis",
+                    description: "Creators lose ownership as AI models mimic style without credit."
                 },
                 {
-                    id: "observation",
-                    bg: "#1a2e05",
-                    textColor: "text-lime-50",
-                    content: {
-                        message: "We watched creators vanish as AI mimicked their style.",
-                        sub: "Platforms captured 100% of viral value. No trail. No credit. No compensation."
-                    }
+                    title: "Value Leakage",
+                    description: "Platforms capture 100% of viral value. Prompters and remixers get nothing."
                 },
                 {
-                    id: "crisis",
-                    bg: "#365314",
-                    textColor: "text-lime-100",
-                    content: {
-                        phase: "Phase 1",
-                        title: "THE ATTRIBUTION CRISIS",
-                        message: "Every AI-generated asset is an orphan. No provenance. No ownership. No value routing."
-                    }
+                    title: "Provenance Gap",
+                    description: "No standard exists to verify the 'Who, What, and How' of AI content."
+                }
+            ],
+            solutionSteps: [
+                {
+                    title: "Context Anchoring (MCP)",
+                    description: "Model Context Passport captures generation context at source."
                 },
                 {
-                    id: "void",
-                    bg: "#3f6212",
-                    textColor: "text-lime-50",
-                    content: {
-                        phase: "Phase 2",
-                        title: "THE MISSING STANDARD",
-                        message: "AI created content at infinite scale. But there was no protocol for 'Who made this?'"
-                    }
+                    title: "Sentinel Verification",
+                    description: "Distributed nodes verify origin via Perceptual Hashing."
                 },
                 {
-                    id: "market-freeze",
-                    bg: "#4d7c0f",
-                    textColor: "text-white",
-                    content: {
-                        phase: "Phase 3",
-                        title: "MARKET FAILURE",
-                        message: "Creators stopped sharing. Platforms faced liability. Innovation froze."
-                    }
+                    title: "Value Routing",
+                    description: "Smart contracts automatically distribute rewards to contributors."
+                }
+            ],
+            screenshots: [
+                {
+                    url: "Growth metrics dashboard showing asset minting and funding milestones",
+                    caption: "Protocol Growth & Seed Funding"
                 },
                 {
-                    id: "declaration",
-                    bg: "#000000",
-                    textColor: "text-lime-400",
-                    content: {
-                        message: "The scarce resource is no longer creativity.",
-                        emphasis: "IT IS PROVENANCE."
-                    }
+                    url: "Timeline visualization of protocol development and ecosystem expansion",
+                    caption: "Strategic Roadmap: Protocol Expansion"
                 },
                 {
-                    id: "solution",
-                    bg: "#1a2e05",
-                    textColor: "text-white",
-                    content: {
-                        headline: "ENGINEERED PROVENANCE",
-                        message: "Provenance is not a claim. It is a cryptographic proof.",
-                        points: [
-                            { title: "Context Anchoring", desc: "Every asset carries its generation DNA" },
-                            { title: "Perceptual Verification", desc: "Distributed nodes validate origin" },
-                            { title: "Value Routing", desc: "Smart contracts distribute rewards automatically" }
-                        ]
-                    }
+                    url: "Interface showing community rewards and engagement mechanics",
+                    caption: "Community Gamification Mechanics"
                 },
                 {
-                    id: "protocol",
-                    bg: "#365314",
-                    textColor: "text-lime-50",
-                    content: {
-                        headline: "THE PROTOCOL",
-                        message: "PlayArts",
-                        sub: "Creation → Verification → Settlement",
-                        desc: "One atomic protocol. Immutable. Decentralized. Automatic."
-                    }
+                    url: "Diagram illustrating the solution for attribution and ownership",
+                    caption: "Solving the AI Attribution Problem"
+                }
+            ],
+            stats: [
+                { value: "500K+", label: "Users" },
+                { value: "1M+", label: "Assets Anchored" },
+                { value: "$2M", label: "Seed Round" },
+                { value: "99.7%", label: "PoC Accuracy" }
+            ],
+            useCases: [
+                {
+                    title: "AI Power Users",
+                    description: "Proof of ownership for prompt engineering and output."
                 },
                 {
-                    id: "fit",
-                    bg: "#3f6212",
-                    textColor: "text-white",
-                    content: {
-                        message: "We are not storytellers.",
-                        emphasis: "We are protocol architects."
-                    }
+                    title: "Meme Creators",
+                    description: "Tracking of viral spread and monetization of impact."
                 },
                 {
-                    id: "cta",
-                    bg: "#0a0a0a",
-                    textColor: "text-lime-400",
-                    content: {
-                        message: "Building AI Provenance Infrastructure.",
-                        sub: "Ready to anchor your content?",
-                        button: "Launch Protocol"
-                    }
+                    title: "Enterprise Brands",
+                    description: "IP protection and asset authenticity verification."
+                }
+            ],
+            businessModel: "Verification Fees (Node Revenue) + Protocol Transaction Fees + B2B SDK Licensing.",
+            roadmap: [
+                {
+                    quarter: "1H 2025",
+                    status: "in_progress",
+                    title: "Foundation",
+                    items: ["Sentinel v3.0", "MCP Registry v1.0", "MemePing v1.0"]
+                },
+                {
+                    quarter: "2H 2025",
+                    status: "upcoming",
+                    title: "Expansion",
+                    items: ["Strong PoC (On-chain)", "Public Node Beta", "Cross-chain"]
+                },
+                {
+                    quarter: "2026",
+                    status: "upcoming",
+                    title: "Decentralization",
+                    items: ["Permissionless Nodes", "DAO Governance", "ZK-PoC"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "PlayArts solved our attribution nightmare. Now every AI asset has immutable provenance, and our creators finally get paid fairly.",
+                    author: "Alex Kim",
+                    role: "Founder",
+                    company: "MemeLab Studios",
+                    image: null
+                },
+                {
+                    quote: "The MCP standard is brilliant. We integrated PlayArts into our generation pipeline and now track value distribution automatically.",
+                    author: "Jordan Lee",
+                    role: "Product Lead",
+                    company: "GenAI Platform",
+                    image: null
                 }
             ]
         },
         ko: {
-            scenes: [
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}>Trust Layer: Provenance + Value</span> | <span className={theme === 'dark' ? 'text-lime-300' : 'text-lime-600'}>불변의 출처 기록</span></span>,
+            primaryButtonText: "앱 실행",
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}`}>AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.</span>,
+            story: (
+                <>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        <span className="text-white font-bold">불변의 출처 증명. 자동화된 가치 라우팅.</span>
+                    </p>
+                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                        무한한 콘텐츠 생성은 귀속의 위기를 초래했습니다. 창작자는 지워지고, 플랫폼이 가치를 독점합니다.
+                        우리는 "누가 만들었는가"를 묻지 않습니다. 증명합니다.
+                    </p>
+                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
+                        PlayArts는 생성 시점에 출처를 암호학적으로 고정합니다. 이것은 "AI 콘텐츠를 위한 Git"이며, 모든 미디어가 자신의 역사와 가치 분배 로직을 온체인에 영구적으로 담도록 보장합니다.
+                    </p>
+                </>
+            ),
+            problemPoints: [
                 {
-                    id: "foundation",
-                    bg: "#0a0a0a",
-                    textColor: "text-white",
-                    content: {
-                        headline: "기반",
-                        subhead: "귀속의 공백",
-                        message: "AI 콘텐츠 경제의 미싱 링크를 엔지니어링하다"
-                    }
+                    title: "귀속의 위기",
+                    description: "창작자의 스타일이 동의 없이 모방되어도 크레딧을 받지 못합니다."
                 },
                 {
-                    id: "observation",
-                    bg: "#1a2e05",
-                    textColor: "text-lime-50",
-                    content: {
-                        message: "우리는 AI가 창작자의 스타일을 모방하면서 그들이 사라지는 것을 목격했습니다.",
-                        sub: "플랫폼은 바이럴 가치의 100%를 독점했습니다. 흔적도, 크레딧도, 보상도 없이."
-                    }
+                    title: "가치 유출",
+                    description: "플랫폼이 바이럴 콘텐츠의 가치를 100% 독점합니다."
                 },
                 {
-                    id: "crisis",
-                    bg: "#365314",
-                    textColor: "text-lime-100",
-                    content: {
-                        phase: "Phase 1",
-                        title: "귀속의 위기",
-                        message: "모든 AI 생성 자산은 고아입니다. 출처도, 소유권도, 가치 분배도 없습니다."
-                    }
+                    title: "출처의 공백",
+                    description: "AI 콘텐츠의 '누가, 무엇을, 어떻게'를 검증할 표준이 없습니다."
+                }
+            ],
+            solutionSteps: [
+                {
+                    title: "맥락 앵커링 (MCP)",
+                    description: "Model Context Passport로 생성 맥락을 소스 단계에서 포착합니다."
                 },
                 {
-                    id: "void",
-                    bg: "#3f6212",
-                    textColor: "text-lime-50",
-                    content: {
-                        phase: "Phase 2",
-                        title: "표준의 부재",
-                        message: "AI는 무한한 규모로 콘텐츠를 생성했습니다. 하지만 '누가 만들었는가'에 대한 프로토콜은 없었습니다."
-                    }
+                    title: "센티넬 검증",
+                    description: "분산 노드가 지각 해싱으로 기원과 무결성을 검증합니다."
                 },
                 {
-                    id: "market-freeze",
-                    bg: "#4d7c0f",
-                    textColor: "text-white",
-                    content: {
-                        phase: "Phase 3",
-                        title: "시장 실패",
-                        message: "창작자들은 공유를 멈췄습니다. 플랫폼은 책임에 직면했습니다. 혁신은 얼어붙었습니다."
-                    }
+                    title: "가치 라우팅",
+                    description: "스마트 계약이 원작자와 기여자에게 자동으로 보상을 분배합니다."
+                }
+            ],
+            screenshots: [
+                {
+                    url: "Growth metrics dashboard showing asset minting and funding milestones",
+                    caption: "프로토콜 성장 및 시드 펀딩"
                 },
                 {
-                    id: "declaration",
-                    bg: "#000000",
-                    textColor: "text-lime-400",
-                    content: {
-                        message: "희소한 자원은 더 이상 창의성이 아닙니다.",
-                        emphasis: "출처 증명입니다."
-                    }
+                    url: "Timeline visualization of protocol development and ecosystem expansion",
+                    caption: "전략적 로드맵: 프로토콜 확장"
                 },
                 {
-                    id: "solution",
-                    bg: "#1a2e05",
-                    textColor: "text-white",
-                    content: {
-                        headline: "엔지니어링된 출처 증명",
-                        message: "출처 증명은 주장이 아닙니다. 암호학적 증명입니다.",
-                        points: [
-                            { title: "맥락 앵커링", desc: "모든 자산은 생성 DNA를 담습니다" },
-                            { title: "지각 검증", desc: "분산 노드가 기원을 검증합니다" },
-                            { title: "가치 라우팅", desc: "스마트 계약이 자동으로 보상을 분배합니다" }
-                        ]
-                    }
+                    url: "Interface showing community rewards and engagement mechanics",
+                    caption: "커뮤니티 게이미피케이션 메커니즘"
                 },
                 {
-                    id: "protocol",
-                    bg: "#365314",
-                    textColor: "text-lime-50",
-                    content: {
-                        headline: "프로토콜",
-                        message: "PlayArts",
-                        sub: "생성 → 검증 → 정산",
-                        desc: "하나의 원자적 프로토콜. 불변. 탈중앙화. 자동."
-                    }
+                    url: "Diagram illustrating the solution for attribution and ownership",
+                    caption: "AI 귀속 문제 해결"
+                }
+            ],
+            stats: [
+                { value: "500K+", label: "사용자" },
+                { value: "1M+", label: "앵커링된 자산" },
+                { value: "$2M", label: "시드 라운드" },
+                { value: "99.7%", label: "PoC 정확도" }
+            ],
+            useCases: [
+                {
+                    title: "AI 파워 유저",
+                    description: "프롬프트 엔지니어링 및 창작물에 대한 소유권 증명."
                 },
                 {
-                    id: "fit",
-                    bg: "#3f6212",
-                    textColor: "text-white",
-                    content: {
-                        message: "우리는 스토리텔러가 아닙니다.",
-                        emphasis: "프로토콜 아키텍트입니다."
-                    }
+                    title: "밈 크리에이터",
+                    description: "바이럴 확산 추적 및 영향력 수익화."
                 },
                 {
-                    id: "cta",
-                    bg: "#0a0a0a",
-                    textColor: "text-lime-400",
-                    content: {
-                        message: "AI 출처 증명 인프라를 구축하고 있습니다.",
-                        sub: "당신의 콘텐츠를 고정할 준비가 되셨나요?",
-                        button: "프로토콜 시작"
-                    }
+                    title: "엔터프라이즈 브랜드",
+                    description: "IP 권리 보호 및 자산 진위 검증."
+                }
+            ],
+            businessModel: "검증 수수료 (노드 수익) + 프로토콜 거래 수수료 + B2B SDK 라이선싱.",
+            roadmap: [
+                {
+                    quarter: "2025 상반기",
+                    status: "in_progress",
+                    title: "기반 구축",
+                    items: ["Sentinel v3.0", "MCP 레지스트리 v1.0", "MemePing v1.0"]
+                },
+                {
+                    quarter: "2025 하반기",
+                    status: "upcoming",
+                    title: "확장",
+                    items: ["Strong PoC (온체인)", "퍼블릭 노드 베타", "크로스체인"]
+                },
+                {
+                    quarter: "2026",
+                    status: "upcoming",
+                    title: "탈중앙화",
+                    items: ["무허가 노드", "DAO 거버넌스", "ZK-PoC"]
+                }
+            ],
+            customerStories: [
+                {
+                    quote: "PlayArts가 우리의 귀속 문제를 해결했습니다. 이제 모든 AI 자산이 불변의 출처를 갖고, 창작자들이 공정하게 보상받습니다.",
+                    author: "Alex Kim",
+                    role: "창업자",
+                    company: "MemeLab Studios",
+                    image: null
+                },
+                {
+                    quote: "MCP 표준은 탁월합니다. PlayArts를 생성 파이프라인에 통합했고, 이제 가치 분배가 자동으로 추적됩니다.",
+                    author: "Jordan Lee",
+                    role: "프로덕트 리드",
+                    company: "GenAI Platform",
+                    image: null
                 }
             ]
         }
     };
 
-    const scenes = content[language]?.scenes || content.en.scenes;
+    const c = content[language] || content.en;
 
     return (
-        <div ref={containerRef} className="bg-black text-white overflow-x-hidden">
-            <SEO 
-                title="PlayArts - The Provenance Protocol" 
-                description="Engineering the missing link in the AI content economy"
-            />
-
-            {/* Scroll Progress Indicator */}
-            <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-lime-400 z-50 origin-left"
-                style={{ scaleX: scrollYProgress }}
-            />
-
-            {/* Scene 1: Foundation */}
-            <Scene bgColor={scenes[0].bg} id={scenes[0].id} index={0}>
-                <div className={`space-y-8 ${scenes[0].textColor}`}>
-                    <Message size="small" delay={0}>
-                        {scenes[0].content.headline}
-                    </Message>
-                    <Message size="huge" delay={0.2}>
-                        {scenes[0].content.subhead}
-                    </Message>
-                    <Subtitle delay={0.4}>
-                        {scenes[0].content.message}
-                    </Subtitle>
-                </div>
-            </Scene>
-
-            {/* Scene 2: Observation */}
-            <Scene bgColor={scenes[1].bg} id={scenes[1].id} index={1}>
-                <div className={`space-y-12 ${scenes[1].textColor}`}>
-                    <Message size="large" delay={0}>
-                        {scenes[1].content.message}
-                    </Message>
-                    <Subtitle delay={0.3}>
-                        {scenes[1].content.sub}
-                    </Subtitle>
-                </div>
-            </Scene>
-
-            {/* Scene 3-5: Phase Narrative */}
-            {scenes.slice(2, 5).map((scene, idx) => (
-                <Scene key={scene.id} bgColor={scene.bg} id={scene.id} index={idx + 2}>
-                    <div className={`space-y-6 ${scene.textColor}`}>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.6 }}
-                            className="text-sm md:text-base uppercase tracking-[0.3em] opacity-50 font-mono"
-                        >
-                            {scene.content.phase}
-                        </motion.div>
-                        <Message size="medium" delay={0.2}>
-                            {scene.content.title}
-                        </Message>
-                        <Subtitle delay={0.4}>
-                            {scene.content.message}
-                        </Subtitle>
+        <BusinessLayout 
+            name="PlayArts"
+            theme="playarts"
+            HeroComponent={PlayArtsVisual}
+            showAnalytics={true}
+            tag={c.tag}
+            primaryButton={{ text: c.primaryButtonText, url: "https://playarts.ai/" }}
+            deckUrl="https://docsend.com/view/wdasib73q44ppc3a"
+            oneLiner={c.oneLiner}
+            story={c.story}
+            heroImage="PlayArts Protocol Overview: Visualizing the flow of provenace from creation to value settlement"
+            
+            problemPoints={c.problemPoints}
+            solutionSteps={c.solutionSteps}
+            screenshots={c.screenshots}
+            stats={c.stats}
+            useCases={c.useCases}
+            businessModel={c.businessModel}
+            roadmap={c.roadmap}
+            customerStories={c.customerStories}
+            features={[
+                {
+                    icon: Fingerprint,
+                    title: language === 'en' ? "Immutable Provenance" : "불변의 출처 증명",
+                    description: language === 'en' ? "Cryptographic proof of origin for every generated asset." : "생성된 모든 자산에 대한 암호학적 기원 증명."
+                },
+                {
+                    icon: Coins,
+                    title: language === 'en' ? "Value Routing" : "가치 라우팅",
+                    description: language === 'en' ? "Automated royalty distribution via smart contracts." : "스마트 계약을 통한 자동 로열티 분배."
+                },
+                {
+                    icon: Network,
+                    title: language === 'en' ? "Decentralized Verification" : "탈중앙 검증",
+                    description: language === 'en' ? "Node network for consensus-based content verification." : "합의 기반 콘텐츠 검증을 위한 노드 네트워크."
+                },
+                {
+                    icon: Copyright,
+                    title: language === 'en' ? "IP Protection" : "IP 보호",
+                    description: language === 'en' ? "Secure ownership of style and prompt engineering." : "스타일 및 프롬프트 엔지니어링에 대한 안전한 소유권."
+                },
+                {
+                    icon: Share2,
+                    title: language === 'en' ? "Viral Tracking" : "바이럴 추적",
+                    description: language === 'en' ? "Track asset usage and derivatives across platforms." : "플랫폼 전반에 걸친 자산 사용 및 파생물 추적."
+                },
+                {
+                    icon: Globe,
+                    title: language === 'en' ? "Cross-Chain" : "크로스체인",
+                    description: language === 'en' ? "Interoperable asset standards across major blockchains." : "주요 블록체인 간 상호 운용 가능한 자산 표준."
+                }
+            ]}
+            specs={[
+                {
+                    label: language === 'en' ? "Protocol Standard" : "프로토콜 표준",
+                    value: "EIP-7007 (Verifiable AI Generated Content)"
+                },
+                {
+                    label: language === 'en' ? "Verification Method" : "검증 방식",
+                    value: "Perceptual Hashing (pHash) + Zero-Knowledge Proofs"
+                },
+                {
+                    label: language === 'en' ? "Consensus" : "합의 알고리즘",
+                    value: "Proof of Creation (PoC)"
+                },
+                {
+                    label: language === 'en' ? "Throughput" : "처리량",
+                    value: "10,000+ Attestations / Second (L2 Scaling)"
+                },
+                {
+                    label: language === 'en' ? "Storage" : "저장소",
+                    value: "IPFS / Arweave (Decentralized Storage)"
+                }
+            ]}
+            detailedSpecs={(
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Sentinel Node Verification" : "센티넬 노드 검증"}</h4>
+                        <p className="text-neutral-300 leading-relaxed mb-6">
+                            {language === 'en'
+                                ? "PlayArts utilizes a decentralized network of 'Sentinel' nodes that perform perceptual hashing (pHash) on incoming media. This creates a fingerprint tolerant to minor modifications (compression, resizing) but sensitive to semantic changes, ensuring robust duplicate detection."
+                                : "PlayArts는 들어오는 미디어에 대해 지각 해싱(pHash)을 수행하는 '센티넬' 노드의 탈중앙화 네트워크를 활용합니다. 이는 사소한 수정(압축, 크기 조정)에는 관대하지만 의미적 변경에는 민감한 지문을 생성하여 강력한 중복 탐지를 보장합니다."}
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">99.7%</div>
+                                <div className="text-xs text-neutral-500 uppercase">Detection Rate</div>
+                            </div>
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">&lt;200ms</div>
+                                <div className="text-xs text-neutral-500 uppercase">Verification Time</div>
+                            </div>
+                            <div className="p-4 bg-lime-900/10 rounded-xl border border-lime-500/20 text-center">
+                                <div className="text-lime-400 font-bold text-2xl mb-1">ZK-Snark</div>
+                                <div className="text-xs text-neutral-500 uppercase">Privacy Proof</div>
+                            </div>
+                        </div>
                     </div>
-                </Scene>
-            ))}
-
-            {/* Scene 6: Declaration (Peak) */}
-            <Scene bgColor={scenes[5].bg} id={scenes[5].id} index={5}>
-                <div className={`space-y-16 ${scenes[5].textColor} text-center mx-auto max-w-5xl`}>
-                    <Message size="large" align="center" delay={0}>
-                        {scenes[5].content.message}
-                    </Message>
-                    <Message size="huge" align="center" delay={0.3}>
-                        {scenes[5].content.emphasis}
-                    </Message>
-                </div>
-            </Scene>
-
-            {/* Scene 7: Solution */}
-            <Scene bgColor={scenes[6].bg} id={scenes[6].id} index={6}>
-                <div className={`space-y-12 ${scenes[6].textColor}`}>
-                    <div className="space-y-6">
-                        <Message size="small" delay={0}>
-                            {scenes[6].content.headline}
-                        </Message>
-                        <Message size="medium" delay={0.2}>
-                            {scenes[6].content.message}
-                        </Message>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-4">{language === 'en' ? "Model Context Passport (MCP)" : "모델 컨텍스트 여권 (MCP)"}</h4>
+                        <p className="text-neutral-300 leading-relaxed mb-4">
+                            {language === 'en'
+                                ? "Every asset includes a cryptographically signed JSON manifest containing the generation parameters. This allows for 'Recipe' trading, where the prompt itself becomes a tradable asset."
+                                : "모든 자산에는 생성 매개변수가 포함된 암호학적으로 서명된 JSON 매니페스트가 포함됩니다. 이를 통해 프롬프트 자체가 거래 가능한 자산이 되는 '레시피' 거래가 가능해집니다."}
+                        </p>
+                        <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/10 overflow-x-auto custom-scrollbar">
+                            <pre className="text-xs text-lime-300 font-mono">
+{`{
+  "mcp_version": "1.0",
+  "model": "Stable Diffusion XL",
+  "seed": 482910482,
+  "prompt_hash": "0x7f83...2a1b",
+  "contributors": [
+    { "role": "prompter", "address": "0x123...", "share": 0.8 },
+    { "role": "model_provider", "address": "0x456...", "share": 0.2 }
+  ],
+  "signature": "0x98a..."
+}`}
+                            </pre>
+                        </div>
                     </div>
-                    
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="grid md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/10"
-                    >
-                        {scenes[6].content.points.map((point, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.6, delay: 0.5 + i * 0.1 }}
-                                className="space-y-3"
-                            >
-                                <div className="text-xl md:text-2xl font-bold text-lime-400">
-                                    {point.title}
-                                </div>
-                                <div className="text-sm md:text-base opacity-70 font-light">
-                                    {point.desc}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
                 </div>
-            </Scene>
-
-            {/* Scene 8: Protocol */}
-            <Scene bgColor={scenes[7].bg} id={scenes[7].id} index={7}>
-                <div className={`space-y-8 ${scenes[7].textColor} text-center mx-auto`}>
-                    <Message size="small" align="center" delay={0}>
-                        {scenes[7].content.headline}
-                    </Message>
-                    <Message size="huge" align="center" delay={0.2}>
-                        {scenes[7].content.message}
-                    </Message>
-                    <Subtitle delay={0.4}>
-                        {scenes[7].content.sub}
-                    </Subtitle>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="text-base md:text-xl opacity-60 max-w-2xl mx-auto pt-8"
-                    >
-                        {scenes[7].content.desc}
-                    </motion.div>
-                </div>
-            </Scene>
-
-            {/* Scene 9: Founder-Market Fit */}
-            <Scene bgColor={scenes[8].bg} id={scenes[8].id} index={8}>
-                <div className={`space-y-12 ${scenes[8].textColor} text-center mx-auto max-w-4xl`}>
-                    <Message size="large" align="center" delay={0}>
-                        {scenes[8].content.message}
-                    </Message>
-                    <Message size="large" align="center" delay={0.3}>
-                        {scenes[8].content.emphasis}
-                    </Message>
-                </div>
-            </Scene>
-
-            {/* Scene 10: CTA */}
-            <Scene bgColor={scenes[9].bg} id={scenes[9].id} index={9}>
-                <div className={`space-y-12 ${scenes[9].textColor} text-center mx-auto`}>
-                    <Message size="medium" align="center" delay={0}>
-                        {scenes[9].content.message}
-                    </Message>
-                    <Subtitle delay={0.3}>
-                        {scenes[9].content.sub}
-                    </Subtitle>
-                    
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        className="pt-8"
-                    >
-                        <a href="https://playarts.ai/" target="_blank" rel="noopener noreferrer">
-                            <Button className="bg-lime-500 hover:bg-lime-400 text-black px-8 h-14 text-lg rounded-full font-bold">
-                                {scenes[9].content.button} <ArrowRight className="w-5 h-5 ml-2" />
-                            </Button>
-                        </a>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8, delay: 0.7 }}
-                        className="flex gap-8 justify-center items-center pt-16 text-sm opacity-40"
-                    >
-                        <a href="https://docsend.com/view/wdasib73q44ppc3a" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">
-                            Deck
-                        </a>
-                        <span>•</span>
-                        <a href="mailto:contact@holostudio.com" className="hover:opacity-100 transition-opacity">
-                            Contact
-                        </a>
-                    </motion.div>
-                </div>
-            </Scene>
-        </div>
+            )}
+        />
     );
 }
