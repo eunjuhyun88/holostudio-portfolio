@@ -23,12 +23,12 @@ export default function Background3D({ theme = 'dark' }) {
         // Restoring the original central object but with finer particles
         const geometry = new THREE.IcosahedronGeometry(15, 2);
         
-        // Finer particles for the main shape - Vibrant holographic in light mode
+        // Crystal particles - Subtle iridescent in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0x60a5fa, // Bright blue for holographic
-            size: theme === 'dark' ? 0.1 : 0.2,
+            color: theme === 'dark' ? 0x818cf8 : 0x94a3b8, // Slate blue for crystal
+            size: theme === 'dark' ? 0.1 : 0.12,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 1.0,
+            opacity: theme === 'dark' ? 0.9 : 0.5,
             sizeAttenuation: true,
         });
 
@@ -46,45 +46,45 @@ export default function Background3D({ theme = 'dark' }) {
         const crystalMesh = new THREE.Points(geometry, material);
         scene.add(crystalMesh);
 
-        // Inner core - Vibrant rainbow in light mode
+        // Inner core - Subtle aurora glow in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xf0abfc, // Bright pink
-            size: theme === 'dark' ? 0.05 : 0.12,
+            color: theme === 'dark' ? 0xffffff : 0xc4b5fd, // Lavender
+            size: theme === 'dark' ? 0.05 : 0.08,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 1.0,
+            opacity: theme === 'dark' ? 0.6 : 0.4,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
-        // Additional holographic layers for light mode - Rainbow effect
+        // Crystal layers for light mode - Iridescent effect
         if (theme === 'light') {
             const holo1Geo = new THREE.IcosahedronGeometry(10, 1);
             const holo1Mat = new THREE.PointsMaterial({
                 color: 0xa78bfa, // Purple
-                size: 0.15,
+                size: 0.10,
                 transparent: true,
-                opacity: 0.8,
+                opacity: 0.3,
             });
             const holo1 = new THREE.Points(holo1Geo, holo1Mat);
             scene.add(holo1);
 
             const holo2Geo = new THREE.IcosahedronGeometry(13, 1);
             const holo2Mat = new THREE.PointsMaterial({
-                color: 0x22d3ee, // Cyan
-                size: 0.18,
+                color: 0x60a5fa, // Blue
+                size: 0.12,
                 transparent: true,
-                opacity: 0.7,
+                opacity: 0.25,
             });
             const holo2 = new THREE.Points(holo2Geo, holo2Mat);
             scene.add(holo2);
         }
 
-        // Wireframe - Vibrant holographic in light mode
+        // Wireframe - Subtle crystal lines in light mode
         const wireframeMaterial = new THREE.LineBasicMaterial({ 
-            color: theme === 'dark' ? 0x6366f1 : 0xa78bfa, // Purple for holographic
+            color: theme === 'dark' ? 0x6366f1 : 0x94a3b8, // Slate for crystal
             transparent: true, 
-            opacity: theme === 'dark' ? 0.3 : 0.8 
+            opacity: theme === 'dark' ? 0.3 : 0.25 
         });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
@@ -139,10 +139,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0x93c5fd, // Bright blue particles
-            size: theme === 'dark' ? 0.08 : 0.12, 
+            color: theme === 'dark' ? 0xa5b4fc : 0xbfdbfe, // Light blue particles
+            size: theme === 'dark' ? 0.08 : 0.06, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.9,
+            opacity: theme === 'dark' ? 0.6 : 0.3,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -169,22 +169,22 @@ export default function Background3D({ theme = 'dark' }) {
             // Animate Dust (Warp Effect)
             const positions = dustSystem.geometry.attributes.position.array;
             
-            // Pulse color intensity during surge - Rainbow cycle in light mode
+            // Pulse color intensity during surge - Aurora shimmer in light mode
             if (surge > 1.0) {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xc7d2fe);
                     dustMat.opacity = 0.8;
                 } else {
-                    dustMat.color.setHex(0xf0abfc); // Bright pink
-                    dustMat.opacity = 1.0;
+                    dustMat.color.setHex(0xc4b5fd); // Lavender
+                    dustMat.opacity = 0.5;
                 }
             } else {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xa5b4fc);
                     dustMat.opacity = 0.6;
                 } else {
-                    dustMat.color.setHex(0x93c5fd); // Bright blue
-                    dustMat.opacity = 0.9;
+                    dustMat.color.setHex(0xbfdbfe); // Light blue
+                    dustMat.opacity = 0.3;
                 }
             }
 
