@@ -10,34 +10,28 @@ import { createPageUrl } from '@/utils';
 import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 
-// --- LIGHT MODE SCENE COMPONENT ---
-const Scene = ({ children, id, bgColor, index }) => {
+// --- STICKY SCROLL SCENE (LIGHT MODE) ---
+const StickyScene = ({ children, id, index, total }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-20% 0px" });
-    const [hasAnimated, setHasAnimated] = useState(false);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
 
-    useEffect(() => {
-        if (isInView && !hasAnimated) {
-            setHasAnimated(true);
-        }
-    }, [isInView, hasAnimated]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1.02]);
 
     return (
-        <section 
-            ref={ref}
-            id={id}
-            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 transition-colors duration-1000 ${bgColor}`}
-        >
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="relative z-10 w-full max-w-[1400px]"
+        <div ref={ref} className="relative h-[150vh]">
+            <motion.div 
+                style={{ opacity, scale }}
+                className="sticky top-0 h-screen flex items-center justify-center px-6 md:px-12"
             >
-                {children}
+                <div className="max-w-[1400px] w-full">
+                    {children}
+                </div>
             </motion.div>
-        </section>
+        </div>
     );
 };
 
@@ -805,7 +799,7 @@ Scaled communities from zero to millions of users.`,
         );
     }
 
-    // LIGHT MODE RENDER (Cinematic Scrollytelling)
+    // LIGHT MODE RENDER (Sticky Scrollytelling with Fixed Background)
     return (
         <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900 bg-white">
             <SEO 
@@ -813,218 +807,144 @@ Scaled communities from zero to millions of users.`,
                 description="Engineering the Missing Link in the AI Economy"
             />
 
-            {/* SCENE 1: HERO STATEMENT */}
-            <Scene id="foundation" bgColor="bg-white" index={0}>
-                <div className="text-left max-w-6xl">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-8 tracking-tight">
-                        {language === 'en' ? (
-                            <>
-                                We engineer infrastructure for a <span className="text-orange-500">trust-managed AI economy</span> — with mathematical precision and unwavering clarity.
-                            </>
-                        ) : (
-                            <>
-                                우리는 <span className="text-orange-500">신뢰-관리형 AI 경제</span>를 위한 인프라를 만듭니다 — 수학적 정밀함과 흔들림 없는 명확함으로.
-                            </>
-                        )}
-                    </h1>
+            {/* Fixed Background */}
+            <div className="fixed inset-0 bg-white z-0">
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]" />
+            </div>
 
-                    <p className="text-base md:text-lg max-w-2xl leading-relaxed text-neutral-600 mt-12">
-                        {language === 'en'
-                            ? "From EA to Netmarble, we managed virtual economies at scale. Now we're building the missing layer between AI creation and economic settlement."
-                            : "EA에서 넷마블까지, 우리는 대규모 가상 경제를 관리했습니다. 이제 AI 생성과 경제 정산 사이의 빠진 레이어를 만듭니다."}
-                    </p>
-
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1 }}
-                        className="mt-16 text-xs uppercase tracking-widest text-neutral-400"
-                    >
-                        {language === 'en' ? 'Scroll to explore' : '스크롤하여 탐색'}
-                    </motion.div>
-                </div>
-            </Scene>
-
-            {/* SCENE 2: OUR STORY */}
-            <Scene id="observation" bgColor="bg-neutral-50" index={1}>
-                <div className="max-w-5xl">
-                    <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 text-neutral-500 font-bold">
-                        {language === 'en' ? 'OUR STORY' : '우리의 스토리'}
+            {/* Scrolling Content with Sticky Sections */}
+            <div className="relative z-10">
+                {/* SCENE 1: HERO */}
+                <StickyScene id="hero" index={0} total={9}>
+                    <div className="text-left">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
+                            {language === 'en' ? (
+                                <>
+                                    We engineer infrastructure for a <span className="text-orange-500">trust-managed AI economy</span> — loudly and clearly
+                                </>
+                            ) : (
+                                <>
+                                    우리는 <span className="text-orange-500">신뢰-관리형 AI 경제</span>를 위한 인프라를 만듭니다 — 명확하고 확실하게
+                                </>
+                            )}
+                        </h1>
                     </div>
-                    <div className="space-y-8">
-                        {c.intro.text.map((text, i) => (
-                            <p key={i} className="text-xl md:text-3xl leading-relaxed text-neutral-800 font-light">
-                                {text}
-                            </p>
-                        ))}
-                    </div>
-                </div>
-            </Scene>
+                </StickyScene>
 
-            {/* SCENE 3: HISTORY TIMELINE */}
-            <Scene id="history" bgColor="bg-white" index={2}>
-                <div className="max-w-6xl w-full">
-                    <div className="mb-20">
-                        <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 text-neutral-500 font-bold">
-                            {language === 'en' ? 'OUR HISTORY' : '우리의 역사'}
+                {/* SCENE 2: OUR STORY */}
+                <StickyScene id="story" index={1} total={9}>
+                    <div>
+                        <div className="text-xs uppercase tracking-[0.3em] mb-12 text-neutral-500 font-bold">
+                            {language === 'en' ? 'OUR STORY' : '우리의 스토리'}
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-neutral-900">
-                            {language === 'en' ? 'The Evolution' : '진화의 과정'}
+                        <p className="text-2xl md:text-4xl lg:text-5xl leading-relaxed text-neutral-800 max-w-4xl">
+                            {c.intro.text[0]}
+                        </p>
+                    </div>
+                </StickyScene>
+
+                {/* SCENE 3: HISTORY INTRO */}
+                <StickyScene id="history-intro" index={2} total={9}>
+                    <div className="text-center">
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-orange-500 mb-6">
+                            {language === 'en' ? 'Our History' : '우리의 역사'}
                         </h2>
+                        <p className="text-lg md:text-2xl text-neutral-600 max-w-2xl mx-auto">
+                            {language === 'en' 
+                                ? 'Getting to the genesis block'
+                                : '제네시스 블록까지의 여정'}
+                        </p>
                     </div>
+                </StickyScene>
 
-                    <div className="space-y-16">
-                        {c.chapters.map((chapter, idx) => (
-                            <div key={idx} className="relative pl-12 border-l-2 border-neutral-200">
-                                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-orange-500" />
-                                
-                                <div className="text-xs font-mono tracking-wider uppercase mb-3 text-neutral-500 font-bold">
-                                    {chapter.year}
-                                </div>
-                                
-                                <h3 className="text-2xl md:text-4xl font-black mb-4 text-neutral-900">
-                                    {chapter.headline}
-                                </h3>
-
-                                <p className="text-base md:text-xl leading-relaxed text-neutral-700 font-light max-w-3xl">
-                                    {chapter.content}
-                                </p>
+                {/* SCENES 4-7: PHASES */}
+                {c.chapters.map((chapter, idx) => (
+                    <StickyScene key={idx} id={`phase-${idx}`} index={idx + 3} total={9}>
+                        <div>
+                            <div className="text-xs font-mono tracking-wider uppercase mb-6 text-neutral-500 font-bold">
+                                {chapter.year}
                             </div>
-                        ))}
+                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 text-neutral-900 uppercase tracking-tight leading-[0.9]">
+                                {chapter.headline}
+                            </h3>
+                            <p className="text-xl md:text-3xl leading-relaxed text-neutral-700 max-w-4xl">
+                                {chapter.content}
+                            </p>
+                        </div>
+                    </StickyScene>
+                ))}
+
+                {/* SCENE 8: WHO WE ARE */}
+                <StickyScene id="identity" index={7} total={9}>
+                    <div>
+                        <div className="text-xs uppercase tracking-[0.3em] mb-16 text-neutral-500 font-bold">
+                            {language === 'en' ? 'WHO WE ARE' : '우리는 누구인가'}
+                        </div>
+
+                        <div className="space-y-4 md:space-y-6 text-left">
+                            <div className="flex items-center gap-4 md:gap-6">
+                                <div className="w-6 h-6 md:w-10 md:h-10 rounded-lg bg-lime-500 flex-shrink-0" />
+                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-neutral-900">Engineers</h2>
+                            </div>
+
+                            <div className="flex items-center gap-4 md:gap-6 pl-8 md:pl-16">
+                                <div className="w-6 h-6 md:w-10 md:h-10 rounded-full border-4 border-fuchsia-500 flex-shrink-0" />
+                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-neutral-900">Researchers</h2>
+                            </div>
+
+                            <div className="flex items-center gap-4 md:gap-6 pl-4 md:pl-8">
+                                <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-blue-600 flex-shrink-0" />
+                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-neutral-900">Builders</h2>
+                            </div>
+
+                            <div className="flex items-center gap-4 md:gap-6 pl-16 md:pl-32">
+                                <div className="w-6 h-6 md:w-10 md:h-10 rounded-lg border-4 border-orange-500 flex-shrink-0" />
+                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-neutral-900">
+                                    {language === 'en' ? 'Contributors' : '기여자'}
+                                </h2>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </Scene>
+                </StickyScene>
 
-            {/* SCENE 4 & 5: VISION/THESIS */}
-            <Scene id="vision" bgColor="bg-blue-50" index={4}>
-                <div className="max-w-6xl">
-                    <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase text-neutral-900">
-                        {c.thesis[0].headline}
-                    </h2>
-                    <p className="text-2xl md:text-4xl leading-tight max-w-4xl text-orange-700 font-black">
-                        {c.thesis[0].content}
-                    </p>
-                </div>
-            </Scene>
-
-            <Scene id="unified" bgColor="bg-emerald-50" index={5}>
-                <div className="max-w-6xl">
-                    <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase text-neutral-900">
-                        {c.thesis[1].headline}
-                    </h2>
-                    <p className="text-2xl md:text-4xl leading-tight max-w-4xl text-blue-700 font-black">
-                        {c.thesis[1].content}
-                    </p>
-                </div>
-            </Scene>
-
-            {/* SCENE 6: CREDIBILITY (DARK SCENE) */}
-            <Scene id="credibility" bgColor="bg-neutral-900" index={6}>
-                <div className="text-center max-w-6xl mx-auto">
-                    <p className="text-2xl md:text-4xl lg:text-5xl font-light mb-20 leading-tight text-neutral-400">
-                        {language === 'en' 
-                            ? "The scarce resource is no longer creativity."
-                            : "더 이상 희소한 자원은 창의성이 아닙니다."}
-                    </p>
-
-                    <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.8] uppercase text-white">
-                        {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
-                    </h2>
-                </div>
-            </Scene>
-
-            {/* SCENE 7: WHO WE ARE */}
-            <Scene id="identity" bgColor="bg-white" index={7}>
-                <div className="max-w-6xl w-full">
-                    <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-neutral-500 font-bold">
-                        {language === 'en' ? 'WHO WE ARE' : '우리는 누구인가'}
-                    </div>
-
-                    <div className="space-y-6 md:space-y-8 text-left">
-                        <div className="flex items-center gap-6">
-                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-lime-400 to-lime-500 flex-shrink-0" />
-                            <h2 className="text-4xl md:text-7xl font-black text-neutral-900">Engineers</h2>
-                        </div>
-
-                        <div className="flex items-center gap-6 pl-12">
-                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-4 border-fuchsia-500 flex-shrink-0" />
-                            <h2 className="text-4xl md:text-7xl font-black text-neutral-900">Researchers</h2>
-                        </div>
-
-                        <div className="flex items-center gap-6 pl-6">
-                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-blue-600 flex-shrink-0" />
-                            <h2 className="text-4xl md:text-7xl font-black text-neutral-900">Builders</h2>
-                        </div>
-
-                        <div className="flex items-center gap-6 pl-24">
-                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg border-4 border-orange-500 flex-shrink-0" />
-                            <h2 className="text-4xl md:text-7xl font-black text-neutral-900">
-                                {language === 'en' ? 'Veterans' : '베테랑'}
+                {/* Team Section - Normal Flow */}
+                <section id="team" className="relative z-10 bg-neutral-50 py-32 px-6 md:px-12">
+                    <div className="max-w-[1400px] mx-auto">
+                        <div className="mb-16">
+                            <h2 className="text-3xl md:text-5xl font-black text-neutral-900">
+                                {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                             </h2>
                         </div>
-                    </div>
 
-                    <div className="mt-16 md:mt-24 max-w-3xl ml-auto pl-8 border-l-2 border-neutral-300">
-                        <p className="text-lg md:text-2xl leading-relaxed text-neutral-700">
-                            {language === 'en'
-                                ? "We operate with long-term conviction, open-source principles, and deep technical rigor. This is our home turf — and our responsibility."
-                                : "우리는 장기적 신념, 오픈소스 원칙, 그리고 깊은 기술적 엄격함으로 운영합니다. 이것이 우리의 본거지이며 책임입니다."}
-                        </p>
-                    </div>
-                </div>
-            </Scene>
-
-            {/* SCENE 8: TEAM */}
-            <Scene id="team" bgColor="bg-neutral-50" index={8}>
-                <div className="max-w-[1400px] w-full">
-                    <div className="mb-16 md:mb-24">
-                        <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-neutral-500 font-bold">
-                            {language === 'en' ? 'LEADERSHIP' : '리더십'}
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                            {c.founders.map((founder, i) => (
+                                <FounderCard key={i} {...founder} delay={i * 0.05} />
+                            ))}
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black mb-4 text-neutral-900">
-                            {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
-                        </h2>
-                        <p className="max-w-2xl text-base md:text-lg text-neutral-600 leading-relaxed">
+                    </div>
+                </section>
+
+                {/* CTA Section - Normal Flow */}
+                <section className="relative z-10 bg-white py-32 px-6 text-center">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-xs uppercase tracking-[0.3em] mb-8 text-neutral-500 font-bold">
+                            HOLO STUDIO
+                        </div>
+
+                        <h2 className="text-4xl md:text-6xl font-black mb-12 leading-tight text-neutral-900">
                             {language === 'en' 
-                                ? "A global team combining AAA gaming infrastructure, virtual economies, and Web3 economics."
-                                : "AAA 게임 인프라, 가상 경제, Web3 경제학을 결합한 글로벌 팀입니다."}
-                        </p>
+                                ? "Ready to build the trust layer?"
+                                : "신뢰 레이어를 함께 만드시겠습니까?"}
+                        </h2>
+
+                        <Link to={createPageUrl('Contact')}>
+                            <Button className="rounded-full px-12 h-14 text-base font-bold transition-all hover:scale-105 bg-neutral-900 text-white hover:bg-neutral-800">
+                                {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
+                        </Link>
                     </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                        {c.founders.map((founder, i) => (
-                            <FounderCard key={i} {...founder} delay={i * 0.05} />
-                        ))}
-                    </div>
-                </div>
-            </Scene>
-
-            {/* SCENE 9: CTA */}
-            <Scene id="cta" bgColor="bg-white" index={9}>
-                <div className="text-left max-w-5xl">
-                    <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 text-neutral-500 font-bold">
-                        HOLO STUDIO
-                    </div>
-
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-12 leading-tight text-neutral-900">
-                        {language === 'en' 
-                            ? "Ready to build the trust layer?"
-                            : "신뢰 레이어를 함께 만드시겠습니까?"}
-                    </h2>
-
-                    <p className="text-base md:text-xl text-neutral-600 leading-relaxed mb-12 max-w-2xl">
-                        {language === 'en'
-                            ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading."
-                            : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라를 구축합니다."}
-                    </p>
-
-                    <Link to={createPageUrl('Contact')}>
-                        <Button className="rounded-full px-12 h-14 text-base font-bold transition-all hover:scale-105 bg-neutral-900 text-white hover:bg-neutral-800">
-                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                    </Link>
-                </div>
-            </Scene>
+                </section>
+            </div>
         </div>
     );
 }
