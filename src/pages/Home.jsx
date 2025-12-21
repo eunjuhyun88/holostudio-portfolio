@@ -555,31 +555,19 @@ export default function Home() {
                                     ? 'text-indigo-500 border-indigo-500/30'
                                     : 'text-purple-600 border-purple-400/40'
                             }`}>SYS.ONLINE</span>
-                        </MouseGlowText>
-                        <div className="relative max-w-3xl mx-auto mb-8 md:mb-12">
-                            {/* Decorative brackets */}
-                            <div className={`absolute -left-4 top-0 h-full w-1 border-l hidden md:block ${
-                                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
-                            }`} />
-                            <div className={`absolute -right-4 top-0 h-full w-1 border-r hidden md:block ${
-                                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
-                            }`} />
-                            
-                            <p className={`text-lg md:text-xl leading-relaxed font-light tracking-wide px-4 ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                            }`}>
-                                {t.hero.sub}
-                                <br className="hidden md:block"/>
-                                <span className={`text-sm md:text-base mt-4 block font-mono border-t pt-4 ${
-                                    theme === 'dark' 
-                                        ? 'text-neutral-200 border-white/5'
-                                        : 'text-neutral-600 border-neutral-300/30'
-                                }`}>
-                                    <span className={`mr-2 ${theme === 'dark' ? 'text-indigo-500' : 'text-purple-600'}`}>::</span>
-                                    {t.hero.desc}
-                                </span>
-                            </p>
-                        </div>
+                        </motion.h1>
+                        {t.hero.sub}
+                        </motion.p>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6, duration: 0.8 }}
+                            className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}
+                        >
+                            {t.hero.desc}
+                        </motion.p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                             <Floating delay={0} duration={4}>
                                 <Button size="lg" className="relative overflow-hidden bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0 group" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
@@ -819,19 +807,33 @@ export default function Home() {
                             }`} />
                         </h3>
                         
-                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-300 max-w-4xl leading-relaxed font-light tracking-wide">
+                        <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed font-light tracking-wide ${
+                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                        }`}>
                             {tech.intro.main_pre}
-                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-blue-400 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(96,165,250,0.5)] hover:drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]">
+                            <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
+                                theme === 'dark' 
+                                    ? 'text-white/90 border-white/10 hover:text-blue-400 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(96,165,250,0.5)]'
+                                    : 'text-neutral-900 border-neutral-300 hover:text-blue-600 hover:border-blue-500'
+                            }`}>
                                 {tech.intro.main_bold}
                             </span>
                             {tech.intro.main_post}
                             <br/><br/>
                             {tech.intro.sub_pre}
-                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-indigo-400 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(129,140,248,0.5)] hover:drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]">
+                            <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
+                                theme === 'dark' 
+                                    ? 'text-white/90 border-white/10 hover:text-indigo-400 hover:border-indigo-400'
+                                    : 'text-neutral-900 border-neutral-300 hover:text-purple-600 hover:border-purple-500'
+                            }`}>
                                 {tech.intro.sub_bold1}
                             </span>
                             {tech.intro.sub_mid}
-                            <span className="inline-block font-bold text-white/90 transition-all duration-500 cursor-default border-b border-white/10 pb-0.5 hover:text-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(52,211,153,0.5)] hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]">
+                            <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
+                                theme === 'dark' 
+                                    ? 'text-white/90 border-white/10 hover:text-emerald-400 hover:border-emerald-400'
+                                    : 'text-neutral-900 border-neutral-300 hover:text-emerald-600 hover:border-emerald-500'
+                            }`}>
                                 {tech.intro.sub_bold2}
                             </span>
                             {tech.intro.sub_post}
@@ -839,24 +841,58 @@ export default function Home() {
                     </div>
 
                     <div className="mb-24">
-                        <h3 className="text-2xl font-bold mb-8 text-white">{tech.title}</h3>
-                        <p className="text-neutral-200 mb-8 max-w-2xl">{tech.sub}</p>
+                        <h3 className={`text-2xl font-bold mb-8 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{tech.title}</h3>
+                        <p className={`mb-8 max-w-2xl ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>{tech.sub}</p>
                         
                         <div className="relative">
-                            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 -translate-y-1/2 hidden md:block" />
+                            <div className={`absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent -translate-y-1/2 hidden md:block ${
+                                theme === 'dark' ? 'via-indigo-500/30 to-indigo-500/0' : 'via-purple-300/20 to-transparent'
+                            }`} />
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center bg-white/5 p-6 rounded-xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden">
+                                    <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden ${
+                                        theme === 'dark'
+                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10'
+                                            : 'bg-white/70 border-neutral-300/40 hover:border-purple-400/60 hover:bg-white/90'
+                                    }`}>
                                         {/* Tech Corners */}
-                                        <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                        <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                        <div className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className={`absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border-white/10 group-hover:border-indigo-500'
+                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                        }`} />
+                                        <div className={`absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border-white/10 group-hover:border-indigo-500'
+                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                        }`} />
+                                        <div className={`absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border-white/10 group-hover:border-indigo-500'
+                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                        }`} />
+                                        <div className={`absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border-white/10 group-hover:border-indigo-500'
+                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                        }`} />
                                         
-                                        <div className="text-xs font-mono text-indigo-500 mb-3 group-hover:text-indigo-400 transition-colors">0{i+1}</div>
-                                        <div className="font-bold text-white mb-2 text-sm">{step.name}</div>
-                                        <div className="text-xs text-neutral-200 leading-relaxed group-hover:text-neutral-200 transition-colors">{step.desc}</div>
+                                        <div className={`text-xs font-mono mb-3 transition-colors ${
+                                            theme === 'dark'
+                                                ? 'text-indigo-500 group-hover:text-indigo-400'
+                                                : 'text-purple-600 group-hover:text-purple-500'
+                                        }`}>0{i+1}</div>
+                                        <div className={`font-bold mb-2 text-sm ${
+                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                        }`}>{step.name}</div>
+                                        <div className={`text-xs leading-relaxed transition-colors ${
+                                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                                        }`}>{step.desc}</div>
                                     </div>
                                 ))}
                             </div>
