@@ -489,37 +489,64 @@ export default function Home() {
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 opacity-100">
-                    <CosmicBackground />
+                    <CosmicBackground theme={theme} />
                 </div>
-                <div className="absolute inset-0 opacity-70">
-                    <Background3D />
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-70' : 'opacity-40'}`}>
+                    <Background3D theme={theme} />
                 </div>
                 
                 {/* Dynamic Spotlight - Optimized with MotionTemplate */}
                 <motion.div 
                     className="absolute inset-0 z-10"
                     style={{
-                        background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                        background: theme === 'dark' 
+                            ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                            : useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.06), transparent 40%)`
                     }}
                 />
 
                 {/* Sci-Fi Grid Overlay */}
-                {/* Enhanced Sci-Fi Grid - Moving */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
+                <div className={`absolute inset-0 bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite] ${
+                    theme === 'dark' 
+                        ? 'bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)]'
+                        : 'bg-[linear-gradient(rgba(168,85,247,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.08)_1px,transparent_1px)]'
+                }`} />
                 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/30 to-[#050505] opacity-50" />
+                <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] opacity-50 ${
+                    theme === 'dark' 
+                        ? 'from-transparent via-[#050505]/30 to-[#050505]'
+                        : 'from-transparent via-neutral-50/30 to-neutral-50'
+                }`} />
                 
                 {/* Dynamic Sci-Fi Scanlines */}
-                <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
+                <div className={`absolute inset-0 z-20 pointer-events-none opacity-[0.05] ${
+                    theme === 'dark'
+                        ? 'bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]'
+                        : 'bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.1)_50%),linear-gradient(90deg,rgba(168,85,247,0.04),rgba(236,72,153,0.02),rgba(59,130,246,0.04))]'
+                }`} style={{ backgroundSize: "100% 4px, 3px 100%" }} />
                 {/* Moving Scanline Bar */}
-                <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
-                <div className="absolute inset-0 z-20 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]" />
+                <div className={`absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite] ${
+                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/8'
+                }`} style={{ top: '-100px' }} />
+                <div className={`absolute inset-0 z-20 pointer-events-none ${
+                    theme === 'dark' 
+                        ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
+                        : 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(255,255,255,0.3)_100%)]'
+                }`} />
 
                 {/* HUD Corners */}
-                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
-                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+                <div className={`absolute top-0 left-0 w-32 h-32 border-l border-t rounded-tl-3xl m-8 ${
+                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                }`} />
+                <div className={`absolute top-0 right-0 w-32 h-32 border-r border-t rounded-tr-3xl m-8 ${
+                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                }`} />
+                <div className={`absolute bottom-0 left-0 w-32 h-32 border-l border-b rounded-bl-3xl m-8 ${
+                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                }`} />
+                <div className={`absolute bottom-0 right-0 w-32 h-32 border-r border-b rounded-br-3xl m-8 ${
+                    theme === 'dark' ? 'border-white/10' : 'border-purple-300/30'
+                }`} />
             </div>
 
             {/* Section 01: HERO (Pinned) */}
@@ -530,13 +557,21 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-block px-4 py-1.5 mb-8 border border-indigo-500/30 rounded-full bg-indigo-500/10 text-indigo-400 text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm">
+                        <div className={`inline-block px-4 py-1.5 mb-8 border rounded-full text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm ${
+                            theme === 'dark'
+                                ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
+                                : 'border-purple-400/40 bg-purple-100/60 text-purple-700'
+                        }`}>
                             {t.hero.tag}
                         </div>
                         <MouseGlowText 
                             as={motion.h1}
-                            glowColor="rgba(99, 102, 241, 0.8)" 
-                            className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500 relative"
+                            glowColor={theme === 'dark' ? "rgba(99, 102, 241, 0.8)" : "rgba(168, 85, 247, 0.6)"} 
+                            className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent relative ${
+                                theme === 'dark' 
+                                    ? 'bg-gradient-to-b from-white via-white to-neutral-500'
+                                    : 'bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-600'
+                            }`}
                         >
                             {t.hero.title}
                             <span className="absolute -top-4 -right-8 text-xs font-mono text-indigo-500 tracking-widest border border-indigo-500/30 px-2 py-0.5 rounded opacity-70 hidden md:block">SYS.ONLINE</span>

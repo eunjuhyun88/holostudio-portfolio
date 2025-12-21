@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export default function Background3D() {
+export default function Background3D({ theme = 'dark' }) {
     const mountRef = useRef(null);
 
     useEffect(() => {
@@ -25,10 +25,10 @@ export default function Background3D() {
         
         // Finer particles for the main shape
         const material = new THREE.PointsMaterial({
-            color: 0x818cf8, // Indigo-400
-            size: 0.1, // Slightly larger for better visibility
+            color: theme === 'dark' ? 0x818cf8 : 0xa78bfa, // Indigo for dark, purple for light
+            size: 0.1,
             transparent: true,
-            opacity: 0.9, // Increased opacity
+            opacity: theme === 'dark' ? 0.9 : 0.7,
             sizeAttenuation: true,
         });
 
@@ -49,16 +49,20 @@ export default function Background3D() {
         // Inner core
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: 0xffffff,
+            color: theme === 'dark' ? 0xffffff : 0xf0abfc,
             size: 0.05,
             transparent: true,
-            opacity: 0.6,
+            opacity: theme === 'dark' ? 0.6 : 0.8,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
         // Wireframe
-        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.3 });
+        const wireframeMaterial = new THREE.LineBasicMaterial({ 
+            color: theme === 'dark' ? 0x6366f1 : 0xc084fc, 
+            transparent: true, 
+            opacity: theme === 'dark' ? 0.3 : 0.4 
+        });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
 
@@ -112,10 +116,10 @@ export default function Background3D() {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: 0xa5b4fc, // Indigo-200 tint
+            color: theme === 'dark' ? 0xa5b4fc : 0xddd6fe,
             size: 0.08, 
             transparent: true,
-            opacity: 0.6,
+            opacity: theme === 'dark' ? 0.6 : 0.4,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
