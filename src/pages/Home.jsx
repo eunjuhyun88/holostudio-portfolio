@@ -671,7 +671,7 @@ export default function Home() {
             {/* Section 02: BY THE NUMBERS */}
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
-                    ? 'bg-black/30 border-white/10'
+                    ? 'bg-black/20 border-white/5'
                     : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 w-full">
@@ -804,8 +804,8 @@ export default function Home() {
             </section>
 
             {/* Section 02.6: THE COST */}
-            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent' : 'bg-white'
+            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 border-y ${
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
             }`}>
                 <div className="max-w-6xl mx-auto px-6 w-full">
                     <motion.h2
@@ -846,7 +846,7 @@ export default function Home() {
 
             {/* Section 02.7: REGULATORY PRESSURE */}
             <section className={`min-h-[60vh] flex items-center justify-center relative z-10 border-y ${
-                theme === 'dark' ? 'bg-black/30 border-white/5' : 'bg-orange-50/50 border-orange-200/30'
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-orange-50/50 border-neutral-300/30'
             }`}>
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <motion.div
@@ -895,8 +895,8 @@ export default function Home() {
                                 direction="up"
                                 className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border transition-all duration-300 ${
                                     theme === 'dark'
-                                        ? 'bg-black/30 border-white/10 hover:border-indigo-500/50 relative overflow-hidden'
-                                        : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
+                                        ? 'bg-black/40 border-white/10 hover:border-indigo-500/50 backdrop-blur-sm relative overflow-hidden'
+                                        : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                 }`}
                             >
                                 {/* Sci-Fi Corner Accents - Only dark mode */}
@@ -948,8 +948,8 @@ export default function Home() {
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
-                    ? 'bg-black/30 border-white/5'
-                    : 'bg-neutral-100/30 border-neutral-300/30'
+                    ? 'bg-black/20 border-white/5'
+                    : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
                 <div className="max-w-[1400px] mx-auto w-full py-20">
                     <div className="mb-16 relative text-center max-w-5xl mx-auto">
@@ -1024,8 +1024,8 @@ export default function Home() {
                                 {tech.pipeline.steps.map((step, i) => (
                                     <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 transition-all duration-300 group cursor-default ${
                                         theme === 'dark'
-                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10 backdrop-blur-sm relative overflow-hidden'
-                                            : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
+                                            ? 'bg-black/40 border-white/10 hover:border-indigo-500/50 hover:bg-black/50 backdrop-blur-sm relative overflow-hidden'
+                                            : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                     }`}>
                                         {/* Tech Corners - Only dark mode */}
                                         {theme === 'dark' && (
@@ -1056,8 +1056,8 @@ export default function Home() {
 
                     <div className={`rounded-3xl p-8 md:p-16 border relative overflow-hidden ${
                         theme === 'dark' 
-                            ? 'bg-white/5 border-white/5 backdrop-blur-md' 
-                            : 'bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/30 border-violet-300/40 shadow-xl'
+                            ? 'bg-black/40 border-white/10 backdrop-blur-md' 
+                            : 'bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/30 border-neutral-300/30 shadow-xl'
                     }`}>
                         {theme === 'dark' && (
                             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -1338,7 +1338,7 @@ export default function Home() {
 
             {/* Section 04: COMPANY THESIS */}
             <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-neutral-100/30 border-neutral-300/30'
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
                 <div className="max-w-5xl mx-auto px-6">
                     <h2 className={`text-sm font-mono mb-8 uppercase tracking-widest font-bold ${
@@ -1482,7 +1482,7 @@ export default function Home() {
                             >
                                 <TiltCard className={`p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
                                     theme === 'dark'
-                                        ? 'glass-card hover:shadow-2xl backdrop-blur-xl relative overflow-hidden'
+                                        ? 'bg-black/40 border-white/10 hover:border-white/20 hover:shadow-2xl backdrop-blur-xl relative overflow-hidden'
                                         : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                 }`}>
                                         {/* Sci-Fi Corners - Only dark mode */}
@@ -1576,7 +1576,7 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'border-white/5' : 'bg-neutral-100/30 border-neutral-300/30'
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
                     <FadeInSection direction="up" className="mb-16 text-center max-w-4xl mx-auto">
@@ -1627,7 +1627,7 @@ export default function Home() {
                                     key={idx}
                                     delay={idx * 0.1}
                                     direction="up"
-                                    className="p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 bg-white border-neutral-200 hover:shadow-lg shadow-sm"
+                                    className="p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 bg-white border-neutral-200 hover:shadow-xl shadow-md"
                                 >
                                     <Floating delay={idx * 0.2 + 0.5} offset={8}>
                                         <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
