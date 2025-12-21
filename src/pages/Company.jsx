@@ -10,30 +10,27 @@ import { createPageUrl } from '@/utils';
 import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 
-// --- LIGHT MODE SCENE COMPONENT ---
-const Scene = ({ children, id, bgColor, index }) => {
+// --- SCROLLYTELLING SCENE COMPONENT ---
+const ScrollytellingScene = ({ children, id, bgColor }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-20% 0px" });
-    const [hasAnimated, setHasAnimated] = useState(false);
-
-    useEffect(() => {
-        if (isInView && !hasAnimated) {
-            setHasAnimated(true);
-        }
-    }, [isInView, hasAnimated]);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+    
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -50]);
 
     return (
         <section 
             ref={ref}
             id={id}
-            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 transition-colors duration-1000 ${bgColor}`}
+            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 py-20 ${bgColor}`}
         >
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none" />
             <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="relative z-10 w-full max-w-[1400px]"
+                style={{ opacity, y }}
+                className="relative z-10 w-full max-w-[1200px]"
             >
                 {children}
             </motion.div>
@@ -805,16 +802,16 @@ Scaled communities from zero to millions of users.`,
         );
     }
 
-    // LIGHT MODE RENDER (Cinematic Scrollytelling)
+    // LIGHT MODE RENDER (First Round–style Scrollytelling)
     return (
-        <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900 bg-white">
+        <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900">
             <SEO 
                 title="Company" 
                 description="Engineering the Missing Link in the AI Economy"
             />
 
             {/* SCENE 1: HERO STATEMENT */}
-            <Scene id="foundation" bgColor="bg-white" index={0}>
+            <ScrollytellingScene id="foundation" bgColor="bg-white">
                 <div className="text-left max-w-6xl">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-8 tracking-tight">
                         {language === 'en' ? (
@@ -834,19 +831,14 @@ Scaled communities from zero to millions of users.`,
                             : "EA에서 넷마블까지, 우리는 대규모 가상 경제를 관리했습니다. 이제 AI 생성과 경제 정산 사이의 빠진 레이어를 만듭니다."}
                     </p>
 
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1 }}
-                        className="mt-16 text-xs uppercase tracking-widest text-neutral-400"
-                    >
+                    <div className="mt-16 text-xs uppercase tracking-widest text-neutral-400">
                         {language === 'en' ? 'Scroll to explore' : '스크롤하여 탐색'}
-                    </motion.div>
+                    </div>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 2: OUR STORY */}
-            <Scene id="observation" bgColor="bg-neutral-50" index={1}>
+            <ScrollytellingScene id="observation" bgColor="bg-neutral-50">
                 <div className="max-w-5xl">
                     <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 text-neutral-500 font-bold">
                         {language === 'en' ? 'OUR STORY' : '우리의 스토리'}
@@ -862,7 +854,7 @@ Scaled communities from zero to millions of users.`,
             </Scene>
 
             {/* SCENE 3: HISTORY TIMELINE */}
-            <Scene id="history" bgColor="bg-white" index={2}>
+            <ScrollytellingScene id="history" bgColor="bg-white">
                 <div className="max-w-6xl w-full">
                     <div className="mb-20">
                         <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 text-neutral-500 font-bold">
@@ -895,8 +887,8 @@ Scaled communities from zero to millions of users.`,
                 </div>
             </Scene>
 
-            {/* SCENE 4 & 5: VISION/THESIS */}
-            <Scene id="vision" bgColor="bg-blue-50" index={4}>
+            {/* SCENE 4: VISION */}
+            <ScrollytellingScene id="vision" bgColor="bg-blue-50">
                 <div className="max-w-6xl">
                     <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase text-neutral-900">
                         {c.thesis[0].headline}
@@ -905,9 +897,10 @@ Scaled communities from zero to millions of users.`,
                         {c.thesis[0].content}
                     </p>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
-            <Scene id="unified" bgColor="bg-emerald-50" index={5}>
+            {/* SCENE 5: UNIFIED */}
+            <ScrollytellingScene id="unified" bgColor="bg-emerald-50">
                 <div className="max-w-6xl">
                     <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase text-neutral-900">
                         {c.thesis[1].headline}
@@ -916,10 +909,10 @@ Scaled communities from zero to millions of users.`,
                         {c.thesis[1].content}
                     </p>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 6: CREDIBILITY (DARK SCENE) */}
-            <Scene id="credibility" bgColor="bg-neutral-900" index={6}>
+            <ScrollytellingScene id="credibility" bgColor="bg-neutral-900">
                 <div className="text-center max-w-6xl mx-auto">
                     <p className="text-2xl md:text-4xl lg:text-5xl font-light mb-20 leading-tight text-neutral-400">
                         {language === 'en' 
@@ -931,10 +924,10 @@ Scaled communities from zero to millions of users.`,
                         {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
                     </h2>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 7: WHO WE ARE */}
-            <Scene id="identity" bgColor="bg-white" index={7}>
+            <ScrollytellingScene id="identity" bgColor="bg-white">
                 <div className="max-w-6xl w-full">
                     <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-neutral-500 font-bold">
                         {language === 'en' ? 'WHO WE ARE' : '우리는 누구인가'}
@@ -972,10 +965,10 @@ Scaled communities from zero to millions of users.`,
                         </p>
                     </div>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 8: TEAM */}
-            <Scene id="team" bgColor="bg-neutral-50" index={8}>
+            <ScrollytellingScene id="team" bgColor="bg-neutral-50">
                 <div className="max-w-[1400px] w-full">
                     <div className="mb-16 md:mb-24">
                         <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-neutral-500 font-bold">
@@ -1000,7 +993,7 @@ Scaled communities from zero to millions of users.`,
             </Scene>
 
             {/* SCENE 9: CTA */}
-            <Scene id="cta" bgColor="bg-white" index={9}>
+            <ScrollytellingScene id="cta" bgColor="bg-white">
                 <div className="text-left max-w-5xl">
                     <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 text-neutral-500 font-bold">
                         HOLO STUDIO
@@ -1024,7 +1017,7 @@ Scaled communities from zero to millions of users.`,
                         </Button>
                     </Link>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
         </div>
     );
 }
