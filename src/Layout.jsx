@@ -257,7 +257,7 @@ function LayoutContent({ children }) {
                         <Button className={`rounded-full px-6 h-9 text-sm font-bold transition-all ${
                             theme === 'dark'
                                 ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] border border-indigo-500/50'
-                                : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white border-0 shadow-lg'
+                                : 'bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 hover:from-cyan-300 hover:via-purple-300 hover:to-pink-300 text-neutral-900 border border-white/40 shadow-md backdrop-blur-sm'
                         }`}>
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
                         </Button>
@@ -363,7 +363,7 @@ function LayoutContent({ children }) {
                                 <Button className={`w-full rounded-full mt-8 h-12 text-lg font-bold ${
                                     theme === 'dark'
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]'
-                                        : 'bg-orange-500 hover:bg-orange-600 text-white'
+                                        : 'bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 hover:from-cyan-300 hover:via-purple-300 hover:to-pink-300 text-neutral-900 border border-white/40 backdrop-blur-sm'
                                 }`}>
                                     {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
                                 </Button>

@@ -64,6 +64,37 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  /* Light mode - Soft greige with iridescent touches */
+  .light {
+    --background: 40 10% 96%;
+    --foreground: 0 0% 15%;
+
+    --card: 40 10% 98%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 40 10% 98%;
+    --popover-foreground: 0 0% 15%;
+
+    --primary: 271 81% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 40 10% 92%;
+    --accent-foreground: 0 0% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 271 81% 56%;
+  }
 }
 
 @layer base {
