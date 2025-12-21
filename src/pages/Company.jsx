@@ -195,7 +195,9 @@ const TeamIdentity = ({ identity }) => (
 );
 
 // Founder Card Component
-const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => (
+const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
+    const { theme } = useTheme();
+    return (
     <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -203,38 +205,56 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => (
         transition={{ delay: delay, duration: 0.6 }}
         className="group relative"
     >
-        <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-4 rounded-xl border border-white/10 group-hover:border-indigo-500/50 transition-colors">
+        <div className={`relative aspect-square overflow-hidden mb-4 rounded-xl border transition-colors ${
+            theme === 'dark'
+                ? 'bg-neutral-900 border-white/10 group-hover:border-indigo-500/50'
+                : 'bg-neutral-50 border-neutral-200 group-hover:border-neutral-900'
+        }`}>
             {image ? (
-                <div className="w-full h-full flex items-center justify-center bg-neutral-800/50 relative overflow-hidden">
+                <div className={`w-full h-full flex items-center justify-center relative overflow-hidden ${
+                    theme === 'dark' ? 'bg-neutral-800/50' : 'bg-neutral-100'
+                }`}>
                     <img 
                         src={image} 
                         alt={name} 
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         style={{
-                            filter: "grayscale(1) contrast(1.1)" 
+                            filter: theme === 'dark' ? "grayscale(1) contrast(1.1)" : "none"
                         }} 
                     />
-                    <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-colors duration-300 mix-blend-overlay" />
+                    {theme === 'dark' && (
+                        <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-colors duration-300 mix-blend-overlay" />
+                    )}
                 </div>
             ) : (
-                <div className="w-full h-full bg-neutral-800 flex items-center justify-center text-neutral-600">Image</div>
+                <div className={`w-full h-full flex items-center justify-center ${
+                    theme === 'dark' ? 'bg-neutral-800 text-neutral-600' : 'bg-neutral-100 text-neutral-400'
+                }`}>Image</div>
             )}
             
-            {/* Tech Corners - Smaller */}
-            <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
+            {/* Tech Corners - Only dark mode */}
+            {theme === 'dark' && (
+                <>
+                    <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
+                    <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
+                </>
+            )}
         </div>
 
         <div className="space-y-3 pr-2">
             <div className="flex justify-between items-start">
                 <div>
-                    <h3 className="text-lg font-bold text-white leading-tight">{name}</h3>
-                    <p className="text-[10px] font-mono text-indigo-400 tracking-wider uppercase mt-1">{role}</p>
+                    <h3 className={`text-lg font-black leading-tight ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>{name}</h3>
+                    <p className={`text-[10px] font-mono tracking-wider uppercase mt-1 font-bold ${
+                        theme === 'dark' ? 'text-indigo-400' : 'text-neutral-700'
+                    }`}>{role}</p>
                 </div>
                 {linkedin && (
-                    <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[#0077b5] transition-colors p-1">
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" className={`p-1 transition-colors ${
+                        theme === 'dark' ? 'text-neutral-500 hover:text-[#0077b5]' : 'text-neutral-400 hover:text-[#0077b5]'
+                    }`}>
                         <Linkedin className="w-4 h-4" />
                     </a>
                 )}
@@ -242,18 +262,25 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => (
 
             {motto && (
                 <div className="relative py-2">
-                     <p className="text-indigo-300 font-bold text-sm leading-snug">{motto}</p>
+                     <p className={`font-black text-sm leading-snug ${
+                         theme === 'dark' ? 'text-indigo-300' : 'text-orange-600'
+                     }`}>{motto}</p>
                 </div>
             )}
             
-            <div className="w-8 h-px bg-white/10 group-hover:bg-indigo-500/50 transition-colors" />
+            <div className={`w-8 h-px transition-colors ${
+                theme === 'dark' ? 'bg-white/10 group-hover:bg-indigo-500/50' : 'bg-neutral-300'
+            }`} />
             
-            <p className="text-neutral-400 leading-snug text-xs whitespace-pre-line">
+            <p className={`leading-snug text-xs whitespace-pre-line font-medium ${
+                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+            }`}>
                 {bio}
             </p>
         </div>
     </motion.div>
-);
+)};
+
 
 // Closing Statement Component
 const ClosingStatement = () => {
@@ -606,58 +633,53 @@ Scaled communities from zero to millions of users.`,
         <div className={`min-h-screen font-sans transition-colors duration-300 ${
             theme === 'dark' 
                 ? 'bg-[#050505] text-white selection:bg-indigo-500/30'
-                : 'bg-neutral-50 text-neutral-900 selection:bg-purple-300/30'
+                : 'bg-white text-neutral-900 selection:bg-orange-200'
         }`}>
             <SEO 
                 title="Company" 
                 description={c.intro?.title}
             />
 
-            {/* Visual State Management Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                <div className="absolute inset-0 opacity-80">
-                    <CosmicBackground theme={theme} />
+            {/* Visual State Management Layer - Only dark mode */}
+            {theme === 'dark' && (
+                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                    <div className="absolute inset-0 opacity-80">
+                        <CosmicBackground theme={theme} />
+                    </div>
+                    <div className="absolute inset-0 opacity-20 md:opacity-30">
+                        <Background3D theme={theme} />
+                    </div>
+                    
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
+                    <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
+                    <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
+                    
+                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+
+                     <motion.div
+                        animate={{ 
+                            opacity: visualState.showGuardRail ? 0.3 : 0,
+                            scale: visualState.showGuardRail ? 1 : 0.9,
+                            x: mousePos.x * -1,
+                            y: mousePos.y * -1
+                        }}
+                        transition={{ 
+                            opacity: { duration: 1, ease: "circOut" },
+                            scale: { duration: 1, ease: "circOut" },
+                            x: { type: "spring", stiffness: 50, damping: 20 },
+                            y: { type: "spring", stiffness: 50, damping: 20 }
+                        }}
+                        className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+                     >
+                        <div className="w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_150px_rgba(99,102,241,0.05)] animate-[spin_30s_linear_infinite]" />
+                        <div className="absolute w-[60vh] h-[60vh] rounded-full border border-indigo-500/5 animate-[spin_20s_linear_infinite_reverse]" />
+                     </motion.div>
                 </div>
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-20 md:opacity-30' : 'opacity-15 md:opacity-20'}`}>
-                    <Background3D theme={theme} />
-                </div>
-                
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
-
-                {/* Enhanced Sci-Fi Grid - Moving */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
-
-                {/* Dynamic Sci-Fi Scanlines */}
-                <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                {/* Moving Scanline Bar */}
-                <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
-                
-                {/* HUD Corners */}
-                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
-                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
-
-                 {/* Retain the spinning rings for the tech feel later in scroll */}
-                 <motion.div
-                    animate={{ 
-                        opacity: visualState.showGuardRail ? 0.3 : 0,
-                        scale: visualState.showGuardRail ? 1 : 0.9,
-                        x: mousePos.x * -1, // Parallax effect
-                        y: mousePos.y * -1
-                    }}
-                    transition={{ 
-                        opacity: { duration: 1, ease: "circOut" },
-                        scale: { duration: 1, ease: "circOut" },
-                        x: { type: "spring", stiffness: 50, damping: 20 },
-                        y: { type: "spring", stiffness: 50, damping: 20 }
-                    }}
-                    className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
-                 >
-                    <div className="w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_150px_rgba(99,102,241,0.05)] animate-[spin_30s_linear_infinite]" />
-                    <div className="absolute w-[60vh] h-[60vh] rounded-full border border-indigo-500/5 animate-[spin_20s_linear_infinite_reverse]" />
-                 </motion.div>
-            </div>
+            )}
 
             {/* Sticky Navigation (Desktop) */}
             <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
@@ -766,16 +788,26 @@ Scaled communities from zero to millions of users.`,
                 </div>
 
                 {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
-                <div id="team" className="bg-[#0A0A0A] border-y border-neutral-900 py-32 md:py-48 overflow-hidden">
+                <div id="team" className={`border-y py-32 md:py-48 overflow-hidden ${
+                    theme === 'dark' 
+                        ? 'bg-[#0A0A0A] border-neutral-900' 
+                        : 'bg-neutral-50 border-neutral-200'
+                }`}>
                     <div className="max-w-[1400px] mx-auto px-6 md:px-12">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-24">
                             <div>
-                                <h2 className="text-sm font-bold tracking-widest uppercase text-indigo-500 mb-4">Leadership</h2>
-                                <h3 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
+                                <h2 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                                    theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                                }`}>Leadership</h2>
+                                <h3 className={`text-3xl md:text-5xl font-black max-w-2xl leading-tight ${
+                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                }`}>
                                     {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                                 </h3>
                             </div>
-                            <p className="text-neutral-400 max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base">
+                            <p className={`max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base font-medium ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                            }`}>
                                 {language === 'en' 
                                     ? "A team combining deep AI research, AAA gaming production, and Web3 economics."
                                     : "딥 AI 리서치, AAA 게임 프로덕션, 그리고 Web3 경제 설계를 결합한 팀입니다."}
@@ -798,19 +830,29 @@ Scaled communities from zero to millions of users.`,
                 {/* Final CTA */}
                 <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
                     <div className="max-w-4xl mx-auto mb-16">
-                         <h3 className="text-sm font-bold tracking-widest text-indigo-500 uppercase mb-4">HOLO STUDIO</h3>
-                         <p className="text-2xl md:text-3xl font-bold leading-relaxed text-neutral-200">
+                         <h3 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                         }`}>HOLO STUDIO</h3>
+                         <p className={`text-2xl md:text-3xl font-black leading-relaxed ${
+                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
+                         }`}>
                             {c.footer?.main || (language === 'en' 
                                 ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading." 
                                 : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.")}
                          </p>
                     </div>
 
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12 max-w-3xl leading-tight text-white">
+                    <h2 className={`text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>
                         {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="bg-white text-black hover:bg-neutral-200 rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105">
+                        <Button className={`rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105 ${
+                            theme === 'dark'
+                                ? 'bg-white text-black hover:bg-neutral-200'
+                                : 'bg-orange-500 text-white hover:bg-orange-600'
+                        }`}>
                             Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
                         </Button>
                     </Link>

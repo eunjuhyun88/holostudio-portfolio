@@ -4,12 +4,11 @@ import { createPageUrl } from '@/utils';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageContext';
-import Background3D from '@/components/Background3D';
-import CosmicBackground from '@/components/CosmicBackground';
-import MouseGlowText from '@/components/MouseGlowText';
+import { useTheme } from '@/components/ThemeContext';
 
 export default function Products() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
 
     const products = useMemo(() => [
         {
@@ -79,48 +78,29 @@ export default function Products() {
     ], []);
 
     return (
-        <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
-            {/* Visual State Management Layer - Unified with Company/Home */}
-            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-                <div className="absolute inset-0 opacity-30">
-                    <CosmicBackground />
-                </div>
-                <div className="absolute inset-0 opacity-90">
-                    <Background3D />
-                </div>
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-90" />
-                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-900/5 to-transparent mix-blend-screen opacity-30" />
-                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10" style={{ background: 'linear-gradient(to bottom, #050505 0%, transparent 15%, transparent 85%, #050505 100%)' }} />
-                
-                {/* Enhanced Sci-Fi Grid - Moving */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
-
-                {/* Dynamic Sci-Fi Scanlines */}
-                <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                {/* Moving Scanline Bar */}
-                <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
-                
-                {/* HUD Corners */}
-                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
-                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
-            </div>
-
+        <div className={`min-h-screen font-sans transition-colors duration-300 ${
+            theme === 'dark' 
+                ? 'bg-[#050505] text-white selection:bg-indigo-500/30'
+                : 'bg-white text-neutral-900 selection:bg-orange-200'
+        }`}>
             <main className="relative z-10 pt-32 pb-24">
                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 mb-24 text-center">
                      <motion.h1 
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
-                         className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                         className={`text-4xl md:text-6xl font-black tracking-tight mb-8 ${
+                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                         }`}
                      >
-                         {language === 'en' ? 'Our' : '우리의'} <span className="text-indigo-500 drop-shadow-[0_0_25px_rgba(99,102,241,0.6)]">{language === 'en' ? 'Products' : '프로덕트'}</span>
+                         {language === 'en' ? 'Products' : '프로덕트'}
                      </motion.h1>
                      <motion.p 
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: 0.1 }}
-                         className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed"
+                         className={`text-base md:text-xl max-w-3xl mx-auto leading-relaxed font-medium ${
+                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                         }`}
                      >
                          {language === 'en' 
                              ? 'Building the infrastructure for the next generation of digital trust and value.' 
@@ -129,46 +109,65 @@ export default function Products() {
                  </div>
 
                 {/* Responsive Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 max-w-[1600px] mx-auto gap-4 md:gap-0 px-4 md:px-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 max-w-[1400px] mx-auto gap-6 px-6">
                     {products.map((product, index) => (
                         <Link 
                             key={product.id} 
                             to={createPageUrl(product.path)}
-                            className={`group relative min-h-[400px] md:min-h-[600px] p-6 md:p-16 flex flex-col justify-between overflow-hidden transition-all duration-500 border border-white/5 hover:border-white/10 ${product.theme} rounded-3xl md:rounded-none`}
+                            className={`group relative min-h-[400px] p-8 md:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 rounded-2xl ${
+                                theme === 'dark'
+                                    ? `${product.theme} border border-white/10 hover:border-white/20`
+                                    : 'bg-white border-2 border-neutral-200 hover:border-neutral-900 hover:shadow-xl'
+                            }`}
                         >
-                            {/* Background Hover Effect */}
-                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 z-10" />
+                            {theme === 'dark' && (
+                                <>
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 z-10" />
+                                    <div className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none">
+                                        <img src={product.image} alt="" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+                                    </div>
+                                </>
+                            )}
                             
                             {/* Content */}
                             <div className="relative z-20">
-                            <div className="flex items-center justify-between mb-8">
-                                <h3 className={`text-xl md:text-3xl font-bold tracking-tight ${product.accent}`}>
-                                    {product.name}
-                                </h3>
-                                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md group-hover:scale-110 transition-transform duration-300`}>
-                                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                                <div className="flex items-center justify-between mb-8">
+                                    <h3 className={`text-xl md:text-3xl font-black tracking-tight ${
+                                        theme === 'dark' 
+                                            ? product.accent 
+                                            : index === 0 ? 'text-blue-600' : index === 1 ? 'text-yellow-600' : index === 2 ? 'text-pink-600' : 'text-emerald-600'
+                                    }`}>
+                                        {product.name}
+                                    </h3>
+                                    <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
+                                        theme === 'dark' 
+                                            ? 'bg-white/10 backdrop-blur-md' 
+                                            : 'bg-neutral-900 text-white'
+                                    }`}>
+                                        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5" />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h2 className="text-2xl md:text-4xl font-black leading-[1.1] mb-6 max-w-xl tracking-tight">
-                                {product.tagline[language] || product.tagline.en}
-                            </h2>
-                            <p className="text-base md:text-xl opacity-80 max-w-md font-light leading-relaxed">
-                                {product.description[language] || product.description.en}
-                            </p>
+                                <h2 className={`text-2xl md:text-4xl font-black leading-[1.1] mb-6 max-w-xl tracking-tight ${
+                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                }`}>
+                                    {product.tagline[language] || product.tagline.en}
+                                </h2>
+                                <p className={`text-base md:text-xl max-w-md leading-relaxed ${
+                                    theme === 'dark' ? 'opacity-80' : 'text-neutral-700 font-medium'
+                                }`}>
+                                    {product.description[language] || product.description.en}
+                                </p>
                             </div>
 
                             {/* CTA */}
-                            <div className="relative z-20 mt-12 flex items-center gap-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <div className={`relative z-20 mt-12 flex items-center gap-4 group-hover:gap-6 transition-all duration-300 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>
                                  <span className="text-sm font-bold uppercase tracking-widest border-b border-current pb-1">
-                                     {language === 'en' ? 'Read the story' : '자세히 보기'}
+                                     {language === 'en' ? 'Learn More' : '자세히 보기'}
                                  </span>
                                  <ArrowRight className="w-4 h-4" />
-                            </div>
-
-                            {/* Image Overlay/Texture */}
-                            <div className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none">
-                                <img src={product.image} alt="" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
                             </div>
                         </Link>
                     ))}
