@@ -154,51 +154,50 @@ export default function Home() {
         },
         ko: {
             hero: {
-                tag: "Trust Layer for AI Economy",
+                tag: "AI 경제의 신뢰 레이어",
                 title: "HOLO STUDIO",
-                sub: "콘텐츠는 무한하지만, 신뢰는 희소합니다. 우리는 신뢰를 인프라로 만듭니다.",
-                desc: "AI가 확장될수록 신뢰가 병목이 됩니다. 우리는 AI 콘텐츠를 안전하고, 소유 가능하며, 수익화할 수 있는 검증 레이어를 구축합니다.",
+                sub: "AI 콘텐츠는 무한합니다. 신뢰는 희소합니다.",
+                desc: "우리는 AI 콘텐츠를 검증하고, 소유권을 증명하고, 가치를 정산하는 인프라를 만듭니다.",
                 cta1: "솔루션 보기",
-                cta2: "파트너십 문의"
+                cta2: "파트너 문의"
             },
             market: {
-                year: { val: "2025", label: "규제 컴플라이언스 원년" },
-                eu: { val: "EU Act", label: "DSA & AI Act 의무화" },
-                size: { val: "$80B", label: "AI 콘텐츠 경제 (2030)" },
-                gap: { val: "$13B+", label: "신뢰 인프라 시장 기회" }
+                year: { val: "88.89%", label: "AI 탐지 정확도" },
+                eu: { val: "<10ms", label: "응답 시간" },
+                size: { val: "98.9%", label: "ROC AUC" },
+                gap: { val: "100%", label: "브랜드 안전 정확도" }
             },
             problem: {
-                title: "시장 실패 (The Market Failure)",
-                sub: "\"AI가 만들어내는 'slop'들이 불신을 낳고 있습니다.\" — Steve Hirsch\n인프라 없이는 AI 경제가 작동할 수 없습니다.",
+                title: "검증 없는 AI 경제의 비용",
+                sub: "330억원 딥페이크 화상회의 한 번. CFO 사칭. 송금 완료.\n68%의 소비자가 유해 콘텐츠 옆 광고 노출 시 브랜드를 영구히 불신합니다.\n+347% 딥페이크 사기 연간 증가율.",
                 cards: [
-                    { title: "플랫폼 리스크", desc: "딥페이크와 유해 콘텐츠는 플랫폼에게 실존적인 법적/브랜드 리스크를 초래합니다.", badge: "Enterprise Risk" },
-                    { title: "IP 및 수익 손실", desc: "검증되지 않은 AI 콘텐츠의 범람으로 창작자는 수익을 잃고 있습니다.", badge: "Lost Revenue" },
-                    { title: "경제적 비효율", desc: "출처 증명 없이는 가치가 올바른 소유자나 컴퓨팅 제공자에게 전달될 수 없습니다.", badge: "Inefficiency" }
+                    { title: "2026년 8월", desc: "EU AI Act 전면 시행. 위반 시 글로벌 매출 7% 과징금. 18개월 후면 늦습니다.", badge: "규제 압박" },
+                    { title: "7조원 시장의 빈 공간", desc: "브랜드 안전 시장은 '분류'에서 멈췄습니다. AI 시대에는 검증이 필요합니다.", badge: "시장 기회" },
+                    { title: "검증에서 경제로", desc: "검증이 소유권을 가능하게 합니다. 소유권이 경제를 가능하게 합니다.", badge: "솔루션" }
                 ]
             },
             thesis: {
                 label: "HOLO STUDIO Thesis",
-                main: "창의성은 무한하지만, 신뢰는 희소합니다.\n\nAI가 경제 주체가 될 때, 신뢰는 인프라가 됩니다.",
-                keywords: ["가드레일", "출처증명", "가치분배"]
+                main: "더 이상 희소한 자원은 창의성이 아닙니다.\n\n바로 신뢰입니다.",
+                keywords: ["검증", "소유권", "수익화"]
             },
             business_intro: {
                 title: "프로덕트",
-                sub: "하나의 회사, 하나의 Trust Layer, 네 개의 엔진."
+                sub: "검증에서 시작해 경제로 확장합니다."
             },
             milestones: {
-                title: "성과 및 마일스톤",
-                sub: "검증된 트랙션 및 업계의 인정",
+                title: "트랙션",
+                sub: "검증된 성과 및 파트너십",
                 items: [
-                    { title: "Seedify AI 해커톤", desc: "1위 우승" },
-                    { title: "NVIDIA Inception", desc: "공식 멤버 선정" },
-                    { title: "Google Cloud Partner", desc: "에코시스템 선정" },
-                    { title: "글로벌 액셀러레이터", desc: "AppWorks & OnePiece Labs" },
-                    { title: "주요 그랜트 선정", desc: "Alchemy & Story Protocol" }
+                    { title: "Seedify AI Hackathon", desc: "1st Place" },
+                    { title: "NVIDIA Inception", desc: "Official Member" },
+                    { title: "Google Cloud", desc: "Ecosystem Partner" },
+                    { title: "Alchemy · Arbitrum · Story", desc: "Major Grants" }
                 ]
             },
             diagram: {
-                title: "하나의 회사, 네 개의 프로덕트",
-                desc: "HOLO STUDIO는 안전, 출처, 확산의 전 과정을 프로덕트 포트폴리오로 분리해 실행합니다."
+                title: "THE STACK",
+                desc: "검증에서 시작해 경제로 확장합니다. 하나의 스택."
             },
             research: {
                 title: "핵심 리서치 분야",
@@ -267,10 +266,10 @@ export default function Home() {
                 ]
             },
             contact: {
-                title: "HOLO와 함께하세요.",
-                sub: "AI 시대의 Trust Layer를 함께 만듭니다.",
-                cta1: "투자 / 제휴 문의",
-                cta2: "기업 도입 문의"
+                title: "AI 미디어 경제의 신뢰 인프라.",
+                sub: "검증에서 시작해 경제로 확장합니다.",
+                cta1: "투자 문의",
+                cta2: "파트너십"
             }
         }
     };
@@ -369,10 +368,10 @@ export default function Home() {
         {
             id: "aidguardian",
             name: "AiD Guardian",
-            tag: { en: "Enterprise Safety Engine", ko: "엔터프라이즈 안전 엔진" },
+            tag: { en: "Enterprise Safety Engine", ko: "검증 엔진" },
             desc: { 
                 en: "Real-time liability protection for platforms. We filter toxic AI content with <10ms latency, ensuring brand safety and GARM compliance.",
-                ko: "플랫폼을 위한 실시간 리스크 방어. 10ms 미만의 지연시간으로 유해 AI 콘텐츠를 필터링하여 브랜드 안전과 컴플라이언스를 보장합니다."
+                ko: "AI 콘텐츠 탐지. 브랜드 안전. 규제 준수. 모든 것의 시작점. 88.89% AI 탐지 정확도 · GARM 8카테고리 전체 지원 · EU AI Act 대응"
             },
             features: {
                 en: ["Risk Mitigation", "Latency < 10ms", "Regulatory Compliance"],
@@ -390,10 +389,10 @@ export default function Home() {
         {
             id: "playarts",
             name: "PlayArts",
-            tag: { en: "IP Provenance Protocol", ko: "IP 출처 증명 프로토콜" },
+            tag: { en: "IP Provenance Protocol", ko: "출처 증명 프로토콜" },
             desc: {
                 en: "The standard for verifiable AI assets. We cryptographically bind ownership and origin to content at the moment of generation.",
-                ko: "검증 가능한 AI 자산의 표준. 생성되는 순간 콘텐츠에 소유권과 출처를 암호학적으로 결합합니다."
+                ko: "검증된 콘텐츠에 소유권을 부여합니다. 생성 → 검증 → 소유권 → 수익화. 생성 시점 암호학적 서명 · 파생물 자동 추적 · 로열티 자동 정산"
             },
             features: {
                 en: ["IP Protection", "On-Chain Evidence", "Royalty Routing"],
@@ -411,10 +410,10 @@ export default function Home() {
         {
             id: "elememetal",
             name: "EleMEMEtal",
-            tag: { en: "Web3 Gaming Showcase", ko: "Web3 게이밍 쇼케이스" },
+            tag: { en: "Web3 Gaming Showcase", ko: "게임 쇼케이스" },
             desc: {
                 en: "Demonstrating the protocol in action. A fully on-chain battle arena where every asset is user-generated, verified, and traded.",
-                ko: "프로토콜의 실증 사례. 모든 자산이 유저에 의해 생성, 검증, 거래되는 완전 온체인 배틀 아레나."
+                ko: "프로토콜이 실제로 작동하는 증거. 모든 에셋이 AI 생성, 검증, 거래되는 온체인 배틀 아레나."
             },
             features: {
                 en: ["Protocol Demo", "Asset Ownership", "Safe UGC"],
@@ -432,10 +431,10 @@ export default function Home() {
         {
             id: "stockhoo",
             name: "Stockhoo",
-            tag: { en: "Zone-Based Market Intelligence", ko: "구간 기반 소셜 인텔리전스" },
+            tag: { en: "Zone-Based Market Intelligence", ko: "트레이딩 쇼케이스" },
             desc: {
                 en: "Verifiable reputation for AI trading signals. We bring on-chain proof of profit to social market intelligence.",
-                ko: "AI 트레이딩 시그널을 위한 검증된 평판. 소셜 시장 정보에 온체인 수익 증명을 도입합니다."
+                ko: "수익 주장이 아닌 증명. 온체인 수익 기록이 있는 AI 트레이딩 시그널."
             },
             features: {
                 en: ["Verified Signals", "Proof of Profit", "AI Strategy"],
