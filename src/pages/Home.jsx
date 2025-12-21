@@ -1212,10 +1212,13 @@ export default function Home() {
 
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
-            <section id="products" className={`relative z-10 border-y ${
+            <section id="products" className={`relative z-10 border-y transition-colors duration-700 ${
                 theme === 'dark' 
                     ? 'border-white/5'
-                    : 'bg-neutral-50 border-neutral-200'
+                    : activeStage === 0 ? 'bg-[#EFF6FF] border-neutral-200' : 
+                      activeStage === 1 ? 'bg-[#FFFBEB] border-neutral-200' : 
+                      activeStage === 2 ? 'bg-[#FFF5F0] border-neutral-200' : 
+                      'bg-[#F0FFF4] border-neutral-200'
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1228,8 +1231,13 @@ export default function Home() {
                 </div>
 
                 {/* Sticky Visual Container - Desktop Only */}
-                <div className={`hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none ${
-                    theme === 'light' ? 'bg-neutral-50' : ''
+                <div className={`hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none transition-colors duration-700 ${
+                    theme === 'light' ? (
+                        activeStage === 0 ? 'bg-[#EFF6FF]' : 
+                        activeStage === 1 ? 'bg-[#FFFBEB]' : 
+                        activeStage === 2 ? 'bg-[#FFF5F0]' : 
+                        'bg-[#F0FFF4]'
+                    ) : ''
                 }`}>
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
