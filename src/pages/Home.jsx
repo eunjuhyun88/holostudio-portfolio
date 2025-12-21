@@ -27,6 +27,8 @@ export default function Home() {
     
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
+    
+    const mouseGradient = useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`;
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -631,7 +633,7 @@ export default function Home() {
                             <motion.div 
                                 className="absolute inset-0 z-10"
                                 style={{
-                                    background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                                    background: mouseGradient
                                 }}
                             />
                             
