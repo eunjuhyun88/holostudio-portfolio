@@ -9,9 +9,9 @@ export default function Stockhoo() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Trading | Zone-Based Market Intelligence",
+            tag: <span className="font-bold"><span className="text-emerald-600">Trust Layer: Trading</span> | <span className="text-emerald-500">Zone-Based Market Intelligence</span></span>,
             primaryButtonText: "Launch Terminal",
-            oneLiner: "The concerns of entering at 63K differ from 70K. Context matters. Zones provide context.",
+            oneLiner: <span className="font-bold text-emerald-600">The concerns of entering at 63K differ from 70K. Context matters. Zones provide context.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -109,9 +109,9 @@ export default function Stockhoo() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Trading | Zone 기반 시장 인텔리전스",
+            tag: <span className="font-bold"><span className="text-emerald-600">Trust Layer: Trading</span> | <span className="text-emerald-500">Zone 기반 시장 인텔리전스</span></span>,
             primaryButtonText: "터미널 실행",
-            oneLiner: "63K 진입과 70K 진입의 고민은 다릅니다. Zone이 맥락을 줍니다.",
+            oneLiner: <span className="font-bold text-emerald-600">63K 진입과 70K 진입의 고민은 다릅니다. Zone이 맥락을 줍니다.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">

@@ -9,9 +9,9 @@ export default function Elememetal() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Gaming | Skill-Based Strategy TCG",
+            tag: <span className="font-bold"><span className="text-orange-600">Trust Layer: Gaming</span> | <span className="text-orange-500">Skill-Based Strategy TCG</span></span>,
             primaryButtonText: "Play Now",
-            oneLiner: "A competitive battler where every card is an asset and every match is pure strategy.",
+            oneLiner: <span className="font-bold text-orange-600">A competitive battler where every card is an asset and every match is pure strategy.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -88,9 +88,9 @@ export default function Elememetal() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Gaming | 실력 기반 전략 TCG",
+            tag: <span className="font-bold"><span className="text-orange-600">Trust Layer: Gaming</span> | <span className="text-orange-500">실력 기반 전략 TCG</span></span>,
             primaryButtonText: "지금 플레이",
-            oneLiner: "모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.",
+            oneLiner: <span className="font-bold text-orange-600">모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">

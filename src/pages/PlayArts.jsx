@@ -9,9 +9,9 @@ export default function PlayArts() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Provenance + Value | The Immutable Record",
+            tag: <span className="font-bold"><span className="text-lime-600">Trust Layer: Provenance + Value</span> | <span className="text-lime-500">The Immutable Record</span></span>,
             primaryButtonText: "Launch App",
-            oneLiner: "The protocol that guarantees provenance and value routing for AI content.",
+            oneLiner: <span className="font-bold text-lime-600">The protocol that guarantees provenance and value routing for AI content.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -116,9 +116,9 @@ export default function PlayArts() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Provenance + Value | 불변의 출처 기록",
+            tag: <span className="font-bold"><span className="text-lime-600">Trust Layer: Provenance + Value</span> | <span className="text-lime-500">불변의 출처 기록</span></span>,
             primaryButtonText: "앱 실행",
-            oneLiner: "AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.",
+            oneLiner: <span className="font-bold text-lime-600">AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
