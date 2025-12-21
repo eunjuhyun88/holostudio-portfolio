@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
+import CosmicBackground from '@/components/CosmicBackground';
+import Starfield from '@/components/Starfield';
 
 // --- Components ---
 
@@ -682,10 +684,42 @@ Scaled communities from zero to millions of users.`,
                 description={c.intro?.title}
             />
 
-            {/* Minimal Professional Background */}
-            <CompanyBackground theme={theme} />
+            {/* Enhanced Background - Home Style */}
+            {theme === 'dark' ? (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    {/* 1. Starfield */}
+                    <div className="absolute inset-0 opacity-60 mix-blend-screen">
+                        <Starfield density={800} speed={0.03} />
+                    </div>
 
-            {/* Sticky Navigation (Desktop) */}
+                    {/* 2. Cosmic Gradients */}
+                    <CosmicBackground theme="dark" />
+
+                    {/* 3. Gradient Overlay for Depth */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
+
+                    {/* Sci-Fi Grid Overlay */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                    
+                    {/* HUD Corners */}
+                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+                </div>
+            ) : (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-200/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
+                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-200/30 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+                </div>
+            )}
+            
+            {/* Grain Overlay */}
+            <div className={`fixed inset-0 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-0 ${
+                theme === 'dark' ? 'opacity-[0.05]' : 'opacity-[0.02]'
+            }`} />
+
+            {/* Sticky Navigation (Desktop) - Home Style */}
             <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
                 {navItems.map((item) => (
                     <button
@@ -693,10 +727,18 @@ Scaled communities from zero to millions of users.`,
                         onClick={() => scrollToId(item.id)}
                         className="group flex items-center justify-end gap-4"
                     >
-                        <span className={`text-xs font-bold tracking-widest uppercase transition-all duration-300 ${activeSection === item.id ? 'text-white opacity-100' : 'text-neutral-500 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0'}`}>
+                        <span className={`text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+                            activeSection === item.id 
+                                ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') + ' opacity-100' 
+                                : (theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400') + ' opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0'
+                        }`}>
                             {item.label}
                         </span>
-                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-indigo-500 scale-150' : 'bg-neutral-600 group-hover:bg-white'}`} />
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            activeSection === item.id 
+                                ? (theme === 'dark' ? 'bg-indigo-500' : 'bg-orange-500') + ' scale-150' 
+                                : (theme === 'dark' ? 'bg-neutral-600 group-hover:bg-white' : 'bg-neutral-400 group-hover:bg-neutral-900')
+                        }`} />
                     </button>
                 ))}
             </div>
@@ -823,9 +865,9 @@ Scaled communities from zero to millions of users.`,
                 </div>
 
                 {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
-                <div id="team" className={`border-y py-32 md:py-48 overflow-hidden ${
+                <div id="team" className={`border-y py-32 md:py-48 overflow-hidden relative ${
                     theme === 'dark' 
-                        ? 'bg-[#0A0A0A] border-neutral-900' 
+                        ? 'bg-[#0A0A0A]/80 border-white/10 backdrop-blur-xl' 
                         : 'bg-neutral-50 border-neutral-200'
                 }`}>
                     <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -862,35 +904,71 @@ Scaled communities from zero to millions of users.`,
 
 
                 
-                {/* Final CTA */}
-                <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
-                    <div className="max-w-4xl mx-auto mb-16">
-                         <h3 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
-                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
-                         }`}>HOLO STUDIO</h3>
-                         <p className={`text-2xl md:text-3xl font-black leading-relaxed ${
-                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
-                         }`}>
+                {/* Final CTA - Home Style */}
+                <div className={`flex flex-col items-center justify-center pb-40 px-6 text-center relative ${
+                    theme === 'dark' ? '' : 'bg-gradient-to-b from-white to-neutral-50'
+                }`}>
+                    {theme === 'dark' && (
+                        <div className="absolute inset-0 pointer-events-none">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px]" />
+                        </div>
+                    )}
+                    
+                    <div className="max-w-4xl mx-auto mb-16 relative z-10">
+                         <motion.h3 
+                             initial={{ opacity: 0, y: 20 }}
+                             whileInView={{ opacity: 1, y: 0 }}
+                             viewport={{ once: true }}
+                             className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                                 theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+                             }`}
+                         >
+                             HOLO STUDIO
+                         </motion.h3>
+                         <motion.p 
+                             initial={{ opacity: 0, y: 20 }}
+                             whileInView={{ opacity: 1, y: 0 }}
+                             viewport={{ once: true }}
+                             transition={{ delay: 0.1 }}
+                             className={`text-2xl md:text-3xl font-black leading-relaxed ${
+                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
+                             }`}
+                         >
                             {c.footer?.main || (language === 'en' 
                                 ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading." 
                                 : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.")}
-                         </p>
+                         </motion.p>
                     </div>
 
-                    <h2 className={`text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}>
+                    <motion.h2 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className={`text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight relative z-10 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}
+                    >
                         {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
-                    </h2>
-                    <Link to={createPageUrl('Contact')}>
-                        <Button className={`rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105 ${
-                            theme === 'dark'
-                                ? 'bg-white text-black hover:bg-neutral-200'
-                                : 'bg-orange-500 text-white hover:bg-orange-600'
-                        }`}>
-                            Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
-                        </Button>
-                    </Link>
+                    </motion.h2>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="relative z-10"
+                    >
+                        <Link to={createPageUrl('Contact')}>
+                            <Button className={`rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-all hover:scale-105 border-0 ${
+                                theme === 'dark'
+                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_30px_rgba(79,70,229,0.3)] hover:shadow-[0_0_40px_rgba(79,70,229,0.5)]'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
+                            }`}>
+                                Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
+                            </Button>
+                        </Link>
+                    </motion.div>
                 </div>
             </main>
         </div>
