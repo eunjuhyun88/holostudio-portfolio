@@ -714,7 +714,7 @@ export default function Home() {
                         : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.08, 0.12, 0.22, 0.26], [0, 1, 1, 0])
+                    opacity: useTransform(scrollYProgress, [0.08, 0.10, 0.24, 0.26], [0, 1, 1, 0])
                 }}
             >
                 {/* Parallax decorative elements */}
@@ -898,7 +898,7 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.2, 0.24, 0.3, 0.34], [0, 1, 1, 0])
+                    opacity: useTransform(scrollYProgress, [0.2, 0.22, 0.32, 0.34], [0, 1, 1, 0])
                 }}
             >
                 {/* Parallax background element */}
@@ -986,7 +986,7 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.3, 0.34, 0.4, 0.44], [0, 1, 1, 0])
+                    opacity: useTransform(scrollYProgress, [0.3, 0.32, 0.42, 0.44], [0, 1, 1, 0])
                 }}
             >
                 {/* Parallax background element */}
@@ -1496,7 +1496,7 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.48, 0.52, 0.58, 0.62], [0, 1, 1, 0])
+                    opacity: useTransform(scrollYProgress, [0.48, 0.50, 0.60, 0.62], [0, 1, 1, 0])
                 }}
             >
                 {/* Parallax background element */}
@@ -1865,7 +1865,7 @@ export default function Home() {
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.68, 0.72, 0.78, 0.82], [0, 1, 1, 0])
+                    opacity: useTransform(scrollYProgress, [0.68, 0.70, 0.80, 0.82], [0, 1, 1, 0])
                 }}
             >
                 {/* Parallax background element */}
@@ -2008,7 +2008,7 @@ export default function Home() {
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
                 }`}
                 style={{
-                    opacity: useTransform(scrollYProgress, [0.88, 0.92, 1], [0, 1, 1])
+                    opacity: useTransform(scrollYProgress, [0.88, 0.90, 1], [0, 1, 1])
                 }}
             >
                 {/* Parallax background element */}
