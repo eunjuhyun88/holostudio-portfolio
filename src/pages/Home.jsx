@@ -625,7 +625,7 @@ export default function Home() {
                             </div>
                         </motion.div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* By The Numbers Section */}
                 <motion.section 
