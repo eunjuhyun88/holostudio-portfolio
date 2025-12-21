@@ -1498,34 +1498,62 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 ${
+            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'border-neutral-900'
+                    : 'bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50 border-neutral-200'
             }`}>
-                <div className="max-w-5xl mx-auto px-6 text-center">
+                {/* Holographic background effect - light mode */}
+                {theme === 'light' && (
+                    <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 via-purple-200/30 to-cyan-200/30 opacity-50" />
+                        <motion.div 
+                            animate={{ 
+                                background: [
+                                    'radial-gradient(circle at 20% 50%, rgba(147, 197, 253, 0.3) 0%, transparent 50%)',
+                                    'radial-gradient(circle at 80% 50%, rgba(196, 181, 253, 0.3) 0%, transparent 50%)',
+                                    'radial-gradient(circle at 50% 80%, rgba(165, 243, 252, 0.3) 0%, transparent 50%)',
+                                    'radial-gradient(circle at 20% 50%, rgba(147, 197, 253, 0.3) 0%, transparent 50%)'
+                                ]
+                            }}
+                            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        />
+                    </>
+                )}
+                
+                <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
                     <div className="mb-12">
                         <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 ${
-                            theme === 'dark' ? 'text-white' : 'text-white'
+                            theme === 'dark' 
+                                ? 'text-white' 
+                                : 'bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent'
                         }`}>{t.contact.title}</h2>
                         <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-300'
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
-                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 ${
+                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 relative overflow-hidden group ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-white hover:bg-neutral-100 text-neutral-900'
+                                    : 'bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 hover:from-blue-600 hover:via-purple-600 hover:to-cyan-600 text-white shadow-lg'
                             }`}>
-                                {t.contact.cta1}
+                                <span className="relative z-10">{t.contact.cta1}</span>
+                                {theme === 'light' && (
+                                    <motion.div
+                                        animate={{ x: ['-100%', '200%'] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                                    />
+                                )}
                             </Button>
                         </Link>
                         <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-white text-white hover:bg-white/10 bg-transparent'
+                                : 'border-purple-300 text-purple-700 hover:bg-purple-50 bg-white/50 backdrop-blur-sm'
                         }`}>
                             {t.contact.cta2}
                         </Button>
