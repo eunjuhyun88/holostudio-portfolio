@@ -80,20 +80,20 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [0, -600]),
                     rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.25, 0.25, 0] : [0, 0.3, 0.3, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.25, 0.25, 0] : [0, 0.6, 0.6, 0])
                 }}
-                className={`absolute top-[40%] left-[30%] w-32 h-32 border-2 rounded-2xl ${
-                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-500/60'
+                className={`absolute top-[40%] left-[30%] w-32 h-32 border-3 rounded-2xl ${
+                    theme === 'dark' ? 'border-indigo-400/60' : 'border-white/80'
                 }`}
             />
             <motion.div
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [100, -400]),
                     rotate: useTransform(scrollYProgress, [0, 1], [45, -315]),
-                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.2, 0.2, 0] : [0, 0.25, 0.25, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.2, 0.2, 0] : [0, 0.5, 0.5, 0])
                 }}
-                className={`absolute top-[70%] right-[25%] w-24 h-24 border-2 rounded-xl ${
-                    theme === 'dark' ? 'border-purple-400/50' : 'border-purple-500/55'
+                className={`absolute top-[70%] right-[25%] w-24 h-24 border-3 rounded-xl ${
+                    theme === 'dark' ? 'border-purple-400/50' : 'border-white/75'
                 }`}
             />
             
@@ -168,10 +168,12 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     key={i}
                     style={{
                         y: useTransform(scrollYProgress, [0, 1], [Math.random() * 100, Math.random() * -500]),
-                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0, 0.4, 0] : [0, 0.5, 0])
+                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0, 0.4, 0] : [0, 0.8, 0])
                     }}
-                    className={`absolute w-1 h-1 rounded-full blur-[0.5px] ${
-                        theme === 'dark' ? 'bg-indigo-400/70' : 'bg-violet-600/70'
+                    className={`absolute rounded-full ${
+                        theme === 'dark' 
+                            ? 'w-1 h-1 blur-[0.5px] bg-indigo-400/70' 
+                            : 'w-2 h-2 blur-[1px] bg-white/90'
                     }`}
                     initial={{
                         top: `${Math.random() * 100}%`,
