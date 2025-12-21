@@ -889,7 +889,7 @@ export default function Home() {
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-500' : 'text-red-700'
                             }`}>
-                                {language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}
+                                {t.cost.title}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
@@ -897,15 +897,11 @@ export default function Home() {
                                     glowColor="rgba(239, 68, 68, 0.8)"
                                     className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
                                 >
-                                    {language === 'en'
-                                        ? 'Without trust infrastructure, everyone loses.'
-                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                    {t.cost.sub}
                                 </MouseGlowText>
                             ) : (
                                 <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
-                                    {language === 'en'
-                                        ? 'Without trust infrastructure, everyone loses.'
-                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                    {t.cost.sub}
                                 </h3>
                             )}
                         </div>
@@ -933,8 +929,8 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {t.problem.cards.map((card, idx) => (
+                        <div className="grid md:grid-cols-3 gap-6 mb-8">
+                            {t.cost.items.slice(2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
@@ -949,13 +945,19 @@ export default function Home() {
                                 >
                                     <h4 className={`text-lg font-black mb-2 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                                    }`}>{card.title}</h4>
+                                    }`}>{item.label}</h4>
                                     <p className={`text-sm leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                    }`}>{card.desc}</p>
+                                    }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
+
+                        <p className={`text-center text-xl md:text-2xl font-black italic ${
+                            theme === 'dark' ? 'text-red-400' : 'text-red-700'
+                        }`}>
+                            {t.cost.conclusion}
+                        </p>
                     </div>
                 </section>
 
