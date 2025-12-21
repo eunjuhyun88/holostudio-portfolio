@@ -670,7 +670,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-6 py-16 md:py-20" ref={(el) => {
+                <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-20 md:py-24" ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
                             ([entry]) => {
@@ -760,12 +760,12 @@ export default function Home() {
                 </section>
 
                 {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}>
                     <div className="max-w-5xl mx-auto w-full">
-                        <div className="text-center mb-12 md:mb-16">
-                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
+                        <div className="text-center mb-16 md:mb-20">
+                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.whatWeDo.title}
@@ -791,8 +791,8 @@ export default function Home() {
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -4 }}
                                     className={`p-4 md:p-6 rounded-xl md:rounded-2xl border transition-all duration-300 ${
                                         theme === 'dark'
@@ -833,7 +833,7 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -848,8 +848,8 @@ export default function Home() {
                     }
                 }}>
                     <div className="max-w-7xl mx-auto w-full">
-                        <div className="text-center mb-12 md:mb-16">
-                            <h2 className={`text-xs md:text-sm font-mono mb-4 md:mb-6 uppercase tracking-widest font-bold ${
+                        <div className="text-center mb-16 md:mb-20">
+                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
                                 {t.proof.title}
@@ -875,9 +875,9 @@ export default function Home() {
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15, duration: 0.6 }}
-                                    whileHover={{ scale: 1.05, y: -4 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
+                                    whileHover={{ scale: 1.03, y: -4 }}
                                     className={`p-4 md:p-6 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/40 border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:bg-black/60'
@@ -916,7 +916,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -965,10 +965,10 @@ export default function Home() {
                             {t.opportunity.points.map((point, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, x: -30 }}
+                                    initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ x: 4, scale: 1.01 }}
                                     className={`p-5 md:p-6 rounded-2xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
@@ -1003,7 +1003,7 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-red-50/40 via-rose-50/30 to-pink-50/40 border-red-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -1018,8 +1018,8 @@ export default function Home() {
                     }
                 }}>
                     <div className="max-w-6xl mx-auto w-full">
-                        <div className="mb-12 md:mb-16 text-center max-w-4xl mx-auto">
-                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
+                        <div className="mb-16 md:mb-20 text-center max-w-4xl mx-auto">
+                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-500' : 'text-red-700'
                             }`}>
                                 {t.cost.title}
@@ -1047,7 +1047,8 @@ export default function Home() {
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     className={`p-5 md:p-6 rounded-xl md:rounded-2xl border-2 text-center transition-all duration-300 ${
                                         theme === 'dark'
@@ -1071,8 +1072,8 @@ export default function Home() {
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     className={`p-4 md:p-6 rounded-xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
@@ -1099,7 +1100,7 @@ export default function Home() {
                 </section>
 
                 {/* Company Thesis Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1334,7 +1335,7 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
+                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1349,8 +1350,8 @@ export default function Home() {
                     }
                 }}>
                     <div className="max-w-7xl mx-auto w-full">
-                        <div className="mb-12 md:mb-16 text-center max-w-4xl mx-auto">
-                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
+                        <div className="mb-16 md:mb-20 text-center max-w-4xl mx-auto">
+                            <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-10 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-yellow-500' : 'text-orange-700'
                             }`}>
                                 {language === 'en' ? 'VALIDATION' : '검증'}
@@ -1381,9 +1382,9 @@ export default function Home() {
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1, duration: 0.5 }}
-                                    whileHover={{ scale: 1.03, y: -6 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
+                                    whileHover={{ scale: 1.02, y: -4 }}
                                     className={`p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/50 border-white/10 hover:border-white/20 hover:bg-black/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
@@ -1415,7 +1416,7 @@ export default function Home() {
                 </section>
 
                 {/* Contact Section */}
-                <section className={`min-h-screen flex items-center justify-center border-t px-4 md:px-6 py-16 md:py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-4 md:px-8 py-20 md:py-24 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
