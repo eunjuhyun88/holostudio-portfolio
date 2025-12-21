@@ -614,81 +614,87 @@ export default function Home() {
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar md:custom-scrollbar text-center md:text-left">
                         <div className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>{t.market.year.val}</div>
-                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.year.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>{t.market.eu.val}</div>
-                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.eu.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>{t.market.size.val}</div>
-                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.size.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                            <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>{t.market.gap.val}</div>
-                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            <div className={`text-sm md:text-xs uppercase tracking-wider font-bold ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>{t.market.gap.label}</div>
                         </div>
                     </div>
                     
                     {/* Partners / Backers */}
-                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/30'}`}>
-                        <p className={`text-center text-xs uppercase tracking-widest mb-6 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-900/20'}`}>
+                        <p className={`text-center text-xs uppercase tracking-widest font-bold mb-6 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>SELECTED & BACKED BY</p>
-                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                        <div className={`flex flex-wrap justify-center items-center gap-8 md:gap-12 transition-all duration-500 ${
+                            theme === 'dark' ? 'opacity-70 grayscale hover:grayscale-0' : ''
+                        }`}>
                             {/* NVIDIA Inception */}
                             <div className="flex items-center gap-2">
-                                <span className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA</span>
-                                <span className={`text-xs border-l pl-2 ${
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA</span>
+                                <span className={`text-xs border-l pl-2 font-bold ${
                                     theme === 'dark' 
                                         ? 'text-neutral-200 border-neutral-600'
-                                        : 'text-neutral-600 border-neutral-400'
+                                        : 'text-neutral-700 border-neutral-900'
                                 }`}>Inception</span>
                             </div>
                             
                             {/* Google Cloud */}
                             <div className="flex items-center gap-2">
-                                <span className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
-                                <span className={`text-xs ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'}`}>Partner</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
+                                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'}`}>Partner</span>
                             </div>
 
                             {/* Alchemy */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-blue-400">Alchemy</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>Alchemy</span>
                             </div>
 
                             {/* AppWorks */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-orange-500">AppWorks</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-orange-600'}`}>AppWorks</span>
                             </div>
 
                             {/* OnePiece Labs */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-white">OnePiece</span>
-                                <span className="text-xs text-neutral-200">Labs</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>OnePiece</span>
+                                <span className={`text-xs font-bold ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'}`}>Labs</span>
                             </div>
 
                             {/* STORY */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-white">STORY</span>
-                                <span className="text-xs text-neutral-200 border-l border-neutral-600 pl-2">Protocol</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY</span>
+                                <span className={`text-xs font-bold border-l pl-2 ${
+                                    theme === 'dark' 
+                                        ? 'text-neutral-200 border-neutral-600'
+                                        : 'text-neutral-700 border-neutral-900'
+                                }`}>Protocol</span>
                             </div>
                         </div>
                     </div>
@@ -699,10 +705,10 @@ export default function Home() {
             <section className="py-32 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
-                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest ${
+                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
                         }`}>{t.problem.title}</h2>
-                        <h3 className={`text-2xl md:text-4xl font-bold leading-tight max-w-3xl ${
+                        <h3 className={`text-2xl md:text-4xl font-black leading-tight max-w-3xl ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {t.problem.sub}
@@ -763,11 +769,11 @@ export default function Home() {
                                         </motion.div>
                                     </div>
                                 </Floating>
-                                <h4 className={`text-2xl font-bold mb-3 ${
+                                <h4 className={`text-2xl font-black mb-3 ${
                                     theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                 }`}>{card.title}</h4>
-                                <p className={`mb-6 text-base leading-relaxed ${
-                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                <p className={`mb-6 text-base leading-relaxed font-medium ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                                 }`}>{card.desc}</p>
                                 <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide font-bold transition-colors ${
                                     theme === 'dark'
@@ -792,31 +798,31 @@ export default function Home() {
                     <div className="mb-20 relative">
                         {/* Sci-Fi Decorative Elements */}
                         <div className={`absolute -top-10 -left-10 w-20 h-20 border-t border-l rounded-tl-3xl hidden md:block ${
-                            theme === 'dark' ? 'border-indigo-500/20' : 'border-purple-400/30'
+                            theme === 'dark' ? 'border-indigo-500/20' : 'border-neutral-900/30'
                         }`} />
                         <div className={`absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent to-transparent ${
-                            theme === 'dark' ? 'via-indigo-500/20' : 'via-purple-400/30'
+                            theme === 'dark' ? 'via-indigo-500/20' : 'via-neutral-900/20'
                         }`} />
                         
-                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 ${
+                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
                         }`}>
                             <span className={`w-2 h-2 rounded-full animate-pulse ${
-                                theme === 'dark' ? 'bg-indigo-500' : 'bg-purple-500'
+                                theme === 'dark' ? 'bg-indigo-500' : 'bg-neutral-900'
                             }`} />
                             TECHNOLOGY & STRATEGY
                         </h2>
-                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-8 relative inline-block ${
+                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-black mb-8 relative inline-block ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
                             <span className={`absolute -bottom-2 left-0 w-1/3 h-1 ${
-                                theme === 'dark' ? 'bg-indigo-600/50' : 'bg-purple-500/40'
+                                theme === 'dark' ? 'bg-indigo-600/50' : 'bg-neutral-900'
                             }`} />
                         </h3>
                         
-                        <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed font-light tracking-wide ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                        <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed tracking-wide font-medium ${
+                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
                         }`}>
                             {tech.intro.main_pre}
                             <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
@@ -849,57 +855,57 @@ export default function Home() {
                     </div>
 
                     <div className="mb-24">
-                        <h3 className={`text-2xl font-bold mb-8 ${
+                        <h3 className={`text-2xl font-black mb-8 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>{tech.title}</h3>
-                        <p className={`mb-8 max-w-2xl ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <p className={`mb-8 max-w-2xl font-medium ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>{tech.sub}</p>
                         
                         <div className="relative">
                             <div className={`absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent -translate-y-1/2 hidden md:block ${
-                                theme === 'dark' ? 'via-indigo-500/30 to-indigo-500/0' : 'via-purple-300/20 to-transparent'
+                                theme === 'dark' ? 'via-indigo-500/30 to-indigo-500/0' : 'via-neutral-900/20 to-transparent'
                             }`} />
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group backdrop-blur-sm cursor-default relative overflow-hidden ${
+                                    <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group cursor-default relative overflow-hidden ${
                                         theme === 'dark'
-                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10'
-                                            : 'bg-white/70 border-neutral-300/40 hover:border-purple-400/60 hover:bg-white/90'
+                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10 backdrop-blur-sm'
+                                            : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
                                     }`}>
                                         {/* Tech Corners */}
                                         <div className={`absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 transition-colors ${
                                             theme === 'dark'
                                                 ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
                                         }`} />
                                         <div className={`absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 transition-colors ${
                                             theme === 'dark'
                                                 ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
                                         }`} />
                                         <div className={`absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 transition-colors ${
                                             theme === 'dark'
                                                 ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
                                         }`} />
                                         <div className={`absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 transition-colors ${
                                             theme === 'dark'
                                                 ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-300/40 group-hover:border-purple-500'
+                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
                                         }`} />
                                         
-                                        <div className={`text-xs font-mono mb-3 transition-colors ${
+                                        <div className={`text-xs font-mono mb-3 transition-colors font-bold ${
                                             theme === 'dark'
                                                 ? 'text-indigo-500 group-hover:text-indigo-400'
-                                                : 'text-purple-600 group-hover:text-purple-500'
+                                                : 'text-neutral-900'
                                         }`}>0{i+1}</div>
-                                        <div className={`font-bold mb-2 text-sm ${
+                                        <div className={`font-black mb-2 text-sm ${
                                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                         }`}>{step.name}</div>
-                                        <div className={`text-xs leading-relaxed transition-colors ${
-                                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                                        <div className={`text-xs leading-relaxed transition-colors font-medium ${
+                                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                         }`}>{step.desc}</div>
                                     </div>
                                 ))}
@@ -907,14 +913,28 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="bg-white/5 rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden backdrop-blur-md">
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+                    <div className={`rounded-3xl p-8 md:p-16 border relative overflow-hidden ${
+                        theme === 'dark' 
+                            ? 'bg-white/5 border-white/5 backdrop-blur-md' 
+                            : 'bg-white border-neutral-900/20'
+                    }`}>
+                        {theme === 'dark' && (
+                            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+                        )}
                         
                         <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
                             <div>
-                                <div className="text-sm font-mono text-indigo-500 mb-2 uppercase tracking-widest">{tech.depin.tag}</div>
-                                <h3 className="text-3xl md:text-4xl font-black mb-6 text-white leading-tight">{tech.depin.title}</h3>
-                                <p className="text-lg text-neutral-200 leading-relaxed mb-10 border-l-2 border-indigo-500/30 pl-6">
+                                <div className={`text-sm font-mono mb-2 uppercase tracking-widest font-bold ${
+                                    theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                                }`}>{tech.depin.tag}</div>
+                                <h3 className={`text-3xl md:text-4xl font-black mb-6 leading-tight ${
+                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                }`}>{tech.depin.title}</h3>
+                                <p className={`text-lg leading-relaxed mb-10 border-l-2 pl-6 font-medium ${
+                                    theme === 'dark' 
+                                        ? 'text-neutral-200 border-indigo-500/30' 
+                                        : 'text-neutral-800 border-neutral-900'
+                                }`}>
                                     {tech.depin.desc}
                                 </p>
                                 <div className="space-y-6">
@@ -931,8 +951,12 @@ export default function Home() {
                                                 </div>
                                             </Floating>
                                             <div>
-                                                <div className="font-bold text-white text-base mb-1">{feat.title}</div>
-                                                <div className="text-sm text-neutral-200">{feat.desc}</div>
+                                                <div className={`font-black text-base mb-1 ${
+                                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                                }`}>{feat.title}</div>
+                                                <div className={`text-sm font-medium ${
+                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                                }`}>{feat.desc}</div>
                                             </div>
                                         </div>
                                     ))}
@@ -1102,16 +1126,16 @@ export default function Home() {
                 theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-white border-neutral-900'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
-                    <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                    <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest font-bold ${
+                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                     }`}>{t.thesis.label}</h2>
-                    <p className={`text-2xl md:text-4xl font-medium leading-tight mb-12 ${
+                    <p className={`text-2xl md:text-4xl font-black leading-tight mb-12 ${
                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                     }`}>
                         "{t.thesis.main}"
                     </p>
-                    <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                    <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono font-bold ${
+                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                     }`}>
                         {t.thesis.keywords.map((kw, i) => (
                             <span key={i} className="flex items-center gap-2">
@@ -1331,11 +1355,11 @@ export default function Home() {
                 }`} />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
-                        <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+                        <h2 className={`text-3xl md:text-4xl font-black mb-4 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>{t.milestones.title}</h2>
-                        <p className={`max-w-2xl ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <p className={`max-w-2xl font-medium ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>{t.milestones.sub}</p>
                     </motion.div>
 
@@ -1399,8 +1423,8 @@ export default function Home() {
                         <h2 className={`text-3xl md:text-5xl font-black tracking-tighter mb-4 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>{t.contact.title}</h2>
-                        <p className={`text-base md:text-lg ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <p className={`text-base md:text-lg font-medium ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
