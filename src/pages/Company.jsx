@@ -447,15 +447,12 @@ Scaled communities from zero to millions of users.`,
         cta: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' }
     };
 
-    // Build story sections - Condensed for impact
+    // Build story sections - Ultra condensed for maximum impact
     const storySections = [
         { id: 'foundation', type: 'intro', data: c.intro, palette: scenePalettes.foundation },
-        { id: 'obs-1', type: 'observation', data: { text: c.intro.text[0] }, palette: scenePalettes.observation },
         { id: 'phase-0', type: 'chapter', data: c.chapters[0], palette: scenePalettes.phase1 },
-        { id: 'phase-3', type: 'chapter', data: c.chapters[3], palette: scenePalettes.phase4 },
         { id: 'thesis-0', type: 'thesis', data: c.thesis[0], palette: scenePalettes.engineered },
-        { id: 'credibility', type: 'credibility', data: {}, palette: scenePalettes.credibility },
-        { id: 'fit', type: 'fit', data: c.identity, palette: scenePalettes.fit }
+        { id: 'credibility', type: 'credibility', data: {}, palette: scenePalettes.credibility }
     ];
 
     return (
@@ -614,9 +611,9 @@ Scaled communities from zero to millions of users.`,
                                     onHoverEnd={() => setIsHovered(false)}
                                 >
                                     {section.type === 'intro' && (
-                                        <div className="space-y-8 md:space-y-12 relative">
-                                            {/* Interactive Icons */}
-                                            <div className="absolute -right-4 md:-right-8 top-0 flex flex-col gap-4 md:gap-6">
+                                        <div className="space-y-6 md:space-y-10 relative">
+                                            {/* Interactive Icons - More prominent */}
+                                            <div className="flex md:absolute md:-right-8 md:top-0 md:flex-col gap-3 md:gap-6 mb-6 md:mb-0 justify-center md:justify-start">
                                                 {[
                                                     { key: 'economy', icon: Target },
                                                     { key: 'verification', icon: Shield },
@@ -624,56 +621,44 @@ Scaled communities from zero to millions of users.`,
                                                 ].map(({ key, icon: Icon }, i) => (
                                                     <motion.button
                                                         key={key}
-                                                        initial={{ opacity: 0, x: 20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.8 + i * 0.1 }}
-                                                        whileHover={{ scale: 1.2, rotate: 5 }}
+                                                        initial={{ opacity: 0, scale: 0.8 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        transition={{ delay: 0.6 + i * 0.1 }}
+                                                        whileHover={{ scale: 1.15, rotate: 5 }}
                                                         whileTap={{ scale: 0.9 }}
                                                         onClick={() => openModal(modalData[language][key])}
-                                                        className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center border backdrop-blur-sm transition-all ${
+                                                        className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center border backdrop-blur-sm transition-all shadow-lg ${
                                                             theme === 'dark'
-                                                                ? 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-indigo-500/50'
-                                                                : 'bg-white border-neutral-200 hover:border-orange-400 hover:shadow-lg'
+                                                                ? 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-indigo-500/50 hover:shadow-indigo-500/30'
+                                                                : 'bg-white border-orange-300 hover:border-orange-500 hover:shadow-orange-200'
                                                         }`}
                                                     >
-                                                        <Icon className={`w-5 h-5 md:w-6 md:h-6 ${
+                                                        <Icon className={`w-6 h-6 md:w-7 md:h-7 ${
                                                             theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
                                                         }`} />
                                                     </motion.button>
                                                 ))}
                                             </div>
 
-                                            <motion.div 
-                                                initial={{ opacity: 0, scale: 0.8 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                transition={{ duration: 0.6 }}
-                                                className={`inline-block text-xs md:text-sm font-mono tracking-[0.2em] md:tracking-[0.3em] uppercase px-3 md:px-5 py-1.5 md:py-2.5 rounded-full border font-bold ${
-                                                    theme === 'dark' 
-                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                                        : 'text-orange-600 border-orange-300 bg-orange-100'
-                                                }`}
-                                            >
-                                                {section.data.episode}
-                                            </motion.div>
                                             <motion.h1 
-                                                initial={{ opacity: 0, y: 50 }}
+                                                initial={{ opacity: 0, y: 30 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.8] ${section.palette.text}`}
+                                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.75] ${section.palette.text}`}
                                                 style={{ 
                                                     textShadow: theme === 'dark' 
-                                                        ? '0 0 80px rgba(99, 102, 241, 0.3)' 
+                                                        ? '0 0 100px rgba(99, 102, 241, 0.4)' 
                                                         : 'none'
                                                 }}
                                             >
                                                 {section.data.title}
                                             </motion.h1>
                                             <motion.p 
-                                                initial={{ opacity: 0, y: 30 }}
+                                                initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.4, duration: 0.8 }}
-                                                className={`text-lg md:text-2xl lg:text-3xl font-light leading-relaxed max-w-3xl ${
-                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                                                transition={{ delay: 0.3, duration: 0.6 }}
+                                                className={`text-xl md:text-3xl lg:text-4xl font-medium leading-snug max-w-4xl ${
+                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                                 }`}
                                             >
                                                 {section.data.subtitle}
@@ -702,33 +687,26 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'chapter' && (
-                                        <div className="space-y-6 md:space-y-10">
-                                            <motion.div 
-                                                initial={{ opacity: 0, scale: 0.8 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                transition={{ duration: 0.7 }}
-                                                className={`inline-block text-xs md:text-sm font-mono tracking-[0.2em] md:tracking-[0.3em] uppercase px-3 md:px-5 py-1.5 md:py-2.5 rounded-full border font-bold ${
-                                                    theme === 'dark' 
-                                                        ? `${section.palette.accent} border-current/30 bg-current/10` 
-                                                        : `${section.palette.accent} border-current/30 bg-current/10`
-                                                }`}
-                                            >
-                                                {section.data.year}
-                                            </motion.div>
+                                        <div className="space-y-8 md:space-y-14 text-center">
                                             <motion.h2 
-                                                initial={{ opacity: 0, y: 60 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.8] ${section.palette.text}`}
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.75] ${section.palette.text}`}
+                                                style={{
+                                                    textShadow: theme === 'dark' 
+                                                        ? '0 0 80px rgba(244, 63, 94, 0.3)' 
+                                                        : 'none'
+                                                }}
                                             >
                                                 {section.data.headline}
                                             </motion.h2>
                                             <motion.p 
-                                                initial={{ opacity: 0, y: 40 }}
+                                                initial={{ opacity: 0, y: 30 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.4, duration: 0.9 }}
-                                                className={`text-lg md:text-2xl lg:text-3xl font-light leading-relaxed max-w-4xl ${
-                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                                transition={{ delay: 0.3, duration: 0.8 }}
+                                                className={`text-xl md:text-3xl lg:text-4xl font-medium leading-snug max-w-5xl mx-auto ${
+                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                                 }`}
                                             >
                                                 {section.data.content}
@@ -762,35 +740,38 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'credibility' && (
-                                        <div className="text-center space-y-12 md:space-y-20">
-                                            <motion.p 
-                                                initial={{ opacity: 0, y: 40 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 1.2 }}
-                                                className={`text-2xl md:text-4xl lg:text-5xl font-light leading-relaxed ${
-                                                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-300'
-                                                }`}
-                                            >
-                                                {language === 'en' 
-                                                    ? "The scarce resource is no longer creativity."
-                                                    : "더 이상 희소한 자원은 창의성이 아닙니다."}
-                                            </motion.p>
+                                        <motion.div 
+                                            className="text-center"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                                        >
                                             <motion.h2 
-                                                initial={{ opacity: 0, scale: 0.7 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: 0.3, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.75] ${
+                                                whileHover={{ scale: 1.03 }}
+                                                className={`text-6xl md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-[0.7] cursor-pointer ${
                                                     theme === 'dark' ? 'text-white' : 'text-white'
                                                 }`}
                                                 style={{ 
                                                     textShadow: theme === 'dark' 
-                                                        ? '0 0 100px rgba(99, 102, 241, 0.4), 0 0 50px rgba(139, 92, 246, 0.3)' 
-                                                        : '0 0 60px rgba(0, 0, 0, 0.3)'
+                                                        ? '0 0 150px rgba(99, 102, 241, 0.6), 0 0 80px rgba(139, 92, 246, 0.4), 0 0 40px rgba(168, 85, 247, 0.3)' 
+                                                        : '0 0 80px rgba(0, 0, 0, 0.4)'
                                                 }}
                                             >
-                                                {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
+                                                {language === 'en' ? "CREDIBILITY" : "신뢰"}
                                             </motion.h2>
-                                        </div>
+                                            <motion.p 
+                                                initial={{ opacity: 0 }}
+                                                whileInView={{ opacity: 1 }}
+                                                transition={{ delay: 0.5, duration: 0.8 }}
+                                                className={`mt-8 md:mt-12 text-xl md:text-3xl lg:text-4xl font-medium ${
+                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-200'
+                                                }`}
+                                            >
+                                                {language === 'en' 
+                                                    ? "is the new scarce resource."
+                                                    : "새로운 희소 자원입니다."}
+                                            </motion.p>
+                                        </motion.div>
                                     )}
 
                                     {section.type === 'fit' && (
