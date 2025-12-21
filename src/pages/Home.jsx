@@ -706,7 +706,7 @@ export default function Home() {
                 </motion.div>
             </section>
 
-            {/* Section 02: BY THE NUMBERS */}
+            {/* Section 02: BY THE NUMBERS - Enhanced scroll animations */}
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-black/20 border-white/5'
@@ -725,19 +725,49 @@ export default function Home() {
                 </motion.div>
                 
                 <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-                    <motion.h2 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        style={{
-                            y: useTransform(scrollYProgress, [0.15, 0.25], [0, -20])
-                        }}
-                        className={`text-3xl md:text-5xl font-black text-center mb-16 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-16 w-full"
                     >
-                        {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
-                    </motion.h2>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.1, 0.2], [20, 0])
+                            }}
+                        >
+                            {language === 'en' ? 'PROVEN PERFORMANCE' : '검증된 성과'}
+                        </motion.h2>
+                        
+                        {theme === 'dark' ? (
+                            <MouseGlowText
+                                as={motion.h3}
+                                glowColor="rgba(99, 102, 241, 0.8)"
+                                secondaryGlowColor="rgba(168, 85, 247, 0.5)"
+                                className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                style={{
+                                    y: useTransform(scrollYProgress, [0.1, 0.2], [30, 0]),
+                                    scale: useTransform(scrollYProgress, [0.1, 0.18], [0.95, 1])
+                                }}
+                            >
+                                {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                            </MouseGlowText>
+                        ) : (
+                            <motion.h3
+                                className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent"
+                                style={{
+                                    y: useTransform(scrollYProgress, [0.1, 0.2], [30, 0]),
+                                    scale: useTransform(scrollYProgress, [0.1, 0.18], [0.95, 1])
+                                }}
+                            >
+                                {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                            </motion.h3>
+                        )}
+                    </motion.div>
                     
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-12 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-16 no-scrollbar md:custom-scrollbar text-center">
@@ -869,26 +899,66 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 02.5: WHY IT MATTERS (Opportunity + Regulatory merged & condensed) */}
-            <section className={`min-h-[70vh] flex items-center justify-center relative z-10 border-y ${
+            {/* Section 02.5: WHY IT MATTERS - Enhanced with scroll animations */}
+            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
                 theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
             }`}>
-                <div className="max-w-5xl mx-auto px-6 w-full text-center">
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.22, 0.32], [-80, 80]),
+                        opacity: useTransform(scrollYProgress, [0.22, 0.27, 0.32], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
+                <div className="max-w-5xl mx-auto px-6 w-full text-center relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{language === 'en' ? 'Why Now' : '왜 지금인가'}</h2>
-                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
-                            {language === 'en' 
-                                ? 'AI verification is no longer optional.' 
-                                : 'AI 검증은 더 이상 선택이 아닙니다.'}
-                        </h3>
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.23, 0.3], [30, 0])
+                            }}
+                        >
+                            {language === 'en' ? 'Why Now' : '왜 지금인가'}
+                        </motion.h2>
+                        
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.23, 0.3], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.23, 0.28], [0.95, 1])
+                            }}
+                        >
+                            {theme === 'dark' ? (
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(249, 115, 22, 0.8)"
+                                    secondaryGlowColor="rgba(234, 88, 12, 0.5)"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
+                                >
+                                    {language === 'en' 
+                                        ? 'AI verification is no longer optional.' 
+                                        : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                                </MouseGlowText>
+                            ) : (
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                                    {language === 'en' 
+                                        ? 'AI verification is no longer optional.' 
+                                        : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                                </h3>
+                            )}
+                        </motion.div>
                         <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
@@ -912,23 +982,68 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 02.6: THE CHALLENGE (Cost + Market Failure merged & condensed) */}
-            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 border-y ${
+            {/* Section 02.6: THE CHALLENGE - Enhanced with scroll animations */}
+            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
                 theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
             }`}>
-                <div className="max-w-6xl mx-auto px-6 w-full">
-                    <FadeInSection delay={0} direction="up" className="mb-12 text-center max-w-4xl mx-auto">
-                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
-                        }`}>{language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}</h2>
-                        <h3 className={`text-3xl md:text-5xl font-black mb-6 leading-tight ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
-                            {language === 'en'
-                                ? 'Without trust infrastructure, everyone loses.'
-                                : '신뢰 인프라 없이는 모두가 잃습니다.'}
-                        </h3>
-                    </FadeInSection>
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.32, 0.42], [-100, 100]),
+                        opacity: useTransform(scrollYProgress, [0.32, 0.37, 0.42], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
+                <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-16 text-center max-w-4xl mx-auto"
+                    >
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-red-500' : 'text-red-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.33, 0.4], [30, 0])
+                            }}
+                        >
+                            {language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}
+                        </motion.h2>
+                        
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.33, 0.4], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.33, 0.38], [0.95, 1])
+                            }}
+                        >
+                            {theme === 'dark' ? (
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(239, 68, 68, 0.8)"
+                                    secondaryGlowColor="rgba(220, 38, 38, 0.5)"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                >
+                                    {language === 'en'
+                                        ? 'Without trust infrastructure, everyone loses.'
+                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                </MouseGlowText>
+                            ) : (
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
+                                    {language === 'en'
+                                        ? 'Without trust infrastructure, everyone loses.'
+                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                </h3>
+                            )}
+                        </motion.div>
+                    </motion.div>
 
                     {/* Condensed Impact Grid: 2 stats + 3 structural issues */}
                     <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -1735,25 +1850,75 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 07: PROOF & MILESTONES */}
+            {/* Section 07: PROOF & MILESTONES - Enhanced with scroll animations */}
             <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
                 theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.7, 0.8], [-80, 80]),
+                        opacity: useTransform(scrollYProgress, [0.7, 0.75, 0.8], [0, 1, 0])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" />
+                    )}
+                </motion.div>
+                
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
-                    <FadeInSection direction="up" className="mb-16 text-center max-w-4xl mx-auto">
-                        <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-6 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-16 text-center max-w-4xl mx-auto"
+                    >
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-yellow-500' : 'text-orange-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.72, 0.78], [30, 0])
+                            }}
+                        >
+                            {language === 'en' ? 'VALIDATION' : '검증'}
+                        </motion.h2>
+                        
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.72, 0.78], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.72, 0.76], [0.95, 1])
+                            }}
+                        >
                             {theme === 'dark' ? (
-                                <GlitchText glitchIntensity="low">{t.milestones.title}</GlitchText>
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(234, 179, 8, 0.8)"
+                                    secondaryGlowColor="rgba(202, 138, 4, 0.5)"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+                                >
+                                    {t.milestones.title}
+                                </MouseGlowText>
                             ) : (
-                                t.milestones.title
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">
+                                    {t.milestones.title}
+                                </h3>
                             )}
-                        </h2>
-                        <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-100' : 'text-neutral-700'
-                        }`}>{t.milestones.sub}</p>
-                    </FadeInSection>
+                        </motion.div>
+                        
+                        <motion.p 
+                            className={`text-lg md:text-xl font-medium ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.73, 0.78], [20, 0])
+                            }}
+                        >
+                            {t.milestones.sub}
+                        </motion.p>
+                    </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
                         {milestones.map((m, idx) => {
@@ -1821,12 +1986,28 @@ export default function Home() {
                 />
             </section>
 
-            {/* Section 10: CONTACT */}
+            {/* Section 10: CONTACT - Enhanced with scroll animations */}
             <section className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                     : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
             }`}>
+                {/* Parallax background element */}
+                <motion.div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        y: useTransform(scrollYProgress, [0.9, 1], [-60, 60]),
+                        opacity: useTransform(scrollYProgress, [0.9, 0.95, 1], [0, 1, 1])
+                    }}
+                >
+                    {theme === 'dark' && (
+                        <>
+                            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px]" />
+                            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
+                        </>
+                    )}
+                </motion.div>
+                
                 {/* Light Mode: Holographic Gradient Background */}
                 {theme === 'light' && (
                     <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -1836,16 +2017,57 @@ export default function Home() {
                 )}
                 
                 <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-                    <div className="mb-12">
-                        <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}
-                        >{t.contact.title}</h2>
-                        <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                        }`}
-                        >{t.contact.sub}</p>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-12"
+                    >
+                        <motion.h2 
+                            className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.92, 0.98], [30, 0])
+                            }}
+                        >
+                            {language === 'en' ? 'JOIN THE FUTURE' : '함께 만들어가요'}
+                        </motion.h2>
+                        
+                        <motion.div
+                            style={{
+                                y: useTransform(scrollYProgress, [0.92, 0.98], [40, 0]),
+                                scale: useTransform(scrollYProgress, [0.92, 0.96], [0.95, 1])
+                            }}
+                        >
+                            {theme === 'dark' ? (
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(99, 102, 241, 0.9)"
+                                    secondaryGlowColor="rgba(168, 85, 247, 0.6)"
+                                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight"
+                                >
+                                    {t.contact.title}
+                                </MouseGlowText>
+                            ) : (
+                                <h3 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                    {t.contact.title}
+                                </h3>
+                            )}
+                        </motion.div>
+                        
+                        <motion.p 
+                            className={`text-xl md:text-2xl font-medium ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}
+                            style={{
+                                y: useTransform(scrollYProgress, [0.93, 0.98], [20, 0])
+                            }}
+                        >
+                            {t.contact.sub}
+                        </motion.p>
+                    </motion.div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
                             <Button size="lg" className={`group rounded-full px-12 h-16 text-lg font-bold border-0 transition-all hover:scale-105 relative overflow-hidden ${
