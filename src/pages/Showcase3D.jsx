@@ -108,12 +108,12 @@ export default function Showcase3D() {
                 <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
             </div>
 
-            <main className="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
-                <div className="text-center mb-16 relative">
+            <main className="relative z-10 pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 md:px-12 max-w-[1600px] mx-auto">
+                <div className="text-center mb-12 sm:mb-16 relative">
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-block mb-4 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold tracking-[0.2em] uppercase"
+                        className="inline-block mb-3 sm:mb-4 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase"
                     >
                         {language === 'en' ? 'Metaverse Asset Protocol' : '메타버스 자산 프로토콜'}
                     </motion.div>
@@ -124,12 +124,12 @@ export default function Showcase3D() {
                         secondaryGlowColor="rgba(168, 85, 247, 0.5)"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-black tracking-tighter mb-8 uppercase"
+                        className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-6 sm:mb-8 uppercase px-2"
                     >
                         Digital <span className="text-indigo-500">Artifacts</span>
                     </MouseGlowText>
 
-                    <p className="text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono">
+                    <p className="text-sm sm:text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono px-4">
                         <ScrambleText speed={30} revealSpeed={0.4} delay={500}>
                             {language === 'en' 
                                 ? 'Secure, decentralized visualization for high-fidelity 3D assets. Verify provenance and inspect spatial metadata in real-time.' 
@@ -138,7 +138,7 @@ export default function Showcase3D() {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-8 h-[calc(100vh-400px)] min-h-[600px]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 min-h-[500px] sm:min-h-[600px] lg:h-[calc(100vh-400px)]">
                     
                     {/* Sidebar / List */}
                     <div className="lg:col-span-4 flex flex-col gap-6 h-full">

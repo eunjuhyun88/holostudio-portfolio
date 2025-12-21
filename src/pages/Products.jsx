@@ -154,7 +154,7 @@ export default function Products() {
             <ProductsBackground theme={theme} />
 
             {/* Hero Section - Condensed */}
-            <section className="relative pt-28 pb-8 px-6 overflow-hidden z-10">
+            <section className="relative pt-24 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-6 overflow-hidden z-10">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -162,12 +162,12 @@ export default function Products() {
                         transition={{ duration: 0.6 }}
                         className="text-center"
                     >
-                        <h1 className={`text-2xl md:text-3xl font-black mb-2 tracking-tight ${
+                        <h1 className={`text-xl sm:text-2xl md:text-3xl font-black mb-2 tracking-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {t.hero.tag}
                         </h1>
-                        <p className={`text-sm md:text-base max-w-2xl mx-auto ${
+                        <p className={`text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-2 ${
                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                         }`}>
                             {t.hero.subtitle}
@@ -177,9 +177,9 @@ export default function Products() {
             </section>
 
             {/* All Products Section - Unified */}
-            <section className="py-12 px-6">
+            <section className="py-8 sm:py-12 px-4 sm:px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         {products.core.map((product, idx) => (
                             <ProductCard key={idx} product={product} theme={theme} language={language} t={t} delay={idx * 0.05} />
                         ))}
@@ -191,7 +191,7 @@ export default function Products() {
             </section>
 
             {/* CTA Section */}
-            <section className={`py-32 px-6 border-t text-center ${
+            <section className={`py-16 sm:py-24 md:py-32 px-4 sm:px-6 border-t text-center ${
                 theme === 'dark' ? 'border-white/10 bg-gradient-to-b from-transparent to-black/30' : 'border-neutral-200 bg-neutral-50'
             }`}>
                 <div className="max-w-4xl mx-auto">
@@ -200,30 +200,30 @@ export default function Products() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className={`text-3xl md:text-5xl font-black mb-6 ${
+                        <h2 className={`text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6 px-2 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {language === 'en' ? 'Ready to Build?' : '시작할 준비가 되셨나요?'}
                         </h2>
-                        <p className={`text-lg mb-8 ${
+                        <p className={`text-sm sm:text-base md:text-lg mb-6 sm:mb-8 px-4 ${
                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                         }`}>
                             {language === 'en' 
                                 ? 'Partner with us to integrate trust infrastructure into your platform.' 
                                 : '플랫폼에 신뢰 인프라를 통합하기 위해 파트너가 되어주세요.'}
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link to={createPageUrl("Contact")}>
-                                <Button size="lg" className={`rounded-full px-10 h-14 text-base font-bold ${
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+                            <Link to={createPageUrl("Contact")} className="w-full sm:w-auto">
+                                <Button size="lg" className={`w-full rounded-full px-8 sm:px-10 h-12 sm:h-14 text-sm sm:text-base font-bold ${
                                     theme === 'dark'
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
                                         : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
                                 }`}>
                                     {language === 'en' ? 'Get in Touch' : '문의하기'}
-                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                    <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 ml-2" />
                                 </Button>
                             </Link>
-                            <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-base font-bold ${
+                            <Button variant="outline" size="lg" className={`w-full sm:w-auto rounded-full px-8 sm:px-10 h-12 sm:h-14 text-sm sm:text-base font-bold ${
                                 theme === 'dark'
                                     ? 'border-white/20 text-white hover:bg-white/5'
                                     : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50'
@@ -273,45 +273,45 @@ function ProductCard({ product, theme, language, t, delay }) {
                     className="h-full"
                 >
                     {/* Content */}
-                    <div className="p-8 relative">
+                    <div className="p-4 sm:p-6 md:p-8 relative">
                         {/* Status Badge */}
-                        <div className={`absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${status.color}`}>
+                        <div className={`absolute top-4 sm:top-6 right-4 sm:right-6 px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold border backdrop-blur-md ${status.color}`}>
                             {status.label}
                         </div>
-                        <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${product.color.text} flex items-center gap-2`}>
-                            <span className={`w-2 h-2 rounded-full ${product.color.bg} animate-pulse`} />
+                        <div className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4 ${product.color.text} flex items-center gap-2`}>
+                            <span className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full ${product.color.bg} animate-pulse`} />
                             {product.tagline[language]}
                         </div>
 
-                        <h3 className="text-4xl font-black mb-4 text-white">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 sm:mb-4 text-white">
                             <GlitchText glitchIntensity="low">{product.name}</GlitchText>
                         </h3>
 
-                        <p className="mb-8 leading-relaxed text-neutral-300 text-base">
+                        <p className="mb-6 sm:mb-8 leading-relaxed text-neutral-300 text-sm sm:text-base">
                             {product.description[language]}
                         </p>
 
                         {/* Features List */}
-                        <div className="space-y-2 mb-8">
+                        <div className="space-y-1.5 sm:space-y-2 mb-6 sm:mb-8">
                             {product.features[language].map((feature, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-center gap-3 text-sm text-neutral-300"
+                                    className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-neutral-300"
                                 >
-                                    <div className={`w-1.5 h-1.5 rounded-full ${product.color.bg}`} />
+                                    <div className={`w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full ${product.color.bg} flex-shrink-0`} />
                                     <span className="font-medium">{feature}</span>
                                 </div>
                             ))}
                         </div>
 
                         {/* CTA with Animated Arrow */}
-                        <div className={`flex items-center gap-2 font-bold ${product.color.text} group-hover:gap-3 transition-all`}>
+                        <div className={`flex items-center gap-2 font-bold text-sm sm:text-base ${product.color.text} group-hover:gap-3 transition-all`}>
                             {product.status === 'coming-soon' ? t.cta.soon : t.cta.explore}
                             <motion.div
                                 animate={{ x: [0, 5, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity }}
                             >
-                                <ArrowRight className="w-4 h-4" />
+                                <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4" />
                             </motion.div>
                         </div>
                     </div>
