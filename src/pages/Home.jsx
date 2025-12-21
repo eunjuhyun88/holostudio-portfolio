@@ -471,7 +471,7 @@ export default function Home() {
         <div className={`font-sans min-h-screen relative transition-colors duration-300 ${
             theme === 'dark' 
                 ? 'bg-[#050505] text-white selection:bg-indigo-500/30' 
-                : 'bg-neutral-50 text-neutral-900 selection:bg-indigo-300/30'
+                : 'bg-white text-neutral-900 selection:bg-indigo-300/30'
         }`}>
             <SEO 
                 title="Home" 
@@ -535,7 +535,7 @@ export default function Home() {
                         <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-medium tracking-wide uppercase ${
                             theme === 'dark'
                                 ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-neutral-300 bg-white text-neutral-700'
+                                : 'border-neutral-800 bg-neutral-900 text-neutral-100'
                         }`}>
                             {t.hero.tag}
                         </div>
@@ -561,7 +561,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700 font-normal'
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800 font-medium'
                             }`}
                         >
                             {t.hero.sub}
@@ -571,7 +571,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
                             className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
                             }`}
                         >
                             {t.hero.desc}
@@ -608,7 +608,7 @@ export default function Home() {
             <section className={`py-12 border-y backdrop-blur-md relative z-10 ${
                 theme === 'dark' 
                     ? 'border-white/10 bg-black/30'
-                    : 'border-neutral-300/30 bg-white/40'
+                    : 'border-neutral-300 bg-neutral-100/80'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -721,7 +721,7 @@ export default function Home() {
                                 className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border backdrop-blur-md relative overflow-hidden transition-all duration-300 ${
                                     theme === 'dark'
                                         ? 'bg-black/30 border-white/10 hover:border-indigo-500/50'
-                                        : 'bg-white/50 border-neutral-300/30 hover:border-purple-400/60'
+                                        : 'bg-white border-neutral-400/50 hover:border-purple-500 shadow-sm'
                                 }`}
                             >
                                 {/* Sci-Fi Corner Accents */}
@@ -786,7 +786,7 @@ export default function Home() {
             <section className={`py-32 px-6 md:px-12 border-b relative z-10 backdrop-blur-md ${
                 theme === 'dark' 
                     ? 'border-white/5 bg-black/30'
-                    : 'border-neutral-300/30 bg-white/40'
+                    : 'border-neutral-300 bg-neutral-50'
             }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
@@ -1098,8 +1098,8 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className={`py-24 border-y text-center relative z-10 bg-transparent ${
-                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
+            <section className={`py-24 border-y text-center relative z-10 ${
+                theme === 'dark' ? 'border-white/10 bg-transparent' : 'border-neutral-300 bg-neutral-100/50'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest ${
