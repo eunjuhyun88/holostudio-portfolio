@@ -777,7 +777,7 @@ export default function Home() {
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 text-center">
-                            {Object.values(t.market).map((stat, idx) => (
+                            {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
