@@ -284,21 +284,64 @@ function LayoutContent({ children }) {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.2 }}
-                            className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-40 pt-24 px-6 md:hidden overflow-y-auto pointer-events-auto"
+                            className={`fixed inset-0 z-40 pt-20 px-4 md:hidden overflow-y-auto pointer-events-auto ${
+                                theme === 'dark'
+                                    ? 'bg-[#050505]/98 backdrop-blur-2xl'
+                                    : 'bg-white/98 backdrop-blur-2xl'
+                            }`}
                         >
                             {/* Decorative Gradients */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] pointer-events-none" />
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] pointer-events-none" />
+                            {theme === 'dark' ? (
+                                <>
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] pointer-events-none" />
+                                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] pointer-events-none" />
+                                </>
+                            ) : (
+                                <>
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-violet-300/10 blur-[100px] pointer-events-none" />
+                                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-300/10 blur-[100px] pointer-events-none" />
+                                </>
+                            )}
 
-                            <div className="flex flex-col gap-6 text-lg relative z-10">
-                                <div className="flex items-center gap-4 mb-4">
+                            {/* Close Button */}
+                            <div className="flex justify-end mb-6 relative z-10">
+                                <button
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className={`p-3 rounded-full transition-all ${
+                                        theme === 'dark'
+                                            ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
+                                            : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-900 border border-neutral-200'
+                                    }`}
+                                >
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            <div className="flex flex-col gap-4 text-base relative z-10">
+                                <div className="flex items-center justify-between gap-3 mb-4 pb-4 border-b" style={{
+                                    borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+                                }}>
+                                     <button 
+                                        onClick={toggleTheme}
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border border-white/10 bg-white/5 hover:bg-white/10 text-white'
+                                                : 'border border-neutral-200 bg-neutral-100 hover:bg-neutral-200 text-neutral-900'
+                                        }`}
+                                    >
+                                        <span className="text-sm">{theme === 'dark' ? '🌙' : '☀️'}</span>
+                                    </button>
                                      <button 
                                         onClick={toggleLanguage}
-                                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                                            theme === 'dark'
+                                                ? 'border border-white/10 bg-white/5 hover:bg-white/10'
+                                                : 'border border-neutral-200 bg-neutral-100 hover:bg-neutral-200'
+                                        }`}
                                     >
-                                        <span className={language === 'en' ? 'text-white' : 'text-neutral-300'}>English</span>
-                                        <span className="text-neutral-700">|</span>
-                                        <span className={language === 'ko' ? 'text-white' : 'text-neutral-300'}>한국어</span>
+                                        <span className={`text-sm ${language === 'en' ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') : (theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600')}`}>EN</span>
+                                        <span className={theme === 'dark' ? 'text-neutral-700' : 'text-neutral-400'}>|</span>
+                                        <span className={`text-sm ${language === 'ko' ? (theme === 'dark' ? 'text-white' : 'text-neutral-900') : (theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600')}`}>KO</span>
                                     </button>
                                 </div>
 
