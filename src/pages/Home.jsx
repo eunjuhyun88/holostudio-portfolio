@@ -526,7 +526,7 @@ export default function Home() {
 
             {/* Section 01: HERO (Pinned) */}
             <section className={`relative h-screen flex flex-col items-center justify-center overflow-hidden z-10 ${
-                theme === 'light' ? 'bg-[#FAF8F5]' : ''
+                theme === 'light' ? 'bg-[#FFF9F5]' : ''
             }`}>
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
                     <motion.div 
@@ -537,7 +537,7 @@ export default function Home() {
                         <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-medium tracking-wide uppercase ${
                             theme === 'dark'
                                 ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-neutral-800 bg-neutral-900 text-neutral-100'
+                                : 'border-amber-800 bg-amber-900 text-amber-50'
                         }`}>
                             {t.hero.tag}
                         </div>
@@ -563,7 +563,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800 font-medium'
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900 font-semibold'
                             }`}
                         >
                             {t.hero.sub}
@@ -573,7 +573,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
                             className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-800 font-medium'
                             }`}
                         >
                             {t.hero.desc}
@@ -607,10 +607,10 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className={`py-12 border-y backdrop-blur-md relative z-10 ${
+            <section className={`py-12 border-none relative z-10 ${
                 theme === 'dark' 
-                    ? 'border-white/10 bg-black/30'
-                    : 'border-neutral-200 bg-[#F5EFE6]'
+                    ? 'bg-black/30'
+                    : 'bg-[#FAF3E0]'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -699,7 +699,7 @@ export default function Home() {
 
             {/* Section 03: THE CORE PROBLEM */}
             <section className={`py-32 relative z-10 ${
-                theme === 'light' ? 'bg-[#FFE8E8]' : ''
+                theme === 'light' ? 'bg-[#FFD8D8]' : ''
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
@@ -722,10 +722,10 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border backdrop-blur-md relative overflow-hidden transition-all duration-300 ${
+                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border relative overflow-hidden transition-all duration-300 ${
                                     theme === 'dark'
                                         ? 'bg-black/30 border-white/10 hover:border-indigo-500/50'
-                                        : 'bg-white/90 border-neutral-300 hover:border-purple-500 shadow-sm'
+                                        : 'bg-white border-neutral-300 hover:border-neutral-900 shadow-md'
                                 }`}
                             >
                                 {/* Sci-Fi Corner Accents */}
@@ -787,10 +787,10 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className={`py-32 px-6 md:px-12 border-b relative z-10 backdrop-blur-md ${
+            <section className={`py-32 px-6 md:px-12 border-none relative z-10 ${
                 theme === 'dark' 
-                    ? 'border-white/5 bg-black/30'
-                    : 'border-neutral-200 bg-[#E8F4F8]'
+                    ? 'bg-black/30'
+                    : 'bg-[#D8EEFF]'
             }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
@@ -1102,8 +1102,8 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className={`py-24 border-y text-center relative z-10 ${
-                theme === 'dark' ? 'border-white/10 bg-transparent' : 'border-neutral-200 bg-[#F0E8FF]'
+            <section className={`py-24 border-none text-center relative z-10 ${
+                theme === 'dark' ? 'bg-transparent' : 'bg-[#E8D8FF]'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest ${
@@ -1131,7 +1131,7 @@ export default function Home() {
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
             <section id="products" className={`relative z-10 ${
-                theme === 'light' ? 'bg-[#E8F8E8]' : ''
+                theme === 'light' ? 'bg-[#D8F8D8]' : ''
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1282,10 +1282,10 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className={`py-32 relative overflow-hidden z-10 ${
-                theme === 'light' ? 'bg-[#FFF4E8]' : ''
+                theme === 'light' ? 'bg-[#FFECD8]' : ''
             }`}>
                 <div className={`absolute inset-0 bg-gradient-to-b to-transparent pointer-events-none ${
-                    theme === 'dark' ? 'from-indigo-900/5' : 'from-orange-100/20'
+                    theme === 'dark' ? 'from-indigo-900/5' : 'from-transparent'
                 }`} />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
@@ -1347,10 +1347,10 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className={`py-32 border-t relative z-10 ${
+            <section className={`py-32 border-none relative z-10 ${
                 theme === 'dark' 
-                    ? 'border-white/5 bg-gradient-to-t from-[#050505] to-[#050505]/80'
-                    : 'border-neutral-200 bg-[#FAF8F5]'
+                    ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80'
+                    : 'bg-[#FFF9F5]'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
