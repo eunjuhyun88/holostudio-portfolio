@@ -347,10 +347,14 @@ function LayoutContent({ children }) {
 
                                 {navLinks[language].map((link) => (
                                     link.name === 'Products' || link.name === '프로덕트' ? (
-                                        <div key={link.name} className="py-2 border-b border-white/5 pb-4">
+                                        <div key={link.name} className={`py-2 border-b pb-4`} style={{
+                                            borderColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
+                                        }}>
                                             <button 
                                                 onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                                                className="flex items-center justify-between w-full font-bold text-white text-xl mb-2"
+                                                className={`flex items-center justify-between w-full font-bold text-lg mb-2 ${
+                                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                                }`}
                                             >
                                                 {link.name}
                                                 <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileProductsOpen ? 'rotate-180' : ''}`} />
@@ -362,7 +366,10 @@ function LayoutContent({ children }) {
                                                         animate={{ height: 'auto', opacity: 1 }}
                                                         exit={{ height: 0, opacity: 0 }}
                                                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                                                        className="space-y-3 pl-4 border-l border-white/10 ml-1 overflow-hidden"
+                                                        className={`space-y-2 pl-4 border-l ml-1 overflow-hidden`}
+                                                        style={{
+                                                            borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+                                                        }}
                                                     >
                                                         {products.map((product) => (
                                                             <motion.li 
@@ -373,7 +380,11 @@ function LayoutContent({ children }) {
                                                             >
                                                                 <Link
                                                                     to={createPageUrl(product.path.substring(1))}
-                                                                    className="block py-1 text-neutral-300 hover:text-white text-base"
+                                                                    className={`block py-1 text-sm transition-colors ${
+                                                                        theme === 'dark'
+                                                                            ? 'text-neutral-300 hover:text-white'
+                                                                            : 'text-neutral-600 hover:text-neutral-900'
+                                                                    }`}
                                                                     onClick={() => setMobileMenuOpen(false)}
                                                                 >
                                                                     {product.name}
@@ -388,7 +399,11 @@ function LayoutContent({ children }) {
                                         <button 
                                             key={link.name}
                                             onClick={() => scrollToSection(link.path.substring(2))}
-                                            className="text-left font-medium text-neutral-300 hover:text-white text-xl py-2 border-b border-white/5"
+                                            className={`text-left font-semibold text-lg py-3 border-b w-full transition-colors ${
+                                                theme === 'dark'
+                                                    ? 'text-neutral-200 hover:text-white border-white/5'
+                                                    : 'text-neutral-700 hover:text-neutral-900 border-neutral-200'
+                                            }`}
                                         >
                                             {link.name}
                                         </button>
@@ -396,20 +411,37 @@ function LayoutContent({ children }) {
                                         <Link 
                                             key={link.name}
                                             to={createPageUrl(link.path.substring(1))}
-                                            className="font-medium text-neutral-300 hover:text-white text-xl py-2 border-b border-white/5"
+                                            className={`font-semibold text-lg py-3 border-b block transition-colors ${
+                                                theme === 'dark'
+                                                    ? 'text-neutral-200 hover:text-white border-white/5'
+                                                    : 'text-neutral-700 hover:text-neutral-900 border-neutral-200'
+                                            }`}
                                         >
                                             {link.name}
                                         </Link>
                                     )
                                 ))}
 
-                                <Button className={`w-full rounded-full mt-8 h-12 text-lg font-bold ${
-                                    theme === 'dark'
-                                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]'
-                                        : 'bg-orange-500 hover:bg-orange-600 text-white'
-                                }`}>
-                                    {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
-                                </Button>
+                                <div className="mt-6 space-y-3">
+                                    <a href="https://docsend.com/view/6xxvddwgkmbg2a8i" target="_blank" rel="noopener noreferrer" className="block">
+                                        <Button variant="outline" className={`w-full rounded-full h-12 text-base font-bold transition-all ${
+                                            theme === 'dark'
+                                                ? 'border-white/20 text-white hover:bg-white/10'
+                                                : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100'
+                                        }`}>
+                                            {language === 'en' ? 'View Deck' : '소개서 보기'}
+                                        </Button>
+                                    </a>
+                                    <Link to={createPageUrl("Contact")}>
+                                        <Button className={`w-full rounded-full h-12 text-base font-bold ${
+                                            theme === 'dark'
+                                                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]'
+                                                : 'bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 hover:from-cyan-500 hover:via-violet-500 hover:to-pink-500 text-white shadow-lg'
+                                        }`}>
+                                            {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
+                                        </Button>
+                                    </Link>
+                                </div>
                             </div>
                         </motion.div>
                     )}
