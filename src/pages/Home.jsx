@@ -504,10 +504,10 @@ export default function Home() {
 
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-95' : 'opacity-30'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-95' : 'opacity-60'}`}>
                     <CosmicBackground theme={theme} />
                 </div>
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-85' : 'opacity-25'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-85' : 'opacity-50'}`}>
                     <Background3D theme={theme} />
                 </div>
                 <ScrollMotionBackground theme={theme} />
