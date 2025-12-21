@@ -560,12 +560,7 @@ export default function Home() {
             {/* Scrollable Content - each section is min-h-screen */}
             <div className="relative z-10">
                 {/* Hero Section */}
-                <motion.section 
-                    className="min-h-screen flex flex-col items-center justify-center px-6"
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0, 0.08, 0.12], [1, 1, 0])
-                    }}
-                >
+                <section className="min-h-screen flex flex-col items-center justify-center px-6">
                     <div className="max-w-5xl mx-auto text-center">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -625,17 +620,12 @@ export default function Home() {
                             </div>
                         </motion.div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* By The Numbers Section */}
-                <motion.section 
-                    className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
-                        theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                    }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.1, 0.13, 0.2, 0.23], [0, 1, 1, 0])
-                    }}
-                >
+                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="text-center mb-16">
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -691,17 +681,12 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Why Now Section */}
-                <motion.section 
-                    className={`min-h-screen flex items-center justify-center border-y px-6 ${
-                        theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                    }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.21, 0.24, 0.32, 0.35], [0, 1, 1, 0])
-                    }}
-                >
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                }`}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
@@ -743,17 +728,12 @@ export default function Home() {
                             }`}>{t.regulatory.warning}</div>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* The Challenge Section */}
-                <motion.section 
-                    className={`min-h-screen flex items-center justify-center border-y px-6 ${
-                        theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-                    }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.33, 0.36, 0.44, 0.47], [0, 1, 1, 0])
-                    }}
-                >
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
+                }`}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -827,17 +807,12 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Company Thesis Section */}
-                <motion.section 
-                    className={`min-h-screen flex items-center justify-center border-y px-6 ${
-                        theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                    }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.45, 0.48, 0.56, 0.59], [0, 1, 1, 0])
-                    }}
-                >
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}>
                     <div className="max-w-6xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
@@ -922,18 +897,12 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Products Section - Keep existing scrollytelling implementation */}
-                <motion.section 
-                    id="products" 
-                    className={`relative border-y ${
+                <section id="products" className={`relative border-y ${
                     theme === 'dark' ? 'border-white/5' : 'border-neutral-300/30'
-                }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.57, 0.60, 0.75, 0.78], [0, 1, 1, 0])
-                    }}
-                >
+                }`}>
                     <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
                          <h2 className={`text-xl font-heavy uppercase tracking-widest mb-2 ${
                              theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
@@ -1062,18 +1031,12 @@ export default function Home() {
                         );
                     })}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Milestones Section */}
-                <motion.section 
-                    id="proof" 
-                    className={`min-h-screen flex items-center justify-center border-y px-6 ${
-                        theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                    }`}
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.76, 0.79, 0.87, 0.90], [0, 1, 1, 0])
-                    }}
-                >
+                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}>
                     <div className="max-w-7xl mx-auto w-full py-20">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -1128,34 +1091,23 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Roadmap Section */}
-                <motion.section 
-                    id="roadmap" 
-                    className="relative"
-                    style={{
-                        opacity: useTransform(scrollYProgress, [0.88, 0.91, 0.96, 0.99], [0, 1, 1, 1])
-                    }}
-                >
+                <section id="roadmap" className="relative">
                     <Roadmap 
                         items={t.roadmap.items} 
                         title={t.roadmap.title} 
                         viewAllText={t.roadmap.viewAll} 
                     />
-                </motion.section>
+                </section>
 
                 {/* Contact Section */}
-                <motion.section 
-                    className={`min-h-screen flex items-center justify-center border-t px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-6 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
-                    }`}
-                    style={{
-                    opacity: useTransform(scrollYProgress, [0.92, 0.95, 1], [0, 1, 1])
-                    }}
-                    >
+                }`}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
@@ -1199,7 +1151,7 @@ export default function Home() {
                             </Button>
                         </div>
                     </div>
-                </motion.section>
+                </section>
             </div>
         </motion.div>
     );
