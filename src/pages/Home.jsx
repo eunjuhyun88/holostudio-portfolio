@@ -776,14 +776,64 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Section 02.5: THE CHALLENGE (Merged: Opportunity + Problem) */}
+            {/* Section 02.5: WHY IT MATTERS (Opportunity + Regulatory) */}
+            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y ${
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+            }`}>
+                <div className="max-w-6xl mx-auto px-6 w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                        }`}>{language === 'en' ? 'Why It Matters' : '왜 중요한가'}</h2>
+                        <h3 className={`text-3xl md:text-5xl font-black mb-8 leading-tight ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.opportunity.sub}</h3>
+                        <div className={`flex flex-wrap justify-center gap-6 text-lg mb-16 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                        }`}>
+                            {t.opportunity.points.map((point, idx) => (
+                                <span key={idx} className="font-mono">{point}</span>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Regulatory Deadline */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className={`rounded-3xl p-12 border text-center ${
+                            theme === 'dark'
+                                ? 'bg-black/40 border-orange-500/20 backdrop-blur-sm'
+                                : 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-300/40'
+                        }`}
+                    >
+                        <div className={`text-6xl md:text-7xl font-black mb-4 ${
+                            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+                        }`}>{t.regulatory.date}</div>
+                        <p className={`text-xl md:text-2xl font-bold mb-2 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.regulatory.desc}</p>
+                        <p className={`text-lg font-medium ${
+                            theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                        }`}>{t.regulatory.warning}</p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Section 02.6: THE CHALLENGE (Cost + Market Failure) */}
             <section className="min-h-screen flex items-center justify-center relative z-10">
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <FadeInSection delay={0} direction="up" className="mb-16 text-center max-w-5xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>{language === 'en' ? 'The Challenge' : '해결 과제'}</h2>
-                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
+                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-12 leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
                             style={theme === 'dark' ? { textShadow: '0 4px 12px rgba(0,0,0,0.5)' } : {}}
@@ -792,7 +842,32 @@ export default function Home() {
                         </h3>
                     </FadeInSection>
 
-                    {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                    {/* Cost Examples */}
+                    <div className="grid md:grid-cols-3 gap-8 mb-20">
+                        {t.cost.items.map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.15 }}
+                                className={`p-8 rounded-2xl border text-center ${
+                                    theme === 'dark'
+                                        ? 'bg-black/30 border-red-500/20 hover:border-red-500/50'
+                                        : 'bg-white border-red-200 hover:shadow-lg'
+                                }`}
+                            >
+                                <div className={`text-4xl md:text-5xl font-black mb-4 ${
+                                    theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                                }`}>{item.val}</div>
+                                <p className={`text-sm leading-relaxed ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                }`}>{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Market Failure Cards */}
                     <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar md:custom-scrollbar">
                         {t.problem.cards.map((card, idx) => (
                             <FadeInSection
@@ -805,7 +880,6 @@ export default function Home() {
                                         : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                 }`}
                             >
-                                {/* Sci-Fi Corner Accents - Only dark mode */}
                                 {theme === 'dark' && (
                                     <>
                                         <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
