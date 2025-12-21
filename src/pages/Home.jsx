@@ -87,9 +87,7 @@ export default function Home() {
                 headline: "AI verification is no longer optional.",
                 sub: "The brand safety market stopped at classification. Regulation is forcing verification.",
                 points: [
-                    { label: "EU AI Act enforcement begins August 2026", detail: "Fines up to 7% of global revenue" },
-                    { text: "AI-generated media is scaling faster than moderation or law" },
-                    { text: "Platforms are becoming legally and reputationally liable" }
+                    { label: "EU AI Act enforcement begins August 2026", detail: "Fines up to 7% of global revenue" }
                 ],
                 conclusion: "18 months. That's the window to build trust infrastructure before enforcement hits."
             },
@@ -252,9 +250,7 @@ export default function Home() {
                 headline: "AI 검증은 더 이상 선택이 아닙니다.",
                 sub: "브랜드 안전 시장은 분류에서 멈췄습니다. 규제는 검증을 강제하고 있습니다.",
                 points: [
-                    { label: "EU AI Act 시행 2026년 8월", detail: "위반 시 글로벌 매출 7%까지 과징금" },
-                    { text: "AI 생성 미디어는 중재나 법보다 빠르게 확산되고 있습니다" },
-                    { text: "플랫폼은 법적, 평판적으로 책임을 지게 됩니다" }
+                    { label: "EU AI Act 시행 2026년 8월", detail: "위반 시 글로벌 매출 7%까지 과징금" }
                 ],
                 conclusion: "18개월. 규제 시행 전에 신뢰 인프라를 구축할 수 있는 시간입니다."
             },
