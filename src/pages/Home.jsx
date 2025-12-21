@@ -928,19 +928,19 @@ export default function Home() {
                     }
                 }}>
                     {theme === 'dark' && (
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/3 via-transparent to-red-500/3 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/3 via-transparent to-purple-500/3 pointer-events-none" />
                     )}
                     <div className="max-w-4xl mx-auto w-full relative z-10">
                         <div className="text-center mb-8 md:mb-10">
                             <h2 className={`text-sm md:text-base font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
-                                theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
+                                theme === 'dark' ? 'text-indigo-400' : 'text-orange-700'
                             }`}>
                                 {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
-                                    glowColor="rgba(249, 115, 22, 0.8)"
+                                    glowColor="rgba(99, 102, 241, 0.8)"
                                     className="text-2xl md:text-3xl lg:text-4xl font-black mb-3 md:mb-4 leading-tight px-4"
                                 >
                                     {language === 'en' 
@@ -972,13 +972,13 @@ export default function Home() {
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                 className={`p-4 md:p-5 rounded-xl border mb-6 md:mb-8 transition-all duration-200 ${
                                     theme === 'dark'
-                                        ? 'bg-black/20 border-orange-500/30 hover:border-orange-400/40'
+                                        ? 'bg-black/20 border-indigo-500/30 hover:border-indigo-400/40'
                                         : 'bg-orange-50/50 border-orange-400/50 hover:border-orange-500'
                                 }`}
                             >
                                 <div className="text-center">
                                     <div className={`font-bold mb-1.5 text-sm md:text-base ${
-                                        theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                                        theme === 'dark' ? 'text-indigo-300' : 'text-orange-700'
                                     }`}>{t.opportunity.points[0].label}</div>
                                     <div className={`text-xs md:text-sm leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
@@ -997,12 +997,12 @@ export default function Home() {
                                         transition={{ delay: idx * 0.1, duration: 0.3, ease: "easeOut" }}
                                         className={`p-4 md:p-5 rounded-xl border text-center transition-all duration-200 ${
                                             theme === 'dark'
-                                                ? 'bg-black/20 border-red-500/30 hover:border-red-400/40'
+                                                ? 'bg-black/20 border-purple-500/30 hover:border-purple-400/40'
                                                 : 'bg-white/70 border-red-300/50 hover:border-red-400'
                                         }`}
                                     >
                                         <div className={`text-xl md:text-2xl font-black mb-1.5 ${
-                                            theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                                            theme === 'dark' ? 'text-purple-400' : 'text-red-600'
                                         }`}>{item.val}</div>
                                         <p className={`text-[10px] md:text-xs leading-snug ${
                                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
@@ -1045,14 +1045,14 @@ export default function Home() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
                                 className={`text-sm md:text-base font-black px-4 leading-tight mb-1.5 ${
-                                    theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                                    theme === 'dark' ? 'text-indigo-300' : 'text-orange-700'
                                 }`}
                             >
                                 {t.opportunity.conclusion}
                             </motion.p>
 
                             <p className={`text-xs md:text-sm font-black italic px-4 ${
-                                theme === 'dark' ? 'text-red-400' : 'text-red-700'
+                                theme === 'dark' ? 'text-purple-400' : 'text-red-700'
                             }`}>
                                 {t.cost.conclusion}
                             </p>
