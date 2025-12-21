@@ -554,7 +554,7 @@ export default function Home() {
         { icon: Award, color: "text-purple-400", bg: "bg-purple-400/10" }
     ];
 
-    const milestones = t.milestones.items.map((item, idx) => ({
+    const milestones = t.validation.items.map((item, idx) => ({
         ...item,
         icon: milestoneConfig[idx]?.icon || Trophy,
         color: milestoneConfig[idx]?.color || "text-white",
@@ -1323,7 +1323,7 @@ export default function Home() {
                             <p className={`text-lg md:text-xl font-medium ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>
-                                {t.milestones.sub}
+                                {language === 'en' ? 'Proven traction. Industry validation.' : '검증된 트랙션. 산업 검증.'}
                             </p>
                         </div>
 
@@ -1375,7 +1375,7 @@ export default function Home() {
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>
-                            {language === 'en' ? 'JOIN THE FUTURE' : '함께 만들어가요'}
+                            {t.closing.tag}
                         </h2>
                         {theme === 'dark' ? (
                             <MouseGlowText
@@ -1390,10 +1390,15 @@ export default function Home() {
                                 {t.contact.title}
                             </h3>
                         )}
-                        <p className={`text-xl md:text-2xl font-medium mb-12 ${
+                        <p className={`text-xl md:text-2xl font-medium mb-6 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {t.contact.sub}
+                            {t.closing.line2}
+                        </p>
+                        <p className={`text-xl md:text-2xl font-medium mb-12 leading-relaxed ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>
+                            {t.closing.line3}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to={createPageUrl("Contact")}>
@@ -1402,7 +1407,7 @@ export default function Home() {
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_40px_rgba(79,70,229,0.4)]'
                                         : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 text-white shadow-xl'
                                 }`}>
-                                    {t.contact.cta1}
+                                    {t.closing.cta1}
                                 </Button>
                             </Link>
                             <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all hover:scale-105 ${
@@ -1410,7 +1415,7 @@ export default function Home() {
                                     ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
                                     : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg'
                             }`}>
-                                {t.contact.cta2}
+                                {t.closing.cta2}
                             </Button>
                         </div>
                     </div>
