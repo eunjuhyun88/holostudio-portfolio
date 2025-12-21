@@ -940,126 +940,135 @@ export default function Home() {
                 {/* Why Now Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 2)}>
+                }`} ref={(el) => observeSection(el, 3)}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
                         }`}>
-                            {language === 'en' ? 'Why Now' : '왜 지금인가'}
+                            {t.whyNow.tag}
                         </h2>
                         {theme === 'dark' ? (
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
+                                className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 leading-tight"
                             >
-                                {language === 'en' 
-                                    ? 'AI verification is no longer optional.' 
-                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                                {t.whyNow.title}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
-                                {language === 'en' 
-                                    ? 'AI verification is no longer optional.' 
-                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                                {t.whyNow.title}
                             </h3>
                         )}
-                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+                        <p className={`text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {language === 'en'
-                                ? 'The $13B brand safety market stopped at "classification." EU AI Act enforcement begins August 2026 — with fines up to 7% of global revenue.'
-                                : '7조원 브랜드 안전 시장은 "분류"에서 멈췄습니다. EU AI Act는 2026년 8월 시행되며, 위반 시 글로벌 매출 7%까지 과징금이 부과됩니다.'}
+                            {t.whyNow.context}
                         </p>
+                        <div className={`space-y-3 mb-12 text-lg md:text-xl max-w-2xl mx-auto ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>
+                            {t.whyNow.facts.map((fact, idx) => (
+                                <motion.p 
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                >
+                                    • {fact}
+                                </motion.p>
+                            ))}
+                        </div>
                         <div className={`inline-block px-8 py-4 rounded-2xl border ${
                             theme === 'dark' ? 'bg-orange-500/10 border-orange-500/30' : 'bg-orange-100 border-orange-300'
                         }`}>
                             <div className={`text-5xl md:text-6xl font-black mb-2 ${
                                 theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-                            }`}>{t.regulatory.date}</div>
-                            <div className={`text-sm font-bold ${
+                            }`}>{t.whyNow.deadline}</div>
+                            <div className={`text-base font-bold max-w-md ${
                                 theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                            }`}>{t.regulatory.warning}</div>
+                            }`}>{t.whyNow.warning}</div>
                         </div>
                     </div>
                 </section>
 
-                {/* The Challenge Section */}
+                {/* Cost of Inaction Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 3)}>
+                }`} ref={(el) => observeSection(el, 4)}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-500' : 'text-red-700'
                             }`}>
-                                {language === 'en' ? 'The Cost of Inaction' : '방치의 대가'}
+                                {t.costOfInaction.tag}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(239, 68, 68, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12"
                                 >
-                                    {language === 'en'
-                                        ? 'Without trust infrastructure, everyone loses.'
-                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                    {t.costOfInaction.title}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
-                                    {language === 'en'
-                                        ? 'Without trust infrastructure, everyone loses.'
-                                        : '신뢰 인프라 없이는 모두가 잃습니다.'}
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent mb-12">
+                                    {t.costOfInaction.title}
                                 </h3>
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-6 mb-12">
-                            {t.cost.items.slice(0, 2).map((item, idx) => (
+                        <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+                            {t.costOfInaction.impacts.map((item, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className={`p-6 rounded-2xl border text-center ${
+                                    className={`p-8 rounded-2xl border text-center ${
                                         theme === 'dark'
                                             ? 'bg-black/30 border-red-500/20'
                                             : 'bg-red-50/50 border-red-200'
                                     }`}
                                 >
-                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
+                                    <div className={`text-5xl font-black mb-4 ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                     }`}>{item.val}</div>
-                                    <p className={`text-sm ${
+                                    <p className={`text-base ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {t.problem.cards.map((card, idx) => (
-                                <motion.div
+                        <div className={`space-y-4 mb-12 text-center max-w-3xl mx-auto text-lg ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>
+                            {t.costOfInaction.risks.map((risk, idx) => (
+                                <motion.p 
                                     key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className={`p-6 rounded-xl border ${
-                                        theme === 'dark'
-                                            ? 'bg-black/40 border-white/10'
-                                            : 'bg-white border-neutral-200'
-                                    }`}
+                                    className="font-medium"
                                 >
-                                    <h4 className={`text-lg font-black mb-2 ${
-                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                                    }`}>{card.title}</h4>
-                                    <p className={`text-sm leading-relaxed ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                    }`}>{card.desc}</p>
-                                </motion.div>
+                                    • {risk}
+                                </motion.p>
                             ))}
                         </div>
+
+                        <motion.p 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className={`text-center text-2xl md:text-3xl font-black ${
+                                theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                            }`}
+                        >
+                            {t.costOfInaction.conclusion}
+                        </motion.p>
                     </div>
                 </section>
 
