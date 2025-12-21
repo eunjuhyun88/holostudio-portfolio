@@ -749,7 +749,7 @@ export default function Home() {
                             transition={{ duration: 0.6 }}
                             whileHover={{ scale: 1.05 }}
                             style={{
-                                y: useTransform(scrollYProgress, [0.15, 0.25], [20, -20])
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -15])
                             }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
@@ -767,7 +767,7 @@ export default function Home() {
                             transition={{ duration: 0.6, delay: 0.1 }}
                             whileHover={{ scale: 1.05 }}
                             style={{
-                                y: useTransform(scrollYProgress, [0.15, 0.25], [10, -30])
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -15])
                             }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
@@ -785,7 +785,7 @@ export default function Home() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             whileHover={{ scale: 1.05 }}
                             style={{
-                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -25])
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -15])
                             }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
@@ -803,7 +803,7 @@ export default function Home() {
                             transition={{ duration: 0.6, delay: 0.3 }}
                             whileHover={{ scale: 1.05 }}
                             style={{
-                                y: useTransform(scrollYProgress, [0.15, 0.25], [25, -15])
+                                y: useTransform(scrollYProgress, [0.15, 0.25], [15, -15])
                             }}
                         >
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 transition-all duration-300 cursor-default ${
