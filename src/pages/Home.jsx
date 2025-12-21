@@ -913,7 +913,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section - Combined */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-20 md:py-24 relative overflow-hidden ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
@@ -931,8 +931,8 @@ export default function Home() {
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/3 via-transparent to-red-500/3 pointer-events-none" />
                     )}
                     <div className="max-w-4xl mx-auto w-full relative z-10">
-                        <div className="text-center mb-8 md:mb-10">
-                            <h2 className={`text-sm md:text-base font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
+                        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+                            <h2 className={`text-xs sm:text-sm md:text-base font-mono mb-4 sm:mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                             }`}>
                                 {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
@@ -941,14 +941,14 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(249, 115, 22, 0.8)"
-                                    className="text-2xl md:text-3xl lg:text-4xl font-black mb-3 md:mb-4 leading-tight px-4"
+                                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4"
                                 >
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
                                         : 'AI 검증은 더 이상 선택이 아닙니다.'}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-3 md:mb-4 leading-tight px-4 relative">
+                                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-2 sm:mb-3 md:mb-4 leading-tight px-2 sm:px-4 relative">
                                     <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
                                         {language === 'en' 
                                             ? 'AI verification is no longer optional.' 
@@ -956,38 +956,38 @@ export default function Home() {
                                     </span>
                                 </h3>
                             )}
-                            <p className={`text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-medium px-4 ${
+                            <p className={`text-[11px] sm:text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-medium px-2 sm:px-4 ${
                                 theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                             }`}>
                                 {t.opportunity.sub}
                             </p>
                         </div>
 
-                        <div className="max-w-3xl mx-auto mb-8 md:mb-10">
+                        <div className="max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10">
                             {/* Regulatory Timeline */}
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.4, ease: "easeOut" }}
-                                className={`p-4 md:p-5 rounded-xl border mb-6 md:mb-8 transition-all duration-200 ${
+                                className={`p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border mb-4 sm:mb-6 md:mb-8 transition-all duration-200 ${
                                     theme === 'dark'
                                         ? 'bg-black/20 border-orange-500/30 hover:border-orange-400/40'
                                         : 'bg-orange-50/50 border-orange-400/50 hover:border-orange-500'
                                 }`}
                             >
                                 <div className="text-center">
-                                    <div className={`font-bold mb-1.5 text-sm md:text-base ${
+                                    <div className={`font-bold mb-1 sm:mb-1.5 text-xs sm:text-sm md:text-base ${
                                         theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
                                     }`}>{t.opportunity.points[0].label}</div>
-                                    <div className={`text-xs md:text-sm leading-relaxed ${
+                                    <div className={`text-[10px] sm:text-xs md:text-sm leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                     }`}>{t.opportunity.points[0].detail}</div>
                                 </div>
                             </motion.div>
 
                             {/* Impact Stats */}
-                            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
                                 {t.cost.items.slice(0, 2).map((item, idx) => (
                                     <motion.div
                                         key={idx}
@@ -995,16 +995,16 @@ export default function Home() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ delay: idx * 0.1, duration: 0.3, ease: "easeOut" }}
-                                        className={`p-4 md:p-5 rounded-xl border text-center transition-all duration-200 ${
+                                        className={`p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border text-center transition-all duration-200 ${
                                             theme === 'dark'
                                                 ? 'bg-black/20 border-red-500/30 hover:border-red-400/40'
                                                 : 'bg-white/70 border-red-300/50 hover:border-red-400'
                                         }`}
                                     >
-                                        <div className={`text-xl md:text-2xl font-black mb-1.5 ${
+                                        <div className={`text-lg sm:text-xl md:text-2xl font-black mb-1 sm:mb-1.5 ${
                                             theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                         }`}>{item.val}</div>
-                                        <p className={`text-[10px] md:text-xs leading-snug ${
+                                        <p className={`text-[10px] sm:text-xs leading-snug ${
                                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                         }`}>{item.desc}</p>
                                     </motion.div>
@@ -1012,7 +1012,7 @@ export default function Home() {
                             </div>
 
                             {/* Stakeholder Risks */}
-                            <div className="grid grid-cols-3 gap-3 md:gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                                 {t.cost.items.slice(2).map((item, idx) => (
                                     <motion.div
                                         key={idx}
@@ -1020,16 +1020,16 @@ export default function Home() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ delay: idx * 0.08, duration: 0.3, ease: "easeOut" }}
-                                        className={`p-3 md:p-4 rounded-xl border transition-all duration-200 ${
+                                        className={`p-2.5 sm:p-3 md:p-4 rounded-lg sm:rounded-xl border transition-all duration-200 ${
                                             theme === 'dark'
                                                 ? 'bg-black/10 border-white/10 hover:border-white/15'
                                                 : 'bg-white/60 border-neutral-200 hover:border-neutral-300'
                                         }`}
                                     >
-                                        <h5 className={`text-xs md:text-sm font-bold mb-1.5 ${
+                                        <h5 className={`text-xs sm:text-sm font-bold mb-1 sm:mb-1.5 ${
                                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                         }`}>{item.label}</h5>
-                                        <p className={`text-[10px] md:text-xs leading-snug ${
+                                        <p className={`text-[10px] sm:text-xs leading-snug ${
                                             theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                         }`}>{item.desc}</p>
                                     </motion.div>
@@ -1044,14 +1044,14 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
-                                className={`text-sm md:text-base font-black px-4 leading-tight mb-1.5 ${
+                                className={`text-xs sm:text-sm md:text-base font-black px-2 sm:px-4 leading-tight mb-1 sm:mb-1.5 ${
                                     theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
                                 }`}
                             >
                                 {t.opportunity.conclusion}
                             </motion.p>
 
-                            <p className={`text-xs md:text-sm font-black italic px-4 ${
+                            <p className={`text-[10px] sm:text-xs md:text-sm font-black italic px-2 sm:px-4 ${
                                 theme === 'dark' ? 'text-red-400' : 'text-red-700'
                             }`}>
                                 {t.cost.conclusion}
