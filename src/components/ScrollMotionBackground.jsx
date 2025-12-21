@@ -101,7 +101,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
             <motion.div 
                 style={{ 
                     y: useTransform(scrollYProgress, [0, 1], [0, -80]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0.1, 0.15, 0.15, 0.1] : [0.2, 0.35, 0.35, 0.2])
+                    opacity: 0
                 }}
                 className={`absolute inset-0 bg-[size:100px_100px] ${
                     theme === 'dark'
@@ -112,7 +112,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
             <motion.div 
                 style={{ 
                     y: useTransform(scrollYProgress, [0, 1], [0, -30]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0.08, 0.12, 0.12, 0.08] : [0.15, 0.28, 0.28, 0.15])
+                    opacity: 0
                 }}
                 className={`absolute inset-0 bg-[size:60px_60px] ${
                     theme === 'dark'
