@@ -505,13 +505,13 @@ export default function Home() {
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 opacity-100">
-                    <CosmicBackground theme={theme} />
+                    <CosmicBackground key={`cosmic-${theme}`} theme={theme} />
                 </div>
                 <div className="absolute inset-0 opacity-100">
-                    <Background3D theme={theme} />
+                    <Background3D key={`bg3d-${theme}`} theme={theme} />
                 </div>
                 <div className="absolute inset-0 opacity-100">
-                    <ScrollMotionBackground theme={theme} />
+                    <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
                 </div>
                 
                 {/* Subtle Spotlight */}
