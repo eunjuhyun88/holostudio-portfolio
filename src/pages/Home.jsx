@@ -380,10 +380,10 @@ export default function Home() {
                 ko: ["리스크 완화", "지연시간 < 10ms", "규제 준수"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/cc0228bec_2025-12-171042431.png",
-            color: "text-cyan-400",
-            borderColor: "border-cyan-400",
-            glowColor: "shadow-cyan-400/50",
-            bgGradient: "from-cyan-500",
+            color: "text-blue-400",
+            borderColor: "border-blue-400",
+            glowColor: "shadow-blue-400/50",
+            bgGradient: "from-blue-500",
             path: "/AidGuardian",
             primaryBtn: { en: "Request Demo", ko: "데모 요청" },
             secondaryBtn: { en: "Integration", ko: "도입 문의" }
@@ -401,10 +401,10 @@ export default function Home() {
                 ko: ["IP 보호", "온체인 증거", "로열티 분배"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/81cf8f3b2_2025-12-17105846.png",
-            color: "text-lime-400",
-            borderColor: "border-lime-400",
-            glowColor: "shadow-lime-400/50",
-            bgGradient: "from-lime-500",
+            color: "text-yellow-400",
+            borderColor: "border-yellow-400",
+            glowColor: "shadow-yellow-400/50",
+            bgGradient: "from-yellow-500",
             path: "/PlayArts",
             primaryBtn: { en: "Partner", ko: "파트너십" },
             secondaryBtn: { en: "Read Spec", ko: "기술 명세" }
@@ -422,10 +422,10 @@ export default function Home() {
                 ko: ["프로토콜 데모", "자산 소유권", "안전한 UGC"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/9692fcde2_2025-12-1463649.png",
-            color: "text-yellow-400",
-            borderColor: "border-yellow-400",
-            glowColor: "shadow-yellow-400/50",
-            bgGradient: "from-yellow-500",
+            color: "text-pink-400",
+            borderColor: "border-pink-400",
+            glowColor: "shadow-pink-400/50",
+            bgGradient: "from-pink-500",
             path: "/Elememetal",
             primaryBtn: { en: "View Economy", ko: "경제 구조" },
             secondaryBtn: { en: "For Publishers", ko: "퍼블리셔용" }
@@ -443,10 +443,10 @@ export default function Home() {
                 ko: ["검증된 시그널", "수익 증명", "AI 전략"]
             },
             image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/45cb06182_2025-12-17105903.png",
-            color: "text-fuchsia-400",
-            borderColor: "border-fuchsia-400",
-            glowColor: "shadow-fuchsia-400/50",
-            bgGradient: "from-fuchsia-500",
+            color: "text-emerald-400",
+            borderColor: "border-emerald-400",
+            glowColor: "shadow-emerald-400/50",
+            bgGradient: "from-emerald-500",
             path: "/Stockhoo",
             primaryBtn: { en: "Open App", ko: "앱 열기" },
             secondaryBtn: { en: "Deck", ko: "소개서" }
@@ -1142,7 +1142,9 @@ export default function Home() {
                 </div>
 
                 {/* Sticky Visual Container - Desktop Only */}
-                <div className="hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none">
+                <div className={`hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none ${
+                    theme === 'light' ? 'bg-[#F5EFE6]' : ''
+                }`}>
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
                         {products.map((prod, idx) => (
@@ -1155,25 +1157,43 @@ export default function Home() {
                                     transition={{ duration: 0.8 }}
                                     className="absolute inset-0 w-full h-full"
                                 >
-                                    {/* Intensified Background Gradient */}
-                                    <div className={`absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] ${prod.bgGradient} via-[#050505] to-[#050505] opacity-40`} />
-                                    <div className={`absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t ${prod.bgGradient} to-transparent opacity-10`} />
+                                    {theme === 'dark' && (
+                                        <>
+                                            {/* Intensified Background Gradient - Only dark mode */}
+                                            <div className={`absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] ${prod.bgGradient} via-[#050505] to-[#050505] opacity-40`} />
+                                            <div className={`absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t ${prod.bgGradient} to-transparent opacity-10`} />
+                                        </>
+                                    )}
                                     
-                                    {/* Large Background Text */}
-                                    <div className={`absolute bottom-10 left-10 text-[13vw] font-black ${prod.color} opacity-20 leading-none select-none text-left tracking-tighter mix-blend-screen`}>
-                                        {prod.name.toUpperCase()}
-                                    </div>
+                                    {/* Large Background Text - Only dark mode */}
+                                    {theme === 'dark' && (
+                                        <div className={`absolute bottom-10 left-10 text-[13vw] font-black ${prod.color} opacity-20 leading-none select-none text-left tracking-tighter mix-blend-screen`}>
+                                            {prod.name.toUpperCase()}
+                                        </div>
+                                    )}
                                     
                                     {/* Central Visual */}
                                     <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
-                                        <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} bg-neutral-900/50 backdrop-blur-sm shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group`}>
+                                        <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group ${
+                                            theme === 'dark' ? 'bg-neutral-900/50 backdrop-blur-sm' : 'bg-white'
+                                        }`}>
                                             {/* Visual Corners */}
-                                            <div className="absolute top-4 left-4 w-12 h-12 border-l border-t border-white/30 rounded-tl-xl pointer-events-none" />
-                                            <div className="absolute top-4 right-4 w-12 h-12 border-r border-t border-white/30 rounded-tr-xl pointer-events-none" />
-                                            <div className="absolute bottom-4 left-4 w-12 h-12 border-l border-b border-white/30 rounded-bl-xl pointer-events-none" />
-                                            <div className="absolute bottom-4 right-4 w-12 h-12 border-r border-b border-white/30 rounded-br-xl pointer-events-none" />
+                                            <div className={`absolute top-4 left-4 w-12 h-12 border-l border-t rounded-tl-xl pointer-events-none ${
+                                                theme === 'dark' ? 'border-white/30' : 'border-neutral-900/20'
+                                            }`} />
+                                            <div className={`absolute top-4 right-4 w-12 h-12 border-r border-t rounded-tr-xl pointer-events-none ${
+                                                theme === 'dark' ? 'border-white/30' : 'border-neutral-900/20'
+                                            }`} />
+                                            <div className={`absolute bottom-4 left-4 w-12 h-12 border-l border-b rounded-bl-xl pointer-events-none ${
+                                                theme === 'dark' ? 'border-white/30' : 'border-neutral-900/20'
+                                            }`} />
+                                            <div className={`absolute bottom-4 right-4 w-12 h-12 border-r border-b rounded-br-xl pointer-events-none ${
+                                                theme === 'dark' ? 'border-white/30' : 'border-neutral-900/20'
+                                            }`} />
                                             
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-10`} />
+                                            {theme === 'dark' && (
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-10`} />
+                                            )}
                                             
                                             {/* Image Container - Adjusted to contain logos properly */}
                                             <div className="w-full h-full flex items-center justify-center p-8 md:p-12 relative z-10">
