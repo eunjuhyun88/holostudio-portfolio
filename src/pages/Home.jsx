@@ -916,7 +916,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* Why Now + Cost of Inaction Section */}
+                {/* Why Now Section - Combined */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
@@ -934,84 +934,82 @@ export default function Home() {
                     {theme === 'dark' && (
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/3 via-transparent to-red-500/3 pointer-events-none" />
                     )}
-                    <div className="max-w-4xl mx-auto text-center w-full relative z-10">
-                        <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
-                        }`}>
-                            {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
-                        </h2>
-                        {theme === 'dark' ? (
-                            <MouseGlowText
-                                as="h3"
-                                glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4"
-                            >
-                                {language === 'en' 
-                                    ? 'AI verification is no longer optional.' 
-                                    : 'AI 검증은 더 이상 선택이 아닙니다.'}
-                            </MouseGlowText>
-                        ) : (
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4 relative">
-                                <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                    <div className="max-w-4xl mx-auto w-full relative z-10">
+                        <div className="text-center mb-12 md:mb-16">
+                            <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
+                            }`}>
+                                {language === 'en' ? 'WHY NOW' : '왜 지금인가'}
+                            </h2>
+                            {theme === 'dark' ? (
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(249, 115, 22, 0.8)"
+                                    className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4"
+                                >
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
                                         : 'AI 검증은 더 이상 선택이 아닙니다.'}
-                                </span>
-                            </h3>
-                        )}
-                        <p className={`text-sm md:text-base max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed font-medium px-4 ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                        }`}>
-                            {t.opportunity.sub}
-                        </p>
-
-                        <div className="max-w-lg md:max-w-xl mx-auto space-y-3 md:space-y-4 mb-12 md:mb-14">
-                            {t.opportunity.points.map((point, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
-                                    className={`p-4 md:p-5 rounded-lg md:rounded-xl border transition-all duration-200 ${
-                                        idx === 0 
-                                            ? (theme === 'dark'
-                                                ? 'bg-black/20 border-orange-500/30 hover:border-orange-400/40'
-                                                : 'bg-orange-50/50 border-orange-400/50 hover:border-orange-500')
-                                            : (theme === 'dark'
-                                                ? 'bg-black/10 border-white/10 hover:border-white/15'
-                                                : 'bg-white/50 border-neutral-200 hover:border-neutral-300')
-                                    }`}
-                                >
-                                    {point.label ? (
-                                        <div>
-                                            <div className={`font-bold mb-1.5 text-sm md:text-base ${
-                                                idx === 0
-                                                    ? (theme === 'dark' ? 'text-orange-300' : 'text-orange-700')
-                                                    : (theme === 'dark' ? 'text-orange-400' : 'text-orange-600')
-                                            }`}>{point.label}</div>
-                                            <div className={`text-xs md:text-sm leading-relaxed ${
-                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                                            }`}>{point.detail}</div>
-                                        </div>
-                                    ) : (
-                                       <p className={`text-xs md:text-sm leading-relaxed ${
-                                           theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                                       }`}>{point.text}</p>
-                                    )}
-                                </motion.div>
-                            ))}
+                                </MouseGlowText>
+                            ) : (
+                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4 relative">
+                                    <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                                        {language === 'en' 
+                                            ? 'AI verification is no longer optional.' 
+                                            : 'AI 검증은 더 이상 선택이 아닙니다.'}
+                                    </span>
+                                </h3>
+                            )}
+                            <p className={`text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium px-4 ${
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                            }`}>
+                                {t.opportunity.sub}
+                            </p>
                         </div>
 
-                        <div className={`max-w-2xl mx-auto mb-10 md:mb-12 pt-8 md:pt-10 border-t ${
-                            theme === 'dark' ? 'border-white/5' : 'border-neutral-200'
-                        }`}>
-                            <h4 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
-                                theme === 'dark' ? 'text-red-400' : 'text-red-700'
-                            }`}>
-                                {t.cost.title}
-                            </h4>
-                            
+                        {/* Regulatory Pressure */}
+                        <div className="max-w-2xl mx-auto mb-12 md:mb-16">
+                            <div className="space-y-3 md:space-y-4">
+                                {t.opportunity.points.map((point, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
+                                        className={`p-4 md:p-5 rounded-lg md:rounded-xl border transition-all duration-200 ${
+                                            idx === 0 
+                                                ? (theme === 'dark'
+                                                    ? 'bg-black/20 border-orange-500/30 hover:border-orange-400/40'
+                                                    : 'bg-orange-50/50 border-orange-400/50 hover:border-orange-500')
+                                                : (theme === 'dark'
+                                                    ? 'bg-black/10 border-white/10 hover:border-white/15'
+                                                    : 'bg-white/50 border-neutral-200 hover:border-neutral-300')
+                                        }`}
+                                    >
+                                        {point.label ? (
+                                            <div>
+                                                <div className={`font-bold mb-1.5 text-sm md:text-base ${
+                                                    idx === 0
+                                                        ? (theme === 'dark' ? 'text-orange-300' : 'text-orange-700')
+                                                        : (theme === 'dark' ? 'text-orange-400' : 'text-orange-600')
+                                                }`}>{point.label}</div>
+                                                <div className={`text-xs md:text-sm leading-relaxed ${
+                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                                                }`}>{point.detail}</div>
+                                            </div>
+                                        ) : (
+                                           <p className={`text-xs md:text-sm leading-relaxed ${
+                                               theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                                           }`}>{point.text}</p>
+                                        )}
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Cost of Inaction */}
+                        <div className="max-w-2xl mx-auto mb-12 md:mb-16">
                             <div className="grid md:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                                 {t.cost.items.slice(0, 2).map((item, idx) => (
                                     <motion.div
@@ -1036,7 +1034,7 @@ export default function Home() {
                                 ))}
                             </div>
 
-                            <div className="grid md:grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
+                            <div className="grid md:grid-cols-3 gap-3 md:gap-4">
                                 {t.cost.items.slice(2).map((item, idx) => (
                                     <motion.div
                                         key={idx}
@@ -1061,23 +1059,26 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <motion.p 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className={`text-base md:text-lg lg:text-xl font-black text-center px-4 leading-tight mb-3 ${
-                                theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                            }`}
-                        >
-                            {t.opportunity.conclusion}
-                        </motion.p>
+                        {/* Conclusions */}
+                        <div className="text-center">
+                            <motion.p 
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                className={`text-base md:text-lg font-black px-4 leading-tight mb-2 ${
+                                    theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                                }`}
+                            >
+                                {t.opportunity.conclusion}
+                            </motion.p>
 
-                        <p className={`text-center text-sm md:text-base font-black italic px-4 ${
-                            theme === 'dark' ? 'text-red-400' : 'text-red-700'
-                        }`}>
-                            {t.cost.conclusion}
-                        </p>
+                            <p className={`text-sm md:text-base font-black italic px-4 ${
+                                theme === 'dark' ? 'text-red-400' : 'text-red-700'
+                            }`}>
+                                {t.cost.conclusion}
+                            </p>
+                        </div>
                     </div>
                 </section>
 
