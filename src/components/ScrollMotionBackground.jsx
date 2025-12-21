@@ -36,7 +36,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[80px] ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-br from-indigo-500/50 via-purple-500/35 to-transparent'
-                        : 'bg-gradient-to-br from-violet-500/40 via-purple-500/30 to-transparent'
+                        : 'bg-gradient-to-br from-violet-400/15 via-purple-400/10 to-transparent'
                 }`}
             />
             <motion.div 
@@ -48,7 +48,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[90px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-purple-500/40 via-pink-500/30 to-transparent'
-                        : 'bg-gradient-to-br from-purple-500/35 via-pink-500/25 to-transparent'
+                        : 'bg-gradient-to-br from-purple-400/12 via-pink-400/8 to-transparent'
                 }`}
             />
             <motion.div 
@@ -60,7 +60,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[80px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-blue-500/35 via-indigo-500/40 to-transparent'
-                        : 'bg-gradient-to-br from-indigo-500/35 via-violet-500/30 to-transparent'
+                        : 'bg-gradient-to-br from-indigo-400/10 via-violet-400/8 to-transparent'
                 }`}
             />
             <motion.div 
@@ -71,7 +71,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[70px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-orange-500/30 via-yellow-500/20 to-transparent'
-                        : 'bg-gradient-to-br from-pink-500/30 via-violet-500/25 to-transparent'
+                        : 'bg-gradient-to-br from-pink-400/10 via-violet-400/8 to-transparent'
                 }`}
             />
             

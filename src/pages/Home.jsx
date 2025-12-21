@@ -34,7 +34,7 @@ export default function Home() {
         [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85, 1],
         theme === 'dark' 
             ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
-            : ['#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#ECECEE', '#ECECEE']
+            : ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FAFAFA', '#FAFAFA', '#F8F8F8']
     );
 
     useEffect(() => {
@@ -527,13 +527,13 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
                     theme === 'dark' 
                         ? 'opacity-55 from-transparent via-[#050505]/35 to-[#050505]'
-                        : 'opacity-40 from-transparent via-[#F5F5F7]/30 to-[#F5F5F7]'
+                        : 'opacity-15 from-transparent via-[#FAFAFA]/10 to-[#FFFFFF]'
                 }`} />
                 
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark' 
                         ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
-                        : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(245,245,247,0.3)_100%)]'
+                        : 'bg-[radial-gradient(circle_at_center,transparent_70%,rgba(255,255,255,0.1)_100%)]'
                 }`} />
             </div>
 
