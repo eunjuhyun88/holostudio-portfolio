@@ -233,10 +233,10 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
         transition={{ delay: delay, duration: 0.6 }}
         className="group relative"
     >
-        <div className={`relative aspect-square overflow-hidden mb-4 rounded-xl border transition-colors ${
+        <div className={`relative aspect-square overflow-hidden mb-4 rounded-xl border transition-all duration-500 ${
             theme === 'dark'
-                ? 'bg-neutral-900 border-white/10 group-hover:border-indigo-500/50'
-                : 'bg-neutral-50 border-neutral-200 group-hover:border-neutral-900'
+                ? 'bg-neutral-900 border-white/10 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_30px_rgba(99,102,241,0.3)]'
+                : 'bg-neutral-50 border-neutral-200 group-hover:border-orange-400 group-hover:shadow-[0_0_20px_rgba(251,146,60,0.2)]'
         }`}>
             {image ? (
                 <div className={`w-full h-full flex items-center justify-center relative overflow-hidden ${
@@ -245,13 +245,18 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
                     <img 
                         src={image} 
                         alt={name} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                         style={{
-                            filter: theme === 'dark' ? "grayscale(1) contrast(1.1)" : "none"
+                            filter: theme === 'dark' ? "grayscale(1) contrast(1.1)" : "grayscale(0.3)"
                         }} 
                     />
-                    {theme === 'dark' && (
-                        <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-colors duration-300 mix-blend-overlay" />
+                    {theme === 'dark' ? (
+                        <>
+                            <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/15 transition-all duration-500 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </>
+                    ) : (
+                        <div className="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-transparent group-hover:from-orange-500/20 transition-all duration-500" />
                     )}
                 </div>
             ) : (
@@ -260,13 +265,13 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
                 }`}>Image</div>
             )}
             
-            {/* Tech Corners - Only dark mode */}
+            {/* Tech Corners - Enhanced animation */}
             {theme === 'dark' && (
                 <>
-                    <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
-                    <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
-                    <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
-                    <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-500 transition-colors" />
+                    <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-400 group-hover:w-4 group-hover:h-4 transition-all duration-300" />
+                    <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-white/30 group-hover:border-indigo-400 group-hover:w-4 group-hover:h-4 transition-all duration-300" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-white/30 group-hover:border-indigo-400 group-hover:w-4 group-hover:h-4 transition-all duration-300" />
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/30 group-hover:border-indigo-400 group-hover:w-4 group-hover:h-4 transition-all duration-300" />
                 </>
             )}
         </div>
@@ -290,14 +295,16 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
 
             {motto && (
                 <div className="relative py-2">
-                     <p className={`font-black text-sm leading-snug ${
-                         theme === 'dark' ? 'text-indigo-300' : 'text-orange-600'
+                     <p className={`font-black text-sm leading-snug transition-all duration-300 ${
+                         theme === 'dark' ? 'text-indigo-300 group-hover:text-indigo-200' : 'text-orange-600 group-hover:text-orange-700'
                      }`}>{motto}</p>
                 </div>
             )}
             
-            <div className={`w-8 h-px transition-colors ${
-                theme === 'dark' ? 'bg-white/10 group-hover:bg-indigo-500/50' : 'bg-neutral-300'
+            <div className={`w-8 h-px transition-all duration-500 ${
+                theme === 'dark' 
+                    ? 'bg-white/10 group-hover:bg-indigo-500/70 group-hover:w-16 group-hover:shadow-[0_0_10px_rgba(99,102,241,0.5)]' 
+                    : 'bg-neutral-300 group-hover:bg-orange-400 group-hover:w-16'
             }`} />
             
             <p className={`leading-snug text-xs whitespace-pre-line font-medium ${
@@ -795,11 +802,23 @@ Scaled communities from zero to millions of users.`,
                         
                         <div className="space-y-24 w-full max-w-4xl mx-auto">
                             {c.intro?.text ? c.intro.text.map((t, i) => (
-                                <TypingBlock key={i} className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
-                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                                }`}>
-                                    {t}
-                                </TypingBlock>
+                                i === c.intro.text.length - 1 && theme === 'dark' ? (
+                                    <MouseGlowText
+                                        key={i}
+                                        as={motion.p}
+                                        glowColor="rgba(99, 102, 241, 0.6)"
+                                        secondaryGlowColor="rgba(168, 85, 247, 0.4)"
+                                        className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center text-white"
+                                    >
+                                        {t}
+                                    </MouseGlowText>
+                                ) : (
+                                    <TypingBlock key={i} className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                    }`}>
+                                        {t}
+                                    </TypingBlock>
+                                )
                             )) : (
                                 <>
                                     <TypingBlock className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
@@ -817,28 +836,57 @@ Scaled communities from zero to millions of users.`,
                         theme === 'dark' ? '' : 'bg-white'
                     }`}>
                         {c.chapters.map((chapter, i) => (
-                            <div key={i} className="flex flex-col items-center text-center w-full">
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="flex flex-col items-center text-center w-full relative group"
+                            >
+                                {/* Background effect on hover */}
+                                {theme === 'dark' && (
+                                    <div className="absolute inset-0 bg-gradient-radial from-indigo-500/0 via-indigo-500/0 to-transparent group-hover:from-indigo-500/5 group-hover:via-indigo-500/2 transition-all duration-700 pointer-events-none rounded-3xl blur-3xl" />
+                                )}
+                                
                                 <motion.div 
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
-                                    className={`font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black ${
+                                    whileHover={{ scale: 1.02, boxShadow: theme === 'dark' ? '0 0 30px rgba(99, 102, 241, 0.3)' : '0 0 20px rgba(251, 146, 60, 0.2)' }}
+                                    transition={{ duration: 0.3 }}
+                                    className={`font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black cursor-pointer ${
                                         theme === 'dark' 
-                                            ? 'text-indigo-400 border-indigo-500/50 bg-indigo-500/10'
-                                            : 'text-orange-600 border-orange-300 bg-orange-50'
+                                            ? 'text-indigo-400 border-indigo-500/50 bg-indigo-500/10 hover:bg-indigo-500/20 hover:border-indigo-400'
+                                            : 'text-orange-600 border-orange-300 bg-orange-50 hover:bg-orange-100 hover:border-orange-400'
                                     }`}
                                 >
                                     {chapter.year}
                                 </motion.div>
-                                <motion.h2 
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.8 }}
-                                    className={`text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 ${
-                                        theme === 'dark' ? 'text-white drop-shadow-lg' : 'text-neutral-900'
-                                    }`}
-                                >
-                                    {chapter.headline}
-                                </motion.h2>
+                                
+                                {theme === 'dark' ? (
+                                    <MouseGlowText
+                                        as={motion.h2}
+                                        glowColor="rgba(99, 102, 241, 0.7)"
+                                        secondaryGlowColor="rgba(168, 85, 247, 0.4)"
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.8 }}
+                                        className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 drop-shadow-lg"
+                                    >
+                                        {chapter.headline}
+                                    </MouseGlowText>
+                                ) : (
+                                    <motion.h2 
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        whileHover={{ scale: 1.02 }}
+                                        transition={{ duration: 0.8 }}
+                                        className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 text-neutral-900 cursor-default"
+                                    >
+                                        {chapter.headline}
+                                    </motion.h2>
+                                )}
+                                
                                 <div className="max-w-4xl mx-auto px-4">
                                     <TypingBlock className={`text-lg md:text-2xl lg:text-3xl w-full leading-relaxed text-center font-black tracking-wide ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
@@ -846,7 +894,7 @@ Scaled communities from zero to millions of users.`,
                                         {chapter.content}
                                     </TypingBlock>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
@@ -960,12 +1008,18 @@ Scaled communities from zero to millions of users.`,
                         className="relative z-10"
                     >
                         <Link to={createPageUrl('Contact')}>
-                            <Button className={`rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-all hover:scale-105 border-0 ${
+                            <Button className={`group rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-all hover:scale-105 border-0 relative overflow-hidden ${
                                 theme === 'dark'
-                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_30px_rgba(79,70,229,0.3)] hover:shadow-[0_0_40px_rgba(79,70,229,0.5)]'
-                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
+                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_30px_rgba(79,70,229,0.3)] hover:shadow-[0_0_50px_rgba(79,70,229,0.6)]'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-2xl'
                             }`}>
-                                Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
+                                {theme === 'dark' && (
+                                    <span className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                                )}
+                                <span className="relative flex items-center">
+                                    Connect With Us 
+                                    <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
+                                </span>
                             </Button>
                         </Link>
                     </motion.div>
