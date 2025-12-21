@@ -851,7 +851,7 @@ Scaled communities from zero to millions of users.`,
                         ))}
                     </div>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 3: HISTORY TIMELINE */}
             <ScrollytellingScene id="history" bgColor="bg-white">
@@ -885,7 +885,7 @@ Scaled communities from zero to millions of users.`,
                         ))}
                     </div>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 4: VISION */}
             <ScrollytellingScene id="vision" bgColor="bg-blue-50">
@@ -990,7 +990,7 @@ Scaled communities from zero to millions of users.`,
                         ))}
                     </div>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
             {/* SCENE 9: CTA */}
             <ScrollytellingScene id="cta" bgColor="bg-white">
