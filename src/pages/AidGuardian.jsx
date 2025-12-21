@@ -150,9 +150,9 @@ export default function AidGuardian() {
             customerStories: []
         },
         ko: {
-            tag: "Trust Layer: Safety | 콘텐츠 안전성의 기준",
+            tag: <span><span className="text-blue-400">Trust Layer: Safety</span> | <span className="text-cyan-400">콘텐츠 안전성의 기준</span></span>,
             primaryButtonText: "대시보드 실행",
-            oneLiner: "유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.",
+            oneLiner: <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
