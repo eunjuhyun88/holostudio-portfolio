@@ -610,14 +610,25 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className={`min-h-screen flex items-center justify-center border-y relative z-10 ${
+            <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
                     : 'bg-[#FFF5F0] border-neutral-200'
             }`}>
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-7xl mx-auto px-6 w-full">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className={`text-3xl md:text-5xl font-black text-center mb-16 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}
+                    >
+                        {language === 'en' ? 'Market Reality' : '시장 현실'}
+                    </motion.h2>
+                    
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar md:custom-scrollbar text-center md:text-left">
+                    <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-12 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-16 no-scrollbar md:custom-scrollbar text-center">
                         <div className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
                             <div className={`text-4xl md:text-3xl font-black mb-2 md:mb-1 ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -653,9 +664,9 @@ export default function Home() {
                     </div>
                     
                     {/* Partners / Backers */}
-                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-200'}`}>
-                        <p className={`text-center text-xs uppercase tracking-widest font-bold mb-6 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                    <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300'}`}>
+                        <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
                         }`}>SELECTED & BACKED BY</p>
                         <div className={`flex flex-wrap justify-center items-center gap-8 md:gap-12 transition-all duration-500 ${
                             theme === 'dark' ? 'opacity-70 grayscale hover:grayscale-0' : ''
@@ -710,12 +721,12 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center relative z-10 ${
                 theme === 'dark' ? '' : 'bg-[#F0FFF4]'
             }`}>
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div {...fadeIn} className="mb-16">
-                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                <div className="max-w-7xl mx-auto px-6 w-full">
+                    <motion.div {...fadeIn} className="mb-16 text-center max-w-5xl mx-auto">
+                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-600'
                         }`}>{t.problem.title}</h2>
-                        <h3 className={`text-2xl md:text-4xl font-black leading-tight max-w-3xl ${
+                        <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {t.problem.sub}
@@ -789,8 +800,8 @@ export default function Home() {
                     ? 'bg-black/30 border-white/5'
                     : 'bg-[#EFF6FF] border-neutral-200'
             }`}>
-                <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-20 relative">
+                <div className="max-w-[1400px] mx-auto w-full py-20">
+                    <div className="mb-16 relative text-center max-w-5xl mx-auto">
                         {/* Sci-Fi Decorative Elements - Only dark mode */}
                         {theme === 'dark' && (
                             <>
@@ -799,22 +810,19 @@ export default function Home() {
                             </>
                         )}
                         
-                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-600'
                         }`}>
-                            <span className={`w-2 h-2 rounded-full animate-pulse ${
-                                theme === 'dark' ? 'bg-indigo-500' : 'bg-neutral-900'
-                            }`} />
                             TECHNOLOGY & STRATEGY
                         </h2>
-                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-black mb-8 ${
+                        <h3 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-10 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
                         </h3>
                         
-                        <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed tracking-wide font-medium ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
+                        <p className={`text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
+                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                         }`}>
                             {tech.intro.main_pre}
                             <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
@@ -1179,14 +1187,14 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
                 theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-[#FAF5FF] border-neutral-200'
             }`}>
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest font-bold ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                <div className="max-w-5xl mx-auto px-6">
+                    <h2 className={`text-sm font-mono mb-8 uppercase tracking-widest font-bold ${
+                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
                     }`}>{t.thesis.label}</h2>
-                    <p className={`text-2xl md:text-4xl font-black leading-tight mb-12 ${
+                    <p className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-16 ${
                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                     }`}>
-                        "{t.thesis.main}"
+                        {t.thesis.main}
                     </p>
                     <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono font-bold ${
                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
@@ -1413,13 +1421,13 @@ export default function Home() {
             <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
                 theme === 'dark' ? 'border-white/5' : 'bg-[#FFFBEB] border-neutral-200'
             }`}>
-                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-                    <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
-                        <h2 className={`text-3xl md:text-4xl font-black mb-4 ${
+                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
+                    <motion.div {...fadeIn} className="mb-16 text-center max-w-4xl mx-auto">
+                        <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>{t.milestones.title}</h2>
-                        <p className={`max-w-2xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                        <p className={`text-lg md:text-xl font-medium ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>{t.milestones.sub}</p>
                     </motion.div>
 
@@ -1490,18 +1498,18 @@ export default function Home() {
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                     : 'bg-neutral-900 border-neutral-900'
             }`}>
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
-                    <div className="text-center md:text-left">
-                        <h2 className={`text-3xl md:text-5xl font-black tracking-tighter mb-4 ${
+                <div className="max-w-5xl mx-auto px-6 text-center">
+                    <div className="mb-12">
+                        <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-white'
                         }`}>{t.contact.title}</h2>
-                        <p className={`text-base md:text-lg font-medium ${
+                        <p className={`text-lg md:text-xl font-medium ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-300'
                         }`}>{t.contact.sub}</p>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
-                            <Button size="lg" className={`rounded-full px-10 h-14 text-lg font-bold border-0 ${
+                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
                                     : 'bg-white hover:bg-neutral-100 text-neutral-900'
@@ -1509,7 +1517,7 @@ export default function Home() {
                                 {t.contact.cta1}
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-lg font-bold ${
+                        <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
                                 : 'border-white text-white hover:bg-white/10 bg-transparent'
