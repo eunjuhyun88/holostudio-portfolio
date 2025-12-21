@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function ScrollMotionBackground({ theme = 'dark' }) {
-    if (theme === 'dark') return null;
-
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -21,6 +19,8 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
     
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
+
+    if (theme === 'dark') return null;
 
     return (
         <div ref={ref} className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
