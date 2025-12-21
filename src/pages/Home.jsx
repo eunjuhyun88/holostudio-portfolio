@@ -774,24 +774,24 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1]"
+                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 md:mb-10 leading-[1.1]"
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] text-neutral-900">
+                                <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 md:mb-10 leading-[1.1] text-neutral-900">
                                     {t.hero.title}
                                 </motion.h1>
                             )}
                             <motion.p 
-                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
+                                className={`text-2xl sm:text-3xl md:text-4xl max-w-4xl mx-auto leading-tight mb-6 ${
                                     theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900 font-bold'
                                 }`}
                             >
                                 {t.hero.sub}
                             </motion.p>
                             <motion.p 
-                                className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
+                                className={`text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed mb-12 md:mb-16 ${
                                     theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                 }`}
                             >
@@ -805,15 +805,76 @@ export default function Home() {
                                 }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                     {t.hero.cta1}
                                 </Button>
-                                <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
-                                    theme === 'dark'
-                                        ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                        : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm'
-                                }`}>
-                                    {t.hero.cta2}
-                                </Button>
+                                <Link to={createPageUrl('Contact')}>
+                                    <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
+                                        theme === 'dark'
+                                            ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
+                                            : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm'
+                                    }`}>
+                                        {t.hero.cta2}
+                                    </Button>
+                                </Link>
                             </div>
                         </motion.div>
+                    </div>
+                </section>
+
+                {/* What We Do Section */}
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                }`} ref={(el) => observeSection(el, 1)}>
+                    <div className="max-w-5xl mx-auto text-center">
+                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                        }`}>
+                            {t.identity.tag}
+                        </h2>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-12 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}
+                        >
+                            {t.identity.title}
+                        </motion.p>
+                        <div className={`space-y-4 mb-12 text-xl md:text-2xl ${
+                            theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                        }`}>
+                            {t.identity.problems.map((problem, idx) => (
+                                <motion.p 
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className="font-bold"
+                                >
+                                    {problem}
+                                </motion.p>
+                            ))}
+                        </div>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className={`text-2xl md:text-3xl font-black mb-8 ${
+                                theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
+                            }`}
+                        >
+                            {t.identity.solution}
+                        </motion.p>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}
+                        >
+                            {t.identity.approach}
+                        </motion.p>
                     </div>
                 </section>
 
