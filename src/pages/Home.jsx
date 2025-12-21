@@ -878,34 +878,34 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* By The Numbers Section */}
+                {/* Proof It Works Section */}
                 <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => observeSection(el, 1)}>
+                }`} ref={(el) => observeSection(el, 2)}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="text-center mb-16">
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
-                                {language === 'en' ? 'PROVEN PERFORMANCE' : '검증된 성과'}
+                                {t.proofWorks.tag}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8"
                                 >
-                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                                    {t.proofWorks.title}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
-                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent mb-8">
+                                    {t.proofWorks.title}
                                 </h3>
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 text-center">
-                            {Object.values(t.market).map((stat, idx) => (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 text-center">
+                            {Object.values(t.proofWorks.stats).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
@@ -914,28 +914,26 @@ export default function Home() {
                                     transition={{ delay: idx * 0.1 }}
                                     whileHover={{ scale: 1.05 }}
                                 >
-                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
+                                    <div className={`text-4xl md:text-5xl font-black mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
-                                    <div className={`text-xs uppercase tracking-wider font-bold ${
+                                    <div className={`text-sm leading-tight ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{stat.label}</div>
                                 </motion.div>
                             ))}
                         </div>
                         
-                        <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
-                            <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
-                            }`}>BACKED BY</p>
-                            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
-                            </div>
-                        </div>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className={`text-center text-xl font-bold ${
+                                theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
+                            }`}
+                        >
+                            {t.proofWorks.footer}
+                        </motion.p>
                     </div>
                 </section>
 
