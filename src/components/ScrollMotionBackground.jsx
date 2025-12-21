@@ -68,10 +68,10 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     y: y4,
                     opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0.6, 0.8, 0.6] : [0.4, 0.6, 0.4])
                 }}
-                className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[100px] ${
+                className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[90px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-orange-500/30 via-yellow-500/20 to-transparent'
-                        : 'bg-gradient-to-br from-pink-400/35 via-violet-400/30 to-transparent'
+                        : 'bg-white/60'
                 }`}
             />
             
