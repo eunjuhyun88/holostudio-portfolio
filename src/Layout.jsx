@@ -80,7 +80,7 @@ function LayoutContent({ children }) {
 
     return (
         <div className={`min-h-screen font-sans transition-colors duration-300 ${
-            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-neutral-50 text-neutral-900'
+            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 text-neutral-900'
         }`}>
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');

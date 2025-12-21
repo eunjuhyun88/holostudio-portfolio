@@ -18,15 +18,11 @@ export default function CosmicBackground({ theme = 'dark' }) {
     const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
     return (
-        <div ref={ref} className={`fixed inset-0 z-0 pointer-events-none overflow-hidden ${
-            theme === 'dark' ? 'bg-[#050505]' : 'bg-transparent'
-        }`}>
+        <div ref={ref} className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
             {/* 1. Clean Base */}
-            <div className={`absolute inset-0 ${
-                theme === 'dark' 
-                    ? 'bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]'
-                    : 'bg-transparent'
-            }`} />
+            {theme === 'dark' && (
+                <div className="absolute inset-0 bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]" />
+            )}
 
             {/* 2. Minimal Noise Texture */}
             {theme === 'dark' ? (
