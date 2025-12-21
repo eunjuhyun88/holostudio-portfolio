@@ -519,6 +519,8 @@ export default function Home() {
         bg: milestoneConfig[idx]?.bg || "bg-white/5"
     }));
 
+    const [currentSection, setCurrentSection] = useState(0);
+
     return (
         <motion.div 
             ref={containerRef}
@@ -541,26 +543,103 @@ export default function Home() {
                 }}
             />
 
-            {/* Fixed Global Background Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <CosmicBackground key={`cosmic-${theme}`} theme={theme} />
-                <Background3D key={`bg3d-${theme}`} theme={theme} />
-                <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
-                
-                <motion.div 
-                    className="absolute inset-0 z-10"
-                    style={{
-                        background: theme === 'dark' 
-                            ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(139, 92, 246, 0.06), transparent 60%)`
-                    }}
-                />
+            {/* Sticky Background Container */}
+            <div className="sticky top-0 h-screen w-full overflow-hidden pointer-events-none">
+                {/* Fixed Global Background Layer */}
+                <div className="absolute inset-0 z-0">
+                    <CosmicBackground key={`cosmic-${theme}`} theme={theme} />
+                    <Background3D key={`bg3d-${theme}`} theme={theme} />
+                    <ScrollMotionBackground key={`scroll-${theme}`} theme={theme} />
+                    
+                    <motion.div 
+                        className="absolute inset-0 z-10"
+                        style={{
+                            background: theme === 'dark' 
+                                ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
+                                : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(139, 92, 246, 0.06), transparent 60%)`
+                        }}
+                    />
+                </div>
+
+                {/* Dynamic Background Effects per Section */}
+                <AnimatePresence mode="wait">
+                    {currentSection === 0 && (
+                        <motion.div
+                            key="hero-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <>
+                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
+                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+                                </>
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 2 && (
+                        <motion.div
+                            key="why-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px]" />
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 3 && (
+                        <motion.div
+                            key="challenge-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-[120px]" />
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 5 && (
+                        <motion.div
+                            key="milestones-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" />
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
 
-            {/* Scrollable Content - each section is min-h-screen */}
-            <div className="relative z-10">
+            {/* Scrollable Content Overlay */}
+            <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6">
+                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(0);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-5xl mx-auto text-center">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -625,7 +704,18 @@ export default function Home() {
                 {/* By The Numbers Section */}
                 <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(1);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="text-center mb-16">
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -686,7 +776,18 @@ export default function Home() {
                 {/* Why Now Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(2);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
@@ -733,7 +834,18 @@ export default function Home() {
                 {/* The Challenge Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(3);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -812,7 +924,18 @@ export default function Home() {
                 {/* Company Thesis Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(4);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-6xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
@@ -1036,7 +1159,18 @@ export default function Home() {
                 {/* Milestones Section */}
                 <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => {
+                    if (el) {
+                        const observer = new IntersectionObserver(
+                            ([entry]) => {
+                                if (entry.isIntersecting) setCurrentSection(5);
+                            },
+                            { threshold: 0.5 }
+                        );
+                        observer.observe(el);
+                        return () => observer.disconnect();
+                    }
+                }}>
                     <div className="max-w-7xl mx-auto w-full py-20">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
