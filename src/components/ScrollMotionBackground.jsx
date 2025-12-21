@@ -80,20 +80,20 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [0, -600]),
                     rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.25, 0.25, 0] : [0, 0.9, 0.9, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.25, 0.25, 0] : [0, 1, 1, 0])
                 }}
-                className={`absolute top-[40%] left-[30%] w-32 h-32 border-[5px] rounded-2xl ${
-                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-500/90 shadow-lg shadow-violet-500/20'
+                className={`absolute top-[40%] left-[30%] w-32 h-32 border-[6px] rounded-2xl ${
+                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-600 shadow-xl shadow-violet-600/30'
                 }`}
             />
             <motion.div
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [100, -400]),
                     rotate: useTransform(scrollYProgress, [0, 1], [45, -315]),
-                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.2, 0.2, 0] : [0, 0.85, 0.85, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.2, 0.2, 0] : [0, 1, 1, 0])
                 }}
-                className={`absolute top-[70%] right-[25%] w-24 h-24 border-[5px] rounded-xl ${
-                    theme === 'dark' ? 'border-purple-400/50' : 'border-purple-500/85 shadow-lg shadow-purple-500/20'
+                className={`absolute top-[70%] right-[25%] w-24 h-24 border-[6px] rounded-xl ${
+                    theme === 'dark' ? 'border-purple-400/50' : 'border-purple-600 shadow-xl shadow-purple-600/30'
                 }`}
             />
             
