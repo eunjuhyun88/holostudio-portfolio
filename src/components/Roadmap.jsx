@@ -129,31 +129,42 @@ const RoadmapItem = ({ item, index, isLast }) => {
 
 export default function Roadmap({ items, title, viewAllText }) {
     return (
-        <section id="roadmap" className="py-32 bg-[#050505] relative overflow-hidden">
-            {/* Background Elements */}
+        <section id="roadmap" className="py-32 bg-[#050505] relative overflow-hidden border-t border-white/5">
+            {/* Enhanced Background Elements */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-900/5 rounded-full blur-[120px] pointer-events-none" />
             
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
-                <div className="text-center mb-20">
+            <div className="max-w-6xl mx-auto px-6 relative z-10">
+                <div className="text-center mb-24">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-indigo-400 mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold tracking-widest uppercase text-indigo-400 mb-8"
                     >
-                        <GitCommit className="w-3 h-3" />
-                        ROADMAP & UPDATES
+                        <GitCommit className="w-4 h-4" />
+                        ROADMAP & MILESTONES
                     </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black tracking-tight mb-4"
+                        className="text-4xl md:text-6xl font-black tracking-tight mb-6"
                     >
                         {title}
                     </motion.h2>
-                    <div className="w-px h-16 bg-gradient-to-b from-indigo-500 to-transparent mx-auto mt-8" />
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg text-neutral-400 max-w-2xl mx-auto"
+                    >
+                        Our journey from vision to execution. Building the trust infrastructure for autonomous AI, one milestone at a time.
+                    </motion.p>
+                    <div className="w-px h-20 bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent mx-auto mt-12" />
                 </div>
 
                 <div className="relative">
