@@ -98,6 +98,7 @@ export default function Company() {
     const { language } = useLanguage();
     const { theme } = useTheme();
     const [activeStage, setActiveStage] = useState(0);
+    const { scrollYProgress } = useScroll();
 
     const content = {
         en: {
@@ -414,12 +415,70 @@ Scaled communities from zero to millions of users.`,
                 description="Infrastructure Gap — Engineering the Missing Link in the AI Economy"
             />
 
-            {/* Fixed Background Layer */}
+            {/* Parallax Background Layers */}
             {theme === 'dark' && (
-                <div className="fixed inset-0 z-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent" />
+                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                    {/* Parallax Layer 1 - Slowest */}
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent" 
+                    />
+                    
+                    {/* Parallax Layer 2 - Medium */}
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/15 via-transparent to-transparent" 
+                    />
+                    
+                    {/* Parallax Layer 3 - Fast */}
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
+                        className="absolute inset-0"
+                    >
+                        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[100px]" />
+                    </motion.div>
+                    
+                    {/* Floating Particles */}
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -800]) }}
+                        className="absolute inset-0"
+                    >
+                        {[...Array(20)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                animate={{
+                                    y: [0, -30, 0],
+                                    opacity: [0.3, 0.6, 0.3]
+                                }}
+                                transition={{
+                                    duration: 3 + i * 0.2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                className="absolute w-1 h-1 bg-indigo-400/20 rounded-full"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`
+                                }}
+                            />
+                        ))}
+                    </motion.div>
+                    
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]" />
+                </div>
+            )}
+            
+            {theme === 'light' && (
+                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -300]) }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-100/30 via-transparent to-transparent" 
+                    />
+                    <motion.div 
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -500]) }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-100/20 via-transparent to-transparent" 
+                    />
                 </div>
             )}
 
@@ -448,11 +507,20 @@ Scaled communities from zero to millions of users.`,
                     </AnimatePresence>
                 </div>
 
-                {/* Scrolling Content Cards - Stacked Layout */}
+                {/* Scrolling Content Cards - Stacked Layout with Parallax */}
                 <div className="relative">
                     {storySections.map((section, idx) => {
                         const ref = useRef(null);
                         const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+                        
+                        const { scrollYProgress } = useScroll({
+                            target: ref,
+                            offset: ["start end", "end start"]
+                        });
+
+                        const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+                        const opacity = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0, 1, 1, 1, 0]);
+                        const scale = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0.8, 1, 1, 1, 0.95]);
 
                         useEffect(() => {
                             if (isInView) setActiveStage(idx);
@@ -467,110 +535,182 @@ Scaled communities from zero to millions of users.`,
                                 }`}
                             >
                                 <motion.div
-                                    initial={{ opacity: 0, y: 60 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: false, margin: "-30%" }}
-                                    transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                    style={{ y, opacity, scale }}
                                     className={`max-w-4xl w-full ${
                                         theme === 'dark' 
-                                            ? 'backdrop-blur-sm bg-black/20 p-8 md:p-12 rounded-3xl border border-white/5' 
-                                            : 'p-8 md:p-12'
+                                            ? 'backdrop-blur-md bg-black/30 p-8 md:p-16 rounded-3xl border border-white/10 shadow-2xl' 
+                                            : 'p-8 md:p-16'
                                     }`}
                                 >
                                     {section.type === 'intro' && (
-                                        <div className="space-y-6">
-                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
-                                                theme === 'dark' 
-                                                    ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                                    : 'text-orange-600 border-orange-300 bg-orange-100'
-                                            }`}>
+                                        <div className="space-y-8">
+                                            <motion.div 
+                                                initial={{ opacity: 0, x: -20 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.2, duration: 0.8 }}
+                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
+                                                    theme === 'dark' 
+                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                                                        : 'text-orange-600 border-orange-300 bg-orange-100'
+                                                }`}
+                                            >
                                                 {section.data.episode}
-                                            </div>
-                                            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
+                                            </motion.div>
+                                            <motion.h1 
+                                                initial={{ opacity: 0, y: 30 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.3, duration: 1 }}
+                                                className={`text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
+                                            >
                                                 {section.data.title}
-                                            </h1>
-                                            <p className={`text-xl md:text-2xl font-light leading-relaxed ${
-                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                                            }`}>
+                                            </motion.h1>
+                                            <motion.p 
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.5, duration: 0.8 }}
+                                                className={`text-xl md:text-3xl font-light leading-relaxed ${
+                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                                                }`}
+                                            >
                                                 {section.data.subtitle}
-                                            </p>
+                                            </motion.p>
                                         </div>
                                     )}
 
                                     {section.type === 'observation' && (
-                                        <div className={`border-l-4 pl-6 ${
-                                            theme === 'dark' ? 'border-indigo-500/50' : 'border-blue-400'
-                                        }`}>
-                                            <p className={`text-2xl md:text-4xl font-bold leading-snug ${section.palette.text}`}>
+                                        <motion.div 
+                                            initial={{ opacity: 0, x: -40 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.8, ease: "easeOut" }}
+                                            className={`border-l-4 pl-8 ${
+                                                theme === 'dark' ? 'border-indigo-500/50' : 'border-blue-400'
+                                            }`}
+                                        >
+                                            <motion.p 
+                                                initial={{ opacity: 0 }}
+                                                whileInView={{ opacity: 1 }}
+                                                transition={{ delay: 0.3, duration: 0.8 }}
+                                                className={`text-2xl md:text-5xl font-bold leading-tight ${section.palette.text}`}
+                                            >
                                                 {section.data.text}
-                                            </p>
-                                        </div>
+                                            </motion.p>
+                                        </motion.div>
                                     )}
 
                                     {section.type === 'chapter' && (
-                                        <div className="space-y-6">
-                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
-                                                theme === 'dark' 
-                                                    ? `${section.palette.accent} border-current/30 bg-current/10` 
-                                                    : `${section.palette.accent} border-current/30 bg-current/10`
-                                            }`}>
+                                        <div className="space-y-8">
+                                            <motion.div 
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.6 }}
+                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
+                                                    theme === 'dark' 
+                                                        ? `${section.palette.accent} border-current/30 bg-current/10` 
+                                                        : `${section.palette.accent} border-current/30 bg-current/10`
+                                                }`}
+                                            >
                                                 {section.data.year}
-                                            </div>
-                                            <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
+                                            </motion.div>
+                                            <motion.h2 
+                                                initial={{ opacity: 0, y: 40 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.2, duration: 0.9 }}
+                                                className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
+                                            >
                                                 {section.data.headline}
-                                            </h2>
-                                            <p className={`text-lg md:text-2xl font-light leading-relaxed ${
-                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                            }`}>
+                                            </motion.h2>
+                                            <motion.p 
+                                                initial={{ opacity: 0, y: 30 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.4, duration: 0.8 }}
+                                                className={`text-xl md:text-3xl font-light leading-relaxed ${
+                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                                }`}
+                                            >
                                                 {section.data.content}
-                                            </p>
+                                            </motion.p>
                                         </div>
                                     )}
 
                                     {section.type === 'thesis' && (
-                                        <div className="space-y-8">
-                                            <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
+                                        <div className="space-y-10">
+                                            <motion.h2 
+                                                initial={{ opacity: 0, y: 50 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 1, ease: "easeOut" }}
+                                                className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
+                                            >
                                                 {section.data.headline}
-                                            </h2>
-                                            <div className={`border-l-4 pl-6 ${
-                                                theme === 'dark' ? 'border-current/50' : 'border-current/30'
-                                            }`}>
-                                                <p className={`text-xl md:text-2xl font-light leading-relaxed ${section.palette.accent}`}>
+                                            </motion.h2>
+                                            <motion.div 
+                                                initial={{ opacity: 0, x: -50 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.3, duration: 0.9 }}
+                                                className={`border-l-4 pl-8 ${
+                                                    theme === 'dark' ? 'border-current/50' : 'border-current/30'
+                                                }`}
+                                            >
+                                                <p className={`text-2xl md:text-4xl font-light leading-relaxed ${section.palette.accent}`}>
                                                     {section.data.content}
                                                 </p>
-                                            </div>
+                                            </motion.div>
                                         </div>
                                     )}
 
                                     {section.type === 'credibility' && (
-                                        <div className="text-center space-y-12">
-                                            <p className={`text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed ${
-                                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-300'
-                                            }`}>
+                                        <div className="text-center space-y-16">
+                                            <motion.p 
+                                                initial={{ opacity: 0, y: 30 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 1 }}
+                                                className={`text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed ${
+                                                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-300'
+                                                }`}
+                                            >
                                                 {language === 'en' 
                                                     ? "The scarce resource is no longer creativity."
                                                     : "더 이상 희소한 자원은 창의성이 아닙니다."}
-                                            </p>
-                                            <h2 className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tight leading-[0.85] ${
-                                                theme === 'dark' ? 'text-white' : 'text-white'
-                                            }`}>
+                                            </motion.p>
+                                            <motion.h2 
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: 0.3, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tight leading-[0.8] ${
+                                                    theme === 'dark' ? 'text-white' : 'text-white'
+                                                }`}
+                                                style={{ 
+                                                    textShadow: theme === 'dark' 
+                                                        ? '0 0 80px rgba(99, 102, 241, 0.3)' 
+                                                        : '0 0 60px rgba(0, 0, 0, 0.2)'
+                                                }}
+                                            >
                                                 {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
-                                            </h2>
+                                            </motion.h2>
                                         </div>
                                     )}
 
                                     {section.type === 'fit' && (
-                                        <div className="space-y-6">
-                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
-                                                theme === 'dark' 
-                                                    ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                                    : 'text-orange-600 border-orange-300 bg-orange-100'
-                                            }`}>
+                                        <div className="space-y-8">
+                                            <motion.div 
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.7 }}
+                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
+                                                    theme === 'dark' 
+                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                                                        : 'text-orange-600 border-orange-300 bg-orange-100'
+                                                }`}
+                                            >
                                                 {section.data.headline}
-                                            </div>
-                                            <p className={`text-2xl md:text-3xl lg:text-5xl font-bold leading-tight ${section.palette.text}`}>
+                                            </motion.div>
+                                            <motion.p 
+                                                initial={{ opacity: 0, y: 40 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.2, duration: 0.9 }}
+                                                className={`text-3xl md:text-4xl lg:text-6xl font-bold leading-tight ${section.palette.text}`}
+                                            >
                                                 {section.data.content}
-                                            </p>
+                                            </motion.p>
                                         </div>
                                     )}
                                 </motion.div>
