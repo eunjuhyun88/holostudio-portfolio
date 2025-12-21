@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { useTheme } from '@/components/ThemeContext';
@@ -7,8 +7,10 @@ import { ArrowRight, Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import CompanyBackground from '@/components/CompanyBackground';
+import MouseGlowText from '@/components/MouseGlowText';
 
-// --- FULLSCREEN SCENE COMPONENT ---
+// --- LIGHT MODE SCENE COMPONENT ---
 const Scene = ({ children, id, bgColor, index }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "-20% 0px" });
@@ -25,9 +27,6 @@ const Scene = ({ children, id, bgColor, index }) => {
             ref={ref}
             id={id}
             className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 transition-colors duration-1000 ${bgColor}`}
-            style={{
-                scrollSnapAlign: 'start',
-            }}
         >
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
             <motion.div
@@ -41,6 +40,221 @@ const Scene = ({ children, id, bgColor, index }) => {
         </section>
     );
 };
+
+// --- DARK MODE TYPING COMPONENTS ---
+const TypingWord = ({ word, i, total, progress }) => {
+    const start = i / total;
+    const end = start + (1 / total);
+    const opacity = useTransform(progress, [start, end], [0, 1]);
+    const y = useTransform(progress, [start, end], [10, 0]);
+    const blur = useTransform(progress, [start, end], [4, 0]);
+
+    return (
+        <motion.span 
+            style={{ 
+                opacity, 
+                y,
+                filter: useTransform(blur, b => `blur(${b}px)`)
+            }}
+            className="inline-block mr-[0.25em]"
+        >
+            {word}
+        </motion.span>
+    );
+};
+
+const TypingBlock = ({ children, className = "" }) => {
+    const element = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: element,
+        offset: ['start 0.9', 'end 0.5']
+    });
+    
+    const scale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+    
+    const words = String(children).split(" ");
+    
+    return (
+        <motion.p 
+            ref={element}
+            style={{ scale, y }}
+            className={`${className} inline-block w-full`} 
+        >
+            {words.map((word, i) => (
+                <TypingWord 
+                    key={i} 
+                    word={word} 
+                    i={i} 
+                    total={words.length} 
+                    progress={scrollYProgress} 
+                />
+            ))}
+        </motion.p>
+    );
+};
+
+const ThesisSection = ({ items }) => {
+    return (
+        <div className="relative">
+            {items.map((item, index) => (
+                <StickyThesisItem key={index} item={item} index={index} total={items.length} />
+            ))}
+        </div>
+    );
+};
+
+const StickyThesisItem = ({ item, index, total }) => {
+    const { theme } = useTheme();
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
+
+    const palettes = [
+        { bg: "bg-[#050505]", text: "text-indigo-400", accent: "bg-indigo-900" }, 
+        { bg: "bg-[#050505]", text: "text-emerald-400", accent: "bg-emerald-900" }, 
+        { bg: "bg-[#050505]", text: "text-orange-400", accent: "bg-orange-900" }, 
+        { bg: "bg-[#050505]", text: "text-lime-400", accent: "bg-lime-900" }, 
+    ];
+
+    const currentPalette = palettes[index % palettes.length];
+    
+    return (
+        <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
+            <div className={`absolute inset-0 z-0 ${currentPalette.bg}`} />
+            <>
+                <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] rounded-full blur-[150px] opacity-20 ${currentPalette.accent} z-0 pointer-events-none`} />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
+            </>
+
+            <motion.div 
+                style={{ y, opacity, scale }}
+                className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12"
+            >
+                 <div className="max-w-6xl">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <div className={`text-[8rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-10 -left-4 md:-top-20 md:-left-10 select-none text-transparent stroke-white`} style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>
+                            {index + 1}
+                        </div>
+
+                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-10 tracking-tighter leading-[0.9] relative uppercase text-white`}>
+                            {item.headline}
+                        </h2>
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ml-auto ${currentPalette.text}`}
+                    >
+                        {item.content}
+                    </motion.div>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const TeamIdentity = ({ identity }) => {
+    const { theme } = useTheme();
+    return (
+    <div className={`min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24`}>
+        <div className="mb-8 md:mb-16">
+            <div className={`w-8 h-8 mb-8 bg-[#4F6F52]`} />
+            <h2 className={`text-sm font-bold tracking-widest uppercase mb-2 text-neutral-400`}>{identity?.headline || "WHO WE ARE"}</h2>
+        </div>
+
+        <div className={`text-[6vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter select-none flex flex-col text-white`}>
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+                <span className="text-indigo-500">Engineers</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="pl-[1em]"
+            >
+                <span className="text-emerald-500">Researchers</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="pl-[0.5em]"
+            >
+                <span className="text-orange-500">Builders</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="pl-[2em]"
+            >
+                <span className="text-lime-500">Veterans</span>
+            </motion.div>
+        </div>
+
+        <div className={`mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 pl-8 border-white/20`}>
+            <p className={`text-lg md:text-2xl leading-relaxed font-black text-neutral-300`}>
+                {identity?.content || "We are builders."}
+            </p>
+        </div>
+    </div>
+)};
+
+const ClosingStatement = () => {
+    const { language } = useLanguage();
+    const { theme } = useTheme();
+    return (
+        <div className={`min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32`}>
+             <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+                className="text-center px-6 max-w-6xl mx-auto z-10"
+             >
+                <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight tracking-tight text-neutral-300`}>
+                    {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
+                </h2>
+                <div className="overflow-hidden">
+                    <MouseGlowText 
+                        as={motion.p}
+                        glowColor="rgba(99, 102, 241, 0.8)"
+                        secondaryGlowColor="rgba(168, 85, 247, 0.5)"
+                        initial={{ y: "100%" }}
+                        whileInView={{ y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                        className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
+                    >
+                        {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
+                    </MouseGlowText>
+                </div>
+             </motion.div>
+        </div>
+    )
+}
 
 // Founder Card Component
 const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
@@ -80,7 +294,6 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
                 }`}>Image</div>
             )}
             
-            {/* Tech Corners - Only dark mode */}
             {theme === 'dark' && (
                 <>
                     <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
@@ -129,13 +342,41 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
     </motion.div>
 )};
 
-
-
-
-
 export default function Company() {
     const { language } = useLanguage();
     const { theme } = useTheme();
+    const [activeSection, setActiveSection] = React.useState('intro');
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['intro', 'history', 'vision', 'identity', 'team'];
+            for (const section of sections) {
+                const el = document.getElementById(section);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top >= -window.innerHeight / 2 && rect.top < window.innerHeight / 2) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToId = (id) => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const navItems = [
+        { id: 'intro', label: 'Intro' },
+        { id: 'history', label: 'History' },
+        { id: 'vision', label: 'Vision' },
+        { id: 'identity', label: 'Identity' },
+        { id: 'team', label: 'Team' },
+    ];
 
     const content = {
         en: {
@@ -389,21 +630,8 @@ Scaled communities from zero to millions of users.`,
 
     const c = content[language] || content.en;
 
-    // Define Scene Colors per theme
-    const sceneColors = theme === 'dark' ? {
-        foundation: 'bg-[#0A0A14]',
-        observation: 'bg-[#0D1117]', 
-        phase1: 'bg-[#1A1625]',
-        phase2: 'bg-[#0F1419]',
-        phase3: 'bg-[#18141C]',
-        phase4: 'bg-[#0A0A0A]',
-        engineered: 'bg-[#050510]',
-        unified: 'bg-[#0A0A14]',
-        credibility: 'bg-black',
-        fit: 'bg-[#0D1117]',
-        team: 'bg-[#0A0A0A]',
-        cta: 'bg-[#050505]'
-    } : {
+    // Light mode scene colors
+    const sceneColors = {
         foundation: 'bg-neutral-50',
         observation: 'bg-blue-50',
         phase1: 'bg-orange-50',
@@ -418,10 +646,168 @@ Scaled communities from zero to millions of users.`,
         cta: 'bg-white'
     };
 
+    // DARK MODE RENDER
+    if (theme === 'dark') {
+        return (
+            <div className="min-h-screen font-sans bg-[#050505] text-white selection:bg-indigo-500/30">
+                <SEO title="Company" description={c.intro?.title} />
+                <CompanyBackground theme={theme} />
+
+                {/* Sticky Navigation (Desktop) */}
+                <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
+                    {navItems.map((item) => (
+                        <button
+                            key={item.id}
+                            onClick={() => scrollToId(item.id)}
+                            className="group flex items-center justify-end gap-4"
+                        >
+                            <span className={`text-xs font-bold tracking-widest uppercase transition-all duration-300 ${activeSection === item.id ? 'text-white opacity-100' : 'text-neutral-500 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0'}`}>
+                                {item.label}
+                            </span>
+                            <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-indigo-500 scale-150' : 'bg-neutral-600 group-hover:bg-white'}`} />
+                        </button>
+                    ))}
+                </div>
+
+                {/* Scrolling Content Layer */}
+                <main className="relative z-10">
+                    <div id="intro" className="relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
+                        <div className="text-center mb-32 md:mb-64 w-full px-2">
+                            <motion.h2 
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1 }}
+                                className="font-black tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase text-indigo-400 glow-text"
+                            >
+                                {c.intro?.episode || "Episode I"}
+                            </motion.h2>
+                            <MouseGlowText 
+                                as={motion.h1}
+                                glowColor="rgba(99, 102, 241, 0.8)"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1 }}
+                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                            >
+                                {c.intro?.title || "The Trust Layer"}
+                            </MouseGlowText>
+
+                            {c.intro?.subtitle && (
+                                <motion.h3 
+                                    initial={{ opacity: 0 }} 
+                                    whileInView={{ opacity: 1 }}
+                                    className="text-sm md:text-2xl font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4 font-bold text-neutral-400"
+                                >
+                                    {c.intro.subtitle}
+                                </motion.h3>
+                            )}
+                            
+                            <div className="space-y-24 w-full max-w-4xl mx-auto">
+                                {c.intro?.text && c.intro.text.map((t, i) => (
+                                    <TypingBlock key={i} className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center text-neutral-200">
+                                        {t}
+                                    </TypingBlock>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Chapters */}
+                        <div id="history" className="space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32">
+                            {c.chapters.map((chapter, i) => (
+                                <div key={i} className="flex flex-col items-center text-center w-full">
+                                    <motion.div 
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        className="font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black text-indigo-400 border-indigo-500/50 bg-indigo-500/10"
+                                    >
+                                        {chapter.year}
+                                    </motion.div>
+                                    <motion.h2 
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.8 }}
+                                        className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 text-white drop-shadow-lg"
+                                    >
+                                        {chapter.headline}
+                                    </motion.h2>
+                                    <div className="max-w-4xl mx-auto px-4">
+                                        <TypingBlock className="text-lg md:text-2xl lg:text-3xl w-full leading-relaxed text-center font-black tracking-wide text-neutral-300">
+                                            {chapter.content}
+                                        </TypingBlock>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Thesis / Vision Section */}
+                    <div id="vision" className="w-full">
+                         <ThesisSection items={c.thesis} />
+                    </div>
+
+                    {/* Closing Statement */}
+                    <ClosingStatement />
+
+                    {/* Team Identity Section */}
+                    <div id="identity">
+                        <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
+                    </div>
+
+                    {/* Founder Spotlight Section */}
+                    <div id="team" className="border-y py-32 md:py-48 overflow-hidden bg-[#0A0A0A] border-neutral-900">
+                        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+                                <div>
+                                    <h2 className="text-sm font-bold tracking-widest uppercase mb-4 text-indigo-500">Leadership</h2>
+                                    <h3 className="text-3xl md:text-5xl font-black max-w-2xl leading-tight text-white">
+                                        {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
+                                    </h3>
+                                </div>
+                                <p className="max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base font-medium text-neutral-400">
+                                    {language === 'en' 
+                                        ? "A team combining deep AI research, AAA gaming production, and Web3 economics."
+                                        : "딥 AI 리서치, AAA 게임 프로덕션, 그리고 Web3 경제 설계를 결합한 팀입니다."}
+                                </p>
+                            </div>
+
+                            <div className="flex md:grid md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                                {c.founders.map((founder, i) => (
+                                    <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                                        <FounderCard {...founder} delay={i * 0.1} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Final CTA */}
+                    <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
+                        <div className="max-w-4xl mx-auto mb-16">
+                             <h3 className="text-sm font-bold tracking-widest uppercase mb-4 text-indigo-500">HOLO STUDIO</h3>
+                             <p className="text-2xl md:text-3xl font-black leading-relaxed text-neutral-200">
+                                {c.footer?.main || (language === 'en' 
+                                    ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading." 
+                                    : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.")}
+                             </p>
+                        </div>
+
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight text-white">
+                            {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
+                        </h2>
+                        <Link to={createPageUrl('Contact')}>
+                            <Button className="rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105 bg-white text-black hover:bg-neutral-200">
+                                Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
+                            </Button>
+                        </Link>
+                    </div>
+                </main>
+            </div>
+        );
+    }
+
+    // LIGHT MODE RENDER (Cinematic Scrollytelling)
     return (
-        <div className={`min-h-screen font-sans overflow-x-hidden ${
-            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-        }`}>
+        <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900">
             <SEO 
                 title="Company" 
                 description="Infrastructure Gap — Engineering the Missing Link in the AI Economy"
@@ -434,22 +820,16 @@ Scaled communities from zero to millions of users.`,
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1.5 }}
-                        className={`text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-12 ${
-                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                        }`}
+                        className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-12 text-orange-600"
                     >
                         THE FOUNDATION
                     </motion.div>
                     
-                    <h1 className={`text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}>
+                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-neutral-900">
                         {c.intro.title}
                     </h1>
 
-                    <p className={`text-lg md:text-2xl font-light max-w-2xl tracking-wide leading-relaxed ${
-                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
-                    }`}>
+                    <p className="text-lg md:text-2xl font-light max-w-2xl tracking-wide leading-relaxed text-neutral-700">
                         {c.intro.subtitle}
                     </p>
                 </div>
@@ -459,9 +839,7 @@ Scaled communities from zero to millions of users.`,
             <Scene id="observation" bgColor={sceneColors.observation} index={1}>
                 <div className="max-w-4xl space-y-12">
                     {c.intro.text.map((text, i) => (
-                        <p key={i} className={`text-2xl md:text-4xl font-black leading-tight ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                        }`}>
+                        <p key={i} className="text-2xl md:text-4xl font-black leading-tight text-neutral-800">
                             {text}
                         </p>
                     ))}
@@ -477,28 +855,22 @@ Scaled communities from zero to millions of users.`,
                     index={idx + 2}
                 >
                     <div className="max-w-6xl">
-                        <div className={`text-xs font-mono tracking-[0.3em] uppercase mb-6 ${
-                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                        }`}>
+                        <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">
                             {chapter.year}
                         </div>
                         
-                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-12 uppercase ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
+                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-12 uppercase text-neutral-900">
                             {chapter.headline}
                         </h2>
 
-                        <p className={`text-xl md:text-3xl font-black leading-snug max-w-4xl ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                        }`}>
+                        <p className="text-xl md:text-3xl font-black leading-snug max-w-4xl text-neutral-700">
                             {chapter.content}
                         </p>
                     </div>
                 </Scene>
             ))}
 
-            {/* SCENE 7 & 8: THESIS (ENGINEERED + UNIFIED) */}
+            {/* SCENE 7 & 8: THESIS */}
             {c.thesis.slice(0, 2).map((item, idx) => (
                 <Scene 
                     key={idx}
@@ -507,54 +879,40 @@ Scaled communities from zero to millions of users.`,
                     index={idx + 6}
                 >
                     <div className="max-w-6xl">
-                        <h2 className={`text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-16 uppercase ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
+                        <h2 className="text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-16 uppercase text-neutral-900">
                             {item.headline}
                         </h2>
 
-                        <p className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ${
-                            theme === 'dark' 
-                                ? (idx === 0 ? 'text-indigo-300' : 'text-emerald-300')
-                                : (idx === 0 ? 'text-orange-700' : 'text-blue-700')
-                        }`}>
+                        <p className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ${idx === 0 ? 'text-orange-700' : 'text-blue-700'}`}>
                             {item.content}
                         </p>
                     </div>
                 </Scene>
             ))}
 
-            {/* SCENE 9: CREDIBILITY (Most Important) */}
+            {/* SCENE 9: CREDIBILITY */}
             <Scene id="credibility" bgColor={sceneColors.credibility} index={8}>
                 <div className="text-center max-w-6xl mx-auto">
-                    <p className={`text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight ${
-                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-100'
-                    }`}>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight text-neutral-100">
                         {language === 'en' 
                             ? "The scarce resource is no longer creativity."
                             : "더 이상 희소한 자원은 창의성이 아닙니다."}
                     </p>
 
-                    <h2 className={`text-5xl md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-[0.85] uppercase ${
-                        theme === 'dark' ? 'text-white' : 'text-white'
-                    }`}>
+                    <h2 className="text-5xl md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-[0.85] uppercase text-white">
                         {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
                     </h2>
                 </div>
             </Scene>
 
-            {/* SCENE 10: FOUNDER-MARKET FIT */}
+            {/* SCENE 10: FIT */}
             <Scene id="fit" bgColor={sceneColors.fit} index={9}>
                 <div className="max-w-5xl">
-                    <div className={`text-xs font-mono tracking-[0.3em] uppercase mb-6 ${
-                        theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                    }`}>
+                    <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">
                         {c.identity.headline}
                     </div>
 
-                    <p className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight text-neutral-900">
                         {c.identity.content}
                     </p>
                 </div>
@@ -564,14 +922,8 @@ Scaled communities from zero to millions of users.`,
             <section id="team" className={`min-h-screen py-32 px-6 md:px-12 ${sceneColors.team}`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-24">
-                        <div className={`text-xs font-mono tracking-[0.3em] uppercase mb-6 ${
-                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                        }`}>
-                            LEADERSHIP
-                        </div>
-                        <h2 className={`text-3xl md:text-5xl font-black mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
+                        <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">LEADERSHIP</div>
+                        <h2 className="text-3xl md:text-5xl font-black mb-4 text-neutral-900">
                             {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                         </h2>
                     </div>
@@ -587,26 +939,16 @@ Scaled communities from zero to millions of users.`,
             {/* SCENE 12: CTA */}
             <Scene id="cta" bgColor={sceneColors.cta} index={11}>
                 <div className="text-center max-w-4xl mx-auto">
-                    <div className={`text-xs font-mono tracking-[0.3em] uppercase mb-8 ${
-                        theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                    }`}>
-                        HOLO STUDIO
-                    </div>
+                    <div className="text-xs font-mono tracking-[0.3em] uppercase mb-8 text-orange-600">HOLO STUDIO</div>
 
-                    <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight text-neutral-900">
                         {language === 'en' 
                             ? "Ready to build the trust layer?"
                             : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
 
                     <Link to={createPageUrl('Contact')}>
-                        <Button className={`rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105 ${
-                            theme === 'dark'
-                                ? 'bg-white text-black hover:bg-neutral-200'
-                                : 'bg-orange-500 text-white hover:bg-orange-600'
-                        }`}>
+                        <Button className="rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105 bg-orange-500 text-white hover:bg-orange-600">
                             {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-6 h-6" />
                         </Button>
                     </Link>
