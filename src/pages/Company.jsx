@@ -351,33 +351,33 @@ Scaled communities from zero to millions of users.`,
 
     const c = content[language] || content.en;
 
-    // Color palettes for each section
+    // Color palettes - matching Home page aesthetic
     const scenePalettes = theme === 'dark' ? {
-        foundation: { bg: 'bg-[#0A0A0A]', text: 'text-white' },
-        observation: { bg: 'bg-[#0D1117]', text: 'text-neutral-200' },
-        phase1: { bg: 'bg-[#1A1625]', text: 'text-white' },
-        phase2: { bg: 'bg-[#0F1419]', text: 'text-white' },
-        phase3: { bg: 'bg-[#18141C]', text: 'text-white' },
-        phase4: { bg: 'bg-[#0A0A0A]', text: 'text-white' },
-        engineered: { bg: 'bg-[#050510]', text: 'text-white' },
-        unified: { bg: 'bg-[#0A0A14]', text: 'text-white' },
-        credibility: { bg: 'bg-black', text: 'text-white' },
-        fit: { bg: 'bg-[#0D1117]', text: 'text-white' },
-        team: { bg: 'bg-[#0A0A0A]', text: 'text-white' },
-        cta: { bg: 'bg-[#050505]', text: 'text-white' }
+        foundation: { bg: 'bg-black/90', text: 'text-white', accent: 'text-indigo-400' },
+        observation: { bg: 'bg-black/85', text: 'text-neutral-200', accent: 'text-blue-400' },
+        phase1: { bg: 'bg-black/80', text: 'text-white', accent: 'text-purple-400' },
+        phase2: { bg: 'bg-black/85', text: 'text-white', accent: 'text-cyan-400' },
+        phase3: { bg: 'bg-black/90', text: 'text-white', accent: 'text-pink-400' },
+        phase4: { bg: 'bg-black/95', text: 'text-white', accent: 'text-indigo-400' },
+        engineered: { bg: 'bg-black/90', text: 'text-white', accent: 'text-orange-400' },
+        unified: { bg: 'bg-black/85', text: 'text-white', accent: 'text-emerald-400' },
+        credibility: { bg: 'bg-black', text: 'text-white', accent: 'text-yellow-400' },
+        fit: { bg: 'bg-black/90', text: 'text-white', accent: 'text-indigo-400' },
+        team: { bg: 'bg-black/95', text: 'text-white', accent: 'text-blue-400' },
+        cta: { bg: 'bg-black', text: 'text-white', accent: 'text-indigo-400' }
     } : {
-        foundation: { bg: 'bg-neutral-50', text: 'text-neutral-900' },
-        observation: { bg: 'bg-blue-50', text: 'text-neutral-800' },
-        phase1: { bg: 'bg-orange-50', text: 'text-neutral-900' },
-        phase2: { bg: 'bg-emerald-50', text: 'text-neutral-900' },
-        phase3: { bg: 'bg-purple-50', text: 'text-neutral-900' },
-        phase4: { bg: 'bg-neutral-100', text: 'text-neutral-900' },
-        engineered: { bg: 'bg-white', text: 'text-neutral-900' },
-        unified: { bg: 'bg-neutral-50', text: 'text-neutral-900' },
-        credibility: { bg: 'bg-neutral-900', text: 'text-white' },
-        fit: { bg: 'bg-white', text: 'text-neutral-900' },
-        team: { bg: 'bg-neutral-50', text: 'text-neutral-900' },
-        cta: { bg: 'bg-white', text: 'text-neutral-900' }
+        foundation: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
+        observation: { bg: 'bg-gradient-to-br from-blue-50 to-cyan-50', text: 'text-neutral-800', accent: 'text-blue-700' },
+        phase1: { bg: 'bg-gradient-to-br from-orange-50 to-amber-50', text: 'text-neutral-900', accent: 'text-orange-700' },
+        phase2: { bg: 'bg-gradient-to-br from-emerald-50 to-teal-50', text: 'text-neutral-900', accent: 'text-emerald-700' },
+        phase3: { bg: 'bg-gradient-to-br from-purple-50 to-pink-50', text: 'text-neutral-900', accent: 'text-purple-700' },
+        phase4: { bg: 'bg-gradient-to-br from-neutral-100 to-slate-100', text: 'text-neutral-900', accent: 'text-neutral-900' },
+        engineered: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
+        unified: { bg: 'bg-gradient-to-br from-neutral-50 to-blue-50', text: 'text-neutral-900', accent: 'text-blue-700' },
+        credibility: { bg: 'bg-neutral-900', text: 'text-white', accent: 'text-yellow-400' },
+        fit: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
+        team: { bg: 'bg-gradient-to-br from-neutral-50 to-slate-50', text: 'text-neutral-900', accent: 'text-neutral-900' },
+        cta: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' }
     };
 
     // Build story sections for scrollytelling
@@ -406,18 +406,27 @@ Scaled communities from zero to millions of users.`,
     ];
 
     return (
-        <div className={`min-h-screen font-sans overflow-x-hidden ${
-            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+        <div className={`min-h-screen font-sans overflow-x-hidden relative ${
+            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-white text-neutral-900'
         }`}>
             <SEO 
                 title="Company" 
                 description="Infrastructure Gap — Engineering the Missing Link in the AI Economy"
             />
 
+            {/* Fixed Background Layer */}
+            {theme === 'dark' && (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]" />
+                </div>
+            )}
+
             {/* Scrollytelling Section */}
-            <section className="relative">
-                {/* Sticky Background Container */}
-                <div className="hidden md:block sticky top-0 h-screen w-full overflow-hidden">
+            <section className="relative z-10">
+                {/* Sticky Background Transitions */}
+                <div className="hidden md:block sticky top-0 h-screen w-full overflow-hidden -z-10">
                     <AnimatePresence mode="wait">
                         {storySections.map((section, idx) => (
                             idx === activeStage && (
@@ -426,18 +435,21 @@ Scaled communities from zero to millions of users.`,
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                    className={`absolute inset-0 w-full h-full ${section.palette.bg} transition-colors duration-1000`}
+                                    transition={{ duration: 1 }}
+                                    className={`absolute inset-0 w-full h-full ${section.palette.bg}`}
                                 >
-                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
+                                    {theme === 'dark' && (
+                                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-40" />
+                                    )}
+                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015]" />
                                 </motion.div>
                             )
                         ))}
                     </AnimatePresence>
                 </div>
 
-                {/* Scrolling Content Cards */}
-                <div className="relative z-10">
+                {/* Scrolling Content Cards - Stacked Layout */}
+                <div className="relative">
                     {storySections.map((section, idx) => {
                         const ref = useRef(null);
                         const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
@@ -450,29 +462,35 @@ Scaled communities from zero to millions of users.`,
                             <div 
                                 key={section.id} 
                                 ref={ref} 
-                                className={`min-h-screen w-full flex items-center justify-center px-6 md:px-12 ${
+                                className={`min-h-screen w-full flex items-center justify-center px-6 md:px-12 sticky top-0 ${
                                     theme === 'light' ? section.palette.bg : ''
                                 }`}
                             >
                                 <motion.div
-                                    initial={{ opacity: 0, y: 40 }}
+                                    initial={{ opacity: 0, y: 60 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: false, margin: "-20%" }}
-                                    transition={{ duration: 0.6, ease: "easeOut" }}
-                                    className="max-w-4xl w-full"
+                                    viewport={{ once: false, margin: "-30%" }}
+                                    transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                    className={`max-w-4xl w-full ${
+                                        theme === 'dark' 
+                                            ? 'backdrop-blur-sm bg-black/20 p-8 md:p-12 rounded-3xl border border-white/5' 
+                                            : 'p-8 md:p-12'
+                                    }`}
                                 >
                                     {section.type === 'intro' && (
-                                        <div>
-                                            <div className={`text-xs font-mono tracking-[0.2em] uppercase mb-6 font-medium ${
-                                                theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+                                        <div className="space-y-6">
+                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
+                                                theme === 'dark' 
+                                                    ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                                                    : 'text-orange-600 border-orange-300 bg-orange-100'
                                             }`}>
                                                 {section.data.episode}
                                             </div>
-                                            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] mb-6 ${section.palette.text}`}>
+                                            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
                                                 {section.data.title}
                                             </h1>
                                             <p className={`text-xl md:text-2xl font-light leading-relaxed ${
-                                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                             }`}>
                                                 {section.data.subtitle}
                                             </p>
@@ -480,22 +498,28 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'observation' && (
-                                        <p className={`text-2xl md:text-4xl font-bold leading-tight ${section.palette.text}`}>
-                                            {section.data.text}
-                                        </p>
+                                        <div className={`border-l-4 pl-6 ${
+                                            theme === 'dark' ? 'border-indigo-500/50' : 'border-blue-400'
+                                        }`}>
+                                            <p className={`text-2xl md:text-4xl font-bold leading-snug ${section.palette.text}`}>
+                                                {section.data.text}
+                                            </p>
+                                        </div>
                                     )}
 
                                     {section.type === 'chapter' && (
-                                        <div>
-                                            <div className={`text-xs font-mono tracking-[0.2em] uppercase mb-4 font-medium ${
-                                                theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+                                        <div className="space-y-6">
+                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
+                                                theme === 'dark' 
+                                                    ? `${section.palette.accent} border-current/30 bg-current/10` 
+                                                    : `${section.palette.accent} border-current/30 bg-current/10`
                                             }`}>
                                                 {section.data.year}
                                             </div>
-                                            <h2 className={`text-4xl md:text-6xl font-black tracking-tight leading-[0.9] mb-6 ${section.palette.text}`}>
+                                            <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
                                                 {section.data.headline}
                                             </h2>
-                                            <p className={`text-lg md:text-xl font-light leading-relaxed ${
+                                            <p className={`text-lg md:text-2xl font-light leading-relaxed ${
                                                 theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                             }`}>
                                                 {section.data.content}
@@ -504,47 +528,47 @@ Scaled communities from zero to millions of users.`,
                                     )}
 
                                     {section.type === 'thesis' && (
-                                        <div>
-                                            <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] mb-8 ${section.palette.text}`}>
+                                        <div className="space-y-8">
+                                            <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] ${section.palette.text}`}>
                                                 {section.data.headline}
                                             </h2>
-                                            <p className={`text-xl md:text-2xl font-light leading-relaxed ${
-                                                theme === 'dark' 
-                                                    ? (activeStage === storySections.findIndex(s => s.id === section.id) && storySections.findIndex(s => s.type === 'thesis') === storySections.filter(s => s.type === 'thesis').indexOf(section) && storySections.filter(s => s.type === 'thesis').indexOf(section) === 0 
-                                                        ? 'text-indigo-300' 
-                                                        : 'text-emerald-300')
-                                                    : (storySections.filter(s => s.type === 'thesis').indexOf(section) === 0 
-                                                        ? 'text-orange-700' 
-                                                        : 'text-blue-700')
+                                            <div className={`border-l-4 pl-6 ${
+                                                theme === 'dark' ? 'border-current/50' : 'border-current/30'
                                             }`}>
-                                                {section.data.content}
-                                            </p>
+                                                <p className={`text-xl md:text-2xl font-light leading-relaxed ${section.palette.accent}`}>
+                                                    {section.data.content}
+                                                </p>
+                                            </div>
                                         </div>
                                     )}
 
                                     {section.type === 'credibility' && (
-                                        <div className="text-center">
-                                            <p className={`text-2xl md:text-3xl font-light leading-relaxed mb-12 ${
-                                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-200'
+                                        <div className="text-center space-y-12">
+                                            <p className={`text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed ${
+                                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-300'
                                             }`}>
                                                 {language === 'en' 
                                                     ? "The scarce resource is no longer creativity."
                                                     : "더 이상 희소한 자원은 창의성이 아닙니다."}
                                             </p>
-                                            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] text-white">
+                                            <h2 className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tight leading-[0.85] ${
+                                                theme === 'dark' ? 'text-white' : 'text-white'
+                                            }`}>
                                                 {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
                                             </h2>
                                         </div>
                                     )}
 
                                     {section.type === 'fit' && (
-                                        <div>
-                                            <div className={`text-xs font-mono tracking-[0.2em] uppercase mb-6 font-medium ${
-                                                theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+                                        <div className="space-y-6">
+                                            <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border font-bold ${
+                                                theme === 'dark' 
+                                                    ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                                                    : 'text-orange-600 border-orange-300 bg-orange-100'
                                             }`}>
                                                 {section.data.headline}
                                             </div>
-                                            <p className={`text-2xl md:text-3xl lg:text-4xl font-bold leading-tight ${section.palette.text}`}>
+                                            <p className={`text-2xl md:text-3xl lg:text-5xl font-bold leading-tight ${section.palette.text}`}>
                                                 {section.data.content}
                                             </p>
                                         </div>
@@ -557,48 +581,83 @@ Scaled communities from zero to millions of users.`,
             </section>
 
             {/* Team Section */}
-            <section id="team" className={`py-20 md:py-32 px-6 md:px-12 ${scenePalettes.team.bg}`}>
-                <div className="max-w-[1400px] mx-auto w-full">
-                    <div className="mb-16 md:mb-20">
-                        <div className={`text-xs font-mono tracking-[0.2em] uppercase mb-4 font-medium ${
-                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+            <section id="team" className={`relative py-24 md:py-32 px-6 md:px-12 border-y ${
+                theme === 'dark' 
+                    ? 'bg-black/40 border-white/5 backdrop-blur-sm' 
+                    : 'bg-gradient-to-br from-neutral-50 to-slate-50 border-neutral-200'
+            }`}>
+                {theme === 'dark' && (
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
+                )}
+                
+                <div className="max-w-[1400px] mx-auto w-full relative z-10">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-16 md:mb-20"
+                    >
+                        <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border mb-6 font-bold ${
+                            theme === 'dark' 
+                                ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                                : 'text-orange-600 border-orange-300 bg-orange-100'
                         }`}>LEADERSHIP</div>
                         <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black ${scenePalettes.team.text}`}>
                             {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                         </h2>
-                    </div>
+                    </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                         {c.founders.map((founder, i) => (
-                            <FounderCard key={i} {...founder} delay={i * 0.1} />
+                            <FounderCard key={i} {...founder} delay={i * 0.08} />
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* CTA Section */}
-            <section className={`min-h-[60vh] flex items-center justify-center px-6 ${scenePalettes.cta.bg}`}>
-                <div className="text-center max-w-4xl mx-auto">
-                    <div className={`text-xs font-mono tracking-[0.2em] uppercase mb-6 font-medium ${
-                        theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
+            <section className={`relative min-h-[70vh] flex items-center justify-center px-6 border-t overflow-hidden ${
+                theme === 'dark' 
+                    ? 'bg-gradient-to-b from-black via-black to-indigo-950/20 border-white/5' 
+                    : 'bg-gradient-to-br from-white via-orange-50/20 to-violet-50/20 border-neutral-200'
+            }`}>
+                {theme === 'dark' && (
+                    <>
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/5 via-transparent to-transparent" />
+                    </>
+                )}
+                
+                <motion.div 
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center max-w-4xl mx-auto relative z-10"
+                >
+                    <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border mb-8 font-bold ${
+                        theme === 'dark' 
+                            ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
+                            : 'text-orange-600 border-orange-300 bg-orange-100'
                     }`}>HOLO STUDIO</div>
 
-                    <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-10 leading-tight ${scenePalettes.cta.text}`}>
+                    <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black mb-12 leading-tight ${scenePalettes.cta.text}`}>
                         {language === 'en' 
                             ? "Ready to build the trust layer?"
                             : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
 
                     <Link to={createPageUrl('Contact')}>
-                        <Button className={`rounded-full px-10 md:px-12 h-12 md:h-14 text-base md:text-lg font-semibold transition-transform hover:scale-105 ${
+                        <Button className={`rounded-full px-12 md:px-14 h-14 md:h-16 text-base md:text-lg font-bold border-0 transition-all hover:scale-105 shadow-xl ${
                             theme === 'dark'
-                                ? 'bg-white text-black hover:bg-neutral-200'
-                                : 'bg-orange-500 text-white hover:bg-orange-600'
+                                ? 'bg-white text-black hover:bg-neutral-200 shadow-white/20'
+                                : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white hover:shadow-2xl'
                         }`}>
                             {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
                     </Link>
-                </div>
+                </motion.div>
             </section>
         </div>
     );
