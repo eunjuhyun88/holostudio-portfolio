@@ -707,11 +707,16 @@ export default function Home() {
             </section>
 
             {/* Section 02: BY THE NUMBERS - Enhanced scroll animations */}
-            <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 overflow-hidden ${
-                theme === 'dark' 
-                    ? 'bg-black/20 border-white/5'
-                    : 'bg-neutral-100/40 border-neutral-300/30'
-            }`}>
+            <motion.section 
+                className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 overflow-hidden ${
+                    theme === 'dark' 
+                        ? 'bg-black/20 border-white/5'
+                        : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.08, 0.12, 0.22, 0.26], [0, 1, 1, 0])
+                }}
+            >
                 {/* Parallax decorative elements */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -900,9 +905,14 @@ export default function Home() {
             </section>
 
             {/* Section 02.5: WHY IT MATTERS - Enhanced with scroll animations */}
-            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-            }`}>
+            <motion.section 
+                className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.2, 0.24, 0.3, 0.34], [0, 1, 1, 0])
+                }}
+            >
                 {/* Parallax background element */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -980,12 +990,17 @@ export default function Home() {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Section 02.6: THE CHALLENGE - Enhanced with scroll animations */}
-            <section className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-            }`}>
+            <motion.section 
+                className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.3, 0.34, 0.4, 0.44], [0, 1, 1, 0])
+                }}
+            >
                 {/* Parallax background element */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -1094,7 +1109,7 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
@@ -1488,9 +1503,14 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS - Enhanced with scroll animations */}
-            <section className={`min-h-screen flex items-center justify-center border-y relative z-10 overflow-hidden ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-            }`}>
+            <motion.section 
+                className={`min-h-screen flex items-center justify-center border-y relative z-10 overflow-hidden ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.48, 0.52, 0.58, 0.62], [0, 1, 1, 0])
+                }}
+            >
                 {/* Parallax background element */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -1642,7 +1662,7 @@ export default function Home() {
                         </motion.div>
                     </motion.div>
                 </div>
-            </section>
+            </motion.section>
 
 
 
@@ -1851,9 +1871,15 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES - Enhanced with scroll animations */}
-            <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-            }`}>
+            <motion.section 
+                id="proof" 
+                className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.68, 0.72, 0.78, 0.82], [0, 1, 1, 0])
+                }}
+            >
                 {/* Parallax background element */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -1971,7 +1997,7 @@ export default function Home() {
 
 
                 </div>
-            </section>
+            </motion.section>
 
 
 
@@ -1987,11 +2013,16 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT - Enhanced with scroll animations */}
-            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
-                theme === 'dark' 
-                    ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
-            }`}>
+            <motion.section 
+                className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
+                    theme === 'dark' 
+                        ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
+                        : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
+                }`}
+                style={{
+                    opacity: useTransform(scrollYProgress, [0.88, 0.92, 1], [0, 1, 1])
+                }}
+            >
                 {/* Parallax background element */}
                 <motion.div 
                     className="absolute inset-0 pointer-events-none"
@@ -2090,7 +2121,7 @@ export default function Home() {
                         </Button>
                     </div>
                 </div>
-            </section>
+            </motion.section>
         </motion.div>
     );
 }
