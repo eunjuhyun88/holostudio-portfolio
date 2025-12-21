@@ -10,30 +10,27 @@ import { createPageUrl } from '@/utils';
 import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 
-// --- LIGHT MODE SCENE COMPONENT ---
-const Scene = ({ children, id, bgColor, index }) => {
+// --- LIGHT MODE SCROLLYTELLING SCENE COMPONENT ---
+const ScrollytellingScene = ({ children, id, bgColor, index }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-20% 0px" });
-    const [hasAnimated, setHasAnimated] = useState(false);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
 
-    useEffect(() => {
-        if (isInView && !hasAnimated) {
-            setHasAnimated(true);
-        }
-    }, [isInView, hasAnimated]);
+    const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+    const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
 
     return (
         <section 
             ref={ref}
             id={id}
-            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 transition-colors duration-1000 ${bgColor}`}
+            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 ${bgColor} transition-colors duration-[2000ms] ease-out`}
         >
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none" />
             <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="relative z-10 w-full max-w-[1400px]"
+                style={{ opacity, y }}
+                className="relative z-10 w-full max-w-[1200px]"
             >
                 {children}
             </motion.div>
@@ -805,130 +802,156 @@ Scaled communities from zero to millions of users.`,
         );
     }
 
-    // LIGHT MODE RENDER (Cinematic Scrollytelling)
+    // LIGHT MODE RENDER (First Round–style Scrollytelling)
     return (
-        <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900">
+        <div className="min-h-screen font-sans overflow-x-hidden text-neutral-900 scroll-smooth">
             <SEO 
                 title="Company" 
                 description="Infrastructure Gap — Engineering the Missing Link in the AI Economy"
             />
 
             {/* SCENE 1: FOUNDATION */}
-            <Scene id="foundation" bgColor={sceneColors.foundation} index={0}>
-                <div className="text-left max-w-5xl">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1.5 }}
-                        className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-12 text-orange-600"
-                    >
+            <ScrollytellingScene id="foundation" bgColor={sceneColors.foundation} index={0}>
+                <div className="text-left">
+                    <div className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-8 md:mb-12 text-orange-600 font-semibold">
                         THE FOUNDATION
-                    </motion.div>
+                    </div>
                     
-                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-neutral-900">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] mb-6 md:mb-8 text-neutral-900">
                         {c.intro.title}
                     </h1>
 
-                    <p className="text-lg md:text-2xl font-light max-w-2xl tracking-wide leading-relaxed text-neutral-700">
+                    <p className="text-xl md:text-2xl font-normal max-w-2xl leading-relaxed text-neutral-600">
                         {c.intro.subtitle}
                     </p>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
-            {/* SCENE 2: OBSERVATION */}
-            <Scene id="observation" bgColor={sceneColors.observation} index={1}>
-                <div className="max-w-4xl space-y-12">
-                    {c.intro.text.map((text, i) => (
-                        <p key={i} className="text-2xl md:text-4xl font-black leading-tight text-neutral-800">
+            {/* SCENE 2-4: OBSERVATION */}
+            {c.intro.text.map((text, i) => (
+                <ScrollytellingScene key={i} id={`observation-${i}`} bgColor={sceneColors.observation} index={i + 1}>
+                    <div className="max-w-4xl">
+                        <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight text-neutral-800">
                             {text}
                         </p>
-                    ))}
-                </div>
-            </Scene>
+                    </div>
+                </ScrollytellingScene>
+            ))}
 
-            {/* SCENES 3-6: PHASES */}
+            {/* SCENES: PHASES */}
             {c.chapters.map((chapter, idx) => (
-                <Scene 
-                    key={idx}
-                    id={`phase-${idx + 1}`} 
-                    bgColor={sceneColors[`phase${idx + 1}`]} 
-                    index={idx + 2}
-                >
-                    <div className="max-w-6xl">
-                        <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">
-                            {chapter.year}
+                <React.Fragment key={idx}>
+                    <ScrollytellingScene 
+                        id={`phase-${idx + 1}-year`} 
+                        bgColor={sceneColors[`phase${idx + 1}`]} 
+                        index={idx + 4}
+                    >
+                        <div className="max-w-5xl">
+                            <div className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase text-orange-600 font-semibold">
+                                {chapter.year}
+                            </div>
                         </div>
-                        
-                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-12 uppercase text-neutral-900">
-                            {chapter.headline}
-                        </h2>
+                    </ScrollytellingScene>
+                    
+                    <ScrollytellingScene 
+                        id={`phase-${idx + 1}-headline`} 
+                        bgColor={sceneColors[`phase${idx + 1}`]} 
+                        index={idx + 5}
+                    >
+                        <div className="max-w-5xl">
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-neutral-900">
+                                {chapter.headline}
+                            </h2>
+                        </div>
+                    </ScrollytellingScene>
 
-                        <p className="text-xl md:text-3xl font-black leading-snug max-w-4xl text-neutral-700">
-                            {chapter.content}
-                        </p>
-                    </div>
-                </Scene>
+                    <ScrollytellingScene 
+                        id={`phase-${idx + 1}-content`} 
+                        bgColor={sceneColors[`phase${idx + 1}`]} 
+                        index={idx + 6}
+                    >
+                        <div className="max-w-4xl">
+                            <p className="text-xl md:text-2xl lg:text-3xl font-normal leading-relaxed text-neutral-700">
+                                {chapter.content}
+                            </p>
+                        </div>
+                    </ScrollytellingScene>
+                </React.Fragment>
             ))}
 
-            {/* SCENE 7 & 8: THESIS */}
+            {/* SCENES: THESIS */}
             {c.thesis.slice(0, 2).map((item, idx) => (
-                <Scene 
-                    key={idx}
-                    id={`thesis-${idx + 1}`}
-                    bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
-                    index={idx + 6}
-                >
-                    <div className="max-w-6xl">
-                        <h2 className="text-4xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-16 uppercase text-neutral-900">
-                            {item.headline}
-                        </h2>
+                <React.Fragment key={idx}>
+                    <ScrollytellingScene 
+                        id={`thesis-${idx + 1}-headline`}
+                        bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
+                        index={idx + 20}
+                    >
+                        <div className="max-w-5xl">
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-neutral-900">
+                                {item.headline}
+                            </h2>
+                        </div>
+                    </ScrollytellingScene>
 
-                        <p className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ${idx === 0 ? 'text-orange-700' : 'text-blue-700'}`}>
-                            {item.content}
-                        </p>
-                    </div>
-                </Scene>
+                    <ScrollytellingScene 
+                        id={`thesis-${idx + 1}-content`}
+                        bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
+                        index={idx + 21}
+                    >
+                        <div className="max-w-4xl">
+                            <p className={`text-xl md:text-2xl lg:text-3xl font-normal leading-relaxed ${idx === 0 ? 'text-orange-700' : 'text-blue-700'}`}>
+                                {item.content}
+                            </p>
+                        </div>
+                    </ScrollytellingScene>
+                </React.Fragment>
             ))}
 
-            {/* SCENE 9: CREDIBILITY */}
-            <Scene id="credibility" bgColor={sceneColors.credibility} index={8}>
-                <div className="text-center max-w-6xl mx-auto">
-                    <p className="text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight text-neutral-100">
+            {/* SCENE: CREDIBILITY SETUP */}
+            <ScrollytellingScene id="credibility-setup" bgColor={sceneColors.credibility} index={30}>
+                <div className="text-center max-w-5xl mx-auto">
+                    <p className="text-2xl md:text-3xl lg:text-4xl font-normal leading-relaxed text-neutral-100">
                         {language === 'en' 
                             ? "The scarce resource is no longer creativity."
                             : "더 이상 희소한 자원은 창의성이 아닙니다."}
                     </p>
+                </div>
+            </ScrollytellingScene>
 
-                    <h2 className="text-5xl md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-[0.85] uppercase text-white">
+            {/* SCENE: CREDIBILITY */}
+            <ScrollytellingScene id="credibility" bgColor={sceneColors.credibility} index={31}>
+                <div className="text-center max-w-6xl mx-auto">
+                    <h2 className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight leading-[0.9] text-white">
                         {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
                     </h2>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
-            {/* SCENE 10: FIT */}
-            <Scene id="fit" bgColor={sceneColors.fit} index={9}>
-                <div className="max-w-5xl">
-                    <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">
+            {/* SCENE: FIT */}
+            <ScrollytellingScene id="fit" bgColor={sceneColors.fit} index={32}>
+                <div className="max-w-4xl">
+                    <div className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-8 text-orange-600 font-semibold">
                         {c.identity.headline}
                     </div>
 
-                    <p className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight text-neutral-900">
+                    <p className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-neutral-900">
                         {c.identity.content}
                     </p>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
 
-            {/* SCENE 11: TEAM */}
-            <section id="team" className={`min-h-screen py-32 px-6 md:px-12 ${sceneColors.team}`}>
-                <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-24">
-                        <div className="text-xs font-mono tracking-[0.3em] uppercase mb-6 text-orange-600">LEADERSHIP</div>
-                        <h2 className="text-3xl md:text-5xl font-black mb-4 text-neutral-900">
+            {/* SCENE: TEAM */}
+            <section id="team" className={`min-h-screen py-20 md:py-32 px-6 md:px-12 ${sceneColors.team} flex items-center`}>
+                <div className="max-w-[1400px] mx-auto w-full">
+                    <div className="mb-16 md:mb-24">
+                        <div className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-6 text-orange-600 font-semibold">LEADERSHIP</div>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-neutral-900">
                             {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                         {c.founders.map((founder, i) => (
                             <FounderCard key={i} {...founder} delay={i * 0.1} />
                         ))}
@@ -936,24 +959,24 @@ Scaled communities from zero to millions of users.`,
                 </div>
             </section>
 
-            {/* SCENE 12: CTA */}
-            <Scene id="cta" bgColor={sceneColors.cta} index={11}>
+            {/* SCENE: CTA */}
+            <ScrollytellingScene id="cta" bgColor={sceneColors.cta} index={40}>
                 <div className="text-center max-w-4xl mx-auto">
-                    <div className="text-xs font-mono tracking-[0.3em] uppercase mb-8 text-orange-600">HOLO STUDIO</div>
+                    <div className="text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-8 text-orange-600 font-semibold">HOLO STUDIO</div>
 
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-16 leading-tight text-neutral-900">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-12 leading-tight text-neutral-900">
                         {language === 'en' 
                             ? "Ready to build the trust layer?"
                             : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
 
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="rounded-full px-12 h-16 text-xl font-bold transition-transform hover:scale-105 bg-orange-500 text-white hover:bg-orange-600">
-                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-6 h-6" />
+                        <Button className="rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105 bg-orange-500 text-white hover:bg-orange-600">
+                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
                         </Button>
                     </Link>
                 </div>
-            </Scene>
+            </ScrollytellingScene>
         </div>
     );
 }
