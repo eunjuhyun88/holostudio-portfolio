@@ -176,61 +176,15 @@ export default function Products() {
                 </div>
             </section>
 
-            {/* Core Products Section */}
-            <section className={`py-20 px-6 border-t ${
-                theme === 'dark' ? 'border-white/10 bg-black/20' : 'border-neutral-200 bg-neutral-50'
-            }`}>
+            {/* All Products Section - Unified */}
+            <section className="py-12 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mb-16"
-                    >
-                        <h2 className={`text-3xl md:text-5xl font-black mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
-                            {t.categories.core.title}
-                        </h2>
-                        <p className={`text-lg ${
-                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                        }`}>
-                            {t.categories.core.desc}
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
+                    <div className="grid md:grid-cols-2 gap-6">
                         {products.core.map((product, idx) => (
-                            <ProductCard key={idx} product={product} theme={theme} language={language} t={t} delay={idx * 0.1} />
+                            <ProductCard key={idx} product={product} theme={theme} language={language} t={t} delay={idx * 0.05} />
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Showcase Products Section */}
-            <section className="py-20 px-6">
-                <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mb-16"
-                    >
-                        <h2 className={`text-3xl md:text-5xl font-black mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
-                            {t.categories.showcase.title}
-                        </h2>
-                        <p className={`text-lg ${
-                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                        }`}>
-                            {t.categories.showcase.desc}
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
                         {products.showcase.map((product, idx) => (
-                            <ProductCard key={idx} product={product} theme={theme} language={language} t={t} delay={idx * 0.1} />
+                            <ProductCard key={idx + products.core.length} product={product} theme={theme} language={language} t={t} delay={(idx + products.core.length) * 0.05} />
                         ))}
                     </div>
                 </div>
