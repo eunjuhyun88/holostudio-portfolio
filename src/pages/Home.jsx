@@ -13,6 +13,7 @@ import FadeInSection from '@/components/FadeInSection';
 import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
+import GlitchText from '@/components/GlitchText';
 import Floating from '@/components/Floating';
 import TiltCard from '@/components/TiltCard';
 import { BorderBeam } from '@/components/ui/border-beam';
