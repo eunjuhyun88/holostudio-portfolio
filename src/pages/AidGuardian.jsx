@@ -9,7 +9,7 @@ export default function AidGuardian() {
 
     const content = {
         en: {
-            tag: <span><span className="text-blue-400">Trust Layer: Safety</span> | <span className="text-cyan-400">The Security Standard</span></span>,
+            tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">The Security Standard</span></span>,
             primaryButtonText: "Launch Dashboard",
             oneLiner: "The absolute barrier against toxic AI content. Multi-modal verification at scale.",
             story: (
@@ -150,7 +150,7 @@ export default function AidGuardian() {
             customerStories: []
         },
         ko: {
-            tag: <span><span className="text-blue-400">Trust Layer: Safety</span> | <span className="text-cyan-400">콘텐츠 안전성의 기준</span></span>,
+            tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">콘텐츠 안전성의 기준</span></span>,
             primaryButtonText: "대시보드 실행",
             oneLiner: "유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.",
             story: (
