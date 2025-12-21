@@ -23,14 +23,14 @@ export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Scroll-based background color transition - Tech-company style
+    // Scroll-based background color transition - Ultra minimal
     const { scrollYProgress } = useScroll();
     const backgroundColor = useTransform(
         scrollYProgress,
         [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85, 1],
         theme === 'dark' 
             ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
-            : ['#FFFFFF', '#FAFAFA', '#FFFFFF', '#F9FAFB', '#FFFFFF', '#FAFAFA', '#18181B', '#18181B']
+            : ['#F7F7F7', '#F5F5F5', '#F7F7F7', '#F6F6F6', '#F7F7F7', '#F5F5F5', '#18181B', '#18181B']
     );
 
     useEffect(() => {
@@ -623,7 +623,7 @@ export default function Home() {
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'bg-gradient-to-b from-white via-indigo-50/30 to-white border-neutral-200/50'
+                    : 'border-neutral-200/30'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <motion.h2 
@@ -806,7 +806,7 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'bg-gradient-to-br from-white via-purple-50/20 to-blue-50/20 border-neutral-200/50'
+                    : 'border-neutral-200/30'
             }`}>
                 <div className="max-w-[1400px] mx-auto w-full py-20">
                     <div className="mb-16 relative text-center max-w-5xl mx-auto">
