@@ -72,9 +72,16 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Smoother scrolling for all browsers */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

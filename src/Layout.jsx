@@ -451,20 +451,30 @@ function LayoutContent({ children }) {
             {/* Page Content */}
             <main id="main-content" className="pt-24 min-h-screen">
                 <AnimatePresence mode="wait" onExitComplete={() => {
-                    if (!location.hash) window.scrollTo(0, 0);
+                    if (!location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
                 }}>
                     <motion.div
                         key={location.pathname}
-                        initial={{ opacity: 0, y: 15 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ 
+                            duration: 0.5, 
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
                         className="w-full min-h-screen"
                         onAnimationComplete={() => {
                             if (location.hash) {
-                                const id = location.hash.substring(1);
-                                const element = document.getElementById(id);
-                                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                                setTimeout(() => {
+                                    const id = location.hash.substring(1);
+                                    const element = document.getElementById(id);
+                                    if (element) {
+                                        element.scrollIntoView({ 
+                                            behavior: 'smooth',
+                                            block: 'start'
+                                        });
+                                    }
+                                }, 100);
                             }
                         }}
                     >
