@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function ScrollMotionBackground({ theme = 'dark' }) {
-    if (theme === 'dark') return null;
-    
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -16,8 +14,12 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
     const y3 = useTransform(scrollYProgress, [0, 1], [0, 300]);
     const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
     
-    const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 0.6, 0.4, 0.2]);
-    const opacity2 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0.2, 0.5, 0.3, 0.6]);
+    const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], 
+        theme === 'dark' ? [0.4, 0.6, 0.4, 0.2] : [0.3, 0.5, 0.3, 0.15]
+    );
+    const opacity2 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], 
+        theme === 'dark' ? [0.2, 0.5, 0.3, 0.6] : [0.15, 0.4, 0.2, 0.5]
+    );
     
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
@@ -31,7 +33,11 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.3, 1])
                 }}
-                className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full bg-gradient-to-br from-indigo-200/30 via-purple-200/20 to-transparent blur-[120px]"
+                className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[120px] ${
+                    theme === 'dark' 
+                        ? 'bg-gradient-to-br from-indigo-200/30 via-purple-200/20 to-transparent'
+                        : 'bg-gradient-to-br from-indigo-300/40 via-purple-300/25 to-transparent'
+                }`}
             />
             <motion.div 
                 style={{ 
@@ -39,7 +45,11 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity2,
                     rotate
                 }}
-                className="absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-200/25 via-pink-200/15 to-transparent blur-[130px]"
+                className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[130px] ${
+                    theme === 'dark'
+                        ? 'bg-gradient-to-br from-purple-200/25 via-pink-200/15 to-transparent'
+                        : 'bg-gradient-to-br from-purple-300/30 via-pink-300/20 to-transparent'
+                }`}
             />
             <motion.div 
                 style={{ 
@@ -47,14 +57,22 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale
                 }}
-                className="absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full bg-gradient-to-br from-blue-200/20 via-indigo-200/25 to-transparent blur-[110px]"
+                className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[110px] ${
+                    theme === 'dark'
+                        ? 'bg-gradient-to-br from-blue-200/20 via-indigo-200/25 to-transparent'
+                        : 'bg-gradient-to-br from-blue-300/25 via-indigo-300/30 to-transparent'
+                }`}
             />
             <motion.div 
                 style={{ 
                     y: y4,
-                    opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.5, 0.3])
+                    opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0.3, 0.5, 0.3] : [0.25, 0.45, 0.25])
                 }}
-                className="absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full bg-gradient-to-br from-orange-200/15 via-yellow-200/10 to-transparent blur-[100px]"
+                className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[100px] ${
+                    theme === 'dark'
+                        ? 'bg-gradient-to-br from-orange-200/15 via-yellow-200/10 to-transparent'
+                        : 'bg-gradient-to-br from-orange-300/20 via-yellow-300/15 to-transparent'
+                }`}
             />
             
             {/* Floating geometric shapes */}
@@ -62,64 +80,86 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [0, -600]),
                     rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.08, 0.08, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.08, 0.08, 0] : [0, 0.12, 0.12, 0])
                 }}
-                className="absolute top-[40%] left-[30%] w-32 h-32 border-2 border-indigo-300/30 rounded-2xl"
+                className={`absolute top-[40%] left-[30%] w-32 h-32 border-2 rounded-2xl ${
+                    theme === 'dark' ? 'border-indigo-300/30' : 'border-indigo-400/40'
+                }`}
             />
             <motion.div
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [100, -400]),
                     rotate: useTransform(scrollYProgress, [0, 1], [45, -315]),
-                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, 0.06, 0.06, 0])
+                    opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.06, 0.06, 0] : [0, 0.1, 0.1, 0])
                 }}
-                className="absolute top-[70%] right-[25%] w-24 h-24 border-2 border-purple-300/25 rounded-xl"
+                className={`absolute top-[70%] right-[25%] w-24 h-24 border-2 rounded-xl ${
+                    theme === 'dark' ? 'border-purple-300/25' : 'border-purple-400/35'
+                }`}
             />
             
             {/* Multi-layer animated grid */}
             <motion.div 
                 style={{ 
                     y: useTransform(scrollYProgress, [0, 1], [0, -80]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.04, 0.07, 0.07, 0.04])
+                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0.04, 0.07, 0.07, 0.04] : [0.06, 0.1, 0.1, 0.06])
                 }}
-                className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] bg-[size:100px_100px]"
+                className={`absolute inset-0 bg-[size:100px_100px] ${
+                    theme === 'dark'
+                        ? 'bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)]'
+                        : 'bg-[linear-gradient(rgba(99,102,241,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.1)_1px,transparent_1px)]'
+                }`}
             />
             <motion.div 
                 style={{ 
                     y: useTransform(scrollYProgress, [0, 1], [0, -30]),
-                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.02, 0.04, 0.04, 0.02])
+                    opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0.02, 0.04, 0.04, 0.02] : [0.04, 0.07, 0.07, 0.04])
                 }}
-                className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.04)_1px,transparent_1px)] bg-[size:60px_60px]"
+                className={`absolute inset-0 bg-[size:60px_60px] ${
+                    theme === 'dark'
+                        ? 'bg-[linear-gradient(rgba(168,85,247,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.04)_1px,transparent_1px)]'
+                        : 'bg-[linear-gradient(rgba(168,85,247,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.07)_1px,transparent_1px)]'
+                }`}
             />
 
             {/* Enhanced scan line with color gradient */}
             <motion.div
                 style={{
                     y: useTransform(scrollYProgress, [0, 1], [-200, 2500]),
-                    opacity: 0.03
+                    opacity: theme === 'dark' ? 0.03 : 0.05
                 }}
-                className="absolute left-0 right-0 h-[300px] bg-gradient-to-b from-transparent via-indigo-400/40 to-transparent blur-sm"
+                className={`absolute left-0 right-0 h-[300px] bg-gradient-to-b from-transparent to-transparent blur-sm ${
+                    theme === 'dark' ? 'via-indigo-400/40' : 'via-indigo-500/50'
+                }`}
             />
 
             {/* Animated corner decorations with pulse */}
             <motion.div 
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                animate={{ opacity: theme === 'dark' ? [0.2, 0.4, 0.2] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 left-0 w-40 h-40 border-l-2 border-t-2 border-indigo-300/30 rounded-tl-3xl m-8"
+                className={`absolute top-0 left-0 w-40 h-40 border-l-2 border-t-2 rounded-tl-3xl m-8 ${
+                    theme === 'dark' ? 'border-indigo-300/30' : 'border-indigo-400/40'
+                }`}
             />
             <motion.div 
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                animate={{ opacity: theme === 'dark' ? [0.2, 0.4, 0.2] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-0 right-0 w-40 h-40 border-r-2 border-t-2 border-purple-300/30 rounded-tr-3xl m-8"
+                className={`absolute top-0 right-0 w-40 h-40 border-r-2 border-t-2 rounded-tr-3xl m-8 ${
+                    theme === 'dark' ? 'border-purple-300/30' : 'border-purple-400/40'
+                }`}
             />
             <motion.div 
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                animate={{ opacity: theme === 'dark' ? [0.2, 0.4, 0.2] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute bottom-0 left-0 w-40 h-40 border-l-2 border-b-2 border-blue-300/30 rounded-bl-3xl m-8"
+                className={`absolute bottom-0 left-0 w-40 h-40 border-l-2 border-b-2 rounded-bl-3xl m-8 ${
+                    theme === 'dark' ? 'border-blue-300/30' : 'border-blue-400/40'
+                }`}
             />
             <motion.div 
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                animate={{ opacity: theme === 'dark' ? [0.2, 0.4, 0.2] : [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                className="absolute bottom-0 right-0 w-40 h-40 border-r-2 border-b-2 border-pink-300/30 rounded-br-3xl m-8"
+                className={`absolute bottom-0 right-0 w-40 h-40 border-r-2 border-b-2 rounded-br-3xl m-8 ${
+                    theme === 'dark' ? 'border-pink-300/30' : 'border-pink-400/40'
+                }`}
             />
             
             {/* Subtle particle dots */}
@@ -128,9 +168,11 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     key={i}
                     style={{
                         y: useTransform(scrollYProgress, [0, 1], [Math.random() * 100, Math.random() * -500]),
-                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.15, 0])
+                        opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0, 0.15, 0] : [0, 0.2, 0])
                     }}
-                    className="absolute w-1 h-1 rounded-full bg-indigo-400/40 blur-[0.5px]"
+                    className={`absolute w-1 h-1 rounded-full blur-[0.5px] ${
+                        theme === 'dark' ? 'bg-indigo-400/40' : 'bg-indigo-500/50'
+                    }`}
                     initial={{
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
