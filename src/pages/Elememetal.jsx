@@ -166,7 +166,22 @@ export default function Elememetal() {
                     items: ["모바일", "e스포츠", "크로스 IP"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "드디어 실력이 진짜 중요한 TCG입니다. 무작위도 없고, Pay-to-Win도 없습니다. 순수한 전략뿐입니다.",
+                    author: "Mike Torres",
+                    role: "프로 플레이어",
+                    company: "Esports Team Alpha",
+                    image: null
+                },
+                {
+                    quote: "내 카드는 내가 통제하는 진짜 가치를 갖습니다. 거래하고, 팔고, 컬렉션을 쌓을 수 있습니다. 이것이 올바른 게임입니다.",
+                    author: "Lisa Park",
+                    role: "경쟁 플레이어",
+                    company: null,
+                    image: null
+                }
+            ]
         }
     };
 

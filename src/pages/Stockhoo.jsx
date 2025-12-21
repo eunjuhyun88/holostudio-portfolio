@@ -208,7 +208,22 @@ export default function Stockhoo() {
                     items: ["커뮤니티 라이브러리", "소셜 알파"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "Zone Heat Score가 제 트레이딩 방식을 바꿨습니다. 진짜 유동성이 어디 있는지 정확히 보고 데드 존에 갇히는 것을 피할 수 있습니다.",
+                    author: "David Chen",
+                    role: "데이 트레이더",
+                    company: null,
+                    image: null
+                },
+                {
+                    quote: "AI 에이전트가 일반 LLM보다 암호화폐 시장 맥락을 훨씬 잘 이해합니다. 잠들지 않는 트레이딩 파트너를 갖는 것과 같습니다.",
+                    author: "Emma Rodriguez",
+                    role: "암호화폐 분석가",
+                    company: "Digital Asset Fund",
+                    image: null
+                }
+            ]
         }
     };
 

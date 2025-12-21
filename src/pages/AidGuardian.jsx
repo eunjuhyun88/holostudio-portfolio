@@ -16,14 +16,14 @@ export default function AidGuardian() {
             oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}`}>The absolute barrier against toxic AI content. Multi-modal verification at scale.</span>,
             story: (
                 <>
-                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">Content Safety is Non-Negotiable.</span>
+                    <p className={`mb-6 text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
+                        <span className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Content Safety is Non-Negotiable.</span>
                     </p>
-                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                    <p className={`mb-6 text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
                         The explosion of AI-generated content has made safety a survival issue for all platforms.
                         EU AI Act regulations, GARM brand safety requirements, and the spread of deepfakes require a new standard.
                     </p>
-                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
+                    <p className={`text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
                         AiD Guardian is that standard. We analyze image, video, audio, and text simultaneously to enforce safety and detect AI generation.
                     </p>
                 </>
@@ -157,14 +157,14 @@ export default function AidGuardian() {
             oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}`}>유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.</span>,
             story: (
                 <>
-                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
-                        <span className="text-white font-bold">안전은 타협할 수 없습니다.</span>
+                    <p className={`mb-6 text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
+                        <span className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>안전은 타협할 수 없습니다.</span>
                     </p>
-                    <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
+                    <p className={`mb-6 text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
                         AI 생성 콘텐츠의 폭발적인 증가는 모든 플랫폼의 생존 문제입니다.
                         EU AI Act 규제, GARM 브랜드 세이프티 요구, 딥페이크의 확산은 새로운 기준을 요구합니다.
                     </p>
-                    <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
+                    <p className={`text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>
                         AiD Guardian이 바로 그 기준입니다. 이미지, 영상, 오디오, 텍스트를 동시에 분석하여 유해성을 차단하고 AI 생성을 식별합니다. 이것은 단순한 필터링이 아닌, 완전한 Trust Layer의 시작입니다.
                     </p>
                 </>

@@ -222,7 +222,22 @@ export default function PlayArts() {
                     items: ["무허가 노드", "DAO 거버넌스", "ZK-PoC"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "PlayArts가 우리의 귀속 문제를 해결했습니다. 이제 모든 AI 자산이 불변의 출처를 갖고, 창작자들이 공정하게 보상받습니다.",
+                    author: "Alex Kim",
+                    role: "창업자",
+                    company: "MemeLab Studios",
+                    image: null
+                },
+                {
+                    quote: "MCP 표준은 탁월합니다. PlayArts를 생성 파이프라인에 통합했고, 이제 가치 분배가 자동으로 추적됩니다.",
+                    author: "Jordan Lee",
+                    role: "프로덕트 리드",
+                    company: "GenAI Platform",
+                    image: null
+                }
+            ]
         }
     };
 
