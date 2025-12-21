@@ -2,16 +2,18 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import StockhooDemo from '../components/interactive/StockhooDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import { BarChart3, Bot, Zap, Globe, Database, Smartphone, Activity, MessageSquare, TrendingUp } from 'lucide-react';
 
 export default function Stockhoo() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
 
     const content = {
         en: {
-            tag: <span className="font-bold"><span className="text-emerald-600">Trust Layer: Trading</span> | <span className="text-emerald-500">Zone-Based Market Intelligence</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}>Trust Layer: Trading</span> | <span className={theme === 'dark' ? 'text-emerald-300' : 'text-emerald-600'}>Zone-Based Market Intelligence</span></span>,
             primaryButtonText: "Launch Terminal",
-            oneLiner: <span className="font-bold text-emerald-600">The concerns of entering at 63K differ from 70K. Context matters. Zones provide context.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}`}>The concerns of entering at 63K differ from 70K. Context matters. Zones provide context.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -109,9 +111,9 @@ export default function Stockhoo() {
             customerStories: []
         },
         ko: {
-            tag: <span className="font-bold"><span className="text-emerald-600">Trust Layer: Trading</span> | <span className="text-emerald-500">Zone 기반 시장 인텔리전스</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}>Trust Layer: Trading</span> | <span className={theme === 'dark' ? 'text-emerald-300' : 'text-emerald-600'}>Zone 기반 시장 인텔리전스</span></span>,
             primaryButtonText: "터미널 실행",
-            oneLiner: <span className="font-bold text-emerald-600">63K 진입과 70K 진입의 고민은 다릅니다. Zone이 맥락을 줍니다.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}`}>63K 진입과 70K 진입의 고민은 다릅니다. Zone이 맥락을 줍니다.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">

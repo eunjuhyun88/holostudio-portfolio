@@ -2,16 +2,18 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import ElememetalDemo from '../components/interactive/ElememetalDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import { Sword, Coins, Users, Cpu, Layers, Zap, Hexagon, Trophy, Box } from 'lucide-react';
 
 export default function Elememetal() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
 
     const content = {
         en: {
-            tag: <span className="font-bold"><span className="text-orange-600">Trust Layer: Gaming</span> | <span className="text-orange-500">Skill-Based Strategy TCG</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-orange-400' : 'text-orange-700'}>Trust Layer: Gaming</span> | <span className={theme === 'dark' ? 'text-orange-300' : 'text-orange-600'}>Skill-Based Strategy TCG</span></span>,
             primaryButtonText: "Play Now",
-            oneLiner: <span className="font-bold text-orange-600">A competitive battler where every card is an asset and every match is pure strategy.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-orange-400' : 'text-orange-700'}`}>A competitive battler where every card is an asset and every match is pure strategy.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -88,9 +90,9 @@ export default function Elememetal() {
             customerStories: []
         },
         ko: {
-            tag: <span className="font-bold"><span className="text-orange-600">Trust Layer: Gaming</span> | <span className="text-orange-500">실력 기반 전략 TCG</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-orange-400' : 'text-orange-700'}>Trust Layer: Gaming</span> | <span className={theme === 'dark' ? 'text-orange-300' : 'text-orange-600'}>실력 기반 전략 TCG</span></span>,
             primaryButtonText: "지금 플레이",
-            oneLiner: <span className="font-bold text-orange-600">모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-orange-400' : 'text-orange-700'}`}>모든 카드가 자산이 되고, 모든 매치가 순수한 전략이 되는 경쟁 배틀러.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">

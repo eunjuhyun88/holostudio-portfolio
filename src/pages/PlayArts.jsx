@@ -2,16 +2,18 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import PlayArtsVisual from '../components/interactive/PlayArtsVisual';
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import { Fingerprint, Network, Scale, Database, Code, Globe, Copyright, Share2, Coins } from 'lucide-react';
 
 export default function PlayArts() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
 
     const content = {
         en: {
-            tag: <span className="font-bold"><span className="text-lime-600">Trust Layer: Provenance + Value</span> | <span className="text-lime-500">The Immutable Record</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}>Trust Layer: Provenance + Value</span> | <span className={theme === 'dark' ? 'text-lime-300' : 'text-lime-600'}>The Immutable Record</span></span>,
             primaryButtonText: "Launch App",
-            oneLiner: <span className="font-bold text-lime-600">The protocol that guarantees provenance and value routing for AI content.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}`}>The protocol that guarantees provenance and value routing for AI content.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -116,9 +118,9 @@ export default function PlayArts() {
             customerStories: []
         },
         ko: {
-            tag: <span className="font-bold"><span className="text-lime-600">Trust Layer: Provenance + Value</span> | <span className="text-lime-500">불변의 출처 기록</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}>Trust Layer: Provenance + Value</span> | <span className={theme === 'dark' ? 'text-lime-300' : 'text-lime-600'}>불변의 출처 기록</span></span>,
             primaryButtonText: "앱 실행",
-            oneLiner: <span className="font-bold text-lime-600">AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}`}>AI 콘텐츠의 출처를 증명하고 가치의 경로를 확정하는 프로토콜.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">

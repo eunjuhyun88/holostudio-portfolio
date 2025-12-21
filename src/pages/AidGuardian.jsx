@@ -2,16 +2,18 @@ import React from 'react';
 import BusinessLayout from '../components/BusinessLayout';
 import AidGuardianDemo from '../components/interactive/AidGuardianDemo';
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import { Shield, Eye, FileText, Zap, Server, Lock, Scan, Activity, AlertTriangle } from 'lucide-react';
 
 export default function AidGuardian() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
 
     const content = {
         en: {
-            tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">The Security Standard</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}>Trust Layer: Safety</span> | <span className={theme === 'dark' ? 'text-cyan-400' : 'text-blue-600'}>The Security Standard</span></span>,
             primaryButtonText: "Launch Dashboard",
-            oneLiner: <span className="font-bold text-blue-600">The absolute barrier against toxic AI content. Multi-modal verification at scale.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}`}>The absolute barrier against toxic AI content. Multi-modal verification at scale.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -150,9 +152,9 @@ export default function AidGuardian() {
             customerStories: []
         },
         ko: {
-            tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">콘텐츠 안전성의 기준</span></span>,
+            tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}>Trust Layer: Safety</span> | <span className={theme === 'dark' ? 'text-cyan-400' : 'text-blue-600'}>콘텐츠 안전성의 기준</span></span>,
             primaryButtonText: "대시보드 실행",
-            oneLiner: <span className="font-bold text-blue-600">유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.</span>,
+            oneLiner: <span className={`font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}`}>유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
