@@ -839,42 +839,52 @@ export default function Home() {
                         >
                             {t.identity.title}
                         </motion.p>
-                        <div className={`space-y-4 mb-12 text-xl md:text-2xl ${
-                            theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                        }`}>
+                        <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
                             {t.identity.problems.map((problem, idx) => (
-                                <motion.p 
+                                <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="font-bold"
+                                    transition={{ delay: idx * 0.15 }}
+                                    className={`p-8 rounded-2xl border-2 text-center ${
+                                        theme === 'dark' 
+                                            ? 'bg-red-500/5 border-red-500/30' 
+                                            : 'bg-red-50 border-red-300'
+                                    }`}
                                 >
-                                    {problem}
-                                </motion.p>
+                                    <div className={`text-6xl mb-4 ${
+                                        theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                                    }`}>✗</div>
+                                    <p className={`text-lg font-bold leading-tight ${
+                                        theme === 'dark' ? 'text-red-300' : 'text-red-700'
+                                    }`}>
+                                        {problem}
+                                    </p>
+                                </motion.div>
                             ))}
                         </div>
-                        <motion.p 
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className={`text-2xl md:text-3xl font-black mb-8 ${
-                                theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
+                            className={`max-w-4xl mx-auto p-10 rounded-3xl border-2 ${
+                                theme === 'dark' 
+                                    ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
+                                    : 'bg-gradient-to-br from-cyan-50 via-violet-50 to-pink-50 border-violet-300'
                             }`}
                         >
-                            {t.identity.solution}
-                        </motion.p>
-                        <motion.p 
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${
+                            <p className={`text-3xl md:text-4xl font-black mb-6 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>
+                                {t.identity.solution}
+                            </p>
+                            <p className={`text-xl md:text-2xl leading-relaxed ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                            }`}
-                        >
-                            {t.identity.approach}
-                        </motion.p>
+                            }`}>
+                                {t.identity.approach}
+                            </p>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -904,20 +914,25 @@ export default function Home() {
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center">
                             {Object.values(t.proofWorks.stats).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    whileHover={{ scale: 1.05 }}
+                                    whileHover={{ scale: 1.08, y: -5 }}
+                                    className={`p-8 rounded-2xl border-2 ${
+                                        theme === 'dark' 
+                                            ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
+                                            : 'bg-gradient-to-br from-white to-neutral-50 border-neutral-300 shadow-lg'
+                                    }`}
                                 >
-                                    <div className={`text-4xl md:text-5xl font-black mb-3 ${
+                                    <div className={`text-5xl md:text-6xl lg:text-7xl font-black mb-4 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
-                                    <div className={`text-sm leading-tight ${
+                                    <div className={`text-sm md:text-base leading-tight font-bold ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{stat.label}</div>
                                 </motion.div>
@@ -980,16 +995,24 @@ export default function Home() {
                                 </motion.p>
                             ))}
                         </div>
-                        <div className={`inline-block px-8 py-4 rounded-2xl border ${
-                            theme === 'dark' ? 'bg-orange-500/10 border-orange-500/30' : 'bg-orange-100 border-orange-300'
-                        }`}>
-                            <div className={`text-5xl md:text-6xl font-black mb-2 ${
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.05 }}
+                            className={`inline-block px-12 py-8 rounded-3xl border-4 ${
+                                theme === 'dark' 
+                                    ? 'bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-500/50 shadow-[0_0_60px_rgba(249,115,22,0.3)]' 
+                                    : 'bg-gradient-to-br from-orange-100 to-red-100 border-orange-400 shadow-2xl'
+                            }`}
+                        >
+                            <div className={`text-7xl md:text-8xl font-black mb-4 tracking-tighter ${
                                 theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
                             }`}>{t.whyNow.deadline}</div>
-                            <div className={`text-base font-bold max-w-md ${
+                            <div className={`text-xl md:text-2xl font-black max-w-md ${
                                 theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
                             }`}>{t.whyNow.warning}</div>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -1019,24 +1042,25 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+                        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
                             {t.costOfInaction.impacts.map((item, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className={`p-8 rounded-2xl border text-center ${
+                                    whileHover={{ scale: 1.05 }}
+                                    className={`p-10 rounded-3xl border-4 text-center ${
                                         theme === 'dark'
-                                            ? 'bg-black/30 border-red-500/20'
-                                            : 'bg-red-50/50 border-red-200'
+                                            ? 'bg-gradient-to-br from-red-500/10 to-rose-500/10 border-red-500/40 shadow-[0_0_40px_rgba(239,68,68,0.2)]'
+                                            : 'bg-gradient-to-br from-red-50 to-rose-50 border-red-300 shadow-xl'
                                     }`}
                                 >
-                                    <div className={`text-5xl font-black mb-4 ${
+                                    <div className={`text-7xl md:text-8xl font-black mb-6 ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                     }`}>{item.val}</div>
-                                    <p className={`text-base ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    <p className={`text-lg md:text-xl font-bold leading-tight ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                                     }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
@@ -1059,16 +1083,22 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <motion.p 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className={`text-center text-2xl md:text-3xl font-black ${
-                                theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                            className={`max-w-3xl mx-auto p-10 rounded-3xl border-4 text-center ${
+                                theme === 'dark' 
+                                    ? 'bg-black/40 border-red-500/50' 
+                                    : 'bg-white border-red-400 shadow-2xl'
                             }`}
                         >
-                            {t.costOfInaction.conclusion}
-                        </motion.p>
+                            <p className={`text-3xl md:text-4xl lg:text-5xl font-black leading-tight ${
+                                theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                            }`}>
+                                {t.costOfInaction.conclusion}
+                            </p>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -1137,27 +1167,30 @@ export default function Home() {
                             )}
                         </div>
 
-                        <p className={`text-xl md:text-2xl font-bold mb-8 ${
+                        <p className={`text-2xl md:text-3xl font-bold mb-12 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.thesis.intro}
                         </p>
-                        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             {t.thesis.primitives.map((prim, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.15 }}
-                                    className={`p-6 rounded-xl border ${
-                                        theme === 'dark' ? 'bg-black/40 border-white/10' : 'bg-white border-neutral-200 shadow-md'
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                    className={`p-10 rounded-2xl border-2 text-center ${
+                                        theme === 'dark' 
+                                            ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' 
+                                            : 'bg-gradient-to-br from-white to-neutral-50 border-violet-300 shadow-lg'
                                     }`}
                                 >
-                                    <div className={`text-lg font-black mb-2 ${
+                                    <div className={`text-2xl md:text-3xl font-black mb-4 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{prim.name}</div>
-                                    <div className={`text-sm ${
+                                    <div className={`text-base md:text-lg font-medium ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                     }`}>{prim.desc}</div>
                                 </motion.div>
@@ -1339,19 +1372,22 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className={`p-8 rounded-2xl border ${
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                    className={`p-8 rounded-2xl border-2 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-white/10'
-                                            : 'bg-white border-neutral-200 shadow-md'
+                                            ? 'bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-yellow-500/30'
+                                            : 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-300 shadow-lg'
                                     }`}
                                 >
-                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
-                                        <m.icon className={`w-6 h-6 ${m.color}`} />
+                                    <div className={`w-16 h-16 rounded-xl ${m.bg} flex items-center justify-center mb-6 ${
+                                        theme === 'dark' ? 'bg-yellow-500/20' : 'bg-amber-200'
+                                    }`}>
+                                        <m.icon className={`w-8 h-8 ${m.color}`} />
                                     </div>
-                                    <div className={`text-lg font-black mb-2 ${
+                                    <div className={`text-xl font-black mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{m.title}</div>
-                                    <div className={`text-sm font-medium ${
+                                    <div className={`text-base font-bold ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
                                 </motion.div>
