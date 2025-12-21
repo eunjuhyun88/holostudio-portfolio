@@ -11,27 +11,26 @@ import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 
 // --- LIGHT MODE SCROLLYTELLING SCENE COMPONENT ---
-const ScrollytellingScene = ({ children, id, bgColor }) => {
+const ScrollytellingScene = ({ children, id, bgColor, compact = false }) => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 0.8", "end 0.2"]
+        offset: ["start 0.9", "end 0.1"]
     });
 
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-    const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [40, 0, 0, -40]);
+    const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+    const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [20, 0, 0, -20]);
 
     return (
         <section 
             ref={ref}
             id={id}
-            className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 ${bgColor}`}
-            style={{ scrollSnapAlign: 'center' }}
+            className={`relative w-full flex items-center justify-center px-6 md:px-12 ${bgColor} ${compact ? 'min-h-[60vh] py-16' : 'min-h-[80vh] py-20'}`}
         >
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] pointer-events-none" />
             <motion.div
                 style={{ opacity, y }}
-                className="relative z-10 w-full max-w-[900px]"
+                className="relative z-10 w-full max-w-[800px]"
             >
                 {children}
             </motion.div>
@@ -813,16 +812,16 @@ Scaled communities from zero to millions of users.`,
 
             {/* Opening */}
             <ScrollytellingScene id="foundation" bgColor={sceneColors.foundation}>
-                <div className="space-y-6">
-                    <div className="text-xs md:text-sm font-mono tracking-[0.25em] uppercase text-orange-600 font-medium">
+                <div className="space-y-4">
+                    <div className="text-xs font-mono tracking-[0.2em] uppercase text-orange-600 font-medium">
                         THE FOUNDATION
                     </div>
                     
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] text-neutral-900">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] text-neutral-900">
                         {c.intro.title}
                     </h1>
 
-                    <p className="text-lg md:text-xl font-light leading-relaxed text-neutral-600 max-w-2xl">
+                    <p className="text-base md:text-lg font-light leading-relaxed text-neutral-600">
                         {c.intro.subtitle}
                     </p>
                 </div>
@@ -830,93 +829,86 @@ Scaled communities from zero to millions of users.`,
 
             {/* Observations */}
             {c.intro.text.map((text, i) => (
-                <ScrollytellingScene key={i} id={`obs-${i}`} bgColor={sceneColors.observation}>
-                    <p className="text-xl md:text-3xl lg:text-4xl font-semibold leading-snug text-neutral-800">
+                <ScrollytellingScene key={i} id={`obs-${i}`} bgColor={sceneColors.observation} compact>
+                    <p className="text-lg md:text-2xl lg:text-3xl font-semibold leading-snug text-neutral-800">
                         {text}
                     </p>
                 </ScrollytellingScene>
             ))}
 
-            {/* Chapters */}
+            {/* Chapters - Combined */}
             {c.chapters.map((chapter, idx) => (
-                <React.Fragment key={idx}>
-                    <ScrollytellingScene id={`ch-${idx}-year`} bgColor={sceneColors[`phase${idx + 1}`]}>
-                        <div className="text-xs md:text-sm font-mono tracking-[0.25em] uppercase text-orange-600 font-medium">
+                <ScrollytellingScene key={idx} id={`ch-${idx}`} bgColor={sceneColors[`phase${idx + 1}`]}>
+                    <div className="space-y-4">
+                        <div className="text-xs font-mono tracking-[0.2em] uppercase text-orange-600 font-medium">
                             {chapter.year}
                         </div>
-                    </ScrollytellingScene>
-                    
-                    <ScrollytellingScene id={`ch-${idx}-headline`} bgColor={sceneColors[`phase${idx + 1}`]}>
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] text-neutral-900">
+                        
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[0.95] text-neutral-900">
                             {chapter.headline}
                         </h2>
-                    </ScrollytellingScene>
 
-                    <ScrollytellingScene id={`ch-${idx}-content`} bgColor={sceneColors[`phase${idx + 1}`]}>
-                        <p className="text-lg md:text-xl lg:text-2xl font-light leading-relaxed text-neutral-700">
+                        <p className="text-base md:text-lg lg:text-xl font-light leading-relaxed text-neutral-700">
                             {chapter.content}
                         </p>
-                    </ScrollytellingScene>
-                </React.Fragment>
+                    </div>
+                </ScrollytellingScene>
             ))}
 
-            {/* Thesis */}
+            {/* Thesis - Combined */}
             {c.thesis.slice(0, 2).map((item, idx) => (
-                <React.Fragment key={idx}>
-                    <ScrollytellingScene 
-                        id={`thesis-${idx}-h`}
-                        bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
-                    >
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] text-neutral-900">
+                <ScrollytellingScene 
+                    key={idx}
+                    id={`thesis-${idx}`}
+                    bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
+                    compact
+                >
+                    <div className="space-y-4">
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[0.95] text-neutral-900">
                             {item.headline}
                         </h2>
-                    </ScrollytellingScene>
 
-                    <ScrollytellingScene 
-                        id={`thesis-${idx}-c`}
-                        bgColor={idx === 0 ? sceneColors.engineered : sceneColors.unified}
-                    >
-                        <p className={`text-lg md:text-xl lg:text-2xl font-light leading-relaxed ${idx === 0 ? 'text-orange-700' : 'text-blue-700'}`}>
+                        <p className={`text-base md:text-lg lg:text-xl font-light leading-relaxed ${idx === 0 ? 'text-orange-700' : 'text-blue-700'}`}>
                             {item.content}
                         </p>
-                    </ScrollytellingScene>
-                </React.Fragment>
+                    </div>
+                </ScrollytellingScene>
             ))}
 
-            {/* Credibility */}
-            <ScrollytellingScene id="cred-setup" bgColor={sceneColors.credibility}>
-                <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-neutral-200 text-center">
-                    {language === 'en' 
-                        ? "The scarce resource is no longer creativity."
-                        : "더 이상 희소한 자원은 창의성이 아닙니다."}
-                </p>
-            </ScrollytellingScene>
-
+            {/* Credibility - Combined */}
             <ScrollytellingScene id="credibility" bgColor={sceneColors.credibility}>
-                <h2 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tight leading-[0.95] text-white text-center">
-                    {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
-                </h2>
+                <div className="text-center space-y-6">
+                    <p className="text-lg md:text-xl lg:text-2xl font-light leading-relaxed text-neutral-200">
+                        {language === 'en' 
+                            ? "The scarce resource is no longer creativity."
+                            : "더 이상 희소한 자원은 창의성이 아닙니다."}
+                    </p>
+
+                    <h2 className="text-3xl md:text-5xl lg:text-7xl font-black tracking-tight leading-[0.95] text-white">
+                        {language === 'en' ? "IT IS CREDIBILITY." : "바로 신뢰입니다."}
+                    </h2>
+                </div>
             </ScrollytellingScene>
 
             {/* Identity */}
-            <ScrollytellingScene id="fit" bgColor={sceneColors.fit}>
-                <div className="space-y-6">
-                    <div className="text-xs md:text-sm font-mono tracking-[0.25em] uppercase text-orange-600 font-medium">
+            <ScrollytellingScene id="fit" bgColor={sceneColors.fit} compact>
+                <div className="space-y-4">
+                    <div className="text-xs font-mono tracking-[0.2em] uppercase text-orange-600 font-medium">
                         {c.identity.headline}
                     </div>
 
-                    <p className="text-xl md:text-2xl lg:text-3xl font-semibold leading-snug text-neutral-900">
+                    <p className="text-lg md:text-xl lg:text-2xl font-semibold leading-snug text-neutral-900">
                         {c.identity.content}
                     </p>
                 </div>
             </ScrollytellingScene>
 
             {/* Team */}
-            <section id="team" className={`min-h-screen py-24 md:py-32 px-6 md:px-12 ${sceneColors.team} flex items-center`}>
+            <section id="team" className={`py-16 md:py-24 px-6 md:px-12 ${sceneColors.team}`}>
                 <div className="max-w-[1400px] mx-auto w-full">
-                    <div className="mb-16 md:mb-20">
-                        <div className="text-xs md:text-sm font-mono tracking-[0.25em] uppercase mb-4 text-orange-600 font-medium">LEADERSHIP</div>
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-neutral-900">
+                    <div className="mb-12 md:mb-16">
+                        <div className="text-xs font-mono tracking-[0.2em] uppercase mb-3 text-orange-600 font-medium">LEADERSHIP</div>
+                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-neutral-900">
                             {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                         </h2>
                     </div>
@@ -930,19 +922,19 @@ Scaled communities from zero to millions of users.`,
             </section>
 
             {/* CTA */}
-            <ScrollytellingScene id="cta" bgColor={sceneColors.cta}>
-                <div className="text-center space-y-10">
-                    <div className="text-xs md:text-sm font-mono tracking-[0.25em] uppercase text-orange-600 font-medium">HOLO STUDIO</div>
+            <ScrollytellingScene id="cta" bgColor={sceneColors.cta} compact>
+                <div className="text-center space-y-6">
+                    <div className="text-xs font-mono tracking-[0.2em] uppercase text-orange-600 font-medium">HOLO STUDIO</div>
 
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold leading-snug text-neutral-900">
+                    <h2 className="text-lg md:text-xl lg:text-2xl font-semibold leading-snug text-neutral-900">
                         {language === 'en' 
                             ? "Ready to build the trust layer?"
                             : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
 
                     <Link to={createPageUrl('Contact')}>
-                        <Button className="rounded-full px-10 md:px-12 h-12 md:h-14 text-base md:text-lg font-semibold transition-transform hover:scale-105 bg-orange-500 text-white hover:bg-orange-600">
-                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                        <Button className="rounded-full px-8 md:px-10 h-11 md:h-12 text-sm md:text-base font-semibold transition-transform hover:scale-105 bg-orange-500 text-white hover:bg-orange-600">
+                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
                     </Link>
                 </div>
