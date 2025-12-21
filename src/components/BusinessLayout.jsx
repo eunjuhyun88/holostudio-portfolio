@@ -458,17 +458,16 @@ export default function BusinessLayout({
                                 <div className={`text-xs font-bold uppercase tracking-wider ${accentText}`}>{tag}</div>
                             </div>
 
-                            <MouseGlowText 
-                                as={motion.h2}
-                                glowColor={s.glowHex}
-                                secondaryGlowColor={s.glowSecondary}
+                            <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl`}
+                                className={`text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl ${
+                                    isLight ? 'text-neutral-900' : 'text-white'
+                                }`}
                             >
                                 {oneLiner}
-                            </MouseGlowText>
+                            </motion.h2>
 
                             {story && (
                                 <motion.div 
