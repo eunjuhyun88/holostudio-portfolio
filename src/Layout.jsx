@@ -77,7 +77,7 @@ function LayoutContent({ children }) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 font-sans text-gray-900">
+        <div className="min-h-screen bg-[#050505] font-sans text-white">
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
                 @import url('https://fonts.cdnfonts.com/css/graphyne');
@@ -110,7 +110,7 @@ function LayoutContent({ children }) {
                 {/* Left Group: Logo + Nav */}
                 <div className="flex items-center gap-4 pointer-events-auto">
                     {/* Logo Pill */}
-                    <Link to="/" className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur-xl border border-gray-200 shadow-lg shadow-gray-200/50 hover:scale-105 transition-all duration-300">
+                    <Link to="/" className="group flex items-center justify-center w-16 h-16 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 hover:scale-105 transition-all duration-300">
                         <img 
                             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
                             alt="Holo Studio" 
@@ -119,7 +119,7 @@ function LayoutContent({ children }) {
                     </Link>
 
                     {/* Desktop Nav Island */}
-                    <div className="hidden md:flex items-center bg-white/90 backdrop-blur-xl border border-gray-200 rounded-full px-1 h-12 shadow-lg shadow-gray-200/50">
+                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full px-1 h-12 shadow-lg shadow-black/20">
                         {/* Links */}
                         <div className="flex items-center px-2">
                             {navLinks[language].map((link) => (
@@ -168,7 +168,7 @@ function LayoutContent({ children }) {
                                         key={link.name}
                                         to={createPageUrl(link.path.substring(1))}
                                         className={`px-5 py-2 font-medium text-sm transition-colors ${
-                                            location.pathname === link.path ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                                            location.pathname === link.path ? 'text-white' : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
                                         {link.name}
@@ -182,7 +182,7 @@ function LayoutContent({ children }) {
                 {/* Right Group: Actions */}
                 <div className="flex items-center gap-3 pointer-events-auto">
                     {/* Actions Island */}
-                    <div className="hidden md:flex items-center bg-white/90 backdrop-blur-xl border border-gray-200 rounded-full p-1.5 h-12 shadow-lg shadow-gray-200/50 gap-2">
+                    <div className="hidden md:flex items-center bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-full p-1.5 h-12 shadow-lg shadow-black/20 gap-2">
                         {/* Language Toggle */}
                         <button 
                             onClick={toggleLanguage}
@@ -197,19 +197,19 @@ function LayoutContent({ children }) {
                         <div className="w-px h-4 bg-white/10" />
 
                         <a href="https://docsend.com/view/6xxvddwgkmbg2a8i" target="_blank" rel="noopener noreferrer">
-                            <Button variant="ghost" className="rounded-full text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-5 h-9">
+                            <Button variant="ghost" className="rounded-full text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-5 h-9">
                                 {language === 'en' ? 'Deck' : '소개서'}
                             </Button>
                         </a>
 
-                        <Button className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white rounded-full px-6 h-9 text-sm font-medium shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all">
+                        <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 h-9 text-sm font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all border border-indigo-500/50">
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
                         </Button>
                     </div>
 
                     {/* Mobile Menu Button - Styled as a Pill */}
                     <button 
-                        className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-white/90 backdrop-blur-xl border border-gray-200 text-gray-900 shadow-lg shadow-gray-200/50"
+                        className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 text-white shadow-lg shadow-black/20"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -335,21 +335,21 @@ function LayoutContent({ children }) {
             </main>
 
             {/* Global Footer - Glassmorphic & Connected */}
-            <footer className="relative z-50 bg-white/60 backdrop-blur-xl text-gray-900 py-16 mt-20 border-t border-gray-200">
+            <footer className="relative z-50 bg-black/40 backdrop-blur-xl text-white py-16 mt-20 border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
                         <div className="col-span-1 md:col-span-2">
                             <Link to="/" className="flex items-center gap-3 text-2xl font-bold tracking-tighter mb-6 group">
-                                <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                                <div className="w-10 h-10 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
                                     <img 
                                         src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
                                         alt="Holo Studio" 
                                         className="w-6 h-6 rounded-full object-cover opacity-90"
                                     />
                                 </div>
-                                <span>HOLO<span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">STUDIO</span></span>
+                                <span>HOLO<span className="text-indigo-500">STUDIO</span></span>
                             </Link>
-                            <p className="text-gray-600 max-w-sm mb-6 text-sm leading-relaxed">
+                            <p className="text-neutral-300 max-w-sm mb-6 text-sm leading-relaxed">
                                 {language === 'en' 
                                     ? 'Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.'
                                     : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰할 수 있는 AI 비즈니스를 구축합니다.'}
