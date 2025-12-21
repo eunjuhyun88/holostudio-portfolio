@@ -495,22 +495,17 @@ export default function Home() {
                     <Background3D theme={theme} />
                 </div>
                 
-                {/* Dynamic Rainbow Spotlight */}
+                {/* Subtle Spotlight */}
                 <motion.div 
                     className="absolute inset-0 z-10"
                     style={{
                         background: theme === 'dark' 
                             ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.15), rgba(96, 165, 250, 0.12) 50%, transparent 70%)`
+                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.03), transparent 60%)`
                     }}
                 />
 
-                {/* Sci-Fi Grid Overlay */}
-                <div className={`absolute inset-0 bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite] ${
-                    theme === 'dark' 
-                        ? 'bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)]'
-                        : 'bg-[linear-gradient(rgba(168,85,247,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.2)_1px,transparent_1px)]'
-                }`} />
+                {/* Grid removed for clean look */}
                 
                 <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
                     theme === 'dark' 
@@ -518,35 +513,15 @@ export default function Home() {
                         : 'opacity-60 from-transparent via-white/20 to-white/40'
                 }`} />
                 
-                {/* Dynamic Sci-Fi Scanlines */}
-                <div className={`absolute inset-0 z-20 pointer-events-none ${
-                    theme === 'dark'
-                        ? 'opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]'
-                        : 'opacity-[0.12] bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.2)_50%),linear-gradient(90deg,rgba(236,72,153,0.12),rgba(96,165,250,0.12),rgba(34,211,238,0.12))]'
-                }`} style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                {/* Moving Scanline Bar */}
-                <div className={`absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite] ${
-                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/20'
-                }`} style={{ top: '-100px' }} />
+                {/* Scanlines removed */}
+                {/* Moving bar removed */}
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark' 
                         ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
                         : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(255,255,255,0.5)_100%)]'
                 }`} />
 
-                {/* HUD Corners - Rainbow accent */}
-                <div className={`absolute top-0 left-0 w-32 h-32 border-l border-t rounded-tl-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-purple-400/60'
-                }`} />
-                <div className={`absolute top-0 right-0 w-32 h-32 border-r border-t rounded-tr-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-blue-400/60'
-                }`} />
-                <div className={`absolute bottom-0 left-0 w-32 h-32 border-l border-b rounded-bl-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-cyan-400/60'
-                }`} />
-                <div className={`absolute bottom-0 right-0 w-32 h-32 border-r border-b rounded-br-3xl m-8 ${
-                    theme === 'dark' ? 'border-white/10' : 'border-pink-400/60'
-                }`} />
+                {/* HUD removed for clean look */}
             </div>
 
             {/* Section 01: HERO (Pinned) */}
@@ -557,21 +532,21 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`inline-block px-4 py-1.5 mb-8 border rounded-full text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-md ${
+                        <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-medium tracking-wide uppercase ${
                             theme === 'dark'
                                 ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-purple-400/50 bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 text-purple-700 shadow-lg shadow-purple-300/40'
+                                : 'border-neutral-300 bg-white text-neutral-700'
                         }`}>
                             {t.hero.tag}
                         </div>
-                        <MouseGlowText 
-                            as={motion.h1}
-                            glowColor={theme === 'dark' ? "rgba(99, 102, 241, 0.8)" : "rgba(168, 85, 247, 0.6)"} 
-                            secondaryGlowColor={theme === 'dark' ? "rgba(139, 92, 246, 0.5)" : "rgba(96, 165, 250, 0.5)"}
-                            className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent relative ${
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.6 }}
+                            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] ${
                                 theme === 'dark' 
-                                    ? 'bg-gradient-to-b from-white via-white to-neutral-500'
-                                    : 'bg-gradient-to-br from-neutral-900 via-purple-900 to-blue-900'
+                                    ? 'text-white'
+                                    : 'text-neutral-900'
                             }`}
                         >
                             {t.hero.title}

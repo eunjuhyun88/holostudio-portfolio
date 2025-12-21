@@ -23,12 +23,12 @@ export default function Background3D({ theme = 'dark' }) {
         // Restoring the original central object but with finer particles
         const geometry = new THREE.IcosahedronGeometry(15, 2);
         
-        // Rainbow particles in light mode
+        // Minimal particles in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0x60a5fa,
-            size: theme === 'dark' ? 0.1 : 0.18,
+            color: theme === 'dark' ? 0x818cf8 : 0xc4b5fd,
+            size: theme === 'dark' ? 0.1 : 0.08,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 0.95,
+            opacity: theme === 'dark' ? 0.9 : 0.15,
             sizeAttenuation: true,
         });
 
@@ -46,45 +46,22 @@ export default function Background3D({ theme = 'dark' }) {
         const crystalMesh = new THREE.Points(geometry, material);
         scene.add(crystalMesh);
 
-        // Rainbow core in light mode
+        // Minimal core in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xf0abfc,
-            size: theme === 'dark' ? 0.05 : 0.14,
+            color: theme === 'dark' ? 0xffffff : 0xddd6fe,
+            size: theme === 'dark' ? 0.05 : 0.06,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.9,
+            opacity: theme === 'dark' ? 0.6 : 0.1,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
-        // Rainbow layers for light mode
-        if (theme === 'light') {
-            const holo1Geo = new THREE.IcosahedronGeometry(10, 1);
-            const holo1Mat = new THREE.PointsMaterial({
-                color: 0xa78bfa,
-                size: 0.16,
-                transparent: true,
-                opacity: 0.85,
-            });
-            const holo1 = new THREE.Points(holo1Geo, holo1Mat);
-            scene.add(holo1);
-
-            const holo2Geo = new THREE.IcosahedronGeometry(13, 1);
-            const holo2Mat = new THREE.PointsMaterial({
-                color: 0x22d3ee,
-                size: 0.18,
-                transparent: true,
-                opacity: 0.75,
-            });
-            const holo2 = new THREE.Points(holo2Geo, holo2Mat);
-            scene.add(holo2);
-        }
-
-        // Rainbow wireframe in light mode
+        // Minimal wireframe in light mode
         const wireframeMaterial = new THREE.LineBasicMaterial({ 
-            color: theme === 'dark' ? 0x6366f1 : 0xa78bfa,
+            color: theme === 'dark' ? 0x6366f1 : 0xe9d5ff,
             transparent: true, 
-            opacity: theme === 'dark' ? 0.3 : 0.7 
+            opacity: theme === 'dark' ? 0.3 : 0.08 
         });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
@@ -139,10 +116,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0x93c5fd,
-            size: theme === 'dark' ? 0.08 : 0.12, 
+            color: theme === 'dark' ? 0xa5b4fc : 0xf3e8ff,
+            size: theme === 'dark' ? 0.08 : 0.04, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.85,
+            opacity: theme === 'dark' ? 0.6 : 0.05,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -169,22 +146,22 @@ export default function Background3D({ theme = 'dark' }) {
             // Animate Dust (Warp Effect)
             const positions = dustSystem.geometry.attributes.position.array;
             
-            // Rainbow pulse in light mode
+            // Subtle pulse in light mode
             if (surge > 1.0) {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xc7d2fe);
                     dustMat.opacity = 0.8;
                 } else {
-                    dustMat.color.setHex(0xf0abfc);
-                    dustMat.opacity = 1.0;
+                    dustMat.color.setHex(0xe9d5ff);
+                    dustMat.opacity = 0.08;
                 }
             } else {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xa5b4fc);
                     dustMat.opacity = 0.6;
                 } else {
-                    dustMat.color.setHex(0x93c5fd);
-                    dustMat.opacity = 0.85;
+                    dustMat.color.setHex(0xf3e8ff);
+                    dustMat.opacity = 0.05;
                 }
             }
 

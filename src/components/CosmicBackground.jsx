@@ -19,16 +19,16 @@ export default function CosmicBackground({ theme = 'dark' }) {
 
     return (
         <div ref={ref} className={`fixed inset-0 z-0 pointer-events-none overflow-hidden ${
-            theme === 'dark' ? 'bg-[#050505]' : 'bg-neutral-50'
+            theme === 'dark' ? 'bg-[#050505]' : 'bg-[#FEFEFA]'
         }`}>
-            {/* 1. Base Layer */}
+            {/* 1. Clean Base */}
             <div className={`absolute inset-0 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-b from-[#020205] via-[#050510] to-[#020205]'
-                    : 'bg-gradient-to-br from-white via-neutral-100 to-neutral-200'
+                    : 'bg-gradient-to-br from-[#FEFEFA] via-[#F8F8F6] to-[#F5F5F0]'
             }`} />
 
-            {/* 2. Dynamic Starfield */}
+            {/* 2. Minimal Noise Texture */}
             {theme === 'dark' ? (
                 <>
                     <div className="absolute inset-0 opacity-80 mix-blend-screen animate-[pulse_8s_ease-in-out_infinite]">
@@ -36,73 +36,31 @@ export default function CosmicBackground({ theme = 'dark' }) {
                     </div>
                     <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay animate-[ping_10s_cubic-bezier(0,0,0.2,1)_infinite] opacity-0" />
                 </>
-            ) : (
-                <div className="absolute inset-0 opacity-30 mix-blend-multiply animate-[pulse_8s_ease-in-out_infinite]">
-                    <Starfield density={600} speed={0.03} />
-                </div>
-            )}
+            ) : null}
 
-            {/* 3. Holographic Rainbow Orbs */}
+            {/* 3. Subtle Ambient Gradients */}
             <motion.div 
                 style={{ y: y3 }}
-                className={`absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[140px] animate-pulse ${
+                className={`absolute top-[-10%] right-[-5%] w-[50vw] h-[50vw] rounded-full blur-[150px] ${
                     theme === 'dark' 
                         ? 'mix-blend-screen opacity-20 bg-indigo-900/30'
-                        : 'mix-blend-normal opacity-70 bg-gradient-to-br from-purple-400 via-blue-400 to-cyan-400'
+                        : 'mix-blend-normal opacity-[0.15] bg-gradient-to-br from-purple-300/50 via-blue-200/40 to-transparent'
                 }`}
             />
             <motion.div 
                 style={{ y: y3 }}
-                className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] animate-pulse ${
+                className={`absolute bottom-[-10%] left-[-5%] w-[50vw] h-[50vw] rounded-full blur-[150px] ${
                     theme === 'dark' 
                         ? 'bg-indigo-900/20 mix-blend-screen'
-                        : 'bg-gradient-to-tr from-pink-400 via-purple-400 to-blue-400 opacity-80 mix-blend-normal'
-                }`}
-            />
-            <motion.div 
-                style={{ y: y3 }}
-                className={`absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[100px] animate-pulse ${
-                    theme === 'dark' 
-                        ? 'bg-blue-900/10 mix-blend-screen'
-                        : 'bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 opacity-75 mix-blend-normal'
-                }`}
-            />
-            <motion.div 
-                style={{ y: y3 }}
-                className={`absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full blur-[150px] ${
-                    theme === 'dark' 
-                        ? 'bg-purple-900/20 mix-blend-screen opacity-10'
-                        : 'bg-gradient-to-tl from-pink-400 via-purple-400 to-indigo-400 opacity-60 mix-blend-normal'
+                        : 'bg-gradient-to-tr from-cyan-200/30 via-blue-100/25 to-transparent opacity-[0.15] mix-blend-normal'
                 }`}
             />
 
-            {/* 4. Additional Rainbow Orbs (Parallax) */}
-            <motion.div
-                style={{ y: y1, rotate: rotate1 }}
-                className={`absolute top-[10%] right-[5%] w-[30vw] h-[30vw] rounded-full blur-[80px] ${
-                    theme === 'dark' 
-                        ? 'opacity-10 bg-gradient-to-br from-indigo-500 to-purple-800'
-                        : 'opacity-85 bg-gradient-to-br from-purple-400 via-pink-400 to-fuchsia-400'
-                }`}
-            />
-             <motion.div
-                style={{ y: y2, rotate: rotate2 }}
-                className={`absolute top-[40%] left-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px] ${
-                    theme === 'dark' 
-                        ? 'opacity-5 bg-gradient-to-tr from-emerald-900 to-blue-900'
-                        : 'opacity-70 bg-gradient-to-tr from-cyan-400 via-blue-400 to-indigo-400'
-                }`}
-            />
+            {/* 4. Removed for cleaner look */}
 
-            {/* 5. Rainbow Shimmer Overlay */}
+            {/* 5. Subtle Texture */}
             {theme === 'light' && (
-                <>
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-300/40 via-pink-200/30 to-cyan-300/40" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.3),transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(96,165,250,0.3),transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.2),transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(255,255,255,0.8)_100%)]" />
-                </>
+                <div className="absolute inset-0 opacity-[0.015] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply" />
             )}
             
             <div className={`absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] ${
