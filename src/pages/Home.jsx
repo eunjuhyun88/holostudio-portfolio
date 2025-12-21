@@ -599,14 +599,14 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-8 h-12 text-base font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-white text-black hover:bg-neutral-200'
-                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl transition-shadow'
                             }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                 {t.hero.cta1}
                             </Button>
                             <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold ${
                                 theme === 'dark'
                                     ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
+                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-md transition-shadow'
                             }`}>
                                 {t.hero.cta2}
                             </Button>
@@ -1408,22 +1408,22 @@ export default function Home() {
                                             </div>
 
                                             <div className="flex gap-4">
-                                                <Link to={createPageUrl(prod.path.substring(1))} className="flex-1">
-                                                    <Button className={`w-full h-12 rounded-full text-sm font-bold border-0 ${
-                                                        theme === 'dark'
-                                                            ? `${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white shadow-lg`
-                                                            : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
-                                                    }`}>
-                                                        {prod.primaryBtn[language]}
-                                                    </Button>
-                                                </Link>
-                                                <Button variant="outline" className={`flex-1 h-12 rounded-full text-sm font-bold ${
-                                                    theme === 'dark'
-                                                        ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
-                                                        : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
-                                                }`}>
-                                                    {prod.secondaryBtn[language]}
-                                                </Button>
+                                               <Link to={createPageUrl(prod.path.substring(1))} className="flex-1">
+                                                   <Button className={`w-full h-12 rounded-full text-sm font-bold border-0 transition-all ${
+                                                       theme === 'dark'
+                                                           ? `${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white shadow-lg`
+                                                           : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
+                                                   }`}>
+                                                       {prod.primaryBtn[language]}
+                                                   </Button>
+                                               </Link>
+                                               <Button variant="outline" className={`flex-1 h-12 rounded-full text-sm font-bold transition-all ${
+                                                   theme === 'dark'
+                                                       ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
+                                                       : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-md'
+                                               }`}>
+                                                   {prod.secondaryBtn[language]}
+                                               </Button>
                                             </div>
                                         </div>
                                     </TiltCard>
@@ -1521,34 +1521,46 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 ${
+            <section className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'border-neutral-900'
+                    : 'bg-neutral-900 border-neutral-800'
             }`}>
-                <div className="max-w-5xl mx-auto px-6 text-center">
+                {/* Light Mode: Holographic Gradient Background */}
+                {theme === 'light' && (
+                    <div className="absolute inset-0 pointer-events-none opacity-20">
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-200 via-purple-200 to-pink-200 animate-[shimmer_8s_ease-in-out_infinite]" />
+                        <div className="absolute inset-0 bg-gradient-to-tl from-indigo-200 via-violet-200 to-purple-200 opacity-60 mix-blend-overlay" />
+                    </div>
+                )}
+                
+                <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
                     <div className="mb-12">
                         <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-white'
-                        }`}>{t.contact.title}</h2>
+                        }`}
+                            style={theme === 'dark' ? {} : { textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+                        >{t.contact.title}</h2>
                         <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-300'
-                        }`}>{t.contact.sub}</p>
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-100'
+                        }`}
+                            style={theme === 'dark' ? {} : { textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
+                        >{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={createPageUrl("Contact")}>
-                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 ${
+                            <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 transition-all ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-xl hover:shadow-2xl hover:scale-105'
                             }`}>
                                 {t.contact.cta1}
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold ${
+                        <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-white text-white hover:bg-white/10 bg-transparent'
+                                : 'border-white/40 text-white hover:bg-white/20 bg-white/10 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
                         }`}>
                             {t.contact.cta2}
                         </Button>

@@ -7,6 +7,7 @@ import Products from './pages/Products';
 import Showcase3D from './pages/Showcase3D';
 import Stockhoo from './pages/Stockhoo';
 import Home from './pages/Home';
+import RoadmapPage from './pages/RoadmapPage';
 import __Layout from './Layout.jsx';
 
 
@@ -20,6 +21,7 @@ export const PAGES = {
     "Showcase3D": Showcase3D,
     "Stockhoo": Stockhoo,
     "Home": Home,
+    "RoadmapPage": RoadmapPage,
 }
 
 export const pagesConfig = {
