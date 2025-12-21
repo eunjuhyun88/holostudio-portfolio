@@ -79,6 +79,7 @@ const ThesisSection = ({ items }) => {
 };
 
 const StickyThesisItem = ({ item, index, total }) => {
+    const { theme } = useTheme();
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -86,23 +87,34 @@ const StickyThesisItem = ({ item, index, total }) => {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
 
-    const palettes = [
-        { bg: "bg-[#050505]", text: "text-indigo-400", accent: "text-indigo-500/20" }, 
-        { bg: "bg-[#050505]", text: "text-emerald-400", accent: "text-emerald-500/20" }, 
-        { bg: "bg-[#050505]", text: "text-orange-400", accent: "text-orange-500/20" }, 
-        { bg: "bg-[#050505]", text: "text-lime-400", accent: "text-lime-500/20" }, 
-    ];
+    const palettes = theme === 'dark' 
+        ? [
+            { bg: "bg-[#050505]", text: "text-indigo-400", accent: "bg-indigo-900" }, 
+            { bg: "bg-[#050505]", text: "text-emerald-400", accent: "bg-emerald-900" }, 
+            { bg: "bg-[#050505]", text: "text-orange-400", accent: "bg-orange-900" }, 
+            { bg: "bg-[#050505]", text: "text-lime-400", accent: "bg-lime-900" }, 
+        ]
+        : [
+            { bg: "bg-orange-50", text: "text-orange-900", accent: "bg-orange-200" },
+            { bg: "bg-blue-50", text: "text-blue-900", accent: "bg-blue-200" },
+            { bg: "bg-emerald-50", text: "text-emerald-900", accent: "bg-emerald-200" },
+            { bg: "bg-purple-50", text: "text-purple-900", accent: "bg-purple-200" },
+        ];
 
     const currentPalette = palettes[index % palettes.length];
     
     return (
         <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[#050505] z-0" />
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] rounded-full blur-[150px] opacity-20 ${currentPalette.bg.replace('bg-', 'bg-') === 'bg-[#050505]' ? currentPalette.accent.replace('text-', 'bg-').replace('/20', '') : 'bg-indigo-900'} z-0 pointer-events-none`} />
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
+            <div className={`absolute inset-0 z-0 ${currentPalette.bg}`} />
+            {theme === 'dark' && (
+                <>
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] rounded-full blur-[150px] opacity-20 ${currentPalette.accent} z-0 pointer-events-none`} />
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
+                </>
+            )}
 
             <motion.div 
                 style={{ y, opacity, scale }}
@@ -118,7 +130,9 @@ const StickyThesisItem = ({ item, index, total }) => {
                             {index + 1}
                         </div>
 
-                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-10 tracking-tighter leading-[0.9] text-white relative uppercase`}>
+                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-10 tracking-tighter leading-[0.9] relative uppercase ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>
                             {item.headline}
                         </h2>
                     </motion.div>
@@ -127,7 +141,7 @@ const StickyThesisItem = ({ item, index, total }) => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className={`text-2xl md:text-4xl font-bold leading-tight max-w-5xl ml-auto ${currentPalette.text}`}
+                        className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ml-auto ${currentPalette.text}`}
                     >
                         {item.content}
                     </motion.div>
@@ -138,21 +152,29 @@ const StickyThesisItem = ({ item, index, total }) => {
 };
 
 // Team Identity Component - Inspired by Consensys style
-const TeamIdentity = ({ identity }) => (
-    <div className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24">
+const TeamIdentity = ({ identity }) => {
+    const { theme } = useTheme();
+    return (
+    <div className={`min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24 ${
+        theme === 'dark' ? '' : 'bg-neutral-50'
+    }`}>
         <div className="mb-8 md:mb-16">
-            <div className="w-8 h-8 bg-[#4F6F52] mb-8" />
-            <h2 className="text-sm font-bold tracking-widest uppercase text-neutral-400 mb-2">{identity?.headline || "WHO WE ARE"}</h2>
+            <div className={`w-8 h-8 mb-8 ${theme === 'dark' ? 'bg-[#4F6F52]' : 'bg-orange-500'}`} />
+            <h2 className={`text-sm font-bold tracking-widest uppercase mb-2 ${
+                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+            }`}>{identity?.headline || "WHO WE ARE"}</h2>
         </div>
 
-        <div className="text-[6vw] md:text-[5vw] leading-[0.9] font-bold tracking-tighter text-white select-none flex flex-col">
+        <div className={`text-[6vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter select-none flex flex-col ${
+            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+        }`}>
             <motion.div 
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                <span className="text-indigo-500">Engineers</span>
+                <span className={theme === 'dark' ? 'text-indigo-500' : 'text-orange-600'}>Engineers</span>
             </motion.div>
 
             <motion.div 
@@ -162,7 +184,7 @@ const TeamIdentity = ({ identity }) => (
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="pl-[1em]"
             >
-                <span className="text-emerald-500">Researchers</span>
+                <span className={theme === 'dark' ? 'text-emerald-500' : 'text-blue-600'}>Researchers</span>
             </motion.div>
 
             <motion.div 
@@ -172,7 +194,7 @@ const TeamIdentity = ({ identity }) => (
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="pl-[0.5em]"
             >
-                <span className="text-orange-500">Builders</span>
+                <span className={theme === 'dark' ? 'text-orange-500' : 'text-emerald-600'}>Builders</span>
             </motion.div>
 
             <motion.div 
@@ -182,17 +204,22 @@ const TeamIdentity = ({ identity }) => (
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="pl-[2em]"
             >
-                <span className="text-lime-500">Veterans</span>
+                <span className={theme === 'dark' ? 'text-lime-500' : 'text-purple-600'}>Veterans</span>
             </motion.div>
         </div>
 
-        <div className="mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 border-white/20 pl-8">
-            <p className="text-lg md:text-2xl text-neutral-300 leading-relaxed">
+        <div className={`mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 pl-8 ${
+            theme === 'dark' ? 'border-white/20' : 'border-neutral-300'
+        }`}>
+            <p className={`text-lg md:text-2xl leading-relaxed font-black ${
+                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
+            }`}>
                 {identity?.content || "We are builders."}
             </p>
         </div>
     </div>
-);
+)};
+
 
 // Founder Card Component
 const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
@@ -285,29 +312,45 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
 // Closing Statement Component
 const ClosingStatement = () => {
     const { language } = useLanguage();
+    const { theme } = useTheme();
     return (
-        <div className="min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32">
+        <div className={`min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32 ${
+            theme === 'dark' ? '' : 'bg-white'
+        }`}>
              <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
                 className="text-center px-6 max-w-6xl mx-auto z-10"
              >
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-neutral-300 mb-8 leading-tight tracking-tight">
+                <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight tracking-tight ${
+                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                }`}>
                     {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
                 </h2>
                 <div className="overflow-hidden">
-                    <MouseGlowText 
-                        as={motion.p}
-                        glowColor="rgba(99, 102, 241, 0.8)" // Indigo
-                        secondaryGlowColor="rgba(168, 85, 247, 0.5)" // Purple for contrast
-                        initial={{ y: "100%" }}
-                        whileInView={{ y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                        className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
-                    >
-                        {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
-                    </MouseGlowText>
+                    {theme === 'dark' ? (
+                        <MouseGlowText 
+                            as={motion.p}
+                            glowColor="rgba(99, 102, 241, 0.8)"
+                            secondaryGlowColor="rgba(168, 85, 247, 0.5)"
+                            initial={{ y: "100%" }}
+                            whileInView={{ y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
+                        >
+                            {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
+                        </MouseGlowText>
+                    ) : (
+                        <motion.p
+                            initial={{ y: "100%" }}
+                            whileInView={{ y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase text-neutral-900"
+                        >
+                            {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
+                        </motion.p>
+                    )}
                 </div>
              </motion.div>
         </div>
@@ -699,32 +742,49 @@ Scaled communities from zero to millions of users.`,
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div id="intro" className="relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
+                <div id="intro" className={`relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden ${
+                    theme === 'dark' ? '' : 'bg-white'
+                }`}>
                     <div className="text-center mb-32 md:mb-64 w-full px-2">
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className="text-indigo-400 font-bold tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase glow-text"
+                            className={`font-black tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase ${
+                                theme === 'dark' ? 'text-indigo-400 glow-text' : 'text-orange-600'
+                            }`}
                         >
                             {c.intro?.episode || "Episode I"}
                         </motion.h2>
-                        <MouseGlowText 
-                            as={motion.h1}
-                            glowColor="rgba(99, 102, 241, 0.8)"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1 }}
-                            className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
-                        >
-                            {c.intro?.title || "The Trust Layer"}
-                        </MouseGlowText>
+                        {theme === 'dark' ? (
+                            <MouseGlowText 
+                                as={motion.h1}
+                                glowColor="rgba(99, 102, 241, 0.8)"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1 }}
+                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                            >
+                                {c.intro?.title || "The Trust Layer"}
+                            </MouseGlowText>
+                        ) : (
+                            <motion.h1
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1 }}
+                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-neutral-900 leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                            >
+                                {c.intro?.title || "The Trust Layer"}
+                            </motion.h1>
+                        )}
 
                         {c.intro?.subtitle && (
                             <motion.h3 
                                 initial={{ opacity: 0 }} 
                                 whileInView={{ opacity: 1 }}
-                                className="text-sm md:text-2xl text-neutral-400 font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4"
+                                className={`text-sm md:text-2xl font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4 font-bold ${
+                                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                }`}
                             >
                                 {c.intro.subtitle}
                             </motion.h3>
@@ -732,12 +792,16 @@ Scaled communities from zero to millions of users.`,
                         
                         <div className="space-y-24 w-full max-w-4xl mx-auto">
                             {c.intro?.text ? c.intro.text.map((t, i) => (
-                                <TypingBlock key={i} className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
+                                <TypingBlock key={i} className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                }`}>
                                     {t}
                                 </TypingBlock>
                             )) : (
                                 <>
-                                    <TypingBlock className="text-xl md:text-2xl lg:text-3xl text-neutral-200 leading-relaxed font-normal tracking-wide text-center">
+                                    <TypingBlock className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                    }`}>
                                         It is a period of digital chaos.
                                     </TypingBlock>
                                 </>
@@ -746,13 +810,19 @@ Scaled communities from zero to millions of users.`,
                     </div>
 
                     {/* Chapters integrated as Typing Blocks */}
-                    <div id="history" className="space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32">
+                    <div id="history" className={`space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32 ${
+                        theme === 'dark' ? '' : 'bg-white'
+                    }`}>
                         {c.chapters.map((chapter, i) => (
                             <div key={i} className="flex flex-col items-center text-center w-full">
                                 <motion.div 
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
-                                    className="text-indigo-400 font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 border-indigo-500/50 py-2 md:py-4 w-full uppercase bg-indigo-500/10"
+                                    className={`font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black ${
+                                        theme === 'dark' 
+                                            ? 'text-indigo-400 border-indigo-500/50 bg-indigo-500/10'
+                                            : 'text-orange-600 border-orange-300 bg-orange-50'
+                                    }`}
                                 >
                                     {chapter.year}
                                 </motion.div>
@@ -760,12 +830,16 @@ Scaled communities from zero to millions of users.`,
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.8 }}
-                                    className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-6 md:mb-12 tracking-tight uppercase drop-shadow-lg leading-[0.95] md:leading-[0.9] w-full px-2"
+                                    className={`text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 ${
+                                        theme === 'dark' ? 'text-white drop-shadow-lg' : 'text-neutral-900'
+                                    }`}
                                 >
                                     {chapter.headline}
                                 </motion.h2>
                                 <div className="max-w-4xl mx-auto px-4">
-                                    <TypingBlock className="text-lg md:text-2xl lg:text-3xl text-neutral-300 w-full leading-relaxed text-center font-normal tracking-wide">
+                                    <TypingBlock className={`text-lg md:text-2xl lg:text-3xl w-full leading-relaxed text-center font-black tracking-wide ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
+                                    }`}>
                                         {chapter.content}
                                     </TypingBlock>
                                 </div>
