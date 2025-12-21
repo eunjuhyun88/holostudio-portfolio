@@ -9,7 +9,7 @@ export default function Background3D({ theme = 'dark' }) {
 
         // Scene Setup
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x050505, 0.002);
+        scene.fog = new THREE.FogExp2(theme === 'dark' ? 0x050505 : 0xf5f5f5, 0.002);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 30;
@@ -23,12 +23,12 @@ export default function Background3D({ theme = 'dark' }) {
         // Restoring the original central object but with finer particles
         const geometry = new THREE.IcosahedronGeometry(15, 2);
         
-        // Finer particles for the main shape
+        // Finer particles for the main shape - Holographic rainbow in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0xa78bfa, // Indigo for dark, purple for light
-            size: 0.1,
+            color: theme === 'dark' ? 0x818cf8 : 0x93c5fd, // Indigo for dark, light blue for light
+            size: theme === 'dark' ? 0.1 : 0.15,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 0.7,
+            opacity: theme === 'dark' ? 0.9 : 0.85,
             sizeAttenuation: true,
         });
 
@@ -46,22 +46,35 @@ export default function Background3D({ theme = 'dark' }) {
         const crystalMesh = new THREE.Points(geometry, material);
         scene.add(crystalMesh);
 
-        // Inner core
+        // Inner core - Rainbow gradient effect in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xf0abfc,
-            size: 0.05,
+            color: theme === 'dark' ? 0xffffff : 0xc4b5fd,
+            size: theme === 'dark' ? 0.05 : 0.08,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.8,
+            opacity: theme === 'dark' ? 0.6 : 0.9,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
-        // Wireframe
+        // Additional holographic layer for light mode
+        if (theme === 'light') {
+            const holoGeometry = new THREE.IcosahedronGeometry(12, 1);
+            const holoMaterial = new THREE.PointsMaterial({
+                color: 0xfbbf24, // Amber for rainbow effect
+                size: 0.12,
+                transparent: true,
+                opacity: 0.5,
+            });
+            const holoPoints = new THREE.Points(holoGeometry, holoMaterial);
+            scene.add(holoPoints);
+        }
+
+        // Wireframe - Rainbow holographic in light mode
         const wireframeMaterial = new THREE.LineBasicMaterial({ 
-            color: theme === 'dark' ? 0x6366f1 : 0xc084fc, 
+            color: theme === 'dark' ? 0x6366f1 : 0x67e8f9, // Cyan for holographic
             transparent: true, 
-            opacity: theme === 'dark' ? 0.3 : 0.4 
+            opacity: theme === 'dark' ? 0.3 : 0.6 
         });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
@@ -116,10 +129,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0xddd6fe,
+            color: theme === 'dark' ? 0xa5b4fc : 0xbfdbfe, // Light blue particles
             size: 0.08, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.4,
+            opacity: theme === 'dark' ? 0.6 : 0.7,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -146,13 +159,23 @@ export default function Background3D({ theme = 'dark' }) {
             // Animate Dust (Warp Effect)
             const positions = dustSystem.geometry.attributes.position.array;
             
-            // Pulse color intensity during surge
+            // Pulse color intensity during surge - Rainbow cycle in light mode
             if (surge > 1.0) {
-                dustMat.color.setHex(0xc7d2fe); // Lighter indigo
-                dustMat.opacity = 0.8;
+                if (theme === 'dark') {
+                    dustMat.color.setHex(0xc7d2fe);
+                    dustMat.opacity = 0.8;
+                } else {
+                    dustMat.color.setHex(0xfbbf24); // Amber/gold
+                    dustMat.opacity = 0.9;
+                }
             } else {
-                dustMat.color.setHex(0xa5b4fc); // Original
-                dustMat.opacity = 0.6;
+                if (theme === 'dark') {
+                    dustMat.color.setHex(0xa5b4fc);
+                    dustMat.opacity = 0.6;
+                } else {
+                    dustMat.color.setHex(0xbfdbfe); // Light blue
+                    dustMat.opacity = 0.7;
+                }
             }
 
             for(let i=0; i<dustCount; i++) {

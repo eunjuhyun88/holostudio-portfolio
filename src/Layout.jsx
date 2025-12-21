@@ -387,7 +387,11 @@ function LayoutContent({ children }) {
             </main>
 
             {/* Global Footer - Glassmorphic & Connected */}
-            <footer className="relative z-50 bg-black/40 backdrop-blur-xl text-white py-16 mt-20 border-t border-white/10">
+            <footer className={`relative z-50 backdrop-blur-xl py-16 mt-20 border-t ${
+                theme === 'dark' 
+                    ? 'bg-black/40 text-white border-white/10'
+                    : 'bg-white/60 text-neutral-900 border-neutral-300/30'
+            }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
                         <div className="col-span-1 md:col-span-2">
@@ -401,7 +405,9 @@ function LayoutContent({ children }) {
                                 </div>
                                 <span>HOLO<span className="text-indigo-500">STUDIO</span></span>
                             </Link>
-                            <p className="text-neutral-300 max-w-sm mb-6 text-sm leading-relaxed">
+                            <p className={`max-w-sm mb-6 text-sm leading-relaxed ${
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                            }`}>
                                 {language === 'en' 
                                     ? 'Building trust-managed AI businesses at the intersection of Safety, Media, Gaming, and Trading.'
                                     : 'AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰할 수 있는 AI 비즈니스를 구축합니다.'}
@@ -409,37 +415,63 @@ function LayoutContent({ children }) {
                         </div>
                         
                         <div>
-                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Products' : '프로덕트'}</h4>
+                            <h4 className={`font-semibold text-lg mb-4 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{language === 'en' ? 'Products' : '프로덕트'}</h4>
                             <ul className="space-y-2">
                                 {products.map(prod => (
                                     <li key={prod.name}>
-                                        <Link to={createPageUrl(prod.path.substring(1))} className="text-neutral-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
-                                            <span className="w-1 h-1 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <Link to={createPageUrl(prod.path.substring(1))} className={`transition-colors text-sm flex items-center gap-2 group ${
+                                            theme === 'dark' 
+                                                ? 'text-neutral-300 hover:text-white'
+                                                : 'text-neutral-600 hover:text-neutral-900'
+                                        }`}>
+                                            <span className={`w-1 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ${
+                                                theme === 'dark' ? 'bg-indigo-500' : 'bg-purple-500'
+                                            }`} />
                                             {prod.name}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        
+
                         <div>
-                            <h4 className="font-semibold text-lg mb-4">{language === 'en' ? 'Company' : '회사소개'}</h4>
+                            <h4 className={`font-semibold text-lg mb-4 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{language === 'en' ? 'Company' : '회사소개'}</h4>
                             <ul className="space-y-2">
-                                <li><Link to={createPageUrl('Company')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'About Us' : '소개'}</Link></li>
-                                <li><Link to={createPageUrl('Company') + '#team'} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Team' : '팀'}</Link></li>
-                                <li><button onClick={() => scrollToSection('proof')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Milestones' : '성과'}</button></li>
-                                <li><button onClick={() => scrollToSection('roadmap')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
-                                <li><Link to={createPageUrl('Showcase3D')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? '3D Showcase' : '3D 쇼케이스'}</Link></li>
-                                <li><Link to={createPageUrl('Contact')} className="text-neutral-300 hover:text-white transition-colors text-sm">{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
+                                <li><Link to={createPageUrl('Company')} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? 'About Us' : '소개'}</Link></li>
+                                <li><Link to={createPageUrl('Company') + '#team'} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? 'Team' : '팀'}</Link></li>
+                                <li><button onClick={() => scrollToSection('proof')} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? 'Milestones' : '성과'}</button></li>
+                                <li><button onClick={() => scrollToSection('roadmap')} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? 'Roadmap' : '로드맵'}</button></li>
+                                <li><Link to={createPageUrl('Showcase3D')} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? '3D Showcase' : '3D 쇼케이스'}</Link></li>
+                                <li><Link to={createPageUrl('Contact')} className={`transition-colors text-sm ${
+                                    theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
+                                }`}>{language === 'en' ? 'Contact' : '문의하기'}</Link></li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-300 text-sm">
+
+                    <div className={`pt-8 border-t flex flex-col md:flex-row justify-between items-center text-sm ${
+                        theme === 'dark' 
+                            ? 'border-white/5 text-neutral-300'
+                            : 'border-neutral-300/30 text-neutral-600'
+                    }`}>
                         <p>© 2025 HOLOSTUDIO. All rights reserved.</p>
                         <div className="flex gap-6 mt-4 md:mt-0">
-                            <a href="#" className="hover:text-white">Privacy Policy</a>
-                            <a href="#" className="hover:text-white">Terms of Service</a>
+                            <a href="#" className={theme === 'dark' ? 'hover:text-white' : 'hover:text-neutral-900'}>Privacy Policy</a>
+                            <a href="#" className={theme === 'dark' ? 'hover:text-white' : 'hover:text-neutral-900'}>Terms of Service</a>
                         </div>
                     </div>
                 </div>

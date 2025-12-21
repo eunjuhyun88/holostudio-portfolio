@@ -495,13 +495,13 @@ export default function Home() {
                     <Background3D theme={theme} />
                 </div>
                 
-                {/* Dynamic Spotlight - Optimized with MotionTemplate */}
+                {/* Dynamic Spotlight - Holographic in light mode */}
                 <motion.div 
                     className="absolute inset-0 z-10"
                     style={{
                         background: theme === 'dark' 
                             ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            : useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.06), transparent 40%)`
+                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.12), rgba(96, 165, 250, 0.08) 50%, transparent 70%)`
                     }}
                 />
 
@@ -509,24 +509,24 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite] ${
                     theme === 'dark' 
                         ? 'bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)]'
-                        : 'bg-[linear-gradient(rgba(168,85,247,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.08)_1px,transparent_1px)]'
+                        : 'bg-[linear-gradient(rgba(168,85,247,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.15)_1px,transparent_1px)]'
                 }`} />
                 
-                <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] opacity-50 ${
+                <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
                     theme === 'dark' 
-                        ? 'from-transparent via-[#050505]/30 to-[#050505]'
-                        : 'from-transparent via-neutral-50/30 to-neutral-50'
+                        ? 'opacity-50 from-transparent via-[#050505]/30 to-[#050505]'
+                        : 'opacity-60 from-transparent via-white/20 to-white/40'
                 }`} />
                 
-                {/* Dynamic Sci-Fi Scanlines */}
-                <div className={`absolute inset-0 z-20 pointer-events-none opacity-[0.05] ${
+                {/* Dynamic Sci-Fi Scanlines - Holographic RGB in light */}
+                <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark'
-                        ? 'bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]'
-                        : 'bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.1)_50%),linear-gradient(90deg,rgba(168,85,247,0.04),rgba(236,72,153,0.02),rgba(59,130,246,0.04))]'
+                        ? 'opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]'
+                        : 'opacity-[0.08] bg-[linear-gradient(rgba(168,85,247,0)_50%,rgba(168,85,247,0.15)_50%),linear-gradient(90deg,rgba(236,72,153,0.08),rgba(96,165,250,0.08),rgba(34,211,238,0.08))]'
                 }`} style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                {/* Moving Scanline Bar */}
+                {/* Moving Scanline Bar - Rainbow shimmer in light */}
                 <div className={`absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite] ${
-                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/8'
+                    theme === 'dark' ? 'via-indigo-500/5' : 'via-purple-400/15'
                 }`} style={{ top: '-100px' }} />
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark' 
@@ -557,20 +557,21 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`inline-block px-4 py-1.5 mb-8 border rounded-full text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-sm ${
+                        <div className={`inline-block px-4 py-1.5 mb-8 border rounded-full text-sm md:text-base font-mono tracking-[0.2em] uppercase backdrop-blur-md ${
                             theme === 'dark'
                                 ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-purple-400/40 bg-purple-100/60 text-purple-700'
+                                : 'border-purple-400/50 bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 text-purple-700 shadow-lg shadow-purple-300/30'
                         }`}>
                             {t.hero.tag}
                         </div>
                         <MouseGlowText 
                             as={motion.h1}
-                            glowColor={theme === 'dark' ? "rgba(99, 102, 241, 0.8)" : "rgba(168, 85, 247, 0.6)"} 
+                            glowColor={theme === 'dark' ? "rgba(99, 102, 241, 0.8)" : "rgba(168, 85, 247, 0.8)"} 
+                            secondaryGlowColor={theme === 'dark' ? "rgba(139, 92, 246, 0.5)" : "rgba(96, 165, 250, 0.6)"}
                             className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6 md:mb-8 leading-none bg-clip-text text-transparent relative ${
                                 theme === 'dark' 
                                     ? 'bg-gradient-to-b from-white via-white to-neutral-500'
-                                    : 'bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-600'
+                                    : 'bg-gradient-to-br from-neutral-900 via-purple-900 to-blue-900'
                             }`}
                         >
                             {t.hero.title}
