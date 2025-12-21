@@ -1452,15 +1452,7 @@ export default function Home() {
                                     </div>
                                     
                                     {/* Central Visual */}
-                                    <motion.div 
-                                        className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6"
-                                        style={{
-                                            y: useTransform(scrollYProgress, 
-                                                [0.5 + (idx * 0.15), 0.5 + ((idx + 1) * 0.15)], 
-                                                [30, -30]
-                                            )
-                                        }}
-                                    >
+                                    <div className="absolute top-1/2 left-0 md:left-24 transform -translate-y-1/2 w-full md:w-[45vw] h-[50vh] md:h-[60vh] flex items-center justify-center p-6">
                                         <div className={`relative w-full h-full rounded-3xl overflow-hidden border-2 ${prod.borderColor} shadow-[0_0_100px_-20px_rgba(0,0,0,0.5)] ${prod.glowColor} group ${
                                             theme === 'dark' ? 'bg-neutral-900/50 backdrop-blur-sm' : 'bg-white'
                                         }`}>
@@ -1499,7 +1491,7 @@ export default function Home() {
                                             
                                             <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 </motion.div>
                             )
                         ))}
@@ -1522,12 +1514,6 @@ export default function Home() {
                                 initial={{ opacity: 0, x: 50, y: 20 }}
                                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
-                                style={{
-                                    y: useTransform(scrollYProgress, 
-                                        [0.5 + (idx * 0.15), 0.5 + ((idx + 1) * 0.15)], 
-                                        [20, -20]
-                                    )
-                                }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
                                 <TiltCard className={`group p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
