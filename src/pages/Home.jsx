@@ -502,41 +502,39 @@ export default function Home() {
 
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 opacity-100">
+                <div className="absolute inset-0 opacity-80">
                     <CosmicBackground theme={theme} />
                 </div>
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-70' : 'opacity-40'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-30' : 'opacity-40'}`}>
                     <Background3D theme={theme} />
                 </div>
                 <ScrollMotionBackground theme={theme} />
                 
-                {/* Subtle Spotlight */}
-                <motion.div 
-                    className="absolute inset-0 z-10"
-                    style={{
-                        background: theme === 'dark' 
-                            ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.03), transparent 60%)`
-                    }}
-                />
-
-                {/* Grid removed for clean look */}
+                {theme === 'dark' && (
+                    <>
+                        {/* Grid Pattern */}
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.1)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
+                        
+                        {/* Scanlines */}
+                        <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
+                        
+                        {/* Scan Effect */}
+                        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
+                        
+                        {/* Corner Borders */}
+                        <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                        <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                        <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                        <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+                    </>
+                )}
                 
+                {/* Radial Vignette */}
                 <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
                     theme === 'dark' 
-                        ? 'opacity-50 from-transparent via-[#050505]/30 to-[#050505]'
-                        : 'opacity-60 from-transparent via-white/20 to-white/40'
+                        ? 'from-transparent via-[#050505]/80 to-[#050505] opacity-80'
+                        : 'from-transparent via-white/20 to-white/40 opacity-60'
                 }`} />
-                
-                {/* Scanlines removed */}
-                {/* Moving bar removed */}
-                <div className={`absolute inset-0 z-20 pointer-events-none ${
-                    theme === 'dark' 
-                        ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
-                        : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(255,255,255,0.5)_100%)]'
-                }`} />
-
-                {/* HUD removed for clean look */}
             </div>
 
             {/* Section 01: HERO (Pinned) */}
