@@ -57,10 +57,33 @@ export default function Home() {
                 cta2: "Partner With Us"
             },
             market: {
-                year: { val: "2025", label: "Critical Regulation Year" },
-                eu: { val: "Compliance", label: "EU AI Act & DSA Mandates" },
-                size: { val: "$80B", label: "AI Content Economy (2030)" },
-                gap: { val: "$13B+", label: "Unaddressed Trust Market" }
+                year: { val: "88.89%", label: "AI Detection Accuracy" },
+                eu: { val: "<10ms", label: "Response Time" },
+                size: { val: "98.9%", label: "ROC AUC" },
+                gap: { val: "100%", label: "Brand Safety Accuracy" }
+            },
+            opportunity: {
+                title: "The Opportunity",
+                sub: "AI media market lacks verification.\nThe $13B brand safety market stopped at 'classification'. The AI era requires verification.",
+                points: [
+                    "\"Is it violent?\" ✓",
+                    "\"Is it adult content?\" ✓", 
+                    "\"Is it AI-generated?\" ✗"
+                ]
+            },
+            regulatory: {
+                title: "Regulatory Pressure",
+                date: "August 2026",
+                desc: "EU AI Act full enforcement. Up to 7% of global revenue in fines for violations.",
+                warning: "18 months. That's all the time you have."
+            },
+            cost: {
+                title: "The Cost of No Verification",
+                items: [
+                    { val: "$330M", desc: "One deepfake video call. CFO impersonation. Wire transfer complete." },
+                    { val: "68%", desc: "Consumers who permanently distrust brands after seeing ads next to harmful content." },
+                    { val: "+347%", desc: "Year-over-year increase in deepfake fraud." }
+                ]
             },
             problem: {
                 title: "The Market Failure",
@@ -182,6 +205,29 @@ export default function Home() {
                 eu: { val: "<10ms", label: "응답 시간" },
                 size: { val: "98.9%", label: "ROC AUC" },
                 gap: { val: "100%", label: "브랜드 안전 정확도" }
+            },
+            opportunity: {
+                title: "시장 기회",
+                sub: "AI 미디어 시장, 검증이 없습니다.\n7조원 브랜드 안전 시장은 '분류'에서 멈췄습니다.",
+                points: [
+                    "\"폭력적인가?\" ✓",
+                    "\"성인용인가?\" ✓",
+                    "\"AI가 만들었나?\" ✗"
+                ]
+            },
+            regulatory: {
+                title: "규제 압박",
+                date: "2026년 8월",
+                desc: "EU AI Act 전면 시행. 위반 시 글로벌 매출 7% 과징금.",
+                warning: "18개월 후면 늦습니다."
+            },
+            cost: {
+                title: "검증 없는 AI 경제의 비용",
+                items: [
+                    { val: "330억원", desc: "딥페이크 화상회의 한 번. CFO 사칭. 송금 완료." },
+                    { val: "68%", desc: "유해 콘텐츠 옆 광고 노출 시 브랜드를 영구히 불신하는 소비자." },
+                    { val: "+347%", desc: "딥페이크 사기 연간 증가율." }
+                ]
             },
             problem: {
                 title: "검증 없는 AI 경제의 비용",
@@ -622,7 +668,7 @@ export default function Home() {
                 </motion.div>
             </section>
 
-            {/* Section 02: WHY NOW (Market Pressure Strip) */}
+            {/* Section 02: BY THE NUMBERS */}
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
@@ -637,7 +683,7 @@ export default function Home() {
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
                     >
-                        {language === 'en' ? 'Market Reality' : '시장 현실'}
+                        {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
                     </motion.h2>
                     
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -727,6 +773,100 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Section 02.5: THE OPPORTUNITY */}
+            <section className={`min-h-[60vh] flex items-center justify-center relative z-10 border-y ${
+                theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+            }`}>
+                <div className="max-w-5xl mx-auto px-6 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                        }`}>{t.opportunity.title}</h2>
+                        <h3 className={`text-3xl md:text-5xl font-black mb-8 leading-tight ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.opportunity.sub}</h3>
+                        <div className={`flex flex-wrap justify-center gap-6 text-lg ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                        }`}>
+                            {t.opportunity.points.map((point, idx) => (
+                                <span key={idx} className="font-mono">{point}</span>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Section 02.6: THE COST */}
+            <section className={`min-h-[80vh] flex items-center justify-center relative z-10 ${
+                theme === 'dark' ? 'bg-transparent' : 'bg-white'
+            }`}>
+                <div className="max-w-6xl mx-auto px-6 w-full">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className={`text-3xl md:text-5xl font-black text-center mb-16 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}
+                    >
+                        {t.cost.title}
+                    </motion.h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {t.cost.items.map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.15 }}
+                                className={`p-8 rounded-2xl border text-center ${
+                                    theme === 'dark'
+                                        ? 'bg-black/30 border-red-500/20 hover:border-red-500/50'
+                                        : 'bg-white border-red-200 hover:shadow-lg'
+                                }`}
+                            >
+                                <div className={`text-4xl md:text-5xl font-black mb-4 ${
+                                    theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                                }`}>{item.val}</div>
+                                <p className={`text-sm leading-relaxed ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                }`}>{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 02.7: REGULATORY PRESSURE */}
+            <section className={`min-h-[60vh] flex items-center justify-center relative z-10 border-y ${
+                theme === 'dark' ? 'bg-black/30 border-white/5' : 'bg-orange-50/50 border-orange-200/30'
+            }`}>
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
+                        }`}>{t.regulatory.title}</h2>
+                        <div className={`text-6xl md:text-7xl font-black mb-6 ${
+                            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+                        }`}>{t.regulatory.date}</div>
+                        <p className={`text-xl md:text-2xl font-bold mb-4 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.regulatory.desc}</p>
+                        <p className={`text-lg ${
+                            theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
+                        }`}>{t.regulatory.warning}</p>
+                    </motion.div>
                 </div>
             </section>
 
