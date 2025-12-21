@@ -15,10 +15,10 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
     const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
     
     const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], 
-        theme === 'dark' ? [0.7, 0.9, 0.7, 0.5] : [0.5, 0.7, 0.5, 0.3]
+        theme === 'dark' ? [0.3, 0.4, 0.3, 0.2] : [0.5, 0.7, 0.5, 0.3]
     );
     const opacity2 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], 
-        theme === 'dark' ? [0.5, 0.8, 0.6, 0.8] : [0.4, 0.6, 0.4, 0.6]
+        theme === 'dark' ? [0.2, 0.3, 0.2, 0.3] : [0.4, 0.6, 0.4, 0.6]
     );
     
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
@@ -33,9 +33,9 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.3, 1])
                 }}
-                className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[80px] ${
+                className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[100px] ${
                     theme === 'dark' 
-                        ? 'bg-gradient-to-br from-indigo-500/50 via-purple-500/35 to-transparent'
+                        ? 'bg-gradient-to-br from-indigo-900/20 via-blue-900/15 to-transparent'
                         : 'bg-gradient-to-br from-violet-400/15 via-purple-400/10 to-transparent'
                 }`}
             />
@@ -45,9 +45,9 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity2,
                     rotate
                 }}
-                className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[90px] ${
+                className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[120px] ${
                     theme === 'dark'
-                        ? 'bg-gradient-to-br from-purple-500/40 via-pink-500/30 to-transparent'
+                        ? 'bg-gradient-to-br from-indigo-950/15 via-blue-950/10 to-transparent'
                         : 'bg-gradient-to-br from-purple-400/12 via-pink-400/8 to-transparent'
                 }`}
             />
@@ -57,20 +57,20 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale
                 }}
-                className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[80px] ${
+                className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[100px] ${
                     theme === 'dark'
-                        ? 'bg-gradient-to-br from-blue-500/35 via-indigo-500/40 to-transparent'
+                        ? 'bg-gradient-to-br from-blue-950/20 via-indigo-950/15 to-transparent'
                         : 'bg-gradient-to-br from-indigo-400/10 via-violet-400/8 to-transparent'
                 }`}
             />
             <motion.div 
                 style={{ 
                     y: y4,
-                    opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0.6, 0.8, 0.6] : [0.4, 0.6, 0.4])
+                    opacity: useTransform(scrollYProgress, [0, 0.5, 1], theme === 'dark' ? [0.3, 0.4, 0.3] : [0.4, 0.6, 0.4])
                 }}
-                className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[70px] ${
+                className={`absolute top-[60%] right-[5%] w-[350px] h-[350px] rounded-full blur-[100px] ${
                     theme === 'dark'
-                        ? 'bg-gradient-to-br from-orange-500/30 via-yellow-500/20 to-transparent'
+                        ? 'bg-gradient-to-br from-indigo-950/12 via-blue-950/8 to-transparent'
                         : 'bg-gradient-to-br from-pink-400/10 via-violet-400/8 to-transparent'
                 }`}
             />
