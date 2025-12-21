@@ -962,8 +962,13 @@ export default function Home() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="bg-[#050505] rounded-2xl p-6 md:p-8 border border-white/5 flex flex-col gap-8 md:gap-0 md:justify-between relative h-auto md:min-h-[600px] overflow-hidden">
+                            <div className={`rounded-2xl p-6 md:p-8 border flex flex-col gap-8 md:gap-0 md:justify-between relative h-auto md:min-h-[600px] overflow-hidden ${
+                                theme === 'dark' 
+                                    ? 'bg-[#050505] border-white/5' 
+                                    : 'bg-white border-neutral-900/30'
+                            }`}>
                                 {/* Animated Data Flow Particles */}
+                                {theme === 'dark' && (
                                 <div className="absolute inset-0 z-0 pointer-events-none">
                                     {/* Particles moving up */}
                                     <motion.div 
@@ -982,9 +987,12 @@ export default function Home() {
                                         className="absolute left-[60%] bottom-20 w-[1px] h-24 bg-gradient-to-t from-transparent via-purple-400 to-transparent blur-[1px]"
                                     />
                                 </div>
+                                )}
 
                                 {/* Background Glow */}
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 to-transparent pointer-events-none" />
+                                {theme === 'dark' && (
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 to-transparent pointer-events-none" />
+                                )}
 
                                 {/* Layer 3: Apps */}
                                 <motion.div 
@@ -992,26 +1000,42 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.4 }}
-                                    className="relative z-10 border border-white/10 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 hover:border-white/20 transition-colors"
+                                    className={`relative z-10 border rounded-xl p-6 mb-4 transition-colors ${
+                                        theme === 'dark'
+                                            ? 'border-white/10 bg-black/50 backdrop-blur-md hover:border-white/20'
+                                            : 'border-neutral-900/20 bg-neutral-50 hover:border-neutral-900'
+                                    }`}
                                 >
-                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-                                    <div className="text-[10px] uppercase tracking-widest text-neutral-200 mb-4 text-center font-mono">Application Layer</div>
+                                    {theme === 'dark' && (
+                                        <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    )}
+                                    <div className={`text-[10px] uppercase tracking-widest mb-4 text-center font-mono font-bold ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    }`}>Application Layer</div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                        <div className={`p-4 rounded-lg border text-center transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-neutral-900/50 border-white/5 hover:bg-neutral-800/50'
+                                                : 'bg-white border-neutral-900/20 hover:border-orange-500'
+                                        }`}>
                                             <BorderBeam size={100} duration={8} delay={0} colorFrom="#f97316" colorTo="#ea580c" />
                                             <motion.div animate={{ rotate: [0, 8, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
                                                 <Gamepad2 className="w-8 h-8 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             </motion.div>
-                                            <div className="font-bold text-white text-sm">EleMEMEtal</div>
-                                            <div className="text-[10px] text-neutral-200 mt-1">Game Asset Ownership</div>
+                                            <div className={`font-black text-sm ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>EleMEMEtal</div>
+                                            <div className={`text-[10px] mt-1 font-bold ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'}`}>Game Asset Ownership</div>
                                         </div>
-                                        <div className="bg-neutral-900/50 p-4 rounded-lg border border-white/5 text-center hover:bg-neutral-800/50 transition-colors group relative overflow-hidden">
+                                        <div className={`p-4 rounded-lg border text-center transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-neutral-900/50 border-white/5 hover:bg-neutral-800/50'
+                                                : 'bg-white border-neutral-900/20 hover:border-emerald-500'
+                                        }`}>
                                             <BorderBeam size={100} duration={8} delay={4} colorFrom="#10b981" colorTo="#059669" />
                                             <motion.div animate={{ scaleY: [1, 1.15, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
                                                 <BarChart3 className="w-8 h-8 text-emerald-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                                             </motion.div>
-                                            <div className="font-bold text-white text-sm">Stockhoo</div>
-                                            <div className="text-[10px] text-neutral-200 mt-1">Market Intelligence</div>
+                                            <div className={`font-black text-sm ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Stockhoo</div>
+                                            <div className={`text-[10px] mt-1 font-bold ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'}`}>Market Intelligence</div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1033,32 +1057,56 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 }}
-                                    className="relative z-10 border border-indigo-500/20 bg-black/50 backdrop-blur-md rounded-xl p-6 mb-4 shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40 transition-colors"
+                                    className={`relative z-10 border rounded-xl p-6 mb-4 transition-colors ${
+                                        theme === 'dark'
+                                            ? 'border-indigo-500/20 bg-black/50 backdrop-blur-md shadow-[0_0_30px_rgba(79,70,229,0.05)] hover:border-indigo-500/40'
+                                            : 'border-indigo-500/30 bg-indigo-50 hover:border-indigo-500'
+                                    }`}
                                 >
-                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-                                    <div className="text-[10px] uppercase tracking-widest text-indigo-400 mb-4 text-center font-mono">Trust & Verification Protocols</div>
+                                    {theme === 'dark' && (
+                                        <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    )}
+                                    <div className={`text-[10px] uppercase tracking-widest mb-4 text-center font-mono font-bold ${
+                                        theme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+                                    }`}>Trust & Verification Protocols</div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20 text-center hover:bg-indigo-900/20 transition-colors group relative overflow-hidden">
+                                        <div className={`p-4 rounded-lg border text-center transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-indigo-900/10 border-indigo-500/20 hover:bg-indigo-900/20'
+                                                : 'bg-blue-50 border-blue-500/30 hover:border-blue-500'
+                                        }`}>
                                             <BorderBeam size={100} duration={8} delay={2} colorFrom="#6366f1" colorTo="#818cf8" />
                                             <div className="relative">
-                                                <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                {theme === 'dark' && (
+                                                    <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                )}
                                                 <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-                                                    <Shield className="w-8 h-8 text-indigo-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                    <Shield className={`w-8 h-8 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform ${
+                                                        theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                                    }`} />
                                                 </motion.div>
                                             </div>
-                                            <div className="font-bold text-white text-sm">AiD Guardian</div>
-                                            <div className="text-[10px] text-indigo-300/70 mt-1">Safety Guardrails</div>
+                                            <div className={`font-black text-sm ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>AiD Guardian</div>
+                                            <div className={`text-[10px] mt-1 font-bold ${theme === 'dark' ? 'text-indigo-300/70' : 'text-blue-700'}`}>Safety Guardrails</div>
                                         </div>
-                                        <div className="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center hover:bg-purple-900/20 transition-colors group relative overflow-hidden">
+                                        <div className={`p-4 rounded-lg border text-center transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-purple-900/10 border-purple-500/20 hover:bg-purple-900/20'
+                                                : 'bg-purple-50 border-purple-500/30 hover:border-purple-500'
+                                        }`}>
                                             <BorderBeam size={100} duration={8} delay={6} colorFrom="#a855f7" colorTo="#c084fc" />
                                             <div className="relative">
-                                                <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                {theme === 'dark' && (
+                                                    <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                )}
                                                 <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
-                                                    <FileText className="w-8 h-8 text-purple-400 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform" />
+                                                    <FileText className={`w-8 h-8 mx-auto mb-2 relative z-10 group-hover:scale-110 transition-transform ${
+                                                        theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
+                                                    }`} />
                                                 </motion.div>
                                             </div>
-                                            <div className="font-bold text-white text-sm">PlayArts</div>
-                                            <div className="text-[10px] text-purple-300/70 mt-1">Provenance Layer</div>
+                                            <div className={`font-black text-sm ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>PlayArts</div>
+                                            <div className={`text-[10px] mt-1 font-bold ${theme === 'dark' ? 'text-purple-300/70' : 'text-purple-700'}`}>Provenance Layer</div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1079,11 +1127,19 @@ export default function Home() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="relative z-10 border border-blue-500/20 bg-black/50 backdrop-blur-md rounded-xl p-6 hover:border-blue-500/40 transition-colors"
+                                    className={`relative z-10 border rounded-xl p-6 transition-colors ${
+                                        theme === 'dark'
+                                            ? 'border-blue-500/20 bg-black/50 backdrop-blur-md hover:border-blue-500/40'
+                                            : 'border-neutral-900/30 bg-neutral-50 hover:border-neutral-900'
+                                    }`}
                                 >
-                                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    {theme === 'dark' && (
+                                        <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                                    )}
                                     <div className="flex items-center justify-between mb-4">
-                                        <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold font-mono">DePIN GPU Mesh</div>
+                                        <div className={`text-[10px] uppercase tracking-widest font-black font-mono ${
+                                            theme === 'dark' ? 'text-blue-400' : 'text-neutral-900'
+                                        }`}>DePIN GPU Mesh</div>
                                         <div className="flex gap-1">
                                             <span className="relative flex h-2 w-2">
                                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -1092,26 +1148,44 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                        <div className={`p-3 rounded-lg border transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-blue-900/10 border-blue-500/20 hover:bg-blue-900/20'
+                                                : 'bg-white border-neutral-900/20 hover:border-blue-500'
+                                        }`}>
                                             <BorderBeam size={80} duration={10} delay={0} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <motion.div animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.5, repeat: Infinity }}>
-                                                <Cpu className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:rotate-12 transition-transform" />
+                                                <Cpu className={`w-5 h-5 mx-auto mb-1 group-hover:rotate-12 transition-transform ${
+                                                    theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                                                }`} />
                                             </motion.div>
-                                            <div className="text-[10px] text-blue-200">H100 Nodes</div>
+                                            <div className={`text-[10px] font-bold ${theme === 'dark' ? 'text-blue-200' : 'text-neutral-900'}`}>H100 Nodes</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                        <div className={`p-3 rounded-lg border transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-blue-900/10 border-blue-500/20 hover:bg-blue-900/20'
+                                                : 'bg-white border-neutral-900/20 hover:border-blue-500'
+                                        }`}>
                                             <BorderBeam size={80} duration={10} delay={3} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 3.5, repeat: Infinity }}>
-                                                <Network className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:scale-110 transition-transform" />
+                                                <Network className={`w-5 h-5 mx-auto mb-1 group-hover:scale-110 transition-transform ${
+                                                    theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                                                }`} />
                                             </motion.div>
-                                            <div className="text-[10px] text-blue-200">Consumer GPU</div>
+                                            <div className={`text-[10px] font-bold ${theme === 'dark' ? 'text-blue-200' : 'text-neutral-900'}`}>Consumer GPU</div>
                                         </div>
-                                        <div className="bg-blue-900/10 p-3 rounded-lg border border-blue-500/20 hover:bg-blue-900/20 transition-colors group relative overflow-hidden">
+                                        <div className={`p-3 rounded-lg border transition-colors group relative overflow-hidden ${
+                                            theme === 'dark'
+                                                ? 'bg-blue-900/10 border-blue-500/20 hover:bg-blue-900/20'
+                                                : 'bg-white border-neutral-900/20 hover:border-blue-500'
+                                        }`}>
                                             <BorderBeam size={80} duration={10} delay={6} colorFrom="#3b82f6" colorTo="#60a5fa" />
                                             <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 4.5, repeat: Infinity }}>
-                                                <Database className="w-5 h-5 text-blue-400 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform" />
+                                                <Database className={`w-5 h-5 mx-auto mb-1 group-hover:translate-y-[-2px] transition-transform ${
+                                                    theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                                                }`} />
                                             </motion.div>
-                                            <div className="text-[10px] text-blue-200">Storage</div>
+                                            <div className={`text-[10px] font-bold ${theme === 'dark' ? 'text-blue-200' : 'text-neutral-900'}`}>Storage</div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1371,11 +1445,23 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-neutral-800 hover:border-indigo-500/30 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
+                                className={`p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden ${
+                                    theme === 'dark'
+                                        ? 'bg-white/5 backdrop-blur-sm border-neutral-800 hover:border-indigo-500/30'
+                                        : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
+                                }`}
                             >
                                 {/* Sci-Fi Corners */}
-                                <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                <div className={`absolute top-0 left-0 w-4 h-4 border-l border-t transition-colors ${
+                                    theme === 'dark'
+                                        ? 'border-white/10 group-hover:border-indigo-500'
+                                        : 'border-neutral-900/20 group-hover:border-neutral-900'
+                                }`} />
+                                <div className={`absolute bottom-0 right-0 w-4 h-4 border-r border-b transition-colors ${
+                                    theme === 'dark'
+                                        ? 'border-white/10 group-hover:border-indigo-500'
+                                        : 'border-neutral-900/20 group-hover:border-neutral-900'
+                                }`} />
                                 
                                 <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
                                     <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
@@ -1388,8 +1474,12 @@ export default function Home() {
                                     </div>
                                 </Floating>
                                 <div>
-                                    <div className="text-lg font-bold text-white mb-2 leading-tight">{m.title}</div>
-                                    <div className="text-sm text-neutral-200 group-hover:text-neutral-200 transition-colors">{m.desc}</div>
+                                    <div className={`text-lg font-black mb-2 leading-tight ${
+                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                    }`}>{m.title}</div>
+                                    <div className={`text-sm font-medium transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    }`}>{m.desc}</div>
                                 </div>
                             </motion.div>
                         ))}
