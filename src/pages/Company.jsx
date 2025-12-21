@@ -7,8 +7,7 @@ import { ArrowRight, Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import CosmicBackground from '@/components/CosmicBackground';
-import Background3D from '@/components/Background3D';
+import CompanyBackground from '@/components/CompanyBackground';
 import MouseGlowText from '@/components/MouseGlowText';
 
 // --- Components ---
@@ -683,46 +682,8 @@ Scaled communities from zero to millions of users.`,
                 description={c.intro?.title}
             />
 
-            {/* Visual State Management Layer - Only dark mode */}
-            {theme === 'dark' && (
-                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                    <div className="absolute inset-0 opacity-100">
-                        <CosmicBackground theme={theme} />
-                    </div>
-                    <div className="absolute inset-0 opacity-75">
-                        <Background3D theme={theme} />
-                    </div>
-                    
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/60 to-[#050505] opacity-60" />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.08)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
-                    <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(99,102,241,0.08)_50%),linear-gradient(90deg,rgba(255,0,0,0.04),rgba(0,255,0,0.01),rgba(0,0,255,0.04))]" style={{ backgroundSize: "100% 4px, 3px 100%" }} />
-                    <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-indigo-500/4 to-transparent h-[100px] w-full animate-[scan_5s_linear_infinite]" style={{ top: '-100px' }} />
-                    
-                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/20 rounded-tl-3xl m-8" />
-                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/20 rounded-tr-3xl m-8" />
-                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/20 rounded-bl-3xl m-8" />
-                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/20 rounded-br-3xl m-8" />
-
-                     <motion.div
-                        animate={{ 
-                            opacity: visualState.showGuardRail ? 0.3 : 0,
-                            scale: visualState.showGuardRail ? 1 : 0.9,
-                            x: mousePos.x * -1,
-                            y: mousePos.y * -1
-                        }}
-                        transition={{ 
-                            opacity: { duration: 1, ease: "circOut" },
-                            scale: { duration: 1, ease: "circOut" },
-                            x: { type: "spring", stiffness: 50, damping: 20 },
-                            y: { type: "spring", stiffness: 50, damping: 20 }
-                        }}
-                        className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
-                     >
-                        <div className="w-[80vh] h-[80vh] rounded-full border border-indigo-500/10 shadow-[0_0_150px_rgba(99,102,241,0.05)] animate-[spin_30s_linear_infinite]" />
-                        <div className="absolute w-[60vh] h-[60vh] rounded-full border border-indigo-500/5 animate-[spin_20s_linear_infinite_reverse]" />
-                     </motion.div>
-                </div>
-            )}
+            {/* Minimal Professional Background */}
+            <CompanyBackground theme={theme} />
 
             {/* Sticky Navigation (Desktop) */}
             <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
