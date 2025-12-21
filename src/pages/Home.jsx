@@ -916,7 +916,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -930,8 +930,8 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-5xl mx-auto text-center">
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                    <div className="max-w-5xl mx-auto text-center w-full">
+                        <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
                         }`}>
                             {language === 'en' ? 'Why Now' : '왜 지금인가'}
@@ -940,20 +940,20 @@ export default function Home() {
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
+                                className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight px-4"
                             >
                                 {language === 'en' 
                                     ? 'AI verification is no longer optional.' 
                                     : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent px-4">
                                 {language === 'en' 
                                     ? 'AI verification is no longer optional.' 
                                     : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </h3>
                         )}
-                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+                        <p className={`text-sm md:text-base lg:text-lg max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-4 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.opportunity.sub}
@@ -992,7 +992,7 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <p className={`text-2xl md:text-3xl font-black text-center ${
+                        <p className={`text-lg md:text-xl lg:text-2xl font-black text-center px-4 ${
                             theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                         }`}>
                             {t.opportunity.conclusion}
@@ -1001,7 +1001,7 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1016,8 +1016,8 @@ export default function Home() {
                     }
                 }}>
                     <div className="max-w-6xl mx-auto w-full">
-                        <div className="mb-16 text-center max-w-4xl mx-auto">
-                            <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                        <div className="mb-12 md:mb-16 text-center max-w-4xl mx-auto">
+                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-red-500' : 'text-red-700'
                             }`}>
                                 {t.cost.title}
@@ -1026,41 +1026,41 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(239, 68, 68, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight px-4"
                                 >
                                     {t.cost.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent px-4">
                                     {t.cost.sub}
                                 </h3>
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-6 mb-12">
+                        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
                             {t.cost.items.slice(0, 2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className={`p-6 rounded-2xl border text-center ${
+                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border text-center ${
                                         theme === 'dark'
                                             ? 'bg-black/30 border-red-500/20'
                                             : 'bg-red-50/50 border-red-200'
                                     }`}
                                 >
-                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
+                                    <div className={`text-2xl md:text-3xl font-black mb-2 ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                     }`}>{item.val}</div>
-                                    <p className={`text-sm ${
+                                    <p className={`text-xs md:text-sm ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-6 mb-8">
+                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
                             {t.cost.items.slice(2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1068,23 +1068,23 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className={`p-6 rounded-xl border ${
+                                    className={`p-4 md:p-6 rounded-xl border ${
                                         theme === 'dark'
                                             ? 'bg-black/40 border-white/10'
                                             : 'bg-white border-neutral-200'
                                     }`}
                                 >
-                                    <h4 className={`text-lg font-black mb-2 ${
+                                    <h4 className={`text-base md:text-lg font-black mb-2 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{item.label}</h4>
-                                    <p className={`text-sm leading-relaxed ${
+                                    <p className={`text-xs md:text-sm leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <p className={`text-center text-xl md:text-2xl font-black italic ${
+                        <p className={`text-center text-base md:text-lg lg:text-xl font-black italic px-4 ${
                             theme === 'dark' ? 'text-red-400' : 'text-red-700'
                         }`}>
                             {t.cost.conclusion}
@@ -1093,7 +1093,7 @@ export default function Home() {
                 </section>
 
                 {/* Company Thesis Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1107,17 +1107,17 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                    <div className="max-w-6xl mx-auto text-center w-full">
+                        <h2 className={`text-xs md:text-sm font-mono mb-8 md:mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
                         }`}>
                             {t.thesis.label}
                         </h2>
                         
-                        <div className="mb-20">
+                        <div className="mb-12 md:mb-16 px-4">
                             {language === 'en' ? (
                                 <>
-                                    <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
+                                    <p className={`text-xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>
                                         Creativity is abundant.
@@ -1126,16 +1126,16 @@ export default function Home() {
                                         <MouseGlowText
                                             as="p"
                                             glowColor="rgba(99, 102, 241, 0.9)"
-                                            className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8"
+                                            className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8"
                                         >
                                             Trust is scarce.
                                         </MouseGlowText>
                                     ) : (
-                                        <p className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                        <p className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
                                             Trust is scarce.
                                         </p>
                                     )}
-                                    <p className={`text-2xl md:text-3xl lg:text-4xl font-bold leading-tight ${
+                                    <p className={`text-base md:text-xl lg:text-2xl font-bold leading-tight ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>
                                         When AI becomes an economic actor,<br/>
@@ -1146,7 +1146,7 @@ export default function Home() {
                                 </>
                             ) : (
                                 <>
-                                    <p className={`text-3xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 ${
+                                    <p className={`text-xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>
                                         더 이상 희소한 자원은 창의성이 아닙니다.
@@ -1155,12 +1155,12 @@ export default function Home() {
                                         <MouseGlowText
                                             as="p"
                                             glowColor="rgba(99, 102, 241, 0.9)"
-                                            className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8"
+                                            className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8"
                                         >
                                             바로 신뢰입니다.
                                         </MouseGlowText>
                                     ) : (
-                                        <p className="text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                        <p className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 md:mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
                                             바로 신뢰입니다.
                                         </p>
                                     )}
@@ -1168,7 +1168,7 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className={`flex flex-wrap justify-center gap-6 md:gap-12 text-base md:text-lg font-mono font-bold ${
+                        <div className={`flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm lg:text-base font-mono font-bold px-4 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                         }`}>
                             {t.thesis.keywords.map((kw, i) => (
@@ -1328,7 +1328,7 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
+                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1342,9 +1342,9 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-7xl mx-auto w-full py-20">
-                        <div className="mb-16 text-center max-w-4xl mx-auto">
-                            <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                    <div className="max-w-7xl mx-auto w-full">
+                        <div className="mb-12 md:mb-16 text-center max-w-4xl mx-auto">
+                            <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-yellow-500' : 'text-orange-700'
                             }`}>
                                 {language === 'en' ? 'VALIDATION' : '검증'}
@@ -1353,23 +1353,23 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(234, 179, 8, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 md:mb-6 px-4"
                                 >
                                     {t.milestones.title}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent px-4">
                                     {t.milestones.title}
                                 </h3>
                             )}
-                            <p className={`text-lg md:text-xl font-medium ${
+                            <p className={`text-sm md:text-base lg:text-lg font-medium px-4 ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}>
                                 {t.milestones.sub}
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                             {milestones.map((m, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1378,19 +1378,19 @@ export default function Home() {
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1, duration: 0.5 }}
                                     whileHover={{ scale: 1.03, y: -6 }}
-                                    className={`p-8 rounded-3xl border-2 transition-all duration-300 ${
+                                    className={`p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
                                         theme === 'dark'
                                             ? 'bg-black/50 border-white/10 hover:border-white/20 hover:bg-black/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
                                             : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-md hover:shadow-xl'
                                     }`}
                                 >
-                                    <div className={`w-14 h-14 rounded-xl ${m.bg} flex items-center justify-center mb-6 transition-transform duration-300 hover:scale-110`}>
-                                        <m.icon className={`w-7 h-7 ${m.color}`} />
+                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl ${m.bg} flex items-center justify-center mb-4 md:mb-6 transition-transform duration-300 hover:scale-110`}>
+                                        <m.icon className={`w-6 h-6 md:w-7 md:h-7 ${m.color}`} />
                                     </div>
-                                    <div className={`text-xl font-black mb-3 ${
+                                    <div className={`text-base md:text-lg lg:text-xl font-black mb-2 md:mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{m.title}</div>
-                                    <div className={`text-sm font-medium leading-relaxed ${
+                                    <div className={`text-xs md:text-sm font-medium leading-relaxed ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
                                 </motion.div>
@@ -1409,13 +1409,13 @@ export default function Home() {
                 </section>
 
                 {/* Contact Section */}
-                <section className={`min-h-screen flex items-center justify-center border-t px-6 py-20 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-4 md:px-6 py-16 md:py-20 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
                 }`}>
-                    <div className="max-w-5xl mx-auto text-center">
-                        <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                    <div className="max-w-5xl mx-auto text-center w-full">
+                        <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>
                             {language === 'en' ? 'JOIN THE FUTURE' : '함께 만들어가요'}
@@ -1424,21 +1424,21 @@ export default function Home() {
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(99, 102, 241, 0.9)"
-                                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight"
+                                className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-6 md:mb-8 leading-tight px-4"
                             >
                                 {t.contact.title}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-6 md:mb-8 leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent px-4">
                                 {t.contact.title}
                             </h3>
                         )}
-                        <p className={`text-xl md:text-2xl font-medium mb-8 ${
+                        <p className={`text-sm md:text-base lg:text-lg font-medium mb-6 md:mb-8 px-4 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.contact.sub}
                         </p>
-                        <p className={`text-lg md:text-xl font-bold italic mb-12 ${
+                        <p className={`text-base md:text-lg font-bold italic mb-8 md:mb-12 px-4 ${
                             theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
                         }`}>
                             {t.contact.tagline}
@@ -1448,19 +1448,19 @@ export default function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center"
+                            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4"
                         >
-                            <Link to={createPageUrl("Contact")}>
-                                <Button size="lg" className={`group rounded-full px-12 md:px-16 h-16 md:h-18 text-lg md:text-xl font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 ${
+                            <Link to={createPageUrl("Contact")} className="w-full sm:w-auto">
+                                <Button size="lg" className={`group rounded-full px-8 md:px-12 h-12 md:h-14 text-sm md:text-base font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 w-full ${
                                     theme === 'dark'
                                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_50px_rgba(79,70,229,0.5)] hover:shadow-[0_0_60px_rgba(79,70,229,0.6)]'
                                         : 'bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 hover:from-cyan-500 hover:via-violet-500 hover:to-pink-500 text-white shadow-2xl hover:shadow-3xl'
                                 }`}>
                                     {t.contact.cta1}
-                                    <ArrowRight className="w-6 h-6 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                                 </Button>
                             </Link>
-                            <Button variant="outline" size="lg" className={`rounded-full px-12 md:px-16 h-16 md:h-18 text-lg md:text-xl font-bold transition-all duration-300 hover:scale-105 active:scale-95 ${
+                            <Button variant="outline" size="lg" className={`rounded-full px-8 md:px-12 h-12 md:h-14 text-sm md:text-base font-bold transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto ${
                                 theme === 'dark'
                                     ? 'border-neutral-700 text-white hover:bg-white/10 hover:border-neutral-600 bg-transparent backdrop-blur-sm'
                                     : 'border-violet-200 text-neutral-900 hover:bg-violet-50 hover:border-violet-300 bg-white/80 backdrop-blur-md shadow-xl'
