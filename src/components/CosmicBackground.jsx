@@ -44,7 +44,7 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute top-[-10%] right-[-5%] w-[50vw] h-[50vw] rounded-full blur-[150px] ${
                     theme === 'dark' 
                         ? 'mix-blend-screen opacity-20 bg-indigo-900/30'
-                        : 'mix-blend-multiply opacity-15 bg-gradient-to-br from-indigo-300/40 via-purple-300/30 to-transparent'
+                        : 'mix-blend-multiply opacity-30 bg-gradient-to-br from-violet-400/50 via-purple-400/40 to-transparent'
                 }`}
             />
             <motion.div 
@@ -52,7 +52,7 @@ export default function CosmicBackground({ theme = 'dark' }) {
                 className={`absolute bottom-[-10%] left-[-5%] w-[50vw] h-[50vw] rounded-full blur-[150px] ${
                     theme === 'dark'
                         ? 'bg-indigo-900/20 mix-blend-screen'
-                        : 'bg-gradient-to-tr from-cyan-300/30 via-violet-300/25 to-transparent mix-blend-multiply opacity-15'
+                        : 'bg-gradient-to-tr from-cyan-400/40 via-indigo-400/35 to-transparent mix-blend-multiply opacity-30'
                 }`}
             />
 
