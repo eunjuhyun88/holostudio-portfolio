@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '@/components/ThemeContext';
 import { useLanguage } from '@/components/LanguageContext';
 import SEO from '@/components/SEO';
+import CosmicBackground from '@/components/CosmicBackground';
+import Background3D from '@/components/Background3D';
+import ScrollMotionBackground from '@/components/ScrollMotionBackground';
 
 export default function Products() {
     const { theme } = useTheme();
@@ -147,15 +150,29 @@ export default function Products() {
                 description={t.hero.subtitle}
             />
 
+            {/* Global Background Layer - Only dark mode */}
+            {theme === 'dark' && (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    <div className="absolute inset-0 opacity-100">
+                        <CosmicBackground theme={theme} />
+                    </div>
+                    <div className="absolute inset-0 opacity-75">
+                        <Background3D theme={theme} />
+                    </div>
+                    <ScrollMotionBackground theme={theme} />
+                    
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/60 to-[#050505] opacity-60" />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.08)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] animate-[pulse_4s_ease-in-out_infinite]" />
+                    
+                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/20 rounded-tl-3xl m-8" />
+                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/20 rounded-tr-3xl m-8" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/20 rounded-bl-3xl m-8" />
+                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/20 rounded-br-3xl m-8" />
+                </div>
+            )}
+
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-                {/* Background Effects */}
-                {theme === 'dark' && (
-                    <>
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none" />
-                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
-                    </>
-                )}
+            <section className="relative pt-32 pb-20 px-6 overflow-hidden z-10">
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
