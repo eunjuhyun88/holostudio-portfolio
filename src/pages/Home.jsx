@@ -916,8 +916,8 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
-                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 relative overflow-hidden ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 border-orange-200/50'
                 }`} ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
@@ -930,9 +930,15 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-5xl mx-auto text-center w-full">
+                    <div className="max-w-5xl mx-auto text-center w-full relative z-10">
+                        {theme !== 'dark' && (
+                            <>
+                                <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl" />
+                                <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-300/20 rounded-full blur-3xl" />
+                            </>
+                        )}
                         <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
+                            theme === 'dark' ? 'text-orange-500' : 'text-orange-600'
                         }`}>
                             {language === 'en' ? 'Why Now' : '왜 지금인가'}
                         </h2>
@@ -1001,8 +1007,8 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 ${
-                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 md:px-6 py-16 md:py-20 relative overflow-hidden ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-red-50 via-rose-50 to-pink-50 border-red-200/50'
                 }`} ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
@@ -1015,10 +1021,16 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-6xl mx-auto w-full">
+                    <div className="max-w-6xl mx-auto w-full relative z-10">
+                        {theme !== 'dark' && (
+                            <>
+                                <div className="absolute -top-40 -right-40 w-96 h-96 bg-red-300/20 rounded-full blur-3xl" />
+                                <div className="absolute top-1/2 -left-40 w-80 h-80 bg-pink-300/20 rounded-full blur-3xl" />
+                            </>
+                        )}
                         <div className="mb-12 md:mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-xs md:text-sm font-mono mb-6 md:mb-8 uppercase tracking-widest font-bold ${
-                                theme === 'dark' ? 'text-red-500' : 'text-red-700'
+                                theme === 'dark' ? 'text-red-500' : 'text-red-600'
                             }`}>
                                 {t.cost.title}
                             </h2>
@@ -1037,7 +1049,7 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
+                        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12 relative z-10">
                             {t.cost.items.slice(0, 2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1047,7 +1059,7 @@ export default function Home() {
                                     className={`p-5 md:p-6 rounded-xl md:rounded-2xl border text-center ${
                                         theme === 'dark'
                                             ? 'bg-black/30 border-red-500/20'
-                                            : 'bg-red-50/50 border-red-200'
+                                            : 'bg-white/80 backdrop-blur-sm border-red-300/50 shadow-lg shadow-red-100/50'
                                     }`}
                                 >
                                     <div className={`text-2xl md:text-3xl font-black mb-2 ${
@@ -1060,7 +1072,7 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8 relative z-10">
                             {t.cost.items.slice(2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1071,7 +1083,7 @@ export default function Home() {
                                     className={`p-4 md:p-6 rounded-xl border ${
                                         theme === 'dark'
                                             ? 'bg-black/40 border-white/10'
-                                            : 'bg-white border-neutral-200'
+                                            : 'bg-white/70 backdrop-blur-sm border-red-200/50 shadow-md hover:shadow-lg transition-shadow'
                                     }`}
                                 >
                                     <h4 className={`text-base md:text-lg font-black mb-2 ${
