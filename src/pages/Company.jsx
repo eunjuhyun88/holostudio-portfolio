@@ -472,118 +472,123 @@ Scaled communities from zero to millions of users.`,
         },
         ko: {
             intro: {
-                episode: "The Origin",
+                episode: "THE FOUNDATION",
                 title: "Infrastructure Gap",
-                subtitle: "AI 경제의 누락된 링크를 설계하다",
+                subtitle: "AI 경제에 빠진 레이어를 만듭니다",
                 text: [
-                    "지난 10년간 우리는 EA, 넷마블, 스마일게이트에서 수백만 사용자가 참여하는 가상 경제와 실시간 인프라를 설계했습니다.",
-                    "규칙 없는 시뮬레이션은 지속 불가능합니다. 우리는 이 교훈을 AI 시장에 적용합니다.",
-                    "AI 생성 비용이 0에 수렴할 때, 검증과 신뢰 비용은 무한대로 발산합니다. 우리는 이 비대칭을 해결하는 인프라를 만듭니다."
+                    "우리는 EA, 넷마블, 스마일게이트에서 수백만 유저의 가상 경제를 10년간 설계했습니다.",
+                    "100만+ 동시접속. 실시간 가치 교환. 99.99% 업타임.",
+                    "그 규모에서 배운 것: 규칙 없는 집행은 의미 없다. 검증 없는 시뮬레이션은 혼돈이다."
                 ]
             },
             chapters: [
                 {
-                    year: "Phase 1: 2014 – 2020",
-                    headline: "Virtual Economies",
-                    content: "우리는 게임이 아닌 경제를 운영했습니다. 높은 동시접속 트래픽과 가치 교환 시스템. 디지털 자산이 실제 가치를 가지기 위해 필요한 '합의된 규칙'을 설계하고 운영했습니다."
+                    year: "PHASE 1: 2014 – 2020",
+                    headline: "가상 경제",
+                    content: "우리는 게임을 만든 게 아닙니다. GDP 규모의 가상 경제를 운영했습니다. 디지털 자산은 소유권 규칙이 집행 가능하고 위반이 실시간으로 탐지될 때만 가치를 유지했습니다. 여기서 배웠습니다: 신뢰는 UX 기능이 아니다. 엔지니어링 제약 조건이다."
                 },
                 {
-                    year: "Phase 2: 2021 – 2023",
-                    headline: "The Missing Link",
-                    content: "AI는 무한한 생성을 가능하게 했고, 블록체인은 불변의 기록을 가능하게 했습니다. 그러나 두 기술 사이에는 '검증된 연결'이 없었습니다. 우리는 이 공백이 시장의 가장 큰 기회임을 확인했습니다."
+                    year: "PHASE 2: 2021 – 2023",
+                    headline: "빠진 고리",
+                    content: "AI는 지능을 시뮬레이션했습니다. 블록체인은 진실을 정산했습니다. 하지만 둘 사이에 다리가 없었습니다. 무한히 쏟아지는 생성형 콘텐츠를 검증하고, 귀속시키고, 수익화할 인프라가 없었습니다. 창작은 가속했습니다. 검증은 그러지 못했습니다."
                 },
                 {
-                    year: "Phase 3: 2024",
-                    headline: "Market Failure",
-                    content: "딥페이크, 저작권 분쟁, 플랫폼 리스크. 신뢰 인프라의 부재가 시장 실패를 초래했습니다. 기업은 안전을 원하고, 창작자는 보상을 원합니다. 시장은 솔루션을 요구하고 있습니다."
+                    year: "PHASE 3: 2024",
+                    headline: "시장 실패",
+                    content: "딥페이크. IP 도용. 플랫폼 책임. 신뢰 레이어의 부재가 시장 실패를 일으켰습니다. 기업들은 리스크 때문에 AI 도입을 얼렸습니다. 창작자들은 수익을 잃었습니다. 출처를 집행할 수 없어서 가치가 새어나갔습니다. 시장은 더 많은 AI 도구가 필요한 게 아니었습니다. 신뢰 레이어가 필요했습니다."
                 },
                 {
-                    year: "Phase 4: 2025 & BEYOND",
-                    headline: "The Trust Layer",
-                    content: "AI가 경제 주체가 되는 시대. Holo Studio는 단순한 툴이 아닌 인프라입니다. 생성부터 정산까지, 모든 AI 액션이 검증되고 거래되는 신뢰의 파이프라인을 구축합니다."
+                    year: "PHASE 4: 2025 & BEYOND",
+                    headline: "신뢰 레이어",
+                    content: "Holo Studio는 도구가 아닙니다. 레일입니다. Creation → Verification → Ownership → Settlement. AI가 신뢰받는 경제 주체로 기능하게 합니다."
                 }
             ],
             thesis: [
                 {
                     headline: "ENGINEERED TRUST",
-                    content: "신뢰는 희망의 대상이 아니라 공학적 설계의 대상입니다. 우리는 수학적으로 검증 가능한 안전과 소유권을 제공합니다."
+                    content: "신뢰는 감정이 아닙니다. 공학 제약 조건입니다. 수학적으로 검증 가능한 안전과 소유권을 제공합니다."
                 },
                 {
                     headline: "UNIFIED STACK",
-                    content: "파편화된 솔루션은 AI 속도를 따라잡을 수 없습니다. 우리는 안전, 출처, 가치 분배가 하나의 프로토콜 위에서 작동하는 통합 아키텍처를 제시합니다."
+                    content: "파편화된 도구는 AI와 함께 스케일되지 못합니다. 검증, 소유권, 수익화가 하나의 원자적 시스템으로 작동합니다."
+                },
+                {
+                    headline: "VERIFICATION-FIRST",
+                    content: "검증이 모든 것의 시작입니다. 검증 없는 소유권은 의미 없고, 소유권 없는 수익화는 불가능합니다."
                 }
             ],
             identity: {
-                 headline: "FOUNDER-MARKET FIT",
-                 content: "Growth Hacker + Deep Tech Builder. 우리는 스토리텔링이 아닌, 작동하는 대규모 시스템과 경제를 설계해온 베테랑들입니다."
+                 headline: "LEADERSHIP",
+                 content: "Builders at the Intersection. 게임 인프라, 가상 경제, Web3의 교차점에서 왔습니다."
             },
             founders: [
                 {
-                    name: "Sungchul (Steven) Park",
+                    name: "박성철 (Steven Park)",
                     role: "CEO",
                     motto: "Cross-border Strategy & Risk Management",
-                    bio: `50억+ M&A 실사 · 3,000억+ 리스크 평가 주도.
-전 Duel Partners 대표, Ares Corp 글로벌 BD.
-연세대 석사 · Stony Brook 수석 졸업 (GPA 4.0).`,
+                    bio: `3,000억원+ 리스크 포트폴리오 관리 · $4M+ M&A 실사
+듀얼파트너스 前 CEO
+스토니브룩 대학 수석 졸업 (GPA 4.0)`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Steven&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/sungchul-park-364b531b2"
                 },
                 {
-                    name: "Yongwan Kim",
+                    name: "김용완",
                     role: "CTO",
                     motto: "Proven Scale at 1M+ CCU",
-                    bio: `EA & 넷마블 글로벌 인프라 아키텍트.
-100만 동시접속 및 99.99% 가용성 달성.
-핵심 인프라 특허 5건 보유.`,
+                    bio: `EA Asia, 넷마블 글로벌 인프라 설계
+100만 CCU, 99.99% 업타임
+핵심 인프라 특허 5건
+크래프톤, 펄어비스, 스마일게이트 직접 네트워크`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Yongwan&backgroundColor=transparent&glassesProbability=100",
                     linkedin: "https://www.linkedin.com/in/용완-김-02578b211/"
                 },
                 {
-                    name: "Seongdae Kim",
-                    role: "Chief Architect",
+                    name: "김성대",
+                    role: "CHIEF ARCHITECT",
                     motto: "Core Engine & Rendering Specialist",
-                    bio: `Unity & 넷마블 15년+ 코어 엔진 개발.
-실시간 렌더링 파이프라인 및 고성능 최적화 전문가.
-글로벌 AAA 타이틀 리드 아키텍트.`,
+                    bio: `Unity, 넷마블 15년+ 코어 엔진 개발
+글로벌 AAA 타이틀 리드 아키텍트
+실시간 렌더링 파이프라인 전문`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Seongdae&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/seongdae-kim-22539066/?originalSubdomain=kr"
                 },
                 {
-                    name: "0xchew Hyun",
-                    role: "Chief Builder",
+                    name: "0xchew 현",
+                    role: "CHIEF BUILDER",
                     motto: "Zero to One GTM Execution",
-                    bio: `MintedLab 창업 (국내 1위 Web3 마케팅, $1M+ 매출).
-150+ 프로젝트 GTM: Polkadot, Algorand, DFINITY.
-커뮤니티 0 to Million 스케일업 경험.`,
+                    bio: `MintedLab 창업 ($1M+ 매출)
+150+ 프로젝트 GTM: Polkadot, Algorand, DFINITY
+0에서 수백만 유저 커뮤니티 스케일링`,
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Eunjoo&backgroundColor=transparent",
                     linkedin: "https://www.linkedin.com/in/eunjoo-hyun"
                 },
                 {
                     name: "Antonio",
-                    role: "Head of Ecosystem",
+                    role: "HEAD OF ECOSYSTEM",
                     motto: "Ecosystem Growth Strategy",
-                    bio: "데이터 기반 GTM 전략 및 생태계 확장 전문가.",
+                    bio: "Web3 에코시스템 확장\n데이터 기반 GTM",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Antonio&backgroundColor=transparent"
                 },
                 {
-                    name: "Junhyeok Choi",
-                    role: "Dev Team Lead",
+                    name: "최준혁",
+                    role: "DEV TEAM LEAD",
                     motto: "Protocol Architecture",
-                    bio: "PlayArts 프로토콜 아키텍처 및 개발 총괄.",
+                    bio: "PlayArts 프로토콜 개발\n시스템 아키텍처 리드",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Junhyeok&backgroundColor=transparent"
                 },
                 {
-                    name: "Minji You",
-                    role: "Front Engineer",
+                    name: "유민지",
+                    role: "FRONT ENGINEER",
                     motto: "UX/UI Engineering",
-                    bio: "현대적 프론트엔드 스택을 통한 최적의 UX 구현.",
+                    bio: "UX/UI 엔지니어링\n모던 프론트엔드 스택",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Minji&backgroundColor=transparent"
                 },
                 {
-                    name: "Jaehyeon Kwon",
-                    role: "Backend Engineer",
+                    name: "권재현",
+                    role: "BACKEND ENGINEER",
                     motto: "High-Performance Systems",
-                    bio: "대규모 데이터 처리를 위한 고성능 백엔드 인프라 구축.",
+                    bio: "고처리량 백엔드 인프라\n확장 가능한 시스템 구축",
                     image: "https://api.dicebear.com/7.x/notionists/svg?seed=Jaehyeon&backgroundColor=transparent"
                 }
             ],
