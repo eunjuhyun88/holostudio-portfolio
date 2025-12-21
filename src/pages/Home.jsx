@@ -913,7 +913,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section - Combined */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 relative overflow-hidden ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-8 lg:px-12 py-24 sm:py-28 md:py-32 relative overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/50 border-orange-200/40'
                 }`} ref={(el) => {
                     if (el) {
