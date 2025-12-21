@@ -7,6 +7,7 @@ import { createPageUrl } from '@/utils';
 import SEO from '@/components/SEO';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import Starfield from '@/components/Starfield';
 import MouseGlowText from '@/components/MouseGlowText';
 
@@ -62,6 +63,7 @@ export default function BusinessLayout({
     partners = null
 }) {
     const { language } = useLanguage();
+    const { theme: globalTheme } = useTheme();
     
     // Parallax & Mouse Interaction Setup
     const mouseX = useMotionValue(0);
@@ -151,17 +153,16 @@ export default function BusinessLayout({
 
     const s = themes[theme] || themes.default;
     const [activeSection, setActiveSection] = useState(0);
-    // Always use dark mode for consistency
-    const isLight = false;
+    const isLight = globalTheme === 'light';
 
-    // Dynamic Styles - Always Dark Mode base
-    const textPrimary = "text-white";
-    const textSecondary = "text-neutral-300";
-    const textMuted = "text-neutral-300";
-    const border = "border-white/10";
-    const bgCard = "bg-white/5";
-    const bgCardHover = "hover:border-white/20";
-    const accentText = s.accent;
+    // Dynamic Styles based on theme
+    const textPrimary = isLight ? "text-neutral-900" : "text-white";
+    const textSecondary = isLight ? "text-neutral-700" : "text-neutral-300";
+    const textMuted = isLight ? "text-neutral-600" : "text-neutral-300";
+    const border = isLight ? "border-neutral-300/30" : "border-white/10";
+    const bgCard = isLight ? "bg-white" : "bg-white/5";
+    const bgCardHover = isLight ? "hover:shadow-xl" : "hover:border-white/20";
+    const accentText = isLight ? "text-violet-700" : s.accent;
     
     // Dynamic background color using Motion for smooth interpolation
     const currentSectionColor = (s.sectionColors || ["#0f172a"])[activeSection % (s.sectionColors?.length || 1)];
@@ -211,76 +212,95 @@ export default function BusinessLayout({
     );
 
     return (
-        <div className={`min-h-screen font-sans selection:bg-indigo-500/30 bg-[#050505] ${textPrimary} relative overflow-hidden`}>
+        <div className={`min-h-screen font-sans ${
+            isLight 
+                ? 'selection:bg-orange-200 bg-white text-neutral-900' 
+                : 'selection:bg-indigo-500/30 bg-[#050505] text-white'
+        } relative overflow-hidden`}>
             {/* Solid Background Transition Layer */}
-            <motion.div 
-                className="fixed inset-0 pointer-events-none z-0"
-                animate={{
-                    backgroundColor: currentSectionColor
-                }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-            />
+            {!isLight && (
+                <motion.div 
+                    className="fixed inset-0 pointer-events-none z-0"
+                    animate={{
+                        backgroundColor: currentSectionColor
+                    }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                />
+            )}
 
-            {/* Space Effects Layer */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                {/* 1. Starfield */}
-                <div className="absolute inset-0 opacity-60 mix-blend-screen">
-                    <Starfield density={800} speed={0.03} />
+            {/* Space Effects Layer - Only in Dark Mode */}
+            {!isLight && (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    {/* 1. Starfield */}
+                    <div className="absolute inset-0 opacity-60 mix-blend-screen">
+                        <Starfield density={800} speed={0.03} />
+                    </div>
+
+                    {/* 2. Nebula/Glow Blobs with Parallax */}
+                    <motion.div
+                        className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
+                        animate={{
+                            backgroundColor: currentSectionColor,
+                            opacity: [0.3, 0.5, 0.3],
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 90, 0]
+                        }}
+                        transition={{ 
+                            backgroundColor: { duration: 1.2 },
+                            default: { duration: 20, repeat: Infinity, ease: "linear" }
+                        }}
+                        style={{ 
+                            filter: 'brightness(1.5)',
+                            x: bgX,
+                            y: bgY
+                        }}
+                    />
+                    
+                    <motion.div
+                        className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px]"
+                        animate={{
+                            backgroundColor: currentSectionColor,
+                            opacity: [0.2, 0.4, 0.2],
+                            scale: [1, 1.2, 1],
+                        }}
+                        transition={{ 
+                            backgroundColor: { duration: 1.2 },
+                            default: { duration: 15, repeat: Infinity, ease: "linear", delay: 2 }
+                        }}
+                        style={{ 
+                            filter: 'brightness(2) hue-rotate(30deg)',
+                            x: bgXReverse,
+                            y: bgYReverse
+                        }}
+                    />
+
+                    {/* 3. Gradient Overlay for Depth */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
+
+                    {/* Sci-Fi Grid Overlay */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+                    
+                    {/* HUD Corners */}
+                    <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                    <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
                 </div>
-
-                {/* 2. Nebula/Glow Blobs with Parallax */}
-                <motion.div
-                    className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
-                    animate={{
-                        backgroundColor: currentSectionColor,
-                        opacity: [0.3, 0.5, 0.3],
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 90, 0]
-                    }}
-                    transition={{ 
-                        backgroundColor: { duration: 1.2 },
-                        default: { duration: 20, repeat: Infinity, ease: "linear" }
-                    }}
-                    style={{ 
-                        filter: 'brightness(1.5)',
-                        x: bgX,
-                        y: bgY
-                    }}
-                />
-                
-                <motion.div
-                    className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px]"
-                    animate={{
-                        backgroundColor: currentSectionColor,
-                        opacity: [0.2, 0.4, 0.2],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{ 
-                        backgroundColor: { duration: 1.2 },
-                        default: { duration: 15, repeat: Infinity, ease: "linear", delay: 2 }
-                    }}
-                    style={{ 
-                        filter: 'brightness(2) hue-rotate(30deg)',
-                        x: bgXReverse,
-                        y: bgYReverse
-                    }}
-                />
-
-                {/* 3. Gradient Overlay for Depth */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
-
-                {/* Sci-Fi Grid Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
-                
-                {/* HUD Corners */}
-                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
-                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
-                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
-            </div>
+            )}
+            
+            {/* Light Mode Background */}
+            {isLight && (
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-violet-50/40 via-cyan-50/40 to-pink-50/40" />
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-violet-300/20 to-transparent rounded-full blur-[120px]" />
+                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-cyan-300/20 to-transparent rounded-full blur-[100px]" />
+                </div>
+            )}
             
             {/* Grain Overlay */}
-            <div className="fixed inset-0 pointer-events-none opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-0" />
+            <div className={`fixed inset-0 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-0 ${
+                isLight ? 'opacity-[0.02]' : 'opacity-[0.05]'
+            }`} />
 
             <SEO 
                 title={name} 
@@ -302,49 +322,85 @@ export default function BusinessLayout({
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className={`rounded-3xl p-8 bg-white/[0.02] backdrop-blur-2xl border border-white/10 shadow-2xl relative overflow-hidden text-white`}
+                                className={`rounded-3xl p-8 backdrop-blur-2xl border shadow-2xl relative overflow-hidden ${
+                                    isLight 
+                                        ? 'bg-white border-neutral-300/30 text-neutral-900'
+                                        : 'bg-white/[0.02] border-white/10 text-white'
+                                }`}
                             >
                                 {/* Glow Effect */}
-                                <div className={`absolute top-0 right-0 w-64 h-64 ${s.accentBg} opacity-10 blur-[80px] -translate-y-1/2 translate-x-1/2`} />
+                                {!isLight && (
+                                    <div className={`absolute top-0 right-0 w-64 h-64 ${s.accentBg} opacity-10 blur-[80px] -translate-y-1/2 translate-x-1/2`} />
+                                )}
 
                                 <div className="relative z-10 mb-10">
-                                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-white to-neutral-400 flex items-center justify-center text-black mb-6 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+                                    <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-6 ${
+                                        isLight 
+                                            ? 'bg-gradient-to-br from-violet-200 via-cyan-200 to-pink-200 text-neutral-900 shadow-lg'
+                                            : 'bg-gradient-to-br from-white to-neutral-400 text-black shadow-[0_0_40px_rgba(255,255,255,0.15)]'
+                                    }`}>
                                         <div className="font-bold text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <h1 className="text-3xl font-bold tracking-tighter mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">{name}</h1>
-                                    <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide bg-white/5 border border-white/10 ${s.accent}`}>
+                                    <h1 className={`text-3xl font-bold tracking-tighter mb-2 ${
+                                        isLight ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'
+                                    }`}>{name}</h1>
+                                    <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${
+                                        isLight 
+                                            ? 'bg-violet-100 border-violet-300/40 text-violet-900'
+                                            : `bg-white/5 border-white/10 ${s.accent}`
+                                    }`}>
                                         {tag}
                                     </div>
                                 </div>
 
-                                <div className="relative z-10 space-y-8 pt-8 border-t border-white/10">
+                                <div className={`relative z-10 space-y-8 pt-8 border-t ${
+                                    isLight ? 'border-neutral-300/30' : 'border-white/10'
+                                }`}>
                                     {stats.map((stat, i) => (
                                         <div key={i} className="group">
-                                            <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-300 font-bold mb-2 group-hover:text-neutral-300 transition-colors">{stat.label}</div>
-                                            <div className="text-lg font-mono font-medium text-white group-hover:text-white transition-colors">{stat.value}</div>
+                                            <div className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-2 transition-colors ${
+                                                isLight ? 'text-neutral-600' : 'text-neutral-300'
+                                            }`}>{stat.label}</div>
+                                            <div className={`text-lg font-mono font-medium transition-colors ${
+                                                isLight ? 'text-neutral-900' : 'text-white'
+                                            }`}>{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className="mt-8 pt-8 border-t border-white/5 space-y-3 hidden lg:block">
+                                <div className={`mt-8 pt-8 border-t space-y-3 hidden lg:block ${
+                                    isLight ? 'border-neutral-300/30' : 'border-white/5'
+                                }`}>
                                     {primaryButton.url ? (
                                         <a href={primaryButton.url} target="_blank" rel="noopener noreferrer" className="block w-full">
                                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                                <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-shadow`}>
+                                                <Button className={`w-full rounded-full h-12 border-0 transition-shadow ${
+                                                    isLight
+                                                        ? 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
+                                                        : `${s.buttonPrimary} shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]`
+                                                }`}>
                                                     {primaryButton.text} <ArrowRight className="w-4 h-4 ml-2" />
                                                 </Button>
                                             </motion.div>
                                         </a>
                                     ) : (
                                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                            <Button className={`w-full rounded-full h-12 ${s.buttonPrimary} border-0 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-shadow`}>
+                                            <Button className={`w-full rounded-full h-12 border-0 transition-shadow ${
+                                                isLight
+                                                    ? 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
+                                                    : `${s.buttonPrimary} shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]`
+                                            }`}>
                                                 {primaryButton.text}
                                             </Button>
                                         </motion.div>
                                     )}
                                     {deckUrl && (
                                         <a href={deckUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                            <Button variant="ghost" className="w-full rounded-full h-12 bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5">
+                                            <Button variant="ghost" className={`w-full rounded-full h-12 bg-transparent border transition-colors ${
+                                                isLight
+                                                    ? 'border-neutral-300 text-neutral-900 hover:bg-neutral-100'
+                                                    : 'border-neutral-700 text-white hover:border-white hover:bg-white/5'
+                                            }`}>
                                                 Download Deck
                                             </Button>
                                         </a>
@@ -437,12 +493,22 @@ export default function BusinessLayout({
                                         <h3 className="text-2xl md:text-3xl font-bold mb-8">Capabilities</h3>
                                         <div className="grid md:grid-cols-3 gap-6">
                                             {features.map((feature, i) => (
-                                                <div key={i} className={`relative p-8 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden`}>
-                                                    <div className={`absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500`}>
-                                                        <div className={`w-32 h-32 rounded-full ${s.accentBg} blur-[60px]`} />
-                                                    </div>
+                                               <div key={i} className={`relative p-8 rounded-3xl border transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden ${
+                                                   isLight
+                                                       ? 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
+                                                       : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06] hover:border-white/10'
+                                               }`}>
+                                                   {!isLight && (
+                                                       <div className={`absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500`}>
+                                                           <div className={`w-32 h-32 rounded-full ${s.accentBg} blur-[60px]`} />
+                                                       </div>
+                                                   )}
 
-                                                    <div className={`relative z-10 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/20 transition-all duration-500`}>
+                                                   <div className={`relative z-10 w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 transition-all duration-500 ${
+                                                       isLight
+                                                           ? 'bg-gradient-to-br from-violet-100 to-cyan-100 border-violet-300/30'
+                                                           : 'bg-white/5 border-white/10 group-hover:border-white/20'
+                                                   }`}>
                                                         {feature.icon && (
                                                             <motion.div
                                                                 animate={{ 
@@ -488,7 +554,11 @@ export default function BusinessLayout({
                                     <div className="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar space-y-0 md:space-y-12">
                                         {problemPoints.map((p, i) => (
                                             <div key={i} className="flex-shrink-0 w-[85vw] md:w-auto snap-center">
-                                                <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
+                                                <div className={`p-8 rounded-3xl border transition-colors ${
+                                                    isLight
+                                                        ? 'bg-white border-neutral-200 hover:shadow-lg shadow-md'
+                                                        : 'bg-white/[0.02] border-white/5 hover:bg-white/[0.04]'
+                                                }`}>
                                                     <h4 className={`text-xl font-bold mb-4 ${textPrimary}`}>{p.title}</h4>
                                                     <p className={`${textSecondary} leading-relaxed text-lg`}>{p.description}</p>
                                                 </div>
@@ -508,8 +578,16 @@ export default function BusinessLayout({
                                     
                                     <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 pb-6 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
                                         {solutionSteps.map((step, i) => (
-                                            <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl backdrop-blur-xl h-full md:h-auto group`}>
-                                                <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-base bg-gradient-to-br from-white/10 to-transparent border border-white/10 text-white group-hover:scale-110 transition-transform`}>
+                                            <div key={i} className={`flex-shrink-0 w-[85vw] md:w-auto snap-center flex flex-col md:flex-row gap-6 p-8 rounded-3xl border transition-all duration-300 backdrop-blur-xl h-full md:h-auto group ${
+                                                isLight
+                                                    ? 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
+                                                    : 'bg-white/[0.04] border-white/10 hover:border-white/20 hover:shadow-2xl'
+                                            }`}>
+                                                <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-base border transition-transform ${
+                                                    isLight
+                                                        ? 'bg-gradient-to-br from-violet-200 to-cyan-200 border-violet-300/30 text-neutral-900'
+                                                        : 'bg-gradient-to-br from-white/10 to-transparent border-white/10 text-white group-hover:scale-110'
+                                                }`}>
                                                     {i + 1}
                                                 </div>
                                                 <div>
@@ -533,9 +611,17 @@ export default function BusinessLayout({
                                             SPECIFICATIONS
                                         </span>
                                         <h3 className="text-3xl font-bold mb-8">Technical Breakdown</h3>
-                                        <div className={`grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10`}>
+                                        <div className={`grid grid-cols-1 md:grid-cols-2 gap-px rounded-3xl overflow-hidden border ${
+                                            isLight
+                                                ? 'bg-neutral-300/30 border-neutral-300/30'
+                                                : 'bg-white/10 border-white/10'
+                                        }`}>
                                             {specs.map((spec, i) => (
-                                                <div key={i} className={`p-8 bg-[#0A0A0A] hover:bg-[#111] transition-colors group`}>
+                                                <div key={i} className={`p-8 transition-colors group ${
+                                                    isLight
+                                                        ? 'bg-white hover:bg-neutral-50'
+                                                        : 'bg-[#0A0A0A] hover:bg-[#111]'
+                                                }`}>
                                                     <div className={`text-xs font-mono uppercase tracking-widest ${textMuted} mb-3 group-hover:${s.accent} transition-colors`}>
                                                         {spec.label}
                                                     </div>
@@ -566,7 +652,11 @@ export default function BusinessLayout({
                                                 </p>
                                             </div>
                                             <div className="md:col-span-8">
-                                                <div className={`rounded-3xl p-6 md:p-8 bg-white/[0.02] border ${border} relative overflow-hidden`}>
+                                                <div className={`rounded-3xl p-6 md:p-8 border relative overflow-hidden ${
+                                                    isLight
+                                                        ? 'bg-white border-neutral-200 shadow-md'
+                                                        : 'bg-white/[0.02] border-white/10'
+                                                }`}>
                                                     {detailedSpecs}
                                                 </div>
                                             </div>
@@ -679,14 +769,20 @@ export default function BusinessLayout({
                             </div>
 
                             {/* Business Model Banner */}
-                            <div className={`mt-12 rounded-3xl p-8 md:p-16 ${border} ${isLight ? 'bg-white shadow-xl' : 'bg-gradient-to-br from-[#111] to-black'} relative overflow-hidden`}>
+                            <div className={`mt-12 rounded-3xl p-8 md:p-16 border relative overflow-hidden ${
+                                isLight 
+                                    ? 'bg-gradient-to-br from-violet-50 via-white to-cyan-50 border-neutral-300/30 shadow-xl' 
+                                    : 'bg-gradient-to-br from-[#111] to-black border-white/10'
+                            }`}>
                                  <div className="relative z-10">
                                     <div className={`text-xs font-bold uppercase tracking-widest ${accentText} mb-4`}>BUSINESS MODEL</div>
                                     <div className={`text-xl md:text-3xl font-bold leading-relaxed max-w-3xl ${textPrimary}`}>
                                         "{businessModel}"
                                     </div>
                                  </div>
-                                 <div className={`absolute top-0 right-0 w-96 h-96 ${s.accentBg} opacity-5 blur-[100px] rounded-full transform translate-x-1/2 -translate-y-1/2`} />
+                                 {!isLight && (
+                                     <div className={`absolute top-0 right-0 w-96 h-96 ${s.accentBg} opacity-5 blur-[100px] rounded-full transform translate-x-1/2 -translate-y-1/2`} />
+                                 )}
                             </div>
                         </ColorSection>
                         </div>
