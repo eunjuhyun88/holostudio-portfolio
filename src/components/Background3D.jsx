@@ -23,12 +23,12 @@ export default function Background3D({ theme = 'dark' }) {
         // Restoring the original central object but with finer particles
         const geometry = new THREE.IcosahedronGeometry(15, 2);
         
-        // Minimal particles in light mode
+        // Visible particles in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0xc4b5fd,
-            size: theme === 'dark' ? 0.1 : 0.08,
+            color: theme === 'dark' ? 0x818cf8 : 0xa78bfa,
+            size: theme === 'dark' ? 0.1 : 0.12,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 0.15,
+            opacity: theme === 'dark' ? 0.9 : 0.35,
             sizeAttenuation: true,
         });
 
@@ -46,22 +46,22 @@ export default function Background3D({ theme = 'dark' }) {
         const crystalMesh = new THREE.Points(geometry, material);
         scene.add(crystalMesh);
 
-        // Minimal core in light mode
+        // Visible core in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xddd6fe,
-            size: theme === 'dark' ? 0.05 : 0.06,
+            color: theme === 'dark' ? 0xffffff : 0xc4b5fd,
+            size: theme === 'dark' ? 0.05 : 0.08,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.1,
+            opacity: theme === 'dark' ? 0.6 : 0.25,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
-        // Minimal wireframe in light mode
+        // Visible wireframe in light mode
         const wireframeMaterial = new THREE.LineBasicMaterial({ 
-            color: theme === 'dark' ? 0x6366f1 : 0xe9d5ff,
+            color: theme === 'dark' ? 0x6366f1 : 0xc4b5fd,
             transparent: true, 
-            opacity: theme === 'dark' ? 0.3 : 0.08 
+            opacity: theme === 'dark' ? 0.3 : 0.18 
         });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
@@ -116,10 +116,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0xf3e8ff,
-            size: theme === 'dark' ? 0.08 : 0.04, 
+            color: theme === 'dark' ? 0xa5b4fc : 0xc4b5fd,
+            size: theme === 'dark' ? 0.08 : 0.07, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.05,
+            opacity: theme === 'dark' ? 0.6 : 0.2,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -146,22 +146,22 @@ export default function Background3D({ theme = 'dark' }) {
             // Animate Dust (Warp Effect)
             const positions = dustSystem.geometry.attributes.position.array;
             
-            // Subtle pulse in light mode
+            // Visible pulse in light mode
             if (surge > 1.0) {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xc7d2fe);
                     dustMat.opacity = 0.8;
                 } else {
-                    dustMat.color.setHex(0xe9d5ff);
-                    dustMat.opacity = 0.08;
+                    dustMat.color.setHex(0xc4b5fd);
+                    dustMat.opacity = 0.3;
                 }
             } else {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xa5b4fc);
                     dustMat.opacity = 0.6;
                 } else {
-                    dustMat.color.setHex(0xf3e8ff);
-                    dustMat.opacity = 0.05;
+                    dustMat.color.setHex(0xddd6fe);
+                    dustMat.opacity = 0.2;
                 }
             }
 
