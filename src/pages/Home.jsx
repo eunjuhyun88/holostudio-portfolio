@@ -34,7 +34,7 @@ export default function Home() {
         [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85, 1],
         theme === 'dark' 
             ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
-            : ['#F5F5F0', '#F5F5F0', '#F5F5F0', '#F5F5F0', '#F5F5F0', '#F5F5F0', '#E8E8E3', '#E8E8E3']
+            : ['#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#18181B', '#18181B']
     );
 
     useEffect(() => {
@@ -599,14 +599,14 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-8 h-12 text-base font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-white text-black hover:bg-neutral-200'
-                                    : 'bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 hover:from-cyan-300 hover:via-purple-300 hover:to-pink-300 text-neutral-900 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm border border-white/40'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl transition-shadow'
                             }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                 {t.hero.cta1}
                             </Button>
                             <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold ${
                                 theme === 'dark'
                                     ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                    : 'border-neutral-300/60 text-neutral-700 hover:bg-white/80 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all'
+                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-md transition-shadow'
                             }`}>
                                 {t.hero.cta2}
                             </Button>
@@ -1412,7 +1412,7 @@ export default function Home() {
                                                    <Button className={`w-full h-12 rounded-full text-sm font-bold border-0 transition-all ${
                                                        theme === 'dark'
                                                            ? `${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white shadow-lg`
-                                                           : 'bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 hover:from-cyan-300 hover:via-purple-300 hover:to-pink-300 text-neutral-900 shadow-lg hover:shadow-xl border border-white/40 backdrop-blur-sm'
+                                                           : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg hover:shadow-xl'
                                                    }`}>
                                                        {prod.primaryBtn[language]}
                                                    </Button>
@@ -1420,7 +1420,7 @@ export default function Home() {
                                                <Button variant="outline" className={`flex-1 h-12 rounded-full text-sm font-bold transition-all ${
                                                    theme === 'dark'
                                                        ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
-                                                       : 'border-neutral-300/60 text-neutral-700 hover:bg-white/80 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md'
+                                                       : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm hover:shadow-md'
                                                }`}>
                                                    {prod.secondaryBtn[language]}
                                                </Button>
@@ -1552,7 +1552,7 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 transition-all ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 hover:from-cyan-300 hover:via-purple-300 hover:to-pink-300 text-neutral-900 shadow-xl hover:shadow-2xl hover:scale-105 border border-white/40 backdrop-blur-sm'
+                                    : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-xl hover:shadow-2xl hover:scale-105'
                             }`}>
                                 {t.contact.cta1}
                             </Button>
@@ -1560,7 +1560,7 @@ export default function Home() {
                         <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all ${
                             theme === 'dark'
                                 ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                : 'border-white/50 text-white hover:bg-white/30 bg-white/20 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
+                                : 'border-white/40 text-white hover:bg-white/20 bg-white/10 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105'
                         }`}>
                             {t.contact.cta2}
                         </Button>
