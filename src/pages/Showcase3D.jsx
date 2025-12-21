@@ -236,9 +236,12 @@ export default function Showcase3D() {
                             )}
                             
                             {models.map(model => (
-                                <div 
+                                <motion.div 
                                     key={model.id}
                                     onClick={() => setSelectedModel(model)}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    transition={{ duration: 0.2 }}
                                     className={`group p-4 rounded-2xl border transition-all cursor-pointer relative backdrop-blur-sm ${
                                         selectedModel?.id === model.id 
                                         ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.1)]' 
