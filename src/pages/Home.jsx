@@ -34,7 +34,7 @@ export default function Home() {
         [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85, 1],
         theme === 'dark' 
             ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
-            : ['#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#18181B', '#18181B']
+            : ['#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#F5F5F7', '#ECECEE', '#ECECEE']
     );
 
     useEffect(() => {
@@ -549,10 +549,10 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`inline-block px-5 py-2 mb-8 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase ${
+                        <div className={`inline-block px-5 py-2 mb-8 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase border ${
                             theme === 'dark'
-                                ? 'border border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'bg-neutral-900 text-white'
+                                ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
+                                : 'bg-gradient-to-r from-cyan-100/80 via-violet-100/80 to-pink-100/80 border-violet-300/40 text-violet-900 backdrop-blur-sm'
                         }`}>
                             {t.hero.tag}
                         </div>
@@ -570,7 +570,7 @@ export default function Home() {
                             <span className={`absolute -top-4 -right-8 text-xs font-mono tracking-widest border px-2 py-0.5 rounded opacity-70 hidden md:block ${
                                 theme === 'dark' 
                                     ? 'text-indigo-500 border-indigo-500/30'
-                                    : 'text-purple-600 border-purple-400/40'
+                                    : 'text-violet-600 border-violet-400/50 bg-gradient-to-r from-cyan-50 via-violet-50 to-pink-50'
                             }`}>SYS.ONLINE</span>
                         </motion.h1>
                         <motion.p 
@@ -630,7 +630,7 @@ export default function Home() {
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'border-neutral-200/30'
+                    : 'bg-neutral-100/40 border-neutral-300/30'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <motion.h2 
@@ -681,7 +681,7 @@ export default function Home() {
                     </div>
                     
                     {/* Partners / Backers */}
-                    <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300'}`}>
+                    <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
                         <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
                         }`}>SELECTED & BACKED BY</p>
@@ -706,12 +706,12 @@ export default function Home() {
 
                             {/* Alchemy */}
                             <div className="flex items-center gap-2">
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>Alchemy</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
                             </div>
 
                             {/* AppWorks */}
                             <div className="flex items-center gap-2">
-                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-orange-600'}`}>AppWorks</span>
+                                <span className={`font-black text-lg ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
                             </div>
 
                             {/* OnePiece Labs */}
@@ -739,7 +739,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <FadeInSection delay={0} direction="up" className="mb-16 text-center max-w-5xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-600'
+                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>{t.problem.title}</h2>
                         <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -777,7 +777,7 @@ export default function Home() {
                                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
                                         theme === 'dark'
                                             ? 'bg-neutral-900 group-hover:bg-indigo-500/10 group-hover:text-indigo-400'
-                                            : 'bg-neutral-900 text-white'
+                                            : 'bg-gradient-to-br from-cyan-200/50 via-violet-200/50 to-pink-200/50 text-violet-700 border border-violet-300/30'
                                     }`}>
                                         <motion.div
                                             animate={{ 
@@ -799,7 +799,7 @@ export default function Home() {
                                 <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide font-bold transition-colors ${
                                     theme === 'dark'
                                         ? 'bg-neutral-800 text-neutral-200 group-hover:bg-indigo-500/20 group-hover:text-indigo-300'
-                                        : 'bg-neutral-900 text-white'
+                                        : 'bg-gradient-to-r from-cyan-200 via-violet-200 to-pink-200 text-violet-900 border border-violet-300/40'
                                 }`}>
                                     {card.badge}
                                 </span>
@@ -813,7 +813,7 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'border-neutral-200/30'
+                    : 'bg-neutral-100/30 border-neutral-300/30'
             }`}>
                 <div className="max-w-[1400px] mx-auto w-full py-20">
                     <div className="mb-16 relative text-center max-w-5xl mx-auto">
@@ -826,7 +826,7 @@ export default function Home() {
                         )}
                         
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-600'
+                            theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                         }`}>
                             TECHNOLOGY & STRATEGY
                         </h2>
@@ -904,7 +904,7 @@ export default function Home() {
                                         <div className={`text-xs font-mono mb-3 transition-colors font-bold ${
                                             theme === 'dark'
                                                 ? 'text-indigo-500 group-hover:text-indigo-400'
-                                                : 'text-neutral-900'
+                                                : 'text-violet-700'
                                         }`}>0{i+1}</div>
                                         <div className={`font-black mb-2 text-sm ${
                                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -921,7 +921,7 @@ export default function Home() {
                     <div className={`rounded-3xl p-8 md:p-16 border relative overflow-hidden ${
                         theme === 'dark' 
                             ? 'bg-white/5 border-white/5 backdrop-blur-md' 
-                            : 'bg-white border-neutral-900/20'
+                            : 'bg-gradient-to-br from-white via-violet-50/30 to-cyan-50/30 border-violet-300/40 shadow-xl'
                     }`}>
                         {theme === 'dark' && (
                             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -930,7 +930,7 @@ export default function Home() {
                         <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
                             <div>
                                 <div className={`text-sm font-mono mb-2 uppercase tracking-widest font-bold ${
-                                    theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                                    theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                                 }`}>{tech.depin.tag}</div>
                                 <h3 className={`text-3xl md:text-4xl font-black mb-6 leading-tight ${
                                     theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -1202,11 +1202,11 @@ export default function Home() {
 
             {/* Section 04: COMPANY THESIS */}
             <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'border-neutral-200/50'
+                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-neutral-100/30 border-neutral-300/30'
             }`}>
                 <div className="max-w-5xl mx-auto px-6">
                     <h2 className={`text-sm font-mono mb-8 uppercase tracking-widest font-bold ${
-                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                        theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
                     }`}>{t.thesis.label}</h2>
                     <p className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-16 ${
                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -1220,7 +1220,11 @@ export default function Home() {
                     }`}>
                         {t.thesis.keywords.map((kw, i) => (
                             <span key={i} className="flex items-center gap-2">
-                                <span className={`w-2 h-2 rounded-full ${['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]}`}></span>
+                                <span className={`w-2 h-2 rounded-full ${
+                                    theme === 'dark' 
+                                        ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
+                                        : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
+                                }`}></span>
                                 {kw}
                             </span>
                         ))}
@@ -1234,7 +1238,7 @@ export default function Home() {
             <section id="products" className={`relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'border-white/5'
-                    : 'border-neutral-200/50'
+                    : 'border-neutral-300/30'
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1436,7 +1440,7 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'border-white/5' : 'border-neutral-200/50'
+                theme === 'dark' ? 'border-white/5' : 'bg-neutral-100/30 border-neutral-300/30'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
                     <FadeInSection direction="up" className="mb-16 text-center max-w-4xl mx-auto">
