@@ -8,6 +8,8 @@ import { useLanguage } from '@/components/LanguageContext';
 import { useTheme } from '@/components/ThemeContext';
 import Background3D from '@/components/Background3D';
 import CosmicBackground from '@/components/CosmicBackground';
+import ScrollMotionBackground from '@/components/ScrollMotionBackground';
+import FadeInSection from '@/components/FadeInSection';
 import SEO from '@/components/SEO';
 import Roadmap from '@/components/Roadmap';
 import MouseGlowText from '@/components/MouseGlowText';
@@ -506,6 +508,7 @@ export default function Home() {
                 <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-70' : 'opacity-40'}`}>
                     <Background3D theme={theme} />
                 </div>
+                <ScrollMotionBackground theme={theme} />
                 
                 {/* Subtle Spotlight */}
                 <motion.div 
@@ -730,7 +733,7 @@ export default function Home() {
             {/* Section 03: THE CORE PROBLEM */}
             <section className="min-h-screen flex items-center justify-center relative z-10">
                 <div className="max-w-7xl mx-auto px-6 w-full">
-                    <motion.div {...fadeIn} className="mb-16 text-center max-w-5xl mx-auto">
+                    <FadeInSection delay={0} direction="up" className="mb-16 text-center max-w-5xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-600'
                         }`}>{t.problem.title}</h2>
@@ -739,17 +742,15 @@ export default function Home() {
                         }`}>
                             {t.problem.sub}
                         </h3>
-                    </motion.div>
+                    </FadeInSection>
 
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar md:custom-scrollbar">
                         {t.problem.cards.map((card, idx) => (
-                            <motion.div 
+                            <FadeInSection
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
+                                delay={idx * 0.15}
+                                direction="up"
                                 className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border transition-all duration-300 ${
                                     theme === 'dark'
                                         ? 'bg-black/30 border-white/10 hover:border-indigo-500/50 relative overflow-hidden'
@@ -796,7 +797,7 @@ export default function Home() {
                                 }`}>
                                     {card.badge}
                                 </span>
-                            </motion.div>
+                            </FadeInSection>
                         ))}
                     </div>
                 </div>
@@ -1428,23 +1429,21 @@ export default function Home() {
                 theme === 'dark' ? 'border-white/5' : 'border-neutral-200/50'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
-                    <motion.div {...fadeIn} className="mb-16 text-center max-w-4xl mx-auto">
+                    <FadeInSection direction="up" className="mb-16 text-center max-w-4xl mx-auto">
                         <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>{t.milestones.title}</h2>
                         <p className={`text-lg md:text-xl font-medium ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>{t.milestones.sub}</p>
-                    </motion.div>
+                    </FadeInSection>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
                         {milestones.map((m, idx) => (
-                            <motion.div
+                            <FadeInSection
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
+                                delay={idx * 0.1}
+                                direction="up"
                                 className={`p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 ${
                                     theme === 'dark'
                                         ? 'bg-white/5 backdrop-blur-sm border-neutral-800 hover:border-indigo-500/30 relative overflow-hidden'
@@ -1477,7 +1476,7 @@ export default function Home() {
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
                                 </div>
-                            </motion.div>
+                            </FadeInSection>
                         ))}
                     </div>
 
