@@ -1,19 +1,224 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import React, { useRef, useMemo } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
 import { useTheme } from '@/components/ThemeContext';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Linkedin, X, Rocket, Target, Shield, Zap, Users, Sparkles } from 'lucide-react';
+import { ArrowRight, Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from "@/components/ui/dialog";
+import CompanyBackground from '@/components/CompanyBackground';
+import MouseGlowText from '@/components/MouseGlowText';
+
+// --- Components ---
+
+// Individual Word Component for Typing Effect
+const TypingWord = ({ word, i, total, progress }) => {
+    const start = i / total;
+    const end = start + (1 / total);
+    const opacity = useTransform(progress, [start, end], [0, 1]);
+    const y = useTransform(progress, [start, end], [10, 0]);
+    const blur = useTransform(progress, [start, end], [4, 0]);
+
+    return (
+        <motion.span 
+            style={{ 
+                opacity, 
+                y,
+                filter: useTransform(blur, b => `blur(${b}px)`)
+            }}
+            className="inline-block mr-[0.25em]"
+        >
+            {word}
+        </motion.span>
+    );
+};
+
+// Typing Scroll Component
+const TypingBlock = ({ children, className = "" }) => {
+    const element = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: element,
+        offset: ['start 0.9', 'end 0.5']
+    });
+    
+    const scale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+    
+    const words = String(children).split(" ");
+    
+    return (
+        <motion.p 
+            ref={element}
+            style={{ scale, y }}
+            className={`${className} inline-block w-full`} 
+        >
+            {words.map((word, i) => (
+                <TypingWord 
+                    key={i} 
+                    word={word} 
+                    i={i} 
+                    total={words.length} 
+                    progress={scrollYProgress} 
+                />
+            ))}
+        </motion.p>
+    );
+};
+
+// Enhanced Thesis Section with Sticky Scroll and Color Transitions
+const ThesisSection = ({ items }) => {
+    return (
+        <div className="relative">
+            {items.map((item, index) => (
+                <StickyThesisItem key={index} item={item} index={index} total={items.length} />
+            ))}
+        </div>
+    );
+};
+
+const StickyThesisItem = ({ item, index, total }) => {
+    const { theme } = useTheme();
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
+
+    const palettes = theme === 'dark' 
+        ? [
+            { bg: "bg-[#050505]", text: "text-indigo-400", accent: "bg-indigo-900" }, 
+            { bg: "bg-[#050505]", text: "text-emerald-400", accent: "bg-emerald-900" }, 
+            { bg: "bg-[#050505]", text: "text-orange-400", accent: "bg-orange-900" }, 
+            { bg: "bg-[#050505]", text: "text-lime-400", accent: "bg-lime-900" }, 
+        ]
+        : [
+            { bg: "bg-orange-50", text: "text-orange-900", accent: "bg-orange-200" },
+            { bg: "bg-blue-50", text: "text-blue-900", accent: "bg-blue-200" },
+            { bg: "bg-emerald-50", text: "text-emerald-900", accent: "bg-emerald-200" },
+            { bg: "bg-purple-50", text: "text-purple-900", accent: "bg-purple-200" },
+        ];
+
+    const currentPalette = palettes[index % palettes.length];
+    
+    return (
+        <div ref={ref} className="relative h-screen flex items-center sticky top-0 overflow-hidden">
+            <div className={`absolute inset-0 z-0 ${currentPalette.bg}`} />
+            {theme === 'dark' && (
+                <>
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] rounded-full blur-[150px] opacity-20 ${currentPalette.accent} z-0 pointer-events-none`} />
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
+                </>
+            )}
+
+            <motion.div 
+                style={{ y, opacity, scale }}
+                className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12"
+            >
+                 <div className="max-w-6xl">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <div className={`text-[8rem] md:text-[20rem] font-black leading-none opacity-10 absolute -top-10 -left-4 md:-top-20 md:-left-10 select-none text-transparent stroke-white`} style={{ WebkitTextStroke: '2px rgba(255,255,255,0.1)' }}>
+                            {index + 1}
+                        </div>
+
+                        <h2 className={`text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-10 tracking-tighter leading-[0.9] relative uppercase ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>
+                            {item.headline}
+                        </h2>
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className={`text-2xl md:text-4xl font-black leading-tight max-w-5xl ml-auto ${currentPalette.text}`}
+                    >
+                        {item.content}
+                    </motion.div>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+// Team Identity Component - Inspired by Consensys style
+const TeamIdentity = ({ identity }) => {
+    const { theme } = useTheme();
+    return (
+    <div className={`min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24 ${
+        theme === 'dark' ? '' : 'bg-neutral-50'
+    }`}>
+        <div className="mb-8 md:mb-16">
+            <div className={`w-8 h-8 mb-8 ${theme === 'dark' ? 'bg-[#4F6F52]' : 'bg-orange-500'}`} />
+            <h2 className={`text-sm font-bold tracking-widest uppercase mb-2 ${
+                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+            }`}>{identity?.headline || "WHO WE ARE"}</h2>
+        </div>
+
+        <div className={`text-[6vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter select-none flex flex-col ${
+            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+        }`}>
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+                <span className={theme === 'dark' ? 'text-indigo-500' : 'text-orange-600'}>Engineers</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="pl-[1em]"
+            >
+                <span className={theme === 'dark' ? 'text-emerald-500' : 'text-blue-600'}>Researchers</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="pl-[0.5em]"
+            >
+                <span className={theme === 'dark' ? 'text-orange-500' : 'text-emerald-600'}>Builders</span>
+            </motion.div>
+
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="pl-[2em]"
+            >
+                <span className={theme === 'dark' ? 'text-lime-500' : 'text-purple-600'}>Veterans</span>
+            </motion.div>
+        </div>
+
+        <div className={`mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 pl-8 ${
+            theme === 'dark' ? 'border-white/20' : 'border-neutral-300'
+        }`}>
+            <p className={`text-lg md:text-2xl leading-relaxed font-black ${
+                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
+            }`}>
+                {identity?.content || "We are builders."}
+            </p>
+        </div>
+    </div>
+)};
+
 
 // Founder Card Component
 const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
@@ -53,6 +258,7 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
                 }`}>Image</div>
             )}
             
+            {/* Tech Corners - Only dark mode */}
             {theme === 'dark' && (
                 <>
                     <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-indigo-500 transition-colors" />
@@ -101,70 +307,117 @@ const FounderCard = ({ name, role, bio, motto, image, delay, linkedin }) => {
     </motion.div>
 )};
 
+
+// Closing Statement Component
+const ClosingStatement = () => {
+    const { language } = useLanguage();
+    const { theme } = useTheme();
+    return (
+        <div className={`min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32 ${
+            theme === 'dark' ? '' : 'bg-white'
+        }`}>
+             <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+                className="text-center px-6 max-w-6xl mx-auto z-10"
+             >
+                <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight tracking-tight ${
+                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                }`}>
+                    {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
+                </h2>
+                <div className="overflow-hidden">
+                    {theme === 'dark' ? (
+                        <MouseGlowText 
+                            as={motion.p}
+                            glowColor="rgba(99, 102, 241, 0.8)"
+                            secondaryGlowColor="rgba(168, 85, 247, 0.5)"
+                            initial={{ y: "100%" }}
+                            whileInView={{ y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
+                        >
+                            {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
+                        </MouseGlowText>
+                    ) : (
+                        <motion.p
+                            initial={{ y: "100%" }}
+                            whileInView={{ y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase text-neutral-900"
+                        >
+                            {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
+                        </motion.p>
+                    )}
+                </div>
+             </motion.div>
+        </div>
+    )
+}
+
+
 export default function Company() {
     const { language } = useLanguage();
     const { theme } = useTheme();
-    const [activeStage, setActiveStage] = useState(0);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [modalContent, setModalContent] = useState(null);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const { scrollYProgress } = useScroll();
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+    const [activeSection, setActiveSection] = React.useState('intro');
 
-    useEffect(() => {
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['intro', 'history', 'vision', 'identity', 'team'];
+            for (const section of sections) {
+                const el = document.getElementById(section);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top >= -window.innerHeight / 2 && rect.top < window.innerHeight / 2) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToId = (id) => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const navItems = [
+        { id: 'intro', label: 'Intro' },
+        { id: 'history', label: 'History' },
+        { id: 'vision', label: 'Vision' },
+        { id: 'identity', label: 'Identity' },
+        { id: 'team', label: 'Team' },
+    ];
+
+    React.useEffect(() => {
         const handleMouseMove = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            // Smooth damping could be added here, but direct mapping is responsive
+            setMousePos({
+                x: (e.clientX - window.innerWidth / 2) / 40,
+                y: (e.clientY - window.innerHeight / 2) / 40
+            });
         };
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
-
-    const openModal = (content) => {
-        setModalContent(content);
-        setModalOpen(true);
-    };
-
-    const modalData = {
-        en: {
-            economy: {
-                title: "Virtual Economies at Scale",
-                subtitle: "A decade of managing GDP-scale digital worlds",
-                details: "Built and managed virtual economies for EA, Netmarble, and Smilegate with 1M+ concurrent users. Implemented real-time value exchange systems, anti-fraud mechanisms, and economic balancing algorithms that processed billions in virtual transactions.",
-                icon: Target
-            },
-            verification: {
-                title: "Trust Through Verification",
-                subtitle: "Why enforcement is infrastructure",
-                details: "In high-concurrency systems, trust isn't optional—it's engineered. We learned that digital ownership only holds value when verification is real-time, cryptographically sound, and economically viable at scale.",
-                icon: Shield
-            },
-            infrastructure: {
-                title: "The Missing Link",
-                subtitle: "Bridging AI and blockchain",
-                details: "AI generates infinite content. Blockchain settles truth. But there's no native layer to verify, attribute, and monetize this flood. We built the infrastructure that makes AI content safe, owned, and valuable.",
-                icon: Zap
-            }
-        },
-        ko: {
-            economy: {
-                title: "대규모 가상 경제",
-                subtitle: "GDP 규모 디지털 세계 10년 운영",
-                details: "EA, 넷마블, 스마일게이트에서 100만+ 동시접속 유저의 가상 경제 구축 및 관리. 실시간 가치 교환 시스템, 사기 방지 메커니즘, 수십억 가상 거래를 처리하는 경제 밸런싱 알고리즘 구현.",
-                icon: Target
-            },
-            verification: {
-                title: "검증을 통한 신뢰",
-                subtitle: "왜 집행이 인프라인가",
-                details: "고동시성 시스템에서 신뢰는 선택이 아닌 엔지니어링입니다. 디지털 소유권은 검증이 실시간이고, 암호학적으로 안전하며, 대규모에서 경제적으로 실행 가능할 때만 가치를 유지합니다.",
-                icon: Shield
-            },
-            infrastructure: {
-                title: "빠진 레이어",
-                subtitle: "AI와 블록체인 연결",
-                details: "AI는 무한한 콘텐츠를 생성합니다. 블록체인은 진실을 정산합니다. 하지만 이 홍수를 검증하고, 귀속시키고, 수익화할 네이티브 레이어가 없습니다. AI 콘텐츠를 안전하고, 소유 가능하며, 가치 있게 만드는 인프라를 구축했습니다.",
-                icon: Zap
-            }
-        }
-    };
+    
+    // Visual State Management
+    const visualState = useMemo(() => {
+        return {
+            showNoise: [0, 1].includes(activeIndex),
+            showGuardRail: [2].includes(activeIndex),
+            showLines: [3].includes(activeIndex),
+            showRouting: [3].includes(activeIndex),
+            showVerification: [2].includes(activeIndex),
+            darker: [0, 4].includes(activeIndex),
+        };
+    }, [activeIndex]);
 
     const content = {
         en: {
@@ -418,529 +671,228 @@ Scaled communities from zero to millions of users.`,
 
     const c = content[language] || content.en;
 
-    // Color palettes - matching Home page aesthetic
-    const scenePalettes = theme === 'dark' ? {
-        foundation: { bg: 'bg-black/90', text: 'text-white', accent: 'text-indigo-400' },
-        observation: { bg: 'bg-black/85', text: 'text-neutral-200', accent: 'text-blue-400' },
-        phase1: { bg: 'bg-black/80', text: 'text-white', accent: 'text-purple-400' },
-        phase2: { bg: 'bg-black/85', text: 'text-white', accent: 'text-cyan-400' },
-        phase3: { bg: 'bg-black/90', text: 'text-white', accent: 'text-pink-400' },
-        phase4: { bg: 'bg-black/95', text: 'text-white', accent: 'text-indigo-400' },
-        engineered: { bg: 'bg-black/90', text: 'text-white', accent: 'text-orange-400' },
-        unified: { bg: 'bg-black/85', text: 'text-white', accent: 'text-emerald-400' },
-        credibility: { bg: 'bg-black', text: 'text-white', accent: 'text-yellow-400' },
-        fit: { bg: 'bg-black/90', text: 'text-white', accent: 'text-indigo-400' },
-        team: { bg: 'bg-black/95', text: 'text-white', accent: 'text-blue-400' },
-        cta: { bg: 'bg-black', text: 'text-white', accent: 'text-indigo-400' }
-    } : {
-        foundation: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
-        observation: { bg: 'bg-gradient-to-br from-blue-50 to-cyan-50', text: 'text-neutral-800', accent: 'text-blue-700' },
-        phase1: { bg: 'bg-gradient-to-br from-orange-50 to-amber-50', text: 'text-neutral-900', accent: 'text-orange-700' },
-        phase2: { bg: 'bg-gradient-to-br from-emerald-50 to-teal-50', text: 'text-neutral-900', accent: 'text-emerald-700' },
-        phase3: { bg: 'bg-gradient-to-br from-purple-50 to-pink-50', text: 'text-neutral-900', accent: 'text-purple-700' },
-        phase4: { bg: 'bg-gradient-to-br from-neutral-100 to-slate-100', text: 'text-neutral-900', accent: 'text-neutral-900' },
-        engineered: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
-        unified: { bg: 'bg-gradient-to-br from-neutral-50 to-blue-50', text: 'text-neutral-900', accent: 'text-blue-700' },
-        credibility: { bg: 'bg-neutral-900', text: 'text-white', accent: 'text-yellow-400' },
-        fit: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' },
-        team: { bg: 'bg-gradient-to-br from-neutral-50 to-slate-50', text: 'text-neutral-900', accent: 'text-neutral-900' },
-        cta: { bg: 'bg-white', text: 'text-neutral-900', accent: 'text-orange-600' }
-    };
-
-    // Build story sections - Ultra condensed for maximum impact
-    const storySections = [
-        { id: 'foundation', type: 'intro', data: c.intro, palette: scenePalettes.foundation },
-        { id: 'phase-0', type: 'chapter', data: c.chapters[0], palette: scenePalettes.phase1 },
-        { id: 'thesis-0', type: 'thesis', data: c.thesis[0], palette: scenePalettes.engineered },
-        { id: 'credibility', type: 'credibility', data: {}, palette: scenePalettes.credibility }
-    ];
-
     return (
-        <div className={`min-h-screen font-sans overflow-x-hidden relative ${
-            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-white text-neutral-900'
+        <div className={`min-h-screen font-sans transition-colors duration-300 ${
+            theme === 'dark' 
+                ? 'bg-[#050505] text-white selection:bg-indigo-500/30'
+                : 'bg-white text-neutral-900 selection:bg-orange-200'
         }`}>
             <SEO 
                 title="Company" 
-                description="Infrastructure Gap — Engineering the Missing Link in the AI Economy"
+                description={c.intro?.title}
             />
 
-            {/* Parallax Background Layers */}
-            {theme === 'dark' && (
-                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                    {/* Parallax Layer 1 - Slowest */}
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent" 
-                    />
-                    
-                    {/* Parallax Layer 2 - Medium */}
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/15 via-transparent to-transparent" 
-                    />
-                    
-                    {/* Parallax Layer 3 - Fast */}
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
-                        className="absolute inset-0"
+            {/* Minimal Professional Background */}
+            <CompanyBackground theme={theme} />
+
+            {/* Sticky Navigation (Desktop) */}
+            <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
+                {navItems.map((item) => (
+                    <button
+                        key={item.id}
+                        onClick={() => scrollToId(item.id)}
+                        className="group flex items-center justify-end gap-4"
                     >
-                        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px]" />
-                        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[100px]" />
-                    </motion.div>
-                    
-                    {/* Floating Particles */}
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -800]) }}
-                        className="absolute inset-0"
-                    >
-                        {[...Array(20)].map((_, i) => (
-                            <motion.div
-                                key={i}
-                                animate={{
-                                    y: [0, -30, 0],
-                                    opacity: [0.3, 0.6, 0.3]
-                                }}
-                                transition={{
-                                    duration: 3 + i * 0.2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="absolute w-1 h-1 bg-indigo-400/20 rounded-full"
-                                style={{
-                                    left: `${Math.random() * 100}%`,
-                                    top: `${Math.random() * 100}%`
-                                }}
-                            />
-                        ))}
-                    </motion.div>
-                    
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]" />
-                </div>
-            )}
-            
-            {theme === 'light' && (
-                <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -300]) }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-100/30 via-transparent to-transparent" 
-                    />
-                    <motion.div 
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -500]) }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-100/20 via-transparent to-transparent" 
-                    />
-                </div>
-            )}
+                        <span className={`text-xs font-bold tracking-widest uppercase transition-all duration-300 ${activeSection === item.id ? 'text-white opacity-100' : 'text-neutral-500 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0'}`}>
+                            {item.label}
+                        </span>
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-indigo-500 scale-150' : 'bg-neutral-600 group-hover:bg-white'}`} />
+                    </button>
+                ))}
+            </div>
 
-            {/* Scrollytelling Section */}
-            <section className="relative z-10">
-                {/* Sticky Background Transitions */}
-                <div className="hidden md:block sticky top-0 h-screen w-full overflow-hidden -z-10">
-                    <AnimatePresence mode="wait">
-                        {storySections.map((section, idx) => (
-                            idx === activeStage && (
-                                <motion.div
-                                    key={section.id}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 1 }}
-                                    className={`absolute inset-0 w-full h-full ${section.palette.bg}`}
-                                >
-                                    {theme === 'dark' && (
-                                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-40" />
-                                    )}
-                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015]" />
-                                </motion.div>
-                            )
-                        ))}
-                    </AnimatePresence>
-                </div>
-
-                {/* Scrolling Content Cards - Stacked Layout with Parallax */}
-                <div className="relative">
-                    {storySections.map((section, idx) => {
-                        const ref = useRef(null);
-                        const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
-                        
-                        const { scrollYProgress } = useScroll({
-                            target: ref,
-                            offset: ["start end", "end start"]
-                        });
-
-                        const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-                        const opacity = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0, 1, 1, 1, 0]);
-                        const scale = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0.8, 1, 1, 1, 0.95]);
-
-                        useEffect(() => {
-                            if (isInView) setActiveStage(idx);
-                        }, [isInView, idx]);
-
-                        const [isHovered, setIsHovered] = useState(false);
-
-                        return (
-                            <div 
-                                key={section.id} 
-                                ref={ref} 
-                                className={`min-h-screen w-full flex items-center justify-center px-6 md:px-12 sticky top-0 ${
-                                    theme === 'light' ? section.palette.bg : ''
-                                }`}
-                                onMouseMove={(e) => {
-                                    const card = e.currentTarget.querySelector('.story-card');
-                                    if (card) {
-                                        const rect = card.getBoundingClientRect();
-                                        const x = e.clientX - rect.left - rect.width / 2;
-                                        const y = e.clientY - rect.top - rect.height / 2;
-                                        card.style.transform = `perspective(1000px) rotateY(${x / 50}deg) rotateX(${-y / 50}deg)`;
-                                    }
-                                }}
-                                onMouseLeave={(e) => {
-                                    const card = e.currentTarget.querySelector('.story-card');
-                                    if (card) {
-                                        card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-                                    }
-                                }}
+            {/* Scrolling Content Layer */}
+            <main className="relative z-10">
+                <div id="intro" className={`relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden ${
+                    theme === 'dark' ? '' : 'bg-white'
+                }`}>
+                    <div className="text-center mb-32 md:mb-64 w-full px-2">
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                            className={`font-black tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase ${
+                                theme === 'dark' ? 'text-indigo-400 glow-text' : 'text-orange-600'
+                            }`}
+                        >
+                            {c.intro?.episode || "Episode I"}
+                        </motion.h2>
+                        {theme === 'dark' ? (
+                            <MouseGlowText 
+                                as={motion.h1}
+                                glowColor="rgba(99, 102, 241, 0.8)"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1 }}
+                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
                             >
-                                <motion.div
-                                    style={{ y, opacity, scale }}
-                                    className={`story-card max-w-5xl w-full transition-transform duration-300 ease-out ${
+                                {c.intro?.title || "The Trust Layer"}
+                            </MouseGlowText>
+                        ) : (
+                            <motion.h1
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1 }}
+                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-neutral-900 leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                            >
+                                {c.intro?.title || "The Trust Layer"}
+                            </motion.h1>
+                        )}
+
+                        {c.intro?.subtitle && (
+                            <motion.h3 
+                                initial={{ opacity: 0 }} 
+                                whileInView={{ opacity: 1 }}
+                                className={`text-sm md:text-2xl font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4 font-bold ${
+                                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                }`}
+                            >
+                                {c.intro.subtitle}
+                            </motion.h3>
+                        )}
+                        
+                        <div className="space-y-24 w-full max-w-4xl mx-auto">
+                            {c.intro?.text ? c.intro.text.map((t, i) => (
+                                <TypingBlock key={i} className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                }`}>
+                                    {t}
+                                </TypingBlock>
+                            )) : (
+                                <>
+                                    <TypingBlock className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                    }`}>
+                                        It is a period of digital chaos.
+                                    </TypingBlock>
+                                </>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Chapters integrated as Typing Blocks */}
+                    <div id="history" className={`space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32 ${
+                        theme === 'dark' ? '' : 'bg-white'
+                    }`}>
+                        {c.chapters.map((chapter, i) => (
+                            <div key={i} className="flex flex-col items-center text-center w-full">
+                                <motion.div 
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    className={`font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black ${
                                         theme === 'dark' 
-                                            ? 'backdrop-blur-md bg-black/30 p-12 md:p-20 rounded-3xl border border-white/10 shadow-2xl' 
-                                            : 'p-12 md:p-20'
+                                            ? 'text-indigo-400 border-indigo-500/50 bg-indigo-500/10'
+                                            : 'text-orange-600 border-orange-300 bg-orange-50'
                                     }`}
-                                    onHoverStart={() => setIsHovered(true)}
-                                    onHoverEnd={() => setIsHovered(false)}
                                 >
-                                    {section.type === 'intro' && (
-                                        <div className="space-y-6 md:space-y-10 relative">
-                                            {/* Interactive Icons - More prominent */}
-                                            <div className="flex md:absolute md:-right-8 md:top-0 md:flex-col gap-3 md:gap-6 mb-6 md:mb-0 justify-center md:justify-start">
-                                                {[
-                                                    { key: 'economy', icon: Target },
-                                                    { key: 'verification', icon: Shield },
-                                                    { key: 'infrastructure', icon: Zap }
-                                                ].map(({ key, icon: Icon }, i) => (
-                                                    <motion.button
-                                                        key={key}
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        transition={{ delay: 0.6 + i * 0.1 }}
-                                                        whileHover={{ scale: 1.15, rotate: 5 }}
-                                                        whileTap={{ scale: 0.9 }}
-                                                        onClick={() => openModal(modalData[language][key])}
-                                                        className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center border backdrop-blur-sm transition-all shadow-lg ${
-                                                            theme === 'dark'
-                                                                ? 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-indigo-500/50 hover:shadow-indigo-500/30'
-                                                                : 'bg-white border-orange-300 hover:border-orange-500 hover:shadow-orange-200'
-                                                        }`}
-                                                    >
-                                                        <Icon className={`w-6 h-6 md:w-7 md:h-7 ${
-                                                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                                                        }`} />
-                                                    </motion.button>
-                                                ))}
-                                            </div>
-
-                                            <motion.h1 
-                                                initial={{ opacity: 0, y: 30 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.75] ${section.palette.text}`}
-                                                style={{ 
-                                                    textShadow: theme === 'dark' 
-                                                        ? '0 0 100px rgba(99, 102, 241, 0.4)' 
-                                                        : 'none'
-                                                }}
-                                            >
-                                                {section.data.title}
-                                            </motion.h1>
-                                            <motion.p 
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.3, duration: 0.6 }}
-                                                className={`text-xl md:text-3xl lg:text-4xl font-medium leading-snug max-w-4xl ${
-                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                                }`}
-                                            >
-                                                {section.data.subtitle}
-                                            </motion.p>
-                                        </div>
-                                    )}
-
-                                    {section.type === 'observation' && (
-                                        <motion.div 
-                                            initial={{ opacity: 0, x: -60 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                                            className={`border-l-4 md:border-l-8 pl-6 md:pl-12 relative ${
-                                                theme === 'dark' ? 'border-indigo-500/50' : 'border-blue-400'
-                                            }`}
-                                        >
-                                            <motion.p 
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.3, duration: 0.8 }}
-                                                className={`text-2xl md:text-4xl lg:text-5xl font-black leading-tight ${section.palette.text}`}
-                                            >
-                                                {section.data.text}
-                                            </motion.p>
-                                        </motion.div>
-                                    )}
-
-                                    {section.type === 'chapter' && (
-                                        <div className="space-y-8 md:space-y-14 text-center">
-                                            <motion.h2 
-                                                initial={{ opacity: 0, scale: 0.9 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                                                className={`text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.75] ${section.palette.text}`}
-                                                style={{
-                                                    textShadow: theme === 'dark' 
-                                                        ? '0 0 80px rgba(244, 63, 94, 0.3)' 
-                                                        : 'none'
-                                                }}
-                                            >
-                                                {section.data.headline}
-                                            </motion.h2>
-                                            <motion.p 
-                                                initial={{ opacity: 0, y: 30 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.3, duration: 0.8 }}
-                                                className={`text-xl md:text-3xl lg:text-4xl font-medium leading-snug max-w-5xl mx-auto ${
-                                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                                }`}
-                                            >
-                                                {section.data.content}
-                                            </motion.p>
-                                        </div>
-                                    )}
-
-                                    {section.type === 'thesis' && (
-                                        <div className="space-y-10">
-                                            <motion.h2 
-                                                initial={{ opacity: 0, y: 50 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 1, ease: "easeOut" }}
-                                                className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.85] ${section.palette.text}`}
-                                            >
-                                                {section.data.headline}
-                                            </motion.h2>
-                                            <motion.div 
-                                                initial={{ opacity: 0, x: -50 }}
-                                                whileInView={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.3, duration: 0.9 }}
-                                                className={`border-l-4 pl-8 ${
-                                                    theme === 'dark' ? 'border-current/50' : 'border-current/30'
-                                                }`}
-                                            >
-                                                <p className={`text-2xl md:text-4xl font-light leading-relaxed ${section.palette.accent}`}>
-                                                    {section.data.content}
-                                                </p>
-                                            </motion.div>
-                                        </div>
-                                    )}
-
-                                    {section.type === 'credibility' && (
-                                        <motion.div 
-                                            className="text-center"
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-                                        >
-                                            <motion.h2 
-                                                whileHover={{ scale: 1.03 }}
-                                                className={`text-6xl md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-[0.7] cursor-pointer ${
-                                                    theme === 'dark' ? 'text-white' : 'text-white'
-                                                }`}
-                                                style={{ 
-                                                    textShadow: theme === 'dark' 
-                                                        ? '0 0 150px rgba(99, 102, 241, 0.6), 0 0 80px rgba(139, 92, 246, 0.4), 0 0 40px rgba(168, 85, 247, 0.3)' 
-                                                        : '0 0 80px rgba(0, 0, 0, 0.4)'
-                                                }}
-                                            >
-                                                {language === 'en' ? "CREDIBILITY" : "신뢰"}
-                                            </motion.h2>
-                                            <motion.p 
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.5, duration: 0.8 }}
-                                                className={`mt-8 md:mt-12 text-xl md:text-3xl lg:text-4xl font-medium ${
-                                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-200'
-                                                }`}
-                                            >
-                                                {language === 'en' 
-                                                    ? "is the new scarce resource."
-                                                    : "새로운 희소 자원입니다."}
-                                            </motion.p>
-                                        </motion.div>
-                                    )}
-
-                                    {section.type === 'fit' && (
-                                        <div className="space-y-8">
-                                            <motion.div 
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.7 }}
-                                                className={`inline-block text-xs font-mono tracking-[0.3em] uppercase px-4 py-2 rounded-full border font-bold ${
-                                                    theme === 'dark' 
-                                                        ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                                        : 'text-orange-600 border-orange-300 bg-orange-100'
-                                                }`}
-                                            >
-                                                {section.data.headline}
-                                            </motion.div>
-                                            <motion.p 
-                                                initial={{ opacity: 0, y: 40 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.2, duration: 0.9 }}
-                                                className={`text-3xl md:text-4xl lg:text-6xl font-bold leading-tight ${section.palette.text}`}
-                                            >
-                                                {section.data.content}
-                                            </motion.p>
-                                        </div>
-                                    )}
+                                    {chapter.year}
                                 </motion.div>
+                                <motion.h2 
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.8 }}
+                                    className={`text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 ${
+                                        theme === 'dark' ? 'text-white drop-shadow-lg' : 'text-neutral-900'
+                                    }`}
+                                >
+                                    {chapter.headline}
+                                </motion.h2>
+                                <div className="max-w-4xl mx-auto px-4">
+                                    <TypingBlock className={`text-lg md:text-2xl lg:text-3xl w-full leading-relaxed text-center font-black tracking-wide ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
+                                    }`}>
+                                        {chapter.content}
+                                    </TypingBlock>
+                                </div>
                             </div>
-                        );
-                    })}
-                </div>
-            </section>
-
-            {/* Team Section */}
-            <section id="team" className={`relative py-24 md:py-32 px-6 md:px-12 border-y ${
-                theme === 'dark' 
-                    ? 'bg-black/40 border-white/5 backdrop-blur-sm' 
-                    : 'bg-gradient-to-br from-neutral-50 to-slate-50 border-neutral-200'
-            }`}>
-                {theme === 'dark' && (
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
-                )}
-                
-                <div className="max-w-[1400px] mx-auto w-full relative z-10">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-16 md:mb-20"
-                    >
-                        <div className={`inline-block text-xs font-mono tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border mb-6 font-bold ${
-                            theme === 'dark' 
-                                ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                                : 'text-orange-600 border-orange-300 bg-orange-100'
-                        }`}>LEADERSHIP</div>
-                        <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black ${scenePalettes.team.text}`}>
-                            {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                        {c.founders.map((founder, i) => (
-                            <FounderCard key={i} {...founder} delay={i * 0.08} />
                         ))}
                     </div>
                 </div>
-            </section>
 
-            {/* CTA Section */}
-            <section className={`relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center px-6 border-t overflow-hidden ${
-                theme === 'dark' 
-                    ? 'bg-gradient-to-b from-black via-black to-indigo-950/20 border-white/5' 
-                    : 'bg-gradient-to-br from-white via-orange-50/20 to-violet-50/20 border-neutral-200'
-            }`}>
-                {theme === 'dark' && (
-                    <>
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[800px] h-[300px] md:h-[400px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/5 via-transparent to-transparent" />
-                    </>
-                )}
+                {/* Thesis / Vision Section (Full Width Sticky Scroll) */}
+                <div id="vision" className="w-full">
+                     <ThesisSection items={c.thesis} />
+                </div>
+
+                {/* Closing Statement */}
+                <ClosingStatement />
+
+                {/* Team Identity Section */}
+                <div id="identity">
+                    <TeamIdentity identity={c.identity || {headline: "WHO WE ARE", content: "Loading..."}} />
+                </div>
+
+                {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
+                <div id="team" className={`border-y py-32 md:py-48 overflow-hidden ${
+                    theme === 'dark' 
+                        ? 'bg-[#0A0A0A] border-neutral-900' 
+                        : 'bg-neutral-50 border-neutral-200'
+                }`}>
+                    <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+                            <div>
+                                <h2 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                                    theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                                }`}>Leadership</h2>
+                                <h3 className={`text-3xl md:text-5xl font-black max-w-2xl leading-tight ${
+                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                }`}>
+                                    {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
+                                </h3>
+                            </div>
+                            <p className={`max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base font-medium ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                            }`}>
+                                {language === 'en' 
+                                    ? "A team combining deep AI research, AAA gaming production, and Web3 economics."
+                                    : "딥 AI 리서치, AAA 게임 프로덕션, 그리고 Web3 경제 설계를 결합한 팀입니다."}
+                            </p>
+                        </div>
+
+                        {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+                        <div className="flex md:grid md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                            {c.founders.map((founder, i) => (
+                                <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                                    <FounderCard {...founder} delay={i * 0.1} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+
                 
-                <motion.div 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center max-w-4xl mx-auto relative z-10"
-                >
-                    <div className={`inline-block text-xs md:text-sm font-mono tracking-[0.2em] md:tracking-[0.3em] uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full border mb-6 md:mb-8 font-bold ${
-                        theme === 'dark' 
-                            ? 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10' 
-                            : 'text-orange-600 border-orange-300 bg-orange-100'
-                    }`}>HOLO STUDIO</div>
+                {/* Final CTA */}
+                <div className="flex flex-col items-center justify-center pb-40 px-6 text-center">
+                    <div className="max-w-4xl mx-auto mb-16">
+                         <h3 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
+                         }`}>HOLO STUDIO</h3>
+                         <p className={`text-2xl md:text-3xl font-black leading-relaxed ${
+                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
+                         }`}>
+                            {c.footer?.main || (language === 'en' 
+                                ? "Building AI Infrastructure with Embedded Trust at the intersection of Safety, Media, Gaming, and Trading." 
+                                : "AI 안전, 미디어, 게임, 트레이딩의 교차점에서 신뢰가 내재된 AI 인프라 비즈니스를 구축합니다.")}
+                         </p>
+                    </div>
 
-                    <h2 className={`text-2xl md:text-3xl lg:text-5xl font-black mb-8 md:mb-12 leading-tight px-4 ${scenePalettes.cta.text}`}>
-                        {language === 'en' 
-                            ? "Ready to build the trust layer?"
-                            : "신뢰 레이어를 함께 만드시겠습니까?"}
+                    <h2 className={`text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>
+                        {language === 'en' ? "Ready to build the trust layer?" : "신뢰 레이어를 함께 만드시겠습니까?"}
                     </h2>
-
                     <Link to={createPageUrl('Contact')}>
-                        <Button className={`rounded-full px-8 md:px-14 h-12 md:h-16 text-sm md:text-lg font-bold border-0 transition-all hover:scale-105 shadow-xl ${
+                        <Button className={`rounded-full px-10 md:px-12 h-14 md:h-16 text-lg md:text-xl font-bold transition-transform hover:scale-105 ${
                             theme === 'dark'
-                                ? 'bg-white text-black hover:bg-neutral-200 shadow-white/20'
-                                : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white hover:shadow-2xl'
+                                ? 'bg-white text-black hover:bg-neutral-200'
+                                : 'bg-orange-500 text-white hover:bg-orange-600'
                         }`}>
-                            {language === 'en' ? 'Connect With Us' : '문의하기'} <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                            Connect With Us <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
                         </Button>
                     </Link>
-                </motion.div>
-            </section>
-
-            {/* Interactive Modal */}
-            <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-                <DialogContent className={`max-w-2xl ${
-                    theme === 'dark' 
-                        ? 'bg-black/95 border-white/10 backdrop-blur-xl' 
-                        : 'bg-white border-neutral-200'
-                }`}>
-                    {modalContent && (
-                        <>
-                            <DialogHeader>
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                                        theme === 'dark' 
-                                            ? 'bg-indigo-500/10 border border-indigo-500/30' 
-                                            : 'bg-orange-100 border border-orange-300'
-                                    }`}>
-                                        <modalContent.icon className={`w-6 h-6 ${
-                                            theme === 'dark' ? 'text-indigo-400' : 'text-orange-600'
-                                        }`} />
-                                    </div>
-                                    <div>
-                                        <DialogTitle className={`text-2xl font-black ${
-                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                                        }`}>
-                                            {modalContent.title}
-                                        </DialogTitle>
-                                        <p className={`text-sm ${
-                                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                                        }`}>
-                                            {modalContent.subtitle}
-                                        </p>
-                                    </div>
-                                </div>
-                            </DialogHeader>
-                            <DialogDescription className={`text-base leading-relaxed ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                            }`}>
-                                {modalContent.details}
-                            </DialogDescription>
-                        </>
-                    )}
-                </DialogContent>
-            </Dialog>
-
-            {/* Mouse Follower - Desktop Only */}
-            {theme === 'dark' && (
-                <motion.div
-                    className="hidden md:block fixed pointer-events-none z-50 w-96 h-96 rounded-full"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%)',
-                        x: mousePosition.x - 192,
-                        y: mousePosition.y - 192,
-                    }}
-                    transition={{ type: "spring", damping: 30, stiffness: 200 }}
-                />
-            )}
+                </div>
+            </main>
         </div>
     );
 }
