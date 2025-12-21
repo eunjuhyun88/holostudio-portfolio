@@ -27,10 +27,7 @@ export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"]
-    });
+    const { scrollYProgress } = useScroll();
 
     const backgroundColor = useTransform(
         scrollYProgress,
@@ -520,6 +517,18 @@ export default function Home() {
     }));
 
     const [currentSection, setCurrentSection] = useState(0);
+    
+    const observeSection = (el, index) => {
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) setCurrentSection(index);
+            },
+            { threshold: 0.5 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    };
 
     return (
         <motion.div 
@@ -569,14 +578,28 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.8 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
                                 <>
-                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
-                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+                                    <div className="absolute top-20 left-[10%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '4s' }} />
+                                    <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '5s' }} />
                                 </>
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 1 && (
+                        <motion.div
+                            key="numbers-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
                             )}
                         </motion.div>
                     )}
@@ -586,7 +609,7 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.8 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
@@ -600,7 +623,7 @@ export default function Home() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.8 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
@@ -608,17 +631,76 @@ export default function Home() {
                             )}
                         </motion.div>
                     )}
+                    {currentSection === 4 && (
+                        <motion.div
+                            key="thesis-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <>
+                                    <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[120px]" />
+                                    <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
+                                </>
+                            )}
+                        </motion.div>
+                    )}
                     {currentSection === 5 && (
+                        <motion.div
+                            key="products-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px]" />
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 6 && (
                         <motion.div
                             key="milestones-bg"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.8 }}
                             className="absolute inset-0 z-20"
                         >
                             {theme === 'dark' && (
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" />
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 7 && (
+                        <motion.div
+                            key="roadmap-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
+                            )}
+                        </motion.div>
+                    )}
+                    {currentSection === 8 && (
+                        <motion.div
+                            key="contact-bg"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 z-20"
+                        >
+                            {theme === 'dark' && (
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px]" />
                             )}
                         </motion.div>
                     )}
@@ -628,18 +710,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(0);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => observeSection(el, 0)}>
                     <div className="max-w-5xl mx-auto text-center">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -704,18 +775,7 @@ export default function Home() {
                 {/* By The Numbers Section */}
                 <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(1);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`} ref={(el) => observeSection(el, 1)}>
                     <div className="max-w-7xl mx-auto w-full">
                         <div className="text-center mb-16">
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -776,18 +836,7 @@ export default function Home() {
                 {/* Why Now Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(2);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`} ref={(el) => observeSection(el, 2)}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-orange-500' : 'text-orange-700'
@@ -834,18 +883,7 @@ export default function Home() {
                 {/* The Challenge Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(3);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`} ref={(el) => observeSection(el, 3)}>
                     <div className="max-w-6xl mx-auto w-full">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -924,18 +962,7 @@ export default function Home() {
                 {/* Company Thesis Section */}
                 <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(4);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`} ref={(el) => observeSection(el, 4)}>
                     <div className="max-w-6xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-violet-700'
@@ -1025,7 +1052,7 @@ export default function Home() {
                 {/* Products Section - Keep existing scrollytelling implementation */}
                 <section id="products" className={`relative border-y ${
                     theme === 'dark' ? 'border-white/5' : 'border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => observeSection(el, 5)}>
                     <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
                          <h2 className={`text-xl font-heavy uppercase tracking-widest mb-2 ${
                              theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
@@ -1159,18 +1186,7 @@ export default function Home() {
                 {/* Milestones Section */}
                 <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
-                }`} ref={(el) => {
-                    if (el) {
-                        const observer = new IntersectionObserver(
-                            ([entry]) => {
-                                if (entry.isIntersecting) setCurrentSection(5);
-                            },
-                            { threshold: 0.5 }
-                        );
-                        observer.observe(el);
-                        return () => observer.disconnect();
-                    }
-                }}>
+                }`} ref={(el) => observeSection(el, 6)}>
                     <div className="max-w-7xl mx-auto w-full py-20">
                         <div className="mb-16 text-center max-w-4xl mx-auto">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
@@ -1228,7 +1244,7 @@ export default function Home() {
                 </section>
 
                 {/* Roadmap Section */}
-                <section id="roadmap" className="relative">
+                <section id="roadmap" className="relative" ref={(el) => observeSection(el, 7)}>
                     <Roadmap 
                         items={t.roadmap.items} 
                         title={t.roadmap.title} 
@@ -1241,7 +1257,7 @@ export default function Home() {
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
-                }`}>
+                }`} ref={(el) => observeSection(el, 8)}>
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
