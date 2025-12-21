@@ -33,10 +33,10 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.3, 1])
                 }}
-                className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[120px] ${
+                className={`absolute top-[10%] left-[5%] w-96 h-96 rounded-full blur-[100px] ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-br from-indigo-500/50 via-purple-500/35 to-transparent'
-                        : 'bg-gradient-to-br from-indigo-400/60 via-purple-400/45 to-transparent'
+                        : 'bg-white/60'
                 }`}
             />
             <motion.div 
@@ -45,10 +45,10 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity2,
                     rotate
                 }}
-                className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[130px] ${
+                className={`absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full blur-[110px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-purple-500/40 via-pink-500/30 to-transparent'
-                        : 'bg-gradient-to-br from-purple-400/50 via-pink-400/40 to-transparent'
+                        : 'bg-white/70'
                 }`}
             />
             <motion.div 
@@ -57,10 +57,10 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: opacity1,
                     scale
                 }}
-                className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[110px] ${
+                className={`absolute bottom-[20%] left-[15%] w-[450px] h-[450px] rounded-full blur-[100px] ${
                     theme === 'dark'
                         ? 'bg-gradient-to-br from-blue-500/35 via-indigo-500/40 to-transparent'
-                        : 'bg-gradient-to-br from-cyan-400/45 via-indigo-400/50 to-transparent'
+                        : 'bg-white/65'
                 }`}
             />
             <motion.div 
