@@ -504,10 +504,10 @@ export default function Home() {
 
             {/* Global Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-95' : 'opacity-100'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-95' : 'opacity-30'}`}>
                     <CosmicBackground theme={theme} />
                 </div>
-                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-85' : 'opacity-40'}`}>
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-85' : 'opacity-25'}`}>
                     <Background3D theme={theme} />
                 </div>
                 <ScrollMotionBackground theme={theme} />
@@ -518,27 +518,21 @@ export default function Home() {
                     style={{
                         background: theme === 'dark' 
                             ? useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
-                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168, 85, 247, 0.03), transparent 60%)`
+                            : useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(139, 92, 246, 0.06), transparent 60%)`
                     }}
                 />
-
-                {/* Grid removed for clean look */}
                 
                 <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${
                     theme === 'dark' 
                         ? 'opacity-55 from-transparent via-[#050505]/35 to-[#050505]'
-                        : 'opacity-60 from-transparent via-white/20 to-white/40'
+                        : 'opacity-40 from-transparent via-[#F5F5F7]/30 to-[#F5F5F7]'
                 }`} />
                 
-                {/* Scanlines removed */}
-                {/* Moving bar removed */}
                 <div className={`absolute inset-0 z-20 pointer-events-none ${
                     theme === 'dark' 
                         ? 'bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]'
-                        : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(255,255,255,0.5)_100%)]'
+                        : 'bg-[radial-gradient(circle_at_center,transparent_60%,rgba(245,245,247,0.3)_100%)]'
                 }`} />
-
-                {/* HUD removed for clean look */}
             </div>
 
             {/* Section 01: HERO (Pinned) */}
