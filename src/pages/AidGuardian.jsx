@@ -9,9 +9,9 @@ export default function AidGuardian() {
 
     const content = {
         en: {
-            tag: "Trust Layer: Safety | The Security Standard",
+            tag: <span><span className="text-blue-400">Trust Layer: Safety</span> | <span className="text-cyan-400">The Security Standard</span></span>,
             primaryButtonText: "Launch Dashboard",
-            oneLiner: "The absolute barrier against toxic AI content. Multi-modal verification at scale.",
+            oneLiner: <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">The absolute barrier against toxic AI content. Multi-modal verification at scale.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
