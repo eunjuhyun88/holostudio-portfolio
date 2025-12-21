@@ -707,15 +707,12 @@ export default function Home() {
             </section>
 
             {/* Section 02: BY THE NUMBERS - Enhanced scroll animations */}
-            <motion.section 
+            <section 
                 className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 overflow-hidden ${
                     theme === 'dark' 
                         ? 'bg-black/20 border-white/5'
                         : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.08, 0.10, 0.24, 0.26], [0, 1, 1, 0])
-                }}
             >
                 {/* Parallax decorative elements */}
                 <motion.div 
@@ -890,7 +887,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </motion.section>
+            </section>
 
             {/* Section 02.5: WHY IT MATTERS - Enhanced with scroll animations */}
             <motion.section 
