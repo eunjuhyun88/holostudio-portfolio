@@ -149,29 +149,132 @@
   100% { top: 100%; }
 }
 
-.sci-fi-border {
-  position: relative;
-  background: linear-gradient(90deg, transparent 50%, rgba(99, 102, 241, 0.1) 50%);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite linear;
+@keyframes scan-light {
+  0% { top: -100px; }
+  100% { top: 100%; }
 }
 
-.sci-fi-corner {
+/* Dark Theme Sci-Fi Patterns */
+.dark .sci-fi-grid {
+  background: 
+    linear-gradient(rgba(79,70,229,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,0.08) 1px, transparent 1px);
+  background-size: 100px 100px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+.dark .sci-fi-scan {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 2px solid rgba(99, 102, 241, 0.5);
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(99, 102, 241, 0.08) 50%,
+    transparent 60%
+  );
+  animation: scan 5s linear infinite;
+  height: 100px;
+  top: -100px;
+}
+
+.dark .sci-fi-corners::before,
+.dark .sci-fi-corners::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
   transition: all 0.3s ease;
 }
 
-.sci-fi-corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-.sci-fi-corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
-.sci-fi-corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
-.sci-fi-corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
+.dark .sci-fi-corners::before {
+  top: 32px;
+  left: 32px;
+  border-right: none;
+  border-bottom: none;
+}
 
-.group:hover .sci-fi-corner {
-  width: 20px;
-  height: 20px;
-  border-color: rgba(99, 102, 241, 1);
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+.dark .sci-fi-corners::after {
+  bottom: 32px;
+  right: 32px;
+  border-left: none;
+  border-top: none;
+}
+
+.dark .group:hover .sci-fi-corners::before,
+.dark .group:hover .sci-fi-corners::after {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Light Theme Sci-Fi Patterns */
+.sci-fi-grid {
+  background: 
+    linear-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+}
+
+.sci-fi-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(139, 92, 246, 0.12) 50%,
+    transparent 60%
+  );
+  animation: scan-light 6s linear infinite;
+  height: 80px;
+  top: -80px;
+}
+
+.sci-fi-corners::before,
+.sci-fi-corners::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(139, 92, 246, 0.25);
+  transition: all 0.3s ease;
+}
+
+.sci-fi-corners::before {
+  top: 32px;
+  left: 32px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.sci-fi-corners::after {
+  bottom: 32px;
+  right: 32px;
+  border-left: none;
+  border-top: none;
+}
+
+.group:hover .sci-fi-corners::before,
+.group:hover .sci-fi-corners::after {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.25);
+}
+
+/* Glow Effects */
+.dark .sci-fi-glow {
+  box-shadow: 
+    0 0 20px rgba(79, 70, 229, 0.15),
+    inset 0 0 20px rgba(79, 70, 229, 0.05);
+}
+
+.sci-fi-glow {
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }

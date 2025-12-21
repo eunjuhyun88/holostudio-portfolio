@@ -634,11 +634,19 @@ export default function Home() {
                                     background: useMotionTemplate`radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(79, 70, 229, 0.08), transparent 40%)`
                                 }}
                             />
+                            
+                            {/* Sci-fi grid and corners for dark */}
+                            <div className="absolute inset-0 z-10 sci-fi-grid pointer-events-none" />
+                            <div className="absolute inset-0 z-10 sci-fi-corners pointer-events-none" />
                         </>
                     ) : (
                         <>
                             <MeshGradient key={`mesh-${theme}`} theme={theme} />
                             <Background3D key={`bg3d-${theme}`} theme={theme} />
+                            
+                            {/* Sci-fi grid and corners for light */}
+                            <div className="absolute inset-0 z-10 sci-fi-grid pointer-events-none opacity-60" />
+                            <div className="absolute inset-0 z-10 sci-fi-corners pointer-events-none" />
                         </>
                     )}
                 </div>
