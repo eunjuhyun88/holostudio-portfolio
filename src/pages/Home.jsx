@@ -1126,11 +1126,19 @@ export default function Home() {
 
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
-            <section id="products" className="relative z-10">
+            <section id="products" className={`relative z-10 border-y backdrop-blur-md ${
+                theme === 'dark' 
+                    ? 'border-white/5'
+                    : 'bg-gradient-to-br from-indigo-50/60 to-purple-50/60 border-indigo-200/50'
+            }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
-                     <h2 className="text-xl font-heavy text-neutral-200 uppercase tracking-widest mb-2">{t.business_intro.title}</h2>
-                     <p className="text-xl text-neutral-200">{t.business_intro.sub}</p>
+                     <h2 className={`text-xl font-heavy uppercase tracking-widest mb-2 ${
+                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-900'
+                     }`}>{t.business_intro.title}</h2>
+                     <p className={`text-xl ${
+                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                     }`}>{t.business_intro.sub}</p>
                 </div>
 
                 {/* Sticky Visual Container - Desktop Only */}
@@ -1209,7 +1217,11 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <TiltCard className={`glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl`}>
+                                <TiltCard className={`p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 backdrop-blur-xl border ${
+                                    theme === 'dark'
+                                        ? 'glass-card hover:shadow-2xl'
+                                        : 'bg-white/90 border-indigo-200/60 hover:border-indigo-400 shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/20'
+                                }`}>
                                         {/* Sci-Fi Corners */}
                                         <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
                                         <div className={`absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -1220,7 +1232,11 @@ export default function Home() {
                                         
                                         <div className="relative z-10">
                                             {/* Mobile Image */}
-                                            <div className="md:hidden mb-6 relative rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video group-hover:border-white/20 transition-colors">
+                                            <div className={`md:hidden mb-6 relative rounded-xl overflow-hidden border aspect-video group-hover:border-white/20 transition-colors ${
+                                                theme === 'dark'
+                                                    ? 'border-white/10 bg-black/50'
+                                                    : 'border-indigo-200/60 bg-gradient-to-br from-indigo-50 to-purple-50'
+                                            }`}>
                                                 <img 
                                                     src={prod.image} 
                                                     alt={prod.name} 
@@ -1237,18 +1253,26 @@ export default function Home() {
                                                 <div className={`text-xs md:text-sm font-mono ${prod.color} opacity-50`}>0{idx + 1}</div>
                                             </div>
 
-                                            <h3 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight">
+                                            <h3 className={`text-3xl md:text-4xl font-black mb-4 tracking-tight ${
+                                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                            }`}>
                                                 {prod.name}
                                             </h3>
 
-                                            <p className="text-neutral-200 leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none">
+                                            <p className={`leading-relaxed mb-6 md:mb-8 text-sm md:text-base line-clamp-3 md:line-clamp-none ${
+                                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                            }`}>
                                                 {prod.desc[language]}
                                             </p>
 
                                             {/* Features Blocks */}
                                             <div className="grid grid-cols-1 gap-2 mb-6 md:mb-8">
                                                 {prod.features[language].map((feat, i) => (
-                                                    <div key={i} className={`bg-black/40 px-3 py-2 md:px-4 md:py-3 rounded-xl text-xs md:text-sm font-medium text-neutral-200 border border-white/5 flex items-center gap-3 hover:border-white/20 transition-colors`}>
+                                                    <div key={i} className={`px-3 py-2 md:px-4 md:py-3 rounded-xl text-xs md:text-sm font-medium border flex items-center gap-3 transition-colors ${
+                                                        theme === 'dark'
+                                                            ? 'bg-black/40 text-neutral-200 border-white/5 hover:border-white/20'
+                                                            : 'bg-indigo-50/50 text-neutral-800 border-indigo-200/50 hover:border-indigo-400'
+                                                    }`}>
                                                         <div className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_8px_currentColor]`} />
                                                         {feat}
                                                     </div>
@@ -1261,7 +1285,11 @@ export default function Home() {
                                                         {prod.primaryBtn[language]}
                                                     </Button>
                                                 </Link>
-                                                <Button variant="outline" className="flex-1 border-neutral-700 text-white hover:bg-white/5 bg-transparent h-12 rounded-xl text-sm font-medium">
+                                                <Button variant="outline" className={`flex-1 h-12 rounded-xl text-sm font-medium ${
+                                                    theme === 'dark'
+                                                        ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
+                                                        : 'border-indigo-300 text-indigo-900 hover:bg-indigo-50 bg-transparent'
+                                                }`}>
                                                     {prod.secondaryBtn[language]}
                                                 </Button>
                                             </div>
