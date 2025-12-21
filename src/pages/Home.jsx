@@ -471,7 +471,7 @@ export default function Home() {
         <div className={`font-sans min-h-screen relative transition-colors duration-300 ${
             theme === 'dark' 
                 ? 'bg-[#050505] text-white selection:bg-indigo-500/30' 
-                : 'bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 text-neutral-900 selection:bg-indigo-300/30'
+                : 'bg-[#EDE9E4] text-neutral-900 selection:bg-neutral-200'
         }`}>
             <SEO 
                 title="Home" 
@@ -532,10 +532,10 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-medium tracking-wide uppercase backdrop-blur-sm ${
+                        <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-bold tracking-wide uppercase ${
                             theme === 'dark'
                                 ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-indigo-500/40 bg-indigo-500/20 text-indigo-900'
+                                : 'border-neutral-900 bg-neutral-900 text-white'
                         }`}>
                             {t.hero.tag}
                         </div>
@@ -561,7 +561,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900 font-semibold'
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900 font-bold'
                             }`}
                         >
                             {t.hero.sub}
@@ -571,7 +571,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
                             className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-800 font-medium'
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
                             }`}
                         >
                             {t.hero.desc}
@@ -605,10 +605,10 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className={`py-12 border-y relative z-10 backdrop-blur-md ${
+            <section className={`py-12 border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'bg-white/60 border-indigo-200/50'
+                    : 'bg-white border-neutral-900'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -700,7 +700,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
                         <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-indigo-600'
+                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
                         }`}>{t.problem.title}</h2>
                         <h3 className={`text-2xl md:text-4xl font-bold leading-tight max-w-3xl ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -718,39 +718,39 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border backdrop-blur-md relative overflow-hidden transition-all duration-300 ${
+                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border relative overflow-hidden transition-all duration-300 ${
                                     theme === 'dark'
                                         ? 'bg-black/30 border-white/10 hover:border-indigo-500/50'
-                                        : 'bg-white/80 border-indigo-200/50 hover:border-indigo-500 shadow-lg shadow-indigo-500/10'
+                                        : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
                                 }`}
                             >
                                 {/* Sci-Fi Corner Accents */}
                                 <div className={`absolute top-0 left-0 w-3 h-3 border-l border-t transition-all duration-500 pointer-events-none ${
                                     theme === 'dark' 
                                         ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-indigo-300/50 group-hover:border-indigo-600'
+                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
                                 } group-hover:w-full group-hover:h-full`} />
                                 <div className={`absolute top-0 right-0 w-3 h-3 border-r border-t transition-colors duration-500 pointer-events-none ${
                                     theme === 'dark' 
                                         ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-indigo-300/50 group-hover:border-indigo-600'
+                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
                                 }`} />
                                 <div className={`absolute bottom-0 left-0 w-3 h-3 border-l border-b transition-colors duration-500 pointer-events-none ${
                                     theme === 'dark' 
                                         ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-indigo-300/50 group-hover:border-indigo-600'
+                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
                                 }`} />
                                 <div className={`absolute bottom-0 right-0 w-3 h-3 border-r border-b transition-all duration-500 pointer-events-none ${
                                     theme === 'dark' 
                                         ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-indigo-300/50 group-hover:border-indigo-600'
+                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
                                 } group-hover:w-full group-hover:h-full`} />
 
                                 <Floating delay={idx * 0.2} offset={8}>
                                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
                                         theme === 'dark'
                                             ? 'bg-neutral-900 group-hover:bg-indigo-500/10 group-hover:text-indigo-400'
-                                            : 'bg-purple-100/50 group-hover:bg-purple-200/60 group-hover:text-purple-600'
+                                            : 'bg-neutral-900 text-white'
                                     }`}>
                                         <motion.div
                                             animate={{ 
@@ -769,10 +769,10 @@ export default function Home() {
                                 <p className={`mb-6 text-base leading-relaxed ${
                                     theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                                 }`}>{card.desc}</p>
-                                <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide transition-colors ${
+                                <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide font-bold transition-colors ${
                                     theme === 'dark'
                                         ? 'bg-neutral-800 text-neutral-200 group-hover:bg-indigo-500/20 group-hover:text-indigo-300'
-                                        : 'bg-purple-100 text-purple-700 group-hover:bg-purple-200 group-hover:text-purple-800'
+                                        : 'bg-neutral-900 text-white'
                                 }`}>
                                     {card.badge}
                                 </span>
@@ -783,10 +783,10 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className={`py-32 px-6 md:px-12 relative z-10 border-y backdrop-blur-md ${
+            <section className={`py-32 px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'bg-gradient-to-br from-purple-50/80 to-pink-50/80 border-purple-200/50'
+                    : 'bg-[#F5EFE6] border-neutral-900'
             }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
@@ -799,7 +799,7 @@ export default function Home() {
                         }`} />
                         
                         <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 ${
-                            theme === 'dark' ? 'text-indigo-500' : 'text-indigo-600'
+                            theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
                         }`}>
                             <span className={`w-2 h-2 rounded-full animate-pulse ${
                                 theme === 'dark' ? 'bg-indigo-500' : 'bg-purple-500'
@@ -1098,8 +1098,8 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className={`py-24 border-y text-center relative z-10 backdrop-blur-md ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-gradient-to-br from-pink-50/80 to-indigo-50/80 border-pink-200/50'
+            <section className={`py-24 border-y text-center relative z-10 ${
+                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-white border-neutral-900'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest ${
@@ -1126,10 +1126,10 @@ export default function Home() {
 
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
-            <section id="products" className={`relative z-10 border-y backdrop-blur-md ${
+            <section id="products" className={`relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'border-white/5'
-                    : 'bg-gradient-to-br from-indigo-50/60 to-purple-50/60 border-indigo-200/50'
+                    : 'bg-[#F5EFE6] border-neutral-900'
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1217,10 +1217,10 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <TiltCard className={`p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 backdrop-blur-xl border ${
+                                <TiltCard className={`p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 border ${
                                     theme === 'dark'
-                                        ? 'glass-card hover:shadow-2xl'
-                                        : 'bg-white/90 border-indigo-200/60 hover:border-indigo-400 shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/20'
+                                        ? 'glass-card hover:shadow-2xl backdrop-blur-xl'
+                                        : 'bg-white border-neutral-900/30 hover:border-neutral-900 shadow-md'
                                 }`}>
                                         {/* Sci-Fi Corners */}
                                         <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -1232,10 +1232,10 @@ export default function Home() {
                                         
                                         <div className="relative z-10">
                                             {/* Mobile Image */}
-                                            <div className={`md:hidden mb-6 relative rounded-xl overflow-hidden border aspect-video group-hover:border-white/20 transition-colors ${
+                                            <div className={`md:hidden mb-6 relative rounded-xl overflow-hidden border aspect-video transition-colors ${
                                                 theme === 'dark'
                                                     ? 'border-white/10 bg-black/50'
-                                                    : 'border-indigo-200/60 bg-gradient-to-br from-indigo-50 to-purple-50'
+                                                    : 'border-neutral-900/20 bg-neutral-50'
                                             }`}>
                                                 <img 
                                                     src={prod.image} 
@@ -1271,7 +1271,7 @@ export default function Home() {
                                                     <div key={i} className={`px-3 py-2 md:px-4 md:py-3 rounded-xl text-xs md:text-sm font-medium border flex items-center gap-3 transition-colors ${
                                                         theme === 'dark'
                                                             ? 'bg-black/40 text-neutral-200 border-white/5 hover:border-white/20'
-                                                            : 'bg-indigo-50/50 text-neutral-800 border-indigo-200/50 hover:border-indigo-400'
+                                                            : 'bg-neutral-50 text-neutral-900 border-neutral-900/20'
                                                     }`}>
                                                         <div className={`w-1.5 h-1.5 rounded-full ${prod.color.replace('text-', 'bg-')} shadow-[0_0_8px_currentColor]`} />
                                                         {feat}
@@ -1285,10 +1285,10 @@ export default function Home() {
                                                         {prod.primaryBtn[language]}
                                                     </Button>
                                                 </Link>
-                                                <Button variant="outline" className={`flex-1 h-12 rounded-xl text-sm font-medium ${
+                                                <Button variant="outline" className={`flex-1 h-12 rounded-xl text-sm font-bold ${
                                                     theme === 'dark'
                                                         ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
-                                                        : 'border-indigo-300 text-indigo-900 hover:bg-indigo-50 bg-transparent'
+                                                        : 'border-neutral-900 text-neutral-900 hover:bg-neutral-100 bg-transparent'
                                                 }`}>
                                                     {prod.secondaryBtn[language]}
                                                 </Button>
@@ -1303,8 +1303,8 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES */}
-            <section id="proof" className={`py-32 relative overflow-hidden z-10 border-y backdrop-blur-md ${
-                theme === 'dark' ? 'border-white/5' : 'bg-gradient-to-br from-indigo-50/80 to-purple-50/80 border-indigo-200/50'
+            <section id="proof" className={`py-32 relative overflow-hidden z-10 border-y ${
+                theme === 'dark' ? 'border-white/5' : 'bg-white border-neutral-900'
             }`}>
                 <div className={`absolute inset-0 bg-gradient-to-b to-transparent pointer-events-none ${
                     theme === 'dark' ? 'from-indigo-900/5' : 'from-transparent'
@@ -1369,10 +1369,10 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className={`py-32 border-t relative z-10 backdrop-blur-md ${
+            <section className={`py-32 border-t relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-gradient-to-br from-purple-50/80 to-pink-50/80 border-purple-200/50'
+                    : 'bg-[#F5EFE6] border-neutral-900'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
