@@ -226,7 +226,7 @@ export default function Background3D({ theme = 'dark' }) {
             material.dispose();
             renderer.dispose();
         };
-    }, []);
+    }, [theme]);
 
-    return <div ref={mountRef} className="fixed inset-0 z-0 pointer-events-none" />;
+    return <div ref={mountRef} className={`fixed inset-0 z-0 pointer-events-none ${theme === 'dark' ? 'opacity-100' : 'opacity-40'}`} />;
 }
