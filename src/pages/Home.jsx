@@ -890,13 +890,10 @@ export default function Home() {
             </section>
 
             {/* Section 02.5: WHY IT MATTERS - Enhanced with scroll animations */}
-            <motion.section 
+            <section 
                 className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.2, 0.22, 0.32, 0.34], [0, 1, 1, 0])
-                }}
             >
                 {/* Parallax background element */}
                 <motion.div 
@@ -975,16 +972,13 @@ export default function Home() {
                         </div>
                     </motion.div>
                 </div>
-            </motion.section>
+            </section>
 
             {/* Section 02.6: THE CHALLENGE - Enhanced with scroll animations */}
-            <motion.section 
+            <section 
                 className={`min-h-screen flex items-center justify-center relative z-10 border-y overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.3, 0.32, 0.42, 0.44], [0, 1, 1, 0])
-                }}
             >
                 {/* Parallax background element */}
                 <motion.div 
@@ -1094,7 +1088,7 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-            </motion.section>
+            </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
@@ -1488,13 +1482,10 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS - Enhanced with scroll animations */}
-            <motion.section 
+            <section 
                 className={`min-h-screen flex items-center justify-center border-y relative z-10 overflow-hidden ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.48, 0.50, 0.60, 0.62], [0, 1, 1, 0])
-                }}
             >
                 {/* Parallax background element */}
                 <motion.div 
@@ -1647,7 +1638,7 @@ export default function Home() {
                         </motion.div>
                     </motion.div>
                 </div>
-            </motion.section>
+            </section>
 
 
 
@@ -1856,14 +1847,11 @@ export default function Home() {
             </section>
 
             {/* Section 07: PROOF & MILESTONES - Enhanced with scroll animations */}
-            <motion.section 
+            <section 
                 id="proof" 
                 className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.68, 0.70, 0.80, 0.82], [0, 1, 1, 0])
-                }}
             >
                 {/* Parallax background element */}
                 <motion.div 
@@ -1982,7 +1970,7 @@ export default function Home() {
 
 
                 </div>
-            </motion.section>
+            </section>
 
 
 
@@ -1998,15 +1986,12 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT - Enhanced with scroll animations */}
-            <motion.section 
+            <section 
                 className={`min-h-screen flex items-center justify-center border-t relative z-10 overflow-hidden ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
                 }`}
-                style={{
-                    opacity: useTransform(scrollYProgress, [0.88, 0.90, 1], [0, 1, 1])
-                }}
             >
                 {/* Parallax background element */}
                 <motion.div 
@@ -2106,7 +2091,7 @@ export default function Home() {
                         </Button>
                     </div>
                 </div>
-            </motion.section>
+            </section>
         </motion.div>
     );
 }
