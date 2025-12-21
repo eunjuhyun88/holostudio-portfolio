@@ -688,13 +688,17 @@ export default function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className={`inline-block px-5 py-2 mb-8 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase border ${
+                            <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className={`inline-block px-6 py-2.5 mb-10 rounded-full text-xs md:text-sm font-bold tracking-wider uppercase border ${
                                 theme === 'dark'
-                                    ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                    : 'bg-gradient-to-r from-cyan-100/80 via-violet-100/80 to-pink-100/80 border-violet-300/40 text-violet-900 backdrop-blur-sm'
+                                    ? 'border-indigo-500/40 bg-indigo-500/15 text-indigo-300 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
+                                    : 'bg-gradient-to-r from-cyan-100 via-violet-100 to-pink-100 border-violet-300/50 text-violet-900 backdrop-blur-sm shadow-sm'
                             }`}>
                                 {t.hero.tag}
-                            </div>
+                            </motion.div>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as={motion.h1}
@@ -710,35 +714,47 @@ export default function Home() {
                                 </motion.h1>
                             )}
                             <motion.p 
-                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
-                                    theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900 font-bold'
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto leading-tight mb-6 font-bold ${
+                                    theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
                                 }`}
                             >
                                 {t.hero.sub}
                             </motion.p>
                             <motion.p 
-                                className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
-                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-10 md:mb-14 ${
+                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                 }`}
                             >
                                 {t.hero.desc}
                             </motion.p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button size="lg" className={`group rounded-full px-8 h-12 text-base font-bold border-0 transition-all hover:scale-105 ${
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                                className="flex flex-col sm:flex-row gap-4 justify-center"
+                            >
+                                <Button size="lg" className={`group rounded-full px-10 h-14 text-base md:text-lg font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 ${
                                     theme === 'dark'
-                                        ? 'bg-white text-black hover:bg-neutral-200 shadow-[0_0_30px_rgba(255,255,255,0.3)]'
-                                        : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 text-white shadow-lg'
+                                        ? 'bg-white text-black hover:bg-neutral-100 shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]'
+                                        : 'bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 hover:from-cyan-500 hover:via-violet-500 hover:to-pink-500 text-white shadow-xl hover:shadow-2xl'
                                 }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                     {t.hero.cta1}
+                                    <ArrowRight className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                                 </Button>
-                                <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-105 ${
+                                <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 active:scale-95 ${
                                     theme === 'dark'
-                                        ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                        : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 bg-white shadow-sm'
+                                        ? 'border-neutral-700 text-white hover:bg-white/10 hover:border-neutral-600 bg-transparent backdrop-blur-sm'
+                                        : 'border-violet-200 text-neutral-900 hover:bg-violet-50 hover:border-violet-300 bg-white/80 backdrop-blur-sm shadow-md'
                                 }`}>
                                     {t.hero.cta2}
                                 </Button>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     </div>
                 </section>
@@ -769,38 +785,49 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-6 mb-16">
+                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-16">
                             {t.whatWeDo.problems.map((problem, idx) => (
                                 <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className={`p-6 rounded-xl border ${
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    whileHover={{ scale: 1.02, y: -4 }}
+                                    className={`p-6 md:p-8 rounded-2xl border transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-red-500/20'
-                                            : 'bg-white border-red-200'
+                                            ? 'bg-black/50 border-red-500/30 hover:border-red-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)]'
+                                            : 'bg-white border-red-200 hover:border-red-300 hover:shadow-lg'
                                     }`}
                                 >
-                                    <p className={`text-lg font-bold leading-relaxed ${
+                                    <p className={`text-base md:text-lg font-bold leading-relaxed ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-700'
                                     }`}>{problem}</p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="text-center space-y-8">
-                            <p className={`text-2xl md:text-4xl font-black ${
+                        <div className="text-center space-y-6 md:space-y-8">
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                className={`text-2xl md:text-3xl lg:text-5xl font-black leading-tight ${
                                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
                             }`}>
                                 {t.whatWeDo.solution}
-                            </p>
-                            <p className={`text-xl md:text-2xl font-medium ${
-                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            </motion.p>
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                                className={`text-lg md:text-xl lg:text-2xl font-medium leading-relaxed max-w-3xl mx-auto ${
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                             }`}>
                                 {t.whatWeDo.explanation}
-                            </p>
+                            </motion.p>
                         </div>
                     </div>
                 </section>
@@ -842,21 +869,26 @@ export default function Home() {
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 mb-16 text-center">
                             {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ delay: idx * 0.15, duration: 0.6 }}
+                                    whileHover={{ scale: 1.08, y: -4 }}
+                                    className={`p-4 md:p-6 rounded-2xl border transition-all duration-300 ${
+                                        theme === 'dark'
+                                            ? 'bg-black/30 border-indigo-500/20 hover:border-indigo-500/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]'
+                                            : 'bg-white border-violet-200 hover:border-violet-300 hover:shadow-xl'
+                                    }`}
                                 >
-                                    <div className={`text-3xl md:text-4xl font-black mb-2 ${
+                                    <div className={`text-3xl md:text-4xl lg:text-5xl font-black mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
-                                    <div className={`text-xs uppercase tracking-wider font-bold ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    <div className={`text-xs md:text-sm uppercase tracking-wider font-bold leading-tight ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                     }`}>{stat.label}</div>
                                 </motion.div>
                             ))}
@@ -927,32 +959,33 @@ export default function Home() {
                             {t.opportunity.sub}
                         </p>
 
-                        <div className="max-w-3xl mx-auto space-y-6 mb-12">
+                        <div className="max-w-3xl mx-auto space-y-4 md:space-y-6 mb-12">
                             {t.opportunity.points.map((point, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
+                                    initial={{ opacity: 0, x: -30 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className={`p-4 rounded-xl border ${
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    whileHover={{ x: 4, scale: 1.01 }}
+                                    className={`p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-orange-500/20'
-                                            : 'bg-orange-50/50 border-orange-200'
+                                            ? 'bg-black/50 border-orange-500/30 hover:border-orange-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]'
+                                            : 'bg-orange-50 border-orange-200 hover:border-orange-300 hover:shadow-lg'
                                     }`}
                                 >
                                     {point.label ? (
                                         <div>
-                                            <div className={`font-black mb-1 ${
+                                            <div className={`font-black mb-2 text-base md:text-lg ${
                                                 theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
                                             }`}>{point.label}</div>
-                                            <div className={`text-sm ${
-                                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                            <div className={`text-sm md:text-base ${
+                                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                             }`}>{point.detail}</div>
                                         </div>
                                     ) : (
-                                        <p className={`${
-                                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                        <p className={`text-sm md:text-base ${
+                                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                         }`}>{point.text}</p>
                                     )}
                                 </motion.div>
@@ -1409,24 +1442,31 @@ export default function Home() {
                         }`}>
                             {t.contact.tagline}
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center"
+                        >
                             <Link to={createPageUrl("Contact")}>
-                                <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 transition-all hover:scale-105 ${
+                                <Button size="lg" className={`group rounded-full px-12 md:px-16 h-16 md:h-18 text-lg md:text-xl font-bold border-0 transition-all duration-300 hover:scale-105 active:scale-95 ${
                                     theme === 'dark'
-                                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_40px_rgba(79,70,229,0.4)]'
-                                        : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 text-white shadow-xl'
+                                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_50px_rgba(79,70,229,0.5)] hover:shadow-[0_0_60px_rgba(79,70,229,0.6)]'
+                                        : 'bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 hover:from-cyan-500 hover:via-violet-500 hover:to-pink-500 text-white shadow-2xl hover:shadow-3xl'
                                 }`}>
                                     {t.contact.cta1}
+                                    <ArrowRight className="w-6 h-6 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                                 </Button>
                             </Link>
-                            <Button variant="outline" size="lg" className={`rounded-full px-12 h-16 text-lg font-bold transition-all hover:scale-105 ${
+                            <Button variant="outline" size="lg" className={`rounded-full px-12 md:px-16 h-16 md:h-18 text-lg md:text-xl font-bold transition-all duration-300 hover:scale-105 active:scale-95 ${
                                 theme === 'dark'
-                                    ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
-                                    : 'border-violet-300 text-neutral-900 hover:bg-white/60 bg-white/40 backdrop-blur-md shadow-lg'
+                                    ? 'border-neutral-700 text-white hover:bg-white/10 hover:border-neutral-600 bg-transparent backdrop-blur-sm'
+                                    : 'border-violet-200 text-neutral-900 hover:bg-violet-50 hover:border-violet-300 bg-white/80 backdrop-blur-md shadow-xl'
                             }`}>
                                 {t.contact.cta2}
                             </Button>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
             </div>
