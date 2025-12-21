@@ -670,7 +670,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section className="min-h-screen flex flex-col items-center justify-center px-6" ref={(el) => {
+                <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20" ref={(el) => {
                     if (el) {
                         const observer = new IntersectionObserver(
                             ([entry]) => {
@@ -682,7 +682,7 @@ export default function Home() {
                         return () => observer.disconnect();
                     }
                 }}>
-                    <div className="max-w-5xl mx-auto text-center">
+                    <div className="max-w-6xl mx-auto text-center">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -704,12 +704,12 @@ export default function Home() {
                                     as={motion.h1}
                                     glowColor="rgba(99, 102, 241, 0.8)"
                                     secondaryGlowColor="rgba(168, 85, 247, 0.5)"
-                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1]"
+                                    className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 md:mb-12 leading-[0.95]"
                                 >
                                     {t.hero.title}
                                 </MouseGlowText>
                             ) : (
-                                <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] text-neutral-900">
+                                <motion.h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 md:mb-12 leading-[0.95] text-neutral-900">
                                     {t.hero.title}
                                 </motion.h1>
                             )}
@@ -717,8 +717,8 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto leading-tight mb-6 font-bold ${
-                                    theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
+                                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-5xl mx-auto leading-tight mb-8 font-bold ${
+                                    theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
                                 }`}
                             >
                                 {t.hero.sub}
@@ -727,7 +727,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-10 md:mb-14 ${
+                                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-12 md:mb-16 font-medium ${
                                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                 }`}
                             >
@@ -760,11 +760,11 @@ export default function Home() {
                 </section>
 
                 {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}>
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-16">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="text-center mb-20">
                             <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
@@ -833,7 +833,7 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
+                <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -869,7 +869,7 @@ export default function Home() {
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 mb-16 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-20 text-center">
                             {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
@@ -877,14 +877,14 @@ export default function Home() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.15, duration: 0.6 }}
-                                    whileHover={{ scale: 1.08, y: -4 }}
-                                    className={`p-4 md:p-6 rounded-2xl border transition-all duration-300 ${
+                                    whileHover={{ scale: 1.05, y: -8 }}
+                                    className={`p-6 md:p-8 rounded-3xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/30 border-indigo-500/20 hover:border-indigo-500/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]'
-                                            : 'bg-white border-violet-200 hover:border-violet-300 hover:shadow-xl'
+                                            ? 'bg-black/40 border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] hover:bg-black/60'
+                                            : 'bg-white border-violet-200 hover:border-violet-400 hover:shadow-2xl'
                                     }`}
                                 >
-                                    <div className={`text-3xl md:text-4xl lg:text-5xl font-black mb-3 ${
+                                    <div className={`text-4xl md:text-5xl lg:text-6xl font-black mb-4 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
                                     <div className={`text-xs md:text-sm uppercase tracking-wider font-bold leading-tight ${
@@ -916,7 +916,7 @@ export default function Home() {
                 </section>
 
                 {/* Why Now Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1001,7 +1001,7 @@ export default function Home() {
                 </section>
 
                 {/* The Challenge Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-white border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1093,7 +1093,7 @@ export default function Home() {
                 </section>
 
                 {/* Company Thesis Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1328,7 +1328,7 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                <section id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 py-20 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
                     if (el) {
@@ -1373,24 +1373,25 @@ export default function Home() {
                             {milestones.map((m, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className={`p-8 rounded-2xl border ${
+                                    transition={{ delay: idx * 0.1, duration: 0.5 }}
+                                    whileHover={{ scale: 1.03, y: -6 }}
+                                    className={`p-8 rounded-3xl border-2 transition-all duration-300 ${
                                         theme === 'dark'
-                                            ? 'bg-black/40 border-white/10'
-                                            : 'bg-white border-neutral-200 shadow-md'
+                                            ? 'bg-black/50 border-white/10 hover:border-white/20 hover:bg-black/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+                                            : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-md hover:shadow-xl'
                                     }`}
                                 >
-                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
-                                        <m.icon className={`w-6 h-6 ${m.color}`} />
+                                    <div className={`w-14 h-14 rounded-xl ${m.bg} flex items-center justify-center mb-6 transition-transform duration-300 hover:scale-110`}>
+                                        <m.icon className={`w-7 h-7 ${m.color}`} />
                                     </div>
-                                    <div className={`text-lg font-black mb-2 ${
+                                    <div className={`text-xl font-black mb-3 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{m.title}</div>
-                                    <div className={`text-sm font-medium ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    <div className={`text-sm font-medium leading-relaxed ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
                                 </motion.div>
                             ))}
@@ -1408,7 +1409,7 @@ export default function Home() {
                 </section>
 
                 {/* Contact Section */}
-                <section className={`min-h-screen flex items-center justify-center border-t px-6 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-6 py-20 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
