@@ -898,10 +898,10 @@ export default function Home() {
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
                                         : 'AI 검증은 더 이상 선택이 아닙니다.'}
-                                </h3>
-                            )}
-                        </motion.div>
-                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
+                                        </h3>
+                                        )}
+                                        </div>
+                                        <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {language === 'en'
@@ -961,10 +961,10 @@ export default function Home() {
                                     {language === 'en'
                                         ? 'Without trust infrastructure, everyone loses.'
                                         : '신뢰 인프라 없이는 모두가 잃습니다.'}
-                                </h3>
-                            )}
-                        </motion.div>
-                    </motion.div>
+                                        </h3>
+                                        )}
+                                        </div>
+                                        </motion.div>
 
                     {/* Condensed Impact Grid: 2 stats + 3 structural issues */}
                     <div className="grid md:grid-cols-2 gap-6 mb-12">
