@@ -556,7 +556,15 @@ export default function Home() {
                                     : 'text-purple-600 border-purple-400/40'
                             }`}>SYS.ONLINE</span>
                         </motion.h1>
-                        {t.hero.sub}
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.8 }}
+                            className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
+                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700 font-normal'
+                            }`}
+                        >
+                            {t.hero.sub}
                         </motion.p>
                         <motion.p 
                             initial={{ opacity: 0 }}
