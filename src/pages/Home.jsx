@@ -578,8 +578,9 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className={`text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed mb-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900 font-bold'
+                                theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900 font-bold'
                             }`}
+                            style={theme === 'dark' ? { textShadow: '0 2px 10px rgba(0,0,0,0.5)' } : {}}
                         >
                             {t.hero.sub}
                         </motion.p>
@@ -588,8 +589,9 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.8 }}
                             className={`text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-8 md:mb-12 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                             }`}
+                            style={theme === 'dark' ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : {}}
                         >
                             {t.hero.desc}
                         </motion.p>
@@ -741,7 +743,9 @@ export default function Home() {
                         }`}>{t.problem.title}</h2>
                         <h3 className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>
+                        }`}
+                            style={theme === 'dark' ? { textShadow: '0 4px 12px rgba(0,0,0,0.5)' } : {}}
+                        >
                             {t.problem.sub}
                         </h3>
                     </FadeInSection>
@@ -790,7 +794,7 @@ export default function Home() {
                                     theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                 }`}>{card.title}</h4>
                                 <p className={`mb-6 text-base leading-relaxed font-medium ${
-                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                                    theme === 'dark' ? 'text-neutral-100' : 'text-neutral-800'
                                 }`}>{card.desc}</p>
                                 <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide font-bold transition-colors ${
                                     theme === 'dark'
@@ -833,8 +837,10 @@ export default function Home() {
                         </h3>
                         
                         <p className={`text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                        }`}>
+                            theme === 'dark' ? 'text-neutral-100' : 'text-neutral-700'
+                        }`}
+                            style={theme === 'dark' ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : {}}
+                        >
                             {tech.intro.main_pre}
                             <span className={`inline-block font-bold transition-all duration-500 cursor-default border-b pb-0.5 ${
                                 theme === 'dark' 
@@ -1204,7 +1210,9 @@ export default function Home() {
                     }`}>{t.thesis.label}</h2>
                     <p className={`text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-16 ${
                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    }`}>
+                    }`}
+                        style={theme === 'dark' ? { textShadow: '0 4px 12px rgba(0,0,0,0.5)' } : {}}
+                    >
                         {t.thesis.main}
                     </p>
                     <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono font-bold ${
@@ -1442,7 +1450,7 @@ export default function Home() {
                             )}
                         </h2>
                         <p className={`text-lg md:text-xl font-medium ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            theme === 'dark' ? 'text-neutral-100' : 'text-neutral-700'
                         }`}>{t.milestones.sub}</p>
                     </FadeInSection>
 
