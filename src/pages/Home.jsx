@@ -574,18 +574,32 @@ export default function Home() {
                             }`}
                         >
                             {t.hero.title}
-                            <span className="absolute -top-4 -right-8 text-xs font-mono text-indigo-500 tracking-widest border border-indigo-500/30 px-2 py-0.5 rounded opacity-70 hidden md:block">SYS.ONLINE</span>
+                            <span className={`absolute -top-4 -right-8 text-xs font-mono tracking-widest border px-2 py-0.5 rounded opacity-70 hidden md:block ${
+                                theme === 'dark' 
+                                    ? 'text-indigo-500 border-indigo-500/30'
+                                    : 'text-purple-600 border-purple-400/40'
+                            }`}>SYS.ONLINE</span>
                         </MouseGlowText>
                         <div className="relative max-w-3xl mx-auto mb-8 md:mb-12">
                             {/* Decorative brackets */}
-                            <div className="absolute -left-4 top-0 h-full w-1 border-l border-white/10 hidden md:block" />
-                            <div className="absolute -right-4 top-0 h-full w-1 border-r border-white/10 hidden md:block" />
+                            <div className={`absolute -left-4 top-0 h-full w-1 border-l hidden md:block ${
+                                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
+                            }`} />
+                            <div className={`absolute -right-4 top-0 h-full w-1 border-r hidden md:block ${
+                                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
+                            }`} />
                             
-                            <p className="text-lg md:text-xl text-neutral-200 leading-relaxed font-light tracking-wide px-4">
+                            <p className={`text-lg md:text-xl leading-relaxed font-light tracking-wide px-4 ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}>
                                 {t.hero.sub}
                                 <br className="hidden md:block"/>
-                                <span className="text-neutral-200 text-sm md:text-base mt-4 block font-mono border-t border-white/5 pt-4">
-                                    <span className="text-indigo-500 mr-2">::</span>
+                                <span className={`text-sm md:text-base mt-4 block font-mono border-t pt-4 ${
+                                    theme === 'dark' 
+                                        ? 'text-neutral-200 border-white/5'
+                                        : 'text-neutral-600 border-neutral-300/30'
+                                }`}>
+                                    <span className={`mr-2 ${theme === 'dark' ? 'text-indigo-500' : 'text-purple-600'}`}>::</span>
                                     {t.hero.desc}
                                 </span>
                             </p>
@@ -619,42 +633,68 @@ export default function Home() {
             </section>
 
             {/* Section 02: WHY NOW (Market Pressure Strip) */}
-            <section className="py-12 border-y border-white/10 bg-black/30 backdrop-blur-md relative z-10">
+            <section className={`py-12 border-y backdrop-blur-md relative z-10 ${
+                theme === 'dark' 
+                    ? 'border-white/10 bg-black/30'
+                    : 'border-neutral-300/30 bg-white/40'
+            }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                     <div className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-8 md:gap-8 pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 mb-12 no-scrollbar md:custom-scrollbar text-center md:text-left">
                         <div className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.year.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.year.label}</div>
+                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{t.market.year.val}</div>
+                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            }`}>{t.market.year.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.eu.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.eu.label}</div>
+                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{t.market.eu.val}</div>
+                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            }`}>{t.market.eu.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.size.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.size.label}</div>
+                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{t.market.size.val}</div>
+                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            }`}>{t.market.size.label}</div>
                         </div>
                         <div className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
-                            <div className="text-4xl md:text-3xl font-bold text-white mb-2 md:mb-1">{t.market.gap.val}</div>
-                            <div className="text-sm md:text-xs text-neutral-200 uppercase tracking-wider">{t.market.gap.label}</div>
+                            <div className={`text-4xl md:text-3xl font-bold mb-2 md:mb-1 ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>{t.market.gap.val}</div>
+                            <div className={`text-sm md:text-xs uppercase tracking-wider ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                            }`}>{t.market.gap.label}</div>
                         </div>
                     </div>
                     
-                    {/* Partners / Backers - From Playarts screenshot */}
-                    <div className="border-t border-white/5 pt-8">
-                        <p className="text-center text-xs text-neutral-200 uppercase tracking-widest mb-6">SELECTED & BACKED BY</p>
+                    {/* Partners / Backers */}
+                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/30'}`}>
+                        <p className={`text-center text-xs uppercase tracking-widest mb-6 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                        }`}>SELECTED & BACKED BY</p>
                         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
                             {/* NVIDIA Inception */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-white">NVIDIA</span>
-                                <span className="text-xs text-neutral-200 border-l border-neutral-600 pl-2">Inception</span>
+                                <span className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA</span>
+                                <span className={`text-xs border-l pl-2 ${
+                                    theme === 'dark' 
+                                        ? 'text-neutral-200 border-neutral-600'
+                                        : 'text-neutral-600 border-neutral-400'
+                                }`}>Inception</span>
                             </div>
                             
                             {/* Google Cloud */}
                             <div className="flex items-center gap-2">
-                                <span className="font-bold text-lg text-white">Google Cloud</span>
-                                <span className="text-xs text-neutral-200">Partner</span>
+                                <span className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
+                                <span className={`text-xs ${theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'}`}>Partner</span>
                             </div>
 
                             {/* Alchemy */}
@@ -687,8 +727,12 @@ export default function Home() {
             <section className="py-32 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div {...fadeIn} className="mb-16">
-                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest">{t.problem.title}</h2>
-                        <h3 className="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
+                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-purple-600'
+                        }`}>{t.problem.title}</h2>
+                        <h3 className={`text-2xl md:text-4xl font-bold leading-tight max-w-3xl ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>
                             {t.problem.sub}
                         </h3>
                     </motion.div>
@@ -702,16 +746,40 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl bg-black/30 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md relative overflow-hidden"
+                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border backdrop-blur-md relative overflow-hidden transition-all duration-300 ${
+                                    theme === 'dark'
+                                        ? 'bg-black/30 border-white/10 hover:border-indigo-500/50'
+                                        : 'bg-white/50 border-neutral-300/30 hover:border-purple-400/60'
+                                }`}
                             >
                                 {/* Sci-Fi Corner Accents */}
-                                <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
-                                <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
-                                <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
-                                <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
+                                <div className={`absolute top-0 left-0 w-3 h-3 border-l border-t transition-all duration-500 pointer-events-none ${
+                                    theme === 'dark' 
+                                        ? 'border-white/20 group-hover:border-indigo-500'
+                                        : 'border-neutral-300/40 group-hover:border-purple-500'
+                                } group-hover:w-full group-hover:h-full`} />
+                                <div className={`absolute top-0 right-0 w-3 h-3 border-r border-t transition-colors duration-500 pointer-events-none ${
+                                    theme === 'dark' 
+                                        ? 'border-white/20 group-hover:border-indigo-500'
+                                        : 'border-neutral-300/40 group-hover:border-purple-500'
+                                }`} />
+                                <div className={`absolute bottom-0 left-0 w-3 h-3 border-l border-b transition-colors duration-500 pointer-events-none ${
+                                    theme === 'dark' 
+                                        ? 'border-white/20 group-hover:border-indigo-500'
+                                        : 'border-neutral-300/40 group-hover:border-purple-500'
+                                }`} />
+                                <div className={`absolute bottom-0 right-0 w-3 h-3 border-r border-b transition-all duration-500 pointer-events-none ${
+                                    theme === 'dark' 
+                                        ? 'border-white/20 group-hover:border-indigo-500'
+                                        : 'border-neutral-300/40 group-hover:border-purple-500'
+                                } group-hover:w-full group-hover:h-full`} />
 
                                 <Floating delay={idx * 0.2} offset={8}>
-                                    <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-500/10 group-hover:text-indigo-400 transition-colors">
+                                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
+                                        theme === 'dark'
+                                            ? 'bg-neutral-900 group-hover:bg-indigo-500/10 group-hover:text-indigo-400'
+                                            : 'bg-purple-100/50 group-hover:bg-purple-200/60 group-hover:text-purple-600'
+                                    }`}>
                                         <motion.div
                                             animate={{ 
                                                 scale: [1, 1.15, 1],
@@ -723,9 +791,17 @@ export default function Home() {
                                         </motion.div>
                                     </div>
                                 </Floating>
-                                <h4 className="text-2xl font-bold mb-3">{card.title}</h4>
-                                <p className="text-neutral-200 mb-6 text-base leading-relaxed">{card.desc}</p>
-                                <span className="inline-block px-3 py-1 bg-neutral-800 rounded-full text-xs text-neutral-200 uppercase tracking-wide group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
+                                <h4 className={`text-2xl font-bold mb-3 ${
+                                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                }`}>{card.title}</h4>
+                                <p className={`mb-6 text-base leading-relaxed ${
+                                    theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                }`}>{card.desc}</p>
+                                <span className={`inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wide transition-colors ${
+                                    theme === 'dark'
+                                        ? 'bg-neutral-800 text-neutral-200 group-hover:bg-indigo-500/20 group-hover:text-indigo-300'
+                                        : 'bg-purple-100 text-purple-700 group-hover:bg-purple-200 group-hover:text-purple-800'
+                                }`}>
                                     {card.badge}
                                 </span>
                             </motion.div>
@@ -735,20 +811,36 @@ export default function Home() {
             </section>
 
             {/* NEW: TECHNOLOGY SPEC (The Solution) */}
-            <section className="py-32 px-6 md:px-12 border-b border-white/5 relative z-10 bg-black/30 backdrop-blur-md">
+            <section className={`py-32 px-6 md:px-12 border-b relative z-10 backdrop-blur-md ${
+                theme === 'dark' 
+                    ? 'border-white/5 bg-black/30'
+                    : 'border-neutral-300/30 bg-white/40'
+            }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
                         {/* Sci-Fi Decorative Elements */}
-                        <div className="absolute -top-10 -left-10 w-20 h-20 border-t border-l border-indigo-500/20 rounded-tl-3xl hidden md:block" />
-                        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+                        <div className={`absolute -top-10 -left-10 w-20 h-20 border-t border-l rounded-tl-3xl hidden md:block ${
+                            theme === 'dark' ? 'border-indigo-500/20' : 'border-purple-400/30'
+                        }`} />
+                        <div className={`absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent to-transparent ${
+                            theme === 'dark' ? 'via-indigo-500/20' : 'via-purple-400/30'
+                        }`} />
                         
-                        <h2 className="text-sm font-mono text-indigo-500 mb-4 uppercase tracking-widest flex items-center gap-2">
-                            <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+                        <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 ${
+                            theme === 'dark' ? 'text-indigo-500' : 'text-purple-600'
+                        }`}>
+                            <span className={`w-2 h-2 rounded-full animate-pulse ${
+                                theme === 'dark' ? 'bg-indigo-500' : 'bg-purple-500'
+                            }`} />
                             TECHNOLOGY & STRATEGY
                         </h2>
-                        <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 text-white relative inline-block">
+                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-8 relative inline-block ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>
                             {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
-                            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-600/50" />
+                            <span className={`absolute -bottom-2 left-0 w-1/3 h-1 ${
+                                theme === 'dark' ? 'bg-indigo-600/50' : 'bg-purple-500/40'
+                            }`} />
                         </h3>
                         
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-300 max-w-4xl leading-relaxed font-light tracking-wide">
@@ -986,13 +1078,21 @@ export default function Home() {
             </section>
 
             {/* Section 04: COMPANY THESIS */}
-            <section className="py-24 border-y border-white/10 text-center relative z-10 bg-transparent">
+            <section className={`py-24 border-y text-center relative z-10 bg-transparent ${
+                theme === 'dark' ? 'border-white/10' : 'border-neutral-300/30'
+            }`}>
                 <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-xs font-mono text-neutral-200 mb-6 uppercase tracking-widest">{t.thesis.label}</h2>
-                    <p className="text-2xl md:text-4xl font-medium leading-tight mb-12">
+                    <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest ${
+                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
+                    }`}>{t.thesis.label}</h2>
+                    <p className={`text-2xl md:text-4xl font-medium leading-tight mb-12 ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>
                         "{t.thesis.main}"
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono text-neutral-200">
+                    <div className={`flex flex-wrap justify-center gap-4 md:gap-12 text-sm md:text-base font-mono ${
+                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                    }`}>
                         {t.thesis.keywords.map((kw, i) => (
                             <span key={i} className="flex items-center gap-2">
                                 <span className={`w-2 h-2 rounded-full ${['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]}`}></span>
@@ -1156,11 +1256,17 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className="py-32 relative overflow-hidden z-10">
-                <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/5 to-transparent pointer-events-none" />
+                <div className={`absolute inset-0 bg-gradient-to-b to-transparent pointer-events-none ${
+                    theme === 'dark' ? 'from-indigo-900/5' : 'from-purple-200/10'
+                }`} />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.milestones.title}</h2>
-                        <p className="text-neutral-200 max-w-2xl">{t.milestones.sub}</p>
+                        <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.milestones.title}</h2>
+                        <p className={`max-w-2xl ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>{t.milestones.sub}</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
@@ -1213,11 +1319,19 @@ export default function Home() {
             </section>
 
             {/* Section 10: CONTACT */}
-            <section className="py-32 border-t border-white/5 relative z-10 bg-gradient-to-t from-[#050505] to-[#050505]/80">
+            <section className={`py-32 border-t relative z-10 ${
+                theme === 'dark' 
+                    ? 'border-white/5 bg-gradient-to-t from-[#050505] to-[#050505]/80'
+                    : 'border-neutral-300/30 bg-gradient-to-t from-neutral-50 to-neutral-50/80'
+            }`}>
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4">{t.contact.title}</h2>
-                        <p className="text-neutral-200 text-base md:text-lg">{t.contact.sub}</p>
+                        <h2 className={`text-3xl md:text-5xl font-black tracking-tighter mb-4 ${
+                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                        }`}>{t.contact.title}</h2>
+                        <p className={`text-base md:text-lg ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>{t.contact.sub}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link to={createPageUrl("Contact")}>

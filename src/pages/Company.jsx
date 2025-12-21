@@ -1,6 +1,7 @@
 import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from '@/components/LanguageContext';
+import { useTheme } from '@/components/ThemeContext';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
@@ -289,6 +290,7 @@ const ClosingStatement = () => {
 
 export default function Company() {
     const { language } = useLanguage();
+    const { theme } = useTheme();
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
     const [activeSection, setActiveSection] = React.useState('intro');
@@ -601,7 +603,11 @@ Scaled communities from zero to millions of users.`,
     const c = content[language] || content.en;
 
     return (
-        <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-indigo-500/30">
+        <div className={`min-h-screen font-sans transition-colors duration-300 ${
+            theme === 'dark' 
+                ? 'bg-[#050505] text-white selection:bg-indigo-500/30'
+                : 'bg-neutral-50 text-neutral-900 selection:bg-purple-300/30'
+        }`}>
             <SEO 
                 title="Company" 
                 description={c.intro?.title}
@@ -610,10 +616,10 @@ Scaled communities from zero to millions of users.`,
             {/* Visual State Management Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 opacity-80">
-                    <CosmicBackground />
+                    <CosmicBackground theme={theme} />
                 </div>
-                <div className="absolute inset-0 opacity-20 md:opacity-30">
-                    <Background3D />
+                <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-20 md:opacity-30' : 'opacity-15 md:opacity-20'}`}>
+                    <Background3D theme={theme} />
                 </div>
                 
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#050505]/80 to-[#050505] opacity-80" />
