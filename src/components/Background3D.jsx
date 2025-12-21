@@ -9,7 +9,7 @@ export default function Background3D({ theme = 'dark' }) {
 
         // Scene Setup
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(theme === 'dark' ? 0x050505 : 0xf5f5f5, 0.002);
+        scene.fog = new THREE.FogExp2(theme === 'dark' ? 0x050505 : 0xcccccc, 0.002);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 30;
@@ -25,10 +25,10 @@ export default function Background3D({ theme = 'dark' }) {
         
         // Visible particles in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0xffffff,
-            size: theme === 'dark' ? 0.1 : 0.15,
+            color: theme === 'dark' ? 0x818cf8 : 0x888888,
+            size: theme === 'dark' ? 0.1 : 0.25,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 0.65,
+            opacity: theme === 'dark' ? 0.9 : 0.85,
             sizeAttenuation: true,
         });
 
@@ -49,19 +49,19 @@ export default function Background3D({ theme = 'dark' }) {
         // Visible core in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xffffff,
-            size: theme === 'dark' ? 0.05 : 0.12,
+            color: theme === 'dark' ? 0xffffff : 0x999999,
+            size: theme === 'dark' ? 0.05 : 0.25,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.5,
+            opacity: theme === 'dark' ? 0.6 : 0.75,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
 
         // Visible wireframe in light mode
         const wireframeMaterial = new THREE.LineBasicMaterial({ 
-            color: theme === 'dark' ? 0x6366f1 : 0xc4b5fd,
+            color: theme === 'dark' ? 0x6366f1 : 0x8b5cf6,
             transparent: true, 
-            opacity: theme === 'dark' ? 0.3 : 0.18 
+            opacity: theme === 'dark' ? 0.3 : 0.35 
         });
         const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireframeMaterial);
         scene.add(wireframe);
@@ -116,10 +116,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0xffffff,
-            size: theme === 'dark' ? 0.08 : 0.1, 
+            color: theme === 'dark' ? 0xa5b4fc : 0xaaaaaa,
+            size: theme === 'dark' ? 0.08 : 0.18, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.4,
+            opacity: theme === 'dark' ? 0.6 : 0.65,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -152,16 +152,16 @@ export default function Background3D({ theme = 'dark' }) {
                     dustMat.color.setHex(0xc7d2fe);
                     dustMat.opacity = 0.8;
                 } else {
-                    dustMat.color.setHex(0xffffff);
-                    dustMat.opacity = 0.6;
+                    dustMat.color.setHex(0xbbbbbb);
+                    dustMat.opacity = 0.75;
                 }
             } else {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xa5b4fc);
                     dustMat.opacity = 0.6;
                 } else {
-                    dustMat.color.setHex(0xffffff);
-                    dustMat.opacity = 0.4;
+                    dustMat.color.setHex(0xaaaaaa);
+                    dustMat.opacity = 0.65;
                 }
             }
 
