@@ -743,7 +743,69 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* By The Numbers Section */}
+                {/* What We Do Section */}
+                <section className={`min-h-screen flex items-center justify-center border-y px-6 ${
+                    theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
+                }`}>
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className={`text-sm font-mono mb-12 uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
+                            }`}>
+                                {t.whatWeDo.title}
+                            </h2>
+                            {theme === 'dark' ? (
+                                <MouseGlowText
+                                    as="h3"
+                                    glowColor="rgba(99, 102, 241, 0.8)"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12"
+                                >
+                                    {t.whatWeDo.sub}
+                                </MouseGlowText>
+                            ) : (
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-12 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                    {t.whatWeDo.sub}
+                                </h3>
+                            )}
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-6 mb-16">
+                            {t.whatWeDo.problems.map((problem, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`p-6 rounded-xl border ${
+                                        theme === 'dark'
+                                            ? 'bg-black/40 border-red-500/20'
+                                            : 'bg-white border-red-200'
+                                    }`}
+                                >
+                                    <p className={`text-lg font-bold leading-relaxed ${
+                                        theme === 'dark' ? 'text-red-400' : 'text-red-700'
+                                    }`}>{problem}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <div className="text-center space-y-8">
+                            <p className={`text-2xl md:text-4xl font-black ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>
+                                {t.whatWeDo.solution}
+                            </p>
+                            <p className={`text-xl md:text-2xl font-medium ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                            }`}>
+                                {t.whatWeDo.explanation}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Proof It Works Section */}
                 <section className={`min-h-screen flex flex-col items-center justify-center border-y px-6 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`} ref={(el) => {
@@ -763,19 +825,19 @@ export default function Home() {
                             <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
                                 theme === 'dark' ? 'text-indigo-500' : 'text-violet-700'
                             }`}>
-                                {language === 'en' ? 'PROVEN PERFORMANCE' : '검증된 성과'}
+                                {t.proof.title}
                             </h2>
                             {theme === 'dark' ? (
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(99, 102, 241, 0.8)"
-                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                                    className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8"
                                 >
-                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                                    {t.proof.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
-                                    {language === 'en' ? 'By the Numbers' : '수치로 보는 성과'}
+                                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-8 bg-gradient-to-r from-cyan-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                                    {t.proof.sub}
                                 </h3>
                             )}
                         </div>
@@ -799,6 +861,12 @@ export default function Home() {
                                 </motion.div>
                             ))}
                         </div>
+
+                        <p className={`text-center text-lg font-bold mb-12 ${
+                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        }`}>
+                            {t.proof.footer}
+                        </p>
                         
                         <div className={`border-t pt-12 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-300/50'}`}>
                             <p className={`text-center text-sm uppercase tracking-widest font-bold mb-8 ${
@@ -856,20 +924,46 @@ export default function Home() {
                         <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
-                            {language === 'en'
-                                ? 'The $13B brand safety market stopped at "classification." EU AI Act enforcement begins August 2026 — with fines up to 7% of global revenue.'
-                                : '7조원 브랜드 안전 시장은 "분류"에서 멈췄습니다. EU AI Act는 2026년 8월 시행되며, 위반 시 글로벌 매출 7%까지 과징금이 부과됩니다.'}
+                            {t.opportunity.sub}
                         </p>
-                        <div className={`inline-block px-8 py-4 rounded-2xl border ${
-                            theme === 'dark' ? 'bg-orange-500/10 border-orange-500/30' : 'bg-orange-100 border-orange-300'
-                        }`}>
-                            <div className={`text-5xl md:text-6xl font-black mb-2 ${
-                                theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-                            }`}>{t.regulatory.date}</div>
-                            <div className={`text-sm font-bold ${
-                                theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
-                            }`}>{t.regulatory.warning}</div>
+
+                        <div className="max-w-3xl mx-auto space-y-6 mb-12">
+                            {t.opportunity.points.map((point, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`p-4 rounded-xl border ${
+                                        theme === 'dark'
+                                            ? 'bg-black/40 border-orange-500/20'
+                                            : 'bg-orange-50/50 border-orange-200'
+                                    }`}
+                                >
+                                    {point.label ? (
+                                        <div>
+                                            <div className={`font-black mb-1 ${
+                                                theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
+                                            }`}>{point.label}</div>
+                                            <div className={`text-sm ${
+                                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                            }`}>{point.detail}</div>
+                                        </div>
+                                    ) : (
+                                        <p className={`${
+                                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                        }`}>{point.text}</p>
+                                    )}
+                                </motion.div>
+                            ))}
                         </div>
+
+                        <p className={`text-2xl md:text-3xl font-black text-center ${
+                            theme === 'dark' ? 'text-orange-400' : 'text-orange-700'
+                        }`}>
+                            {t.opportunity.conclusion}
+                        </p>
                     </div>
                 </section>
 
@@ -1305,10 +1399,15 @@ export default function Home() {
                                 {t.contact.title}
                             </h3>
                         )}
-                        <p className={`text-xl md:text-2xl font-medium mb-12 ${
+                        <p className={`text-xl md:text-2xl font-medium mb-8 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>
                             {t.contact.sub}
+                        </p>
+                        <p className={`text-lg md:text-xl font-bold italic mb-12 ${
+                            theme === 'dark' ? 'text-indigo-400' : 'text-violet-600'
+                        }`}>
+                            {t.contact.tagline}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to={createPageUrl("Contact")}>
