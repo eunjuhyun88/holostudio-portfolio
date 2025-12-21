@@ -114,7 +114,11 @@ function LayoutContent({ children }) {
                 {/* Left Group: Logo + Nav */}
                 <div className="flex items-center gap-4 pointer-events-auto">
                     {/* Logo Pill */}
-                    <Link to="/" className="group flex items-center justify-center w-16 h-16 rounded-full bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 hover:scale-105 transition-all duration-300">
+                    <Link to="/" className={`group flex items-center justify-center w-16 h-16 rounded-full backdrop-blur-xl border shadow-lg hover:scale-105 transition-all duration-300 ${
+                        theme === 'dark'
+                            ? 'bg-[#0A0A0A]/80 border-white/10 shadow-black/20'
+                            : 'bg-[#F7F7F7]/90 border-neutral-200/30 shadow-neutral-300/20'
+                    }`}>
                         <img 
                             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6942a6bbf2c58576b46b84ee/84a15b48f_a-sleek-modern-logo-design-featuring-the_SMuLZaSWTXC5gHfZms6l4g_nbGlpkO2SJKMVbyEcJBYDA2.JPEG" 
                             alt="Holo Studio" 

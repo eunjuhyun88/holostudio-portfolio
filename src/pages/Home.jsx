@@ -23,14 +23,14 @@ export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Scroll-based background color transition - Ultra minimal
+    // Scroll-based background color transition - Logo background tone
     const { scrollYProgress } = useScroll();
     const backgroundColor = useTransform(
         scrollYProgress,
         [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85, 1],
         theme === 'dark' 
             ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
-            : ['#F7F7F7', '#F5F5F5', '#F7F7F7', '#F6F6F6', '#F7F7F7', '#F5F5F5', '#18181B', '#18181B']
+            : ['#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#F7F7F7', '#18181B', '#18181B']
     );
 
     useEffect(() => {
