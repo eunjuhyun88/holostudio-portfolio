@@ -595,7 +595,7 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-8 h-12 text-base font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-white text-black hover:bg-neutral-200'
-                                    : 'bg-cyan-500 text-white hover:bg-cyan-600'
+                                    : 'bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:from-cyan-500 hover:via-purple-500 hover:to-pink-500 text-white'
                             }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
                                 {t.hero.cta1}
                             </Button>
@@ -1402,7 +1402,7 @@ export default function Home() {
                                                     <Button className={`w-full h-12 rounded-full text-sm font-bold border-0 ${
                                                         theme === 'dark'
                                                             ? `${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white shadow-lg`
-                                                            : 'bg-cyan-500 text-white hover:bg-cyan-600'
+                                                            : 'bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:from-cyan-500 hover:via-purple-500 hover:to-pink-500 text-white'
                                                     }`}>
                                                         {prod.primaryBtn[language]}
                                                     </Button>
@@ -1517,7 +1517,7 @@ export default function Home() {
                             <Button size="lg" className={`rounded-full px-12 h-16 text-lg font-bold border-0 ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
-                                    : 'bg-cyan-500 hover:bg-cyan-600 text-white'
+                                    : 'bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:from-cyan-500 hover:via-purple-500 hover:to-pink-500 text-white'
                             }`}>
                                 {t.contact.cta1}
                             </Button>
