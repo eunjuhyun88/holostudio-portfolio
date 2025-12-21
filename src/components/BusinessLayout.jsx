@@ -36,6 +36,40 @@ const ColorSection = ({ children, onInView, className = "" }) => {
     );
 };
 
+function ColorSection({ id, bgColor, children }) {
+    const sectionRef = React.useRef(null);
+    
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        document.body.style.backgroundColor = bgColor;
+                        document.body.style.transition = 'background-color 0.6s ease-in-out';
+                    }
+                });
+            },
+            { threshold: 0.5, rootMargin: '-100px 0px' }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, [bgColor]);
+
+    return (
+        <div ref={sectionRef} id={id}>
+            {children}
+        </div>
+    );
+}
+
 export default function BusinessLayout({ 
     name, 
     tag, 
