@@ -471,7 +471,7 @@ export default function Home() {
         <div className={`font-sans min-h-screen relative transition-colors duration-300 ${
             theme === 'dark' 
                 ? 'bg-[#050505] text-white selection:bg-indigo-500/30' 
-                : 'bg-[#EDE9E4] text-neutral-900 selection:bg-neutral-200'
+                : 'bg-white text-neutral-900 selection:bg-orange-200'
         }`}>
             <SEO 
                 title="Home" 
@@ -532,10 +532,10 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`inline-block px-5 py-2 mb-8 border rounded-full text-xs md:text-sm font-bold tracking-wide uppercase ${
+                        <div className={`inline-block px-5 py-2 mb-8 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase ${
                             theme === 'dark'
-                                ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
-                                : 'border-neutral-900 bg-neutral-900 text-white'
+                                ? 'border border-indigo-500/30 bg-indigo-500/10 text-indigo-400'
+                                : 'bg-neutral-900 text-white'
                         }`}>
                             {t.hero.tag}
                         </div>
@@ -577,17 +577,20 @@ export default function Home() {
                             {t.hero.desc}
                         </motion.p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
-                            <Floating delay={0} duration={4}>
-                                <Button size="lg" className="relative overflow-hidden bg-white text-black hover:bg-neutral-200 rounded-full px-8 h-12 text-base font-bold border-0 group" onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
-                                    <span className="relative z-10">{t.hero.cta1}</span>
-                                    <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent z-0" />
-                                </Button>
-                            </Floating>
-                            <Floating delay={0.5} duration={4.5}>
-                                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-neutral-800 text-white hover:bg-white/10 bg-transparent">
-                                    {t.hero.cta2}
-                                </Button>
-                            </Floating>
+                            <Button size="lg" className={`rounded-full px-8 h-12 text-base font-bold border-0 ${
+                                theme === 'dark'
+                                    ? 'bg-white text-black hover:bg-neutral-200'
+                                    : 'bg-orange-500 text-white hover:bg-orange-600'
+                            }`} onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
+                                {t.hero.cta1}
+                            </Button>
+                            <Button variant="outline" size="lg" className={`rounded-full px-8 h-12 text-base font-bold ${
+                                theme === 'dark'
+                                    ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
+                                    : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
+                            }`}>
+                                {t.hero.cta2}
+                            </Button>
                         </div>
                     </motion.div>
                 </div>
@@ -608,7 +611,7 @@ export default function Home() {
             <section className={`py-12 border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'bg-white border-neutral-900'
+                    : 'bg-neutral-50 border-neutral-200'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Desktop: Grid, Mobile: Horizontal Scroll */}
@@ -648,7 +651,7 @@ export default function Home() {
                     </div>
                     
                     {/* Partners / Backers */}
-                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-900/20'}`}>
+                    <div className={`border-t pt-8 ${theme === 'dark' ? 'border-white/5' : 'border-neutral-200'}`}>
                         <p className={`text-center text-xs uppercase tracking-widest font-bold mb-6 ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>SELECTED & BACKED BY</p>
@@ -724,33 +727,21 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border relative overflow-hidden transition-all duration-300 ${
+                                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group p-8 rounded-2xl border transition-all duration-300 ${
                                     theme === 'dark'
-                                        ? 'bg-black/30 border-white/10 hover:border-indigo-500/50'
-                                        : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
+                                        ? 'bg-black/30 border-white/10 hover:border-indigo-500/50 relative overflow-hidden'
+                                        : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
                                 }`}
                             >
-                                {/* Sci-Fi Corner Accents */}
-                                <div className={`absolute top-0 left-0 w-3 h-3 border-l border-t transition-all duration-500 pointer-events-none ${
-                                    theme === 'dark' 
-                                        ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
-                                } group-hover:w-full group-hover:h-full`} />
-                                <div className={`absolute top-0 right-0 w-3 h-3 border-r border-t transition-colors duration-500 pointer-events-none ${
-                                    theme === 'dark' 
-                                        ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
-                                }`} />
-                                <div className={`absolute bottom-0 left-0 w-3 h-3 border-l border-b transition-colors duration-500 pointer-events-none ${
-                                    theme === 'dark' 
-                                        ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
-                                }`} />
-                                <div className={`absolute bottom-0 right-0 w-3 h-3 border-r border-b transition-all duration-500 pointer-events-none ${
-                                    theme === 'dark' 
-                                        ? 'border-white/20 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/30 group-hover:border-neutral-900'
-                                } group-hover:w-full group-hover:h-full`} />
+                                {/* Sci-Fi Corner Accents - Only dark mode */}
+                                {theme === 'dark' && (
+                                    <>
+                                        <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
+                                        <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
+                                        <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-white/20 group-hover:border-indigo-500 transition-colors duration-500 pointer-events-none" />
+                                        <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-white/20 group-hover:border-indigo-500 group-hover:w-full group-hover:h-full transition-all duration-500 pointer-events-none" />
+                                    </>
+                                )}
 
                                 <Floating delay={idx * 0.2} offset={8}>
                                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
@@ -792,17 +783,17 @@ export default function Home() {
             <section className={`py-32 px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'bg-[#F5EFE6] border-neutral-900'
+                    : 'bg-neutral-50 border-neutral-200'
             }`}>
                 <div className="max-w-[1400px] mx-auto">
                     <div className="mb-20 relative">
-                        {/* Sci-Fi Decorative Elements */}
-                        <div className={`absolute -top-10 -left-10 w-20 h-20 border-t border-l rounded-tl-3xl hidden md:block ${
-                            theme === 'dark' ? 'border-indigo-500/20' : 'border-neutral-900/30'
-                        }`} />
-                        <div className={`absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent to-transparent ${
-                            theme === 'dark' ? 'via-indigo-500/20' : 'via-neutral-900/20'
-                        }`} />
+                        {/* Sci-Fi Decorative Elements - Only dark mode */}
+                        {theme === 'dark' && (
+                            <>
+                                <div className="absolute -top-10 -left-10 w-20 h-20 border-t border-l rounded-tl-3xl hidden md:block border-indigo-500/20" />
+                                <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+                            </>
+                        )}
                         
                         <h2 className={`text-sm font-mono mb-4 uppercase tracking-widest flex items-center gap-2 font-bold ${
                             theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
@@ -812,13 +803,10 @@ export default function Home() {
                             }`} />
                             TECHNOLOGY & STRATEGY
                         </h2>
-                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-black mb-8 relative inline-block ${
+                        <h3 className={`text-2xl sm:text-3xl md:text-5xl font-black mb-8 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>
                             {language === 'en' ? 'The Infrastructure of Trust' : '신뢰의 인프라'}
-                            <span className={`absolute -bottom-2 left-0 w-1/3 h-1 ${
-                                theme === 'dark' ? 'bg-indigo-600/50' : 'bg-neutral-900'
-                            }`} />
                         </h3>
                         
                         <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed tracking-wide font-medium ${
@@ -869,32 +857,20 @@ export default function Home() {
                             {/* Desktop: Grid, Mobile: Horizontal Scroll */}
                             <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 relative z-10 pb-6 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 custom-scrollbar">
                                 {tech.pipeline.steps.map((step, i) => (
-                                    <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group cursor-default relative overflow-hidden ${
+                                    <div key={i} className={`flex-shrink-0 w-[60vw] md:w-auto snap-center p-6 rounded-xl border hover:-translate-y-1 transition-all duration-300 group cursor-default ${
                                         theme === 'dark'
-                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10 backdrop-blur-sm'
-                                            : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
+                                            ? 'bg-white/5 border-white/10 hover:border-indigo-500/50 hover:bg-white/10 backdrop-blur-sm relative overflow-hidden'
+                                            : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
                                     }`}>
-                                        {/* Tech Corners */}
-                                        <div className={`absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 transition-colors ${
-                                            theme === 'dark'
-                                                ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                        }`} />
-                                        <div className={`absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 transition-colors ${
-                                            theme === 'dark'
-                                                ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                        }`} />
-                                        <div className={`absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 transition-colors ${
-                                            theme === 'dark'
-                                                ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                        }`} />
-                                        <div className={`absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 transition-colors ${
-                                            theme === 'dark'
-                                                ? 'border-white/10 group-hover:border-indigo-500'
-                                                : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                        }`} />
+                                        {/* Tech Corners - Only dark mode */}
+                                        {theme === 'dark' && (
+                                            <>
+                                                <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                                <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                                <div className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                                <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                            </>
+                                        )}
                                         
                                         <div className={`text-xs font-mono mb-3 transition-colors font-bold ${
                                             theme === 'dark'
@@ -1197,7 +1173,7 @@ export default function Home() {
 
             {/* Section 04: COMPANY THESIS */}
             <section className={`py-24 border-y text-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-white border-neutral-900'
+                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-white border-neutral-200'
             }`}>
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className={`text-xs font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -1227,7 +1203,7 @@ export default function Home() {
             <section id="products" className={`relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'border-white/5'
-                    : 'bg-[#F5EFE6] border-neutral-900'
+                    : 'bg-neutral-50 border-neutral-200'
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1241,7 +1217,7 @@ export default function Home() {
 
                 {/* Sticky Visual Container - Desktop Only */}
                 <div className={`hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none ${
-                    theme === 'light' ? 'bg-[#F5EFE6]' : ''
+                    theme === 'light' ? 'bg-neutral-50' : ''
                 }`}>
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
@@ -1335,32 +1311,37 @@ export default function Home() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="max-w-md w-full pointer-events-auto"
                             >
-                                <TiltCard className={`p-6 md:p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 border ${
+                                <TiltCard className={`p-6 md:p-8 rounded-3xl transition-all duration-500 border ${
                                     theme === 'dark'
-                                        ? 'glass-card hover:shadow-2xl backdrop-blur-xl'
-                                        : 'bg-white border-neutral-900/30 hover:border-neutral-900 shadow-md'
+                                        ? 'glass-card hover:shadow-2xl backdrop-blur-xl relative overflow-hidden'
+                                        : 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                 }`}>
-                                        {/* Sci-Fi Corners */}
-                                        <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
-                                        <div className={`absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
-                                        <div className={`absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
-                                        <div className={`absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                                        {/* Sci-Fi Corners - Only dark mode */}
+                                        {theme === 'dark' && (
+                                            <>
+                                                <div className={`absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                                <div className={`absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                                <div className={`absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                                <div className={`absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 ${prod.color.replace('text-', 'border-')} opacity-20 group-hover:opacity-100 transition-opacity duration-500`} />
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${prod.bgGradient} to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                                            </>
+                                        )}
                                         
                                         <div className="relative z-10">
                                             {/* Mobile Image */}
-                                            <div className={`md:hidden mb-6 relative rounded-xl overflow-hidden border aspect-video transition-colors ${
+                                            <div className={`md:hidden mb-6 relative rounded-xl overflow-hidden border aspect-video ${
                                                 theme === 'dark'
                                                     ? 'border-white/10 bg-black/50'
-                                                    : 'border-neutral-900/20 bg-neutral-50'
+                                                    : 'border-neutral-200 bg-white'
                                             }`}>
                                                 <img 
                                                     src={prod.image} 
                                                     alt={prod.name} 
                                                     className="w-full h-full object-contain p-4" 
                                                 />
-                                                <div className={`absolute inset-0 bg-gradient-to-tr ${prod.bgGradient} to-transparent opacity-20`} />
+                                                {theme === 'dark' && (
+                                                    <div className={`absolute inset-0 bg-gradient-to-tr ${prod.bgGradient} to-transparent opacity-20`} />
+                                                )}
                                             </div>
 
                                             <div className="flex items-center justify-between mb-6">
@@ -1399,14 +1380,18 @@ export default function Home() {
 
                                             <div className="flex gap-4">
                                                 <Link to={createPageUrl(prod.path.substring(1))} className="flex-1">
-                                                    <Button className={`w-full ${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white h-12 rounded-xl text-sm font-bold border-0 shadow-lg shadow-${prod.color.split('-')[1]}-900/20`}>
+                                                    <Button className={`w-full h-12 rounded-full text-sm font-bold border-0 ${
+                                                        theme === 'dark'
+                                                            ? `${prod.color.replace('text-', 'bg-').replace('400', '600')} hover:${prod.color.replace('text-', 'bg-').replace('400', '500')} text-white shadow-lg`
+                                                            : 'bg-orange-500 text-white hover:bg-orange-600'
+                                                    }`}>
                                                         {prod.primaryBtn[language]}
                                                     </Button>
                                                 </Link>
-                                                <Button variant="outline" className={`flex-1 h-12 rounded-xl text-sm font-bold ${
+                                                <Button variant="outline" className={`flex-1 h-12 rounded-full text-sm font-bold ${
                                                     theme === 'dark'
                                                         ? 'border-neutral-700 text-white hover:bg-white/5 bg-transparent'
-                                                        : 'border-neutral-900 text-neutral-900 hover:bg-neutral-100 bg-transparent'
+                                                        : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
                                                 }`}>
                                                     {prod.secondaryBtn[language]}
                                                 </Button>
@@ -1422,7 +1407,7 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className={`py-32 relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'border-white/5' : 'bg-white border-neutral-900'
+                theme === 'dark' ? 'border-white/5' : 'bg-white border-neutral-200'
             }`}>
                 <div className={`absolute inset-0 bg-gradient-to-b to-transparent pointer-events-none ${
                     theme === 'dark' ? 'from-indigo-900/5' : 'from-transparent'
@@ -1445,23 +1430,19 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden ${
+                                className={`p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 ${
                                     theme === 'dark'
-                                        ? 'bg-white/5 backdrop-blur-sm border-neutral-800 hover:border-indigo-500/30'
-                                        : 'bg-white border-neutral-900/20 hover:border-neutral-900 shadow-sm'
+                                        ? 'bg-white/5 backdrop-blur-sm border-neutral-800 hover:border-indigo-500/30 relative overflow-hidden'
+                                        : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
                                 }`}
                             >
-                                {/* Sci-Fi Corners */}
-                                <div className={`absolute top-0 left-0 w-4 h-4 border-l border-t transition-colors ${
-                                    theme === 'dark'
-                                        ? 'border-white/10 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                }`} />
-                                <div className={`absolute bottom-0 right-0 w-4 h-4 border-r border-b transition-colors ${
-                                    theme === 'dark'
-                                        ? 'border-white/10 group-hover:border-indigo-500'
-                                        : 'border-neutral-900/20 group-hover:border-neutral-900'
-                                }`} />
+                                {/* Sci-Fi Corners - Only dark mode */}
+                                {theme === 'dark' && (
+                                    <>
+                                        <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
+                                    </>
+                                )}
                                 
                                 <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
                                     <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
@@ -1506,7 +1487,7 @@ export default function Home() {
             <section className={`py-32 border-t relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-[#F5EFE6] border-neutral-900'
+                    : 'bg-neutral-50 border-neutral-200'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left">
@@ -1519,11 +1500,19 @@ export default function Home() {
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link to={createPageUrl("Contact")}>
-                            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-10 h-14 text-lg font-bold border-0">
+                            <Button size="lg" className={`rounded-full px-10 h-14 text-lg font-bold border-0 ${
+                                theme === 'dark'
+                                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
+                                    : 'bg-orange-500 hover:bg-orange-600 text-white'
+                            }`}>
                                 {t.contact.cta1}
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className="rounded-full px-10 h-14 text-lg border-neutral-800 text-white hover:bg-white/10 bg-transparent">
+                        <Button variant="outline" size="lg" className={`rounded-full px-10 h-14 text-lg font-bold ${
+                            theme === 'dark'
+                                ? 'border-neutral-800 text-white hover:bg-white/10 bg-transparent'
+                                : 'border-neutral-300 text-neutral-900 hover:bg-neutral-50 bg-white'
+                        }`}>
                             {t.contact.cta2}
                         </Button>
                     </div>

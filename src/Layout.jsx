@@ -80,7 +80,7 @@ function LayoutContent({ children }) {
 
     return (
         <div className={`min-h-screen font-sans transition-colors duration-300 ${
-            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-[#EDE9E4] text-neutral-900'
+            theme === 'dark' ? 'bg-[#050505] text-white' : 'bg-white text-neutral-900'
         }`}>
             <style>{`
                 @import url('https://fonts.cdnfonts.com/css/rigid-display');
@@ -250,7 +250,11 @@ function LayoutContent({ children }) {
                             </Button>
                         </a>
 
-                        <Button className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-full px-6 h-9 text-sm font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all border border-indigo-500/50">
+                        <Button className={`rounded-full px-6 h-9 text-sm font-bold transition-all ${
+                            theme === 'dark'
+                                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] border border-indigo-500/50'
+                                : 'bg-orange-500 hover:bg-orange-600 text-white border-0'
+                        }`}>
                             {language === 'en' ? 'Invest / Partner' : '투자 / 제휴'} <ArrowRight className="w-3 h-3 ml-2" />
                         </Button>
                     </div>
@@ -352,7 +356,11 @@ function LayoutContent({ children }) {
                                     )
                                 ))}
 
-                                <Button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-full mt-8 h-12 text-lg font-medium shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                                <Button className={`w-full rounded-full mt-8 h-12 text-lg font-bold ${
+                                    theme === 'dark'
+                                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)]'
+                                        : 'bg-orange-500 hover:bg-orange-600 text-white'
+                                }`}>
                                     {language === 'en' ? 'Invest / Partner' : '투자 및 제휴 문의'}
                                 </Button>
                             </div>
@@ -387,10 +395,10 @@ function LayoutContent({ children }) {
             </main>
 
             {/* Global Footer - Glassmorphic & Connected */}
-            <footer className={`relative z-50 backdrop-blur-xl py-16 mt-20 border-t ${
+            <footer className={`relative z-50 py-16 mt-20 border-t ${
                 theme === 'dark' 
-                    ? 'bg-black/40 text-white border-white/10'
-                    : 'bg-white/60 text-neutral-900 border-neutral-300/30'
+                    ? 'bg-black/40 text-white border-white/10 backdrop-blur-xl'
+                    : 'bg-white text-neutral-900 border-neutral-200'
             }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
