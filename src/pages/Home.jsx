@@ -52,7 +52,7 @@ export default function Home() {
     const content = {
         en: {
             hero: {
-                tag: "TRUST LAYER FOR THE AI ECONOMY",
+                tag: "TRUST INFRASTRUCTURE FOR THE AI ECONOMY",
                 title: "HOLO STUDIO",
                 sub: "Trust infrastructure for the AI economy.",
                 desc: "AI can create infinitely. But without verification, nothing holds value. HOLO STUDIO builds the trust layer that makes AI content safe, attributable, and economically usable.",
@@ -67,7 +67,8 @@ export default function Home() {
                     "Creators can't prove ownership.",
                     "Markets can't route value correctly."
                 ],
-                solution: "HOLO STUDIO exists to solve this. We don't build a single product. We build one trust layer, expressed across safety, media, gaming, and markets.",
+                solution: "HOLO STUDIO exists to solve this.",
+                explanation: "We don't build a single product. We build one trust layer, expressed across safety, media, gaming, and markets.",
                 primitives: ["Safety – what is allowed", "Provenance – who created it", "Value Routing – who gets paid"]
             },
             proof: {
@@ -86,10 +87,11 @@ export default function Home() {
                 headline: "AI verification is no longer optional.",
                 sub: "The brand safety market stopped at classification. Regulation is forcing verification.",
                 points: [
-                    "AI-generated media is scaling faster than moderation or law",
-                    "Platforms are becoming legally and reputationally liable",
-                    "18 months. That's the window to build trust infrastructure before enforcement hits."
-                ]
+                    { label: "EU AI Act enforcement begins August 2026", detail: "Fines up to 7% of global revenue" },
+                    { text: "AI-generated media is scaling faster than moderation or law" },
+                    { text: "Platforms are becoming legally and reputationally liable" }
+                ],
+                conclusion: "18 months. That's the window to build trust infrastructure before enforcement hits."
             },
             regulatory: {
                 title: "Regulatory Pressure",
@@ -208,14 +210,14 @@ export default function Home() {
                 pre: "AI is moving fast. Trust infrastructure isn't.",
                 title: "HOLO STUDIO is building the missing layer",
                 sub: "that allows AI content to be used, owned, and monetized responsibly.",
-                post: "We don't manage content. We verify reality.",
+                tagline: "We don't manage content. We verify reality.",
                 cta1: "Invest / Partner",
                 cta2: "Enterprise Inquiry"
             }
         },
         ko: {
             hero: {
-                tag: "AI 경제의 신뢰 레이어",
+                tag: "AI 경제의 신뢰 인프라",
                 title: "HOLO STUDIO",
                 sub: "AI 경제를 위한 신뢰 인프라.",
                 desc: "AI는 무한히 창작할 수 있습니다. 하지만 검증 없이는 아무것도 가치를 지니지 못합니다. HOLO STUDIO는 AI 콘텐츠를 안전하고, 귀속 가능하며, 경제적으로 사용 가능하게 만드는 신뢰 레이어를 구축합니다.",
@@ -230,7 +232,8 @@ export default function Home() {
                     "창작자는 소유권을 증명할 수 없습니다.",
                     "시장은 가치를 올바르게 전달할 수 없습니다."
                 ],
-                solution: "HOLO STUDIO는 이를 해결하기 위해 존재합니다. 우리는 단일 제품을 만들지 않습니다. 안전, 미디어, 게임, 시장 전반에 걸쳐 표현되는 하나의 신뢰 레이어를 구축합니다.",
+                solution: "HOLO STUDIO는 이를 해결하기 위해 존재합니다.",
+                explanation: "우리는 단일 제품을 만들지 않습니다. 안전, 미디어, 게임, 시장 전반에 걸쳐 표현되는 하나의 신뢰 레이어를 구축합니다.",
                 primitives: ["안전 – 무엇이 허용되는가", "출처 – 누가 만들었는가", "가치 라우팅 – 누가 보상받는가"]
             },
             proof: {
@@ -249,10 +252,11 @@ export default function Home() {
                 headline: "AI 검증은 더 이상 선택이 아닙니다.",
                 sub: "브랜드 안전 시장은 분류에서 멈췄습니다. 규제는 검증을 강제하고 있습니다.",
                 points: [
-                    "AI 생성 미디어는 중재나 법보다 빠르게 확산되고 있습니다",
-                    "플랫폼은 법적, 평판적으로 책임을 지게 됩니다",
-                    "18개월. 규제 시행 전에 신뢰 인프라를 구축할 수 있는 시간입니다."
-                ]
+                    { label: "EU AI Act 시행 2026년 8월", detail: "위반 시 글로벌 매출 7%까지 과징금" },
+                    { text: "AI 생성 미디어는 중재나 법보다 빠르게 확산되고 있습니다" },
+                    { text: "플랫폼은 법적, 평판적으로 책임을 지게 됩니다" }
+                ],
+                conclusion: "18개월. 규제 시행 전에 신뢰 인프라를 구축할 수 있는 시간입니다."
             },
             regulatory: {
                 title: "규제 압박",
@@ -370,7 +374,7 @@ export default function Home() {
                 pre: "AI는 빠르게 움직입니다. 신뢰 인프라는 그렇지 않습니다.",
                 title: "HOLO STUDIO는 빠진 레이어를 구축합니다",
                 sub: "AI 콘텐츠가 책임감 있게 사용되고, 소유되고, 수익화될 수 있도록.",
-                post: "우리는 콘텐츠를 관리하지 않습니다. 현실을 검증합니다.",
+                tagline: "우리는 콘텐츠를 관리하지 않습니다. 현실을 검증합니다.",
                 cta1: "투자 / 제휴",
                 cta2: "기업 문의"
             }
