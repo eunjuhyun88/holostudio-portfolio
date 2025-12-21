@@ -83,7 +83,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], theme === 'dark' ? [0, 0.25, 0.25, 0] : [0, 0.6, 0.6, 0])
                 }}
                 className={`absolute top-[40%] left-[30%] w-32 h-32 border-3 rounded-2xl ${
-                    theme === 'dark' ? 'border-indigo-400/60' : 'border-white/80'
+                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-500/70'
                 }`}
             />
             <motion.div
@@ -93,7 +93,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     opacity: useTransform(scrollYProgress, [0, 0.4, 0.8, 1], theme === 'dark' ? [0, 0.2, 0.2, 0] : [0, 0.5, 0.5, 0])
                 }}
                 className={`absolute top-[70%] right-[25%] w-24 h-24 border-3 rounded-xl ${
-                    theme === 'dark' ? 'border-purple-400/50' : 'border-white/75'
+                    theme === 'dark' ? 'border-purple-400/50' : 'border-purple-500/65'
                 }`}
             />
             
@@ -173,7 +173,7 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                     className={`absolute rounded-full ${
                         theme === 'dark' 
                             ? 'w-1 h-1 blur-[0.5px] bg-indigo-400/70' 
-                            : 'w-2 h-2 blur-[1px] bg-white/90'
+                            : 'w-2 h-2 blur-[1px] bg-violet-500/80'
                     }`}
                     initial={{
                         top: `${Math.random() * 100}%`,
