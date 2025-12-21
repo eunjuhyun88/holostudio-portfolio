@@ -890,7 +890,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Section 02.5: WHY IT MATTERS - Enhanced with scroll animations */}
             <motion.section 
