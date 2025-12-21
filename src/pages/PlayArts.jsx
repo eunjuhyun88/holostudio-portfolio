@@ -115,7 +115,22 @@ export default function PlayArts() {
                     items: ["Permissionless Nodes", "DAO Governance", "ZK-PoC"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "PlayArts solved our attribution nightmare. Now every AI asset has immutable provenance, and our creators finally get paid fairly.",
+                    author: "Alex Kim",
+                    role: "Founder",
+                    company: "MemeLab Studios",
+                    image: null
+                },
+                {
+                    quote: "The MCP standard is brilliant. We integrated PlayArts into our generation pipeline and now track value distribution automatically.",
+                    author: "Jordan Lee",
+                    role: "Product Lead",
+                    company: "GenAI Platform",
+                    image: null
+                }
+            ]
         },
         ko: {
             tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-lime-400' : 'text-lime-700'}>Trust Layer: Provenance + Value</span> | <span className={theme === 'dark' ? 'text-lime-300' : 'text-lime-600'}>불변의 출처 기록</span></span>,
