@@ -13,6 +13,10 @@ export const ThemeProvider = ({ children }) => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
+        } else {
+            // 처음 방문자는 다크모드로 설정
+            localStorage.setItem('theme', 'dark');
+            setTheme('dark');
         }
     }, []);
 
