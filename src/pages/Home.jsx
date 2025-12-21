@@ -932,11 +932,7 @@ export default function Home() {
                     }
                 }}>
                     {theme === 'dark' && (
-                        <>
-                            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5 pointer-events-none" />
-                            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
-                            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
-                        </>
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/3 via-transparent to-red-500/3 pointer-events-none" />
                     )}
                     <div className="max-w-4xl mx-auto text-center w-full relative z-10">
                         <h2 className={`text-sm md:text-base font-mono mb-10 md:mb-12 uppercase tracking-widest font-bold ${
@@ -1037,11 +1033,7 @@ export default function Home() {
                     }
                 }}>
                     {theme === 'dark' && (
-                        <>
-                            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-rose-500/5 pointer-events-none" />
-                            <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
-                            <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
-                        </>
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-500/3 via-transparent to-rose-500/3 pointer-events-none" />
                     )}
                     <div className="max-w-5xl mx-auto w-full relative z-10">
                         <div className="mb-20 md:mb-24 text-center max-w-3xl mx-auto">
@@ -1067,58 +1059,50 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
+                        <div className="max-w-2xl mx-auto grid md:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                             {t.cost.items.slice(0, 2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, y: 30 }}
+                                    initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                    whileHover={{ scale: 1.02, y: -2 }}
-                                    className={`p-5 md:p-6 rounded-xl md:rounded-2xl border-2 text-center transition-all duration-300 relative group ${
+                                    transition={{ duration: 0.3, ease: "easeOut" }}
+                                    className={`p-4 md:p-5 rounded-lg md:rounded-xl border text-center transition-all duration-200 ${
                                         theme === 'dark'
-                                            ? 'bg-gradient-to-br from-red-950/40 to-black/60 border-red-500/30 hover:border-red-400/60 hover:shadow-[0_0_40px_rgba(239,68,68,0.3)] backdrop-blur-sm'
-                                            : 'bg-white/80 backdrop-blur-sm border-red-300/60 hover:border-red-400 hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)]'
+                                            ? 'bg-black/20 border-red-500/30 hover:border-red-400/40'
+                                            : 'bg-white/70 border-red-300/50 hover:border-red-400'
                                     }`}
                                 >
-                                    <div className={`text-2xl md:text-3xl font-black mb-2 ${
+                                    <div className={`text-xl md:text-2xl font-black mb-1.5 ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-600'
                                     }`}>{item.val}</div>
-                                    <p className={`text-xs md:text-sm ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    <p className={`text-xs leading-relaxed ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                     }`}>{item.desc}</p>
-                                    {theme === 'dark' && (
-                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/0 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                                    )}
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+                        <div className="max-w-2xl mx-auto grid md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
                             {t.cost.items.slice(2).map((item, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
-                                    whileHover={{ scale: 1.02, y: -2 }}
-                                    className={`p-4 md:p-6 rounded-xl border-2 transition-all duration-300 relative group ${
+                                    transition={{ delay: idx * 0.06, duration: 0.3, ease: "easeOut" }}
+                                    className={`p-3 md:p-4 rounded-lg border transition-all duration-200 ${
                                         theme === 'dark'
-                                            ? 'bg-gradient-to-br from-neutral-900/60 to-black/80 border-red-500/20 hover:border-red-400/40 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] backdrop-blur-sm'
-                                            : 'bg-white/80 backdrop-blur-sm border-red-200/50 hover:border-red-300 hover:shadow-[0_4px_20px_rgba(239,68,68,0.1)]'
+                                            ? 'bg-black/10 border-white/10 hover:border-white/15'
+                                            : 'bg-white/60 border-neutral-200 hover:border-neutral-300'
                                     }`}
                                 >
-                                    <h4 className={`text-base md:text-lg font-black mb-2 ${
+                                    <h4 className={`text-sm md:text-base font-bold mb-1.5 ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{item.label}</h4>
-                                    <p className={`text-xs md:text-sm leading-relaxed ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                                    <p className={`text-xs leading-relaxed ${
+                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                                     }`}>{item.desc}</p>
-                                    {theme === 'dark' && (
-                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-red-500/0 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                                    )}
                                 </motion.div>
                             ))}
                         </div>
