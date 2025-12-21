@@ -23,6 +23,16 @@ export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
+    // Scroll-based background color transition
+    const { scrollYProgress } = useScroll();
+    const backgroundColor = useTransform(
+        scrollYProgress,
+        [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
+        theme === 'dark' 
+            ? ['#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505', '#050505']
+            : ['#ffffff', '#FFF5F0', '#F0FFF4', '#EFF6FF', '#FAF5FF', '#EFF6FF', '#FFFBEB', '#171717', '#171717']
+    );
+
     useEffect(() => {
         const handleMouseMove = (e) => {
             mouseX.set(e.clientX);
@@ -468,11 +478,13 @@ export default function Home() {
     }));
 
     return (
-        <div className={`font-sans min-h-screen relative transition-colors duration-300 ${
-            theme === 'dark' 
-                ? 'bg-[#050505] text-white selection:bg-indigo-500/30' 
-                : 'bg-white text-neutral-900 selection:bg-orange-200'
-        }`}>
+        <motion.div 
+            style={{ backgroundColor }}
+            className={`font-sans min-h-screen relative ${
+                theme === 'dark' 
+                    ? 'text-white selection:bg-indigo-500/30' 
+                    : 'text-neutral-900 selection:bg-orange-200'
+            }`}>
             <SEO 
                 title="Home" 
                 description={t.hero.sub} 
@@ -525,9 +537,7 @@ export default function Home() {
             </div>
 
             {/* Section 01: HERO (Pinned) */}
-            <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10 ${
-                theme === 'dark' ? '' : 'bg-white'
-            }`}>
+            <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden z-10">
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
@@ -613,7 +623,7 @@ export default function Home() {
             <section className={`min-h-screen flex flex-col items-center justify-center border-y relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/10'
-                    : 'bg-[#FFF5F0] border-neutral-200'
+                    : 'border-neutral-200/50'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <motion.h2 
@@ -718,9 +728,7 @@ export default function Home() {
             </section>
 
             {/* Section 03: THE CORE PROBLEM */}
-            <section className={`min-h-screen flex items-center justify-center relative z-10 ${
-                theme === 'dark' ? '' : 'bg-[#F0FFF4]'
-            }`}>
+            <section className="min-h-screen flex items-center justify-center relative z-10">
                 <div className="max-w-7xl mx-auto px-6 w-full">
                     <motion.div {...fadeIn} className="mb-16 text-center max-w-5xl mx-auto">
                         <h2 className={`text-sm font-mono mb-6 uppercase tracking-widest font-bold ${
@@ -798,7 +806,7 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'bg-black/30 border-white/5'
-                    : 'bg-[#EFF6FF] border-neutral-200'
+                    : 'border-neutral-200/50'
             }`}>
                 <div className="max-w-[1400px] mx-auto w-full py-20">
                     <div className="mb-16 relative text-center max-w-5xl mx-auto">
@@ -1185,7 +1193,7 @@ export default function Home() {
 
             {/* Section 04: COMPANY THESIS */}
             <section className={`min-h-screen flex items-center justify-center border-y text-center relative z-10 ${
-                theme === 'dark' ? 'bg-transparent border-white/5' : 'bg-[#FAF5FF] border-neutral-200'
+                theme === 'dark' ? 'bg-transparent border-white/5' : 'border-neutral-200/50'
             }`}>
                 <div className="max-w-5xl mx-auto px-6">
                     <h2 className={`text-sm font-mono mb-8 uppercase tracking-widest font-bold ${
@@ -1212,13 +1220,10 @@ export default function Home() {
 
 
             {/* Section 05 & 06: PRODUCT SPOTLIGHT (Scrollytelling) */}
-            <section id="products" className={`relative z-10 border-y transition-colors duration-700 ${
+            <section id="products" className={`relative z-10 border-y ${
                 theme === 'dark' 
                     ? 'border-white/5'
-                    : activeStage === 0 ? 'bg-[#EFF6FF] border-neutral-200' : 
-                      activeStage === 1 ? 'bg-[#FFFBEB] border-neutral-200' : 
-                      activeStage === 2 ? 'bg-[#FFF5F0] border-neutral-200' : 
-                      'bg-[#F0FFF4] border-neutral-200'
+                    : 'border-neutral-200/50'
             }`}>
                 {/* Intro Title */}
                 <div className="relative md:absolute top-0 left-0 w-full pt-20 pb-10 px-6 z-10 pointer-events-none text-center md:text-left md:pl-20">
@@ -1231,14 +1236,7 @@ export default function Home() {
                 </div>
 
                 {/* Sticky Visual Container - Desktop Only */}
-                <div className={`hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none transition-colors duration-700 ${
-                    theme === 'light' ? (
-                        activeStage === 0 ? 'bg-[#EFF6FF]' : 
-                        activeStage === 1 ? 'bg-[#FFFBEB]' : 
-                        activeStage === 2 ? 'bg-[#FFF5F0]' : 
-                        'bg-[#F0FFF4]'
-                    ) : ''
-                }`}>
+                <div className="hidden md:flex sticky top-0 h-screen w-full overflow-hidden items-center justify-center md:justify-start md:pl-20 pointer-events-none">
                     {/* Background Visuals Crossfading */}
                     <AnimatePresence mode="popLayout">
                         {products.map((prod, idx) => (
@@ -1427,7 +1425,7 @@ export default function Home() {
 
             {/* Section 07: PROOF & MILESTONES */}
             <section id="proof" className={`min-h-screen flex items-center justify-center relative overflow-hidden z-10 border-y ${
-                theme === 'dark' ? 'border-white/5' : 'bg-[#FFFBEB] border-neutral-200'
+                theme === 'dark' ? 'border-white/5' : 'border-neutral-200/50'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
                     <motion.div {...fadeIn} className="mb-16 text-center max-w-4xl mx-auto">
@@ -1504,7 +1502,7 @@ export default function Home() {
             <section className={`min-h-screen flex items-center justify-center border-t relative z-10 ${
                 theme === 'dark' 
                     ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
-                    : 'bg-neutral-900 border-neutral-900'
+                    : 'border-neutral-900'
             }`}>
                 <div className="max-w-5xl mx-auto px-6 text-center">
                     <div className="mb-12">
@@ -1535,6 +1533,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-        </div>
+        </motion.div>
     );
 }
