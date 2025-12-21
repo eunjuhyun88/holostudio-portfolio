@@ -944,14 +944,14 @@ export default function Home() {
                             <MouseGlowText
                                 as="h3"
                                 glowColor="rgba(249, 115, 22, 0.8)"
-                                className="text-3xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 leading-tight px-4"
+                                className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4"
                             >
                                 {language === 'en' 
                                     ? 'AI verification is no longer optional.' 
                                     : 'AI 검증은 더 이상 선택이 아닙니다.'}
                             </MouseGlowText>
                         ) : (
-                            <h3 className="text-3xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 leading-tight px-4 relative">
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 leading-tight px-4 relative">
                                 <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
                                     {language === 'en' 
                                         ? 'AI verification is no longer optional.' 
@@ -959,8 +959,8 @@ export default function Home() {
                                 </span>
                             </h3>
                         )}
-                        <p className={`text-base md:text-lg lg:text-xl max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed font-medium px-4 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
+                        <p className={`text-sm md:text-base max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed font-medium px-4 ${
+                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
                         }`}>
                             {t.opportunity.sub}
                         </p>
@@ -1008,7 +1008,7 @@ export default function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className={`text-xl md:text-2xl lg:text-3xl font-black text-center px-4 leading-tight ${
+                            className={`text-base md:text-lg lg:text-xl font-black text-center px-4 leading-tight ${
                                 theme === 'dark' ? 'text-orange-300' : 'text-orange-700'
                             }`}
                         >
@@ -1046,12 +1046,12 @@ export default function Home() {
                                 <MouseGlowText
                                     as="h3"
                                     glowColor="rgba(239, 68, 68, 0.8)"
-                                    className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight px-4"
+                                    className="text-xl md:text-2xl lg:text-3xl font-black leading-tight px-4"
                                 >
                                     {t.cost.sub}
                                 </MouseGlowText>
                             ) : (
-                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-black leading-tight px-4 relative">
+                                <h3 className="text-xl md:text-2xl lg:text-3xl font-black leading-tight px-4 relative">
                                     <span className="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
                                         {t.cost.sub}
                                     </span>
@@ -1107,7 +1107,7 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <p className={`text-center text-base md:text-lg lg:text-xl font-black italic px-4 ${
+                        <p className={`text-center text-sm md:text-base font-black italic px-4 ${
                             theme === 'dark' ? 'text-red-400' : 'text-red-700'
                         }`}>
                             {t.cost.conclusion}
