@@ -137,28 +137,28 @@ export default function ScrollMotionBackground({ theme = 'dark' }) {
                 animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.5, 0.8, 0.5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className={`absolute top-0 left-0 w-40 h-40 border-l-2 border-t-2 rounded-tl-3xl m-8 ${
-                    theme === 'dark' ? 'border-indigo-400/60' : 'border-white/70'
+                    theme === 'dark' ? 'border-indigo-400/60' : 'border-violet-500/70'
                 }`}
             />
             <motion.div 
                 animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.5, 0.8, 0.5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className={`absolute top-0 right-0 w-40 h-40 border-r-2 border-t-2 rounded-tr-3xl m-8 ${
-                    theme === 'dark' ? 'border-purple-400/60' : 'border-white/70'
+                    theme === 'dark' ? 'border-purple-400/60' : 'border-purple-500/70'
                 }`}
             />
             <motion.div 
                 animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.5, 0.8, 0.5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 className={`absolute bottom-0 left-0 w-40 h-40 border-l-2 border-b-2 rounded-bl-3xl m-8 ${
-                    theme === 'dark' ? 'border-blue-400/60' : 'border-white/70'
+                    theme === 'dark' ? 'border-blue-400/60' : 'border-indigo-500/70'
                 }`}
             />
             <motion.div 
                 animate={{ opacity: theme === 'dark' ? [0.5, 0.8, 0.5] : [0.5, 0.8, 0.5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 }}
                 className={`absolute bottom-0 right-0 w-40 h-40 border-r-2 border-b-2 rounded-br-3xl m-8 ${
-                    theme === 'dark' ? 'border-pink-400/60' : 'border-white/70'
+                    theme === 'dark' ? 'border-pink-400/60' : 'border-pink-500/70'
                 }`}
             />
             
