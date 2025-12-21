@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Zap, RotateCcw, Swords, Crown, Skull } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { useTheme } from '@/components/ThemeContext';
 
 export default function ElememetalDemo() {
+    const { theme } = useTheme();
     const [screen, setScreen] = useState('start'); // start, game
     const [cards, setCards] = useState([
         { id: 1, type: 'fire', power: 3, level: 1 },
@@ -15,11 +17,17 @@ export default function ElememetalDemo() {
     const [message, setMessage] = useState("Merge fire cards to boost power!");
     const [gameState, setGameState] = useState('playing'); // playing, won, lost
 
-    const types = {
-        fire: { color: 'text-orange-500', bg: 'bg-orange-950/40', border: 'border-orange-500/50', icon: '🔥' },
-        water: { color: 'text-blue-500', bg: 'bg-blue-950/40', border: 'border-blue-500/50', icon: '💧' },
-        joker: { color: 'text-purple-500', bg: 'bg-purple-950/40', border: 'border-purple-500/50', icon: '🃏' }
-    };
+    const types = theme === 'dark' 
+        ? {
+            fire: { color: 'text-orange-500', bg: 'bg-orange-950/40', border: 'border-orange-500/50', icon: '🔥' },
+            water: { color: 'text-blue-500', bg: 'bg-blue-950/40', border: 'border-blue-500/50', icon: '💧' },
+            joker: { color: 'text-purple-500', bg: 'bg-purple-950/40', border: 'border-purple-500/50', icon: '🃏' }
+        }
+        : {
+            fire: { color: 'text-orange-600', bg: 'bg-orange-100', border: 'border-orange-400', icon: '🔥' },
+            water: { color: 'text-blue-600', bg: 'bg-blue-100', border: 'border-blue-400', icon: '💧' },
+            joker: { color: 'text-purple-600', bg: 'bg-purple-100', border: 'border-purple-400', icon: '🃏' }
+        };
 
     const mergeCards = (idx1, idx2) => {
         const c1 = cards[idx1];
@@ -86,13 +94,28 @@ export default function ElememetalDemo() {
 
     if (screen === 'start') {
         return (
-            <div className="w-full h-full bg-[#1a0505] relative overflow-hidden flex flex-col items-center justify-center p-6 border border-white/5 rounded-3xl">
+            <div className={`w-full h-full relative overflow-hidden flex flex-col items-center justify-center p-6 border rounded-3xl ${
+                theme === 'dark'
+                    ? 'bg-[#1a0505] border-white/5'
+                    : 'bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 border-neutral-200 shadow-lg'
+            }`}>
                 {/* Abstract Background Shapes */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[60%] bg-[#3d0b0b] rotate-12 transform skew-x-12" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[60%] bg-[#5c1212] -rotate-12 transform skew-y-6" />
-                    <div className="absolute top-[20%] right-[10%] w-4 h-4 bg-orange-500 rounded-full animate-pulse" />
-                    <div className="absolute bottom-[30%] left-[20%] w-3 h-3 bg-yellow-500 rounded-full animate-ping" />
+                    {theme === 'dark' ? (
+                        <>
+                            <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[60%] bg-[#3d0b0b] rotate-12 transform skew-x-12" />
+                            <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[60%] bg-[#5c1212] -rotate-12 transform skew-y-6" />
+                            <div className="absolute top-[20%] right-[10%] w-4 h-4 bg-orange-500 rounded-full animate-pulse" />
+                            <div className="absolute bottom-[30%] left-[20%] w-3 h-3 bg-yellow-500 rounded-full animate-ping" />
+                        </>
+                    ) : (
+                        <>
+                            <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[60%] bg-orange-200/30 rotate-12 transform skew-x-12" />
+                            <div className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[60%] bg-red-200/30 -rotate-12 transform skew-y-6" />
+                            <div className="absolute top-[20%] right-[10%] w-4 h-4 bg-orange-400 rounded-full animate-pulse" />
+                            <div className="absolute bottom-[30%] left-[20%] w-3 h-3 bg-yellow-400 rounded-full animate-ping" />
+                        </>
+                    )}
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center w-full max-w-md">
@@ -102,7 +125,11 @@ export default function ElememetalDemo() {
                         animate={{ y: 0, opacity: 1 }}
                         className="mb-12 text-center"
                     >
-                        <h1 className="text-5xl md:text-7xl font-black text-[#4ade80] tracking-tighter drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] uppercase" style={{ fontFamily: 'monospace' }}>
+                        <h1 className={`text-5xl md:text-7xl font-black tracking-tighter uppercase ${
+                            theme === 'dark'
+                                ? 'text-[#4ade80] drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]'
+                                : 'text-orange-600 drop-shadow-[4px_4px_0px_rgba(0,0,0,0.1)]'
+                        }`} style={{ fontFamily: 'monospace' }}>
                             ELEMEMETAL
                         </h1>
                     </motion.div>
@@ -160,9 +187,15 @@ export default function ElememetalDemo() {
     }
 
     return (
-        <div className="w-full h-full bg-[#050505] p-6 relative overflow-hidden flex flex-col rounded-3xl border border-white/5">
+        <div className={`w-full h-full p-6 relative overflow-hidden flex flex-col rounded-3xl border ${
+            theme === 'dark'
+                ? 'bg-[#050505] border-white/5'
+                : 'bg-gradient-to-br from-orange-50 via-white to-red-50 border-neutral-200 shadow-lg'
+        }`}>
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-[#050505] to-[#050505] pointer-events-none" />
+            {theme === 'dark' && (
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-[#050505] to-[#050505] pointer-events-none" />
+            )}
             
             <div className="relative z-10 flex flex-col h-full justify-between">
                 {/* Header / Stats */}
@@ -177,23 +210,39 @@ export default function ElememetalDemo() {
                             &larr; Exit
                         </Button>
                         <div className="flex flex-col ml-16">
-                            <span className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Total Power</span>
-                            <div className={`text-3xl font-black flex items-center gap-2 ${totalPower >= enemyPower ? 'text-green-500' : 'text-white'}`}>
+                            <span className={`text-xs md:text-sm uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                            }`}>Total Power</span>
+                            <div className={`text-3xl font-black flex items-center gap-2 ${
+                                totalPower >= enemyPower 
+                                    ? 'text-green-500' 
+                                    : (theme === 'dark' ? 'text-white' : 'text-neutral-900')
+                            }`}>
                                 <Swords className="w-6 h-6" /> {totalPower}
-                                <span className="text-sm text-neutral-500 font-normal self-end mb-1">/ {enemyPower} REQUIRED</span>
+                                <span className={`text-sm font-normal self-end mb-1 ${
+                                    theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                }`}>/ {enemyPower} REQUIRED</span>
                             </div>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Bank</span>
-                            <div className="text-3xl font-black text-yellow-500 flex items-center gap-1">
-                                <Zap className="w-5 h-5 fill-yellow-500" /> {bank}
+                            <span className={`text-xs md:text-sm uppercase tracking-widest font-bold ${
+                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                            }`}>Bank</span>
+                            <div className={`text-3xl font-black flex items-center gap-1 ${
+                                theme === 'dark' ? 'text-yellow-500' : 'text-yellow-600'
+                            }`}>
+                                <Zap className={`w-5 h-5 ${theme === 'dark' ? 'fill-yellow-500' : 'fill-yellow-600'}`} /> {bank}
                             </div>
                         </div>
                     </div>
 
                     <div className="text-right">
-                        <div className="text-xs md:text-sm text-neutral-500 uppercase tracking-widest font-bold">Enemy Boss</div>
-                        <div className="text-2xl md:text-3xl font-bold text-red-500 flex items-center justify-end gap-2">
+                        <div className={`text-xs md:text-sm uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                        }`}>Enemy Boss</div>
+                        <div className={`text-2xl md:text-3xl font-bold flex items-center justify-end gap-2 ${
+                            theme === 'dark' ? 'text-red-500' : 'text-red-600'
+                        }`}>
                             {enemyPower} HP <Skull className="w-6 h-6" />
                         </div>
                     </div>
@@ -272,7 +321,11 @@ export default function ElememetalDemo() {
 
                 {/* Footer Controls */}
                 <div className="flex flex-col items-center gap-4">
-                    <div className="bg-white/5 px-4 py-2 rounded-full text-sm text-neutral-300 border border-white/10 animate-pulse">
+                    <div className={`px-4 py-2 rounded-full text-sm border animate-pulse ${
+                        theme === 'dark'
+                            ? 'bg-white/5 text-neutral-300 border-white/10'
+                            : 'bg-white text-neutral-700 border-neutral-300 shadow-md'
+                    }`}>
                         {message}
                     </div>
                     
@@ -289,10 +342,18 @@ export default function ElememetalDemo() {
                             >
                                 ATTACK BOSS
                             </Button>
-                            <Button variant="outline" size="icon" onClick={reset} className="rounded-full border-neutral-700 hover:bg-white/10 text-white">
+                            <Button variant="outline" size="icon" onClick={reset} className={`rounded-full ${
+                                theme === 'dark'
+                                    ? 'border-neutral-700 hover:bg-white/10 text-white'
+                                    : 'border-neutral-300 hover:bg-neutral-100 text-neutral-900'
+                            }`}>
                                 <RotateCcw className="w-4 h-4" />
                             </Button>
-                             <Button variant="ghost" size="sm" onClick={spawnJoker} className="rounded-full text-xs text-purple-400 hover:bg-purple-500/10">
+                             <Button variant="ghost" size="sm" onClick={spawnJoker} className={`rounded-full text-xs ${
+                                 theme === 'dark'
+                                     ? 'text-purple-400 hover:bg-purple-500/10'
+                                     : 'text-purple-600 hover:bg-purple-100'
+                             }`}>
                                 + Joker
                             </Button>
                         </div>

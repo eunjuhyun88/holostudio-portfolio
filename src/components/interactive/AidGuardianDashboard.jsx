@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { useTheme } from '@/components/ThemeContext';
 
 const mockHistory = [
     { 
@@ -76,6 +77,7 @@ const mockHistory = [
 ];
 
 export default function AidGuardianDashboard() {
+    const { theme } = useTheme();
     const [selectedItem, setSelectedItem] = useState(mockHistory[0]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -111,15 +113,27 @@ export default function AidGuardianDashboard() {
     }, [isPlaying]);
 
     return (
-        <div className="w-full h-[800px] bg-[#0A0A0A] text-white flex flex-col rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
+        <div className={`w-full h-[800px] flex flex-col rounded-3xl overflow-hidden border shadow-2xl ${
+            theme === 'dark'
+                ? 'bg-[#0A0A0A] text-white border-white/5'
+                : 'bg-white text-neutral-900 border-neutral-200'
+        }`}>
             {/* Header */}
-            <div className="flex justify-between items-center px-6 md:px-8 py-5 border-b border-white/5 bg-[#0A0A0A]/50 backdrop-blur-md z-20">
-                <div className="flex items-center gap-3 text-indigo-400">
+            <div className={`flex justify-between items-center px-6 md:px-8 py-5 border-b backdrop-blur-md z-20 ${
+                theme === 'dark'
+                    ? 'border-white/5 bg-[#0A0A0A]/50'
+                    : 'border-neutral-200 bg-white/50'
+            }`}>
+                <div className={`flex items-center gap-3 ${
+                    theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                }`}>
                     <Shield className="w-6 h-6" />
                     <span className="font-mono text-base tracking-widest font-bold truncate">AiD GUARDIAN DASHBOARD</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm">
-                     <div className="hidden md:flex items-center gap-2 text-neutral-500">
+                     <div className={`hidden md:flex items-center gap-2 ${
+                         theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                     }`}>
                         <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"/>
                         LIVE MONITORING
                     </div>
@@ -128,18 +142,34 @@ export default function AidGuardianDashboard() {
 
             <div className="flex-1 flex overflow-hidden flex-col md:flex-row">
                 {/* Left Sidebar: History List - Optimized for width */}
-                <div className="w-full md:w-[250px] lg:w-[300px] flex-shrink-0 border-r-0 md:border-r border-b md:border-b-0 border-white/5 bg-[#050505] flex flex-col max-h-[300px] md:max-h-none">
-                    <div className="p-5 border-b border-white/5 space-y-4">
+                <div className={`w-full md:w-[250px] lg:w-[300px] flex-shrink-0 border-r-0 md:border-r border-b md:border-b-0 flex flex-col max-h-[300px] md:max-h-none ${
+                    theme === 'dark'
+                        ? 'border-white/5 bg-[#050505]'
+                        : 'border-neutral-200 bg-neutral-50'
+                }`}>
+                    <div className={`p-5 border-b space-y-4 ${
+                        theme === 'dark' ? 'border-white/5' : 'border-neutral-200'
+                    }`}>
                         <div className="flex justify-between items-center">
-                            <h3 className="text-base font-bold text-white">Analysis History</h3>
-                            <span className="text-xs text-neutral-500 font-mono">{mockHistory.length} RECORDS</span>
+                            <h3 className={`text-base font-bold ${
+                                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                            }`}>Analysis History</h3>
+                            <span className={`text-xs font-mono ${
+                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                            }`}>{mockHistory.length} RECORDS</span>
                         </div>
                         <div className="relative">
-                            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+                            <Search className={`w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 ${
+                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                            }`} />
                             <input 
                                 type="text" 
                                 placeholder="Filter..." 
-                                className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-9 pr-4 text-sm text-neutral-300 placeholder:text-neutral-600 focus:outline-none focus:border-indigo-500/50"
+                                className={`w-full border rounded-full py-2 pl-9 pr-4 text-sm focus:outline-none ${
+                                    theme === 'dark'
+                                        ? 'bg-white/5 border-white/10 text-neutral-300 placeholder:text-neutral-600 focus:border-indigo-500/50'
+                                        : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-blue-500'
+                                }`}
                             />
                         </div>
                     </div>
@@ -149,14 +179,24 @@ export default function AidGuardianDashboard() {
                             <button
                                 key={item.id}
                                 onClick={() => setSelectedItem(item)}
-                                className={`w-full text-left p-4 border-b border-white/5 hover:bg-white/5 transition-colors flex items-start gap-3 group ${
-                                    selectedItem?.id === item.id ? 'bg-indigo-500/5 border-l-2 border-l-indigo-500' : 'border-l-2 border-l-transparent'
+                                className={`w-full text-left p-4 border-b transition-colors flex items-start gap-3 group border-l-2 ${
+                                    theme === 'dark'
+                                        ? (selectedItem?.id === item.id 
+                                            ? 'bg-indigo-500/5 border-l-indigo-500 border-b-white/5 hover:bg-white/5' 
+                                            : 'border-l-transparent border-b-white/5 hover:bg-white/5')
+                                        : (selectedItem?.id === item.id
+                                            ? 'bg-blue-50 border-l-blue-600 border-b-neutral-200 hover:bg-blue-100'
+                                            : 'border-l-transparent border-b-neutral-200 hover:bg-neutral-50')
                                 }`}
                             >
                                 <div className={`mt-0.5 w-2 h-2 rounded-full flex-shrink-0 ${item.status === 'SAFE' ? 'bg-green-500' : 'bg-red-500'}`} />
                                 <div className="flex-1 min-w-0">
                                     <div className="flex justify-between items-start mb-1">
-                                        <span className={`text-xs font-bold truncate ${selectedItem?.id === item.id ? 'text-white' : 'text-neutral-300'}`}>
+                                        <span className={`text-xs font-bold truncate ${
+                                            theme === 'dark'
+                                                ? (selectedItem?.id === item.id ? 'text-white' : 'text-neutral-300')
+                                                : (selectedItem?.id === item.id ? 'text-neutral-900' : 'text-neutral-700')
+                                        }`}>
                                             {item.name}
                                         </span>
                                         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${
@@ -167,10 +207,14 @@ export default function AidGuardianDashboard() {
                                             {item.status}
                                         </span>
                                     </div>
-                                    <div className="text-[10px] text-neutral-500 font-mono mb-1">
+                                    <div className={`text-[10px] font-mono mb-1 ${
+                                        theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                    }`}>
                                         Frames: {item.frames} • {item.category}
                                     </div>
-                                    <div className="text-[10px] text-neutral-600">
+                                    <div className={`text-[10px] ${
+                                        theme === 'dark' ? 'text-neutral-600' : 'text-neutral-500'
+                                    }`}>
                                         {item.date}
                                     </div>
                                 </div>
@@ -180,9 +224,15 @@ export default function AidGuardianDashboard() {
                 </div>
 
                 {/* Right Panel: Detail View */}
-                <div className="flex-1 overflow-y-auto bg-[#080808] relative">
+                <div className={`flex-1 overflow-y-auto relative ${
+                    theme === 'dark' ? 'bg-[#080808]' : 'bg-white'
+                }`}>
                     {/* Background Grid */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+                    <div className={`absolute inset-0 bg-[size:40px_40px] pointer-events-none ${
+                        theme === 'dark'
+                            ? 'bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]'
+                            : 'bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)]'
+                    }`} />
                     
                     {selectedItem ? (
                         <div className="p-6 md:p-8 max-w-5xl mx-auto space-y-6 relative z-10">
@@ -190,18 +240,28 @@ export default function AidGuardianDashboard() {
                             <div className="flex justify-between items-start">
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
-                                        <h2 className="text-2xl font-bold text-white tracking-tight">{selectedItem.name}</h2>
+                                        <h2 className={`text-2xl font-bold tracking-tight ${
+                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                        }`}>{selectedItem.name}</h2>
                                         <span className={`px-2 py-0.5 rounded text-xs font-bold uppercase ${
                                             selectedItem.status === 'SAFE' ? 'bg-green-500 text-black' : 'bg-red-500 text-white'
                                         }`}>
                                             {selectedItem.status}
                                         </span>
-                                        <span className="px-2 py-0.5 rounded text-xs font-bold bg-white/10 text-neutral-400 uppercase">
+                                        <span className={`px-2 py-0.5 rounded text-xs font-bold uppercase ${
+                                            theme === 'dark'
+                                                ? 'bg-white/10 text-neutral-400'
+                                                : 'bg-neutral-100 text-neutral-700'
+                                        }`}>
                                             {selectedItem.category}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-neutral-400 max-w-2xl leading-relaxed">
-                                        AI Analysis: The content was categorized as <span className="text-white font-medium">{selectedItem.category}</span>. 
+                                    <p className={`text-sm max-w-2xl leading-relaxed ${
+                                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
+                                    }`}>
+                                        AI Analysis: The content was categorized as <span className={`font-medium ${
+                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                        }`}>{selectedItem.category}</span>. 
                                         {selectedItem.explanation}
                                     </p>
                                 </div>
@@ -210,15 +270,23 @@ export default function AidGuardianDashboard() {
                             {/* GARM Category Breakdown */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {selectedItem.garm && Object.entries(selectedItem.garm).map(([key, value]) => (
-                                    <div key={key} className="bg-[#111] p-3 rounded-lg border border-white/10">
-                                        <div className="text-[10px] uppercase text-neutral-500 font-bold mb-1">{key}</div>
+                                    <div key={key} className={`p-3 rounded-lg border ${
+                                        theme === 'dark'
+                                            ? 'bg-[#111] border-white/10'
+                                            : 'bg-neutral-50 border-neutral-200'
+                                    }`}>
+                                        <div className={`text-[10px] uppercase font-bold mb-1 ${
+                                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                        }`}>{key}</div>
                                         <div className="flex items-end justify-between">
                                             <span className={`text-xl font-mono font-bold ${value > 50 ? 'text-red-400' : 'text-green-400'}`}>
                                                 {value}%
                                             </span>
                                             <div className={`w-2 h-2 rounded-full ${value > 50 ? 'bg-red-500' : 'bg-green-500'} mb-2`} />
                                         </div>
-                                        <div className="h-1 w-full bg-white/5 rounded-full mt-2 overflow-hidden">
+                                        <div className={`h-1 w-full rounded-full mt-2 overflow-hidden ${
+                                            theme === 'dark' ? 'bg-white/5' : 'bg-neutral-200'
+                                        }`}>
                                             <div className={`h-full ${value > 50 ? 'bg-red-500' : 'bg-green-500'}`} style={{ width: `${value}%` }} />
                                         </div>
                                     </div>
@@ -226,43 +294,63 @@ export default function AidGuardianDashboard() {
                             </div>
 
                             {/* AI Detection Card */}
-                            <div className="bg-[#111] rounded-xl border border-white/10 p-5 shadow-lg">
+                            <div className={`rounded-xl border p-5 shadow-lg ${
+                                theme === 'dark'
+                                    ? 'bg-[#111] border-white/10'
+                                    : 'bg-white border-neutral-200'
+                            }`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <div className="flex items-center gap-2">
-                                        <Scan className="w-4 h-4 text-indigo-400" />
-                                        <span className="text-sm font-bold text-white">AI-Generated Detection</span>
+                                        <Scan className={`w-4 h-4 ${
+                                            theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                        }`} />
+                                        <span className={`text-sm font-bold ${
+                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                        }`}>AI-Generated Detection</span>
                                     </div>
                                     <span className={`text-xs font-bold px-2 py-1 rounded ${
-                                        selectedItem.confidence < 50 ? 'bg-green-500/20 text-green-400' : 'bg-indigo-500/20 text-indigo-400'
+                                        selectedItem.confidence < 50 
+                                            ? 'bg-green-500/20 text-green-400' 
+                                            : (theme === 'dark' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-blue-100 text-blue-700')
                                     }`}>
                                         {selectedItem.confidence < 50 ? 'Likely Real' : 'Likely Generated'}
                                     </span>
                                 </div>
                                 
                                 <div className="space-y-2">
-                                    <div className="flex justify-between text-xs text-neutral-400">
+                                    <div className={`flex justify-between text-xs ${
+                                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                                    }`}>
                                         <span>Model Confidence</span>
-                                        <span className="text-indigo-400 font-mono">{selectedItem.confidence}%</span>
+                                        <span className={`font-mono ${
+                                            theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                        }`}>{selectedItem.confidence}%</span>
                                     </div>
-                                    <div className="h-2 bg-white/5 rounded-full overflow-hidden relative">
+                                    <div className={`h-2 rounded-full overflow-hidden relative ${
+                                        theme === 'dark' ? 'bg-white/5' : 'bg-neutral-200'
+                                    }`}>
                                         <motion.div 
                                             initial={{ width: 0 }}
                                             animate={{ width: `${selectedItem.confidence}%` }}
-                                            className={`h-full rounded-full ${selectedItem.confidence < 50 ? 'bg-green-500' : 'bg-indigo-500'}`}
+                                            className={`h-full rounded-full ${
+                                                selectedItem.confidence < 50 
+                                                    ? 'bg-green-500' 
+                                                    : (theme === 'dark' ? 'bg-indigo-500' : 'bg-blue-600')
+                                            }`}
                                         />
                                     </div>
                                     <div className="flex gap-2 mt-4">
                                         <div className={`flex-1 py-2 text-center rounded border text-xs font-bold transition-colors ${
                                             selectedItem.confidence < 50 
                                             ? 'border-green-500 bg-green-500/10 text-green-400' 
-                                            : 'border-white/10 bg-transparent text-neutral-500'
+                                            : (theme === 'dark' ? 'border-white/10 bg-transparent text-neutral-500' : 'border-neutral-300 bg-white text-neutral-600')
                                         }`}>
                                             Real Video
                                         </div>
                                         <div className={`flex-1 py-2 text-center rounded border text-xs font-bold transition-colors ${
                                             selectedItem.confidence >= 50 
-                                            ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' 
-                                            : 'border-white/10 bg-transparent text-neutral-500'
+                                            ? (theme === 'dark' ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' : 'border-blue-500 bg-blue-100 text-blue-700')
+                                            : (theme === 'dark' ? 'border-white/10 bg-transparent text-neutral-500' : 'border-neutral-300 bg-white text-neutral-600')
                                         }`}>
                                             AI-Generated
                                         </div>
@@ -271,17 +359,27 @@ export default function AidGuardianDashboard() {
                             </div>
 
                             {/* Video Player Placeholder */}
-                            <div className="aspect-video bg-black rounded-xl border border-white/10 relative overflow-hidden group shadow-2xl">
+                            <div className={`aspect-video rounded-xl border relative overflow-hidden group shadow-2xl ${
+                                theme === 'dark'
+                                    ? 'bg-black border-white/10'
+                                    : 'bg-neutral-100 border-neutral-300'
+                            }`}>
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50" />
+                                    {theme === 'dark' && (
+                                        <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50" />
+                                    )}
                                     {selectedItem.status === 'SAFE' ? (
                                         <div className="text-center">
-                                             <ImageIcon className="w-16 h-16 text-neutral-700 mx-auto mb-4" />
-                                             <p className="text-neutral-500 text-sm">Preview Available</p>
+                                             <ImageIcon className={`w-16 h-16 mx-auto mb-4 ${
+                                                 theme === 'dark' ? 'text-neutral-700' : 'text-neutral-400'
+                                             }`} />
+                                             <p className={`text-sm ${
+                                                 theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                             }`}>Preview Available</p>
                                         </div>
                                     ) : (
                                         <div className="text-center">
-                                            <div className="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-red-500/20">
+                                            <div className={`w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-red-500/20`}>
                                                 <AlertTriangle className="w-8 h-8 text-red-500" />
                                             </div>
                                             <p className="text-red-400 font-bold text-sm">Content Hidden (Unsafe)</p>
@@ -330,16 +428,30 @@ export default function AidGuardianDashboard() {
                             </div>
 
                             {/* Timeline Graph */}
-                            <div className="bg-[#111] rounded-xl border border-white/10 p-5">
+                            <div className={`rounded-xl border p-5 ${
+                                theme === 'dark'
+                                    ? 'bg-[#111] border-white/10'
+                                    : 'bg-white border-neutral-200 shadow-md'
+                            }`}>
                                 <div className="flex justify-between items-center mb-6">
                                     <div className="flex items-center gap-2">
                                         <div className={`w-2 h-2 rounded-full ${selectedItem.status === 'SAFE' ? 'bg-green-500' : 'bg-red-500'}`} />
-                                        <span className="text-sm font-bold text-white tracking-wide">SAFETY ANALYSIS</span>
-                                        <span className="text-xs text-neutral-500 ml-2 border border-white/10 px-1.5 py-0.5 rounded">STABLE</span>
+                                        <span className={`text-sm font-bold tracking-wide ${
+                                            theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                        }`}>SAFETY ANALYSIS</span>
+                                        <span className={`text-xs ml-2 border px-1.5 py-0.5 rounded ${
+                                            theme === 'dark'
+                                                ? 'text-neutral-500 border-white/10'
+                                                : 'text-neutral-600 border-neutral-300'
+                                        }`}>STABLE</span>
                                     </div>
                                     <div className="flex gap-2">
                                         {['Unsafe', 'Safe', 'Violence', 'Z-Score'].map(tab => (
-                                            <button key={tab} className="px-2 py-1 text-[10px] uppercase font-bold text-neutral-400 border border-white/10 rounded hover:text-white hover:border-white/30 transition-colors">
+                                            <button key={tab} className={`px-2 py-1 text-[10px] uppercase font-bold border rounded transition-colors ${
+                                                theme === 'dark'
+                                                    ? 'text-neutral-400 border-white/10 hover:text-white hover:border-white/30'
+                                                    : 'text-neutral-600 border-neutral-300 hover:text-neutral-900 hover:border-neutral-400'
+                                            }`}>
                                                 {tab}
                                             </button>
                                         ))}

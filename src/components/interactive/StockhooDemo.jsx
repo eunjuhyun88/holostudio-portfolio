@@ -5,8 +5,10 @@ import { Area, AreaChart, ResponsiveContainer, YAxis, Tooltip, XAxis } from 'rec
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
+import { useTheme } from '@/components/ThemeContext';
 
 export default function StockhooDemo() {
+    const { theme } = useTheme();
     const [data, setData] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showZones, setShowZones] = useState(true);
@@ -79,9 +81,17 @@ export default function StockhooDemo() {
     };
 
     return (
-        <div className="w-full h-full bg-[#050505] p-6 flex flex-col rounded-3xl border border-white/5 relative overflow-hidden">
+        <div className={`w-full h-full p-6 flex flex-col rounded-3xl border relative overflow-hidden ${
+            theme === 'dark'
+                ? 'bg-[#050505] border-white/5'
+                : 'bg-white border-neutral-200 shadow-lg'
+        }`}>
              {/* Background Grid */}
-             <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+             <div className={`absolute inset-0 bg-[size:40px_40px] pointer-events-none ${
+                 theme === 'dark'
+                     ? 'bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)]'
+                     : 'bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)]'
+             }`} />
 
             {/* Top Toolbar */}
             <div className="flex justify-between items-center mb-6 z-10">
@@ -109,7 +119,9 @@ export default function StockhooDemo() {
 
                 <div className="flex items-center gap-2">
                     <div className="hidden md:flex items-center gap-2 mr-4">
-                        <span className="text-sm text-neutral-500 uppercase font-bold">Volatility</span>
+                        <span className={`text-sm uppercase font-bold ${
+                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                        }`}>Volatility</span>
                         <Slider 
                             value={volatility} 
                             onValueChange={setVolatility} 
@@ -123,7 +135,9 @@ export default function StockhooDemo() {
                         className={`h-10 text-sm font-bold rounded-full px-4 transition-all ${
                             isPlaying 
                             ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30' 
-                            : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                            : (theme === 'dark' 
+                                ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                                : 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg')
                         }`}
                     >
                         {isPlaying ? 'STOP SIM' : 'RUN SIMULATION'} <Play className={`w-4 h-4 ml-2 ${isPlaying ? 'hidden' : 'block'}`} />
@@ -131,7 +145,11 @@ export default function StockhooDemo() {
                     <Button
                         onClick={runBacktest}
                         variant="outline"
-                        className="h-10 text-sm font-bold rounded-full px-4 border-white/10 text-neutral-400 hover:text-white hover:bg-white/5"
+                        className={`h-10 text-sm font-bold rounded-full px-4 ${
+                            theme === 'dark'
+                                ? 'border-white/10 text-neutral-400 hover:text-white hover:bg-white/5'
+                                : 'border-neutral-300 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100'
+                        }`}
                         disabled={isPlaying || isBacktesting}
                     >
                         {isBacktesting ? 'TESTING...' : 'BACKTEST'}
@@ -140,13 +158,17 @@ export default function StockhooDemo() {
             </div>
 
             {/* Main Chart Area */}
-            <div className="flex-1 relative rounded-xl border border-white/5 bg-black/40 overflow-hidden backdrop-blur-sm">
+            <div className={`flex-1 relative rounded-xl border overflow-hidden backdrop-blur-sm ${
+                theme === 'dark'
+                    ? 'border-white/5 bg-black/40'
+                    : 'border-neutral-200 bg-neutral-50'
+            }`}>
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={data}>
                         <defs>
                             <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.2}/>
-                                <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                                <stop offset="5%" stopColor={theme === 'dark' ? "#10b981" : "#059669"} stopOpacity={theme === 'dark' ? 0.2 : 0.3}/>
+                                <stop offset="95%" stopColor={theme === 'dark' ? "#10b981" : "#059669"} stopOpacity={0}/>
                             </linearGradient>
                         </defs>
                         <YAxis 
@@ -156,7 +178,7 @@ export default function StockhooDemo() {
                         <Area 
                             type="monotone" 
                             dataKey="price" 
-                            stroke="#10b981" 
+                            stroke={theme === 'dark' ? "#10b981" : "#059669"} 
                             strokeWidth={2}
                             fill="url(#colorPrice)" 
                             isAnimationActive={false}
@@ -259,25 +281,51 @@ export default function StockhooDemo() {
             
             {/* Bottom Metrics */}
             <div className="mt-4 grid grid-cols-4 gap-4">
-                <div className="bg-white/5 rounded-lg p-2 border border-white/5 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase font-bold">
+                <div className={`rounded-lg p-2 border flex items-center justify-between ${
+                    theme === 'dark'
+                        ? 'bg-white/5 border-white/5'
+                        : 'bg-neutral-50 border-neutral-200'
+                }`}>
+                    <div className={`flex items-center gap-2 text-[10px] uppercase font-bold ${
+                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
                         <Activity className="w-3 h-3" /> 24h Volatility
                     </div>
-                    <span className="text-xs font-mono text-white">{(volatility[0] * 0.12).toFixed(2)}%</span>
+                    <span className={`text-xs font-mono ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>{(volatility[0] * 0.12).toFixed(2)}%</span>
                 </div>
-                <div className="bg-white/5 rounded-lg p-2 border border-white/5 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase font-bold">
+                <div className={`rounded-lg p-2 border flex items-center justify-between ${
+                    theme === 'dark'
+                        ? 'bg-white/5 border-white/5'
+                        : 'bg-neutral-50 border-neutral-200'
+                }`}>
+                    <div className={`flex items-center gap-2 text-[10px] uppercase font-bold ${
+                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
                         <BarChart2 className="w-3 h-3" /> Open Interest
                     </div>
-                    <span className="text-xs font-mono text-white">$24.5B</span>
+                    <span className={`text-xs font-mono ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>$24.5B</span>
                 </div>
-                <div className="bg-white/5 rounded-lg p-2 border border-white/5 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase font-bold">
+                <div className={`rounded-lg p-2 border flex items-center justify-between ${
+                    theme === 'dark'
+                        ? 'bg-white/5 border-white/5'
+                        : 'bg-neutral-50 border-neutral-200'
+                }`}>
+                    <div className={`flex items-center gap-2 text-[10px] uppercase font-bold ${
+                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
                         <Zap className="w-3 h-3" /> Funding Rate
                     </div>
                     <span className="text-xs font-mono text-emerald-400">0.0104%</span>
                 </div>
-                 <div className="bg-emerald-500/10 rounded-lg p-2 border border-emerald-500/20 flex items-center justify-center text-xs font-bold text-emerald-400 animate-pulse">
+                 <div className={`rounded-lg p-2 border flex items-center justify-center text-xs font-bold animate-pulse ${
+                     theme === 'dark'
+                         ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                         : 'bg-emerald-100 border-emerald-400 text-emerald-700'
+                 }`}>
                     AI AGENT ACTIVE
                 </div>
             </div>

@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useTheme } from '@/components/ThemeContext';
 
 export default function AidGuardianScanner() {
+    const { theme } = useTheme();
     const [scanning, setScanning] = useState(false);
     const [result, setResult] = useState(null);
     const [activeSample, setActiveSample] = useState(0);
@@ -127,13 +129,23 @@ export default function AidGuardianScanner() {
     }, [activeSample, result, scanning]);
 
     return (
-        <div className="w-full h-full bg-[#0A0A0A] text-white p-6 md:p-8 flex flex-col rounded-3xl overflow-hidden border border-white/5">
-            <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
-                <div className="flex items-center gap-3 text-indigo-400">
+        <div className={`w-full h-full p-6 md:p-8 flex flex-col rounded-3xl overflow-hidden border ${
+            theme === 'dark'
+                ? 'bg-[#0A0A0A] text-white border-white/5'
+                : 'bg-white text-neutral-900 border-neutral-200 shadow-lg'
+        }`}>
+            <div className={`flex justify-between items-center mb-8 border-b pb-6 ${
+                theme === 'dark' ? 'border-white/5' : 'border-neutral-200'
+            }`}>
+                <div className={`flex items-center gap-3 ${
+                    theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                }`}>
                     <Shield className="w-6 h-6" />
                     <span className="font-mono text-lg tracking-widest font-bold">AiD GUARDIAN CORE v2.0</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-neutral-500 font-bold">
+                <div className={`flex items-center gap-2 text-sm font-bold ${
+                    theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                }`}>
                     <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"/>
                     SYSTEM ACTIVE
                 </div>
@@ -143,13 +155,21 @@ export default function AidGuardianScanner() {
                 {/* Controls Sidebar */}
                 <div className="lg:col-span-4 space-y-8">
                     <div className="space-y-4">
-                        <Label className="text-sm text-neutral-400 uppercase tracking-widest font-bold">Detection Parameters</Label>
+                        <Label className={`text-sm uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                        }`}>Detection Parameters</Label>
                         
-                        <div className="bg-white/5 p-6 rounded-2xl space-y-6 border border-white/5">
+                        <div className={`p-6 rounded-2xl space-y-6 border ${
+                            theme === 'dark'
+                                ? 'bg-white/5 border-white/5'
+                                : 'bg-neutral-50 border-neutral-200'
+                        }`}>
                             <div className="space-y-3">
                                 <div className="flex justify-between text-sm font-medium">
-                                    <span className="text-neutral-300">Sensitivity Threshold</span>
-                                    <span className="text-indigo-400 font-mono font-bold">{sensitivity[0]}%</span>
+                                    <span className={theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}>Sensitivity Threshold</span>
+                                    <span className={`font-mono font-bold ${
+                                        theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                    }`}>{sensitivity[0]}%</span>
                                 </div>
                                 <Slider 
                                     value={sensitivity} 
@@ -161,7 +181,9 @@ export default function AidGuardianScanner() {
                             </div>
 
                             <div className="flex items-center justify-between">
-                                <Label htmlFor="strict-mode" className="text-sm font-medium text-neutral-300">Strict Compliance Mode</Label>
+                                <Label htmlFor="strict-mode" className={`text-sm font-medium ${
+                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                }`}>Strict Compliance Mode</Label>
                                 <Switch 
                                     id="strict-mode" 
                                     checked={strictMode} 
@@ -172,26 +194,44 @@ export default function AidGuardianScanner() {
                     </div>
 
                     <div className="space-y-4">
-                        <Label className="text-sm text-neutral-400 uppercase tracking-widest font-bold">Input Source</Label>
+                        <Label className={`text-sm uppercase tracking-widest font-bold ${
+                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                        }`}>Input Source</Label>
                         <div className="grid grid-cols-1 gap-3">
                             {samples.map((s) => (
                                 <button
                                     key={s.id}
                                     onClick={() => runScan(s.id)}
                                     className={`text-left px-4 py-3 rounded-xl border transition-all flex items-center gap-3 group ${
-                                        activeSample === s.id 
-                                        ? 'bg-indigo-500/10 border-indigo-500/50' 
-                                        : 'bg-black/20 border-white/5 hover:bg-white/5'
+                                        theme === 'dark'
+                                            ? (activeSample === s.id 
+                                                ? 'bg-indigo-500/10 border-indigo-500/50' 
+                                                : 'bg-black/20 border-white/5 hover:bg-white/5')
+                                            : (activeSample === s.id
+                                                ? 'bg-blue-50 border-blue-300'
+                                                : 'bg-white border-neutral-200 hover:shadow-md')
                                     }`}
                                 >
-                                    <div className={`p-2 rounded-lg ${activeSample === s.id ? 'bg-indigo-500/20 text-indigo-300' : 'bg-white/5 text-neutral-400 group-hover:text-white'}`}>
+                                    <div className={`p-2 rounded-lg ${
+                                        theme === 'dark'
+                                            ? (activeSample === s.id ? 'bg-indigo-500/20 text-indigo-300' : 'bg-white/5 text-neutral-400 group-hover:text-white')
+                                            : (activeSample === s.id ? 'bg-blue-100 text-blue-600' : 'bg-neutral-100 text-neutral-600')
+                                    }`}>
                                         <s.icon className="w-4 h-4" />
                                     </div>
                                     <div>
-                                        <div className={`text-sm font-medium ${activeSample === s.id ? 'text-white' : 'text-neutral-300'}`}>{s.name}</div>
-                                        <div className="text-[10px] text-neutral-500">{s.type}</div>
+                                        <div className={`text-sm font-medium ${
+                                            theme === 'dark'
+                                                ? (activeSample === s.id ? 'text-white' : 'text-neutral-300')
+                                                : (activeSample === s.id ? 'text-neutral-900' : 'text-neutral-700')
+                                        }`}>{s.name}</div>
+                                        <div className={`text-[10px] ${
+                                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
+                                        }`}>{s.type}</div>
                                     </div>
-                                    {activeSample === s.id && <div className="ml-auto w-2 h-2 rounded-full bg-indigo-500" />}
+                                    {activeSample === s.id && <div className={`ml-auto w-2 h-2 rounded-full ${
+                                        theme === 'dark' ? 'bg-indigo-500' : 'bg-blue-600'
+                                    }`} />}
                                 </button>
                             ))}
                         </div>
@@ -200,7 +240,11 @@ export default function AidGuardianScanner() {
 
                 {/* Main Visualizer */}
                 <div className="lg:col-span-8 flex flex-col gap-6">
-                    <div className="flex-1 bg-black/40 rounded-2xl border border-white/5 relative overflow-hidden flex items-center justify-center min-h-[300px]">
+                    <div className={`flex-1 rounded-2xl border relative overflow-hidden flex items-center justify-center min-h-[300px] ${
+                        theme === 'dark'
+                            ? 'bg-black/40 border-white/5'
+                            : 'bg-neutral-50 border-neutral-200'
+                    }`}>
                         <AnimatePresence mode="wait">
                             {scanning ? (
                                 <motion.div
@@ -211,13 +255,23 @@ export default function AidGuardianScanner() {
                                     className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-10"
                                 >
                                     <div className="relative">
-                                        <div className="w-24 h-24 rounded-full border-2 border-indigo-500/30 animate-[spin_3s_linear_infinite]" />
-                                        <div className="w-16 h-16 rounded-full border-2 border-indigo-400 border-t-transparent animate-[spin_1.5s_linear_infinite] absolute top-4 left-4" />
-                                        <Shield className="w-8 h-8 text-indigo-500 absolute top-8 left-8 animate-pulse" />
+                                        <div className={`w-24 h-24 rounded-full border-2 animate-[spin_3s_linear_infinite] ${
+                                            theme === 'dark' ? 'border-indigo-500/30' : 'border-blue-300'
+                                        }`} />
+                                        <div className={`w-16 h-16 rounded-full border-2 border-t-transparent animate-[spin_1.5s_linear_infinite] absolute top-4 left-4 ${
+                                            theme === 'dark' ? 'border-indigo-400' : 'border-blue-600'
+                                        }`} />
+                                        <Shield className={`w-8 h-8 absolute top-8 left-8 animate-pulse ${
+                                            theme === 'dark' ? 'text-indigo-500' : 'text-blue-600'
+                                        }`} />
                                     </div>
                                     <div className="flex flex-col items-center gap-1">
-                                            <div className="text-sm font-mono text-indigo-400 tracking-widest">ANALYZING CONTENT</div>
-                                            <div className="text-xs text-neutral-500">Applying Policy Filters...</div>
+                                            <div className={`text-sm font-mono tracking-widest ${
+                                                theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                            }`}>ANALYZING CONTENT</div>
+                                            <div className={`text-xs ${
+                                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                            }`}>Applying Policy Filters...</div>
                                         </div>
 
                                         {/* Type Specific Visuals */}
@@ -235,15 +289,23 @@ export default function AidGuardianScanner() {
                                         )}
 
                                         <motion.div 
-                                            className="absolute inset-0 bg-indigo-500/5"
+                                            className={`absolute inset-0 ${
+                                                theme === 'dark' ? 'bg-indigo-500/5' : 'bg-blue-500/5'
+                                            }`}
                                             animate={{ 
-                                                background: ["rgba(99, 102, 241, 0.02)", "rgba(99, 102, 241, 0.1)", "rgba(99, 102, 241, 0.02)"] 
+                                                background: theme === 'dark'
+                                                    ? ["rgba(99, 102, 241, 0.02)", "rgba(99, 102, 241, 0.1)", "rgba(99, 102, 241, 0.02)"]
+                                                    : ["rgba(37, 99, 235, 0.02)", "rgba(37, 99, 235, 0.1)", "rgba(37, 99, 235, 0.02)"]
                                             }}
                                             transition={{ repeat: Infinity, duration: 1.5 }}
                                         />
                                         {/* Scanning Lines */}
                                         <motion.div 
-                                            className="absolute top-0 left-0 right-0 h-1 bg-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.5)]"
+                                            className={`absolute top-0 left-0 right-0 h-1 ${
+                                                theme === 'dark'
+                                                    ? 'bg-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.5)]'
+                                                    : 'bg-blue-600/50 shadow-[0_0_20px_rgba(37,99,235,0.5)]'
+                                            }`}
                                             animate={{ top: ["0%", "100%", "0%"] }}
                                             transition={{ duration: 2, ease: "linear", repeat: Infinity }}
                                         />
@@ -262,7 +324,9 @@ export default function AidGuardianScanner() {
                                             }`}>
                                                 {result.score}
                                             </div>
-                                            <div className="text-xs text-neutral-500 uppercase tracking-widest font-bold">Safety Score</div>
+                                            <div className={`text-xs uppercase tracking-widest font-bold ${
+                                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                            }`}>Safety Score</div>
                                         </div>
                                         <div className={`px-4 py-2 rounded-full border ${
                                             result.risk === 'Low' ? 'border-green-500/30 bg-green-500/10 text-green-400' : 
@@ -277,15 +341,21 @@ export default function AidGuardianScanner() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <div className="text-xs text-neutral-500 uppercase tracking-wider font-bold mb-2">GARM Risk Breakdown</div>
+                                        <div className={`text-xs uppercase tracking-wider font-bold mb-2 ${
+                                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                        }`}>GARM Risk Breakdown</div>
                                         <div className="grid grid-cols-2 gap-x-4 gap-y-3">
                                             {Object.entries(result.details).map(([key, val], i) => (
                                                 <div key={key} className="space-y-1">
                                                     <div className="flex justify-between text-[10px]">
-                                                        <span className="text-neutral-300 capitalize truncate pr-2">{key}</span>
-                                                        <span className={`font-mono ${val > 50 ? 'text-red-400' : 'text-neutral-500'}`}>{Math.round(val)}%</span>
+                                                        <span className={`capitalize truncate pr-2 ${
+                                                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                                        }`}>{key}</span>
+                                                        <span className={`font-mono ${val > 50 ? 'text-red-400' : (theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600')}`}>{Math.round(val)}%</span>
                                                     </div>
-                                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                                    <div className={`h-1 rounded-full overflow-hidden ${
+                                                        theme === 'dark' ? 'bg-white/10' : 'bg-neutral-200'
+                                                    }`}>
                                                         <motion.div 
                                                             initial={{ width: 0 }}
                                                             animate={{ width: `${val}%` }}
@@ -299,33 +369,55 @@ export default function AidGuardianScanner() {
                                     </div>
 
                                     {result.explanation && (
-                                        <div className="mt-4 p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                                            <div className="flex items-center gap-2 mb-1 text-indigo-400">
+                                        <div className={`mt-4 p-3 border rounded-lg ${
+                                            theme === 'dark'
+                                                ? 'bg-indigo-500/10 border-indigo-500/20'
+                                                : 'bg-blue-50 border-blue-200'
+                                        }`}>
+                                            <div className={`flex items-center gap-2 mb-1 ${
+                                                theme === 'dark' ? 'text-indigo-400' : 'text-blue-600'
+                                            }`}>
                                                 <Info className="w-3 h-3" />
                                                 <span className="text-[10px] font-bold uppercase">Explainability Engine</span>
                                             </div>
-                                            <p className="text-xs text-indigo-100 leading-relaxed">
+                                            <p className={`text-xs leading-relaxed ${
+                                                theme === 'dark' ? 'text-indigo-100' : 'text-blue-900'
+                                            }`}>
                                                 {result.explanation}
                                             </p>
                                         </div>
                                     )}
 
-                                    <div className="pt-4 border-t border-white/5 text-xs text-neutral-500 font-mono">
+                                    <div className={`pt-4 border-t text-xs font-mono ${
+                                        theme === 'dark' ? 'border-white/5 text-neutral-500' : 'border-neutral-200 text-neutral-600'
+                                    }`}>
                                         Analysis ID: {Math.random().toString(36).substr(2, 9).toUpperCase()} • {result.type}
                                     </div>
                                 </motion.div>
                             ) : (
                                 <div className="text-center space-y-4">
-                                    <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto border border-white/10">
-                                        <Scan className="w-6 h-6 text-neutral-500" />
+                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto border ${
+                                        theme === 'dark'
+                                            ? 'bg-white/5 border-white/10'
+                                            : 'bg-neutral-100 border-neutral-300'
+                                    }`}>
+                                        <Scan className={`w-6 h-6 ${
+                                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                        }`} />
                                     </div>
-                                    <div className="text-neutral-500 text-sm">Select an input source to begin analysis</div>
+                                    <div className={`text-sm ${
+                                        theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
+                                    }`}>Select an input source to begin analysis</div>
                                 </div>
                             )}
                         </AnimatePresence>
 
                         {/* Grid Background */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+                        <div className={`absolute inset-0 bg-[size:40px_40px] pointer-events-none ${
+                            theme === 'dark'
+                                ? 'bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]'
+                                : 'bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)]'
+                        }`} />
                     </div>
                 </div>
             </div>
