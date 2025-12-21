@@ -11,7 +11,7 @@ export default function AidGuardian() {
         en: {
             tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">The Security Standard</span></span>,
             primaryButtonText: "Launch Dashboard",
-            oneLiner: "The absolute barrier against toxic AI content. Multi-modal verification at scale.",
+            oneLiner: <span className="font-bold text-blue-600">The absolute barrier against toxic AI content. Multi-modal verification at scale.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
@@ -152,7 +152,7 @@ export default function AidGuardian() {
         ko: {
             tag: <span className="font-bold"><span className="text-blue-600">Trust Layer: Safety</span> | <span className="text-blue-500">콘텐츠 안전성의 기준</span></span>,
             primaryButtonText: "대시보드 실행",
-            oneLiner: "유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.",
+            oneLiner: <span className="font-bold text-blue-600">유해 AI 콘텐츠에 대한 절대적인 방어벽. 멀티모달 검증의 표준입니다.</span>,
             story: (
                 <>
                     <p className="mb-6 text-lg md:text-xl leading-relaxed text-neutral-300">
