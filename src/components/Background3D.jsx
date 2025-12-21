@@ -25,10 +25,10 @@ export default function Background3D({ theme = 'dark' }) {
         
         // Visible particles in light mode
         const material = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0x818cf8 : 0xa78bfa,
-            size: theme === 'dark' ? 0.1 : 0.12,
+            color: theme === 'dark' ? 0x818cf8 : 0xffffff,
+            size: theme === 'dark' ? 0.1 : 0.15,
             transparent: true,
-            opacity: theme === 'dark' ? 0.9 : 0.35,
+            opacity: theme === 'dark' ? 0.9 : 0.65,
             sizeAttenuation: true,
         });
 
@@ -49,10 +49,10 @@ export default function Background3D({ theme = 'dark' }) {
         // Visible core in light mode
         const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
         const coreMaterial = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xffffff : 0xc4b5fd,
-            size: theme === 'dark' ? 0.05 : 0.08,
+            color: theme === 'dark' ? 0xffffff : 0xffffff,
+            size: theme === 'dark' ? 0.05 : 0.12,
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.25,
+            opacity: theme === 'dark' ? 0.6 : 0.5,
         });
         const corePoints = new THREE.Points(coreGeometry, coreMaterial);
         scene.add(corePoints);
@@ -116,10 +116,10 @@ export default function Background3D({ theme = 'dark' }) {
         dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
 
         const dustMat = new THREE.PointsMaterial({
-            color: theme === 'dark' ? 0xa5b4fc : 0xc4b5fd,
-            size: theme === 'dark' ? 0.08 : 0.07, 
+            color: theme === 'dark' ? 0xa5b4fc : 0xffffff,
+            size: theme === 'dark' ? 0.08 : 0.1, 
             transparent: true,
-            opacity: theme === 'dark' ? 0.6 : 0.2,
+            opacity: theme === 'dark' ? 0.6 : 0.4,
             blending: THREE.AdditiveBlending
         });
         const dustSystem = new THREE.Points(dustGeo, dustMat);
@@ -152,16 +152,16 @@ export default function Background3D({ theme = 'dark' }) {
                     dustMat.color.setHex(0xc7d2fe);
                     dustMat.opacity = 0.8;
                 } else {
-                    dustMat.color.setHex(0xc4b5fd);
-                    dustMat.opacity = 0.3;
+                    dustMat.color.setHex(0xffffff);
+                    dustMat.opacity = 0.6;
                 }
             } else {
                 if (theme === 'dark') {
                     dustMat.color.setHex(0xa5b4fc);
                     dustMat.opacity = 0.6;
                 } else {
-                    dustMat.color.setHex(0xddd6fe);
-                    dustMat.opacity = 0.2;
+                    dustMat.color.setHex(0xffffff);
+                    dustMat.opacity = 0.4;
                 }
             }
 
