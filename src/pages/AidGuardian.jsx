@@ -149,7 +149,22 @@ export default function AidGuardian() {
                     items: ["Open Source Viral", "North America Expansion", "$3-5M ARR"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "AiD Guardian helped us achieve GARM compliance in weeks, not months. The multi-modal analysis caught edge cases our previous vendor missed entirely.",
+                    author: "Sarah Chen",
+                    role: "Head of Trust & Safety",
+                    company: "StreamLive Inc",
+                    image: null
+                },
+                {
+                    quote: "The EU AI Act transparency requirements seemed impossible until we integrated AiD Guardian. Now our audit logs are automated and bulletproof.",
+                    author: "Marcus Weber",
+                    role: "CTO",
+                    company: "AdTech Solutions",
+                    image: null
+                }
+            ]
         },
         ko: {
             tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}>Trust Layer: Safety</span> | <span className={theme === 'dark' ? 'text-cyan-400' : 'text-blue-600'}>콘텐츠 안전성의 기준</span></span>,

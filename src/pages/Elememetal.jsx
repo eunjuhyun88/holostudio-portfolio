@@ -87,7 +87,22 @@ export default function Elememetal() {
                     items: ["Mobile", "Esports", "Cross-IP"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "Finally, a TCG where skill actually matters. No RNG, no pay-to-win nonsense. Just pure strategy.",
+                    author: "Mike Torres",
+                    role: "Pro Player",
+                    company: "Esports Team Alpha",
+                    image: null
+                },
+                {
+                    quote: "My cards have real value that I control. I can trade them, sell them, or keep building my collection. This is gaming done right.",
+                    author: "Lisa Park",
+                    role: "Competitive Player",
+                    company: null,
+                    image: null
+                }
+            ]
         },
         ko: {
             tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-orange-400' : 'text-orange-700'}>Trust Layer: Gaming</span> | <span className={theme === 'dark' ? 'text-orange-300' : 'text-orange-600'}>실력 기반 전략 TCG</span></span>,

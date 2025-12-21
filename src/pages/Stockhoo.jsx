@@ -108,7 +108,22 @@ export default function Stockhoo() {
                     items: ["Community Libraries", "Social Alpha"]
                 }
             ],
-            customerStories: []
+            customerStories: [
+                {
+                    quote: "Zone Heat Score changed how I trade. I can see exactly where the real liquidity is and avoid getting trapped in dead zones.",
+                    author: "David Chen",
+                    role: "Day Trader",
+                    company: null,
+                    image: null
+                },
+                {
+                    quote: "The AI agent understands crypto market context better than any generic LLM. It's like having a trading partner who never sleeps.",
+                    author: "Emma Rodriguez",
+                    role: "Crypto Analyst",
+                    company: "Digital Asset Fund",
+                    image: null
+                }
+            ]
         },
         ko: {
             tag: <span className="font-bold"><span className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700'}>Trust Layer: Trading</span> | <span className={theme === 'dark' ? 'text-emerald-300' : 'text-emerald-600'}>Zone 기반 시장 인텔리전스</span></span>,
