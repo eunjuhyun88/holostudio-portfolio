@@ -73,7 +73,7 @@ export default function Home() {
             },
             proof: {
                 title: "Proof It Works",
-                sub: "아이디어를 넘어선 현실. 이 인프라는 이미 가동 중입니다.",
+                sub: "Beyond ideas. This infrastructure is already operational.",
                 footer: "Deployed, benchmarked, and production-ready.",
                 metrics: {
                     year: { val: "88.89%", label: "AI-generated content detection accuracy" },
@@ -289,10 +289,11 @@ export default function Home() {
                 title: "검증",
                 sub: "입증된 트랙션. 업계 검증.",
                 items: [
-                    { title: "Seedify AI Hackathon", desc: "1st Place" },
-                    { title: "NVIDIA Inception", desc: "Official Member" },
-                    { title: "Google Cloud", desc: "Ecosystem Partner" },
-                    { title: "Alchemy · Arbitrum · Story", desc: "Major Grants" }
+                    { title: "Seedify AI Hackathon", desc: "1등" },
+                    { title: "NVIDIA Inception", desc: "공식 멤버" },
+                    { title: "Google Cloud", desc: "에코시스템 파트너" },
+                    { title: "글로벌 액셀러레이터", desc: "AppWorks · OnePiece Labs" },
+                    { title: "주요 그랜트", desc: "Alchemy · Story Protocol" }
                 ]
             },
             diagram: {
