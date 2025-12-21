@@ -1434,52 +1434,65 @@ export default function Home() {
                     <FadeInSection direction="up" className="mb-16 text-center max-w-4xl mx-auto">
                         <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                        }`}>{t.milestones.title}</h2>
+                        }`}>
+                            {theme === 'dark' ? (
+                                <GlitchText glitchIntensity="low">{t.milestones.title}</GlitchText>
+                            ) : (
+                                t.milestones.title
+                            )}
+                        </h2>
                         <p className={`text-lg md:text-xl font-medium ${
                             theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
                         }`}>{t.milestones.sub}</p>
                     </FadeInSection>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-                        {milestones.map((m, idx) => (
-                            <FadeInSection
-                                key={idx}
-                                delay={idx * 0.1}
-                                direction="up"
-                                className={`p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 ${
-                                    theme === 'dark'
-                                        ? 'bg-white/5 backdrop-blur-sm border-neutral-800 hover:border-indigo-500/30 relative overflow-hidden'
-                                        : 'bg-white border-neutral-200 hover:shadow-lg shadow-sm'
-                                }`}
-                            >
-                                {/* Sci-Fi Corners - Only dark mode */}
-                                {theme === 'dark' && (
-                                    <>
-                                        <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-white/10 group-hover:border-indigo-500 transition-colors" />
-                                    </>
-                                )}
-                                
-                                <Floating delay={idx * 0.1} offset={6} className="absolute top-0 right-0">
-                                    <div className={`p-3 opacity-20 group-hover:opacity-100 transition-opacity`}>
-                                        <m.icon className={`w-12 h-12 ${m.color}`} />
+                        {milestones.map((m, idx) => {
+                            const iconColorMap = {
+                                'text-yellow-400': 'cyan',
+                                'text-blue-400': 'blue',
+                                'text-slate-300': 'indigo',
+                                'text-purple-400': 'purple'
+                            };
+                            
+                            return theme === 'dark' ? (
+                                <SciFiCard
+                                    key={idx}
+                                    glowColor={iconColorMap[m.color] || 'indigo'}
+                                    animated={true}
+                                    cornerSize="w-3 h-3"
+                                >
+                                    <div className="p-8">
+                                        <Floating delay={idx * 0.2} offset={8}>
+                                            <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6 border border-white/10`}>
+                                                <m.icon className={`w-6 h-6 ${m.color}`} />
+                                            </div>
+                                        </Floating>
+                                        <div>
+                                            <div className="text-lg font-black mb-2 leading-tight text-white">{m.title}</div>
+                                            <div className="text-sm font-medium text-neutral-200">{m.desc}</div>
+                                        </div>
                                     </div>
-                                </Floating>
-                                <Floating delay={idx * 0.2 + 0.5} offset={8}>
-                                    <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
-                                        <m.icon className={`w-6 h-6 ${m.color}`} />
+                                </SciFiCard>
+                            ) : (
+                                <FadeInSection
+                                    key={idx}
+                                    delay={idx * 0.1}
+                                    direction="up"
+                                    className="p-8 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 bg-white border-neutral-200 hover:shadow-lg shadow-sm"
+                                >
+                                    <Floating delay={idx * 0.2 + 0.5} offset={8}>
+                                        <div className={`w-12 h-12 rounded-lg ${m.bg} flex items-center justify-center mb-6`}>
+                                            <m.icon className={`w-6 h-6 ${m.color}`} />
+                                        </div>
+                                    </Floating>
+                                    <div>
+                                        <div className="text-lg font-black mb-2 leading-tight text-neutral-900">{m.title}</div>
+                                        <div className="text-sm font-medium text-neutral-700">{m.desc}</div>
                                     </div>
-                                </Floating>
-                                <div>
-                                    <div className={`text-lg font-black mb-2 leading-tight ${
-                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                                    }`}>{m.title}</div>
-                                    <div className={`text-sm font-medium transition-colors ${
-                                        theme === 'dark' ? 'text-neutral-200' : 'text-neutral-700'
-                                    }`}>{m.desc}</div>
-                                </div>
-                            </FadeInSection>
-                        ))}
+                                </FadeInSection>
+                            );
+                        })}
                     </div>
 
 
