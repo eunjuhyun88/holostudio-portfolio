@@ -720,7 +720,7 @@ export default function Home() {
             {/* Scrollable Content Overlay */}
             <div className="relative z-30 -mt-[100vh]">
                 {/* Hero Section */}
-                <section ref={heroRef} className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 lg:px-12 py-20 md:py-24">
+                <section ref={heroRef} className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-20 md:py-24">
                     <div className="max-w-5xl mx-auto text-center w-full">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -812,7 +812,7 @@ export default function Home() {
                 </section>
 
                 {/* What We Do Section */}
-                <section className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-50/50 border-neutral-300/30'
                 }`}>
                     <div className="max-w-4xl mx-auto w-full">
@@ -845,7 +845,8 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-4 md:gap-5 mb-16 md:mb-20">
+                        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 mb-16 md:mb-20">
+                            <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-5 min-w-max md:min-w-0">
                             {t.whatWeDo.problems.map((problem, idx) => (
                                 <motion.div
                                     key={idx}
@@ -854,17 +855,18 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -4 }}
-                                    className={`p-4 md:p-6 rounded-xl md:rounded-2xl border transition-all duration-300 ${
+                                    className={`p-4 md:p-6 rounded-xl md:rounded-2xl border transition-all duration-300 flex-shrink-0 w-72 md:w-auto ${
                                         theme === 'dark'
                                             ? 'bg-black/50 border-red-500/30 hover:border-red-500/50 hover:bg-black/60 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)]'
                                             : 'bg-white border-red-200 hover:border-red-300 hover:shadow-lg'
                                     }`}
                                 >
-                                    <p className={`text-sm md:text-base font-bold leading-relaxed ${
+                                    <p className={`text-sm md:text-base font-bold leading-relaxed break-keep ${
                                         theme === 'dark' ? 'text-red-400' : 'text-red-700'
                                     }`}>{problem}</p>
                                 </motion.div>
                             ))}
+                            </div>
                         </div>
 
                         <div className="text-center space-y-6 md:space-y-8 px-4">
@@ -893,7 +895,7 @@ export default function Home() {
                 </section>
 
                 {/* Proof It Works Section */}
-                <section ref={proofRef} className={`min-h-screen flex flex-col items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={proofRef} className={`min-h-screen flex flex-col items-center justify-center border-y px-4 sm:px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}>
                     <div className="max-w-6xl mx-auto w-full">
@@ -926,7 +928,8 @@ export default function Home() {
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-20 text-center">
+                        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 mb-16 md:mb-20">
+                            <div className="flex md:grid md:grid-cols-4 gap-4 md:gap-6 text-center min-w-max md:min-w-0">
                             {Object.values(t.proof.metrics).map((stat, idx) => (
                                 <motion.div 
                                     key={idx}
@@ -935,13 +938,13 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
                                     whileHover={{ scale: 1.03, y: -4 }}
-                                    className={`p-4 md:p-6 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
+                                    className={`p-4 md:p-6 rounded-2xl md:rounded-3xl border transition-all duration-300 flex-shrink-0 w-40 md:w-auto ${
                                         theme === 'dark'
                                             ? 'bg-black/40 border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:bg-black/60'
                                             : 'bg-white border-violet-200 hover:border-violet-400 hover:shadow-xl'
                                     }`}
                                 >
-                                    <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 md:mb-3 ${
+                                    <div className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 md:mb-3 whitespace-nowrap ${
                                         theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{stat.val}</div>
                                     <div className={`text-[10px] md:text-xs uppercase tracking-wider font-bold leading-tight ${
@@ -949,6 +952,7 @@ export default function Home() {
                                     }`}>{stat.label}</div>
                                 </motion.div>
                             ))}
+                            </div>
                         </div>
 
                         <p className={`text-center text-sm md:text-base font-bold mb-8 md:mb-12 px-4 ${
@@ -961,13 +965,15 @@ export default function Home() {
                             <p className={`text-center text-xs md:text-sm uppercase tracking-widest font-bold mb-6 md:mb-8 ${
                                 theme === 'dark' ? 'text-neutral-200' : 'text-neutral-600'
                             }`}>BACKED BY</p>
-                            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 px-4">
-                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
-                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
-                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
-                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
-                                <span className={`font-black text-sm md:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
+                            <div className="overflow-x-auto no-scrollbar pb-2">
+                            <div className="flex justify-center items-center gap-4 md:gap-8 min-w-max px-4">
+                                <span className={`font-black text-sm md:text-base whitespace-nowrap ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>NVIDIA Inception</span>
+                                <span className={`font-black text-sm md:text-base whitespace-nowrap ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Google Cloud</span>
+                                <span className={`font-black text-sm md:text-base whitespace-nowrap ${theme === 'dark' ? 'text-blue-400' : 'text-cyan-600'}`}>Alchemy</span>
+                                <span className={`font-black text-sm md:text-base whitespace-nowrap ${theme === 'dark' ? 'text-orange-500' : 'text-violet-600'}`}>AppWorks</span>
+                                <span className={`font-black text-sm md:text-base whitespace-nowrap ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>STORY Protocol</span>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </section>
@@ -1122,7 +1128,7 @@ export default function Home() {
 
 
                 {/* Company Thesis Section */}
-                <section ref={challengeRef} className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={challengeRef} className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}>
                     <div className="max-w-6xl mx-auto text-center w-full">
@@ -1186,27 +1192,29 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className={`flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm lg:text-base font-mono font-bold px-4 ${
-                            theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
-                        }`}>
-                            {t.thesis.keywords.map((kw, i) => (
-                                <motion.span 
-                                    key={i} 
-                                    className="flex items-center gap-3 cursor-default"
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.15 }}
-                                    whileHover={{ scale: 1.1 }}
-                                >
-                                    <span className={`w-3 h-3 rounded-full ${
-                                        theme === 'dark' 
-                                            ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
-                                            : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
-                                    }`} />
-                                    {kw}
-                                </motion.span>
-                            ))}
+                        <div className="overflow-x-auto no-scrollbar pb-2">
+                            <div className={`flex justify-center gap-4 md:gap-8 text-xs md:text-sm lg:text-base font-mono font-bold px-4 min-w-max ${
+                                theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
+                            }`}>
+                                {t.thesis.keywords.map((kw, i) => (
+                                    <motion.span 
+                                        key={i} 
+                                        className="flex items-center gap-2 md:gap-3 cursor-default whitespace-nowrap"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.15 }}
+                                        whileHover={{ scale: 1.1 }}
+                                    >
+                                        <span className={`w-2 h-2 md:w-3 md:h-3 rounded-full flex-shrink-0 ${
+                                            theme === 'dark' 
+                                                ? ['bg-indigo-500', 'bg-purple-500', 'bg-orange-500'][i]
+                                                : ['bg-cyan-400', 'bg-violet-400', 'bg-pink-400'][i]
+                                        }`} />
+                                        <span className="break-keep">{kw}</span>
+                                    </motion.span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1314,16 +1322,18 @@ export default function Home() {
                                             {prod.desc[language]}
                                         </p>
 
-                                        <div className="grid grid-cols-1 gap-2 mb-6">
-                                            {prod.features[language].map((feat, i) => (
-                                                <div key={i} className={`px-3 py-2 rounded-xl text-xs border ${
-                                                    theme === 'dark'
-                                                        ? 'bg-black/40 text-neutral-200 border-white/5'
-                                                        : 'bg-neutral-50 text-neutral-900 border-neutral-900/20'
-                                                }`}>
-                                                    {feat}
-                                                </div>
-                                            ))}
+                                        <div className="overflow-x-auto no-scrollbar -mx-2 px-2 mb-6">
+                                           <div className="flex md:grid md:grid-cols-1 gap-2 min-w-max md:min-w-0">
+                                               {prod.features[language].map((feat, i) => (
+                                                   <div key={i} className={`px-3 py-2 rounded-xl text-xs border whitespace-nowrap md:whitespace-normal ${
+                                                       theme === 'dark'
+                                                           ? 'bg-black/40 text-neutral-200 border-white/5'
+                                                           : 'bg-neutral-50 text-neutral-900 border-neutral-900/20'
+                                                   }`}>
+                                                       {feat}
+                                                   </div>
+                                               ))}
+                                           </div>
                                         </div>
 
                                         <div className="flex gap-4">
@@ -1346,7 +1356,7 @@ export default function Home() {
                 </section>
 
                 {/* Milestones Section */}
-                <section ref={milestonesRef} id="proof" className={`min-h-screen flex items-center justify-center border-y px-6 md:px-12 py-24 md:py-32 ${
+                <section ref={milestonesRef} id="proof" className={`min-h-screen flex items-center justify-center border-y px-4 sm:px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' ? 'bg-black/20 border-white/5' : 'bg-neutral-100/40 border-neutral-300/30'
                 }`}>
                     <div className="max-w-7xl mx-auto w-full">
@@ -1384,7 +1394,8 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+                            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 min-w-max md:min-w-0">
                             {milestones.map((m, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1393,24 +1404,25 @@ export default function Home() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
                                     whileHover={{ scale: 1.02, y: -4 }}
-                                    className={`p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl border transition-all duration-300 ${
-                                        theme === 'dark'
-                                            ? 'bg-black/50 border-white/10 hover:border-white/20 hover:bg-black/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
-                                            : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-md hover:shadow-xl'
+                                    className={`p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl border transition-all duration-300 flex-shrink-0 w-64 md:w-auto ${
+                                       theme === 'dark'
+                                           ? 'bg-black/50 border-white/10 hover:border-white/20 hover:bg-black/70 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+                                           : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-md hover:shadow-xl'
                                     }`}
-                                >
+                                    >
                                     <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl ${m.bg} flex items-center justify-center mb-4 md:mb-6 transition-transform duration-300 hover:scale-110`}>
-                                        <m.icon className={`w-6 h-6 md:w-7 md:h-7 ${m.color}`} />
+                                       <m.icon className={`w-6 h-6 md:w-7 md:h-7 ${m.color}`} />
                                     </div>
                                     <div className={`text-base md:text-lg lg:text-xl font-black mb-2 md:mb-3 ${
-                                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                                       theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                     }`}>{m.title}</div>
                                     <div className={`text-xs md:text-sm font-medium leading-relaxed ${
-                                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                       theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                                     }`}>{m.desc}</div>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    </motion.div>
+                                    ))}
+                                    </div>
+                                    </div>
                     </div>
                 </section>
 
@@ -1424,7 +1436,7 @@ export default function Home() {
                 </section>
 
                 {/* Contact Section */}
-                <section className={`min-h-screen flex items-center justify-center border-t px-6 md:px-12 py-24 md:py-32 ${
+                <section className={`min-h-screen flex items-center justify-center border-t px-4 sm:px-6 md:px-12 py-24 md:py-32 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-t from-[#050505] to-[#050505]/80 border-white/5'
                         : 'bg-gradient-to-br from-neutral-100 via-violet-50/40 to-cyan-50/40 border-neutral-300/30'
