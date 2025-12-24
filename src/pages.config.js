@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import PlayArts from './pages/PlayArts';
 import Products from './pages/Products';
 import RoadmapPage from './pages/RoadmapPage';
-import Showcase3D from './pages/Showcase3D';
 import Stockhoo from './pages/Stockhoo';
+import Showcase3D from './pages/Showcase3D';
 import __Layout from './Layout.jsx';
 
 
@@ -20,8 +20,8 @@ export const PAGES = {
     "PlayArts": PlayArts,
     "Products": Products,
     "RoadmapPage": RoadmapPage,
-    "Showcase3D": Showcase3D,
     "Stockhoo": Stockhoo,
+    "Showcase3D": Showcase3D,
 }
 
 export const pagesConfig = {
