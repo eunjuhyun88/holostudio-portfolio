@@ -176,9 +176,8 @@ export default function ModelViewer({ url, type }) {
                 </div>
             )}
 
-            <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 text-[9px] sm:text-xs text-neutral-500 bg-black/50 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full backdrop-blur-md">
-                <span className="hidden sm:inline">Left Click: Rotate • Right Click: Pan • Scroll: Zoom</span>
-                <span className="sm:hidden">Touch: Rotate • Pinch: Zoom</span>
+            <div className="absolute bottom-4 right-4 text-xs text-neutral-500 bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">
+                Left Click: Rotate • Right Click: Pan • Scroll: Zoom
             </div>
         </div>
     );

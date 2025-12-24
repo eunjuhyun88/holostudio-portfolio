@@ -88,32 +88,32 @@ export default function Showcase3D() {
     };
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30 overflow-x-hidden">
+        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30">
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                 {/* Digital Data Rain Background */}
-                <div className="absolute inset-0 z-0 hidden sm:block">
+                <div className="absolute inset-0 z-0">
                     <DigitalDataBackground opacity={0.8} speed={0.8} fontSize={20} color="#818cf8" />
                 </div>
 
-                <div className="absolute inset-0 opacity-20 hidden sm:block"><CosmicBackground /></div>
+                <div className="absolute inset-0 opacity-20"><CosmicBackground /></div>
                 <div className="absolute inset-0 opacity-90"><Background3D /></div>
                 
                 {/* Sci-Fi Grid Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] hidden sm:block" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
                 
-                {/* HUD Corners - Hidden on mobile */}
-                <div className="hidden md:block absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
-                <div className="hidden md:block absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
-                <div className="hidden md:block absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
-                <div className="hidden md:block absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
+                {/* HUD Corners */}
+                <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10 rounded-tl-3xl m-8" />
+                <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-3xl m-8" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-3xl m-8" />
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10 rounded-br-3xl m-8" />
             </div>
 
-            <main className="relative z-10 pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto">
-                <div className="text-center mb-8 sm:mb-12 md:mb-16 relative">
+            <main className="relative z-10 pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 md:px-12 max-w-[1600px] mx-auto">
+                <div className="text-center mb-12 sm:mb-16 relative">
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-block mb-2 sm:mb-3 md:mb-4 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] uppercase"
+                        className="inline-block mb-3 sm:mb-4 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase"
                     >
                         {language === 'en' ? 'Metaverse Asset Protocol' : '메타버스 자산 프로토콜'}
                     </motion.div>
@@ -124,12 +124,12 @@ export default function Showcase3D() {
                         secondaryGlowColor="rgba(168, 85, 247, 0.5)"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4 sm:mb-6 md:mb-8 uppercase px-2 break-keep"
+                        className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-6 sm:mb-8 uppercase px-2"
                     >
                         Digital <span className="text-indigo-500">Artifacts</span>
                     </MouseGlowText>
 
-                    <p className="text-xs sm:text-sm md:text-base lg:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono px-2 sm:px-4 break-keep">
+                    <p className="text-sm sm:text-base md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono px-4">
                         <ScrambleText speed={30} revealSpeed={0.4} delay={500}>
                             {language === 'en' 
                                 ? 'Secure, decentralized visualization for high-fidelity 3D assets. Verify provenance and inspect spatial metadata in real-time.' 
@@ -138,81 +138,81 @@ export default function Showcase3D() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 min-h-[600px] sm:min-h-[650px] lg:h-[calc(100vh-350px)]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 min-h-[500px] sm:min-h-[600px] lg:h-[calc(100vh-400px)]">
                     
                     {/* Sidebar / List */}
-                    <div className="lg:col-span-4 flex flex-col gap-4 sm:gap-6 h-full">
+                    <div className="lg:col-span-4 flex flex-col gap-6 h-full">
                         {/* Upload Card - Styled as Minting Interface */}
-                        <div className="bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden group">
+                        <div className="bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                             
                             {!isUploading ? (
-                                <div className="text-center py-3 sm:py-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/5 mx-auto flex items-center justify-center mb-3 sm:mb-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                                        <Box className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
+                                <div className="text-center py-4">
+                                    <div className="w-16 h-16 rounded-full bg-white/5 mx-auto flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                                        <Box className="w-8 h-8 text-indigo-400" />
                                     </div>
-                                    <h3 className="font-bold text-base sm:text-lg mb-1.5 sm:mb-2">{language === 'en' ? 'Register Asset' : '자산 등록'}</h3>
-                                    <p className="text-xs sm:text-sm text-neutral-500 mb-4 sm:mb-6 px-2 sm:px-4 break-keep">
+                                    <h3 className="font-bold text-lg mb-2">{language === 'en' ? 'Register Asset' : '자산 등록'}</h3>
+                                    <p className="text-sm text-neutral-500 mb-6 px-4">
                                         {language === 'en' ? 'Upload 3D files to the decentralized registry.' : '탈중앙화 레지스트리에 3D 파일을 업로드합니다.'}
                                     </p>
                                     <Button 
                                         onClick={() => setIsUploading(true)}
-                                        className="w-full h-11 sm:h-12 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-sm sm:text-base font-bold tracking-wide shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all active:scale-95"
+                                        className="w-full h-12 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-base font-bold tracking-wide shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all"
                                     >
-                                        <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                                        <Plus className="w-5 h-5 mr-2" />
                                         {language === 'en' ? 'Mint Asset' : '자산 민팅'}
                                     </Button>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 relative z-10">
-                                    <div className="flex items-center justify-between mb-1 sm:mb-2">
-                                        <h3 className="font-bold text-base sm:text-lg">{language === 'en' ? 'New Asset' : '새 자산'}</h3>
-                                        <span className="text-[10px] sm:text-xs font-mono text-indigo-400 animate-pulse">● ACTIVE</span>
+                                <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <h3 className="font-bold text-lg">{language === 'en' ? 'New Asset' : '새 자산'}</h3>
+                                        <span className="text-xs font-mono text-indigo-400 animate-pulse">● NETWORK ACTIVE</span>
                                     </div>
                                     
-                                    <div className="space-y-1.5 sm:space-y-2">
-                                        <Label className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500">Asset Name</Label>
+                                    <div className="space-y-2">
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Asset Name</Label>
                                         <Input 
                                             value={uploadForm.name}
                                             onChange={(e) => setUploadForm({...uploadForm, name: e.target.value})}
-                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-10 sm:h-11 text-sm"
+                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-11"
                                             placeholder="e.g. Cyber_Artifact_01"
                                         />
                                     </div>
-                                    <div className="space-y-1.5 sm:space-y-2">
-                                        <Label className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500">Description</Label>
+                                    <div className="space-y-2">
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Description</Label>
                                         <Input 
                                             value={uploadForm.description}
                                             onChange={(e) => setUploadForm({...uploadForm, description: e.target.value})}
-                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-10 sm:h-11 text-sm"
+                                            className="bg-black/40 border-white/10 focus:border-indigo-500/50 h-11"
                                             placeholder="Optional metadata..."
                                         />
                                     </div>
-                                    <div className="space-y-1.5 sm:space-y-2">
-                                        <Label className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500">Payload (GLTF/GLB/OBJ)</Label>
+                                    <div className="space-y-2">
+                                        <Label className="text-xs uppercase tracking-wider text-neutral-500">Payload (GLTF/GLB/OBJ)</Label>
                                         <div className="relative group/file">
                                             <Input 
                                                 type="file"
                                                 accept=".gltf,.glb,.obj,.mp4,.mov"
                                                 onChange={handleFileChange}
-                                                className="bg-black/40 border-white/10 cursor-pointer h-20 sm:h-24 pt-6 sm:pt-8 text-center text-transparent file:hidden"
+                                                className="bg-black/40 border-white/10 cursor-pointer h-24 pt-8 text-center text-transparent file:hidden"
                                             />
-                                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-2">
-                                                <Upload className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-500 mb-1.5 sm:mb-2 group-hover/file:text-indigo-400 transition-colors" />
-                                                <span className="text-[10px] sm:text-xs text-neutral-400 group-hover/file:text-white transition-colors text-center line-clamp-1">
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                                <Upload className="w-6 h-6 text-neutral-500 mb-2 group-hover/file:text-indigo-400 transition-colors" />
+                                                <span className="text-xs text-neutral-400 group-hover/file:text-white transition-colors">
                                                     {uploadForm.file ? uploadForm.file.name : (language === 'en' ? 'Drop file or click' : '파일 드롭 또는 클릭')}
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex gap-2 sm:gap-3 pt-1 sm:pt-2">
-                                        <Button type="button" variant="ghost" onClick={() => setIsUploading(false)} className="flex-1 hover:bg-white/5 h-10 sm:h-11 text-sm">
+                                    <div className="flex gap-3 pt-2">
+                                        <Button type="button" variant="ghost" onClick={() => setIsUploading(false)} className="flex-1 hover:bg-white/5">
                                             Cancel
                                         </Button>
                                         <Button 
                                             type="submit" 
                                             disabled={createModelMutation.isPending || !uploadForm.file}
-                                            className="flex-1 bg-indigo-600 hover:bg-indigo-500 font-bold h-10 sm:h-11 text-sm active:scale-95"
+                                            className="flex-1 bg-indigo-600 hover:bg-indigo-500 font-bold"
                                         >
                                             {createModelMutation.isPending ? 'Minting...' : 'Deploy'}
                                         </Button>
@@ -222,16 +222,16 @@ export default function Showcase3D() {
                         </div>
 
                         {/* Models List - Styled as Asset Registry */}
-                        <div className="flex-1 overflow-y-auto pr-1 sm:pr-2 space-y-2 sm:space-y-3 custom-scrollbar">
-                            <div className="text-[10px] sm:text-xs font-mono text-neutral-500 uppercase tracking-widest mb-3 sm:mb-4 flex items-center justify-between">
+                        <div className="flex-1 overflow-y-auto pr-2 space-y-3 custom-scrollbar">
+                            <div className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-4 flex items-center justify-between">
                                 <span>Registry ({models.length})</span>
-                                <span className="hidden sm:inline">Recent</span>
+                                <span>Recent</span>
                             </div>
 
                             {models.length === 0 && !isLoading && (
-                                <div className="text-center py-8 sm:py-12 text-neutral-600 border border-dashed border-white/10 rounded-2xl sm:rounded-3xl">
-                                    <Box className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 opacity-30" />
-                                    <p className="text-xs sm:text-sm">No artifacts found.</p>
+                                <div className="text-center py-12 text-neutral-600 border border-dashed border-white/10 rounded-3xl">
+                                    <Box className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                                    <p className="text-sm">No artifacts found.</p>
                                 </div>
                             )}
                             
@@ -239,41 +239,41 @@ export default function Showcase3D() {
                                 <motion.div 
                                     key={model.id}
                                     onClick={() => setSelectedModel(model)}
-                                    whileHover={{ scale: 1.015 }}
-                                    whileTap={{ scale: 0.985 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                     transition={{ duration: 0.2 }}
-                                    className={`group p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all cursor-pointer relative backdrop-blur-sm ${
+                                    className={`group p-4 rounded-2xl border transition-all cursor-pointer relative backdrop-blur-sm ${
                                         selectedModel?.id === model.id 
                                         ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.1)]' 
                                         : 'bg-[#0A0A0A]/60 border-white/5 hover:bg-white/5 hover:border-white/20'
                                     }`}
                                 >
-                                    <div className="flex justify-between items-start gap-2">
-                                        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                                            <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-[10px] sm:text-xs font-bold border flex-shrink-0 ${
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex items-center gap-3">
+                                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold border ${
                                                 selectedModel?.id === model.id ? 'bg-indigo-500 text-white border-indigo-400' : 'bg-white/5 text-neutral-400 border-white/10'
                                             }`}>
                                                 {model.file_type.toUpperCase().substring(0,3)}
                                             </div>
-                                            <div className="min-w-0 flex-1">
-                                                <h3 className={`font-bold text-xs sm:text-sm mb-0.5 truncate ${selectedModel?.id === model.id ? 'text-white' : 'text-neutral-300'}`}>{model.name}</h3>
-                                                <div className="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono text-neutral-500 uppercase">
-                                                    <span className="truncate">#{model.id.substring(0,6)}</span>
-                                                    <span className="w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full bg-neutral-600 flex-shrink-0" />
-                                                    <span className="hidden xs:inline truncate">{new Date(model.created_date).toLocaleDateString()}</span>
+                                            <div>
+                                                <h3 className={`font-bold text-sm mb-0.5 ${selectedModel?.id === model.id ? 'text-white' : 'text-neutral-300'}`}>{model.name}</h3>
+                                                <div className="flex items-center gap-2 text-[10px] font-mono text-neutral-500 uppercase">
+                                                    <span>#{model.id.substring(0,6)}</span>
+                                                    <span className="w-1 h-1 rounded-full bg-neutral-600" />
+                                                    <span>{new Date(model.created_date).toLocaleDateString()}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <Button
                                             variant="ghost"
                                             size="icon"
-                                            className="h-7 w-7 sm:h-8 sm:w-8 text-neutral-600 hover:text-red-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity hover:bg-white/5 flex-shrink-0"
+                                            className="h-8 w-8 text-neutral-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/5"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 if(confirm('Burn this asset?')) deleteMutation.mutate(model.id);
                                             }}
                                         >
-                                            <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                            <Trash2 className="w-4 h-4" />
                                         </Button>
                                     </div>
                                     
@@ -281,7 +281,7 @@ export default function Showcase3D() {
                                     {selectedModel?.id === model.id && (
                                         <motion.div 
                                             layoutId="activeIndicator"
-                                            className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 sm:w-1 h-6 sm:h-8 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+                                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"
                                             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                         />
                                     )}
@@ -291,13 +291,13 @@ export default function Showcase3D() {
                     </div>
 
                     {/* Viewer Area - Holographic Style */}
-                    <div className="lg:col-span-8 h-full min-h-[400px] sm:min-h-[500px] relative">
+                    <div className="lg:col-span-8 h-full min-h-[500px] relative">
                         {/* Decorative Scanner Lines */}
-                        <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-2xl sm:rounded-3xl z-0">
-                            <div className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-l border-indigo-500/30 rounded-tl-xl" />
-                            <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t border-r border-indigo-500/30 rounded-tr-xl" />
-                            <div className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-l border-indigo-500/30 rounded-bl-xl" />
-                            <div className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b border-r border-indigo-500/30 rounded-br-xl" />
+                        <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-3xl z-0">
+                            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-indigo-500/30 rounded-tl-xl" />
+                            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-indigo-500/30 rounded-tr-xl" />
+                            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-indigo-500/30 rounded-bl-xl" />
+                            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-indigo-500/30 rounded-br-xl" />
                         </div>
 
                         {selectedModel ? (
@@ -306,9 +306,9 @@ export default function Showcase3D() {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                                className="h-full flex flex-col gap-3 sm:gap-4 relative z-10 p-0.5 sm:p-1"
+                                className="h-full flex flex-col gap-4 relative z-10 p-1"
                             >
-                                <div className="flex-1 rounded-xl sm:rounded-2xl overflow-hidden bg-black/40 relative group">
+                                <div className="flex-1 rounded-2xl overflow-hidden bg-black/40 relative group">
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05),transparent)] pointer-events-none" />
                                     <ModelViewer 
                                         url={selectedModel.file_url} 
@@ -316,52 +316,49 @@ export default function Showcase3D() {
                                     />
                                     
                                     {/* Overlay Info */}
-                                    <div className="absolute top-2 left-2 sm:top-4 sm:left-4 pointer-events-none">
-                                        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] sm:text-xs font-mono text-indigo-300">
-                                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                                            <span className="hidden xs:inline">LIVE RENDER</span>
-                                            <span className="xs:hidden">LIVE</span>
+                                    <div className="absolute top-4 left-4 pointer-events-none">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-xs font-mono text-indigo-300">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                                            LIVE RENDER
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div className="bg-[#0A0A0A]/80 border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col gap-3 sm:gap-4 backdrop-blur-xl">
+                                <div className="bg-[#0A0A0A]/80 border border-white/10 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center backdrop-blur-xl gap-4">
                                     <div>
-                                        <div className="flex items-center gap-2 sm:gap-3 mb-1 flex-wrap">
-                                            <h2 className="text-base sm:text-xl md:text-2xl font-bold tracking-tight truncate">{selectedModel.name}</h2>
-                                            <span className="text-[9px] sm:text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded border border-indigo-500/30 text-indigo-400 bg-indigo-500/5 whitespace-nowrap">VERIFIED</span>
+                                        <div className="flex items-center gap-3 mb-1">
+                                            <h2 className="text-2xl font-bold tracking-tight">{selectedModel.name}</h2>
+                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded border border-indigo-500/30 text-indigo-400 bg-indigo-500/5">VERIFIED</span>
                                         </div>
-                                        <div className="flex items-center gap-2 sm:gap-4 text-[10px] sm:text-xs md:text-sm text-neutral-400 font-mono overflow-x-auto no-scrollbar">
-                                            <span className="truncate">ID: {selectedModel.id.substring(0, 8)}...</span>
-                                            <span className="text-neutral-600 hidden xs:inline">|</span>
-                                            <span className="hidden xs:inline whitespace-nowrap">SIZE: UNKNOWN</span>
+                                        <div className="flex items-center gap-4 text-sm text-neutral-400 font-mono">
+                                            <span>ID: {selectedModel.id}</span>
+                                            <span className="text-neutral-600">|</span>
+                                            <span>SIZE: UNKNOWN</span>
                                         </div>
-                                        {selectedModel.description && <p className="text-neutral-400 text-xs sm:text-sm mt-1.5 sm:mt-2 line-clamp-2 break-keep">{selectedModel.description}</p>}
+                                        {selectedModel.description && <p className="text-neutral-400 text-sm mt-2 max-w-xl">{selectedModel.description}</p>}
                                     </div>
-                                    <div className="flex gap-2 sm:gap-3 flex-wrap">
-                                        <a href={selectedModel.file_url} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
-                                            <Button variant="outline" className="w-full gap-1.5 sm:gap-2 border-white/10 bg-white/5 hover:bg-white/10 text-white h-9 sm:h-10 md:h-11 px-3 sm:px-4 md:px-6 text-xs sm:text-sm active:scale-95">
-                                                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" /> 
-                                                <span className="hidden xs:inline">Export</span>
-                                                <span className="xs:hidden">↓</span>
+                                    <div className="flex gap-3">
+                                        <a href={selectedModel.file_url} target="_blank" rel="noopener noreferrer">
+                                            <Button variant="outline" className="gap-2 border-white/10 bg-white/5 hover:bg-white/10 text-white h-11 px-6">
+                                                <ExternalLink className="w-4 h-4" /> Export
                                             </Button>
                                         </a>
-                                        <Button className="flex-1 sm:flex-initial bg-indigo-600 hover:bg-indigo-500 h-9 sm:h-10 md:h-11 px-3 sm:px-4 md:px-6 shadow-[0_0_20px_rgba(79,70,229,0.3)] text-xs sm:text-sm active:scale-95">
+                                        <Button className="bg-indigo-600 hover:bg-indigo-500 h-11 px-6 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
                                             Details
                                         </Button>
                                     </div>
                                 </div>
                             </motion.div>
                         ) : (
-                            <div className="h-full rounded-2xl sm:rounded-3xl bg-[#0A0A0A]/40 border border-white/5 flex flex-col items-center justify-center text-neutral-500 gap-4 sm:gap-6 border-dashed relative overflow-hidden p-4">
+                            <div className="h-full rounded-3xl bg-[#0A0A0A]/40 border border-white/5 flex flex-col items-center justify-center text-neutral-500 gap-6 border-dashed relative overflow-hidden">
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03),transparent)]" />
-                                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white/5 flex items-center justify-center border border-white/5 relative">
+                                <div className="w-24 h-24 rounded-full bg-white/5 flex items-center justify-center border border-white/5 relative">
                                     <div className="absolute inset-0 rounded-full border border-indigo-500/20 animate-ping opacity-20" />
-                                    <Box className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-neutral-600" />
+                                    <Box className="w-10 h-10 text-neutral-600" />
                                 </div>
-                                <div className="text-center relative z-10 px-4">
-                                    <p className="text-base sm:text-lg md:text-xl font-bold text-neutral-300 mb-1 sm:mb-2">Awaiting Input</p>
-                                    <p className="text-[10px] sm:text-xs md:text-sm font-mono text-neutral-600 uppercase tracking-widest break-keep">Select an artifact from registry</p>
+                                <div className="text-center relative z-10">
+                                    <p className="text-xl font-bold text-neutral-300 mb-2">Awaiting Input</p>
+                                    <p className="text-sm font-mono text-neutral-600 uppercase tracking-widest">Select an artifact from registry</p>
                                 </div>
                             </div>
                         )}
