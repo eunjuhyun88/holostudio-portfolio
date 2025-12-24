@@ -156,7 +156,7 @@ const StickyThesisItem = ({ item, index, total }) => {
 const TeamIdentity = ({ identity }) => {
     const { theme } = useTheme();
     return (
-    <div className={`min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1600px] mx-auto py-24 ${
+    <div className={`min-h-[80vh] flex flex-col justify-center px-4 sm:px-6 md:px-12 max-w-[1600px] mx-auto py-16 sm:py-20 md:py-24 ${
         theme === 'dark' ? '' : 'bg-neutral-50'
     }`}>
         <div className="mb-8 md:mb-16">
@@ -166,7 +166,7 @@ const TeamIdentity = ({ identity }) => {
             }`}>{identity?.headline || "WHO WE ARE"}</h2>
         </div>
 
-        <div className={`text-[6vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter select-none flex flex-col ${
+        <div className={`text-[8vw] sm:text-[6vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter select-none flex flex-col ${
             theme === 'dark' ? 'text-white' : 'text-neutral-900'
         }`}>
             <motion.div 
@@ -209,10 +209,10 @@ const TeamIdentity = ({ identity }) => {
             </motion.div>
         </div>
 
-        <div className={`mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 pl-8 ${
+        <div className={`mt-12 sm:mt-16 md:mt-24 max-w-3xl ml-auto border-l-2 pl-4 sm:pl-6 md:pl-8 ${
             theme === 'dark' ? 'border-white/20' : 'border-neutral-300'
         }`}>
-            <p className={`text-lg md:text-2xl leading-relaxed font-black ${
+            <p className={`text-base sm:text-lg md:text-2xl leading-relaxed font-black break-keep ${
                 theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
             }`}>
                 {identity?.content || "We are builders."}
@@ -322,16 +322,16 @@ const ClosingStatement = () => {
     const { language } = useLanguage();
     const { theme } = useTheme();
     return (
-        <div className={`min-h-[60vh] flex items-center justify-center relative overflow-hidden py-32 ${
+        <div className={`min-h-[60vh] flex items-center justify-center relative overflow-hidden py-20 sm:py-24 md:py-32 ${
             theme === 'dark' ? '' : 'bg-white'
         }`}>
              <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
-                className="text-center px-6 max-w-6xl mx-auto z-10"
+                className="text-center px-4 sm:px-6 max-w-6xl mx-auto z-10"
              >
-                <h2 className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight tracking-tight ${
+                <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-6 sm:mb-8 leading-tight tracking-tight break-keep ${
                     theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                 }`}>
                     {language === 'en' ? "The scarce resource is no longer creativity." : "더 이상 희소한 자원은 창의성이 아닙니다."}
@@ -345,7 +345,7 @@ const ClosingStatement = () => {
                             initial={{ y: "100%" }}
                             whileInView={{ y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase"
+                            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase break-keep"
                         >
                             {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
                         </MouseGlowText>
@@ -354,7 +354,7 @@ const ClosingStatement = () => {
                             initial={{ y: "100%" }}
                             whileInView={{ y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase text-neutral-900"
+                            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-neutral-900 break-keep"
                         >
                             {language === 'en' ? "It is credibility." : "바로 신뢰입니다."}
                         </motion.p>
@@ -752,15 +752,15 @@ Scaled communities from zero to millions of users.`,
 
             {/* Scrolling Content Layer */}
             <main className="relative z-10">
-                <div id="intro" className={`relative z-10 py-24 md:py-32 px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden ${
+                <div id="intro" className={`relative z-10 py-20 sm:py-24 md:py-32 px-3 sm:px-4 md:px-12 max-w-[100vw] md:max-w-[90vw] mx-auto min-h-screen flex flex-col items-center justify-center overflow-x-hidden ${
                     theme === 'dark' ? '' : 'bg-white'
                 }`}>
-                    <div className="text-center mb-32 md:mb-64 w-full px-2">
+                    <div className="text-center mb-20 sm:mb-32 md:mb-64 w-full px-2">
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className={`font-black tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-12 text-sm md:text-3xl uppercase ${
+                            className={`font-black tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.5em] mb-4 sm:mb-6 md:mb-12 text-xs sm:text-sm md:text-3xl uppercase ${
                                 theme === 'dark' ? 'text-indigo-400 glow-text' : 'text-orange-600'
                             }`}
                         >
@@ -773,7 +773,7 @@ Scaled communities from zero to millions of users.`,
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1 }}
-                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                                className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] md:leading-[0.9] uppercase mb-6 sm:mb-8 md:mb-12 scale-y-110 w-full break-words"
                             >
                                 {c.intro?.title || "The Trust Layer"}
                             </MouseGlowText>
@@ -782,7 +782,7 @@ Scaled communities from zero to millions of users.`,
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1 }}
-                                className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-neutral-900 leading-[0.95] md:leading-[0.9] uppercase mb-8 md:mb-12 scale-y-110 w-full break-words"
+                                className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-neutral-900 leading-[0.95] md:leading-[0.9] uppercase mb-6 sm:mb-8 md:mb-12 scale-y-110 w-full break-words"
                             >
                                 {c.intro?.title || "The Trust Layer"}
                             </motion.h1>
@@ -792,7 +792,7 @@ Scaled communities from zero to millions of users.`,
                             <motion.h3 
                                 initial={{ opacity: 0 }} 
                                 whileInView={{ opacity: 1 }}
-                                className={`text-sm md:text-2xl font-mono uppercase tracking-[0.15em] md:tracking-[0.2em] mb-24 md:mb-48 px-4 font-bold ${
+                                className={`text-xs sm:text-sm md:text-2xl font-mono uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] mb-16 sm:mb-24 md:mb-48 px-2 sm:px-4 font-bold break-keep ${
                                     theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
                                 }`}
                             >
@@ -800,7 +800,7 @@ Scaled communities from zero to millions of users.`,
                             </motion.h3>
                         )}
                         
-                        <div className="space-y-24 w-full max-w-4xl mx-auto">
+                        <div className="space-y-16 sm:space-y-20 md:space-y-24 w-full max-w-4xl mx-auto">
                             {c.intro?.text ? c.intro.text.map((t, i) => (
                                 i === c.intro.text.length - 1 && theme === 'dark' ? (
                                     <MouseGlowText
@@ -813,7 +813,7 @@ Scaled communities from zero to millions of users.`,
                                         {t}
                                     </MouseGlowText>
                                 ) : (
-                                    <TypingBlock key={i} className={`text-xl md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center ${
+                                    <TypingBlock key={i} className={`text-base sm:text-lg md:text-2xl lg:text-3xl leading-relaxed font-black tracking-wide text-center break-keep ${
                                         theme === 'dark' ? 'text-neutral-200' : 'text-neutral-800'
                                     }`}>
                                         {t}
@@ -832,7 +832,7 @@ Scaled communities from zero to millions of users.`,
                     </div>
 
                     {/* Chapters integrated as Typing Blocks */}
-                    <div id="history" className={`space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-24 md:pb-32 ${
+                    <div id="history" className={`space-y-20 sm:space-y-32 md:space-y-64 w-full max-w-[90vw] md:max-w-[80vw] mx-auto pb-16 sm:pb-24 md:pb-32 ${
                         theme === 'dark' ? '' : 'bg-white'
                     }`}>
                         {c.chapters.map((chapter, i) => (
@@ -854,7 +854,7 @@ Scaled communities from zero to millions of users.`,
                                     whileInView={{ opacity: 1 }}
                                     whileHover={{ scale: 1.02, boxShadow: theme === 'dark' ? '0 0 30px rgba(99, 102, 241, 0.3)' : '0 0 20px rgba(251, 146, 60, 0.2)' }}
                                     transition={{ duration: 0.3 }}
-                                    className={`font-mono text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black cursor-pointer ${
+                                    className={`font-mono text-xs sm:text-sm md:text-lg lg:text-2xl tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] mb-4 sm:mb-6 md:mb-12 border-y md:border-y-2 py-2 md:py-4 w-full uppercase font-black cursor-pointer ${
                                         theme === 'dark' 
                                             ? 'text-indigo-400 border-indigo-500/50 bg-indigo-500/10 hover:bg-indigo-500/20 hover:border-indigo-400'
                                             : 'text-orange-600 border-orange-300 bg-orange-50 hover:bg-orange-100 hover:border-orange-400'
@@ -871,7 +871,7 @@ Scaled communities from zero to millions of users.`,
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ duration: 0.8 }}
-                                        className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 drop-shadow-lg"
+                                        className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 drop-shadow-lg break-keep"
                                     >
                                         {chapter.headline}
                                     </MouseGlowText>
@@ -881,14 +881,14 @@ Scaled communities from zero to millions of users.`,
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         whileHover={{ scale: 1.02 }}
                                         transition={{ duration: 0.8 }}
-                                        className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 text-neutral-900 cursor-default"
+                                        className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-12 tracking-tight uppercase leading-[0.95] md:leading-[0.9] w-full px-2 text-neutral-900 cursor-default break-keep"
                                     >
                                         {chapter.headline}
                                     </motion.h2>
                                 )}
                                 
-                                <div className="max-w-4xl mx-auto px-4">
-                                    <TypingBlock className={`text-lg md:text-2xl lg:text-3xl w-full leading-relaxed text-center font-black tracking-wide ${
+                                <div className="max-w-4xl mx-auto px-2 sm:px-4">
+                                    <TypingBlock className={`text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl w-full leading-relaxed text-center font-black tracking-wide break-keep ${
                                         theme === 'dark' ? 'text-neutral-300' : 'text-neutral-800'
                                     }`}>
                                         {chapter.content}
@@ -913,24 +913,24 @@ Scaled communities from zero to millions of users.`,
                 </div>
 
                 {/* Founder Spotlight Section - Mobile Horizontal Scroll */}
-                <div id="team" className={`border-y py-32 md:py-48 overflow-hidden relative ${
+                <div id="team" className={`border-y py-16 sm:py-24 md:py-32 lg:py-48 overflow-hidden relative ${
                     theme === 'dark' 
                         ? 'bg-[#0A0A0A]/80 border-white/10 backdrop-blur-xl' 
                         : 'bg-neutral-50 border-neutral-200'
                 }`}>
-                    <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-12 sm:mb-16 md:mb-24">
                             <div>
-                                <h2 className={`text-sm font-bold tracking-widest uppercase mb-4 ${
+                                <h2 className={`text-xs sm:text-sm font-bold tracking-widest uppercase mb-3 sm:mb-4 ${
                                     theme === 'dark' ? 'text-indigo-500' : 'text-neutral-900'
                                 }`}>Leadership</h2>
-                                <h3 className={`text-3xl md:text-5xl font-black max-w-2xl leading-tight ${
+                                <h3 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black max-w-2xl leading-tight break-keep ${
                                     theme === 'dark' ? 'text-white' : 'text-neutral-900'
                                 }`}>
                                     {language === 'en' ? "Builders at the Intersection." : "교차점의 빌더들."}
                                 </h3>
                             </div>
-                            <p className={`max-w-sm mt-6 md:mt-0 leading-relaxed text-sm md:text-base font-medium ${
+                            <p className={`max-w-sm mt-4 sm:mt-6 md:mt-0 leading-relaxed text-xs sm:text-sm md:text-base font-medium break-keep ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
                             }`}>
                                 {language === 'en' 
@@ -940,9 +940,9 @@ Scaled communities from zero to millions of users.`,
                         </div>
 
                         {/* Desktop: Grid, Mobile: Horizontal Scroll */}
-                        <div className="flex md:grid md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 no-scrollbar">
+                        <div className="flex md:grid md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-3 sm:gap-4 md:gap-6 lg:gap-8 pb-6 sm:pb-8 md:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 no-scrollbar">
                             {c.founders.map((founder, i) => (
-                                <div key={i} className="flex-shrink-0 w-[60vw] md:w-auto snap-center">
+                                <div key={i} className="flex-shrink-0 w-[70vw] sm:w-[60vw] md:w-auto snap-center">
                                     <FounderCard {...founder} delay={i * 0.1} />
                                 </div>
                             ))}
@@ -953,7 +953,7 @@ Scaled communities from zero to millions of users.`,
 
                 
                 {/* Final CTA - Home Style */}
-                <div className={`flex flex-col items-center justify-center pb-40 px-6 text-center relative ${
+                <div className={`flex flex-col items-center justify-center pb-24 sm:pb-32 md:pb-40 px-4 sm:px-6 text-center relative ${
                     theme === 'dark' ? '' : 'bg-gradient-to-b from-white to-neutral-50'
                 }`}>
                     {theme === 'dark' && (
@@ -993,7 +993,7 @@ Scaled communities from zero to millions of users.`,
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className={`text-2xl md:text-4xl lg:text-5xl font-black mb-8 md:mb-12 max-w-3xl leading-tight relative z-10 ${
+                        className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-6 sm:mb-8 md:mb-12 max-w-3xl leading-tight relative z-10 break-keep ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
                     >

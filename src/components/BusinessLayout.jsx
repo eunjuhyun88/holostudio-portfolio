@@ -203,13 +203,13 @@ export default function BusinessLayout({
 
     // Mobile Table of Contents (Horizontal Scroll)
     const MobileTOC = () => (
-        <div className="lg:hidden sticky top-[80px] z-30 -mx-4 px-4 mb-8 overflow-x-auto custom-scrollbar bg-gradient-to-b from-inherit to-transparent pb-4">
-             <div className={`inline-flex gap-2 p-1 rounded-full ${isLight ? 'bg-black/5 border-black/10' : 'bg-white/10 border-white/10'} border backdrop-blur-md`}>
+        <div className="lg:hidden sticky top-[72px] sm:top-[80px] z-30 -mx-3 sm:-mx-4 px-3 sm:px-4 mb-6 sm:mb-8 overflow-x-auto no-scrollbar bg-gradient-to-b from-inherit to-transparent pb-3 sm:pb-4">
+             <div className={`inline-flex gap-1.5 sm:gap-2 p-0.5 sm:p-1 rounded-full ${isLight ? 'bg-black/5 border-black/10' : 'bg-white/10 border-white/10'} border backdrop-blur-md`}>
                 {sections.map((section, idx) => (
                     <button
                         key={section.id}
                         onClick={() => scrollToId(section.id)}
-                        className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+                        className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap transition-all active:scale-95 ${
                             activeSection === idx 
                             ? `${s.buttonPrimary} shadow-lg` 
                             : `${textSecondary} hover:${textPrimary}`
@@ -336,12 +336,12 @@ export default function BusinessLayout({
                 image={heroImage.startsWith('http') ? heroImage : undefined}
             />
 
-            <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-40">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-3 sm:px-4 md:px-8 lg:px-12 py-12 sm:py-16 md:py-24 lg:py-40">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-24">
                     
                     {/* LEFT COLUMN - Sidebar */}
                     <aside className="lg:col-span-3 xl:col-span-3 relative z-20 order-2 lg:order-1 lg:mt-32">
-                        <div className="space-y-8 sticky top-32">
+                        <div className="space-y-6 sm:space-y-8 sticky top-24 sm:top-28 md:top-32">
                             <Link to={createPageUrl('Products')} className={`hidden lg:inline-flex items-center gap-2 ${textSecondary} hover:${textPrimary} transition-colors mb-2 text-sm font-medium group`}>
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                                 {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
@@ -350,7 +350,7 @@ export default function BusinessLayout({
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className={`rounded-3xl p-8 backdrop-blur-2xl border shadow-2xl relative overflow-hidden ${
+                                className={`rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-2xl border shadow-2xl relative overflow-hidden ${
                                     isLight 
                                         ? 'bg-white border-neutral-300/30 text-neutral-900'
                                         : 'bg-white/[0.02] border-white/10 text-white'
@@ -361,18 +361,18 @@ export default function BusinessLayout({
                                     <div className={`absolute top-0 right-0 w-64 h-64 ${s.accentBg} opacity-10 blur-[80px] -translate-y-1/2 translate-x-1/2`} />
                                 )}
 
-                                <div className="relative z-10 mb-10">
-                                    <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-6 ${
+                                <div className="relative z-10 mb-6 sm:mb-8 md:mb-10">
+                                    <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 ${
                                         isLight 
                                             ? 'bg-gradient-to-br from-violet-200 via-cyan-200 to-pink-200 text-neutral-900 shadow-lg'
                                             : 'bg-gradient-to-br from-white to-neutral-400 text-black shadow-[0_0_40px_rgba(255,255,255,0.15)]'
                                     }`}>
-                                        <div className="font-bold text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
+                                        <div className="font-bold text-xl sm:text-2xl md:text-3xl tracking-tighter">{name.substring(0,2).toUpperCase()}</div>
                                     </div>
-                                    <h1 className={`text-3xl font-bold tracking-tighter mb-2 ${
+                                    <h1 className={`text-2xl sm:text-2xl md:text-3xl font-bold tracking-tighter mb-2 break-keep ${
                                         isLight ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'
                                     }`}>{name}</h1>
-                                    <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${
+                                    <div className={`inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wide break-keep ${
                                         isLight 
                                             ? 'bg-violet-100 border-violet-300/40 text-violet-900'
                                             : `bg-white/5 border-white/10 ${s.accent}`
@@ -381,22 +381,22 @@ export default function BusinessLayout({
                                     </div>
                                 </div>
 
-                                <div className={`relative z-10 space-y-8 pt-8 border-t ${
+                                <div className={`relative z-10 space-y-4 sm:space-y-6 md:space-y-8 pt-4 sm:pt-6 md:pt-8 border-t ${
                                     isLight ? 'border-neutral-300/30' : 'border-white/10'
                                 }`}>
                                     {stats.map((stat, i) => (
                                         <div key={i} className="group">
-                                            <div className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-2 transition-colors ${
+                                            <div className={`text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-bold mb-1.5 sm:mb-2 transition-colors ${
                                                 isLight ? 'text-neutral-700' : 'text-neutral-300'
                                             }`}>{stat.label}</div>
-                                            <div className={`text-lg font-mono font-bold transition-colors ${
+                                            <div className={`text-base sm:text-lg font-mono font-bold transition-colors ${
                                                 isLight ? 'text-neutral-900' : 'text-white'
                                             }`}>{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className={`mt-8 pt-8 border-t space-y-3 hidden lg:block ${
+                                <div className={`mt-6 sm:mt-8 pt-6 sm:pt-8 border-t space-y-2 sm:space-y-3 hidden lg:block ${
                                     isLight ? 'border-neutral-300/30' : 'border-white/5'
                                 }`}>
                                     {primaryButton.url ? (
@@ -439,30 +439,30 @@ export default function BusinessLayout({
                     </aside>
 
                     {/* RIGHT COLUMN - Main Content */}
-                    <main className="lg:col-span-9 xl:col-span-8 space-y-20 md:space-y-40 z-10 relative order-1 lg:order-2">
+                    <main className="lg:col-span-9 xl:col-span-8 space-y-12 sm:space-y-16 md:space-y-24 lg:space-y-40 z-10 relative order-1 lg:order-2">
                         
                         {/* 1. Hero */}
                         <div id="overview">
                         <ColorSection onInView={() => setActiveSection(getSectionIndex('overview'))}>
                             {/* Mobile Title Block */}
-                            <div className="lg:hidden mb-8">
-                                <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-2 transition-colors mb-4 text-xs font-bold group ${
+                            <div className="lg:hidden mb-6 sm:mb-8">
+                                <Link to={createPageUrl('Products')} className={`inline-flex items-center gap-1.5 sm:gap-2 transition-colors mb-3 sm:mb-4 text-[10px] sm:text-xs font-bold group ${
                                     isLight ? 'text-neutral-700 hover:text-neutral-900' : 'text-neutral-300 hover:text-white'
                                 }`}>
                                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                     {language === 'en' ? 'Back to Products' : '프로덕트로 돌아가기'}
                                 </Link>
-                                <h1 className={`text-3xl md:text-4xl font-bold tracking-tighter mb-2 ${
+                                <h1 className={`text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-1.5 sm:mb-2 break-keep ${
                                     isLight ? 'text-neutral-900' : 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'
                                 }`}>{name}</h1>
-                                <div className={`text-xs font-bold uppercase tracking-wider ${accentText}`}>{tag}</div>
+                                <div className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider break-keep ${accentText}`}>{tag}</div>
                             </div>
 
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className={`text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 md:mb-12 max-w-5xl ${
+                                className={`text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tighter mb-6 sm:mb-8 md:mb-12 max-w-5xl break-keep ${
                                     isLight ? 'text-neutral-900' : 'text-white'
                                 }`}
                             >
@@ -474,12 +474,12 @@ export default function BusinessLayout({
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className={`relative max-w-3xl mb-12 md:mb-16`}
+                                    className={`relative max-w-3xl mb-8 sm:mb-10 md:mb-12 lg:mb-16`}
                                 >
-                                    <div className={`absolute -left-4 top-0 h-full w-1 border-l hidden md:block ${
+                                    <div className={`absolute -left-3 sm:-left-4 top-0 h-full w-0.5 sm:w-1 border-l hidden md:block ${
                                         isLight ? 'border-neutral-300' : 'border-white/10'
                                     }`} />
-                                    <div className={`text-base md:text-xl leading-relaxed font-light pl-4 md:pl-6 ${
+                                    <div className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-light pl-0 md:pl-4 lg:pl-6 break-keep ${
                                         isLight ? 'text-neutral-800' : 'text-neutral-200'
                                     }`}>
                                         {story}
@@ -490,18 +490,18 @@ export default function BusinessLayout({
                             <MobileTOC />
 
                             {/* Mobile Stats Grid & Actions */}
-                            <div className="lg:hidden space-y-4 mb-12">
-                                <div className="grid grid-cols-2 gap-3">
+                            <div className="lg:hidden space-y-3 sm:space-y-4 mb-8 sm:mb-10 md:mb-12">
+                                <div className="grid grid-cols-2 gap-2 sm:gap-3">
                                     {stats.map((stat, i) => (
-                                        <div key={i} className={`p-4 rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
-                                            <div className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold mb-1">{stat.label}</div>
-                                            <div className={`text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
+                                        <div key={i} className={`p-3 sm:p-4 rounded-lg sm:rounded-xl ${bgCard} ${border} backdrop-blur-sm`}>
+                                            <div className={`text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-1 ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>{stat.label}</div>
+                                            <div className={`text-base sm:text-lg md:text-xl font-mono font-medium ${accentText}`}>{stat.value}</div>
                                         </div>
                                     ))}
                                 </div>
                                 {deckUrl && (
                                     <a href={deckUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                        <Button variant="outline" className={`w-full rounded-xl h-12 bg-transparent ${border} ${textPrimary} hover:bg-white/5`}>
+                                        <Button variant="outline" className={`w-full rounded-xl h-10 sm:h-11 md:h-12 text-xs sm:text-sm bg-transparent ${border} ${textPrimary} hover:bg-white/5 active:scale-95`}>
                                             Download Deck
                                         </Button>
                                     </a>
@@ -521,16 +521,16 @@ export default function BusinessLayout({
                         {features.length > 0 && (
                             <div id="features">
                                 <ColorSection onInView={() => setActiveSection(getSectionIndex('features'))}>
-                                    <div className="mb-12 md:mb-20">
-                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border mb-6 ${
+                                    <div className="mb-8 sm:mb-12 md:mb-20">
+                                        <span className={`inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold border mb-4 sm:mb-6 ${
                                             isLight ? `border-neutral-300 bg-neutral-100 ${accentText}` : `border-white/10 bg-white/5 ${s.accent}`
                                         }`}>
                                             KEY FEATURES
                                         </span>
-                                        <h3 className={`text-2xl md:text-3xl font-bold mb-8 ${textPrimary}`}>Capabilities</h3>
-                                        <div className="grid md:grid-cols-3 gap-6">
+                                        <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 ${textPrimary}`}>Capabilities</h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                                             {features.map((feature, i) => (
-                                               <div key={i} className={`relative p-8 rounded-3xl border transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden ${
+                                               <div key={i} className={`relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border transition-all duration-500 hover:-translate-y-1 backdrop-blur-xl group overflow-hidden ${
                                                    isLight
                                                        ? 'bg-white border-neutral-200 hover:shadow-xl shadow-md'
                                                        : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06] hover:border-white/10'
@@ -541,7 +541,7 @@ export default function BusinessLayout({
                                                        </div>
                                                    )}
 
-                                                   <div className={`relative z-10 w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 transition-all duration-500 ${
+                                                   <div className={`relative z-10 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border flex items-center justify-center mb-4 sm:mb-6 transition-all duration-500 ${
                                                        isLight
                                                            ? 'bg-gradient-to-br from-violet-100 to-cyan-100 border-violet-300/30'
                                                            : 'bg-white/5 border-white/10 group-hover:border-white/20'
@@ -556,19 +556,19 @@ export default function BusinessLayout({
                                                                     duration: 3, 
                                                                     repeat: Infinity, 
                                                                     ease: "easeInOut",
-                                                                    delay: i * 0.2 // Stagger the pulses
+                                                                    delay: i * 0.2
                                                                 }}
                                                                 whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2, filter: `drop-shadow(0 0 15px ${s.glowHex})` }}
                                                             >
-                                                                <feature.icon className={`w-7 h-7 ${s.accent}`} />
+                                                                <feature.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${s.accent}`} />
                                                             </motion.div>
                                                         )}
                                                     </div>
 
-                                                    <h4 className={`relative z-10 text-xl font-bold mb-3 tracking-tight ${
+                                                    <h4 className={`relative z-10 text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 tracking-tight break-keep ${
                                                        isLight ? 'text-neutral-900' : 'text-white'
                                                    }`}>{feature.title}</h4>
-                                                    <p className={`relative z-10 leading-relaxed ${
+                                                    <p className={`relative z-10 text-xs sm:text-sm md:text-base leading-relaxed break-keep ${
                                                         isLight ? 'text-neutral-700' : 'text-neutral-200'
                                                     }`}>{feature.description}</p>
                                                 </div>
@@ -973,23 +973,27 @@ export default function BusinessLayout({
                         )}
 
                         {/* Mobile Action Bar (Sticky Bottom) */}
-                        <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
-                            <div className={`rounded-2xl p-4 ${s.sidebarBg} border border-white/10 shadow-2xl flex items-center justify-between gap-4 backdrop-blur-xl`}>
-                                <div>
-                                    <div className="text-xs text-neutral-300 uppercase font-bold">Get Started</div>
-                                    <div className="font-bold text-white text-sm">{name}</div>
+                        <div className="lg:hidden fixed bottom-4 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-4 z-50">
+                            <div className={`rounded-xl sm:rounded-2xl p-3 sm:p-4 border shadow-2xl flex items-center justify-between gap-3 sm:gap-4 backdrop-blur-xl ${
+                                isLight 
+                                    ? 'bg-white/95 border-neutral-200'
+                                    : 'bg-[#0A0A0A]/95 border-white/10'
+                            }`}>
+                                <div className="min-w-0 flex-1">
+                                    <div className={`text-[10px] sm:text-xs uppercase font-bold ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>Get Started</div>
+                                    <div className={`font-bold text-xs sm:text-sm truncate ${isLight ? 'text-neutral-900' : 'text-white'}`}>{name}</div>
                                 </div>
                                 {primaryButton.url ? (
                                     <a href={primaryButton.url} target="_blank" rel="noopener noreferrer">
-                                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                            <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                        <motion.div whileTap={{ scale: 0.95 }}>
+                                            <Button className={`rounded-full px-4 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm ${s.buttonPrimary} border-0`}>
                                                 {primaryButton.text}
                                             </Button>
                                         </motion.div>
                                     </a>
                                 ) : (
-                                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                        <Button className={`rounded-full px-6 h-10 text-sm ${s.buttonPrimary} border-0`}>
+                                    <motion.div whileTap={{ scale: 0.95 }}>
+                                        <Button className={`rounded-full px-4 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm ${s.buttonPrimary} border-0`}>
                                             {primaryButton.text}
                                         </Button>
                                     </motion.div>
@@ -1001,9 +1005,9 @@ export default function BusinessLayout({
                 </div>
 
                 {/* Bottom Navigation */}
-                <div className={`mt-24 md:mt-40 border-t ${border} pt-12 md:pt-20 pb-20 md:pb-0`}>
-                     <h3 className={`text-4xl font-bold mb-12 ${textPrimary}`}>More Products</h3>
-                     <div className="grid md:grid-cols-3 gap-8">
+                <div className={`mt-16 sm:mt-20 md:mt-32 lg:mt-40 border-t ${border} pt-8 sm:pt-12 md:pt-20 pb-16 sm:pb-20 md:pb-0`}>
+                     <h3 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 md:mb-12 ${textPrimary}`}>More Products</h3>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                          {['AidGuardian', 'PlayArts', 'Elememetal', 'Stockhoo'].filter(p => p.toLowerCase() !== name.replace(/\s+/g, '').toLowerCase()).slice(0, 3).map(proj => (
                              <Link key={proj} to={createPageUrl(proj)} className="group block">
                                  <div className={`aspect-[4/3] ${isLight ? 'bg-black/5' : 'bg-[#111]'} rounded-2xl mb-6 ${border} ${isLight ? 'group-hover:border-black/30' : 'group-hover:border-white/30'} transition-colors relative overflow-hidden`}>

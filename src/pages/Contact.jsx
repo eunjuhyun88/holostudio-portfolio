@@ -37,12 +37,12 @@ export default function Contact() {
                 </div>
             )}
 
-            <div className="relative z-10 pt-32 pb-24 px-6 max-w-7xl mx-auto">
-                <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="relative z-10 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-3 sm:px-4 md:px-6 max-w-7xl mx-auto">
+                <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className={`text-3xl md:text-5xl font-black tracking-tight mb-6 ${
+                        className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-6 break-keep ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}
                     >
@@ -51,7 +51,7 @@ export default function Contact() {
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className={`text-base md:text-xl leading-relaxed font-medium ${
+                        className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-medium break-keep ${
                             theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'
                         }`}
                     >
@@ -59,63 +59,63 @@ export default function Contact() {
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-5xl mx-auto">
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className={`p-8 rounded-2xl border ${
+                        className={`p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border ${
                             theme === 'dark'
                                 ? 'bg-white/5 border-white/10 backdrop-blur-md'
                                 : 'bg-neutral-50 border-neutral-200'
                         }`}
                     >
-                        <h2 className={`text-2xl font-black mb-6 ${
+                        <h2 className={`text-lg sm:text-xl md:text-2xl font-black mb-4 sm:mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>Contact Information</h2>
-                        <div className="space-y-6">
-                            <div className="flex items-start gap-4">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        <div className="space-y-4 sm:space-y-6">
+                            <div className="flex items-start gap-3 sm:gap-4">
+                                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                                     theme === 'dark' 
                                         ? 'bg-indigo-500/20 text-indigo-400'
                                         : 'bg-orange-100 text-orange-600'
                                 }`}>
-                                    <Mail className="w-5 h-5" />
+                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
-                                <div>
-                                    <h3 className={`font-black ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Email</h3>
-                                    <p className={theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}>contact@holostudio.ai</p>
-                                    <p className={theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}>invest@holostudio.ai</p>
+                                <div className="min-w-0">
+                                    <h3 className={`font-black text-sm sm:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Email</h3>
+                                    <p className={`text-xs sm:text-sm break-all ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>contact@holostudio.ai</p>
+                                    <p className={`text-xs sm:text-sm break-all ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>invest@holostudio.ai</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-4">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            <div className="flex items-start gap-3 sm:gap-4">
+                                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                                     theme === 'dark' 
                                         ? 'bg-indigo-500/20 text-indigo-400'
                                         : 'bg-orange-100 text-orange-600'
                                 }`}>
-                                    <MapPin className="w-5 h-5" />
+                                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
                                 <div>
-                                    <h3 className={`font-black ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Headquarters</h3>
-                                    <p className={theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}>Seoul, South Korea</p>
-                                    <p className={theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}>Singapore (Global Office)</p>
+                                    <h3 className={`font-black text-sm sm:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Headquarters</h3>
+                                    <p className={`text-xs sm:text-sm ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Seoul, South Korea</p>
+                                    <p className={`text-xs sm:text-sm ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Singapore (Global Office)</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="mt-12">
-                            <h3 className={`font-black mb-4 ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Connect on Social</h3>
-                            <div className="flex gap-4 flex-wrap">
+                        <div className="mt-8 sm:mt-10 md:mt-12">
+                            <h3 className={`font-black mb-3 sm:mb-4 text-sm sm:text-base ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Connect on Social</h3>
+                            <div className="flex gap-3 sm:gap-4 flex-wrap">
                                 <a href="https://x.com/Holoaistudio" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline" className={`rounded-full font-bold ${
+                                    <Button variant="outline" className={`rounded-full font-bold text-xs sm:text-sm h-9 sm:h-10 px-4 sm:px-5 active:scale-95 ${
                                         theme === 'dark'
                                             ? 'border-white/10 bg-transparent text-white hover:bg-white/10'
                                             : 'border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50'
                                     }`}>Twitter / X</Button>
                                 </a>
                                 <a href="https://www.linkedin.com/company/hololabster/" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline" className={`rounded-full font-bold ${
+                                    <Button variant="outline" className={`rounded-full font-bold text-xs sm:text-sm h-9 sm:h-10 px-4 sm:px-5 active:scale-95 ${
                                         theme === 'dark'
                                             ? 'border-white/10 bg-transparent text-white hover:bg-white/10'
                                             : 'border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50'
@@ -129,45 +129,45 @@ export default function Contact() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className={`p-8 rounded-2xl border ${
+                        className={`p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border ${
                             theme === 'dark'
                                 ? 'bg-[#0A0A0A]/50 backdrop-blur-xl border-white/10 shadow-xl'
                                 : 'bg-neutral-50 border-neutral-200'
                         }`}
                     >
-                        <h2 className={`text-2xl font-black mb-6 ${
+                        <h2 className={`text-lg sm:text-xl md:text-2xl font-black mb-4 sm:mb-6 ${
                             theme === 'dark' ? 'text-white' : 'text-neutral-900'
                         }`}>Send a Message</h2>
-                        <form className="space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <label className={`text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>First Name</label>
-                                    <input type="text" className={`w-full px-4 py-2 rounded-lg border outline-none transition-all ${
+                        <form className="space-y-3 sm:space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                <div className="space-y-1.5 sm:space-y-2">
+                                    <label className={`text-xs sm:text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>First Name</label>
+                                    <input type="text" className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg border outline-none transition-all ${
                                         theme === 'dark'
                                             ? 'bg-white/5 border-white/10 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
                                             : 'bg-white border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
                                     }`} />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className={`text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Last Name</label>
-                                    <input type="text" className={`w-full px-4 py-2 rounded-lg border outline-none transition-all ${
+                                <div className="space-y-1.5 sm:space-y-2">
+                                    <label className={`text-xs sm:text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Last Name</label>
+                                    <input type="text" className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg border outline-none transition-all ${
                                         theme === 'dark'
                                             ? 'bg-white/5 border-white/10 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
                                             : 'bg-white border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
                                     }`} />
                                 </div>
                             </div>
-                            <div className="space-y-2">
-                                <label className={`text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Email</label>
-                                <input type="email" className={`w-full px-4 py-2 rounded-lg border outline-none transition-all ${
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className={`text-xs sm:text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Email</label>
+                                <input type="email" className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg border outline-none transition-all ${
                                     theme === 'dark'
                                         ? 'bg-white/5 border-white/10 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
                                         : 'bg-white border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
                                 }`} />
                             </div>
-                            <div className="space-y-2">
-                                <label className={`text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Subject</label>
-                                <select className={`w-full px-4 py-2 rounded-lg border outline-none transition-all ${
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className={`text-xs sm:text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Subject</label>
+                                <select className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg border outline-none transition-all ${
                                     theme === 'dark'
                                         ? 'bg-white/5 border-white/10 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
                                         : 'bg-white border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
@@ -178,20 +178,20 @@ export default function Contact() {
                                     <option className={theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}>General Inquiry</option>
                                 </select>
                             </div>
-                            <div className="space-y-2">
-                                <label className={`text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Message</label>
-                                <textarea rows="4" className={`w-full px-4 py-2 rounded-lg border outline-none transition-all ${
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className={`text-xs sm:text-sm font-bold ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-700'}`}>Message</label>
+                                <textarea rows="4" className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg border outline-none transition-all resize-none ${
                                     theme === 'dark'
                                         ? 'bg-white/5 border-white/10 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
                                         : 'bg-white border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
                                 }`}></textarea>
                             </div>
-                            <Button className={`w-full h-12 rounded-full text-base font-bold border-0 ${
+                            <Button className={`w-full h-11 sm:h-12 rounded-full text-sm sm:text-base font-bold border-0 active:scale-95 ${
                                 theme === 'dark'
                                     ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
                                     : 'bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 hover:from-cyan-400 hover:via-violet-400 hover:to-pink-400 text-white shadow-lg'
                             }`}>
-                                Send Message <ArrowRight className="w-4 h-4 ml-2" />
+                                Send Message <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
                             </Button>
                         </form>
                     </motion.div>
